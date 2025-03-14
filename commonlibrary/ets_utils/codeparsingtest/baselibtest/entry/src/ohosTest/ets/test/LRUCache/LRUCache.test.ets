@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { util } from '@kit.ArkTS';
 
 function sleep(ms: number): Promise<void> {
@@ -34,7 +34,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutKey0001', 0, () => {
+    it('testLRUCachePutKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutKey0001";
       try {
         let pro = new util.LRUCache<string, string>(1);
@@ -55,7 +55,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutKey0002', 0, () => {
+    it('testLRUCachePutKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutKey0002";
       try {
         let pro = new util.LRUCache<number, number>(1);
@@ -76,7 +76,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutKey0003', 0, () => {
+    it('testLRUCachePutKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutKey0003";
       try {
         let pro = new util.LRUCache<string, string>(1);
@@ -97,7 +97,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutKey0004', 0, () => {
+    it('testLRUCachePutKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutKey0004";
       try {
         let pro = new util.LRUCache<string, number>(1);
@@ -118,7 +118,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutKey0005', 0, () => {
+    it('testLRUCachePutKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutKey0005";
       try {
         let pro = new util.LRUCache<string, string>(1);
@@ -139,7 +139,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0001', 0, () => {
+    it('testLRUCachePutConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0001";
       try {
         let pro = new util.LRUCache<string, string>();
@@ -164,7 +164,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0002', 0, () => {
+    it('testLRUCachePutConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0002";
       try {
         let pro = new util.LRUCache<string, string>();
@@ -195,7 +195,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0003', 0, () => {
+    it('testLRUCachePutConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0003";
       try {
         let pro = new util.LRUCache<string, string>();
@@ -227,7 +227,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0004', 0, () => {
+    it('testLRUCachePutConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0004";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -248,7 +248,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0005', 0, () => {
+    it('testLRUCachePutConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0005";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -268,7 +268,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0006', 0, () => {
+    it('testLRUCachePutConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0006";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -288,7 +288,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0007', 0, () => {
+    it('testLRUCachePutConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0007";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -308,7 +308,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0008', 0, () => {
+    it('testLRUCachePutConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0008";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -328,7 +328,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCachePutConstructor0009', 0, () => {
+    it('testLRUCachePutConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCachePutConstructor0009";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -347,7 +347,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0001', 0, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0001";
       try {
         let pro = new util.LRUCache<number, number>(2147483648);
@@ -365,7 +365,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0002', 0, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0002";
       try {
         let pro = new util.LRUCache<number, number>(-100);
@@ -383,7 +383,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0003', 0, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0003";
       try {
         let pro = new util.LRUCache<number, number>(64.11);
@@ -401,7 +401,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0004', 0, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0004";
       try {
         let pro = new util.LRUCache<number, number>(undefined);
@@ -420,7 +420,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0005', 0, () => {
+    it('testConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0005";
       try {
         let pro = new util.LRUCache<number, number>(0);
@@ -438,7 +438,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0006', 0, () => {
+    it('testConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0006";
       try {
         let pro = new util.LRUCache<number, number>(NaN);
@@ -456,7 +456,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0001', 0, () => {
+    it('testLRUCacheUpdateCapacity0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -475,7 +475,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0002', 0, () => {
+    it('testLRUCacheUpdateCapacity0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0002";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -494,7 +494,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0003', 0, () => {
+    it('testLRUCacheUpdateCapacity0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0003";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -513,7 +513,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0004', 0, () => {
+    it('testLRUCacheUpdateCapacity0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0004";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -532,7 +532,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0005', 0, () => {
+    it('testLRUCacheUpdateCapacity0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0005";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -551,7 +551,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0006', 0, () => {
+    it('testLRUCacheUpdateCapacity0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0006";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -570,7 +570,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0007', 0, () => {
+    it('testLRUCacheUpdateCapacity0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLRUCacheUpdateCapacity0007';
       try {
         let pro = new util.LRUCache<number, number>();
@@ -589,7 +589,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0008', 0, () => {
+    it('testLRUCacheUpdateCapacity0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0008";
       try {
         let cache = new util.LRUCache<number, number>();
@@ -608,7 +608,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0009', 0, () => {
+    it('testLRUCacheUpdateCapacity0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLRUCacheUpdateCapacity0009';
       try {
         let pro = new util.LRUCache<number, number>();
@@ -627,7 +627,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0010', 0, () => {
+    it('testLRUCacheUpdateCapacity0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLRUCacheUpdateCapacity0010';
       try {
         let pro = new util.LRUCache<number, number>(2147483647);
@@ -646,7 +646,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0011', 0, () => {
+    it('testLRUCacheUpdateCapacity0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0011";
       try {
         let cache = new util.LRUCache<number, number>();
@@ -665,7 +665,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheUpdateCapacity0012', 0, () => {
+    it('testLRUCacheUpdateCapacity0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheUpdateCapacity0012";
       try {
         const lruCache = new util.LRUCache<string, string>(1);
@@ -684,7 +684,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToString0001', 0, () => {
+    it('testToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToString0001";
       try {
         let cache = new util.LRUCache<number, number>(2147483647);
@@ -706,7 +706,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetCapacity0001', 0, () => {
+    it('testGetCapacity0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetCapacity0001";
       try {
         const MAX_CAPACITY = 2147483647;
@@ -727,7 +727,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetCapacity0001', 0, () => {
+    it('testLRUCacheGetCapacity0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetCapacity0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -749,7 +749,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetCapacity0002', 0, () => {
+    it('testLRUCacheGetCapacity0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetCapacity0002";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -771,7 +771,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetCreateCount0001', 0, () => {
+    it('testLRUCacheGetCreateCount0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetCreateCount0001";
       try {
         class ChildLRUCache extends util.LRUCache<number, number> {
@@ -804,7 +804,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0001', 0, () => {
+    it('testLRUCacheGetMissCount0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -827,7 +827,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0002', 0, () => {
+    it('testLRUCacheGetMissCount0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0002";
       try {
         let pro = new util.LRUCache<number, string>();
@@ -855,7 +855,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0003', 0, () => {
+    it('testLRUCacheGetMissCount0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0003";
       try {
         let pro: util.LRUCache<number, string> = new util.LRUCache<number, string>();
@@ -881,7 +881,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0005', 0, () => {
+    it('testLRUCacheGetMissCount0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0005";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -906,7 +906,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0006', 0, () => {
+    it('testLRUCacheGetMissCount0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0006";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -931,7 +931,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0007', 0, () => {
+    it('testLRUCacheGetMissCount0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0007";
       try {
         let cache = new util.LRUCache<number, number>();
@@ -962,7 +962,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0008', 0, () => {
+    it('testLRUCacheGetMissCount0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0008";
       try {
         let cache = new util.LRUCache<number, number>();
@@ -986,7 +986,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0009', 0, () => {
+    it('testLRUCacheGetMissCount0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0009";
       try {
         let pro: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1008,7 +1008,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMissCount0010', 0, () => {
+    it('testLRUCacheGetMissCount0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMissCount0010";
       try {
         let pro: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1030,7 +1030,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0001', 0, () => {
+    it('testLRUCacheConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0001";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1054,7 +1054,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0002', 0, () => {
+    it('testLRUCacheConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0002";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1094,7 +1094,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0003', 0, () => {
+    it('testLRUCacheConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0003";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1122,7 +1122,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0004', 0, () => {
+    it('testLRUCacheConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0004";
       try {
         let dataManager: util.LRUCache<number, string> = new util.LRUCache<number, string>();
@@ -1147,7 +1147,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0005', 0, () => {
+    it('testLRUCacheConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0005";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1174,7 +1174,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0006', 0, () => {
+    it('testLRUCacheConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0006";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1198,7 +1198,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0007', 0, () => {
+    it('testLRUCacheConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0007";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1228,7 +1228,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheConstructor0008', 0, () => {
+    it('testLRUCacheConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheConstructor0008";
       try {
         let lruCache: util.LRUCache<number, number> = new util.LRUCache<number, number>();
@@ -1278,7 +1278,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0001', 0, () => {
+    it('testLRUCacheGetMatchCount0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1301,7 +1301,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0002', 0, () => {
+    it('testLRUCacheGetMatchCount0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0002";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1327,7 +1327,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0003', 0, () => {
+    it('testLRUCacheGetMatchCount0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0003";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1354,7 +1354,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0004', 0, () => {
+    it('testLRUCacheGetMatchCount0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0004";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1380,7 +1380,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0005', 0, () => {
+    it('testLRUCacheGetMatchCount0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0005";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1406,7 +1406,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0006', 0, () => {
+    it('testLRUCacheGetMatchCount0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0006";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1432,7 +1432,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0007', 0, () => {
+    it('testLRUCacheGetMatchCount0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = " testLRUCacheGetMatchCount0007";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1455,7 +1455,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0008', 0, () => {
+    it('testLRUCacheGetMatchCount0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0008";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1477,7 +1477,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetMatchCount0009', 0, () => {
+    it('testLRUCacheGetMatchCount0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetMatchCount0009";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1503,7 +1503,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetPutCount0001', 0, () => {
+    it('testLRUCacheGetPutCount0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetPutCount0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1526,7 +1526,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetPutCount0002', 0, () => {
+    it('testLRUCacheGetPutCount0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetPutCount0002";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1549,7 +1549,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetPutCount0003', 0, () => {
+    it('testLRUCacheGetPutCount0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetPutCount0003";
       try {
         let cache = new util.LRUCache<number, number>();
@@ -1575,7 +1575,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGetPutCount0004', 0, () => {
+    it('testLRUCacheGetPutCount0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGetPutCount0004";
       try {
         const cache = new util.LRUCache<number, number>();
@@ -1603,7 +1603,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGet0001', 0, () => {
+    it('testLRUCacheGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGet0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1623,7 +1623,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLRUCacheGet0002', 0, () => {
+    it('testLRUCacheGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheGet0002";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1643,7 +1643,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it('testLRUCacheRemove0001', 0, () => {
+    it('testLRUCacheRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheRemove0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1663,7 +1663,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it("testLRUCacheRemove0002", 0, () => {
+    it("testLRUCacheRemove0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const tga = 'testLRUCacheRemove0002';
       try {
         let pro = new util.LRUCache<number, number>(1);
@@ -1686,7 +1686,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it('testLRUCachecontains0001', 0, () => {
+    it('testLRUCachecontains0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLRUCachecontains0001';
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1706,7 +1706,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it('testLRUCachecontains0002', 0, () => {
+    it('testLRUCachecontains0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLRUCachecontains0002';
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1726,7 +1726,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it('testLRUCacheCreateDefault0001', 0, () => {
+    it('testLRUCacheCreateDefault0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheCreateDefault0001";
       try {
         let pro = new util.LRUCache<number, number>();
@@ -1748,7 +1748,7 @@ export default function LRUCatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      **/
-    it('testLRUCacheCreateDefault0002', 0, () => {
+    it('testLRUCacheCreateDefault0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLRUCacheCreateDefault0002";
       try {
         let pro = new util.LRUCache<number, number>();
