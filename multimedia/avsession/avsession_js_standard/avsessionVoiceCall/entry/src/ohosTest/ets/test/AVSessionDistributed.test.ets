@@ -29,8 +29,8 @@ let sleep = (ms: number): Promise<string> => {
 export default function abilityTest() {
   describe('AVSessionDistributedtest', () => {
     let TAG: string = "[AVSessionDistributedtest]";
-    let session: avSession.AVsession | ESObject;
-    let controller: avSession.AVsessionController;
+    let session: avSession.AVSession | ESObject;
+    let controller: avSession.AVSessionController;
 
     beforeAll(async () => {
       console.info(`${TAG}: beforeAll in`)
@@ -126,7 +126,7 @@ export default function abilityTest() {
      */
     it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0300', 2, async (done: Function) => {
         const COMMON_COMMAND_STRING = "AUDIO_GET_VOLUME";
-        let extras = await controller.getExtrasWithEvent(COMMON_COMMAND_STRING);
+        let extras: avSession.ExtraInfo = await controller.getExtrasWithEvent(COMMON_COMMAND_STRING);
         console.info(`${TAG}: aduio get volume with ${JSON.stringify(extras)}`);
         if (JSON.stringify(extras) == '{}' || 0 <= extras[COMMON_COMMAND_STRING] && extras[COMMON_COMMAND_STRING] <= 15){
           console.info(`${TAG}: aduio get volume with ${extras[COMMON_COMMAND_STRING]}`);
