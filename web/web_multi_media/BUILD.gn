@@ -15,13 +15,12 @@ group("WebMultimedia") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"audio_play:ActsWebAudioPlayTest",
-      #"control_center:ActsWebControlCenterTest",
-      #"video_hosting:videoHosting",
+      "audio_play:ActsWebAudioPlayTest",
+      "control_center:ActsWebControlCenterTest",
+      "video_hosting:videoHosting",
       "video_play:ActsWebVideoPlayTest",
       "video_playTwo:ActsWebVideoPlayTwoTest",
-
-      #"webcam:ActsWebcamTest",
+      "webcam:ActsWebcamTest",
     ]
   }
 }
