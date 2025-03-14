@@ -155,6 +155,7 @@ import SearchXtsJsunit from './xts/SearchXtsJsunit.test'
 import TextAreaXtsJsunit from './xts/TextAreaXtsJsunit.test'
 import TextInputXtsJsunit from './xts/TextInputXtsJsunit.test'
 import spanTest from './spanTest/SpanJsunit1.test'
+import ContainerSpanModifierTest from './TextTest/ContainerSpanModifierTest.test'
 
 import RichEditor001 from './RichEditorEmojiTest/RichEditor001.test'
 import RichEditor002 from './RichEditorEmojiTest/RichEditor002.test'
@@ -641,6 +642,8 @@ export default function testsuite() {
   TextAreaXtsJsunit();
   TextInputXtsJsunit();
   spanTest();
+  ContainerSpanModifierTest();
+  
   RichEditor001();
   RichEditor002();
   RichEditor003();
