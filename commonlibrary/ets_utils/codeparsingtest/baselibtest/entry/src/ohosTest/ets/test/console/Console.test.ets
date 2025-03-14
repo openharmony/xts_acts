@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 function init(size: number): string {
   let ans = '[';
@@ -33,7 +33,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule001', 0, async (done: Function) => {
+    it('testLoadNativeModule001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("a");
       } catch (e) {
@@ -52,7 +52,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule002', 0, async (done: Function) => {
+    it('testLoadNativeModule002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule(undefined);
       } catch (e) {
@@ -71,7 +71,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule003', 0, async (done: Function) => {
+    it('testLoadNativeModule003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule(null);
       } catch (e) {
@@ -90,7 +90,7 @@ export default function ConsoleTest() {
      * @tc.level      : Level 1
      */
 
-    it('testLoadNativeModule004', 0, async (done: Function) => {
+    it('testLoadNativeModule004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("");
       } catch (e) {
@@ -107,7 +107,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule005', 0, async (done: Function) => {
+    it('testLoadNativeModule005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
       } catch (e) {
@@ -124,7 +124,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule006', 0, async (done: Function) => {
+    it('testLoadNativeModule006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag =
           loadNativeModule("!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
@@ -142,7 +142,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule007', 0, async (done: Function) => {
+    it('testLoadNativeModule007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("  !!\"\"##$$%%&&''(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~");
       } catch (e) {
@@ -159,7 +159,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule008', 0, async (done: Function) => {
+    it('testLoadNativeModule008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("\a 响铃");
       } catch (e) {
@@ -177,7 +177,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule009', 0, async (done: Function) => {
+    it('testLoadNativeModule009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\b 退格');
       } catch (e) {
@@ -195,7 +195,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule010', 0, async (done: Function) => {
+    it('testLoadNativeModule010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\f 换页');
       } catch (e) {
@@ -213,7 +213,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule011', 0, async (done: Function) => {
+    it('testLoadNativeModule011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\n 换行');
       } catch (e) {
@@ -231,7 +231,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule012', 0, async (done: Function) => {
+    it('testLoadNativeModule012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\r 回车');
       } catch (e) {
@@ -249,7 +249,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule013', 0, async (done: Function) => {
+    it('testLoadNativeModule013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\t 水平制表');
       } catch (e) {
@@ -267,7 +267,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule014', 0, async (done: Function) => {
+    it('testLoadNativeModule014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\v 垂直制表');
       } catch (e) {
@@ -285,7 +285,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule015', 0, async (done: Function) => {
+    it('testLoadNativeModule015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\ 反斜杠');
       } catch (e) {
@@ -303,7 +303,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule016', 0, async (done: Function) => {
+    it('testLoadNativeModule016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule("\' 单引号");
       } catch (e) {
@@ -321,7 +321,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule017', 0, async (done: Function) => {
+    it('testLoadNativeModule017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\" 双引号');
       } catch (e) {
@@ -339,7 +339,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule018', 0, async (done: Function) => {
+    it('testLoadNativeModule018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\? 问号');
       } catch (e) {
@@ -357,7 +357,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule019', 0, async (done: Function) => {
+    it('testLoadNativeModule019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\0 空字符');
       } catch (e) {
@@ -375,7 +375,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule020', 0, async (done: Function) => {
+    it('testLoadNativeModule020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\d72 八进制任意数字');
       } catch (e) {
@@ -393,7 +393,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule021', 0, async (done: Function) => {
+    it('testLoadNativeModule021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\x85 十六进制任意数字');
       } catch (e) {
@@ -411,7 +411,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule022', 0, async (done: Function) => {
+    it('testLoadNativeModule022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('👆 \ud83d\udc46');
       } catch (e) {
@@ -429,7 +429,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule023', 0, async (done: Function) => {
+    it('testLoadNativeModule023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('👿 \ud83d\udc7f');
       } catch (e) {
@@ -447,7 +447,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule024', 0, async (done: Function) => {
+    it('testLoadNativeModule024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('👀 \ud83d\udc40');
       } catch (e) {
@@ -465,7 +465,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule025', 0, async (done: Function) => {
+    it('testLoadNativeModule025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('💯 \ud83d\udcaf');
       } catch (e) {
@@ -483,7 +483,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule026', 0, async (done: Function) => {
+    it('testLoadNativeModule026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🎅 \ud83c\udf85');
       } catch (e) {
@@ -501,7 +501,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule027', 0, async (done: Function) => {
+    it('testLoadNativeModule027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('😼 \ud83d\ude3c');
       } catch (e) {
@@ -519,7 +519,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule028', 0, async (done: Function) => {
+    it('testLoadNativeModule028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🔧 \ud83d\udd27');
       } catch (e) {
@@ -537,7 +537,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule029', 0, async (done: Function) => {
+    it('testLoadNativeModule029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('💇 \ud83d\udc87');
       } catch (e) {
@@ -555,7 +555,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule030', 0, async (done: Function) => {
+    it('testLoadNativeModule030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🤼‍♂️ \ud83e\udd3c\u200d\u2642\ufe0f');
       } catch (e) {
@@ -573,7 +573,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule031', 0, async (done: Function) => {
+    it('testLoadNativeModule031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🛢 \ud83d\udee2');
       } catch (e) {
@@ -591,7 +591,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule032', 0, async (done: Function) => {
+    it('testLoadNativeModule032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🀄 \ud83c\udc04');
       } catch (e) {
@@ -609,7 +609,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule033', 0, async (done: Function) => {
+    it('testLoadNativeModule033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('🏴 \ud83c\udff4');
       } catch (e) {
@@ -627,7 +627,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule034', 0, async (done: Function) => {
+    it('testLoadNativeModule034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule(init(200));
       } catch (e) {
@@ -644,7 +644,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule035', 0, async (done: Function) => {
+    it('testLoadNativeModule035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let str = "{k1:value1,k2:value2}";
         let result = str.substring(0, str.length - 2)
@@ -663,7 +663,7 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule036', 0, async (done: Function) => {
+    it('testLoadNativeModule036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\ud83c');
       } catch (e) {
@@ -680,13 +680,454 @@ export default function ConsoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadNativeModule037', 0, async (done: Function) => {
+    it('testLoadNativeModule037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag = loadNativeModule('\u200d\u2642');
       } catch (e) {
         expect(e.code).assertEqual(401);
       }
       done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_3800
+     * @tc.name       : testConsole038
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.debug('count: %d', number);
+        console.debug('count: %d');
+        console.debug(number.toString());
+        console.debug('count: %d', str);
+        console.debug('count: %d');
+        console.debug(str);
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_3900
+     * @tc.name       : testConsole039
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.log('count: %d', number);
+        console.log('count: %d');
+        console.log(number.toString());
+        console.log('count: %d', str);
+        console.log('count: %d');
+        console.log(str);
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4000
+     * @tc.name       : testConsole040
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.info('count: %d', number);
+        console.info('count: %d');
+        console.info(number.toString());
+        console.info('count: %d', str);
+        console.info('count: %d');
+        console.info(str);
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4100
+     * @tc.name       : testConsole041
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.warn('count: %d', number);
+        console.warn('count: %d');
+        console.warn(number.toString());
+        console.warn('count: %d', str);
+        console.warn('count: %d');
+        console.warn(str);
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4200
+     * @tc.name       : testConsole042
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.error('count: %d', number);
+        console.error('count: %d');
+        console.error(number.toString());
+        console.error('count: %d', str);
+        console.error('count: %d');
+        console.error(str);
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4300
+     * @tc.name       : testConsole043
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.assert('count: %d', number);
+        console.assert('count: %d');
+        console.assert(number.toString());
+        console.assert('count: %d', str);
+        console.assert('count: %d');
+        console.assert(str);
+        console.assert();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4400
+     * @tc.name       : testConsole044
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.count(number.toString());
+        console.count(str);
+        console.count('count: %d');
+        console.count();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4500
+     * @tc.name       : testConsole045
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.countReset(number.toString());
+        console.countReset(str);
+        console.countReset('count: %d');
+        console.countReset();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4600
+     * @tc.name       : testConsole046
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.dir(number.toString());
+        console.dir(str);
+        console.dir('count: %d');
+        console.dir();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4700
+     * @tc.name       : testConsole047
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.dir(number.toString());
+        console.dir(str);
+        console.dir('count: %d');
+        console.dir();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4700
+     * @tc.name       : testConsole048
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.group(number);
+        console.group(str);
+        console.group('count: %d');
+        console.group();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_4900
+     * @tc.name       : testConsole049
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.groupCollapsed(number, str);
+        console.groupCollapsed(str);
+        console.groupCollapsed('count: %d');
+        console.groupCollapsed();
+        console.groupCollapsed(number, str, "sdsf");
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5000
+     * @tc.name       : testConsole050
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        console.groupEnd();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5100
+     * @tc.name       : testConsole051
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.table(number);
+        console.table(str);
+        console.table('count: %d');
+        console.table();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5200
+     * @tc.name       : testConsole052
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.time(number.toString());
+        console.time(str);
+        console.time('count: %d');
+        console.time();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5300
+     * @tc.name       : testConsole053
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.dirxml(number.toString());
+        console.dirxml(str);
+        console.dirxml('count: %d');
+        console.dirxml();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5300
+     * @tc.name       : testConsole053
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.timeEnd(number.toString());
+        console.timeEnd(str);
+        console.timeEnd('count: %d');
+        console.timeEnd();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5500
+     * @tc.name       : testConsole055
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.timeLog(number.toString());
+        console.timeLog(str);
+        console.timeLog('count: %d');
+        console.timeLog();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5600
+     * @tc.name       : testConsole056
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        let number = 1;
+        let str = "str";
+        console.trace(number.toString());
+        console.trace(str);
+        console.trace('count: %d');
+        console.trace();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5700
+     * @tc.name       : testConsole057
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        console.traceHybridStack();
+      } catch (e) {
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_5800
+     * @tc.name       : testConsole058
+     * @tc.desc       : Test Console.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConsole058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      try {
+        console.log(Math.log2(undefined) + "NaN", "DDGFWDJDGDKDHDJ");
+        console.log(Number.isNaN(Math.log2(undefined)) + "NaN", "dasffheggjh")
+      } catch (e) {
+        expect().assertFail();
+      }
     });
   })
 }

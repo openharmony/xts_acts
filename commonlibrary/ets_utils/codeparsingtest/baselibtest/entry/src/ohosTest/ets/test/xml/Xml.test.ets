@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { util, xml } from '@kit.ArkTS';
 
 function sleep(ms: number) {
@@ -67,7 +67,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0001', 0, () => {
+    it('testXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0001';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -96,7 +96,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0002', 0, () => {
+    it('testXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0002';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -125,7 +125,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0003', 0, () => {
+    it('testXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0003';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -146,7 +146,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0004', 0, () => {
+    it('testXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0004';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -171,7 +171,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0005', 0, () => {
+    it('testXmlConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0005';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -195,7 +195,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0006', 0, () => {
+    it('testXmlConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0006';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -220,7 +220,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0007', 0, () => {
+    it('testXmlConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0007';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -244,7 +244,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0008', 0, () => {
+    it('testXmlConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0008';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -268,7 +268,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlConstructor0009', 0, () => {
+    it('testXmlConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlConstructor0009';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -290,7 +290,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0001', 0, () => {
+    it('testXmlSetAttributes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0001';
       try {
         const MY_MAX = 2048;
@@ -313,7 +313,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0002', 0, () => {
+    it('testXmlSetAttributes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0002';
       try {
         const MY_MAX = 2048;
@@ -336,7 +336,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0003', 0, () => {
+    it('testXmlSetAttributes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0003';
       try {
         const MY_MAX = 2048;
@@ -359,7 +359,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0004', 0, () => {
+    it('testXmlSetAttributes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0004';
       try {
         const MY_MAX = 2048;
@@ -390,7 +390,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0005', 0, () => {
+    it('testXmlSetAttributes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0005';
       try {
         const MY_MAX = 10240;
@@ -422,7 +422,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributes0006', 0, () => {
+    it('testXmlSetAttributes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetAttributes0006';
       try {
         const MY_MAX = 2048;
@@ -454,7 +454,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0001', 0, () => {
+    it('testXmlAddEmptyElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0001';
       try {
         const MY_MAX = 2048;
@@ -477,7 +477,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0002', 0, () => {
+    it('testXmlAddEmptyElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0002';
       try {
         const MY_MAX = 2048;
@@ -500,7 +500,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0003', 0, () => {
+    it('testXmlAddEmptyElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0003';
       try {
         const MY_MAX = 2048;
@@ -524,7 +524,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0004', 0, () => {
+    it('testXmlAddEmptyElement0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0004';
       try {
         const MY_MAX = 2048;
@@ -547,7 +547,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0005', 0, () => {
+    it('testXmlAddEmptyElement0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0005';
       try {
         const MY_MAX = 102400;
@@ -580,7 +580,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0006', 0, () => {
+    it('testXmlAddEmptyElement0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0006';
       try {
         const MY_MAX = 16;
@@ -609,7 +609,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0007', 0, () => {
+    it('testXmlAddEmptyElement0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0007';
       try {
         const MY_MAX = 2048;
@@ -639,7 +639,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0008', 0, () => {
+    it('testXmlAddEmptyElement0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0008';
       try {
         const MY_MAX = 2048;
@@ -668,7 +668,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0009', 0, () => {
+    it('testXmlAddEmptyElement0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0009';
       try {
         const MY_MAX = 2048;
@@ -697,7 +697,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElement0010', 0, () => {
+    it('testXmlAddEmptyElement0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlAddEmptyElement0010';
       try {
         const MY_MAX = 2048;
@@ -727,7 +727,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDeclaration0001', 0, () => {
+    it('testXmlSetDeclaration0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDeclaration0001';
       try {
         const MY_MAX = 2048;
@@ -756,7 +756,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0001', 0, () => {
+    it('testXmlStartElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0001';
       try {
         const MY_MAX = 2048;
@@ -779,7 +779,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0002', 0, () => {
+    it('testXmlStartElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0002';
       try {
         const MY_MAX = 2048;
@@ -802,7 +802,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0003', 0, () => {
+    it('testXmlStartElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0003';
       try {
         const MY_MAX = 2048;
@@ -825,7 +825,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0004', 0, () => {
+    it('testXmlStartElement0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0004';
       try {
         const MY_MAX = 2048;
@@ -857,7 +857,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0005', 0, () => {
+    it('testXmlStartElement0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0005';
       try {
         const MY_MAX = 2048;
@@ -889,7 +889,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0006', 0, () => {
+    it('testXmlStartElement0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0006';
       try {
         const MY_MAX = 10240;
@@ -922,7 +922,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElement0007', 0, () => {
+    it('testXmlStartElement0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlStartElement0007';
       try {
         const MY_MAX = 2048;
@@ -953,7 +953,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlEndElement0001', 0, () => {
+    it('testXmlEndElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlEndElement0001';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -978,7 +978,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlEndElement0002', 0, () => {
+    it('testXmlEndElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlEndElement0002';
       try {
         const MY_MAX = 2048;
@@ -1006,7 +1006,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0001', 0, () => {
+    it('testXmlSetNamespace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0001';
       try {
         const MY_MAX = 2048;
@@ -1033,7 +1033,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0002', 0, () => {
+    it('testXmlSetNamespace0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0002';
       try {
         const MY_MAX = 2048;
@@ -1056,7 +1056,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0003', 0, () => {
+    it('testXmlSetNamespace0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0003';
       try {
         const MY_MAX = 2048;
@@ -1079,7 +1079,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0004', 0, () => {
+    it('testXmlSetNamespace0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0004';
       try {
         const MY_MAX = 2048;
@@ -1102,7 +1102,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0005', 0, () => {
+    it('testXmlSetNamespace0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0005';
       try {
         const MY_MAX = 2048;
@@ -1124,7 +1124,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0006', 0, () => {
+    it('testXmlSetNamespace0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0006';
       try {
         const MY_MAX = 2048;
@@ -1147,7 +1147,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0007', 0, () => {
+    it('testXmlSetNamespace0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0007';
       try {
         const MY_MAX = 2048;
@@ -1174,7 +1174,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0008', 0, () => {
+    it('testXmlSetNamespace0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0008';
       try {
         const MY_MAX = 2048;
@@ -1204,7 +1204,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetNamespace0009', 0, () => {
+    it('testXmlSetNamespace0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetNamespace0009';
       try {
         const MY_MAX = 10240;
@@ -1235,7 +1235,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0001', 0, () => {
+    it('testXmlSetComment0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0001';
       try {
         const MY_MAX = 2048;
@@ -1258,7 +1258,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0002', 0, () => {
+    it('testXmlSetComment0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0002';
       try {
         const MY_MAX = 2048;
@@ -1281,7 +1281,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0003', 0, () => {
+    it('testXmlSetComment0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0003';
       try {
         const MY_MAX = 2048;
@@ -1304,7 +1304,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0004', 0, () => {
+    it('testXmlSetComment0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0004';
       try {
         const MY_MAX = 2048;
@@ -1329,7 +1329,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0005', 0, () => {
+    it('testXmlSetComment0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0005';
       try {
         const MY_MAX = 2048;
@@ -1356,7 +1356,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0006', 0, () => {
+    it('testXmlSetComment0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0006';
       try {
         const MY_MAX = 2048;
@@ -1388,7 +1388,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetComment0007', 0, () => {
+    it('testXmlSetComment0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetComment0007';
       try {
         const MY_MAX = 10240;
@@ -1414,7 +1414,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0001', 0, () => {
+    it('testXmlSetCData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0001';
       try {
         const MY_MAX = 2048;
@@ -1437,7 +1437,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0002', 0, () => {
+    it('testXmlSetCData0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0002';
       try {
         const MY_MAX = 2048;
@@ -1460,7 +1460,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0003', 0, () => {
+    it('testXmlSetCData0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0003';
       try {
         const MY_MAX = 2048;
@@ -1483,7 +1483,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0004', 0, () => {
+    it('testXmlSetCData0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0004';
       try {
         const MY_MAX = 2048;
@@ -1508,7 +1508,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0005', 0, () => {
+    it('testXmlSetCData0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0005';
       try {
         const escapeCharacters = '<>&\'"';
@@ -1534,7 +1534,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0006', 0, () => {
+    it('testXmlSetCData0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0006';
       try {
         const firstData = "This is the first CDATA.";
@@ -1562,7 +1562,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCData0007', 0, () => {
+    it('testXmlSetCData0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetCData0007';
       try {
         const MY_MAX = 10240;
@@ -1588,7 +1588,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0001', 0, () => {
+    it('testXmlSetText0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0001';
       try {
         const MY_MAX = 2048;
@@ -1611,7 +1611,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0002', 0, () => {
+    it('testXmlSetText0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0002';
       try {
         const MY_MAX = 2048;
@@ -1634,7 +1634,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0003', 0, () => {
+    it('testXmlSetText0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0003';
       try {
         const MY_MAX = 2048;
@@ -1658,7 +1658,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0004', 0, () => {
+    it('testXmlSetText0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0004';
       try {
         const MY_MAX = 2048;
@@ -1685,7 +1685,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0005', 0, () => {
+    it('testXmlSetText0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0005';
       try {
         const MY_MAX = 51000;
@@ -1713,7 +1713,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetText0006', 0, () => {
+    it('testXmlSetText0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetText0006';
       try {
         const MY_MAX = 10240;
@@ -1741,7 +1741,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0001', 0, () => {
+    it('testXmlSetDocType0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0001';
       try {
         const MY_MAX = 2048;
@@ -1764,7 +1764,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0002', 0, () => {
+    it('testXmlSetDocType0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0002';
       try {
         const MY_MAX = 2048;
@@ -1787,7 +1787,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0003', 0, () => {
+    it('testXmlSetDocType0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0003';
       try {
         const MY_MAX = 2048;
@@ -1810,7 +1810,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0004', 0, () => {
+    it('testXmlSetDocType0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0004';
       try {
         const MY_MAX = 2048;
@@ -1835,7 +1835,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0005', 0, () => {
+    it('testXmlSetDocType0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0005';
       try {
         const MY_MAX = 51000;
@@ -1862,7 +1862,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocType0006', 0, () => {
+    it('testXmlSetDocType0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlSetDocType0006';
       try {
         const MY_MAX = 10240;
@@ -1887,7 +1887,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0001', 0, () => {
+    it('testXmlPullParserConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0001';
       try {
         let testXml =
@@ -1923,7 +1923,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0002', 0, () => {
+    it('testXmlPullParserConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0002';
       try {
         let testXml =
@@ -1954,7 +1954,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0003', 0, () => {
+    it('testXmlPullParserConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0003';
       try {
         let testXml =
@@ -1991,7 +1991,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0004', 0, () => {
+    it('testXmlPullParserConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0004';
       try {
         let testXml =
@@ -2022,7 +2022,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0005', 0, () => {
+    it('testXmlPullParserConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0005';
       try {
         let testXml =
@@ -2056,7 +2056,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0006', 0, () => {
+    it('testXmlPullParserConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0006';
       try {
         let testXml =
@@ -2089,7 +2089,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0007', 0, () => {
+    it('testXmlPullParserConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0007';
       try {
         let testXml =
@@ -2124,7 +2124,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0008', 0, () => {
+    it('testXmlPullParserConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0008';
       try {
         let testXml =
@@ -2158,7 +2158,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0010', 0, () => {
+    it('testXmlPullParserConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0010';
       try {
         let testXml = '';
@@ -2187,7 +2187,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0011', 0, () => {
+    it('testXmlPullParserConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0011';
       try {
         const MY_MAX = 65536;
@@ -2223,7 +2223,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0012', 0, () => {
+    it('testXmlPullParserConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0012';
       try {
         let testXml =
@@ -2266,7 +2266,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0013', 0, () => {
+    it('testXmlPullParserConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0013';
       try {
         let testXml =
@@ -2307,7 +2307,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0014', 0, () => {
+    it('testXmlPullParserConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0014';
       try {
         let testXml =
@@ -2348,7 +2348,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0015', 0, () => {
+    it('testXmlPullParserConstructor0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0015';
       try {
         let testXml =
@@ -2389,7 +2389,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0016', 0, () => {
+    it('testXmlPullParserConstructor0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0016';
       try {
         let testXml =
@@ -2431,7 +2431,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0017', 0, () => {
+    it('testXmlPullParserConstructor0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0017';
       try {
         let testXml =
@@ -2474,7 +2474,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0018', 0, () => {
+    it('testXmlPullParserConstructor0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0018';
       try {
         let testXml =
@@ -2509,7 +2509,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0019', 0, () => {
+    it('testXmlPullParserConstructor0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0019';
       try {
         let testXml =
@@ -2540,7 +2540,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserConstructor0020', 0, () => {
+    it('testXmlPullParserConstructor0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserConstructor0020';
       try {
         let testXml =
@@ -2574,7 +2574,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0001', 0, () => {
+    it('testXmlPullParserParseOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0001';
       try {
         let testXml =
@@ -2609,7 +2609,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0002', 0, () => {
+    it('testXmlPullParserParseOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0002';
       try {
         let testXml =
@@ -2643,7 +2643,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0003', 0, () => {
+    it('testXmlPullParserParseOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0003';
       try {
         let testXml =
@@ -2677,7 +2677,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0004', 0, () => {
+    it('testXmlPullParserParseOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0004';
       try {
         let testXml =
@@ -2711,7 +2711,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0005', 0, () => {
+    it('testXmlPullParserParseOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0005';
       try {
         let testXml =
@@ -2745,7 +2745,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0006', 0, () => {
+    it('testXmlPullParserParseOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0006';
       try {
         let testXml =
@@ -2779,7 +2779,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0007', 0, () => {
+    it('testXmlPullParserParseOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0007';
       try {
         let testXml =
@@ -2814,7 +2814,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0008', 0, () => {
+    it('testXmlPullParserParseOptions0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0008';
       try {
         let testXml =
@@ -2851,7 +2851,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0009', 0, () => {
+    it('testXmlPullParserParseOptions0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0009';
       try {
         let testXml =
@@ -2886,7 +2886,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlPullParserParseOptions0010', 0, () => {
+    it('testXmlPullParserParseOptions0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlPullParserParseOptions0010';
       try {
         let testXml =
@@ -2921,7 +2921,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0001', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2954,7 +2954,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0002', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2987,7 +2987,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0003', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0003';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3020,7 +3020,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0004', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0004';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3053,7 +3053,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0005', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0005';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3086,7 +3086,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0006', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0006';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3119,7 +3119,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0007', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0007';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3152,7 +3152,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0008', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0008';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3185,7 +3185,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0009', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0009';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3218,7 +3218,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0010', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0010';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3251,7 +3251,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetColumnNumber0011', 0, () => {
+    it('testXmlParseInfoGetColumnNumber0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetColumnNumber0011';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3284,7 +3284,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0001', 0, () => {
+    it('testXmlParseInfoGetDepth0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3317,7 +3317,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0002', 0, () => {
+    it('testXmlParseInfoGetDepth0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3350,7 +3350,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0003', 0, () => {
+    it('testXmlParseInfoGetDepth0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0003';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3383,7 +3383,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0004', 0, () => {
+    it('testXmlParseInfoGetDepth0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0004';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3416,7 +3416,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0005', 0, () => {
+    it('testXmlParseInfoGetDepth0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0005';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3449,7 +3449,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0006', 0, () => {
+    it('testXmlParseInfoGetDepth0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0006';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3482,7 +3482,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0007', 0, () => {
+    it('testXmlParseInfoGetDepth0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0007';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3515,7 +3515,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0008', 0, () => {
+    it('testXmlParseInfoGetDepth0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0008';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3548,7 +3548,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0009', 0, () => {
+    it('testXmlParseInfoGetDepth0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0009';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3581,7 +3581,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0010', 0, () => {
+    it('testXmlParseInfoGetDepth0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0010';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3614,7 +3614,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetDepth0011', 0, () => {
+    it('testXmlParseInfoGetDepth0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetDepth0011';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3647,7 +3647,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0001', 0, () => {
+    it('testXmlParseInfoGetLineNumber0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3680,7 +3680,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0002', 0, () => {
+    it('testXmlParseInfoGetLineNumber0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3713,7 +3713,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0003', 0, () => {
+    it('testXmlParseInfoGetLineNumber0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0003';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3746,7 +3746,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0004', 0, () => {
+    it('testXmlParseInfoGetLineNumber0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0004';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3779,7 +3779,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0005', 0, () => {
+    it('testXmlParseInfoGetLineNumber0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0005';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3812,7 +3812,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0006', 0, () => {
+    it('testXmlParseInfoGetLineNumber0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0006';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3845,7 +3845,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0007', 0, () => {
+    it('testXmlParseInfoGetLineNumber0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0007';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3878,7 +3878,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0008', 0, () => {
+    it('testXmlParseInfoGetLineNumber0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0008';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3911,7 +3911,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0009', 0, () => {
+    it('testXmlParseInfoGetLineNumber0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0009';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3944,7 +3944,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0010', 0, () => {
+    it('testXmlParseInfoGetLineNumber0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0010';
       try {
         let textEncoder = new util.TextEncoder();
@@ -3977,7 +3977,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetLineNumber0011', 0, () => {
+    it('testXmlParseInfoGetLineNumber0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetLineNumber0011';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4010,7 +4010,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0001', 0, () => {
+    it('testXmlParseInfoGetName0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4043,7 +4043,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0002', 0, () => {
+    it('testXmlParseInfoGetName0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4076,7 +4076,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0003', 0, () => {
+    it('testXmlParseInfoGetName0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0003';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4109,7 +4109,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0004', 0, () => {
+    it('testXmlParseInfoGetName0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0004';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4142,7 +4142,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0005', 0, () => {
+    it('testXmlParseInfoGetName0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0005';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4175,7 +4175,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0006', 0, () => {
+    it('testXmlParseInfoGetName0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0006';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4208,7 +4208,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0007', 0, () => {
+    it('testXmlParseInfoGetName0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0007';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4241,7 +4241,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0008', 0, () => {
+    it('testXmlParseInfoGetName0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0008';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4274,7 +4274,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0009', 0, () => {
+    it('testXmlParseInfoGetName0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0009';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4307,7 +4307,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0010', 0, () => {
+    it('testXmlParseInfoGetName0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0010';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4340,7 +4340,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0011', 0, () => {
+    it('testXmlParseInfoGetName0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0011';
       try {
         let textEncoder = new util.TextEncoder();
@@ -4373,7 +4373,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0012', 0, () => {
+    it('testXmlParseInfoGetName0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0012';
       try {
         let testXml = "<1example>" +
@@ -4411,7 +4411,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetName0013', 0, () => {
+    it('testXmlParseInfoGetName0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetName0013';
       try {
         let testXml = "<item id=\"1\" />\n";
@@ -4446,7 +4446,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetNamespace0001', 0, () => {
+    it('testXmlParseInfoGetNamespace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetNamespace0001';
       try {
         let strXml =
@@ -4481,7 +4481,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetNamespace0002', 0, () => {
+    it('testXmlParseInfoGetNamespace0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetNamespace0002';
       try {
         let strXml =
@@ -4516,7 +4516,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetPrefix0001', 0, () => {
+    it('testXmlParseInfoGetPrefix0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetPrefix0001';
       try {
         let strXml =
@@ -4551,7 +4551,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetText0001', 0, () => {
+    it('testXmlParseInfoGetText0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetText0001';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?><note>Happy</note>';
@@ -4582,7 +4582,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlParseInfoGetText0002', 0, () => {
+    it('testXmlParseInfoGetText0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlParseInfoGetText0002';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?><note>Ha$ppy</note>';
@@ -4613,7 +4613,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlIsEmptyElementTag0001', 0, () => {
+    it('testXmlIsEmptyElementTag0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlIsEmptyElementTag0001';
       try {
         let strXml =
@@ -4648,7 +4648,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlIsEmptyElementTag0002', 0, () => {
+    it('testXmlIsEmptyElementTag0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlIsEmptyElementTag0002';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?><note><to>Work</to></note>';
@@ -4679,7 +4679,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlIsEmptyElementTag0003', 0, () => {
+    it('testXmlIsEmptyElementTag0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlIsEmptyElementTag0003';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?>' +
@@ -4714,7 +4714,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlIsWhitespace0001', 0, () => {
+    it('testXmlIsWhitespace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlIsWhitespace0001';
       try {
         let strXml =
@@ -4749,7 +4749,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlGetAttributeCount0001', 0, () => {
+    it('testXmlGetAttributeCount0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlGetAttributeCount0001';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?>' +
@@ -4781,7 +4781,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlGetAttributeCount0002', 0, () => {
+    it('testXmlGetAttributeCount0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlGetAttributeCount0002';
       try {
         let strXml = '<?xml version="1.0" encoding="utf-8"?>' +
@@ -4813,7 +4813,7 @@ export default function XmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlGetAttributeCount0003', 0, () => {
+    it('testXmlGetAttributeCount0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testXmlGetAttributeCount0003';
       try {
         let strXml = '<note importance=high logged="true"/>';

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 let count = 0;
 let flag = 'a';
@@ -72,7 +72,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTimer001', 0, async (done: Function) => {
+    it('testSetTimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       setTimeout(() => {
         add();
       }, 1000);
@@ -89,7 +89,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTimer002', 0, async (done: Function) => {
+    it('testSetTimer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       count = 0;
       setTimeout(() => {
         expect(count).assertEqual(0);
@@ -109,7 +109,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTimer003', 0, async (done: Function) => {
+    it('testSetTimer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       count = 0;
       let result1 = setTimeout(() => {
         add();
@@ -134,7 +134,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTimer004', 0, async (done: Function) => {
+    it('testSetTimer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       flag = 'a';
       let result1 = setTimeout(() => {
         flag = 'b';
@@ -152,7 +152,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTimer005', 0, async (done: Function) => {
+    it('testSetTimer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       flag = 'a';
       let result1 = setTimeout(() => {
         flag = 'b';
@@ -177,7 +177,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testClearTimer001', 0, async (done: Function) => {
+    it('testClearTimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result1 = setTimeout(() => {
       },);
       let result2 = setTimeout(() => {
@@ -200,7 +200,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetInterval001', 0, async (done: Function) => {
+    it('testSetInterval001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       count = 0;
       let result1 = setInterval(() => {
         add();
@@ -219,7 +219,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetInterval002', 0, async (done: Function) => {
+    it('testSetInterval002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       count = 0;
       let result1 = setInterval(() => {
         add();
@@ -238,7 +238,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetInterval003', 0, async (done: Function) => {
+    it('testSetInterval003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       count = 0;
       let result1 = setInterval(() => {
         add();
@@ -265,7 +265,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetInterval004', 0, async (done: Function) => {
+    it('testSetInterval004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       flag = 'a';
       let result1 = setInterval(() => {
         flag = 'b';
@@ -285,7 +285,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetInterval005', 0, async (done: Function) => {
+    it('testSetInterval005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       flag = 'a';
       let result1 = setInterval(() => {
         flag = 'b';
@@ -313,7 +313,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testClearInterval001', 0, async (done: Function) => {
+    it('testClearInterval001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result1 = setInterval(() => {
       }, 1000);
       let result2 = setInterval(() => {
@@ -335,7 +335,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimer001', 0, async (done: Function) => {
+    it('testTimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result1 = setTimeout(myFunction, 1000, 'Hello', 'World');
       let result2 = setTimeout(myFunction);
       let result3 = setTimeout(myFunction, 0, 'Hello');
@@ -355,7 +355,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimer002', 0, async (done: Function) => {
+    it('testTimer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result1 = setInterval(myFunction, 1000, 'Hello', 'World');
       let result2 = setInterval(myFunction, 0);
       let result3 = setInterval(myFunction, 0, 'Hello');
@@ -374,7 +374,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimer003', 0, async (done: Function) => {
+    it('testTimer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       clearTimeout();
       expect(true).assertTrue();
       done();
@@ -388,7 +388,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimer004', 0, async (done: Function) => {
+    it('testTimer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       clearInterval();
       expect(true).assertTrue();
       done();
@@ -402,7 +402,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse001', 0, async (done: Function) => {
+    it('testCanIUse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse("a");
       expect(flag).assertFalse();
       done();
@@ -416,7 +416,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse002', 0, async (done: Function) => {
+    it('testCanIUse002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse(undefined);
       expect(flag).assertEqual(undefined);
       done();
@@ -430,7 +430,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse003', 0, async (done: Function) => {
+    it('testCanIUse003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse(null);
       expect(flag).assertEqual(undefined);
       done();
@@ -445,7 +445,7 @@ export default function TimerTest() {
      * @tc.level      : Level 1
      */
 
-    it('testCanIUse004', 0, async (done: Function) => {
+    it('testCanIUse004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse("");
       expect(flag).assertEqual(false);
       done();
@@ -459,7 +459,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse005', 0, async (done: Function) => {
+    it('testCanIUse005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
       expect(flag).assertEqual(false);
       done();
@@ -473,7 +473,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse006', 0, async (done: Function) => {
+    it('testCanIUse006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag =
         canIUse("!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
       expect(flag).assertEqual(false);
@@ -488,7 +488,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse007', 0, async (done: Function) => {
+    it('testCanIUse007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse("  !!\"\"##$$%%&&''(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~");
       expect(flag).assertEqual(false);
       done();
@@ -502,7 +502,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse008', 0, async (done: Function) => {
+    it('testCanIUse008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\a 响铃');
       expect(flag).assertEqual(false);
       done();
@@ -516,7 +516,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse009', 0, async (done: Function) => {
+    it('testCanIUse009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\b 退格');
       expect(flag).assertEqual(false);
       done();
@@ -530,7 +530,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse010', 0, async (done: Function) => {
+    it('testCanIUse010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\f 换页');
       expect(flag).assertEqual(false);
       done();
@@ -544,7 +544,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse011', 0, async (done: Function) => {
+    it('testCanIUse011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\n 换行');
       expect(flag).assertEqual(false);
       done();
@@ -558,7 +558,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse012', 0, async (done: Function) => {
+    it('testCanIUse012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\r 回车');
       expect(flag).assertEqual(false);
       done();
@@ -572,7 +572,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse013', 0, async (done: Function) => {
+    it('testCanIUse013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\t 水平制表');
       expect(flag).assertEqual(false);
       done();
@@ -586,7 +586,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse014', 0, async (done: Function) => {
+    it('testCanIUse014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\v 垂直制表');
       expect(flag).assertEqual(false);
       done();
@@ -600,7 +600,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse015', 0, async (done: Function) => {
+    it('testCanIUse015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\\ 反斜杠');
       expect(flag).assertEqual(false);
       done();
@@ -614,7 +614,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse016', 0, async (done: Function) => {
+    it('testCanIUse016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\' 单引号');
       expect(flag).assertEqual(false);
       done();
@@ -628,7 +628,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse017', 0, async (done: Function) => {
+    it('testCanIUse017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\" 双引号');
       expect(flag).assertEqual(false);
       done();
@@ -642,7 +642,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse018', 0, async (done: Function) => {
+    it('testCanIUse018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\? 问号');
       expect(flag).assertEqual(false);
       done();
@@ -656,7 +656,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse019', 0, async (done: Function) => {
+    it('testCanIUse019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\0 空字符');
       expect(flag).assertEqual(false);
       done();
@@ -670,7 +670,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse020', 0, async (done: Function) => {
+    it('testCanIUse020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\d72 八进制任意数字');
       expect(flag).assertEqual(false);
       done();
@@ -684,7 +684,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse021', 0, async (done: Function) => {
+    it('testCanIUse021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\x85 十六进制任意数字');
       expect(flag).assertEqual(false);
       done();
@@ -698,7 +698,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse022', 0, async (done: Function) => {
+    it('testCanIUse022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('👆 \ud83d\udc46');
       expect(flag).assertEqual(false);
       done();
@@ -712,7 +712,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse023', 0, async (done: Function) => {
+    it('testCanIUse023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('👿 \ud83d\udc7f');
       expect(flag).assertEqual(false);
       done();
@@ -726,7 +726,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse024', 0, async (done: Function) => {
+    it('testCanIUse024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('👀 \ud83d\udc40');
       expect(flag).assertEqual(false);
       done();
@@ -740,7 +740,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse025', 0, async (done: Function) => {
+    it('testCanIUse025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('💯 \ud83d\udcaf');
       expect(flag).assertEqual(false);
       done();
@@ -754,7 +754,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse026', 0, async (done: Function) => {
+    it('testCanIUse026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🎅 \ud83c\udf85');
       expect(flag).assertEqual(false);
       done();
@@ -768,7 +768,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse027', 0, async (done: Function) => {
+    it('testCanIUse027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('😼 \ud83d\ude3c');
       expect(flag).assertEqual(false);
       done();
@@ -782,7 +782,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse028', 0, async (done: Function) => {
+    it('testCanIUse028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🔧 \ud83d\udd27');
       expect(flag).assertEqual(false);
       done();
@@ -796,7 +796,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse029', 0, async (done: Function) => {
+    it('testCanIUse029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('💇 \ud83d\udc87');
       expect(flag).assertEqual(false);
       done();
@@ -810,7 +810,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse030', 0, async (done: Function) => {
+    it('testCanIUse030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🤼‍♂️ \ud83e\udd3c\u200d\u2642\ufe0f');
       expect(flag).assertEqual(false);
       done();
@@ -824,7 +824,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse031', 0, async (done: Function) => {
+    it('testCanIUse031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🛢 \ud83d\udee2');
       expect(flag).assertEqual(false);
       done();
@@ -838,7 +838,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse032', 0, async (done: Function) => {
+    it('testCanIUse032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🀄 \ud83c\udc04');
       expect(flag).assertEqual(false);
       done();
@@ -852,7 +852,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse033', 0, async (done: Function) => {
+    it('testCanIUse033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('🏴 \ud83c\udff4');
       expect(flag).assertEqual(false);
       done();
@@ -866,7 +866,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse034', 0, async (done: Function) => {
+    it('testCanIUse034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse(init(200));
       expect(flag).assertEqual(false);
       done();
@@ -880,7 +880,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse035', 0, async (done: Function) => {
+    it('testCanIUse035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let str = "{k1:value1,k2:value2}";
       let result = str.substring(0, str.length - 2)
       let flag = canIUse(result);
@@ -896,7 +896,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse036', 0, async (done: Function) => {
+    it('testCanIUse036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\ud83c');
       expect(flag).assertEqual(false);
       done();
@@ -910,7 +910,7 @@ export default function TimerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse037', 0, async (done: Function) => {
+    it('testCanIUse037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = canIUse('\u200d\u2642');
       expect(flag).assertEqual(false);
       done();
