@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { xml } from '@kit.ArkTS';
 import { util } from '@kit.ArkTS';
 export default function EscapeXmlTest() {
@@ -45,7 +45,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0001', 0, () => {
+    it('testXmlSetAttributesEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0001";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -70,7 +70,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0002', 0, () => {
+    it('testXmlSetAttributesEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0002";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -95,7 +95,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0003', 0, () => {
+    it('testXmlSetAttributesEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0003";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -120,7 +120,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0004', 0, () => {
+    it('testXmlSetAttributesEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0004";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -145,7 +145,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0005', 0, () => {
+    it('testXmlSetAttributesEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0005";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -170,7 +170,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0006', 0, () => {
+    it('testXmlSetAttributesEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0006";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -195,7 +195,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0007', 0, () => {
+    it('testXmlSetAttributesEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0007";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -220,7 +220,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0008', 0, () => {
+    it('testXmlSetAttributesEscape0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0008";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -245,7 +245,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0009', 0, () => {
+    it('testXmlSetAttributesEscape0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0009";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -270,7 +270,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0010', 0, () => {
+    it('testXmlSetAttributesEscape0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0010";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -295,7 +295,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesEscape0011', 0, () => {
+    it('testXmlSetAttributesEscape0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSetAttributesEscape0011";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -320,7 +320,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0001', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0001';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -342,7 +342,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0002', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0002';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -364,7 +364,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0003', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0003';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -386,7 +386,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0004', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0004';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -408,7 +408,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0005', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0005';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -430,7 +430,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0006', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0006';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -452,7 +452,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0007', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0007';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -474,7 +474,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0008', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0008';
       try {
         let arrayBuffer = new ArrayBuffer(8);
@@ -496,7 +496,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_0009', 0, () => {
+    it('testXmlSerializeraddEmptyElement_0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0009';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -518,7 +518,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_00010', 0, () => {
+    it('testXmlSerializeraddEmptyElement_00010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_00010';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -540,7 +540,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializeraddEmptyElement_00011', 0, () => {
+    it('testXmlSerializeraddEmptyElement_00011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_00011';
       try {
         let arrayBuffer = new ArrayBuffer(4);
@@ -562,7 +562,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0001', 0, () => {
+    it('testXmlSerializersetNamespace_0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0001';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -587,7 +587,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0002', 0, () => {
+    it('testXmlSerializersetNamespace_0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0002';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -611,7 +611,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0003', 0, () => {
+    it('testXmlSerializersetNamespace_0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0003';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -636,7 +636,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0004', 0, () => {
+    it('testXmlSerializersetNamespace_0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0004';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -660,7 +660,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0005', 0, () => {
+    it('testXmlSerializersetNamespace_0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0005';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -684,7 +684,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0006', 0, () => {
+    it('testXmlSerializersetNamespace_0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0006';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -708,7 +708,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0007', 0, () => {
+    it('testXmlSerializersetNamespace_0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0007';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -732,7 +732,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0008', 0, () => {
+    it('testXmlSerializersetNamespace_0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0008';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -756,7 +756,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_0009', 0, () => {
+    it('testXmlSerializersetNamespace_0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_0009';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -780,7 +780,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_00010', 0, () => {
+    it('testXmlSerializersetNamespace_00010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_00010';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -804,7 +804,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetNamespace_00011', 0, () => {
+    it('testXmlSerializersetNamespace_00011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       let TAG = 'testXmlSerializeraddEmptyElement_00011';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -828,7 +828,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0001', 0, () => {
+    it('testXmlSerializersetCommentEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0001";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -852,7 +852,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0002', 0, () => {
+    it('testXmlSerializersetCommentEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0002";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -876,7 +876,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0003', 0, () => {
+    it('testXmlSerializersetCommentEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0003";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -900,7 +900,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0004', 0, () => {
+    it('testXmlSerializersetCommentEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0004";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -924,7 +924,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0005', 0, () => {
+    it('testXmlSerializersetCommentEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0005";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -948,7 +948,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0006', 0, () => {
+    it('testXmlSerializersetCommentEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0006";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -972,7 +972,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0007', 0, () => {
+    it('testXmlSerializersetCommentEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0007";
       try {
         let arrayBuffer = new ArrayBuffer(23);
@@ -996,7 +996,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0008', 0, () => {
+    it('testXmlSerializersetCommentEscape0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0008";
       try {
         let arrayBuffer = new ArrayBuffer(31);
@@ -1020,7 +1020,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0009', 0, () => {
+    it('testXmlSerializersetCommentEscape0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0009";
       try {
         let arrayBuffer = new ArrayBuffer(34);
@@ -1044,7 +1044,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0010', 0, () => {
+    it('testXmlSerializersetCommentEscape0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0010";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -1068,7 +1068,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCommentEscape0011', 0, () => {
+    it('testXmlSerializersetCommentEscape0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCommentEscape0011";
       try {
         let arrayBuffer = new ArrayBuffer(26);
@@ -1095,7 +1095,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0001', 0, () => {
+    it('testXmlSerializersetCDATAEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0001";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1120,7 +1120,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0002', 0, () => {
+    it('testXmlSerializersetCDATAEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0002";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1144,7 +1144,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0003', 0, () => {
+    it('testXmlSerializersetCDATAEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0003";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1168,7 +1168,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0004', 0, () => {
+    it('testXmlSerializersetCDATAEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0004";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1192,7 +1192,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0005', 0, () => {
+    it('testXmlSerializersetCDATAEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0005";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1216,7 +1216,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0006', 0, () => {
+    it('testXmlSerializersetCDATAEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0006";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1241,7 +1241,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0007', 0, () => {
+    it('testXmlSerializersetCDATAEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0007";
       try {
         let arrayBuffer = new ArrayBuffer(26);
@@ -1265,7 +1265,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0008', 0, () => {
+    it('testXmlSerializersetCDATAEscape0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0008";
       try {
         let arrayBuffer = new ArrayBuffer(37);
@@ -1289,7 +1289,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0009', 0, () => {
+    it('testXmlSerializersetCDATAEscape0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0009";
       try {
         let arrayBuffer = new ArrayBuffer(40);
@@ -1313,7 +1313,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0010', 0, () => {
+    it('testXmlSerializersetCDATAEscape0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0010";
       try {
         let arrayBuffer = new ArrayBuffer(28);
@@ -1337,7 +1337,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetCDATAEscape0011', 0, () => {
+    it('testXmlSerializersetCDATAEscape0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetCDATAEscape0011";
       try {
         let arrayBuffer = new ArrayBuffer(29);
@@ -1360,7 +1360,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0001', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0001";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1383,7 +1383,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0002', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0002";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1406,7 +1406,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0003', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0003";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1429,7 +1429,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0004', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0004";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1452,7 +1452,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0005', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0005";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1475,7 +1475,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0006', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0006";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1498,7 +1498,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0007', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0007";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1521,7 +1521,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0008', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0008";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1544,7 +1544,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0009', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0009";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1567,7 +1567,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0010', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0010";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1590,7 +1590,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSerializersetDoctypeEscape0011', 0, () => {
+    it('testXmlSerializersetDoctypeEscape0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testXmlSerializersetDoctypeEscape0011";
       try {
         let arrayBuffer = new ArrayBuffer(15);
@@ -1613,7 +1613,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0001", 0, () => {
+    it("testsetTextEscape_0001",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0001";
       try {
         const escape = "aaa\b";
@@ -1639,7 +1639,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0002", 0, () => {
+    it("testsetTextEscape_0002",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0002";
       try {
         const escape = "aaa\f";
@@ -1665,7 +1665,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0003", 0, () => {
+    it("testsetTextEscape_0003",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0003";
       try {
         const escape = "aaa\n";
@@ -1691,7 +1691,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0004", 0, () => {
+    it("testsetTextEscape_0004",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0004";
       try {
         const escape = "aaa\r";
@@ -1717,7 +1717,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0005", 0, () => {
+    it("testsetTextEscape_0005",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0005";
       try {
         const escape = "aaa\t";
@@ -1743,7 +1743,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0006", 0, () => {
+    it("testsetTextEscape_0006",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0006";
       try {
         const escape = "aaa\v";
@@ -1769,7 +1769,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0007", 0, () => {
+    it("testsetTextEscape_0007",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0007";
       try {
         const escape = "aaa\x24";
@@ -1795,7 +1795,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0008", 0, () => {
+    it("testsetTextEscape_0008",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0008";
       try {
         const escape = "\开";
@@ -1821,7 +1821,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0009", 0, () => {
+    it("testsetTextEscape_0009",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0009";
       try {
         const escape = "\😊";
@@ -1847,7 +1847,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0010", 0, () => {
+    it("testsetTextEscape_0010",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0010";
       try {
         const escape = "\0";
@@ -1873,7 +1873,7 @@ export default function EscapeXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testsetTextEscape_0011", 0, () => {
+    it("testsetTextEscape_0011",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
       const TAG = "testsetTextEscape_0011";
       try {
         const escape = "\b";

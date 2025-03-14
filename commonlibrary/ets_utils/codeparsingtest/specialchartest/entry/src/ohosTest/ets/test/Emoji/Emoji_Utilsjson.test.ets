@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, JSON, lang } from '@kit.ArkTS';
+
 export default function demoEmojiUtilJsonTest() {
   describe('demoEmojiUtilJsonTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -44,7 +45,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0001", 0, () => {
+    it("testparseEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -66,7 +67,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0002", 0, () => {
+    it("testparseEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -88,7 +89,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0003", 0, () => {
+    it("testparseEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -110,7 +111,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0004", 0, () => {
+    it("testparseEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0004";
       try {
         const emoji = '\u260e';
@@ -132,7 +133,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0005", 0, () => {
+    it("testparseEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -154,7 +155,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0006", 0, () => {
+    it("testparseEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -176,7 +177,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0007", 0, () => {
+    it("testparseEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -198,7 +199,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0008", 0, () => {
+    it("testparseEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -220,7 +221,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0009", 0, () => {
+    it("testparseEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -242,7 +243,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0010", 0, () => {
+    it("testparseEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0010";
       try {
         const emoji = '\u2666';
@@ -264,7 +265,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0011", 0, () => {
+    it("testparseEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -286,7 +287,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testparseEmoji0012", 0, () => {
+    it("testparseEmoji0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testparseEmoji0012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -308,11 +309,11 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0001", 0, () => {
+    it("testUtilJsonRemoveEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0001";
       try {
         const emojiObj = JSON.parse('{"\ud83d\ude0a":0}')
-        JSON.remove(emojiObj,'😊')
+        JSON.remove(emojiObj, '😊')
         let result = JSON.has(emojiObj, '😊')
         expect(result).assertFalse();
       } catch (error) {
@@ -329,7 +330,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0002", 0, () => {
+    it("testUtilJsonRemoveEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0002";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc64":0}')
@@ -350,7 +351,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0003", 0, () => {
+    it("testUtilJsonRemoveEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0003";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc6b":0}')
@@ -371,7 +372,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0004", 0, () => {
+    it("testUtilJsonRemoveEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0004";
       try {
         const emojiObj = JSON.parse('{"\u260e":0}')
@@ -392,7 +393,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0005", 0, () => {
+    it("testUtilJsonRemoveEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0005";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc79":0}')
@@ -413,7 +414,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0006", 0, () => {
+    it("testUtilJsonRemoveEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0006";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udd5b":0}')
@@ -434,7 +435,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0007", 0, () => {
+    it("testUtilJsonRemoveEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0007";
       try {
         const emojiObj = JSON.parse('{"\ud83c\udf4f":0}')
@@ -455,7 +456,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0008", 0, () => {
+    it("testUtilJsonRemoveEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0008";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udd03":0}')
@@ -476,7 +477,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0009", 0, () => {
+    it("testUtilJsonRemoveEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0009";
       try {
         const emojiObj = JSON.parse('{"\ud83c\udf41":0}')
@@ -497,7 +498,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0010", 0, () => {
+    it("testUtilJsonRemoveEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0010";
       try {
         const emojiObj = JSON.parse('{"\u2666":0}')
@@ -518,7 +519,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0011", 0, () => {
+    it("testUtilJsonRemoveEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0011";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc48":0}')
@@ -539,7 +540,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0012", 0, () => {
+    it("testUtilJsonRemoveEmoji0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0012";
       try {
         const emojiObj = JSON.parse('{"\ud83e\udd3c\u200d\u2642\ufe0f":0}')
@@ -559,7 +560,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0001", 0, () => {
+    it("testUtilJsonHasEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0001";
       try {
         const emojiObj = JSON.parse('{"\ud83d\ude0a":0}')
@@ -579,7 +580,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0002", 0, () => {
+    it("testUtilJsonHasEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0002";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc64":0}')
@@ -599,7 +600,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0003", 0, () => {
+    it("testUtilJsonHasEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0003";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc6b":0}')
@@ -619,7 +620,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0004", 0, () => {
+    it("testUtilJsonHasEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0004";
       try {
         const emojiObj = JSON.parse('{"\u260e":0}')
@@ -639,7 +640,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0005", 0, () => {
+    it("testUtilJsonHasEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0005";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc79":0}')
@@ -659,7 +660,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0006", 0, () => {
+    it("testUtilJsonHasEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0006";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udd5b":0}')
@@ -679,7 +680,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0007", 0, () => {
+    it("testUtilJsonHasEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0007";
       try {
         const emojiObj = JSON.parse('{"\ud83c\udf4f":0}')
@@ -699,7 +700,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0008", 0, () => {
+    it("testUtilJsonHasEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0008";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udd03":0}')
@@ -719,7 +720,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0009", 0, () => {
+    it("testUtilJsonHasEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0009";
       try {
         const emojiObj = JSON.parse('{"\ud83c\udf41":0}')
@@ -739,7 +740,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0010", 0, () => {
+    it("testUtilJsonHasEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0010";
       try {
         const emojiObj = JSON.parse('{"\u2666":0}')
@@ -759,7 +760,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0011", 0, () => {
+    it("testUtilJsonHasEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0011";
       try {
         const emojiObj = JSON.parse('{"\ud83d\udc48":0}')
@@ -779,7 +780,7 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0012", 0, () => {
+    it("testUtilJsonHasEmoji0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0012";
       try {
         const emojiObj = JSON.parse('{"\ud83e\udd3c\u200d\u2642\ufe0f":0}')

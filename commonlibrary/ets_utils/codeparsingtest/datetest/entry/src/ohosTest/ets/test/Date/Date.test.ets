@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 function sleep(ms: number): Promise<void> {
   return new Promise<void>((resolve: () => void) => {
@@ -49,7 +49,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0001', 0, () => {
+    it('testGetDate0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0001";
       try {
         const birthday = new Date();
@@ -71,7 +71,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0002', 0, () => {
+    it('testGetDate0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0002";
       try {
         const birthday = new Date('August 1, 1975 23:15:30');
@@ -92,7 +92,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0003', 0, () => {
+    it('testGetDate0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30');
@@ -113,7 +113,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0004', 0, () => {
+    it('testGetDate0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0004";
       try {
         const birthday = new Date('August 31, 1975 23:15:30');
@@ -134,7 +134,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0005', 0, () => {
+    it('testGetDate0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0005";
       try {
         const birthday = new Date('February 31, 1975 23:15:30');
@@ -155,7 +155,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0006', 0, () => {
+    it('testGetDate0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0006";
       try {
         const birthday = new Date('April 31, 1975 23:15:30');
@@ -176,7 +176,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0007', 0, () => {
+    it('testGetDate0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0007";
       try {
         const birthday = new Date('February 29, 2024 23:15:30');
@@ -197,7 +197,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0008', 0, () => {
+    it('testGetDate0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0008";
       try {
         const birthday = new Date('August 0, 1975 23:15:30');
@@ -218,7 +218,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0009', 0, () => {
+    it('testGetDate0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0009";
       try {
         const birthday = new Date('August 32, 1975 23:15:30');
@@ -239,7 +239,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDate0010', 0, () => {
+    it('testGetDate0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0010";
       try {
         const birthday = new Date('');
@@ -260,7 +260,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0001', 0, () => {
+    it('testGetDay0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0001";
       try {
         const birthday = new Date();
@@ -281,7 +281,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0002', 0, () => {
+    it('testGetDay0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0002";
       try {
         const birthday = new Date('August 17, 1975 23:15:30');
@@ -302,7 +302,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0003', 0, () => {
+    it('testGetDay0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30');
@@ -323,7 +323,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0004', 0, () => {
+    it('testGetDay0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0004";
       try {
         const birthday = new Date('August 23, 1975 23:15:30');
@@ -344,7 +344,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0005', 0, () => {
+    it('testGetDay0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0005";
       try {
         const birthday = new Date('August 0, 1975 23:15:30');
@@ -364,7 +364,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0006', 0, () => {
+    it('testGetDay0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0006";
       try {
         const birthday = new Date('August 32, 1975 23:15:30');
@@ -385,7 +385,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetDay0007', 0, () => {
+    it('testGetDay0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0007";
       try {
         const birthday = new Date('');
@@ -406,7 +406,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFullYear0001', 0, () => {
+    it('testGetFullYear0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0001";
       try {
         const birthday = new Date();
@@ -428,7 +428,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFullYear0002', 0, () => {
+    it('testGetFullYear0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0002";
       try {
         const moonLanding = new Date('July 20, 50 00:20:18');
@@ -449,7 +449,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFullYear0003', 0, () => {
+    it('testGetFullYear0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0003";
       try {
         const moonLanding = new Date('July 20, 00 00:20:18');
@@ -470,7 +470,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFullYear0004', 0, () => {
+    it('testGetFullYear0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0004";
       try {
         const moonLanding = new Date('July 20, 49 00:20:18');
@@ -491,7 +491,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFullYear0005', 0, () => {
+    it('testGetFullYear0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0005";
       try {
         const moonLanding = new Date('');
@@ -512,7 +512,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHours0001', 0, () => {
+    it('testGetHours0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0001";
       try {
         const birthday = new Date();
@@ -534,7 +534,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHours0002', 0, () => {
+    it('testGetHours0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0002";
       try {
         const birthday = new Date('March 13, 08 00:20');
@@ -555,7 +555,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHours0003', 0, () => {
+    it('testGetHours0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0003";
       try {
         const birthday = new Date('March 13, 08 04:20');
@@ -576,7 +576,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHours0004', 0, () => {
+    it('testGetHours0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0004";
       try {
         const birthday = new Date('March 13, 08 23:00');
@@ -597,7 +597,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHours0005', 0, () => {
+    it('testGetHours0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0005";
       try {
         const birthday = new Date('');
@@ -618,7 +618,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMilliSeconds0001', 0, () => {
+    it('testGetMilliSeconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMilliSeconds0001";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -640,7 +640,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMilliSeconds0002', 0, () => {
+    it('testGetMilliSeconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMilliSeconds0002";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -662,7 +662,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMilliSeconds0003', 0, () => {
+    it('testGetMilliSeconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMilliSeconds0003";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -684,7 +684,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMilliSeconds0004', 0, () => {
+    it('testGetMilliSeconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMilliSeconds0004";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -706,7 +706,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMilliSeconds0005', 0, () => {
+    it('testGetMilliSeconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMilliSeconds0005";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -728,7 +728,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0001', 0, () => {
+    it('testGetMinutes0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0001";
       try {
         const birthday = new Date();
@@ -749,7 +749,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0002', 0, () => {
+    it('testGetMinutes0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0002";
       try {
         const birthday = new Date('March 13, 08 04:00');
@@ -770,7 +770,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0003', 0, () => {
+    it('testGetMinutes0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0003";
       try {
         const birthday = new Date('March 13, 08 04:20');
@@ -791,7 +791,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0004', 0, () => {
+    it('testGetMinutes0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0004";
       try {
         const birthday = new Date('March 13, 08 04:59');
@@ -812,7 +812,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0005', 0, () => {
+    it('testGetMinutes0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0005";
       try {
         const birthday = new Date('March 13, 08 04:60');
@@ -833,7 +833,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMinutes0006', 0, () => {
+    it('testGetMinutes0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMinutes0006";
       try {
         const birthday = new Date('');
@@ -854,7 +854,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMonth0001', 0, () => {
+    it('testGetMonth0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMonth0001";
       try {
         const moonLanding = new Date();
@@ -875,7 +875,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMonth0002', 0, () => {
+    it('testGetMonth0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMonth0002";
       try {
         const moonLanding = new Date('January 20, 69 00:20:18');
@@ -896,7 +896,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMonth0003', 0, () => {
+    it('testGetMonth0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMonth0003";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -917,7 +917,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMonth0004', 0, () => {
+    it('testGetMonth0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMonth0004";
       try {
         const moonLanding = new Date('December 20, 69 00:20:18');
@@ -938,7 +938,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetMonth0005', 0, () => {
+    it('testGetMonth0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetMonth0005";
       try {
         const moonLanding = new Date('');
@@ -959,7 +959,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSeconds0001', 0, () => {
+    it('testGetSeconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSeconds0001";
       try {
         const moonLanding = new Date();
@@ -980,7 +980,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSeconds0002', 0, () => {
+    it('testGetSeconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSeconds0002";
       try {
         const moonLanding = new Date('January 20, 69 00:20:00');
@@ -1001,7 +1001,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSeconds0003', 0, () => {
+    it('testGetSeconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSeconds0003";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -1022,7 +1022,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSeconds0004', 0, () => {
+    it('testGetSeconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSeconds0004";
       try {
         const moonLanding = new Date('December 20, 69 00:20:59');
@@ -1043,7 +1043,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSeconds0005', 0, () => {
+    it('testGetSeconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSeconds0005";
       try {
         const moonLanding = new Date('');
@@ -1064,7 +1064,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTime0001', 0, () => {
+    it('testGetTime0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTime0001";
       try {
         const moonLanding = new Date();
@@ -1085,7 +1085,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTime0002', 0, () => {
+    it('testGetTime0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTime0002";
       try {
         const moonLanding = new Date('January 20, 69 00:20:00');
@@ -1106,7 +1106,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTime0003', 0, () => {
+    it('testGetTime0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTime0003";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18');
@@ -1127,7 +1127,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTime0004', 0, () => {
+    it('testGetTime0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTime0004";
       try {
         const moonLanding = new Date('December 20, 69 00:20:59');
@@ -1148,7 +1148,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTime0005', 0, () => {
+    it('testGetTime0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTime0005";
       try {
         const moonLanding = new Date('');
@@ -1169,7 +1169,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTimezoneOffset0001', 0, () => {
+    it('testGetTimezoneOffset0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTimezoneOffset0001";
       try {
         const date1 = new Date();
@@ -1190,7 +1190,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTimezoneOffset0002', 0, () => {
+    it('testGetTimezoneOffset0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTimezoneOffset0002";
       try {
         const date1 = new Date();
@@ -1212,7 +1212,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTimezoneOffset0003', 0, () => {
+    it('testGetTimezoneOffset0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTimezoneOffset0003";
       try {
         const date1 = new Date('August 19, 1975 23:15:30 GMT+07:00');
@@ -1234,7 +1234,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTimezoneOffset0004', 0, () => {
+    it('testGetTimezoneOffset0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTimezoneOffset0004";
       try {
         const date1 = new Date('');
@@ -1255,7 +1255,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0001', 0, () => {
+    it('testGetUTCDate0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0001";
       try {
         const date1 = new Date();
@@ -1277,7 +1277,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0002', 0, () => {
+    it('testGetUTCDate0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0002";
       try {
         const date1 = new Date('August 1, 1975 23:15:30 GMT+11:00');
@@ -1298,7 +1298,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0003', 0, () => {
+    it('testGetUTCDate0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30');
@@ -1319,7 +1319,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0004', 0, () => {
+    it('testGetUTCDate0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0004";
       try {
         const birthday = new Date('August 31, 1975 23:15:30');
@@ -1340,7 +1340,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0005', 0, () => {
+    it('testGetUTCDate0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0005";
       try {
         const birthday = new Date('February 31, 1975 23:15:30');
@@ -1361,7 +1361,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0006', 0, () => {
+    it('testGetUTCDate0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0006";
       try {
         const birthday = new Date('April 31, 1975 23:15:30');
@@ -1382,7 +1382,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0007', 0, () => {
+    it('testGetUTCDate0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0007";
       try {
         const birthday = new Date('February 29, 2024 23:15:30');
@@ -1403,7 +1403,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0008', 0, () => {
+    it('testGetUTCDate0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0008";
       try {
         const birthday = new Date('August 0, 1975 23:15:30');
@@ -1424,7 +1424,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0009', 0, () => {
+    it('testGetUTCDate0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0009";
       try {
         const birthday = new Date('August 32, 1975 23:15:30');
@@ -1445,7 +1445,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDate0010', 0, () => {
+    it('testGetUTCDate0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDate0010";
       try {
         const birthday = new Date('');
@@ -1466,7 +1466,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0001', 0, () => {
+    it('testGetUTCDay0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0001";
       try {
         const birthday = new Date();
@@ -1487,7 +1487,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0002', 0, () => {
+    it('testGetUTCDay0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0002";
       try {
         const birthday = new Date('August 17, 1975 23:15:30 GMT+11:00');
@@ -1508,7 +1508,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0003', 0, () => {
+    it('testGetUTCDay0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30 GMT+11:00');
@@ -1529,7 +1529,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0004', 0, () => {
+    it('testGetUTCDay0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0004";
       try {
         const birthday = new Date('August 23, 1975 23:15:30 GMT+11:00');
@@ -1550,7 +1550,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0005', 0, () => {
+    it('testGetUTCDay0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0005";
       try {
         const birthday = new Date('August 0, 1975 23:15:30 GMT+11:00');
@@ -1571,7 +1571,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0006', 0, () => {
+    it('testGetUTCDay0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0006";
       try {
         const birthday = new Date('August 32, 1975 23:15:30 GMT+11:00');
@@ -1592,7 +1592,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCDay0007', 0, () => {
+    it('testGetUTCDay0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCDay0007";
       try {
         const birthday = new Date('');
@@ -1613,7 +1613,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCFullYear0001', 0, () => {
+    it('testGetUTCFullYear0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCFullYear0001";
       try {
         const moonLanding = new Date();
@@ -1634,7 +1634,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCFullYear0002', 0, () => {
+    it('testGetUTCFullYear0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCFullYear0002";
       try {
         const moonLanding = new Date('July 20, 50 00:20:18 GMT+11:00');
@@ -1655,7 +1655,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCFullYear0003', 0, () => {
+    it('testGetUTCFullYear0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCFullYear0003";
       try {
         const moonLanding = new Date('July 20, 00 00:20:18 GMT+11:00');
@@ -1676,7 +1676,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCFullYear0004', 0, () => {
+    it('testGetUTCFullYear0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCFullYear0004";
       try {
         const moonLanding = new Date('July 20, 49 00:20:18 GMT+11:00');
@@ -1697,7 +1697,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCFullYear0005', 0, () => {
+    it('testGetUTCFullYear0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCFullYear0005";
       try {
         const moonLanding = new Date('');
@@ -1718,7 +1718,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCHours0001', 0, () => {
+    it('testGetUTCHours0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCHours0001";
       try {
         const birthday = new Date();
@@ -1739,7 +1739,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCHours0002', 0, () => {
+    it('testGetUTCHours0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCHours0002";
       try {
         const birthday = new Date('March 13, 08 00:20 GMT-00:00');
@@ -1760,7 +1760,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCHours0003', 0, () => {
+    it('testGetUTCHours0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCHours0003";
       try {
         const birthday = new Date('March 13, 08 04:20 GMT-00:00');
@@ -1781,7 +1781,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCHours0004', 0, () => {
+    it('testGetUTCHours0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCHours0004";
       try {
         const birthday = new Date('March 13, 08 23:00 GMT-00:00');
@@ -1802,7 +1802,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCHours0005', 0, () => {
+    it('testGetUTCHours0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCHours0005";
       try {
         const birthday = new Date('');
@@ -1823,7 +1823,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMilliseconds0001', 0, () => {
+    it('testGetUTCMilliseconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMilliseconds0001";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18 GMT+11:00');
@@ -1845,7 +1845,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMilliseconds0002', 0, () => {
+    it('testGetUTCMilliseconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMilliseconds0002";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18 GMT+11:00');
@@ -1867,7 +1867,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMilliseconds0003', 0, () => {
+    it('testGetUTCMilliseconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMilliseconds0003";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18 GMT+11:00');
@@ -1889,7 +1889,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMilliseconds0004', 0, () => {
+    it('testGetUTCMilliseconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMilliseconds0004";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18 GMT+11:00');
@@ -1911,7 +1911,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMilliseconds0005', 0, () => {
+    it('testGetUTCMilliseconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMilliseconds0005";
       try {
         const moonLanding = new Date('July 20, 69 00:20:18 GMT+11:00');
@@ -1933,7 +1933,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0001', 0, () => {
+    it('testGetUTCMinutes0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0001";
       try {
         const birthday = new Date();
@@ -1954,7 +1954,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0002', 0, () => {
+    it('testGetUTCMinutes0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0002";
       try {
         const birthday = new Date('March 13, 08 04:00 GMT+11:00');
@@ -1975,7 +1975,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0003', 0, () => {
+    it('testGetUTCMinutes0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0003";
       try {
         const birthday = new Date('March 13, 08 04:20 GMT+11:00');
@@ -1996,7 +1996,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0004', 0, () => {
+    it('testGetUTCMinutes0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0004";
       try {
         const birthday = new Date('March 13, 08 04:59 GMT+11:00');
@@ -2017,7 +2017,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0005', 0, () => {
+    it('testGetUTCMinutes0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0005";
       try {
         const birthday = new Date('March 13, 08 04:60');
@@ -2038,7 +2038,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMinutes0006', 0, () => {
+    it('testGetUTCMinutes0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMinutes0006";
       try {
         const birthday = new Date('');
@@ -2059,7 +2059,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMonth0001', 0, () => {
+    it('testGetUTCMonth0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMonth0001";
       try {
         const moonLanding = new Date();
@@ -2080,7 +2080,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMonth0002', 0, () => {
+    it('testGetUTCMonth0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMonth0002";
       try {
         const moonLanding = new Date('January 31, 1975, 23:15:30 GMT+11:00');
@@ -2101,7 +2101,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMonth0003', 0, () => {
+    it('testGetUTCMonth0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMonth0003";
       try {
         const moonLanding = new Date('July 31, 1975, 23:15:30 GMT+11:00');
@@ -2122,7 +2122,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMonth0004', 0, () => {
+    it('testGetUTCMonth0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMonth0004";
       try {
         const moonLanding = new Date('December 31, 1975, 23:15:30 GMT+11:00');
@@ -2143,7 +2143,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCMonth0005', 0, () => {
+    it('testGetUTCMonth0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCMonth0005";
       try {
         const moonLanding = new Date('');
@@ -2164,7 +2164,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCSeconds0001', 0, () => {
+    it('testGetUTCSeconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCSeconds0001";
       try {
         const moonLanding = new Date();
@@ -2185,7 +2185,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCSeconds0002', 0, () => {
+    it('testGetUTCSeconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCSeconds0002";
       try {
         const moonLanding = new Date('January 20, 1969, 20:18:00 UTC');
@@ -2206,7 +2206,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCSeconds0003', 0, () => {
+    it('testGetUTCSeconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCSeconds0003";
       try {
         const moonLanding = new Date('July 20, 1969, 20:18:18 UTC');
@@ -2227,7 +2227,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCSeconds0004', 0, () => {
+    it('testGetUTCSeconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCSeconds0004";
       try {
         const moonLanding = new Date('December 20, 1969, 20:18:59 UTC');
@@ -2248,7 +2248,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUTCSeconds0005', 0, () => {
+    it('testGetUTCSeconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUTCSeconds0005";
       try {
         const moonLanding = new Date('');
@@ -2269,7 +2269,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0001', 0, () => {
+    it('testSetDate0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2291,7 +2291,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0002', 0, () => {
+    it('testSetDate0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2313,7 +2313,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0003', 0, () => {
+    it('testSetDate0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2335,7 +2335,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0004', 0, () => {
+    it('testSetDate0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2357,7 +2357,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0005', 0, () => {
+    it('testSetDate0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2379,7 +2379,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0006', 0, () => {
+    it('testSetDate0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0006";
       try {
         const event = new Date('February 19, 1975 23:15:30');
@@ -2401,7 +2401,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0007', 0, () => {
+    it('testSetDate0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0007";
       try {
         const event = new Date('February 19, 1975 23:15:30');
@@ -2423,7 +2423,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0008', 0, () => {
+    it('testSetDate0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0008";
       try {
         const event = new Date('June 19, 1975 23:15:30');
@@ -2445,7 +2445,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDate0009', 0, () => {
+    it('testSetDate0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDate0009";
       try {
         const event = new Date('June 19, 1975 23:15:30');
@@ -2467,7 +2467,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0001', 0, () => {
+    it('testSetFullYear0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2489,7 +2489,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0002', 0, () => {
+    it('testSetFullYear0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2511,7 +2511,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0003', 0, () => {
+    it('testSetFullYear0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2533,7 +2533,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0004', 0, () => {
+    it('testSetFullYear0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2555,7 +2555,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0005', 0, () => {
+    it('testSetFullYear0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2577,7 +2577,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetFullYear0006', 0, () => {
+    it('testSetFullYear0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetFullYear0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2599,7 +2599,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0001', 0, () => {
+    it('testSetHours0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2621,7 +2621,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0002', 0, () => {
+    it('testSetHours0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2643,7 +2643,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0003', 0, () => {
+    it('testSetHours0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2665,7 +2665,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0004', 0, () => {
+    it('testSetHours0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2687,7 +2687,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0005', 0, () => {
+    it('testSetHours0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2709,7 +2709,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0006', 0, () => {
+    it('testSetHours0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2731,7 +2731,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0007', 0, () => {
+    it('testSetHours0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2753,7 +2753,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0008', 0, () => {
+    it('testSetHours0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2775,7 +2775,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0009', 0, () => {
+    it('testSetHours0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2797,7 +2797,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0010', 0, () => {
+    it('testSetHours0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2819,7 +2819,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0011', 0, () => {
+    it('testSetHours0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0011";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2841,7 +2841,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0012', 0, () => {
+    it('testSetHours0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0012";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2863,7 +2863,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0013', 0, () => {
+    it('testSetHours0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0013";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2885,7 +2885,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0014', 0, () => {
+    it('testSetHours0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0014";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2907,7 +2907,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0015', 0, () => {
+    it('testSetHours0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0015";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2929,7 +2929,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetHours0016', 0, () => {
+    it('testSetHours0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetHours0016";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2951,7 +2951,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMilliseconds0001', 0, () => {
+    it('testSetMilliseconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMilliseconds0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2973,7 +2973,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMilliseconds0002', 0, () => {
+    it('testSetMilliseconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMilliseconds0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -2995,7 +2995,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMilliseconds0003', 0, () => {
+    it('testSetMilliseconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMilliseconds0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3017,7 +3017,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMilliseconds0004', 0, () => {
+    it('testSetMilliseconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMilliseconds0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3039,7 +3039,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMilliseconds0005', 0, () => {
+    it('testSetMilliseconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMilliseconds0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3061,7 +3061,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0001', 0, () => {
+    it('testSetMinutes0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3083,7 +3083,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0002', 0, () => {
+    it('testSetMinutes0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3105,7 +3105,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0003', 0, () => {
+    it('testSetMinutes0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3127,7 +3127,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0004', 0, () => {
+    it('testSetMinutes0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3149,7 +3149,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0005', 0, () => {
+    it('testSetMinutes0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3171,7 +3171,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0006', 0, () => {
+    it('testSetMinutes0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3193,7 +3193,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0007', 0, () => {
+    it('testSetMinutes0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3215,7 +3215,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0008', 0, () => {
+    it('testSetMinutes0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3237,7 +3237,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0009', 0, () => {
+    it('testSetMinutes0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3259,7 +3259,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0010', 0, () => {
+    it('testSetMinutes0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3281,7 +3281,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0011', 0, () => {
+    it('testSetMinutes0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0011";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3303,7 +3303,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMinutes0012', 0, () => {
+    it('testSetMinutes0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMinutes0012";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3325,7 +3325,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0001', 0, () => {
+    it('testSetMonth0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3347,7 +3347,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0002', 0, () => {
+    it('testSetMonth0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3369,7 +3369,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0003', 0, () => {
+    it('testSetMonth0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3391,7 +3391,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0004', 0, () => {
+    it('testSetMonth0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3413,7 +3413,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0005', 0, () => {
+    it('testSetMonth0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3435,7 +3435,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0006', 0, () => {
+    it('testSetMonth0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3457,7 +3457,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0007', 0, () => {
+    it('testSetMonth0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3479,7 +3479,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0008', 0, () => {
+    it('testSetMonth0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3501,7 +3501,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0009', 0, () => {
+    it('testSetMonth0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3523,7 +3523,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetMonth0010', 0, () => {
+    it('testSetMonth0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetMonth0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3545,7 +3545,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0001', 0, () => {
+    it('testSetSeconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3567,7 +3567,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0002', 0, () => {
+    it('testSetSeconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3589,7 +3589,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0003', 0, () => {
+    it('testSetSeconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3611,7 +3611,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0004', 0, () => {
+    it('testSetSeconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3633,7 +3633,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0005', 0, () => {
+    it('testSetSeconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3655,7 +3655,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0006', 0, () => {
+    it('testSetSeconds0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3677,7 +3677,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0007', 0, () => {
+    it('testSetSeconds0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3699,7 +3699,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetSeconds0008', 0, () => {
+    it('testSetSeconds0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetSeconds0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3721,7 +3721,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0001', 0, () => {
+    it('testSetTime0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0001";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3744,7 +3744,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0002', 0, () => {
+    it('testSetTime0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0002";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3769,7 +3769,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0003', 0, () => {
+    it('testSetTime0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0003";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3792,7 +3792,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0004', 0, () => {
+    it('testSetTime0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0004";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3817,7 +3817,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0005', 0, () => {
+    it('testSetTime0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0005";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3840,7 +3840,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetTime0006', 0, () => {
+    it('testSetTime0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetTime0006";
       try {
         const launchDate = new Date('July 1, 1999, 12:00:00');
@@ -3863,7 +3863,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0001', 0, () => {
+    it('testSetUTCDate0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3885,7 +3885,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0002', 0, () => {
+    it('testSetUTCDate0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3907,7 +3907,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0003', 0, () => {
+    it('testSetUTCDate0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3929,7 +3929,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0004', 0, () => {
+    it('testSetUTCDate0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3951,7 +3951,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0005', 0, () => {
+    it('testSetUTCDate0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -3973,7 +3973,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0006', 0, () => {
+    it('testSetUTCDate0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0006";
       try {
         const event = new Date('February 19, 1975 23:15:30');
@@ -3995,7 +3995,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0007', 0, () => {
+    it('testSetUTCDate0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0007";
       try {
         const event = new Date('February 19, 1975 23:15:30');
@@ -4017,7 +4017,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0008', 0, () => {
+    it('testSetUTCDate0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0008";
       try {
         const event = new Date('June 19, 1975 23:15:30');
@@ -4039,7 +4039,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCDate0009', 0, () => {
+    it('testSetUTCDate0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCDate0009";
       try {
         const event = new Date('June 19, 1975 23:15:30');
@@ -4061,7 +4061,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0001', 0, () => {
+    it('testSetUTCFullYear0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4083,7 +4083,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0002', 0, () => {
+    it('testSetUTCFullYear0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4105,7 +4105,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0003', 0, () => {
+    it('testSetUTCFullYear0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4127,7 +4127,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0004', 0, () => {
+    it('testSetUTCFullYear0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4149,7 +4149,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0005', 0, () => {
+    it('testSetUTCFullYear0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4171,7 +4171,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCFullYear0006', 0, () => {
+    it('testSetUTCFullYear0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCFullYear0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4193,7 +4193,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0001', 0, () => {
+    it('testSetUTCHours0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4215,7 +4215,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0002', 0, () => {
+    it('testSetUTCHours0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4237,7 +4237,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0003', 0, () => {
+    it('testSetUTCHours0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4259,7 +4259,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0004', 0, () => {
+    it('testSetUTCHours0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4281,7 +4281,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0005', 0, () => {
+    it('testSetUTCHours0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4303,7 +4303,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0006', 0, () => {
+    it('testSetUTCHours0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4325,7 +4325,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0007', 0, () => {
+    it('testSetUTCHours0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4347,7 +4347,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0008', 0, () => {
+    it('testSetUTCHours0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4369,7 +4369,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0009', 0, () => {
+    it('testSetUTCHours0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4391,7 +4391,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0010', 0, () => {
+    it('testSetUTCHours0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4413,7 +4413,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0011', 0, () => {
+    it('testSetUTCHours0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0011";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4435,7 +4435,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0012', 0, () => {
+    it('testSetUTCHours0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0012";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4457,7 +4457,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0013', 0, () => {
+    it('testSetUTCHours0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0013";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4479,7 +4479,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0014', 0, () => {
+    it('testSetUTCHours0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0014";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4501,7 +4501,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0015', 0, () => {
+    it('testSetUTCHours0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0015";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4523,7 +4523,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCHours0016', 0, () => {
+    it('testSetUTCHours0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCHours0016";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4545,7 +4545,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMilliseconds0001', 0, () => {
+    it('testSetUTCMilliseconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMilliseconds0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4567,7 +4567,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMilliseconds0002', 0, () => {
+    it('testSetUTCMilliseconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMilliseconds0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4589,7 +4589,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMilliseconds0003', 0, () => {
+    it('testSetUTCMilliseconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMilliseconds0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4611,7 +4611,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMilliseconds0004', 0, () => {
+    it('testSetUTCMilliseconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMilliseconds0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4633,7 +4633,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMilliseconds0005', 0, () => {
+    it('testSetUTCMilliseconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMilliseconds0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4655,7 +4655,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0001', 0, () => {
+    it('testSetUTCMinutes0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4677,7 +4677,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0002', 0, () => {
+    it('testSetUTCMinutes0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4699,7 +4699,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0003', 0, () => {
+    it('testSetUTCMinutes0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4721,7 +4721,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0004', 0, () => {
+    it('testSetUTCMinutes0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4743,7 +4743,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0005', 0, () => {
+    it('testSetUTCMinutes0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4765,7 +4765,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0006', 0, () => {
+    it('testSetUTCMinutes0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4787,7 +4787,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0007', 0, () => {
+    it('testSetUTCMinutes0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4809,7 +4809,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0008', 0, () => {
+    it('testSetUTCMinutes0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4831,7 +4831,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0009', 0, () => {
+    it('testSetUTCMinutes0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4853,7 +4853,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0010', 0, () => {
+    it('testSetUTCMinutes0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4875,7 +4875,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0011', 0, () => {
+    it('testSetUTCMinutes0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0011";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4897,7 +4897,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMinutes0012', 0, () => {
+    it('testSetUTCMinutes0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMinutes0012";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4919,7 +4919,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0001', 0, () => {
+    it('testSetUTCMonth0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4941,7 +4941,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0002', 0, () => {
+    it('testSetUTCMonth0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4963,7 +4963,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0003', 0, () => {
+    it('testSetUTCMonth0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -4985,7 +4985,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0004', 0, () => {
+    it('testSetUTCMonth0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5007,7 +5007,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0005', 0, () => {
+    it('testSetUTCMonth0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5029,7 +5029,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0006', 0, () => {
+    it('testSetUTCMonth0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5051,7 +5051,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0007', 0, () => {
+    it('testSetUTCMonth0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5073,7 +5073,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0008', 0, () => {
+    it('testSetUTCMonth0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5095,7 +5095,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0009', 0, () => {
+    it('testSetUTCMonth0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0009";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5117,7 +5117,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCMonth0010', 0, () => {
+    it('testSetUTCMonth0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCMonth0010";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5139,7 +5139,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0001', 0, () => {
+    it('testSetUTCSeconds0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0001";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5161,7 +5161,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0002', 0, () => {
+    it('testSetUTCSeconds0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0002";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5183,7 +5183,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0003', 0, () => {
+    it('testSetUTCSeconds0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0003";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5205,7 +5205,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0004', 0, () => {
+    it('testSetUTCSeconds0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0004";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5227,7 +5227,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0005', 0, () => {
+    it('testSetUTCSeconds0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0005";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5249,7 +5249,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0006', 0, () => {
+    it('testSetUTCSeconds0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0006";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5271,7 +5271,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0007', 0, () => {
+    it('testSetUTCSeconds0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0007";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5293,7 +5293,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetUTCSeconds0008', 0, () => {
+    it('testSetUTCSeconds0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetUTCSeconds0008";
       try {
         const event = new Date('August 19, 1975 23:15:30');
@@ -5315,7 +5315,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0001', 0, () => {
+    it('testDateToDateString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0001";
       try {
         const event = new Date(1993, 6, 28, 14, 39, 7);
@@ -5335,7 +5335,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0002', 0, () => {
+    it('testDateToDateString0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0002";
       try {
         const event = new Date(1993, 6, 28);
@@ -5354,7 +5354,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0003', 0, () => {
+    it('testDateToDateString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0003";
       try {
         const event = new Date();
@@ -5379,7 +5379,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0004', 0, () => {
+    it('testDateToDateString0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0004";
       try {
         const event = new Date("");
@@ -5398,7 +5398,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0005', 0, () => {
+    it('testDateToDateString0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0005";
       try {
         const event = new Date(1996, 1, 29);
@@ -5417,7 +5417,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0006', 0, () => {
+    it('testDateToDateString0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0006";
       try {
         const event = new Date(1997, 1, 29);
@@ -5436,7 +5436,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0007', 0, () => {
+    it('testDateToDateString0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0007";
       try {
         const event = new Date(2024, 7, 32);
@@ -5455,7 +5455,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToDateString0008', 0, () => {
+    it('testDateToDateString0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToDateString0008";
       try {
         const event = new Date(2024, 8, 31);
@@ -5474,7 +5474,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0001', 0, () => {
+    it('testDateToISOString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0001';
       try {
         const event = new Date('05 October 2011 14:48 UTC');
@@ -5494,7 +5494,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0002', 0, () => {
+    it('testDateToISOString0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0002';
       try {
         const event = new Date();
@@ -5515,7 +5515,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0003', 0, () => {
+    it('testDateToISOString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0003';
       try {
         const event = new Date(0);
@@ -5534,7 +5534,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0004', 0, () => {
+    it('testDateToISOString0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0004';
       try {
         const event = new Date('');
@@ -5554,7 +5554,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0005', 0, () => {
+    it('testDateToISOString0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0005';
       try {
         const event = new Date('32 October 2011 14:48 UTC');
@@ -5574,7 +5574,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0006', 0, () => {
+    it('testDateToISOString0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0006';
       try {
         const event = new Date('05 October 2011 14:48:01.123 UTC');
@@ -5593,7 +5593,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0007', 0, () => {
+    it('testDateToISOString0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0007';
       try {
         const event = new Date('05 October 2011 14:48:02 UTC');
@@ -5612,7 +5612,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToISOString0008', 0, () => {
+    it('testDateToISOString0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testDateToISOString0008';
       try {
         const event = new Date('05 October 2011 14:48:03.1 UTC');
@@ -5631,7 +5631,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0001", 0, () => {
+    it("testDateToJSON0001",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0001";
       try {
         const event = new Date(1993, 6, 28, 14, 39, 7);
@@ -5650,7 +5650,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0002", 0, () => {
+    it("testDateToJSON0002",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0002";
       try {
         const event = new Date(1993, 6, 28);
@@ -5669,7 +5669,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0003", 0, () => {
+    it("testDateToJSON0003",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0003";
       try {
         const event = new Date();
@@ -5689,7 +5689,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0004", 0, () => {
+    it("testDateToJSON0004",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0004";
       try {
         const event = new Date("");
@@ -5708,7 +5708,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0005", 0, () => {
+    it("testDateToJSON0005",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0005";
       try {
         const event = new Date(1996, 1, 29);
@@ -5727,7 +5727,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0006", 0, () => {
+    it("testDateToJSON0006",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0006";
       try {
         const event = new Date(1997, 1, 29);
@@ -5746,7 +5746,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0007", 0, () => {
+    it("testDateToJSON0007",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0007";
       try {
         const event = new Date(2024, 7, 32);
@@ -5765,7 +5765,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToJSON0008", 0, () => {
+    it("testDateToJSON0008",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToJSON0008";
       try {
         const event = new Date(2024, 8, 31);
@@ -5784,7 +5784,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0001", 0, () => {
+    it("testDateToLocaleDateString0001",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0001";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5803,7 +5803,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0002", 0, () => {
+    it("testDateToLocaleDateString0002",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0002";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5822,7 +5822,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0003", 0, () => {
+    it("testDateToLocaleDateString0003",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0003";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5847,7 +5847,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0004", 0, () => {
+    it("testDateToLocaleDateString0004",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0004";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5871,7 +5871,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0005", 0, () => {
+    it("testDateToLocaleDateString0005",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0005";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5895,7 +5895,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0006", 0, () => {
+    it("testDateToLocaleDateString0006",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0006";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5914,7 +5914,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0007", 0, () => {
+    it("testDateToLocaleDateString0007",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0007";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5932,7 +5932,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0008", 0, () => {
+    it("testDateToLocaleDateString0008",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0008";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5950,7 +5950,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDateToLocaleDateString0009", 0, () => {
+    it("testDateToLocaleDateString0009",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleDateString0009";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5968,7 +5968,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataToUTCString0001', 0, () => {
+    it('testDataToUTCString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataToUTCString0001";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -5986,7 +5986,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataValueOf0001', 0, () => {
+    it('testDataValueOf0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataValueOf0001";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6004,7 +6004,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataValueOf0002', 0, () => {
+    it('testDataValueOf0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataValueOf0002";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6022,7 +6022,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataValueOf0003', 0, () => {
+    it('testDataValueOf0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataValueOf0003";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6040,7 +6040,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0001', 0, () => {
+    it('testDateToLocaleStringConstEvent0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleStringConstEvent0001';
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6061,7 +6061,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0002', 0, () => {
+    it('testDateToLocaleStringConstEvent0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleStringConstEvent0002';
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6082,7 +6082,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0003', 0, () => {
+    it('testDateToLocaleStringConstEvent0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringConstEvent0003";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6101,7 +6101,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0004', 0, () => {
+    it('testDateToLocaleStringConstEvent0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringConstEvent0004";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6120,7 +6120,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0005', 0, () => {
+    it('testDateToLocaleStringConstEvent0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringConstEvent0005";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6139,7 +6139,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringConstEvent0006', 0, () => {
+    it('testDateToLocaleStringConstEvent0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringConstEvent0006";
       try {
         const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6160,7 +6160,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0001', 0, () => {
+    it('testDateToLocaleStringDate0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0001";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6178,7 +6178,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0002', 0, () => {
+    it('testDateToLocaleStringDate0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0002";
       try {
         let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6197,7 +6197,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0003', 0, () => {
+    it('testDateToLocaleStringDate0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0003";
       try {
         let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6216,7 +6216,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0004', 0, () => {
+    it('testDateToLocaleStringDate0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0004";
       try {
         let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6235,7 +6235,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0005', 0, () => {
+    it('testDateToLocaleStringDate0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0005";
       try {
         let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6254,7 +6254,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleStringDate0006', 0, () => {
+    it('testDateToLocaleStringDate0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleStringDate0006";
       try {
         let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6273,7 +6273,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0001', 0, () => {
+    it('testDateToLocaleTimeString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0001';
       try {
         const event = new Date('August 19, 1975 23:15:30 GMT+00:00');
@@ -6291,7 +6291,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0002', 0, () => {
+    it('testDateToLocaleTimeString0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0002';
       try {
         const event = new Date('August 19, 1975 23:15:30 GMT+00:00');
@@ -6309,7 +6309,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0003', 0, () => {
+    it('testDateToLocaleTimeString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0003';
       try {
         const event = new Date('August 19, 1975 23:15:30 GMT+00:00');
@@ -6327,7 +6327,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0004', 0, () => {
+    it('testDateToLocaleTimeString0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0004';
       try {
         const event = new Date('August 19, 1975 23:15:30 GMT+00:00');
@@ -6346,7 +6346,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0005', 0, () => {
+    it('testDateToLocaleTimeString0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0005';
       try {
         const event = new Date('August 19, 1975 23:15:30 GMT+00:00');
@@ -6366,7 +6366,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0006', 0, () => {
+    it('testDateToLocaleTimeString0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDateToLocaleTimeString0006';
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6384,7 +6384,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0007', 0, () => {
+    it('testDateToLocaleTimeString0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0007";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6403,7 +6403,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0008', 0, () => {
+    it('testDateToLocaleTimeString0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0008";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6422,7 +6422,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0009', 0, () => {
+    it('testDateToLocaleTimeString0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0009";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6441,7 +6441,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0010', 0, () => {
+    it('testDateToLocaleTimeString0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0010";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6460,7 +6460,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0011', 0, () => {
+    it('testDateToLocaleTimeString0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0011";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6483,7 +6483,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0012', 0, () => {
+    it('testDateToLocaleTimeString0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0012";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6505,7 +6505,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToLocaleTimeString0013', 0, () => {
+    it('testDateToLocaleTimeString0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToLocaleTimeString0013";
       try {
         const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
@@ -6530,7 +6530,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToString0001', 0, () => {
+    it('testDateToString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToString0001";
       try {
         const event: Date = new Date('August 19, 1975 23:15:30');
@@ -6548,7 +6548,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToString0002', 0, () => {
+    it('testDateToString0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToString0002";
       try {
         const x: Date = new Date();
@@ -6566,7 +6566,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToString0003', 0, () => {
+    it('testDateToString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToString0003";
       try {
         const x: Date = new Date(' ');
@@ -6584,7 +6584,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToTimeString0001', 0, () => {
+    it('testDateToTimeString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToTimeString0001";
       try {
         const event: Date = new Date('August 19, 1975 23:15:30');
@@ -6602,7 +6602,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToTimeString0002', 0, () => {
+    it('testDateToTimeString0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToTimeString0002";
       try {
         const x: Date = new Date();
@@ -6620,7 +6620,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToTimeString0003', 0, () => {
+    it('testDateToTimeString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToTimeString0003";
       try {
         const x = new Date(' ');
@@ -6639,7 +6639,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToUTCString0001', 0, () => {
+    it('testDateToUTCString0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToUTCString0001";
       try {
         const event = new Date('14 Jun 2017 00:00:00 PDT');
@@ -6676,7 +6676,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToUTCString0003', 0, () => {
+    it('testDateToUTCString0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateToUTCString0003";
       try {
         const x = new Date(' ');
@@ -6695,7 +6695,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateValueOf0001', 0, () => {
+    it('testDateValueOf0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateValueOf0001";
       try {
         const date1 = new Date(Date.UTC(96, 1, 2, 3, 4, 5));
@@ -6737,7 +6737,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateValueOf0003', 0, () => {
+    it('testDateValueOf0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDateValueOf0003";
       try {
         const x = new Date(' ');
