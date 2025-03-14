@@ -137,7 +137,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0001';
       console.info(`${caseName} test start`);
       try {
@@ -161,7 +161,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0002';
       console.info(`${caseName} test start`);
       try {
@@ -188,7 +188,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0003';
       console.info(`${caseName} test start`);
       try {
@@ -217,7 +217,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -249,7 +249,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0005';
       console.info(`${caseName} test start`);
       let task: taskpool.Task = new taskpool.Task(sendDataSetTime, 100);
@@ -272,7 +272,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0006';
       console.info(`${caseName} test start`);
       try {
@@ -309,7 +309,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0007';
       console.info(`${caseName} test start`);
       try {
@@ -349,7 +349,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0008';
       console.info(`${caseName} test start`);
       try {
@@ -383,7 +383,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0009';
       console.info(`${caseName} test start`);
       try {
@@ -413,7 +413,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0010';
       console.info(`${caseName} test start`);
       try {
@@ -445,7 +445,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0011';
       console.info(`${caseName} test start`);
       try {
@@ -479,7 +479,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0012';
       console.info(`${caseName} test start`);
       try {
@@ -510,7 +510,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0013';
       console.info(`${caseName} test start`);
       try {
@@ -538,7 +538,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0014';
       console.info(`${caseName} test start`);
       try {
@@ -566,7 +566,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0015';
       console.info(`${caseName} test start`);
       try {
@@ -594,7 +594,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0016';
       console.info(`${caseName} test start`);
       try {
@@ -624,7 +624,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0017';
       console.info(`${caseName} test start`);
       try {
@@ -652,7 +652,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0018';
       console.info(`${caseName} test start`);
       try {
@@ -678,7 +678,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0019';
       console.info(`${caseName} test start`);
       try {
@@ -708,7 +708,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0020';
       console.info(`${caseName} test start`);
       try {
@@ -739,7 +739,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0021';
       console.info(`${caseName} test start`);
       try {
@@ -766,7 +766,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0022';
       console.info(`${caseName} test start`);
       try {
@@ -796,7 +796,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0023';
       console.info(`${caseName} test start`);
       try {
@@ -821,7 +821,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0024';
       console.info(`${caseName} test start`);
       try {
@@ -850,7 +850,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0025';
       console.info(`${caseName} test start`);
       try {
@@ -873,7 +873,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0026';
       console.info(`${caseName} test start`);
       try {
@@ -896,7 +896,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0027';
       console.info(`${caseName} test start`);
       try {
@@ -920,7 +920,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0028';
       console.info(`${caseName} test start`);
       try {
@@ -947,7 +947,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0029';
       console.info(`${caseName} test start`);
       try {
@@ -973,7 +973,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0030';
       console.info(`${caseName} test start`);
       try {
@@ -998,7 +998,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0031';
       console.info(`${caseName} test start`);
       try {
@@ -1022,7 +1022,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0032';
       console.info(`${caseName} test start`);
       try {
@@ -1049,7 +1049,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0033';
       console.info(`${caseName} test start`);
       try {
@@ -1075,7 +1075,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1100,7 +1100,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0035';
       console.info(`${caseName} test start`);
       try {
@@ -1123,7 +1123,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0036';
       console.info(`${caseName} test start`);
       try {
@@ -1147,7 +1147,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0037';
       console.info(`${caseName} test start`);
       try {
@@ -1174,7 +1174,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0038';
       console.info(`${caseName} test start`);
       try {
@@ -1197,7 +1197,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0039';
       console.info(`${caseName} test start`);
       try {
@@ -1221,7 +1221,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0040';
       console.info(`${caseName} test start`);
       try {
@@ -1248,7 +1248,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0041';
       console.info(`${caseName} test start`);
       try {
@@ -1271,7 +1271,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0042';
       console.info(`${caseName} test start`);
       try {
@@ -1294,7 +1294,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0043';
       console.info(`${caseName} test start`);
       try {
@@ -1317,7 +1317,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0044';
       console.info(`${caseName} test start`);
       try {
@@ -1341,7 +1341,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0045';
       console.info(`${caseName} test start`);
       try {
@@ -1368,7 +1368,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0046';
       console.info(`${caseName} test start`);
       try {
@@ -1394,7 +1394,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0047';
       console.info(`${caseName} test start`);
       try {
@@ -1419,7 +1419,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0048';
       console.info(`${caseName} test start`);
       try {
@@ -1442,7 +1442,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0049';
       console.info(`${caseName} test start`);
       try {
@@ -1466,7 +1466,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0050';
       console.info(`${caseName} test start`);
       try {
@@ -1493,7 +1493,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0051';
       console.info(`${caseName} test start`);
       try {
@@ -1516,7 +1516,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0052';
       console.info(`${caseName} test start`);
       let taskArr = new Array<taskpool.Task>()
@@ -1553,7 +1553,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0053';
       console.info(`${caseName} test start`);
       try {
@@ -1577,7 +1577,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0054';
       console.info(`${caseName} test start`);
       try {
@@ -1600,7 +1600,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0055';
       console.info(`${caseName} test start`);
       let taskArr = new Array<taskpool.Task>()
@@ -1637,7 +1637,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0056';
       console.info(`${caseName} test start`);
       try {
@@ -1661,7 +1661,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0057';
       console.info(`${caseName} test start`);
       try {
@@ -1688,7 +1688,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0058';
       console.info(`${caseName} test start`);
       try {
@@ -1713,7 +1713,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1738,7 +1738,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testTaskErrorCode0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0060';
       console.info(`${caseName} test start`);
       try {
