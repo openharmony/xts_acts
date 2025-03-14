@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 import window from '@ohos.window';
 import { UiDriver, BY, ON, PointerMatrix, UiComponent } from '@ohos.UiTest'
 import { BusinessError, Callback } from '@ohos.base';
@@ -195,9 +195,9 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level0
      */
-    it('testWindow_on_off_keyboardDidShow_normal', 0, async (done: Function) => {
+    it('testWindow_on_off_keyboardDidShow_normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testWindow_on_off_keyboardDidShow_normal';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -290,7 +290,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardDidShow_UnregisteredOff', 0, async () => {
+    it('testWindowOffKeyboardDidShow_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardDidShow_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -323,7 +323,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardDidShow_RepeatOff', 0, async () => {
+    it('testWindowOffKeyboardDidShow_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardDidShow_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -382,9 +382,9 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level0
      */
-    it('testWindow_on_off_keyboardDidHide_normal', 0, async (done: Function) => {
+    it('testWindow_on_off_keyboardDidHide_normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testWindow_on_off_keyboardDidHide_normal';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -470,7 +470,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardDidHide_UnregisteredOff', 0, async () => {
+    it('testWindowOffKeyboardDidHide_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardDidHide_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -503,7 +503,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardDidHide_RepeatOff', 0, async () => {
+    it('testWindowOffKeyboardDidHide_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardDidHide_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
