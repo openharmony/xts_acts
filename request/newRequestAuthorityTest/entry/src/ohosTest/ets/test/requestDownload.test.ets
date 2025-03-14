@@ -1138,6 +1138,44 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
+     * @tc.number SUB_REQUEST_Agent_GetTask_Promise_0400
+     * @tc.name   SUB_REQUEST_Agent_GetTask_Promise_0400
+     * @tc.desc   request.agent.getTask(),Promise
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Agent_GetTask_Promise_0400', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0400 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_REQUEST_Agent_GetTask_Promise_0400.txt',
+        network: request.agent.Network.ANY,
+        token:'downloadTest'
+      };
+      let task:request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 create success");
+        await request.agent.getTask(undefined, task.tid);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 getTask success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 catch: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 remove success");
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_Request_Download_TaskGrouping_1000
      * @tc.name   SUB_Request_Download_TaskGrouping_1000
      * @tc.desc   request group task

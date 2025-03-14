@@ -23,5 +23,6 @@ group("request") {
     "requestCacheDownloadNormalTest:ActsRequestCacheDownloadNormalTest",
     "requestCacheDownloadTest:ActsRequestCacheDownloadAuthorTest",
     "requestSpecialTest:ActsRequestSpecialTest",
+    "requestTestFANormalTest:ActsRequestFANormalTest",
   ]
 }
