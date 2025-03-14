@@ -3191,6 +3191,382 @@ describe('threadWorkerTest', function () {
         done();
     })
 
+    // Throw error in workerPort.postMessage.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0015
+     * @tc.name: threadWorker_onAllErrors_test_001
+     * @tc.desc: Throw error in workerPort.postMessage
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_001', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_042.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            flag = true;
+            errorMessage = e.message;
+            console.log("threadWorker_onAllErrors_test_001 onAllErrors is: " + e.message);
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_001 onexit");
+        }
+
+        workerInstance.onerror = function(err) {
+            console.log("threadWorker_onAllErrors_test_001 onerror is: " + err.message);
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_002 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(errorMessage).assertEqual("Error: newworker_042 test");
+        expect(flag).assertTrue();
+        done();
+    })
+
+
+    // Throw error in worker.js
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0016
+     * @tc.name: threadWorker_onAllErrors_test_002
+     * @tc.desc: Throw error in worker.js
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_002', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_043.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            flag = true;
+            errorMessage = e.message;
+            console.log("threadWorker_onAllErrors_test_002 onAllErrors is: " + e.message);
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_002 onexit");
+        }
+
+        workerInstance.onerror = function(err) {
+            console.log("threadWorker_onAllErrors_test_002 onerror is: " + err.message);
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_002 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(errorMessage).assertEqual("newworker_043 error");
+        expect(flag).assertTrue();
+        done();
+    })
+
+    // Worker post function to main thread.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0017
+     * @tc.name: threadWorker_onAllErrors_test_003
+     * @tc.desc: Worker post function to main thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_003', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_044.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            flag = true;
+            errorMessage = e.message;
+            console.log("threadWorker_onAllErrors_test_003 onAllErrors is: " + e.message);
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_003 onexit");
+        }
+
+        workerInstance.onerror = function(err) {
+            console.log("threadWorker_onAllErrors_test_003 onerror is: " + err.message);
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_003 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(errorMessage).assertEqual("BusinessError: An exception occurred during serialization, failed to serialize message.");
+        expect(flag).assertTrue();
+        done();
+    })
+
+    // Worker post function to main thread.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0018
+     * @tc.name: threadWorker_onAllErrors_test_004
+     * @tc.desc: Worker post function to main thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_004', 0, async function (done) {
+        class MyModel
+        {
+            name = "module";
+            Init() {
+                this.name = "Init";
+            }
+        }
+        let model = new MyModel();
+
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_045.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            flag = true;
+            errorMessage = e.message;
+            console.log("threadWorker_onAllErrors_test_004 onAllErrors is: ", e.message);
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_004 onexit");
+        }
+
+        workerInstance.onerror = function() {
+            console.log("threadWorker_onAllErrors_test_004 onerror");
+        }
+
+        workerInstance.onmessageerror = function() {
+            console.log("threadWorker_onAllErrors_test_004 onmessageerror");
+        }
+
+        workerInstance.postMessage(model);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(errorMessage).assertEqual("TypeError: is not callable");
+        expect(flag).assertTrue();
+        done();
+    })
+
+    // worker.onerror throw error.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0019
+     * @tc.name: threadWorker_onAllErrors_test_005
+     * @tc.desc: worker.onerror throw error.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_005', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_046.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function() {
+            flag = true;
+            console.log("threadWorker_onAllErrors_test_005 onAllErrors ");
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_005 onexit");
+        }
+
+        workerInstance.onerror = function() {
+            console.log("threadWorker_onAllErrors_test_005 onerror");
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_005 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(flag).assertTrue();
+        expect(isTerminate).assertTrue();
+        done();
+    })
+
+    // worker.onmessageerror throw error.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0020
+     * @tc.name: threadWorker_onAllErrors_test_006
+     * @tc.desc: worker.onerror throw error.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_006', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_047.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let errorMessage1 = "";
+        let flag = false;
+        let count = 0;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            count++;
+            flag = true;
+            if (count == 1) {
+                errorMessage = e.message;
+                console.log("threadWorker_onAllErrors_test_006 onAllErrors with 1 is: ", e.message);
+            }
+            if (count == 2) {
+                errorMessage1 = e.message;
+                console.log("threadWorker_onAllErrors_test_006 onAllErrors with 2 is: ", e.message);
+            }
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_006 onexit");
+        }
+
+        workerInstance.onerror = function() {
+            console.log("threadWorker_onAllErrors_test_006 onerror");
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_006 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(flag).assertTrue();
+        expect(isTerminate).assertTrue();
+        expect(errorMessage).assertEqual("Error: newworker_047 onmessageerror throw error");
+        expect(errorMessage1).assertEqual("BusinessError: An exception occurred during serialization, failed to serialize message.");
+        done();
+    })
+
+    // throw error in addEventListener
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0021
+     * @tc.name: threadWorker_onAllErrors_test_007
+     * @tc.desc: throw error in addEventListener
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_onAllErrors_test_007', 0, async function (done) {
+        let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_047.js");
+        let res = "";
+        let isTerminate = false;
+        let errorMessage = "";
+        let flag = false;
+
+        workerInstance.onmessage = function(d) {
+            res = d.data;
+        }
+
+        workerInstance.onAllErrors = function(e) {
+            flag = true;
+            console.log("threadWorker_onAllErrors_test_007 onAllErrors");
+            workerInstance.terminate();
+        }
+
+        workerInstance.onexit = function() {
+            isTerminate = true;
+            console.log("threadWorker_onAllErrors_test_007 onexit");
+        }
+
+        workerInstance.onerror = function() {
+            console.log("threadWorker_onAllErrors_test_007 onerror");
+        }
+
+        workerInstance.onmessageerror = function(e) {
+            console.log("threadWorker_onAllErrors_test_007 onmessageerror");
+        }
+
+        workerInstance.postMessage(1);
+
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(flag).assertTrue();
+        expect(isTerminate).assertTrue();
+        done();
+    })
+
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
      * @tc.name: threadWorker_finally_test_001
