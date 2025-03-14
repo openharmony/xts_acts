@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   printArgs1,
@@ -58,7 +58,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunnerErrorSuccess0200', 0, async (Done: Function) => {
+    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       let count1: number = 0
@@ -110,7 +110,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0300', 0, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -166,7 +166,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0400', 0, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -215,7 +215,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0500', 0, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -264,7 +264,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0600', 0, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -313,7 +313,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0700', 0, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0

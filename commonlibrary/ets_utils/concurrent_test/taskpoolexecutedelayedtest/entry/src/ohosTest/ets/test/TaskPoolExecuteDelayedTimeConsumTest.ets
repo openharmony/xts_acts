@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import { longTask, longTaskError, printArgs, printArgsError, timedTask,
   timedTaskError } from '../testability/pages/TaskMethodTest';
@@ -50,7 +50,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0100', 0, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       Count1.count = 0
       // 创建一个任务
       let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: 测试参数
@@ -110,7 +110,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testTaskExecutionTimeEqualsDelay', 0, async (Done: Function) => {
+    it('testTaskExecutionTimeEqualsDelay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -156,7 +156,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0101_2', 0, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0101_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
 
@@ -190,7 +190,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0102', 0, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -233,7 +233,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0102_2', 0, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0102_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);

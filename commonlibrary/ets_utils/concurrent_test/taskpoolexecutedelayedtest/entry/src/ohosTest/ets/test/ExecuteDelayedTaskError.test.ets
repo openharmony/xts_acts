@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Level, Size } from '@ohos/hypium';
 import { MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   asyncErrorTask,
@@ -113,7 +113,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0100', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -138,7 +138,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -150,7 +150,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0200', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0200';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -175,7 +175,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -187,7 +187,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0300', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0300';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -222,7 +222,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -234,7 +234,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0400', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0400';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -269,7 +269,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -281,7 +281,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0500', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0500';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -310,7 +310,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -322,7 +322,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0600', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0600';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -356,7 +356,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -368,7 +368,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0700', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0700';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -402,7 +402,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -414,7 +414,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0800', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0800';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -442,7 +442,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -454,7 +454,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest0900', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0900';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -487,7 +487,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -499,7 +499,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1000', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1000';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -527,7 +527,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -539,7 +539,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1100', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -564,7 +564,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -576,7 +576,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1200', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1200';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -604,7 +604,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -616,7 +616,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1300', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1300';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -649,7 +649,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -661,7 +661,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1400', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1400';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -689,7 +689,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -701,7 +701,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1500', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1500';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -726,7 +726,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -738,7 +738,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1600', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1600';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -766,7 +766,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -778,7 +778,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1700', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1700';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -811,7 +811,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -823,7 +823,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1800', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1800';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -851,7 +851,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -863,7 +863,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest1900', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1900';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -888,7 +888,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -900,7 +900,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest2000', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest2000';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -925,7 +925,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -939,7 +939,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest2900', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest2900';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -976,7 +976,7 @@ export default function executeDelayedTaskErrorTest() {
       workerInstance.terminate();
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -988,7 +988,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest3000', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3000';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1025,7 +1025,7 @@ export default function executeDelayedTaskErrorTest() {
       workerInstance.terminate();
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -1037,7 +1037,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest3100', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1063,7 +1063,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -1075,7 +1075,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest3200', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3200';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1100,7 +1100,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -1112,7 +1112,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest3300', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3300';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1137,7 +1137,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
 
@@ -1149,7 +1149,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('executeDelayedTaskErrorTest3400', 0, async (done: Function) => {
+    it('executeDelayedTaskErrorTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3400';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1174,7 +1174,7 @@ export default function executeDelayedTaskErrorTest() {
       }
 
       expect(num).assertEqual(10);
-      done();
+      Done();
       console.info(`${caseName} test end`);
     })
   })

@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import {
@@ -141,7 +141,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2600', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2600'
       console.info(`${caseName} test start`)
       
@@ -191,7 +191,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest2600_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest2600_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest2600_2'
       console.info(`${caseName} test start`)
       
@@ -255,7 +255,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2700', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2700'
       console.info(`${caseName} test start`)
       
@@ -305,7 +305,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2700_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2700_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2700_2'
       console.info(`${caseName} test start`)
       
@@ -369,7 +369,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2800', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2800'
       console.info(`${caseName} test start`)
       
@@ -419,7 +419,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2800_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2800_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2800_2'
       console.info(`${caseName} test start`)
       
@@ -483,7 +483,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2900', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2900'
       console.info(`${caseName} test start`)
       
@@ -533,7 +533,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_2900_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_2900_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_2900_2'
       console.info(`${caseName} test start`)
       
@@ -597,7 +597,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3000', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3000'
       console.info(`${caseName} test start`)
       
@@ -647,7 +647,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3000_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3000_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3000_2'
       console.info(`${caseName} test start`)
       
@@ -711,7 +711,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3100', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3100'
       console.info(`${caseName} test start`)
       
@@ -761,7 +761,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3100_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3100_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3100_2'
       console.info(`${caseName} test start`)
       
@@ -825,7 +825,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3200', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3200'
       console.info(`${caseName} test start`)
       
@@ -875,7 +875,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3200_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3200_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3200_2'
       console.info(`${caseName} test start`)
       
@@ -940,7 +940,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.level Level 2
      */
 
-    it('taskPoolSequenceRunnerClassifyTest_3300', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3300'
       console.info(`${caseName} test start`)
       
@@ -1012,7 +1012,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.level Level 2
      */
 
-    it('taskPoolSequenceRunnerClassifyTest_3400', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3400'
       console.info(`${caseName} test start`)
       
@@ -1079,7 +1079,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3500', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3500'
       console.info(`${caseName} test start`)
       
@@ -1129,7 +1129,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3500_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3500_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3500_2'
       console.info(`${caseName} test start`)
       
@@ -1195,7 +1195,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3600', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3600'
       console.info(`${caseName} test start`)
       
@@ -1234,7 +1234,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3700', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3700'
       console.info(`${caseName} test start`)
       
@@ -1284,7 +1284,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3700_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3700_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3700_2'
       console.info(`${caseName} test start`)
       
@@ -1348,7 +1348,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3800', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3800'
       console.info(`${caseName} test start`)
       
@@ -1398,7 +1398,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3900', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3900'
       console.info(`${caseName} test start`)
       
@@ -1450,7 +1450,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_3900_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_3900_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_3900_2'
       console.info(`${caseName} test start`)
       
@@ -1516,7 +1516,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_4000', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_4000'
       console.info(`${caseName} test start`)
       
@@ -1571,7 +1571,7 @@ export default function sequenceRunnerAbilityTest_2() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerClassifyTest_4000_2', 0, async (Done: Function) => {
+    it('taskPoolSequenceRunnerClassifyTest_4000_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'taskPoolSequenceRunnerClassifyTest_4000_2'
       console.info(`${caseName} test start`)
       
