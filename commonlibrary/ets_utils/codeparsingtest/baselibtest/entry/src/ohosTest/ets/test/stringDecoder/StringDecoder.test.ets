@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "@ohos/hypium";
-import { buffer, JSON, util } from "@kit.ArkTS";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { buffer, JSON, util } from '@kit.ArkTS';
 
 function sleep(ms: number) {
   return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
@@ -52,7 +52,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("test_Decode_Test_001", 0, (done: Function) => {
+    it("test_Decode_Test_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       newArr.forEach(item => {
         console.log('nztest', item)
         let decoder = new util.StringDecoder(item);
@@ -80,7 +80,6 @@ export default function stringDecoderTest() {
         expect(decoded4 === 'H').assertTrue()
         expect(decodedend4 === 'elloWorld123?').assertTrue()
       })
-      done()
     })
 
     /**
@@ -91,13 +90,12 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("test_Decode_Test_002", 0, (done: Function) => {
+    it("test_Decode_Test_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let that = new util.TextEncoder('utf-16be')
       let result = that.encodeInto('HelLoWorLd123?')
       let decoder = new util.StringDecoder('utf-16be')
       const decoded1 = decoder.write(result)
       expect(decoded1).assertEqual('HelLoWorLd123?')
-      done()
     })
 
     /**
@@ -108,13 +106,12 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("test_Decode_Test_003", 0, (done: Function) => {
+    it("test_Decode_Test_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let that = new util.TextEncoder('utf-16le')
       let result = that.encodeInto('HelLoWorLd123?')
       let decoder = new util.StringDecoder('utf-16le')
       const decoded1 = decoder.write(result)
       expect(decoded1).assertEqual('HelLoWorLd123?')
-      done()
     })
 
     /**
@@ -125,7 +122,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0100", 0, (done: Function) => {
+    it("testArrayScenarios0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayScenarios0100 == ';
       let encodingArr =
         ['utf-8', 'UTF-8', 'GBK', 'GB2312', 'GB18030', 'gb18030', 'ibm866', 'iso-8859-1', 'iso-8859-2', 'iso-8859-3',
@@ -162,7 +159,6 @@ export default function stringDecoderTest() {
       let urlcodeLe = encodeURI(decodedLe)
       console.info(TAG + `urlcodeLe: ${urlcodeLe}`)
       expect(urlcodeLe).assertEqual('%00%00%E4%A0%80%E6%B1%A5%E6%BD%AC%E6%BD%97%E6%B1%B2%E3%85%A4%E3%8C%B2%EF%BF%BD')
-      done()
     })
 
     /**
@@ -173,7 +169,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0200", 0, (done: Function) => {
+    it("testArrayScenarios0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayScenarios0200 == ';
 
       let base64 = new util.Base64Helper();
@@ -226,7 +222,6 @@ export default function stringDecoderTest() {
       expect(JSON.stringify(uint8Array)).assertEqual(JSON.stringify(result1))
       expect(result2.length).assertEqual(360)
       expect(JSON.stringify(uint8Array)).assertEqual(JSON.stringify(result2))
-      done()
     })
 
     /**
@@ -237,7 +232,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0300", 0, async (done: Function) => {
+    it("testArrayScenarios0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = 'testArrayScenarios0300 == ';
 
       let base64 = new util.Base64Helper();
@@ -302,7 +297,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0400", 0, async (done: Function) => {
+    it("testArrayScenarios0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = 'testArrayScenarios0400 == ';
       let buf = buffer.from([
         -7, 42, -17, 93, 24, -5, 58, -31, 82, -65,
@@ -355,13 +350,12 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0500", 0, (done: Function) => {
+    it("testArrayScenarios0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayScenarios0500 == ';
       let uint8Array = new Uint8Array([0, 0, 0, 0, 0, 72, 101, 108, 108, 111, 87, 111, 114, 108, 100, 49, 50, 51, 63])
       let newBuf = buffer.transcode(uint8Array, 'utf-8', 'ascii')
       console.info(TAG + `buf: ${newBuf.toString('ascii')}`)
       expect(newBuf.toString('ascii')).assertEqual('0,0,0,0,0,72,101,108,108,111,87,111,114,108,100,49,50,51,63')
-      done()
     })
 
     /**
@@ -372,7 +366,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0600", 0, async (done: Function) => {
+    it("testArrayScenarios0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = 'testArrayScenarios0600 == ';
       let encodingArr =
         ['utf-8', 'UTF-8', 'GBK', 'GB2312', 'GB18030', 'gb18030', 'ibm866', 'iso-8859-1', 'iso-8859-2', 'iso-8859-3',
@@ -414,7 +408,7 @@ export default function stringDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testArrayScenarios0700", 0, async (done: Function) => {
+    it("testArrayScenarios0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = 'testArrayScenarios0700 == ';
       let encodingArr =
         ['utf-8', 'UTF-8', 'GBK', 'GB2312', 'GB18030', 'gb18030', 'ibm866', 'iso-8859-1', 'iso-8859-2', 'iso-8859-3',
