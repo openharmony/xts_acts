@@ -35,7 +35,7 @@ struct blank_testcase {
         .fontWeight(FontWeight.Bold)
       Blank(100)
         .color(this.Color)
-        .key('blank')
+        .key('BlankTest_blank')
       Text('on/off').fontSize(18).height(60)
     }
     .key('flex')

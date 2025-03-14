@@ -40,7 +40,7 @@ struct Blank3Example {
     Column() {
       Row() {
         Text('Bluetooth').fontSize(18)
-        Blank().color(this.colorValue).key('blank')
+        Blank().color(this.colorValue).key('blank3Jsunit_blank')
         Toggle({ type: ToggleType.Switch })
       }.width('100%')
       .backgroundColor(0xFFFFFF)
