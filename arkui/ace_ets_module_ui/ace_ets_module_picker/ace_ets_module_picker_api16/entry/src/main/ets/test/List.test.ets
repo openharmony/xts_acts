@@ -21,7 +21,6 @@ import radioNode from './radio/radioNode.test';
 import ratingNode from './rating/ratingNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
-import datePickerMode from './datePicker/DatePickerMode.test';
 import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
@@ -43,7 +42,6 @@ export default function testsuite() {
   ratingNode();
   sliderNode();
   toggleNode();
-  datePickerMode();
   PickerCrownSensitivity();
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();

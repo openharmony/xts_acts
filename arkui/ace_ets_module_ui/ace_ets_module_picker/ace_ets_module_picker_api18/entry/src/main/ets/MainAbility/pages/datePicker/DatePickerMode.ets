@@ -98,6 +98,6 @@ struct DatePickerModeExample {
           console.info('select current date is: ' + value.toString())
         })
 
-    }.width('100%')
+    }.width('100%').height('100%')
   }
 }

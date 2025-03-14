@@ -19,8 +19,6 @@ add_library(nativerender SHARED
     textpicker/textpicker_columnwidths_test.cpp
     component/component.cpp
     component/calendarPicker_component.cpp  
-    component/datepicker_component.cpp
-    datepicker/datepicker_test.cpp
     drag/drag_test.cpp
     calendarPicker/calendar_picker_test.cpp
     calendarPicker/calendarPicker_date_test.cpp

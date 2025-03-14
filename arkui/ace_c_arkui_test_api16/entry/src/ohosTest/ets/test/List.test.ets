@@ -24,7 +24,6 @@ import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
 import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
-import datePickerTest from "./datepicker/DatePickerMode.test"
 import NodeUtilMoveTest from "./move/NodeUtilMoveTest.test"
 
 export default function testsuite() {
@@ -40,6 +39,5 @@ export default function testsuite() {
   calendarPickerTest();
   textInputWordBreakTest();
   ExpectedFrameRateRangeCallback();
-  datePickerTest();
   NodeUtilMoveTest();
 }

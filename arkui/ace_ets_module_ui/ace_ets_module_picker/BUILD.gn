@@ -20,6 +20,7 @@ group("ActsAceEtsModulePickerTest") {
       "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
       "ace_ets_module_picker_api15:ActsAceEtsModulePickerApi15Test",
       "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
+      "ace_ets_module_picker_api18:ActsAceEtsModulePickerApi18Test",
     ]
   } else {
     deps = [
@@ -29,6 +30,7 @@ group("ActsAceEtsModulePickerTest") {
       "ace_ets_module_picker_api14:ActsAceEtsModulePickerApi14Test",
       "ace_ets_module_picker_api15:ActsAceEtsModulePickerApi15Test",
       "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
+      "ace_ets_module_picker_api18:ActsAceEtsModulePickerApi18Test",
       "ace_ets_module_picker_nowear_api11:ActsAceEtsModulePickerNoWearApi11Test",
       "ace_ets_module_picker_nowear_api12:ActsAceEtsModulePickerNoWearApi12Test",
       "ace_ets_module_picker_nowear_api16:ActsAceEtsModulePickerNoWearApi16Test",

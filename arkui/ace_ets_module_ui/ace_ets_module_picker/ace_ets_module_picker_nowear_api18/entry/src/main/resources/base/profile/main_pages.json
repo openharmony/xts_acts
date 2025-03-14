@@ -1,6 +1,7 @@
 {
   "src": [
     "MainAbility/pages/index/index",
+    "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback"
   ]
 }
