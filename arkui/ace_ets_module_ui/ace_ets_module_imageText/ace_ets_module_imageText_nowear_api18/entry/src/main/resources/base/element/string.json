@@ -67,14 +67,6 @@
     {
       "name": "reason",
       "value": "AI"
-    },
-    {
-      "name": "maxFontScale",
-      "value": "3"
-    },
-    {
-      "name": "minFontScale",
-      "value": "0.5"
     }
   ]
 }

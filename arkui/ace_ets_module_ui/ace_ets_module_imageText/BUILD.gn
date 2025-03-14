@@ -40,6 +40,7 @@ group("ActsAceEtsModuleImageTextTest") {
       "ace_ets_module_imageText_nowear_api13:ActsAceEtsModuleImageTextNowearApi13Test",
       "ace_ets_module_imageText_nowear_api15:ActsAceEtsModuleImageTextNowearApi15Test",
       "ace_ets_module_imageText_nowear_api16:ActsAceEtsModuleImageTextNowearApi16Test",
+      "ace_ets_module_imageText_nowear_api18:ActsAceEtsModuleImageTextNowearApi18Test",
     ]
   }
 }
