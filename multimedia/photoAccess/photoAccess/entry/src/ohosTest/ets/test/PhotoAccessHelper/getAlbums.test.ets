@@ -218,6 +218,7 @@ export default function getAlbumsTest () {
         done();
       }
     });
+
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0000
