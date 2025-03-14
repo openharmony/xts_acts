@@ -18,7 +18,7 @@ import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function datePickerDialogModeTest() {
-  describe('datePickerDialogMode', () => {
+  describe('DatePickerDialogMode', () => {
 
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
