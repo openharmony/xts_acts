@@ -61,7 +61,7 @@ export default function blankJsunit() {
      * @tc.desc aceEtsTest
      */
     it('BlankGetInspectorByKey', 0, async (done: Function) => {
-      let strJson = getInspectorByKey('blank');
+      let strJson = getInspectorByKey('BlankTest_blank');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd blank component obj is: " + JSON.stringify(obj));
       console.log("cd blank type" + JSON.stringify(obj.$type));

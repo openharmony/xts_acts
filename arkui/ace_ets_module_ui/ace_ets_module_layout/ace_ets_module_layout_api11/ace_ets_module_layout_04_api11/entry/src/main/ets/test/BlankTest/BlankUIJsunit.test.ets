@@ -118,7 +118,7 @@ export default function blankUIJsunit() {
       console.info("[blankJsunit_0500'] text1_rect is " + JSON.stringify(text1_rect) + "toggle1_rect is " + JSON.stringify(toggle1_rect) + "bl1.rect is " + JSON.stringify(bl1_rect));
       // 判断blank不显示
       expect(bl1_rect.left - bl1_rect.right).assertEqual(0)
-      let strJson = getInspectorByKey('blank');
+      let strJson = getInspectorByKey('blankUIJsunit_blank');
       let obj: ESObject = JSON.parse(strJson);
        console.info("[blankJsunit_0500'] component obj is: " + strJson);
       expect(obj.$attrs.min).assertEqual('0.00vp');
@@ -129,7 +129,7 @@ export default function blankUIJsunit() {
       console.info('blankJsunitUITest_0600 START');
       await CommonFunc.sleep(1000);
        // 验证父组件为row/coloumn 且宽度有，blank平分
-      let strJson = getInspectorByKey('blank');
+      let strJson = getInspectorByKey('blankUIJsunit_blank');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0600'] component obj is: " + JSON.stringify(obj));
       let text_rect = CommonFunc.getComponentRect('text');
@@ -146,7 +146,7 @@ export default function blankUIJsunit() {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
        // 直接判断组件的属性
-      let strJson = getInspectorByKey('blank');
+      let strJson = getInspectorByKey('blankUIJsunit_blank');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0700'] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
