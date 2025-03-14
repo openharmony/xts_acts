@@ -6455,5 +6455,362 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0101
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0101
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0101', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        runCmd();
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0101"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 450
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0201
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0201
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0201', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0201"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 460
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0301
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0301
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0301', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0301"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 470
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0401
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0401
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0401', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0401"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 480
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IME_SplitScreen_0101
+     * @tc.name    SUB_InputMethod_IME_SplitScreen_0101
+     * @tc.desc    12800012
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IME_SplitScreen_0101', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_SplitScreen_0101 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_SplitScreen_0101 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        runCmd();
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_SplitScreen_0101"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 490
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
   });
 };
