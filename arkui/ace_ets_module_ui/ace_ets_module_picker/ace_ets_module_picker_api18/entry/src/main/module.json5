@@ -32,7 +32,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.picker.api12.EntryAbility",
+        "name": "com.arkui.ace.picker.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
