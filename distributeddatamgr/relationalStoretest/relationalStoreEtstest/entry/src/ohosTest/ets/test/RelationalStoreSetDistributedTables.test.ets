@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import data_relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
@@ -86,7 +86,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -117,7 +117,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -149,7 +149,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -182,7 +182,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -215,7 +215,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -247,7 +247,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -280,7 +280,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -313,7 +313,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -344,7 +344,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -376,7 +376,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -409,7 +409,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -442,7 +442,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -474,7 +474,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -507,7 +507,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -541,7 +541,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -574,7 +574,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -610,7 +610,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -648,7 +648,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -673,7 +673,7 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
-            
+
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800 end   *************");
         });
@@ -685,7 +685,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -721,7 +721,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -757,7 +757,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -793,7 +793,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -830,7 +830,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -867,7 +867,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -904,7 +904,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -941,7 +941,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -978,7 +978,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -1015,7 +1015,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -1052,7 +1052,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -1089,7 +1089,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG + "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
@@ -1097,60 +1097,60 @@ export default function relationalStoreSetDistributedTables() {
             try {
                 let tableArray = [TABLE];
                 rdbStore.setDistributedTables(tableArray, data_relationalStore.DistributedType.DISTRIBUTED_CLOUD, {
-                autoSync: true,
-                asyncDownloadAsset: false,
-                enableCloud: false
+                    autoSync: true,
+                    asyncDownloadAsset: false,
+                    enableCloud: false
                 }, async (err) => {
-                if (err) {
-                    console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                }
-                console.info('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000 SetDistributedTables successfully.');
-                let u8 = new Uint8Array([4, 5, 6]);
-                const valueBucket1: data_relationalStore.ValuesBucket = {
-                    'name': "zhangsan",
-                    'age': 18,
-                    'salary': 100.5
-                };
-                const valueBucket2: data_relationalStore.ValuesBucket = {
-                    'name': "lisi",
-                    'age': 18,
-                    'salary': 100.5,
-                };
-                if (rdbStore != undefined ) {
-                    let rowId: number = await rdbStore.insert(TABLE, valueBucket1);
-                    console.log(TAG + "rowId:" + rowId);
-                    let predicates = new data_relationalStore.RdbPredicates("lockrowtest");
-                    predicates.equalTo("name", "zhangsan");
-                    let resultSet: data_relationalStore.ResultSet = await rdbStore.query(predicates, ["id", "name", "age", "salary"]);
-                    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-                    expect(resultSet.rowCount).assertEqual(1);
-                    rdbStore.update(valueBucket2, predicates, (err, rows) => {
-                        if (err) {
-                            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-                            expect().assertFail();
-                            done();
-                        }
-                        console.info(`update rows: ${rows}`);
-                        expect(rows).assertEqual(1);
-                    });
-                    predicates = new data_relationalStore.RdbPredicates("lockrowtest");
-                    predicates.equalTo("name", "lisi");
-                    rdbStore.delete(predicates, (err, rows) => {
-                        if (err) {
-                            console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-                            expect().assertFail();
-                            done();
-                        }
-                        console.info(`Delete rows: ${rows}`);
-                        expect(rows).assertEqual(1);
+                    if (err) {
+                        console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+                        expect().assertFail();
                         done();
-                    });
-                } else {
-                    expect().assertFail();
-                    done();
-                }
+                    }
+                    console.info('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000 SetDistributedTables successfully.');
+                    let u8 = new Uint8Array([4, 5, 6]);
+                    const valueBucket1: data_relationalStore.ValuesBucket = {
+                        'name': "zhangsan",
+                        'age': 18,
+                        'salary': 100.5
+                    };
+                    const valueBucket2: data_relationalStore.ValuesBucket = {
+                        'name': "lisi",
+                        'age': 18,
+                        'salary': 100.5,
+                    };
+                    if (rdbStore != undefined ) {
+                        let rowId: number = await rdbStore.insert(TABLE, valueBucket1);
+                        console.log(TAG + "rowId:" + rowId);
+                        let predicates = new data_relationalStore.RdbPredicates("lockrowtest");
+                        predicates.equalTo("name", "zhangsan");
+                        let resultSet: data_relationalStore.ResultSet = await rdbStore.query(predicates, ["id", "name", "age", "salary"]);
+                        console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+                        expect(resultSet.rowCount).assertEqual(1);
+                        rdbStore.update(valueBucket2, predicates, (err, rows) => {
+                            if (err) {
+                                console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+                                expect().assertFail();
+                                done();
+                            }
+                            console.info(`update rows: ${rows}`);
+                            expect(rows).assertEqual(1);
+                        });
+                        predicates = new data_relationalStore.RdbPredicates("lockrowtest");
+                        predicates.equalTo("name", "lisi");
+                        rdbStore.delete(predicates, (err, rows) => {
+                            if (err) {
+                                console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+                                expect().assertFail();
+                                done();
+                            }
+                            console.info(`Delete rows: ${rows}`);
+                            expect(rows).assertEqual(1);
+                            done();
+                        });
+                    } else {
+                        expect().assertFail();
+                        done();
+                    }
                 })
             } catch (err) {
                 console.log(TAG + "err code:" + err.code + "err message:" + err.message);
@@ -1169,7 +1169,7 @@ export default function relationalStoreSetDistributedTables() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100', 0, async (done:Function) => {
+        it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100 start *************");
             context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
