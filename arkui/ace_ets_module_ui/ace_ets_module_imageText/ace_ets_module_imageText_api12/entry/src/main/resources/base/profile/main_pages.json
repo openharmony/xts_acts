@@ -149,6 +149,7 @@
     "MainAbility/pages/xts/TextAreaXts",
     "MainAbility/pages/xts/TextInputXts",
     "MainAbility/pages/span/spanPage",
+    "MainAbility/pages/Text/ContainerSpanModifierTest",
     
     "MainAbility/pages/RichEditorEmoji/RichEditor001",
     "MainAbility/pages/RichEditorEmoji/RichEditor002",

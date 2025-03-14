@@ -15,9 +15,11 @@
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import SelectionMenuOptions from './RichEditorTest/SelectionMenuOptions.test';
+import TextContentGetSelectionTest from './TextTest/TextContentGetSelectionTest.test';
 
 
 export default function testsuite() {
   textAreaInputTest();
   SelectionMenuOptions();
+  TextContentGetSelectionTest();
 }
