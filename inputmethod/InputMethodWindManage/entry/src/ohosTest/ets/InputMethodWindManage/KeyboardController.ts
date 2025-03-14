@@ -1464,7 +1464,7 @@ export class KeyboardController {
     let commonEventPublishData = {
         data: 'FAILED'
     };
-    try{
+    try {
         let keyboardRect: inputMethodEngine.PanelRect = {
             landscapeRect: { left: 100, top: 100, width: this.display_info.width, height: this.display_info.height * 0.4},
             portraitRect: { left: 100, top: 100, width: this.display_info.height * 0.4, height: this.display_info.width}
@@ -1569,7 +1569,7 @@ export class KeyboardController {
           timeCount += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
           if (timeCount === 2) {
-            clearInterval(t1)
+            clearInterval(t1);
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 clearInterval success');
           };
         }, 100);
@@ -1607,12 +1607,12 @@ export class KeyboardController {
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving success');
         } catch (err) {
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving err' + JSON.stringify(err));
-          if(err.code === 12800017){
+          if (err.code === 12800017) {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
           };
-          if(err.code === 801){
+          if (err.code === 801) {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
@@ -1711,7 +1711,7 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
             that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId === 'Sub_InputMethod_IME_Custom_0900'){
+          if (msgId === 'Sub_InputMethod_IME_Custom_0900') {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))
           }else{
@@ -1749,10 +1749,10 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
             that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId.length === 256 && msgParam?.byteLength === 131072){
+          if (msgId.length === 256 && msgParam?.byteLength === 131072) {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('SUCCESS'))
-          }else{
+          } else {
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('FAILED'))
           }
           that.InputClient.recvMessage()
@@ -1787,7 +1787,7 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
             that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId.length === 0 && msgParam?.byteLength === 131072){
+          if (msgId.length === 0 && msgParam?.byteLength === 131072) {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0800', that.newArrayBuffer('SUCCESS'))
           }else{
@@ -3206,7 +3206,7 @@ export class KeyboardController {
     console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 start');
     try {
       if (this.softKeyboardPanel !== null) {
-        await inputMethodAbility.destroyPanel(this.softKeyboardPanel)
+        await inputMethodAbility.destroyPanel(this.softKeyboardPanel);
         console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 this.softKeyboardPanel:' + this.softKeyboardPanel);
           try {
             let WindowInfo = await this.InputClient.getCallingWindowInfo();
