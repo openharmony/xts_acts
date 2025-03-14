@@ -33,6 +33,69 @@ export default function windowErrCode202_1() {
     })
 
     /**
+     * @tc.number     : testMinimizeAllCallbackErrCode202_0100
+     * @tc.name       : testMinimizeAllCallbackErrCode202_0100
+     * @tc.desc       : testMinimizeAllCallbackErrCode202_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testMinimizeAllCallbackErrCode202_0100', 0, async (done: Function) => {
+      let caseName = "testMinimizeAllCallbackErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      try {
+        ohosWindow.minimizeAll(0, async (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call minimizeAll. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(202);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling minimizeAll.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call minimizeAll. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testMinimizeAllPromiseErrCode202_0100
+     * @tc.name       : testMinimizeAllPromiseErrCode202_0100
+     * @tc.desc       : testMinimizeAllPromiseErrCode202_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testMinimizeAllPromiseErrCode202_0100', 0, async (done: Function) => {
+      let caseName = "testMinimizeAllPromiseErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      try {
+        await ohosWindow.minimizeAll(0).then(async () => {
+          console.info(msgStr + 'Succeeded in calling minimizeAll.');
+          expect().assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call minimizeAll. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(202);
+          done()
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call minimizeAll. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
      * @tc.number     : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100
      * @tc.name       : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100
      * @tc.desc       : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100
