@@ -437,7 +437,7 @@ export default function inputMethodAuthorityJSUnit() {
     it('Sub_Misc_InputMethod_IME_recvMessage_0100', 0, async (done: Function) => {
       let inputMethodController = inputMethod.getController();
       let data = false
-      let messageHandler: inputmethod.MessageHandler = {
+      let messageHandler: inputMethod.MessageHandler = {
         onTerminated(): void {
             console.info('====>OnTerminated.');
             data = true
