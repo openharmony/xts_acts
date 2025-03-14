@@ -58,7 +58,7 @@ export default function graphicTextClass() {
     it('testlayoutSync', 1, async ()=> {
       let msg = "testlayoutSync"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           paragraph.layoutSync(100);
         } catch (err) {
@@ -78,7 +78,7 @@ export default function graphicTextClass() {
       let msg = "testPaint"
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           paragraph.paint(canvas, 10, 10);
         } catch (err) {
@@ -97,7 +97,7 @@ export default function graphicTextClass() {
     it('testGetMaxWidth', 3, async ()=> {
       let msg = "testGetMaxWidth"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let width = paragraph.getMaxWidth();
           expect(width != null).assertTrue();
@@ -117,7 +117,7 @@ export default function graphicTextClass() {
     it('testGetHeight', 4, async ()=> {
       let msg = "testGetHeight"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let height = paragraph.getHeight();
           expect(height != null).assertTrue();
@@ -137,7 +137,7 @@ export default function graphicTextClass() {
     it('testGetLongestLine', 5, async ()=> {
       let msg = "testGetLongestLine"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let line = paragraph.getLongestLine();
           expect(line != null).assertTrue();
@@ -158,7 +158,7 @@ export default function graphicTextClass() {
     it('testGetMinIntrinsicWidth', 6, async ()=> {
       let msg = "testGetMinIntrinsicWidth"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let width = paragraph.getMinIntrinsicWidth();
           expect(width != null).assertTrue();
@@ -178,7 +178,7 @@ export default function graphicTextClass() {
     it('testGetMaxIntrinsicWidth', 7, async ()=> {
       let msg = "testGetMaxIntrinsicWidth"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let width = paragraph.getMaxIntrinsicWidth();
           expect(width != null).assertTrue();
@@ -198,7 +198,7 @@ export default function graphicTextClass() {
     it('testGetAlphabeticBaseline', 8, async ()=> {
       let msg = "testGetAlphabeticBaseline"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let baseline = paragraph.getAlphabeticBaseline();
           expect(baseline != null).assertTrue();
@@ -219,7 +219,7 @@ export default function graphicTextClass() {
     it('testGetIdeographicBaseline', 9, async ()=> {
       let msg = "testGetIdeographicBaseline"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let baseline = paragraph.getIdeographicBaseline();
           expect(baseline != null).assertTrue();
@@ -239,7 +239,7 @@ export default function graphicTextClass() {
     it('testGetRectsForRange', 10, async ()=> {
       let msg = "testGetRectsForRange"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let range :text.Range = {start : 10,end: 50};
       let wstyle = text.RectWidthStyle.TIGHT;
       let hstyle = text.RectHeightStyle.TIGHT;
@@ -262,7 +262,7 @@ export default function graphicTextClass() {
     it('testGetRectsForPlaceholders', 11, async ()=> {
       let msg = "testGetRectsForPlaceholders"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let rects : Array<text.TextBox> = paragraph.getRectsForPlaceholders();
           expect(rects != null).assertTrue();
@@ -282,7 +282,7 @@ export default function graphicTextClass() {
     it('testGetGlyphPositionAtCoordinate', 12, async ()=> {
       let msg = "testGetGlyphPositionAtCoordinate"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let positionWithAffinity = paragraph.getGlyphPositionAtCoordinate(10,10);
           expect(positionWithAffinity != null).assertTrue();
@@ -302,7 +302,7 @@ export default function graphicTextClass() {
     it('testGetWordBoundary', 13, async ()=> {
       let msg = "testGetWordBoundary"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let range:text.Range = paragraph.getWordBoundary(10);
           expect(range != null).assertTrue();
@@ -322,7 +322,7 @@ export default function graphicTextClass() {
     it('testGetLineCount', 14, async ()=> {
       let msg = "testGetLineCount"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let linecount = paragraph.getLineCount();
           expect(linecount != null).assertTrue();
@@ -342,7 +342,7 @@ export default function graphicTextClass() {
     it('testGetLineHeight', 15, async ()=> {
       let msg = "testGetLineHeight"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let height = paragraph.getLineHeight(1);
           expect(height != null).assertTrue();
@@ -362,7 +362,7 @@ export default function graphicTextClass() {
     it('testGetLineWidth', 16, async ()=> {
       let msg = "testGetLineWidth"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let width = paragraph.getLineWidth(1);
           expect(width != null).assertTrue();
@@ -382,7 +382,7 @@ export default function graphicTextClass() {
     it('testDidExceedMaxLines', 17, async ()=> {
       let msg = "testDidExceedMaxLines"
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       try {
           let did = paragraph.didExceedMaxLines();
           expect(did != null).assertTrue();
@@ -404,7 +404,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       paragraph.paint(canvas, 0, 0);
       let textLines: Array<text.TextLine> = paragraph.getTextLines();
@@ -434,7 +434,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       paragraph.paint(canvas, 0, 0);
       let textLines: Array<text.TextLine> = paragraph.getTextLines();
@@ -464,7 +464,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       paragraph.paint(canvas, 0, 0);
       let textLines: Array<text.TextLine> = paragraph.getTextLines();
@@ -577,7 +577,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -611,7 +611,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel);
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
       for(let i =0 ; i < length ; i++) {
@@ -644,7 +644,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
       for(let i =0 ; i < length ; i++) {
@@ -677,7 +677,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
       for(let i =0 ; i < length ; i++) {
@@ -710,7 +710,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
       for(let i =0 ; i < length ; i++) {
@@ -743,7 +743,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
       for(let i =0 ; i < length ; i++) {
@@ -774,7 +774,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_GetGlyphs';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -836,7 +836,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_GetPositions';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -898,7 +898,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_getStringIndices';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -966,7 +966,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_getStringRange';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1000,7 +1000,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_getImageBounds';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1039,7 +1039,7 @@ export default function graphicTextClass() {
       let msg = 'testTextRun_getTypographicBounds';
       console.info(msg + 'begin');
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1089,7 +1089,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_1', 34, async ()=> {
       let msg = "testlayoutByPromise_1 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(100).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(true).assertTrue();
@@ -1110,7 +1110,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_2', 35, async ()=> {
       let msg = "testlayoutByPromise_2 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(-100).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(false).assertTrue();
@@ -1131,7 +1131,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_3', 36, async ()=> {
       let msg = "testlayoutByPromise_3 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(null).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(false).assertTrue();
@@ -1152,7 +1152,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_4', 37, async ()=> {
       let msg = "testlayoutByPromise_4 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(undefined).then((data) => {
         console.info(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(false).assertTrue();
@@ -1173,7 +1173,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_5', 38, async ()=> {
       let msg = "testlayoutByPromise_5 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(110.05).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(true).assertTrue();
@@ -1194,7 +1194,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_6', 39, async ()=> {
       let msg = "testlayoutByPromise_6 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(Number.MAX_VALUE).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(true).assertTrue();
@@ -1215,7 +1215,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_7', 40, async ()=> {
       let msg = "testlayoutByPromise_7 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(Number.MIN_VALUE).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(true).assertTrue();
@@ -1236,7 +1236,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_8', 41, async ()=> {
       let msg = "testlayoutByPromise_8 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(Number.MAX_SAFE_INTEGER).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(true).assertTrue();
@@ -1257,7 +1257,7 @@ export default function graphicTextClass() {
     it('testlayoutByPromise_9', 42, async ()=> {
       let msg = "testlayoutByPromise_9 "
       console.info(msg + 'begin');
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       await paragraph.layout(Number.MIN_SAFE_INTEGER).then((data) => {
         console.log(msg + `layout success !  ${JSON.stringify(data)}`);
         expect(false).assertTrue();
@@ -1734,7 +1734,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1827,7 +1827,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1875,7 +1875,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1923,7 +1923,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -1953,7 +1953,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -2014,7 +2014,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -2072,7 +2072,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;
@@ -2136,7 +2136,7 @@ export default function graphicTextClass() {
       console.info(msg + 'begin');
       let canvas = new drawing.Canvas(pixel)
       let textTitle = "123";
-      let paragraph = buildParagraph();
+      let paragraph: text.Paragraph = buildParagraph();
       paragraph.layoutSync(200);
       let textLines : Array<text.TextLine> = paragraph.getTextLines();
       let length = textLines.length;

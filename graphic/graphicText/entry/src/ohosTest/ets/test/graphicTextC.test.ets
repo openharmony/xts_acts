@@ -197,7 +197,7 @@ export default function graphicTextCTest() {
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
           try {
-            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            let paragraphGraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
             console.log(msg + ' Succeed in text.ParagraphBuilder')
             expect(true).assertTrue()
             done()
@@ -339,7 +339,7 @@ export default function graphicTextCTest() {
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
           try {
-            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            let paragraphGraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
             console.log(msg + ' Succeed in text.ParagraphBuilder')
             expect(true).assertTrue()
             done()
@@ -489,9 +489,9 @@ export default function graphicTextCTest() {
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
           try {
-            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            let paragraphGraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
             paragraphGraphBuilder.addText("test");
-            let paragraph = paragraphGraphBuilder.build();
+            let paragraph: text.Paragraph = paragraphGraphBuilder.build();
             paragraph.layout(-1).then((data) => {
               console.info(`Succeeded in doing layout,  ${JSON.stringify(data)}`);
               console.log(msg + ' error in paragraph.layout(-1)')
@@ -615,9 +615,9 @@ export default function graphicTextCTest() {
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
           try {
-            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-            ParagraphGraphBuilder.addText("123456789");
-            let lineTypeset = ParagraphGraphBuilder.buildLineTypeset();
+            let paragraphGraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            paragraphGraphBuilder.addText("123456789");
+            let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
             let startIndex = -1;
             let width = 100.0;
             try{
@@ -625,7 +625,7 @@ export default function graphicTextCTest() {
               console.log(msg + ' error in lineTypeset.getLineBreak(-1, width)')
               expect().assertFail();
               done()
-            }catch(error: BusinessError){
+            }catch(error){
               if(error.code == 401){
                 console.log(msg + ' Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. ')
                 console.log(msg + ' Case End Successfully')
@@ -743,9 +743,9 @@ export default function graphicTextCTest() {
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
           console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
           try {
-            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-            ParagraphGraphBuilder.addText("123456789");
-            let lineTypeset = ParagraphGraphBuilder.buildLineTypeset();
+            let paragraphGraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            paragraphGraphBuilder.addText("123456789");
+            let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
             let startIndex = -1;
             let width = 100.0;
             try{
@@ -754,7 +754,7 @@ export default function graphicTextCTest() {
               console.log(msg + ' error in lineTypeset.createLine(-1, width)')
               expect().assertFail();
               done()
-            }catch(error: BusinessError){
+            }catch(error){
               if(error.code == 401){
                 console.log(msg + ' Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. ')
                 console.log(msg + ' Case End Successfully')
