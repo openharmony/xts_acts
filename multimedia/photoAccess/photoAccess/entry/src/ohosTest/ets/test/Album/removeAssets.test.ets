@@ -226,21 +226,21 @@ export default function removeAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('removeAssets_callback_006', 2, async (done: Function) => {
-      const testNum = 'removeAssets_callback_006';
-      try {
-        const album: ESObject = await helper.createAlbum(testNum);
-        album.removeAssets(['123123'], async (err: BusinessError) => {
-          expect(false).assertTrue(); 
-        })
-        done();
-      } catch (error) {
-        console.info(`${testNum} failed; error: ${error}`);
-        expect(error.code).assertEqual('14000011');
-        done();
-      }
-    });
-    
+        it('removeAssets_callback_006', 2, async (done: Function) => {
+          const testNum = 'removeAssets_callback_006';
+          try {
+            const album: ESObject = await helper.createAlbum(testNum);
+            album.removeAssets(['123123'], async (err: BusinessError) => {
+              expect(false).assertTrue(); 
+            })
+            done();
+          } catch (error) {
+            console.info(`${testNum} failed; error: ${error}`);
+            expect(error.code).assertEqual('14000011');
+            done();
+          }
+        });
+
     //promise
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
@@ -381,7 +381,7 @@ export default function removeAssetsTest () {
         done();
       }
     });
-    
+
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0600
       * @tc.name      : removeAssets_promise_006
