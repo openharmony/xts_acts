@@ -377,12 +377,13 @@ describe('rdbStoreDeleteTest', function () {
                 let resultSet = await rdbStore.query(predicates)
                 expect(1).assertEqual(resultSet.rowCount)
                 console.info(TAG + "query success,resultSet.rowCount is " + resultSet.rowCount)
+                done()
               })
             } catch (err) {
               console.info(TAG + "set test to be distributed table failed");
               expect(null).assertFail();
+              done()
             }
-            done()
             console.info(TAG + "************* dataRdbTest001 end *************");
           })
       
