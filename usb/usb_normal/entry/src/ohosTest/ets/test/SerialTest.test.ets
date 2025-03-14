@@ -122,8 +122,10 @@ export default function SerialTest() {
         let portList: serial.SerialPort[] = serial.getPortList();
         console.info(TAG, 'testGetPortList001 portList: ', JSON.stringify(portList));
         if (portList && portList.length > 0) {
-            openPortId = portList[0].portId;
-            console.info(TAG, 'testGetPortList001 openPortId: ', openPortId);
+          openPortId = portList[0].portId;
+          console.info(TAG, 'testGetPortList001 openPortId: ', openPortId);
+          let openPortName: string = portList[0].deviceName;
+          expect(openPortName !== null && openPortName !== undefined).assertTrue();
         }
         expect(portList.length > 0).assertTrue();
         done();
