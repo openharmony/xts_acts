@@ -32,7 +32,7 @@ struct TimePickerPage {
 
     }
     let callback: Callback = (message: ESObject) => {
-      console.error('message = ' + message.name + '--' + message.value)
+      console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'isMilitaryTime') {
         this.isMilitaryTime = message.value
       }
@@ -53,9 +53,10 @@ struct TimePickerPage {
     Column() {
       Row() {
         Button('切换12小时制')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('12hour')
+          .id('12hour')
           .onClick(() => {
             this.selectedTime = new Date('2022-07-22T10:00:00')
             this.isMilitaryTime = false
@@ -63,9 +64,10 @@ struct TimePickerPage {
           })
 
         Button('切换24小时制')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('24hour')
+          .id('24hour')
           .onClick(() => {
             this.selectedTime = new Date('2022-07-22T10:00:00')
             this.isMilitaryTime = true
@@ -75,18 +77,20 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-true')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('timePicker-true')
+          .id('timePicker-true')
           .onClick(() => {
             this.enableCascade = true
 
           })
 
         Button('切换enableCascade值-false')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('timePicker-false')
+          .id('timePicker-false')
           .onClick(() => {
             this.enableCascade = false
 
@@ -95,18 +99,20 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-null')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('timePicker-null')
+          .id('timePicker-null')
           .onClick(() => {
             this.enableCascade = null
 
           })
 
         Button('切换enableCascade值-undefined')
-          .height('9%')
+          .width('5%')
+          .height('5%')
           .margin({ top: 5 })
-          .key('timePicker-undefined')
+          .id('timePicker-undefined')
           .onClick(() => {
             this.enableCascade = undefined
 
@@ -127,9 +133,11 @@ struct TimePickerPage {
           this.selectedTime.setHours(value.hour, value.minute)
           console.info('select current date is: ' + JSON.stringify(value))
         })
-      Text('hour:' + this.hour).key('hour')
-      Text('minute:' + this.minute).key('minute')
+      Text('hour:' + this.hour).fontSize(20).margin(10).key('hour')
+      Text('minute:' + this.minute).fontSize(20).margin(10).key('minute')
       Text('24hour:false')
     }
+    .width('100%')
+    .height('50%')
   }
 }
