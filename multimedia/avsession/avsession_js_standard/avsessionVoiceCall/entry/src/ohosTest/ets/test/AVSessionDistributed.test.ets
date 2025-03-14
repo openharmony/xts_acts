@@ -64,6 +64,24 @@ export default function abilityTest() {
 
     afterEach(async () => {
       console.info(`${TAG}: afterEach in`)
+      if (session != null) {
+        await session.destroy().then(() => {
+          console.info(`${TAG}: Session destroy success`);
+        }).catch((err: BusinessError) => {
+          console.info(`${TAG}: Session destroy error: code: ${err.code}, message: ${err.message}`);
+        });
+      } else {
+        console.info(`${TAG}: Session is already destroy`);
+      }
+      if (controller != null) {
+        await controller.destroy().then(() => {
+          console.info(`${TAG}: Controller destroy success`);
+        }).catch((err: BusinessError) => {
+          console.info(`${TAG}: Controller destroy error: code: ${err.code}, message: ${err.message}`);
+        });
+      } else {
+        console.info(`${TAG}: Controller is already destroy`);
+      }
       console.info(`${TAG}: afterEach out`)
     })
 
