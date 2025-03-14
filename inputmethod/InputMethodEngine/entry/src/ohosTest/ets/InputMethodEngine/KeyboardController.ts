@@ -1579,7 +1579,7 @@ export class KeyboardController {
       console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1101 err: ' + JSON.stringify(err));
       if (err.code === 401) {
         commonEventPublishData = {
-          data: "SUCCESS"
+          data: 'SUCCESS'
         };
       }
     };
