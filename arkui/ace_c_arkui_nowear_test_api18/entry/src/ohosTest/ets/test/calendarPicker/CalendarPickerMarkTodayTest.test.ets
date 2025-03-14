@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the 'License');
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS,
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -40,8 +40,8 @@ export default function calendarPickerTest(){
       await Utils.sleep(3000)
       let strJson = getInspectorByKey('calendarPicker_001');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[CalendarPickerMarkTodayTest001]disabledDateRange:' + JSON.stringify(obj.$attrs.disabledDateRange));
-      console.info('[CalendarPickerMarkTodayTest001]markToday:' + JSON.stringify(obj.$attrs.markToday));
+      console.info("[CalendarPickerMarkTodayTest001]disabledDateRange:" + JSON.stringify(obj.$attrs.disabledDateRange));
+      console.info("[CalendarPickerMarkTodayTest001]markToday:" + JSON.stringify(obj.$attrs.markToday));
       expect(obj.$attrs.disabledDateRange).assertEqual('2025年1月7日星期二,2025年1月9日星期四,2025年7月1日星期二,2100年12月31日星期五');
       await Utils.sleep(1000)
       expect(obj.$attrs.markToday).assertEqual('true');
@@ -65,8 +65,8 @@ export default function calendarPickerTest(){
       await Utils.sleep(3000)
       let strJson = getInspectorByKey('calendarPicker_002');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[CalendarPickerMarkTodayTest002]disabledDateRange:' + JSON.stringify(obj.$attrs.disabledDateRange));
-      console.info('[CalendarPickerMarkTodayTest002]markToday:' + JSON.stringify(obj.$attrs.markToday));
+      console.info("[CalendarPickerMarkTodayTest002]disabledDateRange:" + JSON.stringify(obj.$attrs.disabledDateRange));
+      console.info("[CalendarPickerMarkTodayTest002]markToday:" + JSON.stringify(obj.$attrs.markToday));
       expect(obj.$attrs.disabledDateRange).assertEqual('1970年1月1日星期四,2020年11月10日星期二');
       await Utils.sleep(1000)
       expect(obj.$attrs.markToday).assertEqual('true');
@@ -90,8 +90,8 @@ export default function calendarPickerTest(){
       await Utils.sleep(3000)
       let strJson = getInspectorByKey('calendarPicker_003');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[CalendarPickerMarkTodayTest003]disabledDateRange:' + JSON.stringify(obj.$attrs.disabledDateRange));
-      console.info('[CalendarPickerMarkTodayTest003]markToday:' + JSON.stringify(obj.$attrs.markToday));
+      console.info("[CalendarPickerMarkTodayTest003]disabledDateRange:" + JSON.stringify(obj.$attrs.disabledDateRange));
+      console.info("[CalendarPickerMarkTodayTest003]markToday:" + JSON.stringify(obj.$attrs.markToday));
       expect(obj.$attrs.disabledDateRange).assertEqual('2025年1月7日星期二,2025年1月9日星期四,2025年7月1日星期二,2100年12月31日星期五');
       await Utils.sleep(1000)
       expect(obj.$attrs.markToday).assertEqual('false');
@@ -115,8 +115,8 @@ export default function calendarPickerTest(){
       await Utils.sleep(3000)
       let strJson = getInspectorByKey('calendarPicker_004');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[CalendarPickerMarkTodayTest004]disabledDateRange:' + JSON.stringify(obj.$attrs.disabledDateRange));
-      console.info('[CalendarPickerMarkTodayTest004]markToday:' + JSON.stringify(obj.$attrs.markToday));
+      console.info("[CalendarPickerMarkTodayTest004]disabledDateRange:" + JSON.stringify(obj.$attrs.disabledDateRange));
+      console.info("[CalendarPickerMarkTodayTest004]markToday:" + JSON.stringify(obj.$attrs.markToday));
       expect(obj.$attrs.disabledDateRange).assertEqual('2025年7月1日星期二,2100年12月31日星期五');
       await Utils.sleep(1000)
       expect(obj.$attrs.markToday).assertEqual('false');

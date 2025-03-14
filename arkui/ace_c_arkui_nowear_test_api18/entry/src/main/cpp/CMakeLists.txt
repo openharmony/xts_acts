@@ -11,18 +11,11 @@ include_directories(
 )
 
 add_library(nativerender SHARED
+    component/component.cpp
+    component/calendarPicker_component.cpp
     manager/plugin_manager.cpp
     napi_render_init.cpp
-    postFrame/post_frame_callback_test.cpp
-    swiper/swiper_test.cpp
-    textArea/textArea_letter_spacing.cpp
-    textpicker/textpicker_columnwidths_test.cpp
-    component/component.cpp
-    component/calendarPicker_component.cpp  
-    drag/drag_test.cpp
-    calendarPicker/calendarPicker_date_test.cpp
-    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
-    move/node_util_move_test.cpp
+    calendarPicker/calendar_picker_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -62,6 +55,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so)
+    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
 target_link_libraries(nativefunc PUBLIC
 libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
