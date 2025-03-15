@@ -22,7 +22,7 @@ export default function showDotIndicator() {
     beforeEach(async (done: Function) => {
       console.info("showDotIndicator beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/111/showDotIndicator",
+        url: "MainAbility/pages/IndicatorComponent/showDotIndicator",
       }
       try {
         router.clear();
