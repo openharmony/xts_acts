@@ -16,7 +16,7 @@
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 100, width: 100, height: 100 };
+renderNode.frame = { x: 0, y: 0, width: 100, height: 50 };
 renderNode.backgroundColor = 0xffff0000;
 
 class MyNodeController extends NodeController {
@@ -26,7 +26,7 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
     let rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
-      rootRenderNode.size = { width: 200, height: 200 };
+      rootRenderNode.size = { width: 200, height: 50 };
       rootRenderNode.backgroundColor = 0xff00ff00;
       rootRenderNode.appendChild(renderNode);
     }
