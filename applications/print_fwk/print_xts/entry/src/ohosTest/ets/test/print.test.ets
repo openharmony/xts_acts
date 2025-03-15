@@ -15,7 +15,6 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-// import print from '@ohos.print'
 import print from '@ohos.print';
 import { BusinessError } from '@ohos.base';
 
@@ -25,31 +24,38 @@ const TAG: string = 'printTestXTS';
 function registerPrintTask(printTask: print.PrintTask) {
   printTask.on('block', () => {
     hilog.info(DOMAIN, TAG, 'print state is block')
-  })
+  });
   printTask.on('succeed', () => {
     hilog.info(DOMAIN, TAG, 'print state is succeed')
-  })
+  });
   printTask.on('fail', () => {
     hilog.info(DOMAIN, TAG, 'print state is fail')
-  })
+  });
   printTask.on('cancel', () => {
     hilog.info(DOMAIN, TAG, 'print state is cancel')
-  })
+  });
 }
 
 function UnregisterPrintTask(printTask: print.PrintTask) {
   printTask.off('block', () => {
     hilog.info(DOMAIN, TAG, 'unregister print state is blocked')
-  })
+  });
   printTask.off('succeed', () => {
     hilog.info(DOMAIN, TAG, 'unregister print state is succeed')
-  })
+  });
   printTask.off('fail', () => {
     hilog.info(DOMAIN, TAG, 'unregister print state is fail')
-  })
+  });
   printTask.off('cancel', () => {
     hilog.info(DOMAIN, TAG, 'unregister print state is cancel')
-  })
+  });
+}
+
+function UnregisterPrintTaskWithoutCallback(printTask: print.PrintTask) {
+  printTask.off('block');
+  printTask.off('succeed');
+  printTask.off('fail');
+  printTask.off('cancel');
 }
 
 export default function printTest() {
@@ -64,16 +70,19 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0100', 0, () => {
+    it('print_function_0100', 0, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       // Permissions required: ohos.permission.PRINT
-      print.print(file).then((printTask: print.PrintTask) => {
+      await print.print(file).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);
         UnregisterPrintTask(printTask);
+        console.log('print_function_0100 succeed');
+        done();
       }).catch((error: BusinessError) => {
-        expect(false).assertTrue();
+        console.log('print_function_0100 failed, err: ' + JSON.stringify(error));
+        done();
       })
     })
 
@@ -85,23 +94,26 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0200', 0, () => {
+    it('print_function_0200', 0, (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      try {
-        // Permissions required: ohos.permission.PRINT
-        print.print(file, (err, printTask: print.PrintTask) => {
-          if (err) {
-            expect(false).assertTrue();
+      // Permissions required: ohos.permission.PRINT
+      print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
+        try {
+          if (err) {  
+            console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
+            done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
             expect(!!printTask).assertTrue();
             registerPrintTask(printTask);
-            UnregisterPrintTask(printTask);
+            UnregisterPrintTaskWithoutCallback(printTask);
+            console.log('print_function_0200 succeed');
+            done()
           }
-        })
-      } catch (error) {
-        expect().assertFail();
-      }
+        } catch (error) {
+          done();
+        }
+      })
     })
 
     /**
@@ -112,24 +124,28 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0300', 0, () => {
+    it('print_function_0300', 0, (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
-      try {
-        // Permissions required: ohos.permission.PRINT
-        print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
-          if (err) {
-            expect(false).assertTrue();
+      // Permissions required: ohos.permission.PRINT
+      print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
+        try {
+          if (err) {  
+            console.log('print_function_0300failed, err: ' + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
             expect(!!printTask).assertTrue();
             registerPrintTask(printTask);
-            UnregisterPrintTask(printTask);
+            UnregisterPrintTaskWithoutCallback(printTask);
+            console.log('print_function_0300 succeed');
+            done();
           }
-        })
-      } catch (error) {
-        expect().assertFail();
-      }
+        } catch (error) {
+          done();
+        }
+      })
     })
 
     /**
@@ -140,17 +156,20 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0400', 0, () => {
+    it('print_function_0400', 0, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
-      print.print(file, context).then((printTask: print.PrintTask) => {
+      await print.print(file, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);
         UnregisterPrintTask(printTask);
+        console.log('print_function_0400 succeed');
+        done();
       }).catch((error: BusinessError) => {
         expect(false).assertTrue();
+        done();
       })
     })
 
@@ -207,10 +226,10 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0500', 0, () => {
+    it('print_function_0500', 0, async (done: Function) => {
       let jobName: string = 'jobName';
-      let printAdapter = new MyPrintDocumentAdapter();
-      let printAttributes = new MyPrintAttributes();
+      let printAdapter: print.PrintDocumentAdapter = new MyPrintDocumentAdapter();
+      let printAttributes: print.PrintAttributes = new MyPrintAttributes();
       printAttributes.copyNumber = 2;
       printAttributes.pageRange = new MyPrinterRange();
       printAttributes.pageRange.startPage = 0;
@@ -243,15 +262,18 @@ export default function printTest() {
       printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE;
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
-      print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
+      await print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);
         UnregisterPrintTask(printTask);
+        console.log('print_function_0100 succeed');
+        done();
       }).catch((error: BusinessError) => {
         expect(false).assertTrue();
-      })
-    })
+        done();
+      });
+    });
 
     class MyPrinterCapabilities implements print.PrinterCapabilities {
       supportedPageSizes: Array<print.PrintPageSize> = [];
@@ -282,8 +304,8 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0600', 0, () => {
-      let printerInformation = new MyPrinterInformation();
+    it('print_function_0600', 0, async (done: Function) => {
+      let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_IDLE;
@@ -291,7 +313,7 @@ export default function printTest() {
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
       printerInformation.description = 'testDescription';
       printerInformation.capability = new MyPrinterCapabilities();
-      let pageSize = new MyPrintPageSize();
+      let pageSize: print.PrintPageSize = new MyPrintPageSize();
       pageSize.id = '0';
       pageSize.name = '0';
       pageSize.width = 210;
@@ -325,10 +347,50 @@ export default function printTest() {
       printerInformation.options = 'testOptions';
 
       // Permissions required: ohos.permission.PRINT
-      print.addPrinterToDiscovery(printerInformation).then((data : void) => {
-        console.log('addPrinterToDiscovery succeed, data: ' + JSON.stringify(data));
+      await print.addPrinterToDiscovery(printerInformation).then((data : void) => {
+        console.log('addPrinterToDiscovery expect succeed, data: ' + JSON.stringify(data));
+        expect(data).assertTrue();
+        done();
       }).catch((error: BusinessError) => {
-        console.log('addPrinterToDiscovery failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number print_function_0601
+     * @tc.name Test print
+     * @tc.desc check the 401 error code of addPrinterToDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0601', 0, async (done: Function) => {
+      let printerInformation: print.PrinterInformation = new MyPrinterInformation();
+      printerInformation.printerId = '';
+      printerInformation.printerName = '';
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_IDLE;
+      printerInformation.description = 'testDescription';
+      printerInformation.uri = 'testUri';
+      printerInformation.printerMake = 'testPrinterMake';
+      printerInformation.options = 'testOptions';
+      printerInformation.capability = new MyPrinterCapabilities();
+      let pageSize: print.PrintPageSize = new MyPrintPageSize();
+      pageSize.id = '0';
+      pageSize.name = '0';
+      pageSize.width = 210;
+      pageSize.height = 297;
+      printerInformation.capability.supportedPageSizes = [pageSize];
+      await print.addPrinterToDiscovery(printerInformation)
+        .then((data : void) => {
+          console.log('addPrinterToDiscovery succeed, data: ' + JSON.stringify(data));
+          expect().assertFalse();
+          done();
+        })
+        .catch((error: BusinessError) => {
+          console.log('addPrinterToDiscovery expect failed, error: ' + JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          done();
       })
     })
 
@@ -340,14 +402,14 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0700', 0, () => {
-      let printerInformation = new MyPrinterInformation();
+    it('print_function_0700', 0, async (done: Function) => {
+      let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
       printerInformation.description = 'testDescription';
       printerInformation.capability = new MyPrinterCapabilities();
-      let pageSize = new MyPrintPageSize();
+      let pageSize: print.PrintPageSize = new MyPrintPageSize();
       pageSize.id = '0';
       pageSize.name = '0';
       pageSize.width = 210;
@@ -372,10 +434,51 @@ export default function printTest() {
       printerInformation.options = 'testOptions';
 
       // Permissions required: ohos.permission.PRINT
-      print.updatePrinterInDiscovery(printerInformation).then((data : void) => {
-        console.log('updatePrinterInDiscovery succeed, data: ' + JSON.stringify(data));
+      await print.updatePrinterInDiscovery(printerInformation).then((data : void) => {
+        console.log('updatePrinterInDiscovery expect succeed, data: ' + JSON.stringify(data));
+        expect(data).assertTrue();
+        done();
       }).catch((error: BusinessError) => {
         console.log('updatePrinterInDiscovery failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number print_function_0701
+     * @tc.name Test print
+     * @tc.desc check the 401 error code of updatePrinterInDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0701', 0, async (done: Function) => {
+      let printerInformation: print.PrinterInformation = new MyPrinterInformation();
+      printerInformation.printerId = '';
+      printerInformation.printerName = '';
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_IDLE;
+      printerInformation.description = 'testDescription';
+      printerInformation.uri = 'testUri';
+      printerInformation.printerMake = 'testPrinterMake';
+      printerInformation.options = 'testOptions';
+      printerInformation.capability = new MyPrinterCapabilities();
+      let pageSize: print.PrintPageSize = new MyPrintPageSize();
+      pageSize.id = '0';
+      pageSize.name = '0';
+      pageSize.width = 210;
+      pageSize.height = 297;
+      printerInformation.capability.supportedPageSizes = [pageSize];
+      await print.updatePrinterInDiscovery(printerInformation)
+        .then((data : void) => {
+          console.log('updatePrinterInDiscovery succeed, data: ' + JSON.stringify(data));
+          expect().assertFalse();
+          done();
+        })
+        .catch((error: BusinessError) => {
+          console.log('updatePrinterInDiscovery expect failed, error: ' + JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          done();
       })
     })
 
@@ -387,14 +490,43 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0800', 0, () => {
+    it('print_function_0800', 0, async (done: Function) => {
       let printerId : string = 'testPrinterId';
 
       // Permissions required: ohos.permission.PRINT
-      print.removePrinterFromDiscovery(printerId).then((data : void) => {
-        console.log('removePrinterFromDiscovery succeed, data: ' + JSON.stringify(data));
+      await print.removePrinterFromDiscovery(printerId).then((data : void) => {
+        console.log('removePrinterFromDiscovery expect succeed, data: ' + JSON.stringify(data));
+        expect(data).assertTrue();
+        done();
       }).catch((error: BusinessError) => {
         console.log('removePrinterFromDiscovery failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number print_function_0801
+     * @tc.name Test print
+     * @tc.desc check the 401 error code of removePrinterFromDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0801', 0, async (done: Function) => {
+      let printerId : string = '';
+
+      // Permissions required: ohos.permission.PRINT
+      await print.removePrinterFromDiscovery(printerId)
+        .then((data : void) => {
+          console.log('removePrinterFromDiscovery succeed, data: ' + JSON.stringify(data));
+          expect().assertFalse();
+          done();
+        })
+        .catch((error: BusinessError) => {
+          console.log('removePrinterFromDiscovery expect failed, error: ' + JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          done();
       })
     })
 
@@ -406,14 +538,82 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0900', 0, () => {
-      let printerId : string = 'testPrinterId';
-
+    it('print_function_0900', 0, async(done: Function) => {
+      let printerInformation: print.PrinterInformation = new MyPrinterInformation();
+      printerInformation.printerId = 'testPrinterId';
+      printerInformation.printerName = 'testPrinterName';
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
+      printerInformation.description = 'testDescription';
+      printerInformation.capability = new MyPrinterCapabilities();
+      let pageSize: print.PrintPageSize = new MyPrintPageSize();
+      pageSize.id = '0';
+      pageSize.name = '0';
+      pageSize.width = 210;
+      pageSize.height = 297;
+      printerInformation.capability.supportedPageSizes = [pageSize];
+      printerInformation.capability.supportedColorModes = [
+        print.PrintColorMode.COLOR_MODE_MONOCHROME
+      ];
+      printerInformation.capability.supportedDuplexModes = [
+        print.PrintDuplexMode.DUPLEX_MODE_NONE
+      ];
+      printerInformation.capability.supportedMediaTypes = ['stationery'];
+      printerInformation.capability.supportedQualities = [
+        print.PrintQuality.QUALITY_DRAFT
+      ];
+      printerInformation.capability.supportedOrientations = [
+        print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT
+      ];
+      printerInformation.capability.options = 'testOptions';
+      printerInformation.uri = 'testUri';
+      printerInformation.printerMake = 'testPrinterMake';
+      printerInformation.options = 'testOptions';
       // Permissions required: ohos.permission.PRINT
-      print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
+      await print.addPrinterToDiscovery(printerInformation).then((data : void) => {
+        console.log('addPrinterToDiscovery expect succeed, data: ' + JSON.stringify(data));
+        expect(data).assertTrue();
+        done();
+      }).catch((error: BusinessError) => {
+        console.log('addPrinterToDiscovery failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+
+      let printerId : string = 'testPrinterId';
+      // Permissions required: ohos.permission.PRINT
+      await print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
         console.log('getPrinterInformationById succeed, data: ' + JSON.stringify(printerInformation));
+        expect(!!printerInformation).assertTrue();
+        done();
       }).catch((error: BusinessError) => {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number print_function_0901
+     * @tc.name Test print
+     * @tc.desc check the 401 error code of getPrinterInformationById function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0901', 0, async (done: Function) => {
+      let printerId : string = '';
+
+      // Permissions required: ohos.permission.PRINT
+      await print.getPrinterInformationById(printerId)
+        .then((printerInformation : print.PrinterInformation) => {
+          console.log('getPrinterInformationById succeed, data: ' + JSON.stringify(printerInformation));
+          expect().assertFalse();
+          done();
+        })
+        .catch((error: BusinessError) => {
+          console.log('getPrinterInformationById expect failed, error: ' + JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          done();
       })
     })
 
@@ -426,7 +626,7 @@ export default function printTest() {
      * @tc.level Level 2
      */
     it('print_function_1000', 0, () => {
-      let printerStates = [
+      let printerStates: print.PrinterState[] = [
         print.PrinterState.PRINTER_ADDED,
         print.PrinterState.PRINTER_REMOVED,
         print.PrinterState.PRINTER_CAPABILITY_UPDATED,
@@ -436,7 +636,7 @@ export default function printTest() {
       ];
       console.log('printerStates: ' + JSON.stringify(printerStates));
 
-      let jobStates = [
+      let jobStates: print.PrintJobState[] = [
         print.PrintJobState.PRINT_JOB_PREPARE,
         print.PrintJobState.PRINT_JOB_QUEUED,
         print.PrintJobState.PRINT_JOB_RUNNING,
@@ -445,7 +645,7 @@ export default function printTest() {
       ];
       console.log('jobStates: ' + JSON.stringify(jobStates));
 
-      let jobSubStates = [
+      let jobSubStates: print.PrintJobSubState[] = [
         print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
         print.PrintJobSubState.PRINT_JOB_COMPLETED_FAILED,
         print.PrintJobSubState.PRINT_JOB_COMPLETED_CANCELLED,
@@ -477,7 +677,7 @@ export default function printTest() {
       ];
       console.log('jobSubStates: ' + JSON.stringify(jobSubStates));
 
-      let errorCodes = [
+      let errorCodes: print.PrintErrorCode[] = [
         print.PrintErrorCode.E_PRINT_NONE,
         print.PrintErrorCode.E_PRINT_NO_PERMISSION,
         print.PrintErrorCode.E_PRINT_INVALID_PARAMETER,
@@ -491,12 +691,28 @@ export default function printTest() {
       ];
       console.log('errorCodes: ' + JSON.stringify(errorCodes));
 
-      let applicationEvents = [
+      let applicationEvents: print.ApplicationEvent[] = [
         print.ApplicationEvent.APPLICATION_CREATED,
         print.ApplicationEvent.APPLICATION_CLOSED_FOR_STARTED,
         print.ApplicationEvent.APPLICATION_CLOSED_FOR_CANCELED
       ];
       console.log('applicationEvents: ' + JSON.stringify(applicationEvents));
+
+      let printDocumentAdapterStates: print.PrintDocumentAdapterState[] = [
+        print.PrintDocumentAdapterState.PREVIEW_DESTROY,
+        print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED,
+        print.PrintDocumentAdapterState.PRINT_TASK_FAIL,
+        print.PrintDocumentAdapterState.PRINT_TASK_CANCEL,
+        print.PrintDocumentAdapterState.PRINT_TASK_BLOCK
+      ];
+      console.log('printDocumentAdapterStates: ' + JSON.stringify(printDocumentAdapterStates));
+
+      let printFileCreationStates: print.PrintFileCreationState[] = [
+        print.PrintFileCreationState.PRINT_FILE_CREATED,
+        print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED,
+        print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED
+      ];
+      console.log('printFileCreationStates: ' + JSON.stringify(printFileCreationStates));
     })
   })
 }
