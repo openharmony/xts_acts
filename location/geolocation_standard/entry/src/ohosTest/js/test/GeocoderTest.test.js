@@ -198,17 +198,25 @@ export default function geolocationTest_geo1() {
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
                 console.info('[lbs_js] getAddressesFromLocation04 promise: ' + JSON.stringify(data));
-                console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
-                + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
-                + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
-                + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
-                + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
-                + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
-                + JSON.stringify(data)[0].placeName
-                + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
-                + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
-                + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
-                + JSON.stringify(data)[0].isFromMock);
+                expect(true).assertEqual(data[0].addressUrl != "NA")
+                expect(true).assertEqual(data[0].administrativeArea != "NA")
+                expect(true).assertEqual(data[0].countryCode != "NA")
+                expect(true).assertEqual(data[0].countryName != "NA")
+                expect(true).assertEqual(data[0].descriptions.length != -1)
+                expect(true).assertEqual(data[0].descriptionsSize != -1)
+                expect(true).assertEqual(data[0].latitude != -1)
+                expect(true).assertEqual(data[0].locale != "NA")
+                expect(true).assertEqual(data[0].locality != "NA")
+                expect(true).assertEqual(data[0].longitude != -1)
+                expect(true).assertEqual(data[0].phoneNumber != "NA")
+                expect(true).assertEqual(data[0].placeName != "NA")
+                expect(true).assertEqual(data[0].postalCode != "NA")
+                expect(true).assertEqual(data[0].premises != "NA")
+                expect(true).assertEqual(data[0].roadName != "NA")
+                expect(true).assertEqual(data[0].subAdministrativeArea != "NA")
+                expect(true).assertEqual(data[0].subLocality != "NA")
+                expect(true).assertEqual(data[0].subRoadName != "NA")
+                expect(true).assertEqual(data[0].isFromMock != "NA")
             }).catch(error => {
                 console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));
                 console.info('[lbs_js] not support now');

@@ -132,7 +132,9 @@ export default function geolocationTest_geo5() {
     it('SUB_HSS_LocationSystem_Geo_2000', 0, async function (done) {
         let geocoder1 = geolocationm.isGeocoderAvailable();
         if (geocoder1) {
-            let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1 };
+            let reverseGeocodeRequest = {
+                "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1 , "locale": "zh", "country": "CN"
+            };
             try {
                 geolocationm.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
                     if (err) {

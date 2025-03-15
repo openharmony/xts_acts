@@ -98,10 +98,11 @@ export default function geolocationTest_geo2() {
             coordType:'wgs84',
             success: function(geolocationResponse) {
                 console.log('lbs_js [GetLocation-success], result' + JSON.stringify(geolocationResponse));
-                expect(true).assertEqual(geolocationResponse.length !=0);
-                console.info('[lbs_js] getLocation latitude: ' + geolocationResponse.latitude +
-                ' longitude: ' + geolocationResponse.longitude +' altitude: ' + geolocationResponse.altitude
-                +' accuracy: ' + geolocationResponse.accuracy +'time: ' + geolocationResponse.time);
+                expect(true).assertEqual(geolocationResponse.longitude != -1);
+                expect(true).assertEqual(geolocationResponse.latitude != -1);
+                expect(true).assertEqual(geolocationResponse.altitude != -1);
+                expect(true).assertEqual(geolocationResponse.accuracy != -1);
+                expect(true).assertEqual(geolocationResponse.time != -1);
             },
             fail: function(data, code) {
                 switch(code){
@@ -124,6 +125,9 @@ export default function geolocationTest_geo2() {
                         console.log('lbs_js [GetLocation-fail] data:' + data + ', code:' + code);
                 }
             },
+            complete: function() {
+                console.log('lbs_js [GetLocation-complete]');
+            }
         });
         done();
     })
@@ -165,7 +169,11 @@ export default function geolocationTest_geo2() {
         geolocations.getLocationType({
             success: function(data) {
                 console.log('success get location type:' + JSON.stringify(data));
-                expect(true).assertEqual(data.types.length !=0);
+                expect(true).assertEqual(data.types != null)
+                expect(true).assertEqual(data.types.length != 0);
+                if (data.types.length != 0) {
+                    expect(true).assertEqual(data.types[0] == 'gps' || data.types[0] == 'network')
+                }
                 done()
             },
             fail: function(data, code) {
@@ -193,7 +201,6 @@ export default function geolocationTest_geo2() {
         expect(true).assertEqual(types.length !=0);
 
     })
-
     })
 }
 
