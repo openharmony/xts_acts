@@ -16,10 +16,10 @@
 @Entry
 @Component
 struct TextDecorationStyleTest {
-  @State TestText:string = '测试文本'
+  @State testText:string = '测试文本'
   build() {
     Column() {
-      Text(this.TestText)
+      Text(this.testText)
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DOTTED
@@ -27,7 +27,7 @@ struct TextDecorationStyleTest {
         .id('TextDecorationStyleTextDOTTED')
         .textAlign(TextAlign.Center)
         .height('5%')
-      Text(this.TestText)
+      Text(this.testText)
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DASHED
@@ -35,7 +35,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleTextDASHED')
         .textAlign(TextAlign.Center)
-      Search({value:this.TestText})
+      Search({value:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DOTTED
@@ -43,7 +43,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleSearchDOTTED')
         .textAlign(TextAlign.Center)
-      Search({value:this.TestText})
+      Search({value:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DASHED
@@ -51,7 +51,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleSearchDASHED')
         .textAlign(TextAlign.Center)
-      TextArea({text:this.TestText})
+      TextArea({text:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DOTTED
@@ -59,7 +59,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleTextAreaDOTTED')
         .textAlign(TextAlign.Center)
-      TextArea({text:this.TestText})
+      TextArea({text:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DASHED
@@ -67,7 +67,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleTextAreaDASHED')
         .textAlign(TextAlign.Center)
-      TextInput({text:this.TestText})
+      TextInput({text:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DOTTED
@@ -75,7 +75,7 @@ struct TextDecorationStyleTest {
         .height('5%')
         .id('TextDecorationStyleTextInputDOTTED')
         .textAlign(TextAlign.Center)
-      TextInput({text:this.TestText})
+      TextInput({text:this.testText})
         .decoration({
           type:TextDecorationType.Underline,
           style:TextDecorationStyle.DASHED
