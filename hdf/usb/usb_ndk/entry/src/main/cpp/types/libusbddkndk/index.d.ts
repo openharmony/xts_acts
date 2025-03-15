@@ -52,3 +52,6 @@ export const usbSendPipeRequestWithAshmemOne: (a: number) => number;
 export const usbSendPipeRequestWithAshmemTwo: (a: number) => number;
 export const usbSendPipeRequestWithAshmemThree: (a: number) => number;
 export const usbSendPipeRequestWithAshmemFour: (a: number) => number;
+export const usbGetDevicesOne: (a: number) => number;
+export const usbGetDevicesTwo: (a: number) => number;
+export const usbGetDevicesThree: (a: number) => number;

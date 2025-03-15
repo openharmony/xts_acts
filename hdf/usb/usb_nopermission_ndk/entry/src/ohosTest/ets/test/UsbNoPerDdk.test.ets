@@ -487,5 +487,33 @@ export default function usbNoPerDdkTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_Driver_Ext_DDK_0900
+     * @tc.name       : testUsbGetDevicesNoPer001
+     * @tc.desc       : OH_Usb_GetDevices Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbGetDevicesNoPer001', 0, async (done: Function) => {
+      console.info('----------------------testUsbGetDevicesNoPer001---------------------------');
+      try {
+        if (deviceId < 0) {
+          console.info(TAG, "Test USB device not connected");
+          expect(deviceId).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        const ret = usbNoPerDdk.usbGetDevices(deviceId);
+        console.info("Test Result testUsbGetDevicesNoPer001 : " + ret);
+        expect(ret).assertEqual(DDK_ERR_NOPERM);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbGetDevicesNoPer001 failed, message is ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
