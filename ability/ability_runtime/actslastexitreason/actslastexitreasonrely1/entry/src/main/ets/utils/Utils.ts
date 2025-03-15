@@ -17,13 +17,17 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
-export function publishEvent(event: string, reason: AbilityConstant.LastExitReason, exitMsg: string) {
+export function publishEvent(event: string, reason: AbilityConstant.LastExitReason, exitMsg: string,
+  lastExitDetailInfo?:AbilityConstant.LaunchParam.LastExitDetailInfo, launchReasonMessage?:string
+) {
   let options: CommonEventManager.CommonEventPublishData = {
     code: 0,
     bundleName: "com.acts.lastexitreasontest",
     parameters: {
       "lastExitReason": reason,
-      "lastExitMessage": exitMsg
+      "lastExitMessage": exitMsg,
+      "lastExitDetailInfo": lastExitDetailInfo,
+      "launchReasonMessage": launchReasonMessage
     },
     isOrdered: false
   }

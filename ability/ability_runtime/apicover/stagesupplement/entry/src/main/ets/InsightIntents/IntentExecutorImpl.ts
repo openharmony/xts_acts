@@ -20,6 +20,7 @@ import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSessi
 import window from '@ohos.window';
 import hilog from '@ohos.hilog';
 import Want from '@ohos.app.ability.Want';
+import wantConstant from '@ohos.app.ability.wantConstant';
 
 const LOG_TAG: string = 'testTag-IntentExecutor';
 let UI_ABILITY_FOREGROUND: number = insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND;
@@ -106,7 +107,9 @@ export default class IntentExecutorImpl extends IntentExecutor {
       code: 0,
       result: {
         message: 'Play music succeed.',
-      }
+      },
+      flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
+      uris: ['file:\\bundlename\\uri']
     };
     hilog.info(0x0000, LOG_TAG, 'Execute UIAbility in foreground mode finished, result %{public}s', JSON.stringify(result) ?? '');
     return result;

@@ -245,6 +245,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
             context.getRunningProcessInformation().then((data:appManager.ProcessInformation[]) => {
                 console.log(TAG + " result = " + JSON.stringify(data));
                 expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+                expect(data[0].bundleType).assertEqual(0);
             })
             done();
         });

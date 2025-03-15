@@ -729,6 +729,7 @@ export default function ApiCoverTest() {
             expect(data[i].processName.length).assertLarger(0);
             expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
             expect(data[i].bundleNames.length).assertLarger(0);
+            expect(data[i].bundleType).assertEqual(0);
           }
           done();
         })

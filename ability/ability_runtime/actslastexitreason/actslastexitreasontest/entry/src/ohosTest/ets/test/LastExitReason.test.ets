@@ -274,6 +274,62 @@ export default function lastExitReasonTest() {
         done();
       }
     });
+
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_FaultManagement_7901
+     * @tc.name   : Kill process by shell and restart app, check ability LaunchParam last exit reason and message
+     * @tc.desc   : Expect: lastExitReason=NORMAL, lastExitMessage empty
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityRuntime_FaultManagement_7901', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_FaultManagement_7901`;
+      console.log(`${tag}, it begin`);
+
+      try {
+        await startRely1();
+        await sleep(1000);
+        await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
+        await sleep(1000);
+
+        let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
+          events: [event1]
+        };
+        let subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
+        let subscribeCB = (err: BusinessError, data: CommonEventManager.CommonEventData) => {
+          if (err) {
+            console.error(`receive event failed, code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.info(`receive event success, event:${JSON.stringify(data)}`);
+            if (data.event == event1) {
+              let lastExitDetailInfo: AbilityConstant.LastExitDetailInfo = data.parameters?.lastExitDetailInfo;
+              let launchReasonMessage: string = data.parameters?.launchReasonMessage;
+              expect(lastExitDetailInfo?.exitMsg).assertEqual("");
+              expect(lastExitDetailInfo?.exitSubReason).assertEqual(-1);
+              expect(lastExitDetailInfo?.pid).assertEqual(-1);
+              expect(lastExitDetailInfo?.processName).assertEqual("");
+              expect(lastExitDetailInfo?.pss).assertEqual("");
+              expect(lastExitDetailInfo?.rss).assertEqual("");
+              expect(lastExitDetailInfo?.uid).assertEqual(-1);
+              expect(launchReasonMessage).assertEqual("");
+              unSubscribe(subscriber, done);
+            }
+          }
+        }
+        CommonEventManager.subscribe(subscriber, subscribeCB);
+        await sleep(500);
+        await startRely1();
+      } catch (err) {
+        console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
 
