@@ -27,9 +27,12 @@ export default function avRecorderTest() {
     const FORMAT_M4A = media.ContainerFormatType.CFT_MPEG_4A;
     const FORMAT_MP3 = media.ContainerFormatType.CFT_MP3;
     const FORMAT_WAV = media.ContainerFormatType.CFT_WAV;
+    const FORMAT_AMR = media.ContainerFormatType.CFT_AMR;
     const ENCORDER_AAC = media.CodecMimeType.AUDIO_AAC;
     const ENCORDER_MP3 = media.CodecMimeType.AUDIO_MP3;
     const ENCORDER_WAV = media.CodecMimeType.AUDIO_G711MU;
+    const ENCODER_AMR_NB = media.CodecMimeType.AUDIO_AMR_NB;
+    const ENCODER_AMR_WB = media.CodecMimeType.AUDIO_AMR_WB;
     let fdObject: ESObject;
     let fdPath: string;
     let commonFun = new Common();
