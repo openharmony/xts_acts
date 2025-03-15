@@ -2134,5 +2134,57 @@ export default function avRecorderTest() {
       done();
     })
   })
+  /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100
+        * @tc.name      : 003.test recording AMR 3 seconds to stop
+        * @tc.desc      : Local Video recording AMR 3 seconds to stop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100', 0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100 start')
+      let timestamp = Date.now();
+      let filename = `avRecorder_${timestamp}.wav`;
+      fdObject = await commonFun.getFd(filename);
+      fdPath = "fd://" + fdObject.fdNumber;
+      console.info('case fdPath is: ' + fdPath);
+      avConfig.url = fdPath;
+      console.info('avConfig.url ' + avConfig.url);
+      avConfig.profile.fileFormat = FORMAT_AMR;
+      avConfig.profile.audioCodec = ENCODER_AMR_NB;
+      avConfig.profile.audioBitrate = 4750;
+      avConfig.profile.audioChannels = 1;
+      avConfig.profile.audioSampleRate = 8000;
+      commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100 end');
+      done();
+    })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100
+        * @tc.name      : 003.test recording AMR 3 seconds to stop
+        * @tc.desc      : Local Video recording AMR 3 seconds to stop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200', 0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 start')
+      let timestamp = Date.now();
+      let filename = `avRecorder_${timestamp}.wav`;
+      fdObject = await commonFun.getFd(filename);
+      fdPath = "fd://" + fdObject.fdNumber;
+      console.info('case fdPath is: ' + fdPath);
+      avConfig.url = fdPath;
+      console.info('avConfig.url ' + avConfig.url);
+      avConfig.profile.fileFormat = FORMAT_AMR;
+      avConfig.profile.audioCodec = ENCODER_AMR_WB;
+      avConfig.profile.audioBitrate = 6600;
+      avConfig.profile.audioChannels = 1;
+      avConfig.profile.audioSampleRate = 16000;
+      commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 end');
+      done();
+    })
 }
 
