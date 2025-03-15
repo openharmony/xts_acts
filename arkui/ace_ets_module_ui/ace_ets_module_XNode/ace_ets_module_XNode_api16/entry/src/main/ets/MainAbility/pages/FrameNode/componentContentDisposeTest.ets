@@ -28,7 +28,6 @@ function buildText() {
 }
 
 const componentContentMap: Array<ComponentContent<[Object]>> = new Array();
-
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
@@ -72,7 +71,7 @@ struct ComponentContentTest {
             this.ret = '9'
           }
         })
-      Text(this.ret).id("dispose_ret").height('10%')
+      Text(this.ret).id('dispose_ret').height('10%')
     }
   }
 }
