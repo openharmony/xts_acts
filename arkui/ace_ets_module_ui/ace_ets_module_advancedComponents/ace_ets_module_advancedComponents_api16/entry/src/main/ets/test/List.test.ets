@@ -26,6 +26,9 @@ import composeTitleBarAccessibilityTest from './composeTitleBar/composeTitleBarA
 import selectTitleBarAccessibilityTest from './selectTitleBar/selectTitleBarAccessibilityPage.test';
 import tabTitleBarAccessibilityTest from './tabTitleBar/tabTitleBarAccessibilityPage.test';
 import toolBarV2AccessibilityTest from './toolBarV2/ToolBarV2AccessibilityPage.test';
+import tipsDialogTest from './dialogV2/tipsDialogTest.test';
+import selectDialogTest from './dialogV2/selectDialogTest.test';
+import confirmDialogTest from './dialogV2/confirmDialogTest.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -41,4 +44,7 @@ export default function testsuite() {
   selectTitleBarAccessibilityTest();
   tabTitleBarAccessibilityTest();
   toolBarV2AccessibilityTest();
+  tipsDialogTest();
+  selectDialogTest();
+  confirmDialogTest();
 }
