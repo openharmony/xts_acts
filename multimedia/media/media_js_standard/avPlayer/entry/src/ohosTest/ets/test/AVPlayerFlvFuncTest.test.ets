@@ -25,6 +25,7 @@ const RELEASED = 'released';
 const ERROR = 'error';
 let mediaTestBase = new MediaTestBase()
 let payloadTypes: Array<number> = [];
+let type: number = 5;
 
 let dataCanBeRead = false;
 let avPlayer: media.AVPlayer | null = null;
@@ -101,7 +102,14 @@ function setAVPlayerSeiMessageCb(avPlayer: media.AVPlayer | null, payloadTypes: 
   avPlayer?.on('seiMessageReceived', payloadTypes, (messages: Array<media.SeiMessage>, playbackPosition?: number) => {
     try {
       console.info(`Received SEI message at playbackPosition: ${playbackPosition}`);
+      expect(messages !== null && messages !== undefined).assertTrue();
       expect(messages.length).assertLarger(0);
+      messages.forEach((message) => {
+        expect(typeof message.payload === 'number').assertTrue();
+        expect(message.payloadType).assertEqual(type);
+        expect(message.payload !== null && message.payload !== undefined).assertTrue();
+        expect(message.payload.byteLength).assertLarger(0);
+      })
       done();
     } catch (error) {
       console.error('Error in SEI message handling:', error);
