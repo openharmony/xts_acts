@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { Deque, Decimal } from '@kit.ArkTS';
 
 function getRandomFloat(min: number, max: number): number {
@@ -55,7 +55,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0001', 0, () => {
+    it('testComparedTo0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -75,7 +75,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0002', 0, () => {
+    it('testComparedTo0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -95,7 +95,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0003', 0, () => {
+    it('testComparedTo0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -115,7 +115,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0004', 0, () => {
+    it('testComparedTo0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -136,7 +136,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0005', 0, () => {
+    it('testComparedTo0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -156,7 +156,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0006', 0, () => {
+    it('testComparedTo0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -176,7 +176,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0007', 0, () => {
+    it('testComparedTo0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -196,7 +196,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0008', 0, () => {
+    it('testComparedTo0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -216,7 +216,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0009', 0, () => {
+    it('testComparedTo0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -236,7 +236,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0010', 0, () => {
+    it('testComparedTo0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -256,7 +256,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0011', 0, () => {
+    it('testComparedTo0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -276,7 +276,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0012', 0, () => {
+    it('testComparedTo0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -305,7 +305,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0013', 0, () => {
+    it('testComparedTo0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -325,7 +325,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0014', 0, () => {
+    it('testComparedTo0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -345,7 +345,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0015', 0, () => {
+    it('testComparedTo0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -365,7 +365,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0016', 0, () => {
+    it('testComparedTo0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0016';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -386,7 +386,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0017', 0, () => {
+    it('testComparedTo0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0017';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -407,7 +407,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0018', 0, () => {
+    it('testComparedTo0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0018';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -428,7 +428,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0019', 0, () => {
+    it('testComparedTo0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0019';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -449,7 +449,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0020', 0, () => {
+    it('testComparedTo0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0020';
       try {
         let a: Decimal = new Decimal(10);
@@ -484,7 +484,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0021', 0, () => {
+    it('testComparedTo0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0021';
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -505,7 +505,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0022', 0, () => {
+    it('testComparedTo0022',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0022';
       try {
         let a: Decimal = new Decimal("5000");
@@ -526,7 +526,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0025', 0, () => {
+    it('testComparedTo0025',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0025';
       try {
         let a: Decimal = new Decimal(0);
@@ -547,7 +547,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComparedTo0026', 0, () => {
+    it('testComparedTo0026',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0026';
       try {
         let a: Decimal = new Decimal(0);
@@ -568,7 +568,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0001', 0, () => {
+    it('testEquals0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -588,7 +588,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0002', 0, () => {
+    it('testEquals0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -608,7 +608,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0003', 0, () => {
+    it('testEquals0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -628,7 +628,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0004', 0, () => {
+    it('testEquals0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -649,7 +649,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0005', 0, () => {
+    it('testEquals0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -669,7 +669,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0006', 0, () => {
+    it('testEquals0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -689,7 +689,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0007', 0, () => {
+    it('testEquals0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -709,7 +709,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0008', 0, () => {
+    it('testEquals0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -729,7 +729,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0009', 0, () => {
+    it('testEquals0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -749,7 +749,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0010', 0, () => {
+    it('testEquals0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -770,7 +770,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0011', 0, () => {
+    it('testEquals0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -791,7 +791,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0012', 0, () => {
+    it('testEquals0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -826,7 +826,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0013', 0, () => {
+    it('testEquals0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -846,7 +846,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0014', 0, () => {
+    it('testEquals0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -866,7 +866,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEquals0015', 0, () => {
+    it('testEquals0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEquals0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -886,7 +886,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0001', 0, () => {
+    it('testGreaterThan0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -906,7 +906,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0002', 0, () => {
+    it('testGreaterThan0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -926,7 +926,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0003', 0, () => {
+    it('testGreaterThan0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -946,7 +946,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0004', 0, () => {
+    it('testGreaterThan0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -967,7 +967,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0005', 0, () => {
+    it('testGreaterThan0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -987,7 +987,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0006', 0, () => {
+    it('testGreaterThan0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1007,7 +1007,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0007', 0, () => {
+    it('testGreaterThan0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1027,7 +1027,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0008', 0, () => {
+    it('testGreaterThan0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -1047,7 +1047,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0009', 0, () => {
+    it('testGreaterThan0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -1067,7 +1067,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0010', 0, () => {
+    it('testGreaterThan0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -1088,7 +1088,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0011', 0, () => {
+    it('testGreaterThan0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -1109,7 +1109,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0012', 0, () => {
+    it('testGreaterThan0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -1144,7 +1144,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0013', 0, () => {
+    it('testGreaterThan0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -1164,7 +1164,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0014', 0, () => {
+    it('testGreaterThan0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -1184,7 +1184,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0015', 0, () => {
+    it('testGreaterThan0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThan0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -1204,7 +1204,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0001', 0, () => {
+    it('testGreaterThanOrEqualTo0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1224,7 +1224,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0002', 0, () => {
+    it('testGreaterThanOrEqualTo0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1244,7 +1244,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0003', 0, () => {
+    it('testGreaterThanOrEqualTo0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1264,7 +1264,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0004', 0, () => {
+    it('testGreaterThanOrEqualTo0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1285,7 +1285,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0005', 0, () => {
+    it('testGreaterThanOrEqualTo0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1305,7 +1305,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0006', 0, () => {
+    it('testGreaterThanOrEqualTo0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1325,7 +1325,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0007', 0, () => {
+    it('testGreaterThanOrEqualTo0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1345,7 +1345,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0008', 0, () => {
+    it('testGreaterThanOrEqualTo0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -1365,7 +1365,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0009', 0, () => {
+    it('testGreaterThanOrEqualTo0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -1385,7 +1385,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0010', 0, () => {
+    it('testGreaterThanOrEqualTo0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -1406,7 +1406,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0011', 0, () => {
+    it('testGreaterThanOrEqualTo0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -1427,7 +1427,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0012', 0, () => {
+    it('testGreaterThanOrEqualTo0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -1462,7 +1462,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0013', 0, () => {
+    it('testGreaterThanOrEqualTo0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -1482,7 +1482,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0014', 0, () => {
+    it('testGreaterThanOrEqualTo0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -1502,7 +1502,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0015', 0, () => {
+    it('testGreaterThanOrEqualTo0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testGreaterThanOrEqualTo0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -1522,7 +1522,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0001', 0, () => {
+    it('testLessThan0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1542,7 +1542,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0002', 0, () => {
+    it('testLessThan0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1562,7 +1562,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0003', 0, () => {
+    it('testLessThan0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1582,7 +1582,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0004', 0, () => {
+    it('testLessThan0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1603,7 +1603,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0005', 0, () => {
+    it('testLessThan0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1623,7 +1623,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0006', 0, () => {
+    it('testLessThan0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1643,7 +1643,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0007', 0, () => {
+    it('testLessThan0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1663,7 +1663,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0008', 0, () => {
+    it('testLessThan0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -1683,7 +1683,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0009', 0, () => {
+    it('testLessThan0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -1703,7 +1703,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0010', 0, () => {
+    it('testLessThan0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -1724,7 +1724,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0011', 0, () => {
+    it('testLessThan0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -1745,7 +1745,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0012', 0, () => {
+    it('testLessThan0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -1780,7 +1780,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0013', 0, () => {
+    it('testLessThan0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -1800,7 +1800,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0014', 0, () => {
+    it('testLessThan0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -1820,7 +1820,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0015', 0, () => {
+    it('testLessThan0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThan0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -1840,7 +1840,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0001', 0, () => {
+    it('testLessThanOrEqualTo0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1860,7 +1860,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0002', 0, () => {
+    it('testLessThanOrEqualTo0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1880,7 +1880,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0003', 0, () => {
+    it('testLessThanOrEqualTo0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1900,7 +1900,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0004', 0, () => {
+    it('testLessThanOrEqualTo0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1921,7 +1921,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0005', 0, () => {
+    it('testLessThanOrEqualTo0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1941,7 +1941,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0006', 0, () => {
+    it('testLessThanOrEqualTo0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1961,7 +1961,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0007', 0, () => {
+    it('testLessThanOrEqualTo0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -1981,7 +1981,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0008', 0, () => {
+    it('testLessThanOrEqualTo0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -2001,7 +2001,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0009', 0, () => {
+    it('testLessThanOrEqualTo0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -2021,7 +2021,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0010', 0, () => {
+    it('testLessThanOrEqualTo0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -2042,7 +2042,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0011', 0, () => {
+    it('testLessThanOrEqualTo0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -2063,7 +2063,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0012', 0, () => {
+    it('testLessThanOrEqualTo0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -2098,7 +2098,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0013', 0, () => {
+    it('testLessThanOrEqualTo0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -2118,7 +2118,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0014', 0, () => {
+    it('testLessThanOrEqualTo0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -2138,7 +2138,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0015', 0, () => {
+    it('testLessThanOrEqualTo0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLessThanOrEqualTo0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -2158,7 +2158,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0001', 0, () => {
+    it('testDividedToIntegerBy0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0001';
       try {
         let a: Decimal = new Decimal(20);
@@ -2178,7 +2178,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0002', 0, () => {
+    it('testDividedToIntegerBy0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2198,7 +2198,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0003', 0, () => {
+    it('testDividedToIntegerBy0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2218,7 +2218,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0004', 0, () => {
+    it('testDividedToIntegerBy0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2238,7 +2238,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0005', 0, () => {
+    it('testDividedToIntegerBy0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2258,7 +2258,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0006', 0, () => {
+    it('testDividedToIntegerBy0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2278,7 +2278,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0007', 0, () => {
+    it('testDividedToIntegerBy0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2298,7 +2298,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0008', 0, () => {
+    it('testDividedToIntegerBy0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -2318,7 +2318,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0009', 0, () => {
+    it('testDividedToIntegerBy0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -2338,7 +2338,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0010', 0, () => {
+    it('testDividedToIntegerBy0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -2358,7 +2358,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0011', 0, () => {
+    it('testDividedToIntegerBy0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0011';
       try {
         let a: Decimal = new Decimal(0);
@@ -2378,7 +2378,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0012', 0, () => {
+    it('testDividedToIntegerBy0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0012';
       try {
         let a: Decimal = new Decimal(0);
@@ -2398,7 +2398,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0013', 0, () => {
+    it('testDividedToIntegerBy0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -2418,7 +2418,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0014', 0, () => {
+    it('testDividedToIntegerBy0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0014';
       try {
         let a: Decimal = new Decimal(5000);
@@ -2439,7 +2439,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDividedToIntegerBy0015', 0, () => {
+    it('testDividedToIntegerBy0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDividedToIntegerBy0015';
       try {
         let a: Decimal = new Decimal(10);
@@ -2474,7 +2474,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertFront0001', 0, () => {
+    it('testInsertFront0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertFront0001";
       try {
         let deque: Deque<string> = new Deque();
@@ -2496,7 +2496,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0001', 0, () => {
+    it('testDecimal0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal000f1";
       try {
         let a: Decimal = new Decimal("Nah").sqrt();
@@ -2513,7 +2513,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0002', 0, () => {
+    it('testDecimal0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0002";
       try {
         let a: Decimal = new Decimal(-0).sqrt();
@@ -2533,7 +2533,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0003', 0, () => {
+    it('testDecimal0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0003";
       try {
         let a: Decimal = new Decimal(Infinity).sqrt();
@@ -2552,7 +2552,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0004', 0, () => {
+    it('testDecimal0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0004";
       try {
         let a: Decimal = new Decimal(-Infinity).sqrt();
@@ -2571,7 +2571,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0005', 0, () => {
+    it('testDecimal0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0005";
       try {
         let a: Decimal = new Decimal(-1).sqrt();
@@ -2590,7 +2590,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0006', 0, () => {
+    it('testDecimal0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0006";
       try {
         let a: Decimal = new Decimal(9).sqrt();
@@ -2611,7 +2611,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0008', 0, () => {
+    it('testDecimal0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0008";
       try {
         let a: Decimal = new Decimal(9.6).sqrt();
@@ -2629,7 +2629,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0009', 0, () => {
+    it('testDecimal0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0009";
       try {
         let a: Decimal = new Decimal("abcd").sqrt();
@@ -2652,7 +2652,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0010', 0, () => {
+    it('testDecimal0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0010";
       try {
         let a: Decimal = new Decimal(2.5).div(0.5);
@@ -2671,7 +2671,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0011', 0, () => {
+    it('testDecimal0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0011";
       try {
         let a: Decimal = new Decimal(256);
@@ -2691,7 +2691,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0012', 0, () => {
+    it('testDecimal0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0012";
       try {
         let a: Decimal = new Decimal(0);
@@ -2711,7 +2711,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0013', 0, () => {
+    it('testDecimal0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0013";
       try {
         let a: Decimal = new Decimal(+Infinity);
@@ -2731,7 +2731,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0014', 0, () => {
+    it('testDecimal0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0014";
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -2751,7 +2751,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0015', 0, () => {
+    it('testDecimal0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0015";
       try {
         let a: Decimal = new Decimal(13.14);
@@ -2772,7 +2772,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0016', 0, () => {
+    it('testDecimal0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0016";
       try {
         let a: Decimal = new Decimal(13.14);
@@ -2797,7 +2797,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0017', 0, () => {
+    it('testDecimal0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0017";
       try {
         let a: Decimal = new Decimal(256);
@@ -2818,7 +2818,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0018', 0, () => {
+    it('testDecimal0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0018";
       try {
         let a: Decimal = new Decimal(256);
@@ -2839,7 +2839,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0019', 0, () => {
+    it('testDecimal0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0019";
       try {
         let a: Decimal = new Decimal(3.456);
@@ -2860,7 +2860,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0020', 0, () => {
+    it('testDecimal0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0020";
       try {
         let a: Decimal = new Decimal(1.75);
@@ -2881,7 +2881,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0021', 0, () => {
+    it('testDecimal0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0021";
       try {
         let a: Decimal = new Decimal(12.34567);
@@ -2902,7 +2902,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0022', 0, () => {
+    it('testDecimal0022',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0022";
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -2923,7 +2923,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0023', 0, () => {
+    it('testDecimal0023',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0023";
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -2944,7 +2944,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0024', 0, () => {
+    it('testDecimal0024',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0024";
       try {
         let a: Decimal = new Decimal(NaN);
@@ -2965,7 +2965,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0025', 0, () => {
+    it('testDecimal0025',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0025";
       try {
         let a: Decimal = new Decimal(0);
@@ -2985,7 +2985,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0026', 0, () => {
+    it('testDecimal0026',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0026";
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -3005,7 +3005,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0027', 0, () => {
+    it('testDecimal0027',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0027";
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -3025,7 +3025,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0028', 0, () => {
+    it('testDecimal0028',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0028";
       try {
         let a: Decimal = new Decimal(30.16789);
@@ -3049,7 +3049,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0029', 0, () => {
+    it('testDecimal0029',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0029";
       try {
         let a: Decimal = new Decimal(30.16789);
@@ -3072,7 +3072,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0030', 0, () => {
+    it('testDecimal0030',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0030";
       try {
         let a: Decimal = new Decimal(0);
@@ -3091,7 +3091,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0031', 0, () => {
+    it('testDecimal0031',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0031";
       try {
         let a: Decimal = new Decimal(-0);
@@ -3111,7 +3111,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0032', 0, () => {
+    it('testDecimal0032',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0032";
       try {
         let a: Decimal = new Decimal(0);
@@ -3130,7 +3130,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0033', 0, () => {
+    it('testDecimal0033',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0033";
       try {
         const randomNumber = getRandomFloat(1.5, 5.5);
@@ -3152,7 +3152,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0034', 0, () => {
+    it('testDecimal0034',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0034";
       try {
         let a: Decimal = new Decimal(1e10);
@@ -3174,7 +3174,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0035', 0, () => {
+    it('testDecimal0035',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0035";
       try {
         let a: Decimal = new Decimal(45.6);
@@ -3196,7 +3196,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0036', 0, () => {
+    it('testDecimal0036',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0036";
       try {
         let a: Decimal = new Decimal(45.6);
@@ -3217,7 +3217,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0037', 0, () => {
+    it('testDecimal0037',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0037";
       try {
         let a: Decimal = new Decimal(47);
@@ -3239,7 +3239,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0038', 0, () => {
+    it('testDecimal0038',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0038";
       try {
         const randomInt = getRandomInt(1, 10000);
@@ -3262,7 +3262,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0039', 0, () => {
+    it('testDecimal0039',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0039";
       try {
         const randomFloat = getRandomFloat(0.1, 0.8);
@@ -3285,7 +3285,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0040', 0, () => {
+    it('testDecimal0040',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0040";
       try {
         const randomFloat = getRandomInt(1, 9);
@@ -3308,7 +3308,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0041', 0, () => {
+    it('testDecimal0041',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0041";
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -3329,7 +3329,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0042', 0, () => {
+    it('testDecimal0042',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0042";
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -3351,7 +3351,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0043', 0, () => {
+    it('testDecimal0043',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0043";
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -3372,7 +3372,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0044', 0, () => {
+    it('testDecimal0044',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0044";
       try {
         let a: Decimal = new Decimal(-100);
@@ -3396,7 +3396,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0045', 0, () => {
+    it('testDecimal0045',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0045";
       try {
         let a: Decimal = new Decimal(0).exp();
@@ -3415,7 +3415,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0046', 0, () => {
+    it('testDecimal0046',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0046";
       try {
         let a: Decimal = new Decimal(-0).exp();
@@ -3434,7 +3434,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0047', 0, () => {
+    it('testDecimal0047',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0047";
       try {
         let a: Decimal = new Decimal(Infinity).exp();
@@ -3453,7 +3453,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0048', 0, () => {
+    it('testDecimal0048',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0048";
       try {
         let a: Decimal = new Decimal(-Infinity).exp();
@@ -3472,7 +3472,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0049', 0, () => {
+    it('testDecimal0049',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0049";
       const n = 5;
       try {
@@ -3492,7 +3492,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0050', 0, () => {
+    it('testDecimal0050',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0050";
       const n = 5;
       try {
@@ -3512,7 +3512,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0051', 0, () => {
+    it('testDecimal0051',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0051";
       const n = 2.08E+16;
       try {
@@ -3532,7 +3532,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0054', 0, () => {
+    it('testDecimal0054',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0054";
       const n = "testDecimal0054";
       try {
@@ -3554,7 +3554,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0055', 0, () => {
+    it('testDecimal0055',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0055";
       try {
         let a: Decimal = Decimal.max(-3, 6, 9, NaN, Infinity, -Infinity);
@@ -3573,7 +3573,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0056', 0, () => {
+    it('testDecimal0056',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0056";
       try {
         let a: Decimal = Decimal.max(-3, 6, 9, Infinity, -Infinity);
@@ -3592,7 +3592,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0057', 0, () => {
+    it('testDecimal0057',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0057";
       try {
         let a: Decimal = Decimal.max(0, 0, 0, 0);
@@ -3611,7 +3611,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0058', 0, () => {
+    it('testDecimal0058',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0058";
       try {
         let a: Decimal = Decimal.max(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05);
@@ -3630,7 +3630,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0059', 0, () => {
+    it('testDecimal0059',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0059";
       try {
         let a: Decimal = Decimal.max(Decimal.max(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05),
@@ -3651,7 +3651,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0060', 0, () => {
+    it('testDecimal0060',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0060";
       try {
         let a: Decimal = Decimal.max("0", "6.758EGB-05", 10, 6.758E+05);
@@ -3673,7 +3673,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0061', 0, () => {
+    it('testDecimal0061',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0061";
       try {
         let a: Decimal = Decimal.min(-3, 6, 9, NaN, Infinity, -Infinity);
@@ -3692,7 +3692,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0062', 0, () => {
+    it('testDecimal0062',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0062";
       try {
         let a: Decimal = Decimal.min(-3, 6, 9, Infinity, -Infinity);
@@ -3711,7 +3711,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0063', 0, () => {
+    it('testDecimal0063',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0063";
       try {
         let a: Decimal = Decimal.min(0, 0, 0, 0);
@@ -3730,7 +3730,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0064', 0, () => {
+    it('testDecimal0064',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0064";
       try {
         let a: Decimal = Decimal.min(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05);
@@ -3749,7 +3749,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0065', 0, () => {
+    it('testDecimal0065',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0065";
       try {
         let a: Decimal = Decimal.min(Decimal.max(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05),
@@ -3770,7 +3770,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0066', 0, () => {
+    it('testDecimal0066',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0066";
       try {
         let a: Decimal = Decimal.min("-1.1314", "6.758EGB-05", 10, 6.758E+05);
@@ -3791,7 +3791,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0067', 0, () => {
+    it('testDecimal0067',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0067";
       try {
         let a: Decimal = Decimal.sum(-3, 6, 9, Infinity, -Infinity);
@@ -3810,7 +3810,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0068', 0, () => {
+    it('testDecimal0068',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0068";
       try {
         let a: Decimal = Decimal.sum(0, 0, 0, 0);
@@ -3829,7 +3829,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0069', 0, () => {
+    it('testDecimal0069',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0069";
       try {
         let a: Decimal = Decimal.sum(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05, 2);
@@ -3848,7 +3848,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0070', 0, () => {
+    it('testDecimal0070',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0070";
       try {
         let a: Decimal = Decimal.sum(Decimal.sum(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05),
@@ -3868,7 +3868,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0071', 0, () => {
+    it('testDecimal0071',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0071";
       try {
         let a: Decimal = Decimal.sum("-1.1314S", "6.758EGB-05", 10, 6.758E+05);
@@ -3890,7 +3890,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0072', 0, () => {
+    it('testDecimal0072',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0072";
       try {
         let a: Decimal = Decimal.hypot(-3, 6, 9, Infinity, -Infinity);
@@ -3909,7 +3909,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0073', 0, () => {
+    it('testDecimal0073',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0073";
       try {
         let a: Decimal = Decimal.hypot(0, 0, 0, 0);
@@ -3928,7 +3928,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0074', 0, () => {
+    it('testDecimal0074',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0074";
       try {
         let a: Decimal = Decimal.hypot(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05, 2);
@@ -3947,7 +3947,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0075', 0, () => {
+    it('testDecimal0075',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0075";
       try {
         let a: Decimal = Decimal.hypot(Decimal.hypot(new Decimal(-1), "0", "6.758E-05", 10, 6.758E+05),
@@ -3968,7 +3968,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0076', 0, () => {
+    it('testDecimal0076',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0076";
       try {
         let a: Decimal = Decimal.hypot("-1.1314S", "6.758EGB-05", 10, 6.758E+05);
@@ -3989,7 +3989,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0078', 0, () => {
+    it('testDecimal0078',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0078";
       try {
         let a: Decimal = Decimal.sin(0.75);
@@ -4008,7 +4008,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0079', 0, () => {
+    it('testDecimal0079',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0079";
       try {
         let a: Decimal = new Decimal(0.75)
@@ -4026,7 +4026,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0080', 0, () => {
+    it('testDecimal0080',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0080";
       try {
         let a: Decimal = Decimal.cos(-0.25);
@@ -4045,7 +4045,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0081', 0, () => {
+    it('testDecimal0081',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0081";
       try {
         let a: Decimal = new Decimal(-0.25)
@@ -4064,7 +4064,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0082', 0, () => {
+    it('testDecimal0082',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0082";
       try {
         let a: Decimal = Decimal.tan(0.75);
@@ -4083,7 +4083,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0083', 0, () => {
+    it('testDecimal0083',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0083";
       try {
         let a: Decimal = new Decimal(0.75)
@@ -4103,7 +4103,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0084', 0, () => {
+    it('testDecimal0084',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0084";
       try {
         let a: Decimal = Decimal.sinh(0.5);
@@ -4122,7 +4122,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0085', 0, () => {
+    it('testDecimal0085',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0085";
       try {
         let a: Decimal = new Decimal(0.5)
@@ -4142,7 +4142,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0086', 0, () => {
+    it('testDecimal0086',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0086";
       try {
         let a: Decimal = Decimal.cosh(0.5);
@@ -4161,7 +4161,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0087', 0, () => {
+    it('testDecimal0087',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0087";
       try {
         let a: Decimal = new Decimal(0.5)
@@ -4179,7 +4179,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0088', 0, () => {
+    it('testDecimal0088',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0088";
       try {
         let a: Decimal = Decimal.tanh(0.5);
@@ -4198,7 +4198,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0089', 0, () => {
+    it('testDecimal0089',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0089";
       try {
         let a: Decimal = new Decimal(0.5)
@@ -4216,7 +4216,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0090', 0, () => {
+    it('testDecimal0090',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0090";
       try {
         let a: Decimal = new Decimal(0.5)
@@ -4235,7 +4235,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0091', 0, () => {
+    it('testDecimal0091',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0091';
       try {
         let a: Decimal = new Decimal("Nah");
@@ -4255,7 +4255,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0092', 0, () => {
+    it('testDecimal0092',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0092';
       try {
         let a: Decimal = new Decimal(0);
@@ -4275,7 +4275,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0093', 0, () => {
+    it('testDecimal0093',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0093';
       try {
         let a: Decimal = new Decimal("0");
@@ -4295,7 +4295,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0094', 0, () => {
+    it('testDecimal0094',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0094';
       try {
         let b: Decimal = new Decimal(0);
@@ -4316,7 +4316,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0095', 0, () => {
+    it('testDecimal0095',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0095';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -4337,7 +4337,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0096', 0, () => {
+    it('testDecimal0096',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0096';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -4358,7 +4358,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0097', 0, () => {
+    it('testDecimal0097',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0097';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -4379,7 +4379,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0098', 0, () => {
+    it('testDecimal0098',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0098';
       try {
         let a: Decimal = new Decimal(0);
@@ -4399,7 +4399,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0099', 0, () => {
+    it('testDecimal0099',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecimal0099';
       try {
         let a: Decimal = new Decimal(0);
@@ -4419,7 +4419,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecimal0100', 0, () => {
+    it('testDecimal0100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDecimal0100";
       try {
         // 将配置属性全部设置为默认值
@@ -4450,7 +4450,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0001', 0, () => {
+    it('testSin0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0001';
       try {
         let a: Decimal = new Decimal("Nah");
@@ -4470,7 +4470,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0002', 0, () => {
+    it('testSin0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0002';
       try {
         let a: Decimal = new Decimal(0);
@@ -4490,7 +4490,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0003', 0, () => {
+    it('testSin0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0003';
       try {
         let a: Decimal = new Decimal("0");
@@ -4510,7 +4510,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0004', 0, () => {
+    it('testSin0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0004';
       try {
         let b: Decimal = new Decimal(0);
@@ -4530,7 +4530,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0005', 0, () => {
+    it('testSin0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0005';
       try {
         let a: Decimal = new Decimal(-0);
@@ -4550,7 +4550,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0006', 0, () => {
+    it('testSin0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0006';
       try {
         let a: Decimal = new Decimal("-0");
@@ -4570,7 +4570,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0007', 0, () => {
+    it('testSin0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0007';
       try {
         let a: Decimal = new Decimal(-0);
@@ -4590,7 +4590,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0008', 0, () => {
+    it('testSin0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0008';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -4610,7 +4610,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0009', 0, () => {
+    it('testSin0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0009';
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -4630,7 +4630,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0010', 0, () => {
+    it('testSin0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0010';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -4650,7 +4650,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0011', 0, () => {
+    it('testSin0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0011';
       try {
         let a: Decimal = new Decimal(5e3);
@@ -4670,7 +4670,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0012', 0, () => {
+    it('testSin0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -4705,7 +4705,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0013', 0, () => {
+    it('testSin0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0013';
       try {
         let a: Decimal = new Decimal('Infinity');
@@ -4725,7 +4725,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0014', 0, () => {
+    it('testSin0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0014';
       try {
         let a: Decimal = new Decimal('-Infinity');
@@ -4745,7 +4745,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0015', 0, () => {
+    it('testSin0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0015';
       try {
         let a: Decimal = new Decimal(-Infinity);
@@ -4765,7 +4765,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0016', 0, () => {
+    it('testSin0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0016';
       try {
         Decimal.sin("Nah");
@@ -4784,7 +4784,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0017', 0, () => {
+    it('testSin0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0017';
       try {
         let c = Decimal.sin(0);
@@ -4803,7 +4803,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0018', 0, () => {
+    it('testSin0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0018';
       try {
         let c = Decimal.sin("0");
@@ -4822,7 +4822,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0019', 0, () => {
+    it('testSin0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0019';
       try {
         let b: Decimal = new Decimal(0);
@@ -4842,7 +4842,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0020', 0, () => {
+    it('testSin0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0020';
       try {
         let c = Decimal.sin(-0);
@@ -4861,7 +4861,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0021', 0, () => {
+    it('testSin0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0021';
       try {
         let c = Decimal.sin("-0");
@@ -4880,7 +4880,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0022', 0, () => {
+    it('testSin0022',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0022';
       try {
         let c = Decimal.sin(new Decimal(-0));
@@ -4899,7 +4899,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0023', 0, () => {
+    it('testSin0023',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0023';
       try {
         let c = Decimal.sin(Infinity);
@@ -4918,7 +4918,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0024', 0, () => {
+    it('testSin0024',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0024';
       try {
         let c = Decimal.sin(-Infinity);
@@ -4937,7 +4937,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0025', 0, () => {
+    it('testSin0025',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0025';
       try {
         let c = Decimal.sin(new Decimal(Infinity));
@@ -4956,7 +4956,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0026', 0, () => {
+    it('testSin0026',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0026';
       try {
         let c = Decimal.sin(5e3);
@@ -4975,7 +4975,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0027', 0, () => {
+    it('testSin0027',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0027';
       try {
         let a: Decimal = new Decimal(5);
@@ -5016,7 +5016,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0028', 0, () => {
+    it('testSin0028',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0028';
       try {
         let c = Decimal.sin('Infinity');
@@ -5035,7 +5035,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0029', 0, () => {
+    it('testSin0029',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0029';
       try {
         let c = Decimal.sin('-Infinity');
@@ -5054,7 +5054,7 @@ export default function DecimalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSin0030', 0, () => {
+    it('testSin0030',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSin0030';
       try {
         let c = Decimal.sin(new Decimal(-Infinity));

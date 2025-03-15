@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { buffer } from '@kit.ArkTS'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { buffer } from '@kit.ArkTS';
 
 export default function EscapeBufferTest() {
   describe('EscapeBufferTest', () => {
@@ -45,7 +45,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0001', 0, () => {
+    it('testBufferAllocEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0001";
       try {
         const escape = 'aaa\b';
@@ -64,7 +64,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0002', 0, () => {
+    it('testBufferAllocEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0002";
       try {
         const escape = 'aaa\f';
@@ -83,7 +83,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0003', 0, () => {
+    it('testBufferAllocEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0003";
       try {
         const escape = 'aaa\n';
@@ -102,7 +102,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0004', 0, () => {
+    it('testBufferAllocEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0004";
       try {
         const escape = 'aaa\r';
@@ -121,7 +121,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0005', 0, () => {
+    it('testBufferAllocEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0005";
       try {
         const escape = 'aaa\t';
@@ -140,7 +140,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0006', 0, () => {
+    it('testBufferAllocEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0006";
       try {
         const escape = 'aaa\v';
@@ -159,7 +159,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0007', 0, () => {
+    it('testBufferAllocEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -178,7 +178,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0008', 0, () => {
+    it('testBufferAllocEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0008";
       try {
         const escape = '\开';
@@ -197,7 +197,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0009', 0, () => {
+    it('testBufferAllocEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0009";
       try {
         const escape = '\😊';
@@ -217,7 +217,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0010', 0, () => {
+    it('testBufferAllocEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0010";
       try {
         const escape = '\0';
@@ -236,7 +236,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEscape0011', 0, () => {
+    it('testBufferAllocEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0011";
       try {
         const escape = '\\b';
@@ -255,7 +255,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0001', 0, () => {
+    it('testBufferbyteLengthEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0001";
       try {
         const escape = 'aaa\b';
@@ -275,7 +275,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0002', 0, () => {
+    it('testBufferbyteLengthEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0002";
       try {
         const escape = 'aaa\f';
@@ -294,7 +294,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0003', 0, () => {
+    it('testBufferbyteLengthEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0003";
       try {
         const escape = 'aaa\n';
@@ -313,7 +313,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0004', 0, () => {
+    it('testBufferbyteLengthEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0004";
       try {
         const escape = 'aaa\r';
@@ -332,7 +332,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0005', 0, () => {
+    it('testBufferbyteLengthEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0005";
       try {
         const escape = 'aaa\t';
@@ -351,7 +351,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0006', 0, () => {
+    it('testBufferbyteLengthEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0006";
       try {
         const escape = 'aaa\v';
@@ -370,7 +370,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0007', 0, () => {
+    it('testBufferbyteLengthEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -389,7 +389,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0008', 0, () => {
+    it('testBufferbyteLengthEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0008";
       try {
         const escape = '\开';
@@ -408,7 +408,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0009', 0, () => {
+    it('testBufferbyteLengthEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0009";
       try {
         const escape = '\😊';
@@ -427,7 +427,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0010', 0, () => {
+    it('testBufferbyteLengthEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0010";
       try {
         const escape = '\0';
@@ -446,7 +446,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferbyteLengthEscape0011', 0, () => {
+    it('testBufferbyteLengthEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEscape0011";
       try {
         const escape = '\\b';
@@ -465,7 +465,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0001', 0, () => {
+    it('testBufferCompareEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0001";
       try {
         const escape = 'aaa\b';
@@ -487,7 +487,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0002', 0, () => {
+    it('testBufferCompareEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0002";
       try {
         const str1 = 'aaa\f';
@@ -509,7 +509,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0003', 0, () => {
+    it('testBufferCompareEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0003";
       try {
         const escape = 'aaa\n';
@@ -531,7 +531,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0004', 0, () => {
+    it('testBufferCompareEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0004";
       try {
         const escape = 'aaa\r';
@@ -553,7 +553,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0005', 0, () => {
+    it('testBufferCompareEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0005";
       try {
         const escape = 'aaa\t';
@@ -575,7 +575,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0006', 0, () => {
+    it('testBufferCompareEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0006";
       try {
         const escape = 'aaa\v';
@@ -598,7 +598,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0007', 0, () => {
+    it('testBufferCompareEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -620,7 +620,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0008', 0, () => {
+    it('testBufferCompareEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0008";
       try {
         const escape = '\开';
@@ -642,7 +642,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0009', 0, () => {
+    it('testBufferCompareEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0009";
       try {
         const escape = '\😊';
@@ -664,7 +664,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0010', 0, () => {
+    it('testBufferCompareEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0010";
       try {
         const escape = '\0';
@@ -686,7 +686,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferCompareEscape0011', 0, () => {
+    it('testBufferCompareEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferCompareEscape0011";
       try {
         const escape = '\0';
@@ -708,7 +708,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0001', 0, () => {
+    it('testBufferFromEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0001";
       try {
         const escape = 'aaa\b';
@@ -727,7 +727,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0002', 0, () => {
+    it('testBufferFromEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0002";
       try {
         const escape = 'aaa\f';
@@ -746,7 +746,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0003', 0, () => {
+    it('testBufferFromEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0003";
       try {
         const escape = 'aaa\n';
@@ -765,7 +765,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0004', 0, () => {
+    it('testBufferFromEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0004";
       try {
         const escape = 'aaa\r';
@@ -784,7 +784,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0005', 0, () => {
+    it('testBufferFromEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0005";
       try {
         const escape = 'aaa\t';
@@ -803,7 +803,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0006', 0, () => {
+    it('testBufferFromEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0006";
       try {
         const escape = 'aaa\v';
@@ -822,7 +822,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0007', 0, () => {
+    it('testBufferFromEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -841,7 +841,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0008', 0, () => {
+    it('testBufferFromEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0008";
       try {
         const escape = '\开';
@@ -860,7 +860,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0009', 0, () => {
+    it('testBufferFromEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0009";
       try {
         const escape = '\😊';
@@ -879,7 +879,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0010', 0, () => {
+    it('testBufferFromEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0010";
       try {
         const escape = '\0';
@@ -898,7 +898,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFromEscape0011', 0, () => {
+    it('testBufferFromEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFromEscape0011";
       try {
         const escape = '\\b';
@@ -917,11 +917,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0001', 0, () => {
+    it('testBufferIsEncodingEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0001";
       try {
         const escape = 'aaa\b';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -936,11 +936,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0002', 0, () => {
+    it('testBufferIsEncodingEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0002";
       try {
         const escape = 'aaa\f';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -955,11 +955,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0003', 0, () => {
+    it('testBufferIsEncodingEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0003";
       try {
         const escape = 'aaa\n';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -974,11 +974,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0004', 0, () => {
+    it('testBufferIsEncodingEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0004";
       try {
         const escape = 'aaa\r';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -993,11 +993,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0005', 0, () => {
+    it('testBufferIsEncodingEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0005";
       try {
         const escape = 'aaa\t';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1012,11 +1012,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0006', 0, () => {
+    it('testBufferIsEncodingEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0006";
       try {
         const escape = 'aaa\v';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1031,11 +1031,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0007', 0, () => {
+    it('testBufferIsEncodingEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0007";
       try {
         const escape = 'aaa\x24';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1050,11 +1050,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0008', 0, () => {
+    it('testBufferIsEncodingEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0008";
       try {
         const escape = '\开';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1069,11 +1069,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0009', 0, () => {
+    it('testBufferIsEncodingEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0009";
       try {
         const escape = '\😊';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1088,11 +1088,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0010', 0, () => {
+    it('testBufferIsEncodingEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0010";
       try {
         const escape = '\0';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1107,11 +1107,11 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingEscape0011', 0, () => {
+    it('testBufferIsEncodingEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingEscape0011";
       try {
         const escape = '\\b';
-        let buf1:boolean = buffer.isEncoding(escape);
+        let buf1: boolean = buffer.isEncoding(escape);
         expect(buf1).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1126,7 +1126,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0001', 0, () => {
+    it('testfillEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0001";
       try {
         const escape = 'aaa\b';
@@ -1146,7 +1146,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0002', 0, () => {
+    it('testfillEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0002";
       try {
         const escape = 'aaa\f';
@@ -1166,7 +1166,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0003', 0, () => {
+    it('testfillEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0003";
       try {
         const escape = 'aaa\n';
@@ -1186,7 +1186,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0004', 0, () => {
+    it('testfillEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0004";
       try {
         const escape = 'aaa\r';
@@ -1206,7 +1206,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0005', 0, () => {
+    it('testfillEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0005";
       try {
         const escape = 'aaa\t';
@@ -1226,7 +1226,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0006', 0, () => {
+    it('testfillEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0006";
       try {
         const escape = 'aaa\v';
@@ -1246,7 +1246,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0007', 0, () => {
+    it('testfillEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -1266,7 +1266,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0008', 0, () => {
+    it('testfillEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0008";
       try {
         const escape = '\开';
@@ -1286,7 +1286,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0009', 0, () => {
+    it('testfillEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0009";
       try {
         const escape = '\😊';
@@ -1306,7 +1306,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0010', 0, () => {
+    it('testfillEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0010";
       try {
         const escape = 'aa\0';
@@ -1326,7 +1326,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testfillEscape0011', 0, () => {
+    it('testfillEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEscape0011";
       try {
         const escape = '\\b';
@@ -1346,7 +1346,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0001', 0, () => {
+    it('testincludesEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0001";
       try {
         const escape = 'aaa\b';
@@ -1367,7 +1367,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0002', 0, () => {
+    it('testincludesEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0002";
       try {
         const escape = 'aaa\f';
@@ -1388,7 +1388,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0003', 0, () => {
+    it('testincludesEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0003";
       try {
         const escape = 'aaa\n';
@@ -1409,7 +1409,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0004', 0, () => {
+    it('testincludesEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0004";
       try {
         const escape = 'aaa\r';
@@ -1430,7 +1430,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0005', 0, () => {
+    it('testincludesEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0005";
       try {
         const escape = 'aaa\t';
@@ -1451,7 +1451,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0006', 0, () => {
+    it('testincludesEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0006";
       try {
         const escape = 'aaa\v';
@@ -1472,7 +1472,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0007', 0, () => {
+    it('testincludesEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -1493,7 +1493,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0008', 0, () => {
+    it('testincludesEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0008";
       try {
         const escape = '\开';
@@ -1514,7 +1514,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0009', 0, () => {
+    it('testincludesEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0009";
       try {
         const escape = '\😊';
@@ -1535,7 +1535,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0010', 0, () => {
+    it('testincludesEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0010";
       try {
         const escape = '\0';
@@ -1556,7 +1556,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testincludesEscape0011', 0, () => {
+    it('testincludesEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEscape0011";
       try {
         const escape = '\b';
@@ -1577,7 +1577,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0001", 0, () => {
+    it("testBufferIndexOfEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0001";
       try {
         const escape = '\b';
@@ -1598,7 +1598,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0002", 0, () => {
+    it("testBufferIndexOfEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0002";
       try {
         const escape = '\f';
@@ -1619,7 +1619,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0003", 0, () => {
+    it("testBufferIndexOfEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0003";
       try {
         const escape = '\n';
@@ -1640,7 +1640,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0004", 0, () => {
+    it("testBufferIndexOfEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0004";
       try {
         const escape = '\r';
@@ -1661,7 +1661,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0005", 0, () => {
+    it("testBufferIndexOfEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0005";
       try {
         const escape = '\t';
@@ -1682,7 +1682,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0006", 0, () => {
+    it("testBufferIndexOfEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0006";
       try {
         const escape = '\v';
@@ -1703,7 +1703,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0007", 0, () => {
+    it("testBufferIndexOfEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0007";
       try {
         const escape = '\x24';
@@ -1724,7 +1724,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0008", 0, () => {
+    it("testBufferIndexOfEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0008";
       try {
         const escape = '\开';
@@ -1745,7 +1745,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0009", 0, () => {
+    it("testBufferIndexOfEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0009";
       try {
         const escape = '\😊';
@@ -1766,7 +1766,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0010", 0, () => {
+    it("testBufferIndexOfEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0010";
       try {
         const escape = '\0';
@@ -1787,7 +1787,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0011", 0, () => {
+    it("testBufferIndexOfEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEscape0011";
       try {
         const escape = '\\b';
@@ -1807,7 +1807,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEscape0001", 0, () => {
+    it("testBufferLastIndexOfEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0001";
       try {
         const escape = '\b';
@@ -1828,7 +1828,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0002", 0, () => {
+    it("testBufferLastIndexOfEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0002";
       try {
         const escape = '\f';
@@ -1849,7 +1849,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0003", 0, () => {
+    it("testBufferLastIndexOfEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0003";
       try {
         const escape = '\n';
@@ -1870,7 +1870,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEscape004", 0, () => {
+    it("testBufferLastIndexOfEscape004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape004";
       try {
         const escape = '\r';
@@ -1891,7 +1891,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0005", 0, () => {
+    it("testBufferLastIndexOfEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0005";
       try {
         const escape = '\t';
@@ -1912,7 +1912,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0006", 0, () => {
+    it("testBufferLastIndexOfEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0006";
       try {
         const escape = '\v';
@@ -1933,7 +1933,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0007", 0, () => {
+    it("testBufferLastIndexOfEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0007";
       try {
         const escape = '\x24';
@@ -1954,7 +1954,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0008", 0, () => {
+    it("testBufferLastIndexOfEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0008";
       try {
         const escape = '\开';
@@ -1975,7 +1975,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0009", 0, () => {
+    it("testBufferLastIndexOfEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0009";
       try {
         const escape = '\😊';
@@ -1996,7 +1996,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0010", 0, () => {
+    it("testBufferLastIndexOfEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0010";
       try {
         const escape = '\0';
@@ -2017,7 +2017,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0011", 0, () => {
+    it("testBufferLastIndexOfEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEscape0011";
       try {
         const escape = '\\b';
@@ -2037,7 +2037,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0001', 0, () => {
+    it('testBuffertoStringEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0001";
       try {
         let buf1 = buffer.from([0x08]);
@@ -2057,7 +2057,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0002', 0, () => {
+    it('testBuffertoStringEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0002";
       try {
         let buf1 = buffer.from([0x0C]);
@@ -2076,7 +2076,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0003', 0, () => {
+    it('testBuffertoStringEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0003";
       try {
         let buf1 = buffer.from([0x0A]);
@@ -2095,7 +2095,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0004', 0, () => {
+    it('testBuffertoStringEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0004";
       try {
         let buf1 = buffer.from([0x0D]);
@@ -2114,7 +2114,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0005', 0, () => {
+    it('testBuffertoStringEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0005";
       try {
         let buf1 = buffer.from([0x09]);
@@ -2133,7 +2133,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0006', 0, () => {
+    it('testBuffertoStringEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0006";
       try {
         let buf1 = buffer.from([0x0B]);
@@ -2152,7 +2152,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0007', 0, () => {
+    it('testBuffertoStringEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0007";
       try {
         let buf1 = buffer.from([0x24]);
@@ -2171,7 +2171,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0008', 0, () => {
+    it('testBuffertoStringEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0008";
       try {
         let buf1 = buffer.from('\\开== 开');
@@ -2190,7 +2190,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0009', 0, () => {
+    it('testBuffertoStringEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0009";
       try {
         let buf1 = buffer.from('\\😊 == 😊');
@@ -2209,7 +2209,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0010', 0, () => {
+    it('testBuffertoStringEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0010";
       try {
         let buf1 = buffer.from([0x00]);
@@ -2228,7 +2228,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEscape0011', 0, () => {
+    it('testBuffertoStringEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEscape0011";
       try {
         let buf1 = buffer.from([0x5C, 0x62]);
@@ -2246,7 +2246,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0001', 0, () => {
+    it('testBufferwriteESCAPE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0001";
       try {
         const escape = 'aaa\b'
@@ -2266,7 +2266,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0002', 0, () => {
+    it('testBufferwriteESCAPE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0002";
       try {
         const escape = 'aaa\f'
@@ -2286,7 +2286,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0003', 0, () => {
+    it('testBufferwriteESCAPE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0003";
       try {
         const escape = 'aaa\n'
@@ -2306,7 +2306,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0004', 0, () => {
+    it('testBufferwriteESCAPE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0004";
       try {
         const escape = 'aaa\r'
@@ -2326,7 +2326,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0005', 0, () => {
+    it('testBufferwriteESCAPE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0005";
       try {
         const escape = 'aaa\t'
@@ -2346,9 +2346,9 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0006', 0, () => {
+    it('testBufferwriteESCAPE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0006";
-      try{
+      try {
         const escape = 'aaa\v'
         let buf = buffer.alloc(256);
         let length1 = buf.write(escape, 0);
@@ -2366,7 +2366,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0007', 0, () => {
+    it('testBufferwriteESCAPE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0007";
       try {
         const escape = 'aaa\x24'
@@ -2386,7 +2386,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0008', 0, () => {
+    it('testBufferwriteESCAPE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0008";
       try {
         const escape = '\开'
@@ -2406,7 +2406,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0009', 0, () => {
+    it('testBufferwriteESCAPE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0009";
       try {
         const escape = '\😊'
@@ -2426,7 +2426,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0010', 0, () => {
+    it('testBufferwriteESCAPE0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0010";
       try {
         const escape = '\\0'
@@ -2446,7 +2446,7 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteESCAPE0011', 0, () => {
+    it('testBufferwriteESCAPE0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteESCAPE0011";
       try {
         const escape = '\\b'
@@ -2466,10 +2466,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0001', 0, async () => {
+    it('testBuffertextESCAPE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0001";
       try {
-        let blob= new buffer.Blob(['aa\b']);
+        let blob = new buffer.Blob(['aa\b']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('aa%08');
@@ -2486,10 +2486,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0002', 0, async () => {
+    it('testBuffertextESCAPE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0002";
       try {
-        let blob= new buffer.Blob(['\f']);
+        let blob = new buffer.Blob(['\f']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('%0C');
@@ -2506,10 +2506,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0003', 0, async () => {
+    it('testBuffertextESCAPE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0003";
       try {
-        let blob= new buffer.Blob(['aa\n']);
+        let blob = new buffer.Blob(['aa\n']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('aa%0A');
@@ -2526,10 +2526,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0004', 0, async () => {
+    it('testBuffertextESCAPE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0004";
       try {
-        let blob= new buffer.Blob(['aa\r']);
+        let blob = new buffer.Blob(['aa\r']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('aa%0D');
@@ -2546,10 +2546,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0005', 0, async () => {
+    it('testBuffertextESCAPE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0005";
       try {
-        let blob= new buffer.Blob(['aa\t']);
+        let blob = new buffer.Blob(['aa\t']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('aa%09');
@@ -2566,10 +2566,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0006', 0, async () => {
+    it('testBuffertextESCAPE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0006";
       try {
-        let blob= new buffer.Blob(['aa\v']);
+        let blob = new buffer.Blob(['aa\v']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('aa%0B');
@@ -2587,10 +2587,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0007', 0, async () => {
+    it('testBuffertextESCAPE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0007";
       try {
-        let blob= new buffer.Blob(['55\x24']);
+        let blob = new buffer.Blob(['55\x24']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('55$');
@@ -2607,10 +2607,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0008', 0, async () => {
+    it('testBuffertextESCAPE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0008";
       try {
-        let blob= new buffer.Blob(['\开']);
+        let blob = new buffer.Blob(['\开']);
         let pro = await blob.text();
         expect(pro.toString()).assertEqual('开');
       } catch (err) {
@@ -2626,10 +2626,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0009', 0, async () => {
+    it('testBuffertextESCAPE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0009";
       try {
-        let blob= new buffer.Blob(['\😊']);
+        let blob = new buffer.Blob(['\😊']);
         let pro = await blob.text();
         expect(pro.toString()).assertEqual('😊');
       } catch (err) {
@@ -2645,10 +2645,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0010', 0, async () => {
+    it('testBuffertextESCAPE0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0010";
       try {
-        let blob= new buffer.Blob(['a\0']);
+        let blob = new buffer.Blob(['a\0']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('a%00');
@@ -2665,10 +2665,10 @@ export default function EscapeBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextESCAPE0011', 0, async () => {
+    it('testBuffertextESCAPE0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBuffertextESCAPE0011";
       try {
-        let blob= new buffer.Blob(['abc\b']);
+        let blob = new buffer.Blob(['abc\b']);
         let pro = await blob.text();
         let res = encodeURI(pro);
         expect(res).assertEqual('abc%08');
