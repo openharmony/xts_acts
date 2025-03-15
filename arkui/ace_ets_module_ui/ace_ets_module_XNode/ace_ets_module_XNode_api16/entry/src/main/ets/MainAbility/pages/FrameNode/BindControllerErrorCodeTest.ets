@@ -45,12 +45,12 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
-    this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
+    this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 50 } });
     this.builderNode.build(new WrappedBuilder(buildComponent));
 
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
-      rootRenderNode.size = { width: 200, height: 200 };
+      rootRenderNode.size = { width: 200, height: 50 };
       rootRenderNode.backgroundColor = 0xff00ff00;
       rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
