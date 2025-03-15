@@ -384,7 +384,7 @@ export default function SystemBrightnessTest() {
         done();
       } catch (error) {
         console.error(`${TAG} error: ${error.code} ${error.message}`);
-        expect().assertFail();
+        expect().assertEqual(401);
         done();
       }
     });
