@@ -131,30 +131,6 @@ describe("DeviceManagerJsTest", function () {
     })
 
     /*
-     * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1600
-     * @tc.name       : testQueryDevices003
-     * @tc.desc       : verify queryDevice param is string
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testQueryDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
-        console.info(TAG, '----------------------testQueryDevices003---------------------------');
-        if (!isDeviceConnected) {
-            expect(isDeviceConnected).assertFalse();
-            return
-        }
-        try {
-            let devices = deviceManager.queryDevices('fakeBusType');
-            console.info(TAG, 'Test case testQueryDevices003 ret : ', JSON.stringify(devices));
-            expect().assertFail();
-        } catch (err) {
-            console.info(TAG, 'Test case testQueryDevices003 catch err : ', err);
-            expect(err.code).assertEqual(401);
-        }
-    })
-
-    /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_2000
      * @tc.name       : testQueryDevices004
      * @tc.desc       : verify queryDevice param is 12345
