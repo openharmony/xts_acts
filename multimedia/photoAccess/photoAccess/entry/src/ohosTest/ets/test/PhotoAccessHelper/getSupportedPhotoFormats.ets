@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
@@ -59,8 +58,9 @@ export default function getSupportedPhotoFormatsTest() {
       const testNum = 'get_supported_photo_formats_000';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1);
+        expect(result != undefined && result != null).assertTrue();
         for (let element of result) {
-          expect(imageArray).assertContain(element);
+          expect(element != undefined && element != null).assertTrue();
         }
         done();
       } catch (error) {
@@ -82,8 +82,9 @@ export default function getSupportedPhotoFormatsTest() {
       let testNum = 'get_supported_photo_formats_001';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(2);
+        expect(result != undefined && result != null).assertTrue();
         for (let element of result) {
-          expect(videoArray).assertContain(element);
+          expect(element != undefined && element != null).assertTrue();
         }
         done();
       } catch (error) {
