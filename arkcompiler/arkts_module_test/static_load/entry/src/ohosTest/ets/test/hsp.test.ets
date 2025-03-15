@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect ,TestType, Size, Level } from "@ohos/hypium"
 import {
   hspAdd,
   hspSubtract,
@@ -37,7 +37,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHsp01', 0, () => {
+    it('testStaticLoadHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp01";
       try {
         expect(hspAdd(3, 2)).assertEqual(5);
@@ -55,7 +55,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHsp02', 0, () => {
+    it('testStaticLoadHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp02";
       try {
         expect(hspSubtract(3, 2)).assertEqual(1);
@@ -73,7 +73,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHsp03', 0, () => {
+    it('testStaticLoadHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp03";
       try {
         expect(hspMultiply(3, 2)).assertEqual(6);
@@ -91,7 +91,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp04", 0, () => {
+    it("testStaticLoadHsp04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp04";
       try {
         expect(hspGetCNInfo()).assertEqual("CN");
@@ -109,7 +109,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp05", 0, () => {
+    it("testStaticLoadHsp05", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp05";
       try {
         expect(harAdd(3, 2)).assertEqual(5);
@@ -127,7 +127,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp06", 0, () => {
+    it("testStaticLoadHsp06", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp06";
       try {
         expect(harSubtract(3, 2)).assertEqual(1);
@@ -145,7 +145,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp07", 0, () => {
+    it("testStaticLoadHsp07", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp07";
       try {
         expect(harMultiply(3, 2)).assertEqual(6);
@@ -163,7 +163,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp08", 0, () => {
+    it("testStaticLoadHsp08", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp08";
       try {
         expect(harGetCNInfo()).assertEqual("CN");
@@ -181,7 +181,7 @@ export default function staticLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHsp09", 0, () => {
+    it("testStaticLoadHsp09", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHsp09";
       try {
         expect(npmRes).assertTrue();
