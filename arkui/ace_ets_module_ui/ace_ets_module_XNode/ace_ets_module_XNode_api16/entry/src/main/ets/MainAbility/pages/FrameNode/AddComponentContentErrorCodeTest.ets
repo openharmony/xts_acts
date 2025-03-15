@@ -36,7 +36,7 @@ function buildComponent() {
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private builderNode: BuilderNode<[]> | null = null;
-  public ChildrenCount: number = 0;
+  public childrenCount: number = 0;
   private uiContext: UIContext | null = null;
   private component: ComponentContent<Object> | null = null;
 
