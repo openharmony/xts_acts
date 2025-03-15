@@ -86,23 +86,17 @@ export default function BatteryStatisticsTest() {
         let TAG = 'System_API_Test_batteryStats_Manager_0200';
         let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
         if (isSupport) {
-          try {
-            batteryStats.getBatteryStats((error, data) => {
-              if (typeof error === 'undefined') {
-                console.info(`${TAG} BatteryStatsInfo: ${JSON.stringify(data)}`);
-                expect().assertFail();
-                done();
-              } else {
-                console.error(`${TAG} error: ${JSON.stringify(error)}`);
-                expect(error.code).assertEqual(202);
-                done();
-              }
-            });
-          } catch (error) {
-            console.error(`${TAG} error: ${JSON.stringify(error)}`);
-            expect(error.code).assertEqual(202);
-            done();
-          }
+          batteryStats.getBatteryStats((error, data) => {
+            if (error) {
+              console.error(`${TAG} error: ${JSON.stringify(error)}`);
+              expect(error.code).assertEqual(202);
+              done();
+            } else {
+              console.info(`${TAG} BatteryStatsInfo: ${JSON.stringify(data)}`);
+              expect().assertFail();
+              done();
+            }
+          });
         } else {
           console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
           expect(isSupport).assertFalse();
