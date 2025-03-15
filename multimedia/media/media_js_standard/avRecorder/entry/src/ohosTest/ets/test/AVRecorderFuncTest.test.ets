@@ -2161,7 +2161,7 @@ export default function avRecorderTest() {
       done();
     })
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200
         * @tc.name      : 003.test recording AMR 3 seconds to stop
         * @tc.desc      : Local Video recording AMR 3 seconds to stop
         * @tc.size      : MediumTest
