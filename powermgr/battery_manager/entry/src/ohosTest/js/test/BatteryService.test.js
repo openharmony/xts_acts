@@ -54,7 +54,7 @@ export default function BatteryServiceTest() {
         console.info(`${TAG} ret: ${ret}`);
       } catch (error) {
         console.error(`${TAG} error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(5100101);
+        expect(error.code).assertEqual(4600101);
         done();
       }
     });
@@ -74,7 +74,7 @@ export default function BatteryServiceTest() {
         console.info(`${TAG} ret: ${ret}`);
       } catch (error) {
         console.error(`${TAG} error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(5100101);
+        expect(error.code).assertEqual(4600101);
         done();
       }
     });
@@ -94,7 +94,7 @@ export default function BatteryServiceTest() {
         console.info(`${TAG} ret: ${ret}`);
       } catch (error) {
         console.error(`${TAG} error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(5100101);
+        expect(error.code).assertEqual(4600101);
         done();
       }
     });
