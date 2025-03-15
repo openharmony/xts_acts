@@ -835,20 +835,19 @@ export default function settingUiJsunit() {
         done();
       }catch (err) {
         console.error("[open_manager_settings_119] error = " + err);
-        expect(err == "Error: assertion (isInvalid) Failed: 14800000 - Parameter error.")
-          .assertTrue();
+        expect(err.code).assertEqual(14800000);
       }
       done();
     });
 
     it('open_manager_settings_120', 0, async (done:Function) => {
       try{
-        let value = settings.openNetworkManagerSettings(globalThis.xcomponentContext1);
+        let value = settings.openNetworkManagerSettings(globalThis.stageContext);
         expect(true).assertTrue();
         done();
       }catch (err) {
         console.error("[open_manager_settings_120] error = " + err);
-        expect(14800010).assertEqual(14800010);
+        expect(err.code).assertEqual(14800010);
       }
       done();
     });
