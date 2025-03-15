@@ -26,9 +26,9 @@ struct ModalComponent {
       NavDestination() {
       }.title('pageOne')
       .onActive((reason: NavDestinationActiveReason) => {
-        console.log("modal pageOne onActive: " + reason);
+        console.log('modal pageOne onActive: ' + reason);
       }).onInactive((reason: NavDestinationActiveReason) => {
-        console.log("modal pageOne onInactive: " + reason);
+        console.log('modal pageOne onInactive: ' + reason);
       })
     }
   }

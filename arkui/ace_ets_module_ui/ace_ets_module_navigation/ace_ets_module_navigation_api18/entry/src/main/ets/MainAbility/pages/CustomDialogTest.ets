@@ -19,10 +19,10 @@ struct DialogComponent {
 
       }.title('PageOne')
       .onActive((reason)=> {
-        console.log("trigger CustomDialog pageOne onActive: " + reason);
+        console.log('trigger CustomDialog pageOne onActive: ' + reason);
       })
       .onInactive((reason) => {
-        console.log("trigger CustomDialog pageOne onInactive: " + reason);
+        console.log('trigger CustomDialog pageOne onInactive: ' + reason);
       })
     }
   }

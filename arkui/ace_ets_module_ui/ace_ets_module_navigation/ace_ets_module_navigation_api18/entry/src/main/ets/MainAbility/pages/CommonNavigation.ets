@@ -29,11 +29,11 @@ struct PageOne {
 @Component
 export struct CommonNavigation {
   pathStack?: NavPathStack
-  title:string = ""
+  title:string = ''
 
   @Builder
   PageBuilder(name: string, param: string) {
-    if (name == "pageOne") {
+    if (name == 'pageOne') {
       PageOne({tag: param})
     }
   }

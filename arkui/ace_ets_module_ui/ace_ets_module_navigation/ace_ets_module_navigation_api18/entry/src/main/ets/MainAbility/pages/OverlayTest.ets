@@ -28,7 +28,7 @@ struct OverlayTest {
     name: 'push pageOne',
     callback: () => {
       this.pathStack.pushDestination({name: 'pageOne', param: 'overlay'}).then(() => {
-        console.log("testOnActive pageOne success");
+        console.log('testOnActive pageOne success');
       }).catch((err: BusinessError) => {
         console.log(`testOnActive pageOne failed: ${err.code}, message: ${err.message}`);
       })
