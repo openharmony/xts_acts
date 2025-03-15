@@ -27,7 +27,7 @@ function buildText() {
   .padding(16)
 }
 
-const componentContentMap: Array<ComponentContent<[Object]>> = new Array();
+const componentContentMap: ComponentContent<Object>[] = [];
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
