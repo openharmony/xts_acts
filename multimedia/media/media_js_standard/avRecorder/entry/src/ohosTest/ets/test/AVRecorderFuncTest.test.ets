@@ -2133,8 +2133,7 @@ export default function avRecorderTest() {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100 end');
       done();
     })
-  })
-  /* *
+    /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100
         * @tc.name      : 003.test recording AMR 3 seconds to stop
         * @tc.desc      : Local Video recording AMR 3 seconds to stop
@@ -2186,5 +2185,6 @@ export default function avRecorderTest() {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 end');
       done();
     })
+  })
 }
 
