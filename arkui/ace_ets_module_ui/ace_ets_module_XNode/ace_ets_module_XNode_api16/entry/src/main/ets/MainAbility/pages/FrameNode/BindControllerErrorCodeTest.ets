@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { FrameNode, NodeController, BuilderNode } from "@kit.ArkUI";
+import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
 import { typeNode } from '@ohos.arkui.node';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -59,7 +59,7 @@ class MyNodeController extends NodeController {
 
   builderNodeBindController401(): string {
     let errorStr401: string = '';
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     try {
       typeNode.bindController(textNode, this.scroller, 'Scroll');
     } catch (e) {
