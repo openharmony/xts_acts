@@ -18,7 +18,7 @@ import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 let request_scenario_UNSET = geolocationm.LocationRequestScenario.UNSET
 let request_scenario_NAVIGATION = geolocationm.LocationRequestScenario.NAVIGATION
@@ -172,7 +172,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-         it('SUB_HSS_LocationSystem_SingleLocErr_0100', 0, async function (done) {
+         it('SUB_HSS_LocationSystem_SingleLocErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let currentLocationRequest = 1;
                 geolocationm.getCurrentLocation(currentLocationRequest, (err, result) => {
@@ -201,7 +201,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_SingleLocErr_0200', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_SingleLocErr_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let currentLocationRequest = 1;
@@ -224,7 +224,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_SendCommandErr_0100', 0, async function (done) {
+        it('SUB_HSS_SendCommandErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let requestInfo = "lbstest";
             try {
                 geolocationm.sendCommand(requestInfo,(err, result) => {
@@ -251,7 +251,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_SendCommandErr_0200', 0, async function (done) {
+        it('SUB_HSS_SendCommandErr_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let requestInfo = "test";
             (async () => {
                 try {
@@ -274,7 +274,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_BatchingErr_0100', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_BatchingErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 geolocationm.getCachedGnssLocationsSize("test",(err, data) => {
                     if (err) {
@@ -301,7 +301,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_BatchingErr_0400', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_BatchingErr_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 geolocationm.flushCachedGnssLocations("test",(err, data) => {
                     if (err) {
@@ -328,7 +328,7 @@ export default function geolocationTest_LocErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_BatchingErr_0500', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_BatchingErr_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await geolocationm.flushCachedGnssLocations(1); 
@@ -350,7 +350,7 @@ export default function geolocationTest_LocErr(){
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-        it('testGeolocationManagerConfig001', 0, async function (done) {
+        it('testGeolocationManagerConfig001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             expect(true).assertEqual(request_scenario_UNSET == 0x300)
             expect(true).assertEqual(request_scenario_NAVIGATION == 0x301)
             expect(true).assertEqual(request_scenario_TRAJECTORY_TRACKING == 0x302)

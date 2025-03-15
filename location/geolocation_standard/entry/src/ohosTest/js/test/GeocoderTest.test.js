@@ -18,7 +18,7 @@ import {LocationEventListener} from '@ohos.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 let LocationRequestScenario = {
     UNSET: 0x300,
@@ -112,7 +112,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('SUB_HSS_LocationSystem_Geo_0100', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_Geo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             geolocation.isGeoServiceAvailable(async (err, data) => {
                 if (err) {
@@ -140,7 +140,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await geolocation.isGeoServiceAvailable().then((result) => {
                 console.info('[lbs_js] isGeoServiceAvailable promise result: ' + JSON.stringify(result));
@@ -166,7 +166,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1, "locale": "zh" };
         try {
             geolocation.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
@@ -193,7 +193,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
@@ -237,7 +237,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 5 };
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
@@ -263,7 +263,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let reverseGeocodeRequest1 = { "latitude": 90, "longitude": 121.62771, "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
@@ -332,7 +332,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0700', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 180, "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
@@ -398,7 +398,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0800', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = {
             "description": "上海市浦东新区金穗路1800号",
             "maxItems": 1,
@@ -463,7 +463,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0900', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = { "description": "上海市浦东新区金穗路1800号", "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -488,7 +488,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1000', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = { "description": "上海市浦东新区金穗路1800号", "maxItems": 5 };
         try {
             await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -514,7 +514,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             let geocodeRequest = { "description": "", "maxItems": 1 };
             await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -553,7 +553,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = {
             "description": "上海金穗路1800号",
             "maxItems": 1,
@@ -587,7 +587,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = {
             "description": "",
             "maxItems": 1,
@@ -640,7 +640,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = {
             "description": "北京天安门",
             "maxItems": 1,
@@ -674,7 +674,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest = {
             "description": "北京天安门",
             "maxItems": 1,
@@ -707,7 +707,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest1 = {
             "description": "上海金穗路1800号",
             "maxItems": 1,
@@ -884,7 +884,7 @@ export default function geolocationTest_geo1() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_1700', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Geo_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocodeRequest1 = {
             "description": "北京天安门",
             "maxItems": 1,

@@ -18,7 +18,7 @@ import { LocationEventListener } from '@ohos.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 let request_priority_unset = geolocation.LocationRequestPriority.UNSET
 let request_priority_accuracy = geolocation.LocationRequestPriority.ACCURACY
@@ -136,7 +136,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('SUB_HSS_LocationSystem_LocSwitch_0300', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_LocSwitch_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             geolocation.isLocationEnabled(async (err, data) => {
                 if (err) {
@@ -163,7 +163,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await geolocation.isLocationEnabled().then((result1) => {
                 console.info('[lbs_js] getLocationSwitchStateLocSwitch_0004 result: ' + JSON.stringify(result1));
@@ -187,7 +187,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('just for overwriting,locationServiceState test need system api');
         var locationServiceState = (state) => {
             console.log('locationServiceState: state: ' + JSON.stringify(state));
@@ -216,7 +216,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('just for overwriting,locationServiceState test need system api');
         var locationServiceState1 = (state) => {
             console.log('locationServiceState: state1: ' + JSON.stringify(state));
@@ -253,7 +253,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": request_priority_unset, "scenario": request_scenario_navigation, "timeoutMs": 1000, "maxAccuracy": 0 };
         try {
             geolocation.getCurrentLocation(currentLocationRequest, (err, result) => {
@@ -282,7 +282,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": request_priority_firstfix, "scenario": request_scenario_navigation, "timeoutMs": 1000, "maxAccuracy": 0 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -306,7 +306,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": request_priority_unset, "scenario": request_scenario_tracking, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -331,7 +331,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": request_priority_unset, "scenario": request_scenario_car_hailing, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -355,7 +355,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": request_priority_unset, "scenario": request_scenario_dailylife, "timeoutMs": 1000, "maxAccuracy": 0 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -380,7 +380,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest1 = { "priority": request_priority_unset, "scenario": request_scenario_nopower, "timeoutMs": 1000, "maxAccuracy": 10 };
         let currentLocationRequest2 = { "priority": request_priority_unset, "scenario": request_scenario_navigation, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
@@ -416,7 +416,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0700', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -440,7 +440,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0800', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -464,7 +464,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0900', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 0 };
         try {
             await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -488,7 +488,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_1000', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 5 };
         let currentLocationRequest1 = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 2 };
         try {
@@ -525,7 +525,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_1100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": -1 };
         try {
@@ -561,7 +561,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_SingleLoc_1200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0301, "timeoutMs": 1000, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0301, "timeoutMs": 1000, "maxAccuracy": 0 };
         try {
@@ -597,7 +597,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_SingleLoc_1300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0302, "timeoutMs": 0, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0302, "timeoutMs": -1000, "maxAccuracy": 0 };
         try {
@@ -633,7 +633,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_SingleLoc_1400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await geolocation.getCurrentLocation().then((result) => {
                 console.info('[lbs_js] getCurrentLocation promise result140 ' + JSON.stringify(result));
@@ -656,7 +656,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_SendCommand_0100', 0, async function (done) {
+    it('SUB_HSS_SendCommand_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let requestInfo = { 'scenario': -1, 'command': "command_1" };
         requestInfo.scenario = request_scenario_navigation
         try {
@@ -683,7 +683,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_SendCommand_0200', 0, async function (done) {
+    it('SUB_HSS_SendCommand_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let requestInfo = { 'scenario': request_scenario_navigation, 'command': "command_1" };
         try {
             geolocation.sendCommand(requestInfo).then((result) => {
@@ -710,7 +710,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":5,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -741,7 +741,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_tracking, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -772,7 +772,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_car_hailing, "timeInterval":5,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -803,7 +803,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_car_hailing, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 0};
@@ -835,7 +835,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_nopower, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -883,7 +883,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0700', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_accuracy, "scenario":request_scenario_unset, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -915,7 +915,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0800', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_firstfix, "scenario":request_scenario_unset, "timeInterval":5,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -947,7 +947,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0900', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_lowpower, "scenario":request_scenario_unset, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10}
@@ -978,7 +978,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_1000', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":3,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1009,7 +1009,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_1100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":5,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1040,7 +1040,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_1200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1071,7 +1071,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_1300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1120,7 +1120,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_1400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 5};
@@ -1169,7 +1169,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_1500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1218,7 +1218,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LastLoc_0100', 0, async function(done) {
+    it('SUB_HSS_LocationSystem_LastLoc_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1263,7 +1263,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LastLoc_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LastLoc_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1309,7 +1309,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         var gnssStatusCb = (satelliteStatusInfo) => {
             console.info('gnssStatusChange: ' + satelliteStatusInfo);
@@ -1365,7 +1365,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1411,7 +1411,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1466,7 +1466,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         var gnssStatusCb1 = (satelliteStatusInfo) => {
             console.info('gnssStatusChange: ' + satelliteStatusInfo);
@@ -1524,7 +1524,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb1 = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1570,7 +1570,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1601,7 +1601,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1647,7 +1647,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0400', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1690,7 +1690,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1736,7 +1736,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1779,7 +1779,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0800', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         var cachedLocationsCb1 = (locations) => {
             console.log('cachedGnssLocationsReporting: locations1: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1820,7 +1820,7 @@ export default function geolocationTest_geo3() {
     * @tc.type Function
     * @tc.level Level 1
     */
-    it('SUB_HSS_LocationSystem_GeoFence_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_GeoFence_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": ""};
         let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence};
@@ -1866,7 +1866,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_HSS_LocationSystem_GeoFence_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_GeoFence_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         let geofence = {"latitude": 0, "longitude": 0, "radius": 0,"expiration": ""};
         geofence.latitude = 31.12
@@ -1912,7 +1912,7 @@ export default function geolocationTest_geo3() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_HSS_LocationSystem_Config_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Config_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         expect(true).assertEqual(request_priority_unset == 0x200);
         expect(true).assertEqual(request_priority_accuracy == 0x201);
         expect(true).assertEqual(request_priority_lowpower == 0x202);
