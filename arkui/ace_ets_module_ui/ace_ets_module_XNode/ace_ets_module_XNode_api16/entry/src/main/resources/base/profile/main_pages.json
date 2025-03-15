@@ -3,6 +3,11 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/FrameNode/frameNodeIsVisibleTest",
         "MainAbility/pages/FrameNode/frameNodeMoveOneTest",
-        "MainAbility/pages/FrameNode/frameNodeMoveTwoTest"
+        "MainAbility/pages/FrameNode/frameNodeMoveTwoTest",
+        "MainAbility/pages/FrameNode/frameNodeMoveToErrorCodeTest",
+        "MainAbility/pages/FrameNode/AddComponentContentErrorCodeTest",
+        "MainAbility/pages/FrameNode/BindControllerErrorCodeTest",
+        "MainAbility/pages/FrameNode/RenderNodeDisposeTest",
+        "MainAbility/pages/FrameNode/componentContentDisposeTest"
     ]
 }
