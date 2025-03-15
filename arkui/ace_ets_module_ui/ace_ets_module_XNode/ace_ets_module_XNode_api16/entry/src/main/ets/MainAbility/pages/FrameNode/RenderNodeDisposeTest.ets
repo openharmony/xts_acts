@@ -19,15 +19,12 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 100, width: 100, height: 100 };
 renderNode.backgroundColor = 0xffff0000;
 
-
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-
     let rootRenderNode = this.rootNode!.getRenderNode();
-
     if (rootRenderNode !== null) {
       rootRenderNode.size = { width: 200, height: 200 };
       rootRenderNode.backgroundColor = 0xff00ff00;
@@ -80,7 +77,7 @@ struct RenderNodeDisposeIndex {
             this.result = 'Init'
           }
         }).width('100%')
-      Text(this.result).id("dispose_result").height('10%')
+      Text(this.result).id('dispose_result').height('10%')
     }
   }
 }
