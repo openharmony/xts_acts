@@ -16,6 +16,7 @@
 import Want from '@ohos.app.ability.Want'
 import { BusinessError } from '@ohos.base';
 import installer from '@ohos.bundle.installer';
+import accountManager from '@ohos.enterprise.accountManager';
 import adminManager from '@ohos.enterprise.adminManager'
 import bundleManager from '@ohos.enterprise.bundleManager'
 import securityManager from '@ohos.enterprise.securityManager'
@@ -171,6 +172,18 @@ let INVALID_PARAMETERS: Record<string, string> = {
   "invalidKey" : "123456"
 }
 
+const DOMAIN_ACCOUNT_INFO1: osAccount.DomainAccountInfo = {
+  domain: '',
+  accountName: '',
+  serverConfigId: '',
+};
+
+const DOMAIN_ACCOUNT_POLICY1: accountManager.DomainAccountPolicy = {
+  authenticationValidityPeriod: 120,
+  passwordValidityPeriod: 90,
+  passwordExpirationNotification: 60,
+};
+
 export {
   BUNDLENAME1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
   ENTINFO2, NETWORK_ETH_LOCAL, NETWORK_ETH_INVALID, DEFAULT_USER_ID, INVALID_USER_ID,
@@ -179,5 +192,6 @@ export {
   APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE,
   INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
   PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS,
-  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND,INVALID_BUNDLE_NAME, CURRENT_USER_ID, getCurrentUserId
+  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND,INVALID_BUNDLE_NAME, CURRENT_USER_ID, getCurrentUserId,
+  DOMAIN_ACCOUNT_INFO1, DOMAIN_ACCOUNT_POLICY1
 }
