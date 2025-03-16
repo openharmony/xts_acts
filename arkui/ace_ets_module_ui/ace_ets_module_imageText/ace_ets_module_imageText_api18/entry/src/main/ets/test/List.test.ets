@@ -17,10 +17,12 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import ContentTypeTest1 from './TextInputTest/ContentType1.test';
 import ContentTypeTest2 from './TextInputTest/ContentType2.test';
 import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.test';
+import monitorInvisibleArea from './ImageAnimator/monitorInvisibleArea.test';
 
 export default function testsuite() {
   textAreaInputTest();
   ContentTypeTest1();
   ContentTypeTest2();
   symbolGlyphFontScaleTest();
+  monitorInvisibleArea();
 }
