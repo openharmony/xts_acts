@@ -91,14 +91,13 @@ export default function AVPlayerMediaSource() {
           bitrate: 1000000 * (i + 1)});
       }
       let mediaSource = media.createMediaSourceWithStreamData(streams);
-      let playStrategy : media.PlaybackStrategy = {preferredWidth: 200, preferredHeight: 300, preferredBufferDuration: 5};
-      player.setMediaSource(mediaSource, playStrategy);
+      expect(mediaSource != undefined).assertTrue();
       done();
     });
     /* *
       * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0400
       * @tc.name      : 004.testMediaSource
-      * @tc.desc      : flv live stream with createMediaSourceWithStreamData fail
+      * @tc.desc      : flv live stream with createMediaSourceWithStreamData return empty for exceed maxStreamNum
       * @tc.size      : MediumTest
       * @tc.type      : Function Test
       * @tc.level     : Level0
@@ -114,9 +113,22 @@ export default function AVPlayerMediaSource() {
           bitrate: 1000000 * (i + 1)});
       }
       let mediaSource = media.createMediaSourceWithStreamData(streams);
-      if (!mediaSource) {
-        done();
-      }
+      expect(mediaSource != undefined).assertFalse();
+      done();
+    });
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0500
+    * @tc.name      : 005.testMediaSource
+    * @tc.desc      : flv live stream with createMediaSourceWithStreamData return empty for empty MediaStream
+    * @tc.size      : MediumTest
+    * @tc.type      : Function Test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0500', 0, async (done: Function) => {
+      let streams : Array<media.MediaStream> = [];
+      let mediaSource = media.createMediaSourceWithStreamData(streams);
+      expect(mediaSource != undefined).assertFalse();
+      done();
     });
   })
 }
