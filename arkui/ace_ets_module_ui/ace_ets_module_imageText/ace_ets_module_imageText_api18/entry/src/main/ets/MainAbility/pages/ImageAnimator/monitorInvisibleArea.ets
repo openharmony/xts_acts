@@ -5,7 +5,7 @@ struct ImageAnimatorAutoPauseTest {
   @State state: AnimationStatus = AnimationStatus.Running
   @State reverse: boolean = false
   @State iterations: number = 100
-  @State preCallBack: string = "Null"
+  @State preCallBack: string = 'Null'
   @State monitorInvisibleArea: boolean | undefined | null = true
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -36,11 +36,11 @@ struct ImageAnimatorAutoPauseTest {
             .fillMode(FillMode.Forwards).iterations(this.iterations).width('90%').height('40%')
             .margin({ top: 20 })
             .onStart(() => {
-              this.preCallBack = "Start"
+              this.preCallBack = 'Start'
               console.info('ImageAnimator Start')
             })
             .onPause(() => {
-              this.preCallBack = "Pause"
+              this.preCallBack = 'Pause'
               console.info('ImageAnimator Pause')
             })
             .onRepeat(() => {
