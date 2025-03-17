@@ -22,6 +22,7 @@ import SecurityHuksCipherDESTest from './SecurityHuksCipherDES.test';
 import SecurityHuksCipher3DESTest from './SecurityHuksCipher3DES.test';
 import SecurityHuksImportTest from './SecurityHuksImport.test';
 import SecurityHuksKeyAttestationTest from './SecurityHuksKeyAttestation.test';
+import SecurityHuksInterfaceErrorCodeTest from './SecurityHuksInterfaceErrorCode.test';
 
 export default function testsuite() {
   SecurityHuksAccessControlAsUserTest();
@@ -34,4 +35,5 @@ export default function testsuite() {
   SecurityHuksCipher3DESTest();
   SecurityHuksImportTest();
   SecurityHuksKeyAttestationTest();
+  SecurityHuksInterfaceErrorCodeTest();
 }

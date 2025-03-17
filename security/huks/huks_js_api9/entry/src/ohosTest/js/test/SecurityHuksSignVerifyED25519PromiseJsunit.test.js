@@ -14,16 +14,16 @@
  */
 import { describe, it } from '@ohos/hypium';
 import Data from './utils/data.json';
-import { HuksSignVerifyED25519 } from './utils/param/signverify/publicSignverifyParam';
-import { stringToUint8Array } from './utils/param/publicFunc';
+import { HuksSignVerifyED25519 } from './utils/param/signverify/publicSignverifyParam.js';
+import { stringToUint8Array } from './utils/param/publicFunc.js';
 import { publicSignVerifyFunc } from './utils/param/signverify/publicSignverifyPromise.js';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
-export default function SecurityHuksSignVerifyEd25519PromiseJsunit() {
-  describe('SecurityHuksSignVerifyEd25519PromiseJsunit', function () {
+export default function SecurityHuksSignVerifyED25519PromiseJsunit() {
+  describe('SecurityHuksSignVerifyED25519PromiseJsunit', function () {
     it('Security_HUKS_SignVerify_API9_ED25519_101', 0, async function (done) {
       const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias101';
       let HuksOptions = {

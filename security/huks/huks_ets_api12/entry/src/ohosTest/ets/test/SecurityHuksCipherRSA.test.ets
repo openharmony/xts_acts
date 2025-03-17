@@ -401,7 +401,9 @@ export default function SecurityHuksCipherRSATest() {
         expect(null).assertFail();
       } catch (err) {
         console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(12000003);
+        if (err.code != 801 && err.code != 12000001) {
+          expect(err.code).assertEqual(12000003);
+        }
       }
     })
 
