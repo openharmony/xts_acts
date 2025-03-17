@@ -68,7 +68,7 @@ export default function provide2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0100] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[provide2_0100] END');
       done();
 
@@ -84,7 +84,7 @@ export default function provide2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0200] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[provide2_0200] END');
       done();
 
@@ -134,7 +134,7 @@ export default function provide2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0500] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0500] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[provide2_0500] END');
       done();
 
@@ -152,7 +152,7 @@ export default function provide2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0600] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0600] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[provide2_0600] END');
       done();
 
