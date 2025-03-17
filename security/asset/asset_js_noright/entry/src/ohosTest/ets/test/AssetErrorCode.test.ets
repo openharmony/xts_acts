@@ -46,7 +46,7 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias1'));
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('demo_label1'));
-      attr.set(asset.Tag.WRAP_TYPE, asset.WrapType.TRUSTED_ACCOUNT)
+      attr.set(asset.Tag.WRAP_TYPE, asset.WrapType.TRUSTED_ACCOUNT);
       try {
         await asset.add(attr);
         console.info(`SUB_Security_DataSecurity_Asset_JS_wraptype_0100 added successfully`);
@@ -72,7 +72,7 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('demo_label'));
-      attr.set(asset.Tag.WRAP_TYPE, asset.WrapType.NEVER)
+      attr.set(asset.Tag.WRAP_TYPE, asset.WrapType.NEVER);
       try {
         await asset.add(attr);
         console.info(`SUB_Security_DataSecurity_Asset_JS_wraptype_0200 added successfully`);
@@ -98,17 +98,12 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias2'));
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('demo_label2'));
-
-      let attr1: asset.AssetMap = new Map();
-      attr1.set(asset.Tag.SECRET, StringToArray('demo_pwd2'));
-      attr1.set(asset.Tag.ALIAS, StringToArray('demo_alias2'));
-      attr1.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-      attr1.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('demo_label2'));
       try {
         await asset.add(attr);
         console.info(`SUB_Security_DataSecurity_Asset_errorCode_add_0300_0100 added first successfully`);
-        await asset.add(attr1);
+        await asset.add(attr);
         console.info(`SUB_Security_DataSecurity_Asset_errorCode_add_0300_0100 added Second successfully`);
+        expect(null).assertFail();
       } catch (error) {
         let err = error as BusinessError;
         console.error(`SUB_Security_DataSecurity_Asset_errorCode_add_0300_0100 Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
@@ -244,17 +239,18 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.SECRET, StringToArray('123456789'));
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
-      await asset.add(attr)
+      await asset.add(attr);
       let attr2: asset.AssetMap = new Map();
-      for (let index=0; index < 20; index++) {
-        try {
-          asset.preQuerySync(attr2);
-          console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_016_0100 Asset preQuerySync SUCCESS. `);
-        } catch (error) {
-          let err = error as BusinessError;
-          console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_016_0100 Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
-          expect(error.code).assertEqual(24000016);
-        }
+      try {
+        for (let index=0; index < 20; index++) {
+        asset.preQuerySync(attr2);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_016_0100 Asset preQuerySync SUCCESS. `)
+        };
+        expect(null).assertFail();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_016_0100 Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(24000016);
       }
       done();
     });
@@ -305,7 +301,7 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.SECRET, StringToArray('123456789'));
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
-      await asset.add(attr)
+      await asset.add(attr);
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.ALIAS, StringToArray('00000000000'));
       try {
@@ -332,7 +328,7 @@ export default function AssetErrorCodeTest() {
       attr.set(asset.Tag.SECRET, StringToArray('123456789'));
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
-      await asset.add(attr)
+      await asset.add(attr);
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.ALIAS, StringToArray('0000000000'));
       try {
@@ -340,12 +336,70 @@ export default function AssetErrorCodeTest() {
           console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_02_0100 Asset preQuery SUCCESS. `);
         }).catch ((err: BusinessError) => {
           console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_02_0100 Failed to pre-query1 Asset. Code is ${err.code}, message is ${err.message}`);
-          expect(null).assertFail();
+          expect(err.code).assertEqual(24000002);
         });
       } catch (error) {
         let err = error as BusinessError;
         console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_02_0100 Failed to pre-query2 Asset. Code is ${err.code}, message is ${err.message}`);
-        expect(error.code).assertEqual(24000002);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_preQuery_016_0100
+     * @tc.name test preQuery
+     * @tc.desc 反复调用preQuery接口，不释放缓存返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_preQuery_016_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.SECRET, StringToArray('123456789'));
+      attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
+      attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
+      await asset.add(attr);
+      let attr2: asset.AssetMap = new Map();
+      attr2.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
+      try {
+        for (let index=0; index < 20; index++) {
+        await asset.preQuery(attr2);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_016_0100 Asset preQuery SUCCESS. `);
+        };
+        expect(null).assertFail();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_016_0100 Failed to pre-query2 Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(24000016);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_addSync_03_0100
+     * @tc.name test addSync
+     * @tc.desc 存在同名资产时新增数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_addSync_03_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.SECRET, StringToArray('123456789'));
+      attr.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+      attr.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('tag1'));
+      try {
+        asset.addSync(attr);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_addSync_03_0100 addsync first successfully`);
+        asset.addSync(attr);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_addSync_03_0100 addsync Second successfully`);
+        expect(null).assertFail();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_addSync_03_0100 Failed to addSync Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(24000003);
       }
       done();
     });
