@@ -54,7 +54,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test let declare variables
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
@@ -77,7 +77,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test let declare variables
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
@@ -98,7 +98,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The array is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
@@ -115,7 +115,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let array is undfined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr = [1, 2, undefined, 4, 5];
@@ -139,7 +139,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let array is null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr = [1, 2, 3, null, 4, 5];
@@ -163,7 +163,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let array is ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr = [1, 2, '', 4, 5];
@@ -187,7 +187,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let string is ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let str: string = '';
@@ -211,7 +211,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let string is normal
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let str: string = 'Hello';
@@ -230,7 +230,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let string is undfined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let str = 'Hello undefined World';
@@ -269,7 +269,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The string is null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let str = 'Hello null World';
@@ -308,7 +308,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The string is null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let str = 'Hello \'\' World';
@@ -348,7 +348,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test For (const char of string) {joinedString += char;}
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let originalString = 'Hello World';
@@ -367,7 +367,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Let exception handling normal
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testCases = [
@@ -389,7 +389,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Exception handling undefined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testCases = [
@@ -411,7 +411,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Let exception handling null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testCases = [
@@ -433,7 +433,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Let exception handling ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testCases = [
@@ -454,7 +454,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Map
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testMapWithException = new Map([
@@ -472,7 +472,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Set
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let testSetWithException = new Set(['Alice', 'Bob', 'Charlie']);
@@ -489,7 +489,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Iterator
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest1900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
 
@@ -507,7 +507,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Let Untyped
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let mixedArray = [1, [5, 6, 7]];
@@ -541,7 +541,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Let Untyped
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const emptyArray = [];
@@ -558,7 +558,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const normal variables
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const arr: number[] = [10, 20, 30];
@@ -581,7 +581,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const array is undfined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const arr = [1, 2, undefined, 4, 5];
@@ -605,7 +605,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const array is null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const arr = [1, 2, null, 4, 5];
@@ -629,7 +629,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const array is ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const arr = [1, 2, '', 4, 5];
@@ -653,7 +653,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const string is ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const str: string = '';
@@ -678,7 +678,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const string is normal
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const str: string = 'Hello';
@@ -696,7 +696,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const string is undfined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const str = 'Hello undefined World';
@@ -736,7 +736,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const string is null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest2900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const str = 'Hello null World';
@@ -775,7 +775,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The const string is ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const str = 'Hello \'\' World';
@@ -812,7 +812,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test For (const char of string) {joinedString += char;}
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const originalString = 'Hello World';
@@ -832,7 +832,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const exception handling normal
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testCases = [
@@ -853,7 +853,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const exception handling null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testCases = [
@@ -874,7 +874,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const exception handling ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testCases = [
@@ -896,7 +896,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const map
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testMapWithException = new Map([
@@ -915,7 +915,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const set
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testSetWithException = new Set(['Alice', 'Bob', 'Charlie']);
@@ -932,7 +932,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test COnst iterator
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const testIteratorWithException = new Set(['abc', 'Tom', 'Sala']);
@@ -949,7 +949,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Const Untyped
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const mixedArray = [1, [5, 6, 7]];
@@ -982,7 +982,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test For-of nesting
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest3900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const matrix = [
@@ -1009,7 +1009,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Nesting order
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest4000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const matrix = [
@@ -1042,7 +1042,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Number of layers: 5 layers
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest4100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 0
@@ -1106,7 +1106,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Number of layers: 10 layers
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest4200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 0;
@@ -1189,7 +1189,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Define variables on the outer layer and assign values in the loop to see if they can be obtained
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest4300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let foundValue: number | null = null;
@@ -1215,7 +1215,7 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test Define variables on the outer layer and assign values in the loop to see if they can be obtained
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementForOfTest4400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const currentIndex: string = ''

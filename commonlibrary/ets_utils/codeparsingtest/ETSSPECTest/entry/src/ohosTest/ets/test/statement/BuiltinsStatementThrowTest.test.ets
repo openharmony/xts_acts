@@ -55,7 +55,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Throw one
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementThrow0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (Done: Function) => {
       try {
@@ -75,7 +75,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Throw multiple
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementThrow0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -105,7 +105,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Inside the for loop throw
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementThrow0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -136,7 +136,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Inside the for loop throw
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementThrow0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -177,7 +177,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Uncaught exception
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = Input2(1, 0);
@@ -191,7 +191,7 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Uncaught exception
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {

@@ -70,7 +70,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test expression with string
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -85,7 +85,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test expression with enum
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -99,7 +99,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test expression with object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -116,7 +116,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test one caseClause
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -130,7 +130,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test any caseSameClause
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -145,7 +145,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch with break
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -159,7 +159,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch with null
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_2900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -173,7 +173,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch with undefined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -187,7 +187,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch expression type inconsistency
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -201,7 +201,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch no break
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -215,7 +215,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch one defaultClause
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -229,7 +229,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch break with case
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -243,7 +243,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch break with not
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -257,7 +257,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test switch whether the medium assignment is available
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -291,7 +291,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test nest switch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -315,7 +315,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test nest switch caseClause
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_3800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -340,7 +340,7 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test nest switch defaultClause
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementSwitchTest_4000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done : Function) => {

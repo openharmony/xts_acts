@@ -45,7 +45,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -70,7 +70,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -94,7 +94,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -118,7 +118,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -142,7 +142,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -166,7 +166,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -190,7 +190,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -217,7 +217,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -243,7 +243,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let executed1 = false;
@@ -268,7 +268,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let count1 = 1;
@@ -290,7 +290,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let count = 1;
@@ -335,7 +335,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let num1: number = 5;
@@ -357,7 +357,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const arr: number[] = [1, 2, 3, 4];
@@ -386,7 +386,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const str: string = "abcd";
@@ -416,7 +416,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const obj: MyObject = {
@@ -450,7 +450,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const num: bigint = 3n;
@@ -479,7 +479,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const myInstance = new MyClass();
@@ -511,7 +511,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let currentValue1 = MyColor.RED;
@@ -552,7 +552,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const myTuple: [string, number, boolean] = ['apple', 10, true];
@@ -581,7 +581,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       type MyUnionType = number | string;
@@ -620,7 +620,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       type GenericArray<T> = T[];
@@ -652,7 +652,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       type Direction = 'up' | 'down' | 'left' | 'right';
@@ -699,7 +699,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let num1: number = 0;
@@ -723,7 +723,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let num1: number = 0;
@@ -747,7 +747,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let num1: number = 0;
@@ -771,7 +771,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let num1 = 5;
@@ -806,7 +806,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const getNextNumber = getNumber();
@@ -831,7 +831,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       while (false) {
@@ -848,7 +848,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let condition1 = true;
@@ -874,7 +874,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       const maxIterations = 5
@@ -897,7 +897,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       while (false) {
@@ -916,7 +916,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let count1 = 0;
@@ -958,7 +958,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let count1 = 0;
@@ -976,7 +976,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let count2 = 0;
@@ -994,7 +994,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let loopIndex1 = 0;
@@ -1013,7 +1013,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let loopIndex2 = 0;
@@ -1032,7 +1032,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let number = 0;
@@ -1050,7 +1050,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let number = 0;
@@ -1068,7 +1068,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let outerCounter = 0;
@@ -1092,7 +1092,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let outerCounter = 0;
@@ -1116,7 +1116,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let counter1 = 0;
@@ -1158,7 +1158,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let counter1 = 0;
@@ -1235,7 +1235,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let counter1: number = 0;
@@ -1277,7 +1277,7 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementWhileTest4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let counter1 = 0;

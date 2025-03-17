@@ -58,7 +58,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test One catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
 
     it('builtinsStatementTry0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (Done: Function) => {
@@ -79,7 +79,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Multiple catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -108,7 +108,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test And finally used together
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -132,7 +132,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Not and finally used together
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       ;
@@ -154,7 +154,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The code block is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       ;
@@ -176,7 +176,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Includes throw
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -205,7 +205,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Not used with try
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       asyncInput('###').then(() => {
@@ -227,7 +227,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Define variables on the outside
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let errorOccurred = false;
@@ -252,7 +252,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Whether the variables used in the catch can be obtained on the outside
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let errorOccurred = false;
@@ -277,7 +277,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Whether the variables used in the catch can be obtained on the outside
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -308,7 +308,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Nested try catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -342,7 +342,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Nested try finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -374,7 +374,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Nesting order
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result: string = ''
@@ -410,7 +410,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test One finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -429,7 +429,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test And catch together
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -450,7 +450,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The code block is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -468,7 +468,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The code block is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -491,7 +491,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Includes throw
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -521,7 +521,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Not used with try
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry1900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       asyncInput('###').then(() => {
@@ -545,7 +545,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Multiple finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -571,7 +571,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Not used as the last code block
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -602,7 +602,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Define the variables on the outer layer and assign values in the final layer to see if they can be obtained
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 0
@@ -626,7 +626,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Whether or not using variables in finally is available on the outside
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 0
@@ -650,7 +650,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Finally nested try catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -681,7 +681,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Finally nested try finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -708,7 +708,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Finally nested try catch finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -741,7 +741,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Finally nested try catch finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result: string = '';
@@ -786,7 +786,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try code block is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -804,7 +804,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try includes throw
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry2900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -828,7 +828,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try includes if
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = Math.random();
@@ -856,7 +856,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try includes circulate
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr = [1, 2, 3, 4, 5];
@@ -882,7 +882,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try includes function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -906,7 +906,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Define the variable in the outer layer, and assign the value in the try to see if it can be obtained
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 1;
@@ -928,7 +928,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Whether the use of variables in a try can be obtained on the outer layer
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let num: number = 1;
@@ -950,7 +950,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try nested try catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -979,7 +979,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try nested try finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -1004,7 +1004,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test The try nested try catch finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -1035,7 +1035,7 @@ export default function builtinsStatementTry() {
      * @tc.desc test Finally nested try catch finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementTry3800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result: string = '';

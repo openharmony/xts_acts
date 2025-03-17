@@ -66,7 +66,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Inside the body of a function or method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -80,7 +80,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test return with computed expression
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -94,7 +94,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test In-loop use
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -109,7 +109,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test nested loop
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -124,7 +124,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Used in conditional statements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -139,7 +139,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test sequenceRunner task with string error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -154,7 +154,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Inside the body of the constructor
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -168,7 +168,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test conditional presence return the outside doesn't exist either return
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -182,7 +182,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Inside the body of a function or method whose return type is void
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -196,7 +196,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test In-loop with void use
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_1000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -211,7 +211,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test nested loop with void
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_1100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -226,7 +226,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Used in conditional statements with void
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_1200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -242,7 +242,7 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Whether internal use affects external use
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsStatementReturnTest_1300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (Done: Function) => {
