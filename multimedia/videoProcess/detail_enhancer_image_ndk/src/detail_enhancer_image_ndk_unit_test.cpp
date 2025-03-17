@@ -724,7 +724,7 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41, TestSize.Level1)
     OH_ImageProcessing_Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     ImageProcessing_ErrorCode ret = OH_ImageProcessing_EnhanceDetail(instance, srcImg, dstImg);
     if (!access("/system/lib64/ndk/libimage_processing_capi_impl.so", 0)) {
-        if(!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)){
+        if (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)) {
             EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
         }
     } else {
@@ -766,7 +766,7 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42, TestSize.Level1)
     OH_ImageProcessing_Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     ImageProcessing_ErrorCode ret = OH_ImageProcessing_EnhanceDetail(instance, srcImg, dstImg);
     if (!access("/system/lib64/ndk/libimage_processing_capi_impl.so", 0)) {
-        if(!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)){
+        if (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)) {
             EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
         }
     } else {
