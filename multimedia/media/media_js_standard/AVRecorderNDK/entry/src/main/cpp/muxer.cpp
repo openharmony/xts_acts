@@ -72,7 +72,6 @@ int32_t Muxer::Stop()
 int32_t Muxer::Release()
 {
     if (muxer_ != nullptr) {
-
         OH_AVMuxer_Destroy(muxer_);
         muxer_ = nullptr;
     }

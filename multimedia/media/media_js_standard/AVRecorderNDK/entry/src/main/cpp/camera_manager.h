@@ -75,7 +75,6 @@ public:
     Camera_ErrorCode IsVideoStabilizationModeSupportedFn(uint32_t mode);
     Camera_ErrorCode setZoomRatioFn(uint32_t zoomRatio);
 
-
     Camera_ErrorCode SessionFlowFn(void);
     Camera_ErrorCode SessionBegin(void);
     Camera_ErrorCode SessionCommitConfig(void);

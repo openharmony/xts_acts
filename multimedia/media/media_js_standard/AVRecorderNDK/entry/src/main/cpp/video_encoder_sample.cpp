@@ -26,14 +26,12 @@ void SampleCallback::OnError(OH_AVCodec *codec, int32_t errorCode, void *userDat
 }
 void SampleCallback::OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
 {
-
     (void)codec;
     (void)format;
     (void)userData;
 }
 void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 {
-
     (void)codec;
     (void)index;
     (void)userData;

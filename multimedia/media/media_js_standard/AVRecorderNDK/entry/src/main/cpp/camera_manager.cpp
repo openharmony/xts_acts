@@ -415,7 +415,7 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
 Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void)
 {
     result_ = OH_CameraManager_GetSupportedCameraOutputCapability(cameraManager_, &cameras_[cameraDeviceIndex_],
-                                                               &cameraOutputCapability_);
+                                                                  &cameraOutputCapability_);
     if (result_ != CAMERA_OK || cameraOutputCapability_ == nullptr) {
         OH_LOG_ERROR(LOG_APP, "GetSupportedOutputCapability failed.");
         return CAMERA_INVALID_ARGUMENT;
