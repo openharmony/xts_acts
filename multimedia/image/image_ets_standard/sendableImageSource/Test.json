@@ -41,7 +41,8 @@
                 "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files",
                 "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files",
                 "./resource/image/test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files",
-                "./resource/image/SVG.svg ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files"
+                "./resource/image/SVG.svg ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files",
+                "./resource/image/dog.astc ->/data/app/el2/100/base/ohos.acts.multimedia.image.sendableImageSource/haps/entry_test/files"
             ]
         }
     ]
