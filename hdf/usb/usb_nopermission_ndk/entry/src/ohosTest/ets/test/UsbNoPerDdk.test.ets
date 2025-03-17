@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import usbNoPerDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
 
@@ -490,12 +490,12 @@ export default function usbNoPerDdkTest() {
     /**
      * @tc.number     : SUB_Driver_Ext_DDK_0900
      * @tc.name       : testUsbGetDevicesNoPer001
-     * @tc.desc       : OH_Usb_GetDevices Interface testing
+     * @tc.desc       : OH_Usb_GetDevices Interface testing,teturn DDK_ERR_NOPERM
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUsbGetDevicesNoPer001', 0, async (done: Function) => {
+    it('testUsbGetDevicesNoPer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('----------------------testUsbGetDevicesNoPer001---------------------------');
       try {
         if (deviceId < 0) {
