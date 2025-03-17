@@ -17,6 +17,7 @@ import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
 import deviceinfo from '@ohos.deviceInfo';
+import inputmethodengine from '@ohos.inputMethodEngine';
 
 export default function inputMethodAuthorityJSUnit() {
   describe('inputMethodAuthorityJSUnit', () => {
@@ -458,6 +459,89 @@ export default function inputMethodAuthorityJSUnit() {
         expect().assertFail();
         done();
       }
+    });
+
+    /**
+     * @tc.number  Sub_InputMethod_IME_getSecurityMode_0101
+     * @tc.name    Sub_InputMethod_IME_getSecurityMode_0101
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IME_getSecurityMode_0101', 0, async (done: Function) => {
+      try{
+        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
+        console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 getInputMethodAbility success");
+        let state =  await InputMethodAbility.getSecurityMode();
+        console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 state is: " + state);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IME_getSecurityMode_0101 errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800004);
+        done();
+      };
+    });
+
+    /**
+     * @tc.number  Sub_InputMethod_IME_createPanel_0101
+     * @tc.name    Sub_InputMethod_IME_createPanel_0101
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IME_createPanel_0101', 0, async (done: Function) => {
+      let panelInfo: inputmethodengine.PanelInfo = {
+        type: 0,
+        flag: 1
+      };
+      try{
+        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
+        console.info("====>Sub_InputMethod_IME_createPanel_0101 getInputMethodAbility success");
+        InputMethodAbility.createPanel(globalThis.abilityContext, panelInfo,  (err: BusinessError, panel: inputmethodengine.Panel) => {
+            if (err) {
+                console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`);
+                expect(err.code).assertEqual(12800004);
+                done();
+            }
+            console.info("====>Sub_InputMethod_IME_createPanel_0101 createPanel success " );
+            expect().assertFail();
+            done();
+        });
+      } catch(err) {
+        console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800004);
+        done();
+      };
+    });
+
+    /**
+     * @tc.number  Sub_InputMethod_IME_createPanel_0201
+     * @tc.name    Sub_InputMethod_IME_createPanel_0201
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IME_createPanel_0201', 0, async (done: Function) => {
+      let panelInfo: inputmethodengine.PanelInfo = {
+        type: 0,
+        flag: 1
+      }
+      try{
+        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
+        console.info("====>Sub_InputMethod_IME_createPanel_0201 getInputMethodAbility success");
+        await InputMethodAbility.createPanel(globalThis.abilityContext, panelInfo);
+        console.info("====>Sub_InputMethod_IME_createPanel_0201 createPanel success " );
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IME_createPanel_0201 errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800004);
+        done();
+      };
     });
 
   });
