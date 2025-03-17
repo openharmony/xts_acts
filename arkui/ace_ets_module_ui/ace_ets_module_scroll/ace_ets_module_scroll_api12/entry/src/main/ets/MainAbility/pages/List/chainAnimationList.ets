@@ -33,6 +33,7 @@ struct chainAnimationListExample {
           .id('listItem_sticky')
           .sticky(Sticky.None)
           .editable(EditMode.None)
+          .selected(true)
           .onSelect((isSelected: boolean) => {
             console.info('Select:' + isSelected)
           })
