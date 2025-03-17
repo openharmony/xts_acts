@@ -2,6 +2,8 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/datePicker/DatePickerMode",
-        "MainAbility/pages/timePicker/timePickerStartAndEnd"
+        "MainAbility/pages/timePicker/timePickerStartAndEnd",
+        "MainAbility/pages/datePicker/datePickerEnableHapticFeedback",
+        "MainAbility/pages/datePicker/datePickerEnableHapticFeedbackModifier"
     ]
 }
