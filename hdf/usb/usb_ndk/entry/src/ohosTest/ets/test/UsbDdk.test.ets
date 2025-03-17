@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, it, expect } from "@ohos/hypium"
+import { beforeAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import usbDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
 
@@ -871,6 +871,90 @@ export default function usbDdkTest() {
       } catch (err) {
         console.error(TAG, `testUsbSendPipeRequestWithAshmem004 failed, message is ${err.message}`);
         expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_DDK_0600
+     * @tc.name       : testUsbGetDevices001
+     * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_SUCCESS
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('----------------------testUsbGetDevices001---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        const ret = usbDdk.usbGetDevicesOne(dev);
+        console.info("Test Result testUsbGetDevices001 : " + ret);
+        expect(ret).assertEqual(USB_DDK_SUCCESS);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbGetDevices001 failed, message is ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_DDK_0700
+     * @tc.name       : testUsbGetDevices002
+     * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_INVALID_OPERATION
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbGetDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('----------------------testUsbGetDevices002---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        const ret = usbDdk.usbGetDevicesTwo(dev);
+        console.info("Test Result testUsbGetDevices002 : " + ret);
+        expect(ret).assertEqual(USB_DDK_INVALID_OPERATION);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbGetDevices002 failed, message is ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_DDK_0800
+     * @tc.name       : testUsbGetDevices003
+     * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_INVALID_PARAMETER
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbGetDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('----------------------testUsbGetDevices003---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        const ret = usbDdk.usbGetDevicesThree(dev);
+        console.info("Test Result testUsbGetDevices003 : " + ret);
+        expect(ret).assertEqual(USB_DDK_INVALID_PARAMETER);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbGetDevices003 failed, message is ${err.message}`);
+        expect().assertFail();
         done();
       }
     });

@@ -28,3 +28,4 @@ export const usbSendPipeRequest: (a: number) => number;
 export const usbCreateDeviceMemMap: (a: number) => number;
 export const usbDestroyDeviceMemMap: (a: number) => number;
 export const usbSendPipeRequestWithAshmem: (a: number) => number;
+export const usbGetDevices: (a: number) => number;
