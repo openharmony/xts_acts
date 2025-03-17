@@ -702,7 +702,7 @@ export default function drawingTsPath3Test() {
         let result: boolean;
         result = path.getSegment(true, 10.0, 20.0, true, dstPath)
         console.info(msg + " getSegment-----result:  "+ path.getSegment(true, 10.0, 20.0, true, dstPath));
-        expect(result).assertEqual(1);
+        expect(result).assertEqual(true);
       } catch (e) {
         console.info(msg + `test getSegment . errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect().assertFail();
