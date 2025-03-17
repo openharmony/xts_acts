@@ -46,11 +46,11 @@ export default function nestedScrollSwiper() {
      * @tc.number    nestedScrollSwiper_001
      * @tc.name      nestedScrollSwiper_0100
      * @tc.desc      NestdScroll setting SELF_ONLY.
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('nestedScrollSwiper_0100', 0, async (done: Function) => {
+    it('nestedScrollSwiper_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[nestedScrollSwiper_0100] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -85,11 +85,11 @@ export default function nestedScrollSwiper() {
      * @tc.number    nestedScrollSwiper_002
      * @tc.name      nestedScrollSwiper_0200
      * @tc.desc      NestdScroll setting SELF_FIRST.
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('nestedScrollSwiper_0200', 0, async (done: Function) => {
+    it('nestedScrollSwiper_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[nestedScrollSwiper_0200] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
