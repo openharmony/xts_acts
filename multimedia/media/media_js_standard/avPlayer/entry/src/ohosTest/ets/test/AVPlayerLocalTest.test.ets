@@ -22,6 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
 
 const VIDEO_SOURCE = 'H264_AAC.mp4';
+const VIDEO_SOURCE_MKV = 'H264_AAC.mkv'
 const AUDIO_SOURCE = '01.mp3';
 const VIDEO_NOAUDIO = 'H264_NONE.mp4'
 const SUBTITLE = 'srt_2800.srt'
@@ -38,6 +39,7 @@ const RELEASED = 'released';
 const ERROR = 'error';
 const PAGE_PATH = "testability/pages/Surface"
 let fileDescriptor: media.AVFileDescriptor;
+let fileDescriptor_mkv: media.AVFileDescriptor;
 let fileDescriptor2: media.AVFileDescriptor;
 let fileDescriptor3: media.AVFileDescriptor;
 let avPlayer: media.AVPlayer | null = null;
@@ -665,6 +667,104 @@ async function testSetMediaMuted(src: string | media.AVFileDescriptor, avPlayer:
   });
 }
 
+function setAVPlayerSeekContinuousCb(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null, done: Function) {
+  let isSeekContinuousSupported: boolean  = false;
+  let unsupportedSeekContinuousErr = false;
+  let firstPlay = true;
+  let surfaceID: string = globalThis.value;
+  console.info(`case setCallback in, surfaceID is ${surfaceID}`);
+  avPlayer?.on('stateChange', async (state, reason) => {
+    console.info(`case stateChange called, state is ${state}, reason is ${reason}`);
+    if (reason == media.StateChangeReason.BACKGROUND) {
+      avPlayer?.release().then(() => {
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    }
+    switch (state) {
+      case INITIALIZED:
+        expect(avPlayer?.state).assertEqual(INITIALIZED);
+        if (avPlayer) {
+          avPlayer.surfaceId = surfaceID;
+        }
+        console.info('case initialized -> prepared');
+        avPlayer?.prepare();
+        break;
+      case PREPARED:
+        expect(avPlayer?.state).assertEqual(PREPARED);
+        if (avPlayer) {
+          isSeekContinuousSupported = avPlayer.isSeekContinuousSupported();
+        }
+        avPlayer?.seek(1000, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(2000, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(-1, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.play();
+        break;
+      case PLAYING:
+        expect(avPlayer?.state).assertEqual(PLAYING);
+        if (firstPlay) {
+          await mediaTestBase.msleepAsync(1000);
+          firstPlay = false;
+          avPlayer?.pause();
+        } else {
+          avPlayer?.seek(1500, media.SeekMode.SEEK_CONTINUOUS);
+          avPlayer?.seek(1000, media.SeekMode.SEEK_CONTINUOUS);
+          avPlayer?.seek(-1, media.SeekMode.SEEK_CONTINUOUS);
+        }
+        break;
+      case PAUSED:
+        expect(avPlayer?.state).assertEqual(PAUSED);
+        avPlayer?.seek(2000, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(2500, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(-1, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.play();
+        break;
+      case COMPLETED:
+        expect(avPlayer?.state).assertEqual(COMPLETED);
+        avPlayer?.seek(3000, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(3500, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.seek(-1, media.SeekMode.SEEK_CONTINUOUS);
+        avPlayer?.release();
+        break;
+      case RELEASED:
+        expect(avPlayer?.state).assertEqual(RELEASED);
+        avPlayer = null;
+        expect(isSeekContinuousSupported == unsupportedSeekContinuousErr).assertFalse();
+        done();
+        break;
+      case ERROR:
+        expect().assertFail();
+        avPlayer?.release().then(() => {
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        break;
+      default:
+        break;
+    }
+  });
+
+  avPlayer?.on('error', async (err: BusinessError) => {
+    console.error(`case error called, errMessage is ${err.message}`);
+    if (err.code == media.AVErrorCode.AVERR_SEEK_CONTINUOUS_UNSUPPORTED) {
+      unsupportedSeekContinuousErr = true;
+    }
+  });
+}
+
+async function testAVPlayerSeekContinuous(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
+  done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    console.info('case createAVPlayer success');
+    avPlayer = video;
+    setAVPlayerSeekContinuousCb(src, avPlayer, done);
+    setSource(avPlayer, src);
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
 function openFileFailed() {
   console.info('case file fail');
 }
@@ -686,6 +786,9 @@ export default function AVPlayerLocalTest() {
       }
       await mediaTestBase.getFileDescriptorFromFileDir(VIDEO_SOURCE, openFileFailed).then((res) => {
         fileDescriptor = res;
+      });
+      await mediaTestBase.getFileDescriptorFromFileDir(VIDEO_SOURCE_MKV, openFileFailed).then((res) => {
+        fileDescriptor_mkv = res;
       });
       await mediaTestBase.getFileDescriptorFromFileDir(AUDIO_SOURCE, openFileFailed).then((res) => {
         fileDescriptor2 = res;
@@ -713,6 +816,7 @@ export default function AVPlayerLocalTest() {
 
       }
       await mediaTestBase.closeFdNumber(fileDescriptor.fd);
+      await mediaTestBase.closeFdNumber(fileDescriptor_mkv.fd);
       await mediaTestBase.closeFdNumber(fileDescriptor2.fd);
       await mediaTestBase.closeFdNumber(fileDescriptor3.fd);
       await mediaTestBase.closeFdNumber(subtitleFdSrc.fd);
@@ -911,6 +1015,33 @@ export default function AVPlayerLocalTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100', 0, async (done: Function) => {
       if (fileDescriptor) {
         testSetPlaybackStrategyDASH(fileDescriptor, avPlayer, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0100
+        * @tc.name      : 001.test seek continuous Function
+        * @tc.desc      : test local video seek continuous
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0100', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        testAVPlayerSeekContinuous(fileDescriptor, avPlayer, done);
+      }
+    });
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0200
+      * @tc.name      : 002.test seek continuous Function
+      * @tc.desc      : test local video mkv seek continuous
+      * @tc.size      : MediumTest
+      * @tc.type      : Function test
+      * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0200', 0, async (done: Function) => {
+      if (fileDescriptor_mkv) {
+        testAVPlayerSeekContinuous(fileDescriptor_mkv, avPlayer, done);
       }
     });
   })
