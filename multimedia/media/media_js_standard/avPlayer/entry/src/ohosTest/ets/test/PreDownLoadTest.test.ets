@@ -288,9 +288,9 @@ function toNextStep(avPlayer: media.AVPlayer | null, config: PreDownConfig, step
   }
 }
 
-async function getFd(path: string) {
+function getFd(path: string) {
   mgr = globalThis.getContext().resourceManager;
-  fileDescriptor = await mgr.getRawFd(path);
+  fileDescriptor = mgr.getRawFdSync(path);
 }
 
 export default function PreDownLoadTest() {
@@ -307,14 +307,14 @@ export default function PreDownLoadTest() {
           break;
         }
       }
-      await getFd(VIDEO_SOURCE);
+      getFd(VIDEO_SOURCE);
       console.log(`laamy ${Number.MAX_VALUE}`)
     })
     beforeEach(() => { })
     afterEach(() => { })
-    afterAll(async () => {
+    afterAll(() => {
       if (fileDescriptor) {
-        await mediaTestBase.closeFdNumber(fileDescriptor.fd);
+        mgr.closeRawFdSync(VIDEO_SOURCE);
       }
     })
 
