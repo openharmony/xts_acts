@@ -186,24 +186,18 @@ export default function windowErrCode401_3() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetResizeByDragEnabledCallbackErrCode401_0100",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | undefined = undefined;
-      try {
-        win = await ohosWindow.createWindow(windowConfig);
-        expect(!!win).assertTrue();
-      } catch (err) {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
+      let mainWindow: ohosWindow.Window | undefined;
+      await windowStage.getMainWindow().then((data) => {
+        mainWindow = data;
+        console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
         done()
-      }
+      });
+      expect(!!mainWindow).assertTrue();
 
       try {
-        win!.setResizeByDragEnabled(null, async (err: BusinessError) => {
-          await win!.destroyWindow()
+        mainWindow!.setResizeByDragEnabled(null, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(err));
@@ -217,7 +211,6 @@ export default function windowErrCode401_3() {
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
-        await win!.destroyWindow()
         expect(exception.code).assertEqual(401);
         done()
       }
@@ -236,34 +229,27 @@ export default function windowErrCode401_3() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetResizeByDragEnabledPromiseErrCode401_0100",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | undefined = undefined;
-      try {
-        win = await ohosWindow.createWindow(windowConfig);
-        expect(!!win).assertTrue();
-      } catch (err) {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
+      let mainWindow: ohosWindow.Window | undefined;
+      await windowStage.getMainWindow().then((data) => {
+        mainWindow = data;
+        console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
         done()
-      }
+      });
+      expect(!!mainWindow).assertTrue();
 
       try {
-        await win!.setResizeByDragEnabled(null).then(async () => {
+        await mainWindow!.setResizeByDragEnabled(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await win!.destroyWindow()
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
-        await win!.destroyWindow()
         expect(exception.code).assertEqual(401);
         done()
       }
@@ -821,23 +807,18 @@ export default function windowErrCode401_3() {
         let msgStr = 'jsunittest ' + caseName + ' ';
         console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetTitleAndDockHoverShownPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
+        let mainWindow: ohosWindow.Window | undefined;
+        await windowStage.getMainWindow().then((data) => {
+          mainWindow = data;
+          console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
           done()
-        }
+        });
+        expect(!!mainWindow).assertTrue();
 
         try {
-          await win!.setTitleAndDockHoverShown(null, null).then(async () => {
+          await mainWindow!.setTitleAndDockHoverShown(null, null).then(async () => {
             console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
             expect().assertFail();
           }).catch(async (err: BusinessError) => {
@@ -848,12 +829,10 @@ export default function windowErrCode401_3() {
               expect(err.code).assertEqual(401);
             }
           });
-          await win!.destroyWindow()
           done()
         } catch (exception) {
           console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' +
           JSON.stringify(exception));
-          await win!.destroyWindow()
           if (exception.code == 801) {
             console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
           } else {
