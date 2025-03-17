@@ -147,7 +147,7 @@ private:
     Camera_Position position_;
     Camera_Type type_;
     char *previewSurfaceId_;
-    Camera_ErrorCode ret_;
+    Camera_ErrorCode result_;
 
     uint32_t takePictureTimes = 0;
     Camera_ExposureMode exposureMode_;
