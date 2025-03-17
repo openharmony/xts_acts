@@ -87,7 +87,7 @@ struct showDotIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.log("current index: " + index )
+          console.log('current index: ' + index )
         })
     }
   }
