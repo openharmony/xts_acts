@@ -66,7 +66,7 @@ export default function VOneToVTwoTest0010() {
       console.info("[VOneToVTwoTest0010_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ParentArkUI');
       await CommonFunc.sleep(500);
-      obj1: ESObject = JSON.parse(getInspectorByKey('tvChild0010'));
+      obj1 = JSON.parse(getInspectorByKey('tvChild0010'));
       console.info("[VOneToVTwoTest0010_001] component obj1 is: " + JSON.stringify(obj1));
       console.info("[VOneToVTwoTest0010_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ParentArkUI');
@@ -74,12 +74,12 @@ export default function VOneToVTwoTest0010() {
       let btn1: Component = await driver.findComponent(ON.id("btnChild0010"));
       await btn1.click();
       await CommonFunc.sleep(1000);
-      obj1: ESObject = JSON.parse(getInspectorByKey('tvParent0010'));
+      obj1 = JSON.parse(getInspectorByKey('tvParent0010'));
       console.info("[VOneToVTwoTest0010_001] component obj1 is: " + JSON.stringify(obj1));
       console.info("[VOneToVTwoTest0010_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ChildArkUI');
       await CommonFunc.sleep(500);
-      obj1: ESObject = JSON.parse(getInspectorByKey('tvChild0010'));
+      obj1 = JSON.parse(getInspectorByKey('tvChild0010'));
       console.info("[VOneToVTwoTest0010_001] component obj1 is: " + JSON.stringify(obj1));
       console.info("[VOneToVTwoTest0010_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ChildArkUI');

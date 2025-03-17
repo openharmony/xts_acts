@@ -49,7 +49,7 @@ struct VOneToVTwoV10010 {
 
   build() {
     Column() {
-      Text(this.info)
+      Text(this.info.name)
         .id('tvParent0010')
         .height('5%')
       ChildVOneToVTwoV10010({ info: UIUtils.enableV2Compatibility(this.info) })
