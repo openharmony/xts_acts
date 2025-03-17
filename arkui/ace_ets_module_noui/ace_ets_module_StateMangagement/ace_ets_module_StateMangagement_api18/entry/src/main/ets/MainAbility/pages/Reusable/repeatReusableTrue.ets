@@ -98,7 +98,7 @@ struct Repeatreutrue  {
           .key((item: RepeatreutrueClazz, index: number) => {
             return item.message;
           })
-          // .virtualScroll({reusable: true })
+          .virtualScroll({reusable: true })
           .templateId(() => "a")
           .template('a', (ri) => {
             Text(`[a] index${ri.index}: ${ri.item.message}`)
