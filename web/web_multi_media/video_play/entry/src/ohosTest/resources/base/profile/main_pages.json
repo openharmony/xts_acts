@@ -1,12 +1,6 @@
 {
   "src": [
     "testability/pages/Index",
-    "testability/pages/WebMediaOption",
-    "testability/pages/WebMediaPlayGestureAccess",
-    "testability/pages/WebOnFullScreenEnter",
-    "testability/pages/WebOnFullScreenExit",
-    "testability/pages/WebViewControllerVideoMedia",
-    "testability/pages/webViewOnFullScreenEnterAudio",
-    "testability/pages/webViewOnFullScreenEnterVideoInfo"
+    "testability/pages/WebViewControllerVideoMedia"
   ]
 }

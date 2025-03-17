@@ -19,6 +19,7 @@ group("WebMultimedia") {
       "control_center:ActsWebControlCenterTest",
       "video_hosting:videoHosting",
       "video_play:ActsWebVideoPlayTest",
+      "video_playTwo:ActsWebVideoPlayTwoTest",
       "webcam:ActsWebcamTest",
     ]
   }

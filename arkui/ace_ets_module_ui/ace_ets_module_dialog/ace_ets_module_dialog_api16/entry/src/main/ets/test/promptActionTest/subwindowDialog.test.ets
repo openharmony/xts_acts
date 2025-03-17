@@ -73,7 +73,6 @@ export default function subwindowDialog() {
       expect(propertiesFirst.type).assertEqual(1)//1表示系统告警窗口TYPE_SYSTEM_ALERT
       
       let buttonSubwindowMenu = await driver.findComponent(ON.id('subwindowDialogLongClickMenu'));
-      let buttonCloseDialog = await driver.findComponent(ON.id('subwindowDialogClickClose'));
 
       await buttonSubwindowMenu.longClick();
       await CommonFunc.sleep(1000);
@@ -88,8 +87,11 @@ export default function subwindowDialog() {
       await CommonFunc.sleep(1000);
       await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
       await CommonFunc.sleep(1000);
-      await buttonCloseDialog.click();
-      await CommonFunc.sleep(1000);
+      let buttonCloseDialog = await driver.findComponent(ON.id('subwindowDialogClickClose'));
+      if (buttonCloseDialog) {
+        await buttonCloseDialog.click();
+        await CommonFunc.sleep(1000);
+      }
       console.info('[subwindowDialog_0100] END');
       done();
     });

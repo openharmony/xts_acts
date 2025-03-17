@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect ,TestType, Size, Level } from "@ohos/hypium"
 import {
   add1,
   subtract,
@@ -44,7 +44,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSourceHar01', 0, () => {
+    it('testSourceHar01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar01";
       try {
         expect(add1(3, 2)).assertEqual(5);
@@ -62,7 +62,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSourceHar02', 0, () => {
+    it('testSourceHar02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar02";
       try {
         expect(subtract(3, 2)).assertEqual(1);
@@ -80,7 +80,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSourceHar03', 0, () => {
+    it('testSourceHar03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar03";
       try {
         expect(multiply(3, 2)).assertEqual(6);
@@ -98,7 +98,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar04", 0, () => {
+    it("testSourceHar04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar04";
       try {
         expect(testGetCNInfo()).assertEqual("CN");
@@ -116,7 +116,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar05", 0, () => {
+    it("testSourceHar05", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar05";
       try {
         expect(addTest(3, 2)).assertEqual(5);
@@ -134,7 +134,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar06", 0, () => {
+    it("testSourceHar06", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar07";
       try {
         expect(addTest2(3, 2)).assertEqual(5);
@@ -152,7 +152,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar07", 0, () => {
+    it("testSourceHar07", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar07";
       try {
         expect(getHarName()).assertEqual("load_har");
@@ -170,7 +170,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar08", 0, () => {
+    it("testSourceHar08", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar08";
       try {
         expect(getHarName2()).assertEqual("load_har");
@@ -188,7 +188,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar09", 0, () => {
+    it("testSourceHar09", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar09";
       try {
         expect(npmRes).assertTrue();
@@ -206,7 +206,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar10", 0, () => {
+    it("testSourceHar10", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar10";
       try {
         expect2(true).assertTrue();
@@ -224,7 +224,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar11", 0, () => {
+    it("testSourceHar11", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar11";
       try {
         expect(npmRes2).assertTrue();
@@ -242,7 +242,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar12", 0, () => {
+    it("testSourceHar12", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar12";
       try {
         expect(ConstantTAG).assertEqual('[Hypium]');
@@ -260,7 +260,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar13", 0, () => {
+    it("testSourceHar13", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar13";
       try {
         expect(hspAdd(2, 3)).assertEqual(5);
@@ -278,7 +278,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar14", 0, () => {
+    it("testSourceHar14", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar14";
       try {
         expect(hspAdd2(2, 3)).assertEqual(5);
@@ -296,7 +296,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar15", 0, () => {
+    it("testSourceHar15", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar15";
       try {
         expect(hspSubtract(3, 2)).assertEqual(1);
@@ -314,7 +314,7 @@ export default function staticLoadSourceHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testSourceHar16", 0, () => {
+    it("testSourceHar16", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testSourceHar16";
       try {
         expect(hspSubtract2(3, 2)).assertEqual(1);

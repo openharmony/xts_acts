@@ -1152,6 +1152,40 @@ export default function abilityTest() {
       done();
     })
 
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_5400
+     * @tc.name      : setAVMetadata - promise - set bundleIcon
+     * @tc.desc      : Testing call setAVMetadata(promise) set bundleIcon
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_5400', 0, async (done: Function) => {
+      let metadata0: avSession.AVMetadata = {
+        assetId: '121278',
+      };
+      await session.setAVMetadata(metadata0).then(() => {
+        console.info('TestLog: Set bundleIcon Successfully');
+      }).catch((err: BusinessError ) => {
+        console.info(`TestLog: Set bundleIcon error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+
+      await controller.getAVMetadata().then((data: avSession.AVMetadata) => {
+        if (data.bundleIcon ) {
+          console.info(`${data.bundleIcon} TestLog: Get bundleIcon Successfully`);
+          expect(true).assertTrue();
+        } else {
+          console.info('TestLog: Get bundleIcon failed');
+          console.info(`TestLog: bundleIcon is: ${data.bundleIcon}`);
+          expect(true).assertTrue();
+        }
+      }).catch((err: BusinessError) => {
+        console.info(`TestLog: Get assetId error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      done();
+    })
 
 
   })

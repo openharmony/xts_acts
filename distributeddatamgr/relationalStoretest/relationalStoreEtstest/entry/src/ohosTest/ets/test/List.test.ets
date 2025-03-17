@@ -44,6 +44,7 @@ import rdbrootDirTest from './RelationalStoreRootDir.test';
 import VectorStoreTest from './VectorStore.test';
 import RelationalStoreCustom from './RelationalStoreCustom.test';
 import RelationalStoreNoneTokenizer from './RelationalStoreNoneTokenizer.test'
+import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -78,5 +79,6 @@ export default function testsuite() {
   VectorStoreTest();
   RelationalStoreCustom()
   RelationalStoreNoneTokenizer()
+  RelationalStoreSetDistributedTables()
 }
 

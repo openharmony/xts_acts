@@ -394,5 +394,71 @@ export default function inputMethodAuthorityJSUnit() {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test end*************");
     });
 
+    /**
+     * @tc.number  Sub_InputMethod_IME_InputMethodState_0901
+     * @tc.name    Sub_InputMethod_IME_InputMethodState_0901
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IME_InputMethodState_0901', 0, async (done: Function) => {
+      try{
+        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+        console.info("====>Sub_InputMethod_IME_InputMethodState_0901 getSetting success");
+        let state =  await inputMethodSetting.getInputMethodState();
+        console.info("====>Sub_InputMethod_IME_InputMethodState_0901 state is: " + state);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IME_InputMethodState_0901 errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800004);
+        done();
+      };
+    });
+
+    let sleep = (timeout: number): Promise<ESObject> => {
+      return new Promise(resolve => {
+        const st = setTimeout(() => {
+          resolve(null);
+          clearTimeout(st);
+        }, timeout);
+      });
+    };
+
+    /**
+     * @tc.number  Sub_Misc_InputMethod_IME_recvMessage_0100
+     * @tc.name    Sub_Misc_InputMethod_IME_recvMessage_0100
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_Misc_InputMethod_IME_recvMessage_0100', 0, async (done: Function) => {
+      let inputMethodController = inputMethod.getController();
+      let data = false
+      let messageHandler: inputMethod.MessageHandler = {
+        onTerminated(): void {
+            console.info('====>OnTerminated.');
+            data = true
+        },
+        onMessage(msgId: string): void {
+            console.info('====>recv message.');
+        }
+      }
+      try{
+        inputMethodController.recvMessage(messageHandler);
+        await inputMethodController.recvMessage();
+        await sleep(100)
+        console.info("====>Sub_InputMethod_IME_InputMethodState_0901 recvMessage success data is: " + data);
+        expect(data).assertEqual(true);
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IME_InputMethodState_0901 errCode:${err.code}, errMessage is ${err.message}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 };
