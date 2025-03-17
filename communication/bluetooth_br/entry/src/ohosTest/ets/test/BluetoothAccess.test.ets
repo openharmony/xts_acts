@@ -14,7 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth.access';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
     function sleep(delay : number) : Promise<void> {
@@ -88,9 +88,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test enableBluetooth api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0100', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) =>  {
         let state = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_OFF) {
@@ -123,9 +123,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test disableBluetooth api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0200', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) =>  {
         let state = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_ON) {
@@ -158,9 +158,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test getState api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0300', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) =>  {
         try {
             let state = bluetooth.getState();
             expect(state >= 0 && state <= 6).assertTrue();
@@ -177,9 +177,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test on 'stateChange' api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0400', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) =>  {
     try {
         await bluetooth.on('stateChange', onReceiveEvent);
         let state = bluetooth.getState();
@@ -206,9 +206,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test off 'stateChange' api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0500', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) =>  {
     try {
         await bluetooth.on('stateChange', onReceiveEvent);
         await sleep(3000);
@@ -236,9 +236,9 @@ describe('btAccessTest', () => {
      * @tc.desc Test BluetoothState api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0600', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         let STATE_ON = bluetooth.BluetoothState.STATE_ON;
         console.info("[bluetooth_js]STATE_ON : " + JSON.stringify(STATE_ON));
         expect(true).assertEqual(STATE_ON == 2);
@@ -261,6 +261,108 @@ describe('btAccessTest', () => {
         console.info("[bluetooth_js]STATE_BLE_TURNING_OFF : " + JSON.stringify(STATE_BLE_TURNING_OFF));
         expect(true).assertEqual(STATE_BLE_TURNING_OFF == 6);
         done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_GETPERSISTENTDEVICEIDS_0100
+     * @tc.name testGetPersistentDeviceIds
+     * @tc.desc Test getPersistentDeviceIds api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_ACCESS_GETPERSISTENTDEVICEIDS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        let macs: string[] = bluetooth.getPersistentDeviceIds();
+        console.info("[bluetooth_js]getPersistentDeviceIds result:" + JSON.stringify(macs));
+        expect(true).assertEqual(macs.length == 0);
+    } catch (error) {
+        console.info("getPersistentDeviceIds errCode:" + error.code + ",errMessage:" + error.message);
+        if (Number(error.code) == 801) {
+            console.info("getPersistentDeviceIds is not support");
+            expect(true).assertTrue();
+        }else {
+            expect().assertFail();
+        }
+    }
+    done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_ISVALIDRANDOMDEVICEID_0100
+     * @tc.name testIsValidRandomDeviceId
+     * @tc.desc Test isValidRandomDeviceId api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_ACCESS_ISVALIDRANDOMDEVICEID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        let isValidRandom = bluetooth.isValidRandomDeviceId("00:00:00:00:00:00");
+        console.info("[bluetooth_js]isValidRandomDeviceId result:" + JSON.stringify(isValidRandom));
+        expect(isValidRandom).assertFalse();
+    } catch (error) {
+        console.info("isValidRandomDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+        if (Number(error.code) == 801) {
+            console.info("isValidRandomDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect().assertFail();
+        }
+    }
+    done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_ADDPERSISTENTDEVICEID_0100
+     * @tc.name testAddPersistentDeviceId
+     * @tc.desc Test addPersistentDeviceId api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_ACCESS_ADDPERSISTENTDEVICEID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        await bluetooth.addPersistentDeviceId('00:00:00:00:00:00').then(() => {
+            console.info('[bluetooth_js] addPersistentDeviceId success');
+        });
+        expect().assertFail();
+    } catch (error) {
+        console.info("addPersistentDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+        if (Number(error.code) == 801) {
+            console.info("addPersistentDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(error.code)).assertEqual(401);
+        }
+    }
+    done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_DELETEPERSISTENTDEVICEID_0100
+     * @tc.name testDeletePersistentDeviceId
+     * @tc.desc Test deletePersistentDeviceId api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_ACCESS_DELETEPERSISTENTDEVICEID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        await bluetooth.deletePersistentDeviceId('00:00:00:00:00:00').then(() => {
+            console.info('[bluetooth_js] deletePersistentDeviceId success');
+        });
+        expect().assertFail();
+    } catch (error) {
+        console.info("deletePersistentDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+        if (Number(error.code) == 801) {
+            console.info("deletePersistentDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(error.code)).assertEqual(401);
+        }
+    }
+    done();
     })
 })
 }
