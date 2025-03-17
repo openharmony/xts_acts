@@ -53,7 +53,7 @@ export default function repeatReusableFalse() {
      * @tc.type
      * @tc.size
      */
-    it('repeatreusablefalse_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('repeatreusablefalse_001', Level.LEVEL0, async (done: Function) => {
       console.info('[repeatreusablefalse_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
