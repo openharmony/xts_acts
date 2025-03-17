@@ -19,6 +19,7 @@ import RepeatCloseReuseTest0110 from './repeat/RepeatCloseReuseTest0110.test';
 import RepeatLazyTest0150 from './repeat/RepeatLazyTest0150.test';
 import VOneToVTwoTest0010 from './v1tov2/VOneToVTwoTest0010.test';
 import VTwoToVOneTest0070 from './v2tov1/VTwoToVOneTest0070.test';
+import ArrayLikeStringTest from './ArrayLikeTest/ArrayLikeStringTest.test';
 
 export default function testsuite() {
     PerGlobalConnectTest();
@@ -27,4 +28,5 @@ export default function testsuite() {
     RepeatLazyTest0150();
     VOneToVTwoTest0010();
     VTwoToVOneTest0070();
+	ArrayLikeStringTest()
 }
