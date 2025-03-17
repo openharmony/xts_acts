@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
