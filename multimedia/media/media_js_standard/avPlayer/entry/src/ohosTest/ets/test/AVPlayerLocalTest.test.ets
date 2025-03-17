@@ -667,6 +667,73 @@ async function testSetMediaMuted(src: string | media.AVFileDescriptor, avPlayer:
   });
 }
 
+async function getPlaybackPosition(avPlayer: media.AVPlayer | null, done: Function) {
+  let playbackPosition: number = -1;
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.prepare()
+        break;
+      case PREPARED:
+        avPlayer?.play()
+        break;
+      case PLAYING:
+        avPlayer?.pause()
+        break;
+      case PAUSED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer?.play()
+        playbackPosition = avPlayer.getPlaybackPosition();
+        console.info(`AVPlayer getPlaybackPosition == ${playbackPosition} ms`);
+        expect(playbackPosition).assertLargerOrEqual(0);
+        break;
+      case COMPLETED:
+        avPlayer?.release()
+        break;
+      case RELEASED:
+        avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        expect().assertFail();
+        avPlayer?.release().then(() => {
+        },
+          mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback)
+}
+
+async function testGetPlaybackPosition(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
+  done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      getPlaybackPosition(avPlayer, done);
+      setSource(avPlayer, src);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
 function setAVPlayerSeekContinuousCb(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null, done: Function) {
   let isSeekContinuousSupported: boolean  = false;
   let unsupportedSeekContinuousErr = false;
@@ -1042,6 +1109,19 @@ export default function AVPlayerLocalTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0200', 0, async (done: Function) => {
       if (fileDescriptor_mkv) {
         testAVPlayerSeekContinuous(fileDescriptor_mkv, avPlayer, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100
+        * @tc.name      : 001.test getPlaybackPosition Function
+        * @tc.desc      : Local Video getPlaybackPosition control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        testGetPlaybackPosition(fileDescriptor, avPlayer, done);
       }
     });
   })
