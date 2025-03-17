@@ -20,6 +20,7 @@ import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRa
 import dialogDisableDateRangeAndMarkTodayTest from './CalendarPickerTest/dialogDisableDateRangeAndMarkToday.test'
 import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
+import SliderEnableHapticFeedbackTest from './slider/SliderEnableHapticFeedbackTest.test'
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
     calendarPickerStartEndTest()
@@ -29,4 +30,6 @@ export default function testsuite() {
     dialogDisableDateRangeAndMarkTodayTest();
     textPickerDialogEnableHapticFeedback();
     EnableHapticFeedback()
+    SliderEnableHapticFeedbackTest();
+
 }

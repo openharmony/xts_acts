@@ -17,6 +17,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     calendarPicker/calendar_picker_test.cpp
+    slider/slider_test.cpp
 )
 
 add_library(nativefunc SHARED
