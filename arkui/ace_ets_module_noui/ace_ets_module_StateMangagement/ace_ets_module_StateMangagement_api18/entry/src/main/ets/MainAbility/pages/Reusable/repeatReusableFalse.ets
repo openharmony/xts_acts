@@ -68,7 +68,7 @@ struct RepeatVirtualScroll {
             return item.message;
           })
 
-          // .virtualScroll({reusable: false })
+          .virtualScroll({reusable: false })
           .templateId(() => "a")
           .template('a', (ri) => {
             Text(`[a] index${ri.index}: ${ri.item.message}`)
