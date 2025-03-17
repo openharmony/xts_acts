@@ -820,6 +820,7 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_43_1, TestSize.Level1)
     OH_ImageProcessing_DeinitializeEnvironment();
 }
 
+
 }
 } // namespace Media
 } // namespace OHOS
