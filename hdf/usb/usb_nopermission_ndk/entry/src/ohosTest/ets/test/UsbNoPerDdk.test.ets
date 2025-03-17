@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -495,7 +495,7 @@ export default function usbNoPerDdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUsbGetDevicesNoPer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testUsbGetDevicesNoPer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevicesNoPer001---------------------------');
       try {
         if (deviceId < 0) {
