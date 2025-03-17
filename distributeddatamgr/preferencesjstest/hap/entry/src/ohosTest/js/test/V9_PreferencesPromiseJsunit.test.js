@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_preferences from '@ohos.data.preferences'
 import featureAbility from '@ohos.ability.featureAbility'
 
@@ -53,7 +53,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0100', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0100 begin.")
             try{
                 if(mPreference== undefined) {
@@ -108,7 +108,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0200', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0200 begin.")
             try{
                 mPreference.get(1233).then((ret)=>{
@@ -133,7 +133,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0300', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0300 begin.")
             try{
                 mPreference.get(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT).then((ret) => {
@@ -158,7 +158,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0400', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0400 begin.")
             try {
                 mPreference.getAll().then((ret) => {
@@ -182,7 +182,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0500', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0500 begin.")
             try{
                 mPreference.has(123).then((val)=>{
@@ -207,7 +207,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0600', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0600 begin.")
             try{
                 mPreference.has(KEY_TEST_STRING_ELEMENT).then((val)=>{
@@ -231,7 +231,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0700', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0700 begin.")
             try{
                 mPreference.put(1233).then(()=>{
@@ -256,7 +256,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0800', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0800 begin.")
             try{
                 mPreference.put(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT).then(()=>{
@@ -280,7 +280,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0900', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0900 begin.")
             try{
                 mPreference.delete(1233).then(()=>{
@@ -305,7 +305,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1000', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1000 begin.")
             try{
                 mPreference.delete(KEY_TEST_STRING_ELEMENT).then(()=>{
@@ -329,7 +329,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1100', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1100 begin.")
             try{
                 mPreference.clear().then(()=>{
@@ -353,7 +353,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1200', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1200 begin.")
             try {
                 mPreference.flush().then(() => {
@@ -377,7 +377,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1300', 0, async function () {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1300 begin.")
             try {
                 mPreference.clear();
@@ -405,7 +405,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1400', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1400 begin.")
             let mPreference1 = await data_preferences.getPreferences(context, NAME)
             try {
@@ -431,7 +431,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1500', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1500 begin.")
             await mPreference.clear();
             try {
@@ -455,7 +455,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1600', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1600 begin.")
             try {
                 var observer = function (key) {
@@ -481,7 +481,7 @@ export default function preferencesV9PromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1700', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_PROMISE_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1700 begin.")
             try {
                 var observer = function (key) {

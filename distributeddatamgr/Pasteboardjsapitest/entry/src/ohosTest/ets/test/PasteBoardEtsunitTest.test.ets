@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import pasteboard from '@ohos.pasteboard'
 import Want from '@ohos.app.ability.Want';
 
@@ -36,7 +36,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test1', 0, async (done: Function) => {
+    it('pasteboard_function_test1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0100 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -100,7 +100,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test2', 0, async (done: Function) => {
+    it('pasteboard_function_test2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('f_test2: SUB_pasteBoard_function_JS_API_0200 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -147,7 +147,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test3', 0, async (done: Function) => {
+    it('pasteboard_function_test3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('f_test3: SUB_pasteBoard_function_JS_API_0300 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -198,7 +198,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test4', 0, async (done: Function) => {
+    it('pasteboard_function_test4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0400 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -254,7 +254,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test5', 0, async (done: Function) => {
+    it('pasteboard_function_test5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0500 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -309,7 +309,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test6', 0, async (done: Function) => {
+    it('pasteboard_function_test6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0600 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -361,7 +361,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test7', 0, async (done: Function) => {
+    it('pasteboard_function_test7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('f_test7: SUB_pasteBoard_function_JS_API_0700 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -407,7 +407,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test8', 0, async (done: Function) => {
+    it('pasteboard_function_test8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0800 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -454,7 +454,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test9', 0, async (done: Function) => {
+    it('pasteboard_function_test9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_0900 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -505,7 +505,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test10', 0, async (done: Function) => {
+    it('pasteboard_function_test10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1000 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -549,7 +549,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test11', 0, async (done: Function) => {
+    it('pasteboard_function_test11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1100 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -596,7 +596,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test12', 0, async (done: Function) => {
+    it('pasteboard_function_test12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1200 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -659,7 +659,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test13', 0, async (done: Function) => {
+    it('pasteboard_function_test13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -706,7 +706,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test14', 0, async (done: Function) => {
+    it('pasteboard_function_test14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -753,7 +753,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test15', 0, async (done: Function) => {
+    it('pasteboard_function_test15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -804,7 +804,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test16', 0, async (done: Function) => {
+    it('pasteboard_function_test16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -855,7 +855,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test17', 0, async (done: Function) => {
+    it('pasteboard_function_test17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -908,7 +908,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test18', 0, async (done: Function) => {
+    it('pasteboard_function_test18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -967,7 +967,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test19', 0, async (done: Function) => {
+    it('pasteboard_function_test19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_1900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1027,7 +1027,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test20', 0, async (done: Function) => {
+    it('pasteboard_function_test20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2000 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1087,7 +1087,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test21', 0, async (done: Function) => {
+    it('pasteboard_function_test21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2100 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1147,7 +1147,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test22', 0, async (done: Function) => {
+    it('pasteboard_function_test22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2200 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1210,7 +1210,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test23', 0, async (done: Function) => {
+    it('pasteboard_function_test23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1273,7 +1273,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test24', 0, async (done: Function) => {
+    it('pasteboard_function_test24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1337,7 +1337,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test25', 0, async (done: Function) => {
+    it('pasteboard_function_test25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1403,7 +1403,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test26', 0, async (done: Function) => {
+    it('pasteboard_function_test26', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1473,7 +1473,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test27', 0, async (done: Function) => {
+    it('pasteboard_function_test27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1526,7 +1526,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test28', 0, async (done: Function) => {
+    it('pasteboard_function_test28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1575,7 +1575,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test29', 0, async (done: Function) => {
+    it('pasteboard_function_test29', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_2900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1624,7 +1624,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test30', 0, async (done: Function) => {
+    it('pasteboard_function_test30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3000 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1679,7 +1679,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test31', 0, async (done: Function) => {
+    it('pasteboard_function_test31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3100 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1735,7 +1735,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test32', 0, async (done: Function) => {
+    it('pasteboard_function_test32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3200 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1778,7 +1778,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test33', 0, async (done: Function) => {
+    it('pasteboard_function_test33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1829,7 +1829,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test34', 0, async (done: Function) => {
+    it('pasteboard_function_test34', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1880,7 +1880,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test35', 0, async (done: Function) => {
+    it('pasteboard_function_test35', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1931,7 +1931,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test36', 0, async (done: Function) => {
+    it('pasteboard_function_test36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -1982,7 +1982,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test37', 0, async (done: Function) => {
+    it('pasteboard_function_test37', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2038,7 +2038,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test38', 0, async (done: Function) => {
+    it('pasteboard_function_test38', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2092,7 +2092,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test39', 0, async (done: Function) => {
+    it('pasteboard_function_test39', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_3900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2162,7 +2162,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test40', 0, async (done: Function) => {
+    it('pasteboard_function_test40', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4000 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2229,7 +2229,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test41', 0, async (done: Function) => {
+    it('pasteboard_function_test41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4100 start');
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2281,7 +2281,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test42', 0, async (done: Function) => {
+    it('pasteboard_function_test42', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4200 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2330,7 +2330,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test43', 0, async (done: Function) => {
+    it('pasteboard_function_test43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2379,7 +2379,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test44', 0, async (done: Function) => {
+    it('pasteboard_function_test44', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2428,7 +2428,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test45', 0, async (done: Function) => {
+    it('pasteboard_function_test45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2480,7 +2480,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test46', 0, async (done: Function) => {
+    it('pasteboard_function_test46', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2529,7 +2529,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test47', 0, async (done: Function) => {
+    it('pasteboard_function_test47', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2578,7 +2578,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test48', 0, async (done: Function) => {
+    it('pasteboard_function_test48', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2627,7 +2627,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test49', 0, async (done: Function) => {
+    it('pasteboard_function_test49', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_4900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2676,7 +2676,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test50', 0, async (done: Function) => {
+    it('pasteboard_function_test50', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5000 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2728,7 +2728,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test51', 0, async (done: Function) => {
+    it('pasteboard_function_test51', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5100 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2777,7 +2777,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test52', 0, async (done: Function) => {
+    it('pasteboard_function_test52', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5200 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2831,7 +2831,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test53', 0, async (done: Function) => {
+    it('pasteboard_function_test53', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2885,7 +2885,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test54', 0, async (done: Function) => {
+    it('pasteboard_function_test54', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2939,7 +2939,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test55', 0, async (done: Function) => {
+    it('pasteboard_function_test55', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -2996,7 +2996,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test56', 0, async (done: Function) => {
+    it('pasteboard_function_test56', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3058,7 +3058,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test57', 0, async (done: Function) => {
+    it('pasteboard_function_test57', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3122,7 +3122,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test58', 0, async (done: Function) => {
+    it('pasteboard_function_test58', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3158,7 +3158,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test59', 0, async (done: Function) => {
+    it('pasteboard_function_test59', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_5900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3194,7 +3194,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test60', 0, async (done: Function) => {
+    it('pasteboard_function_test60', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6000 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3230,7 +3230,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test61', 0, async (done: Function) => {
+    it('pasteboard_function_test61', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6100 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3269,7 +3269,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test62', 0, async (done: Function) => {
+    it('pasteboard_function_test62', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6200 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3328,7 +3328,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test63', 0, async (done: Function) => {
+    it('pasteboard_function_test63', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6300 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3382,7 +3382,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test64', 0, async (done: Function) => {
+    it('pasteboard_function_test64', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6400 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3435,7 +3435,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test65', 0, async (done: Function) => {
+    it('pasteboard_function_test65', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6500 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3491,7 +3491,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test66', 0, async (done: Function) => {
+    it('pasteboard_function_test66', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6600 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3540,7 +3540,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test67', 0, async (done: Function) => {
+    it('pasteboard_function_test67', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6700 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3587,7 +3587,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test68', 0, async (done: Function) => {
+    it('pasteboard_function_test68', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6800 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3637,7 +3637,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test69', 0, async (done: Function) => {
+    it('pasteboard_function_test69', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_6900 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
@@ -3690,7 +3690,7 @@ export default function pasteBoardJEtsunitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('pasteboard_function_test70', 0, async (done: Function) => {
+    it('pasteboard_function_test70', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_pasteBoard_function_JS_API_7000 start')
 
       let systemPasteboard = pasteboard.getSystemPasteboard();

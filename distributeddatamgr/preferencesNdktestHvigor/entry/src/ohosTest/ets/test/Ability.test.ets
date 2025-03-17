@@ -14,7 +14,7 @@
  */
 
 import testndk from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 
 let TAG = '[testLog-ets]';
 export default function preferencesNdkTest() {
@@ -28,7 +28,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_Create_0100', 0, async (done: Function) => {
+    it('OH_PreferencesOption_Create_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_Create_0100();
       console.info(TAG + "OH_PreferencesOption_Create_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -43,7 +43,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetFilePath_0100', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetFilePath_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetFilePath_0100();
       console.info(TAG + "OH_PreferencesOption_SetFilePath_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -58,7 +58,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetFilePath_0200', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetFilePath_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetFilePath_0200();
       console.info(TAG + "OH_PreferencesOption_SetFilePath_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -72,7 +72,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetBundleName_0100', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetBundleName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetBundleName_0100();
       console.info(TAG + "OH_PreferencesOption_SetBundleName_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -86,7 +86,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetBundleName_0200', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetBundleName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetBundleName_0200();
       console.info(TAG + "OH_PreferencesOption_SetBundleName_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -100,7 +100,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetDataGroupId_0100', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetDataGroupId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetDataGroupId_0100();
       console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -114,7 +114,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetDataGroupId_0200', 0, async (done: Function) => {
+    it('OH_PreferencesOption_SetDataGroupId_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetDataGroupId_0200();
       console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -128,7 +128,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_Destroy_0100', 0, async (done: Function) => {
+    it('OH_PreferencesOption_Destroy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_Destroy_0100();
       console.info(TAG + "OH_PreferencesOption_Destroy_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -142,7 +142,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_Destroy_0200', 0, async (done: Function) => {
+    it('OH_PreferencesOption_Destroy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_Destroy_0200();
       console.info(TAG + "OH_PreferencesOption_Destroy_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -156,7 +156,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_Open_0100', 0, async (done: Function) => {
+    it('OH_Preferences_Open_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_Open_0100();
       console.info(TAG + "OH_Preferences_Open_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -170,7 +170,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_Open_0200', 0, async (done: Function) => {
+    it('OH_Preferences_Open_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_Open_0200();
       console.info(TAG + "OH_Preferences_Open_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -184,7 +184,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_Close_0100', 0, async (done: Function) => {
+    it('OH_Preferences_Close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_Close_0100();
       console.info(TAG + "OH_Preferences_Close_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -198,7 +198,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetInt_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetInt_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetInt_0100();
       console.info(TAG + "OH_Preferences_SetInt_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -212,7 +212,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetGetInt_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetGetInt_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetGetInt_0100();
       console.info(TAG + "OH_Preferences_SetGetInt_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -226,7 +226,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetGetString_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetGetString_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetGetString_0100();
       console.info(TAG + "OH_Preferences_SetGetString_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -240,7 +240,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetGetBool_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetGetBool_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetGetBool_0100();
       console.info(TAG + "OH_Preferences_SetGetBool_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -254,7 +254,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetString_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetString_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetString_0100();
       console.info(TAG + "OH_Preferences_SetString_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -268,7 +268,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_SetBool_0100', 0, async (done: Function) => {
+    it('OH_Preferences_SetBool_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_SetBool_0100();
       console.info(TAG + "OH_Preferences_SetBool_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -282,7 +282,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_GetInt_0100', 0, async (done: Function) => {
+    it('OH_Preferences_GetInt_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_GetInt_0100();
       console.info(TAG + "OH_Preferences_GetInt_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -296,7 +296,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_GetString_0100', 0, async (done: Function) => {
+    it('OH_Preferences_GetString_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_GetString_0100();
       console.info(TAG + "OH_Preferences_GetString_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -310,7 +310,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_GetBool_0100', 0, async (done: Function) => {
+    it('OH_Preferences_GetBool_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_GetBool_0100();
       console.info(TAG + "OH_Preferences_GetBool_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -324,7 +324,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_FreeString', 0, async (done: Function) => {
+    it('OH_Preferences_FreeString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_FreeString();
       console.info(TAG + "OH_Preferences_FreeString res=" + res );
       expect(res).assertEqual(0);
@@ -339,7 +339,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_RegisterDataObserver_0100', 0, async (done: Function) => {
+    it('OH_Preferences_RegisterDataObserver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_RegisterDataObserver_0100();
       console.info(TAG + "OH_Preferences_RegisterDataObserver_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -353,7 +353,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_UnregisterDataObserver_0100', 0, async (done: Function) => {
+    it('OH_Preferences_UnregisterDataObserver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_UnregisterDataObserver_0100();
       console.info(TAG + "OH_Preferences_UnregisterDataObserver_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -368,7 +368,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesPair_0200', 0, async (done: Function) => {
+    it('OH_PreferencesPair_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_PreferencesPair_0200();
       console.info(TAG + "OH_PreferencesPair_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -382,7 +382,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_ErrCode_0100', 0, async (done: Function) => {
+    it('OH_Preferences_ErrCode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_ErrCode_0100();
       console.info(TAG + "OH_Preferences_ErrCode_0100 res=" + res );
       expect(res).assertEqual(0);

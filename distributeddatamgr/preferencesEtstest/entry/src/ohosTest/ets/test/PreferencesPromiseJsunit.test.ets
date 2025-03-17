@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common";
 
@@ -58,7 +58,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutStringArray0131', 0, async function (done) {
+        it('testPreferencesPutStringArray0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             var stringArr = ['1', '2', '3'];
             await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -81,7 +81,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutNumberArray0132', 0, async function (done) {
+        it('testPreferencesPutNumberArray0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             var numberArr = [11, 22, 33, 44, 55];
             await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
@@ -104,7 +104,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBoolArray0133', 0, async function (done) {
+        it('testPreferencesPutBoolArray0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             var boolArr = [true, true, false];
             await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -127,7 +127,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetAll0001', 0, async function (done) {
+        it('testPreferencesGetAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             let doubleArr = [11, 22, 33];
             let stringArr = ['11', '22', '33'];
@@ -174,7 +174,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesClear0011', 0, async function (done) {
+        it('testPreferencesClear0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
             await mPreferences.clear().then(async (ret) => {
@@ -195,7 +195,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesHasKey0031', 0, async function (done) {
+        it('testPreferencesHasKey0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.has(KEY_TEST_STRING_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -214,7 +214,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesHasKey0032', 0, async function (done) {
+        it('testPreferencesHasKey0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
             await mPreferences.has(KEY_TEST_INT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -234,7 +234,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesHasKey0033', 0, async function (done) {
+        it('testPreferencesHasKey0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
             await mPreferences.has(KEY_TEST_FLOAT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -253,7 +253,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesHasKey0034', 0, async function (done) {
+        it('testPreferencesHasKey0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
             await mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -272,7 +272,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesHasKey0035', 0, async function (done) {
+        it('testPreferencesHasKey0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
             await mPreferences.has(KEY_TEST_LONG_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -292,7 +292,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetDefValue0061', 0, async function (done) {
+        it('testPreferencesGetDefValue0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue").then((ret) => {
                 expect('defaultValue').assertEqual(ret);
@@ -311,7 +311,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetFloat0071', 0, async function (done) {
+        it('testPreferencesGetFloat0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
             await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0).then((ret) => {
@@ -331,7 +331,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetInt0081', 0, async function (done) {
+        it('testPreferencesGetInt0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
             await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0).then((ret) => {
@@ -351,7 +351,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetLong0091', 0, async function (done) {
+        it('testPreferencesGetLong0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
             await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0).then((ret) => {
@@ -371,7 +371,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('tesPreferencesGetString101', 0, async function (done) {
+        it('tesPreferencesGetString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
@@ -392,7 +392,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBoolean0121', 0, async function (done) {
+        it('testPreferencesPutBoolean0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
             let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -411,7 +411,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutFloat0131', 0, async function (done) {
+        it('testPreferencesPutFloat0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
             let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -430,7 +430,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutInt0141', 0, async function (done) {
+        it('testPreferencesPutInt0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -449,7 +449,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutLong0151', 0, async function (done) {
+        it('testPreferencesPutLong0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
             expect(4).assertEqual(per);
@@ -467,7 +467,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutString0161', 0, async function (done) {
+        it('testPreferencesPutString0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
             let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue")
             expect('').assertEqual(per);
@@ -485,7 +485,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesGetDefValue00162', 0, async function (done) {
+        it('testPreferencesGetDefValue00162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -506,7 +506,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBigIntPromise0100', 0, async function () {
+        it('testPreferencesPutBigIntPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             let bigint = BigInt("-12345678912345678912345678971234567123456");
             await mPreferences.put(KEY_TEST_BIGINT, bigint);
             let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
@@ -528,7 +528,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBigIntPromise0200', 0, async function () {
+        it('testPreferencesPutBigIntPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             let bigint = BigInt("12345678912345678912345678971234567123456");
             await mPreferences.put(KEY_TEST_BIGINT, bigint);
             let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
@@ -550,7 +550,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBigIntPromise0300', 0, async function () {
+        it('testPreferencesPutBigIntPromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             let bigint = BigInt(Number.MAX_SAFE_INTEGER);
             await mPreferences.put(KEY_TEST_BIGINT, bigint);
             let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
@@ -572,7 +572,7 @@ export default function preferencesPromiseTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesPutBigIntPromise0400', 0, async function () {
+        it('testPreferencesPutBigIntPromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             let bigint = BigInt(Number.MIN_SAFE_INTEGER);
             await mPreferences.put(KEY_TEST_BIGINT, bigint);
             let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));

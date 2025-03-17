@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import pasteboard from '@ohos.pasteboard'
 import image from '@ohos.multimedia.image';
 import Want from '@ohos.app.ability.Want';
@@ -75,7 +75,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0100 start")
       let pasteData: pasteboard.PasteData
       await image.createPixelMap(color, opt).then((pixelMap) => {
@@ -96,7 +96,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0200 start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_WANT, WANT)
       let hasType = pasteData.hasType(pasteboard.MIMETYPE_TEXT_WANT)
@@ -113,7 +113,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0300 start")
       let pasteData = pasteboard.createData("ArrayBuffer", ARRAY_BUFFER)
       let hasType = pasteData.hasType("ArrayBuffer")
@@ -130,7 +130,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0400', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0400 start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "String")
       let hasType = pasteData.hasType(pasteboard.MIMETYPE_TEXT_PLAIN)
@@ -147,7 +147,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0500', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0500 start")
       let mimeType = "x".repeat(1024)
       let pasteData = pasteboard.createData(mimeType, ARRAY_BUFFER)
@@ -165,7 +165,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0600', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0600 start")
       let valueType: ESObject = undefined
       for (let i = 0; i < 500; i++) {
@@ -186,7 +186,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0700', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0700 start")
       let uri = "www.baidu.com"
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, uri)
@@ -203,7 +203,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0800', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0800 start")
       let mimeType = "x".repeat(1025)
       try {
@@ -226,7 +226,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0900', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0900 start")
 
       try {
@@ -249,7 +249,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1000', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1000 start")
       try {
         let pasteData = pasteboard.createData(null, "String")
@@ -271,7 +271,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_1100 start")
 
       try {
@@ -294,7 +294,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0100 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       await image.createPixelMap(color, opt).then((pixelMap) => {
@@ -316,7 +316,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0200 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_WANT, WANT);
@@ -336,7 +336,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0300 start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_WANT, WANT)
       let pasteDataRecord = pasteboard.createRecord("ArrayBuffer", ARRAY_BUFFER);
@@ -356,7 +356,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0400', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0400 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN, "stringValueType");
@@ -376,7 +376,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0500', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0500 start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "valueType")
       let pasteDataRecord = pasteboard.createRecord("x".repeat(1024), ARRAY_BUFFER);
@@ -396,7 +396,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0600', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0600 start")
       let pasteData = pasteboard.createData("arrayBuffer", ARRAY_BUFFER)
       console.info("create arraybuffer data success")
@@ -421,7 +421,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0700', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0700 start")
       let mimeType = "x".repeat(1025)
       try {
@@ -444,7 +444,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0800', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0800 start")
 
       try {
@@ -467,7 +467,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0900', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_0900 start")
       var valueType = undefined
       for (var i; i < 512001; i++) {
@@ -493,7 +493,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1000', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1000 start")
       try {
         let pasteDataRecord = pasteboard.createRecord(null, "String")
@@ -515,7 +515,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATERECORD_1100 start")
 
       try {
@@ -538,7 +538,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0100 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       await image.createPixelMap(color, opt).then((pixelMap) => {
@@ -559,7 +559,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0200 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       pasteData.addRecord(pasteboard.MIMETYPE_TEXT_WANT, WANT);
@@ -578,7 +578,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0300 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       pasteData.addRecord("ArrayBuffer", ARRAY_BUFFER);
@@ -597,7 +597,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0400', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0400 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       pasteData.addRecord(pasteboard.MIMETYPE_TEXT_PLAIN, "stringValueType");
@@ -616,7 +616,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0500', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0500 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       pasteData.addRecord("x".repeat(1024), ARRAY_BUFFER);
@@ -635,7 +635,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0600', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0600 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       for (let i = 0; i < 510; i++) {
@@ -656,7 +656,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0700', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0700 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       let valueType = "x"
@@ -679,7 +679,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0800', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0800 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       try {
@@ -705,7 +705,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0900', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_0900 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
 
@@ -729,7 +729,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1100 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       for (let i = 0; i < 511; i++) {
@@ -755,7 +755,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1200 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       try {
@@ -778,7 +778,7 @@ export default function pasteBoardRecordTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300 start")
       let pasteData = pasteboard.createData("string", ARRAY_BUFFER)
       for (let i = 0; i < 998; i++) {

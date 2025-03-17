@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import pasteboard from '@ohos.pasteboard';
 import { BusinessError } from '@ohos.base';
 let tag = "PASTEBOARDSYNC--------------------"
@@ -45,7 +45,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0100', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0100 ---------start")
       let textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -83,7 +83,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0200', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0200 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -118,7 +118,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0300', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0300 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -154,7 +154,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0400', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0400 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -190,7 +190,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0500', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0500 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -225,7 +225,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0600', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0600 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -260,7 +260,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0700', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0700 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -296,7 +296,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0800', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0800 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -333,7 +333,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0900', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0900 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -371,7 +371,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1000', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1000 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -407,7 +407,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1100', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1100 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -443,7 +443,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1200', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1200 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -479,7 +479,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1300', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1300 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -516,7 +516,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1400', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1400 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -552,7 +552,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1500', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1500 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -588,7 +588,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1600', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1600 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -624,7 +624,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1700', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1700 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -660,7 +660,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1800', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1800 ---------start")
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
@@ -696,7 +696,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1900', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1900 ---------start")
       const textData = "123";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
@@ -730,7 +730,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2000', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2000 ---------start")
       const textData = "https://www.baidu.com/";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
@@ -764,7 +764,7 @@ export default function pasteboardDetectPatternsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2100', 0, async (done: Function) => {
+    it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2100 ---------start")
       const textData = "qqq@163.com";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);

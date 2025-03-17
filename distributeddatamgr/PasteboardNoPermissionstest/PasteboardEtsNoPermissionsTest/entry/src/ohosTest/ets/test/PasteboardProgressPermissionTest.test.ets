@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { pasteboard } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -38,7 +38,7 @@ export default function PasteboardProgressPermissionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardProgressPermissionTest_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardProgressPermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardProgressPermissionTest_0100 start ************')
       const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
       const context = delegator.getAppContext().getApplicationContext();

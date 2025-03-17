@@ -1,4 +1,4 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit';
@@ -59,7 +59,16 @@ export default function SystemPasteboardCallbackTest() {
     })
     afterAll(() => {
     })
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboardCallbackTest_0100', 0, (done:Function) => {
+
+    /**
+     * @tc.number SUB_Pasteboard_Local_SDK_SystemPasteboardCallbackTest_0100
+     * @tc.name test_SUB_Pasteboard_Local_SDK_SystemPasteboardCallbackTest_0100
+     * @tc.desc Test pasteBoard progress single level path and no fileConflictOption
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboardCallbackTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function) => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_SystemPasteboardCallbackTest_0100 start ************')
       let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('content');
       let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -107,7 +116,15 @@ export default function SystemPasteboardCallbackTest() {
       }
     })
 
-    it('SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100', 0, async () => {
+    /**
+     * @tc.number SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100
+     * @tc.name test_SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100
+     * @tc.desc Test pasteBoard progress single level path and no fileConflictOption
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100 start ************')
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'content');
       let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();

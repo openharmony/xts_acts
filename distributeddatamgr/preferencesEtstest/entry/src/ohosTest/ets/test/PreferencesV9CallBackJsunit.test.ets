@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_preferences from '@ohos.data.preferences'
 import common from "@ohos.app.ability.common";
 
@@ -58,7 +58,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0100', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0100 begin.")
             try{
                 mPreference.clear(function (err, val) {
@@ -115,7 +115,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0200', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0200 begin.")
             try {
                 mPreference.get(123, function (err, val) {
@@ -141,7 +141,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0300', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0300 begin.")
             try {
                 mPreference.get(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT, function (err, val) {
@@ -167,7 +167,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0400', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0400 begin.")
             try {
                 mPreference.getAll(function (err, val) {
@@ -194,7 +194,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0500', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0500 begin.")
             try{
                 mPreference.has(123,function (err, val) {
@@ -216,7 +216,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0600', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0600 begin.")
             try{
                 mPreference.has(KEY_TEST_STRING_ELEMENT, function (err, val) {
@@ -242,7 +242,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0700', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0700 begin.")
             try{
                 mPreference.put(123, function (err) {
@@ -264,7 +264,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0800', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0800 begin.")
             try{
                 mPreference.put(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT, function (err) {
@@ -289,7 +289,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0900', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0900 begin.")
             try{
                 mPreference.delete(1233, function(err) {
@@ -315,7 +315,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1000', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1000 begin.")
             try{
                 mPreference.delete(KEY_TEST_STRING_ELEMENT, function(err) {
@@ -340,7 +340,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1100', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1100 begin.")
             try{
                 mPreference.clear(function (err) {
@@ -365,7 +365,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1200', 0, function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1200 begin.")
             try{
                 mPreference.flush(function (err) {
@@ -390,7 +390,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1300', 0, async function () {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1300 begin.")
             try {
                 mPreference.clear();
@@ -418,7 +418,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1400 begin.")
             let mPreference1 = await data_preferences.getPreferences(context, NAME);
             try {
@@ -444,7 +444,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1500 begin.")
             await mPreference.clear();
             try {
@@ -468,7 +468,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1600 begin.")
             try {
                 var observer = function (key) {
@@ -494,7 +494,7 @@ export default function preferencesV9CallbackTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1700', 0, async function (done) {
+        it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1700 begin.")
             try {
                 var observer = function (key) {

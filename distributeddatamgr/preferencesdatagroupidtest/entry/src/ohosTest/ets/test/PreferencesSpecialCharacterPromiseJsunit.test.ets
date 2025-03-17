@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from '@ohos.data.preferences';
 import util from '@ohos.util';
 import common from "@ohos.app.ability.common"
@@ -145,7 +145,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0010', 0, async () => {
+    it('testPreferencesPutUint8Array0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("!@#$%^&*() _+-~");
       const promise : Promise<void> = mPreferences!.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -170,7 +170,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0020', 0, async () => {
+    it('testPreferencesPutUint8Array0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("abc123");
       const promise : Promise<void> = mPreferences!.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -195,7 +195,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0030', 0, async () => {
+    it('testPreferencesPutUint8Array0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("abc@#$%123");
       const promise : Promise<void> = mPreferences!.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -220,7 +220,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0040', 0, async () => {
+    it('testPreferencesPutUint8Array0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let uInt8Array = new Uint8Array(16*1024*1024);
       uInt8Array.fill(100);
       const promise : Promise<void> = mPreferences!.put(KEY_TEST_UINT8ARRAY, uInt8Array);
@@ -248,7 +248,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0050', 0, async (done: Function) => {
+    it('testPreferencesPutUint8Array0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let uInt8Array = new Uint8Array(16*1024*1024+1);
       uInt8Array.fill(100);
       try {
@@ -268,7 +268,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0060', 0, async () => {
+    it('testPreferencesPutUint8Array0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let genProperties = GetAesGenerateProperties();
       let options: huks.HuksOptions = {
         properties: genProperties

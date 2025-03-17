@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common"
 import { BusinessError } from '@ohos.base';
@@ -42,7 +42,7 @@ export default function preferencesDataGroupIdPromise() {
       name : string = '';
       dataGroupId: null | undefined
      }
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options : Option = {
         name: "test_preferences_callback",
         dataGroupId: null
@@ -78,7 +78,7 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: undefined
@@ -114,7 +114,7 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: '112233'
@@ -153,7 +153,7 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */ 
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options : Option= {
         name: "test_preferences_callback",
         dataGroupId: null
@@ -189,7 +189,7 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: undefined
@@ -225,7 +225,7 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: '112233',

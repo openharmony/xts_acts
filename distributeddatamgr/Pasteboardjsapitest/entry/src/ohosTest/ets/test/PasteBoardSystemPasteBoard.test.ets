@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import pasteboard from '@ohos.pasteboard'
 import { BusinessError } from '@ohos.base';
 
@@ -69,7 +69,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -93,7 +93,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0200 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -117,7 +117,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_PROMISE_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -153,7 +153,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -183,7 +183,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0200 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -208,7 +208,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_PROMISE_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -237,7 +237,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -266,7 +266,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
       await systemPasteBoard.clearData().then(async () => {
@@ -291,7 +291,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0300 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -315,7 +315,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -342,7 +342,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0200 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
       await systemPasteBoard.clearData().then(async () => {
@@ -365,7 +365,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -395,7 +395,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0200 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -425,7 +425,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0300 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -449,7 +449,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0100 start")
       let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -476,7 +476,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0200 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -498,7 +498,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0300 start")
       let systemPasteBoard = pasteboard.getSystemPasteboard();
 
@@ -520,7 +520,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_ISREMOTEDATA_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_ISREMOTEDATA_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "SUB_PASTEBOARD_ISREMOTEDATA_0100 start")
       let systemPasteboard = pasteboard.getSystemPasteboard()
       await systemPasteboard.clearData().then(async () => {
@@ -544,7 +544,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_ISREMOTEDATA_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_ISREMOTEDATA_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "SUB_PASTEBOARD_ISREMOTEDATA_0200 start")
       let systemPasteboard = pasteboard.getSystemPasteboard()
       await systemPasteboard.clearData().then(async () => {
@@ -573,7 +573,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_HASDATATYPE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_HASDATATYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "SUB_PASTEBOARD_HASDATATYPE_0100 start")
       let systemPasteboard = pasteboard.getSystemPasteboard()
       await systemPasteboard.clearData().then(async () => {
@@ -601,7 +601,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_HASDATATYPE_0200', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_HASDATATYPE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "SUB_PASTEBOARD_HASDATATYPE_0200 start")
       let systemPasteboard = pasteboard.getSystemPasteboard()
       await systemPasteboard.clearData().then(async () => {
@@ -630,7 +630,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_GETDATASOURCE_0100', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_GETDATASOURCE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "SUB_PASTEBOARD_GETDATASOURCE_0100 start")
       let systemPasteboard = pasteboard.getSystemPasteboard()
       await systemPasteboard.clearData().then(async () => {
@@ -660,7 +660,7 @@ export default function pasteBoardSystemPasteBoardTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 start")
       let uri = "www.baidu.com"
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, uri)
