@@ -253,7 +253,7 @@ export function taskFunction11(index: number): Promise<number> {
 }
 
 export class WorkerSrc {
-  workerInstance: worker.ThreadWorker = new worker.ThreadWorker("../pages/workers/Worker");
+  workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../pages/workers/Worker');
 }
 
 export class WorkThread1 {

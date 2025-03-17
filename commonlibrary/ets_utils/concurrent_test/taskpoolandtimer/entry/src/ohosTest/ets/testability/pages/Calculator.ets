@@ -58,15 +58,15 @@ export class Calculator {
 }
 
 export class Worker {
-  worker: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
+  public worker: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 export class Worker1 {
-  worker: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker1.ets');
+  public worker: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker1.ets');
 }
 
 export class Worker2 {
-  worker: worker.ThreadWorker;
+  public worker: worker.ThreadWorker;
 
   constructor() {
     this.worker = new worker.ThreadWorker('../../workers/Worker2.ets');

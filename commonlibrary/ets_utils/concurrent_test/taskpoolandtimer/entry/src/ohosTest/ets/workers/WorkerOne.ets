@@ -29,6 +29,6 @@ workerPort.onmessage = async (e: MessageEvents): Promise<void> => {
 
 }
 workerPort.onerror = (err: ErrorEvent) => {
-  console.log("worker.ets onerror" + err.message);
+  console.log('worker.ets onerror' + err.message);
 
 }

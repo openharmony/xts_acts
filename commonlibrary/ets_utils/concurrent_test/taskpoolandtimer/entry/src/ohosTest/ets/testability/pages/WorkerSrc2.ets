@@ -15,5 +15,5 @@
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 export class WorkerSrc2 {
-  workerInstance2: worker.ThreadWorker = new worker.ThreadWorker("../pages/workers/Worker2");
+  public workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('../pages/workers/Worker2');
 }

@@ -16,34 +16,18 @@
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
-import { Contexts } from './Utils';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
 
-  aboutToAppear(): void {
-    let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
-    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  }
-
-  onPageShow(): void {
-    Contexts.contexts = getContext(this)
-    Contexts.path = Contexts.contexts.cacheDir
-    console.info('=====onPageShow', Contexts.path)
-  }
 
   build() {
     RelativeContainer() {
       Text(this.message)
         .id('HelloWorld')
-        .fontSize($r('app.float.page_text_font_size'))
+        .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },

@@ -17,11 +17,10 @@ import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 export class WorkerSrc {
   workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../../workers/WorkerOne');
   workerTwoInstance: worker.ThreadWorker = new worker.ThreadWorker('../../workers/WorkerTwo');
-  // workerThreeInstance :worker.ThreadWorker= new worker.ThreadWorker('../../workers/WorkerThree');
 }
 
 export class Worker3 {
-  worker: worker.ThreadWorker;
+   public worker: worker.ThreadWorker;
 
   constructor() {
     this.worker = new worker.ThreadWorker('../../workers/WorkerThree');
