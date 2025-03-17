@@ -54,7 +54,7 @@ export default function BindControllerErrorCodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('BindControllerErrorCodeTest_0100', 0, async (done: Function) => {
+    it('BindControllerErrorCodeTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('BindControllerErrorCodeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function BindControllerErrorCodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('BindControllerErrorCodeTest_0200', 0, async (done: Function) => {
+    it('BindControllerErrorCodeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('BindControllerErrorCodeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
