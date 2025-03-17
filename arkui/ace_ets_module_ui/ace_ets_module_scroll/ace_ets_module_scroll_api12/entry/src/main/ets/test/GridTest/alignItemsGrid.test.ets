@@ -49,11 +49,11 @@ export default function alignItemsGrid() {
      * @tc.number    alignItemsGrid_001
      * @tc.name      alignItemsGrid_0100
      * @tc.desc      Set the grid to alignItems and set them to DEFAULT.
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('alignItemsGrid_0100', 0, async (done: Function) => {
+    it('alignItemsGrid_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[alignItemsGrid_0100] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
