@@ -826,5 +826,30 @@ export default function settingUiJsunit() {
       }
       done();
     });
+
+    it('open_manager_settings_119', 0, async (done:Function) => {
+      let context = null;
+      try{
+        let value = settings.openNetworkManagerSettings(context);
+        expect(true).assertTrue();
+        done();
+      }catch (err) {
+        console.error("[open_manager_settings_119] error = " + err);
+        expect(err.code).assertEqual(14800000);
+      }
+      done();
+    });
+
+    it('open_manager_settings_120', 0, async (done:Function) => {
+      try{
+        let value = settings.openNetworkManagerSettings(globalThis.abilityContext);
+        expect(true).assertTrue();
+        done();
+      }catch (err) {
+        console.error("[open_manager_settings_120] error = " + err);
+        expect(err.code).assertEqual(14800010);
+      }
+      done();
+    });
   })
 }
