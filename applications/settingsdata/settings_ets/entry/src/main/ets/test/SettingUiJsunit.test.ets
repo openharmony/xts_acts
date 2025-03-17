@@ -23,9 +23,11 @@ const ERR_NOT_STRING = "Error: assertion (valueType == napi_string) failed: Wron
 export default function settingUiJsunit() {
   describe('appInfoTest', () => {
     console.log("************* settings Test start*************");
+
     it('settings_uri_test_001', 0, async (done: Function) => {
       let name = 'settings.screen.test';
       let uri = settings.getUriSync(name);
+
       console.info("[settings_uri_test_001] uri is: " + uri);
       let uri2 = settings.getUriSync(name);
       console.info("[settings_uri_test_001] uri2 is: " + uri2);
@@ -1229,6 +1231,10 @@ export default function settingUiJsunit() {
           done();
           return;
         })
+        let setTTS1: string = settings.TTS.DEFAULT_TTS_PITCH + ''
+        let setTTS2: string = settings.TTS.DEFAULT_TTS_RATE + ''
+        let setTTS3: string = settings.TTS.DEFAULT_TTS_SYNTH + ''
+        let setTTS4: string = settings.TTS.ENABLED_TTS_PLUGINS + ''
       } catch (err) {
         console.info('settings test canShowFloating promise err' + toString(err));
         expect(true).assertTrue();

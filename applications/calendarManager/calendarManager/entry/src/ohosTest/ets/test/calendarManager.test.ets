@@ -39,7 +39,7 @@ interface locationObj {
 interface attendeeObj {
   name: string,
   email: string,
-  role?: calendarManager.AttendeeRole,
+  role?: calendarManager.AttendeeRole
 }
 
 interface recurrenceRuleObj {
@@ -47,7 +47,7 @@ interface recurrenceRuleObj {
   expire?: number,
   count?: number,
   interval?: number,
-   excludedDates?: number[],
+  excludedDates?: number[],
   daysOfWeek?: number[],
   daysOfMonth?: number[],
   daysOfYear?: number[],
@@ -840,7 +840,7 @@ export default function CalendarManagerTest() {
           {
             name: '小王',
             email: 'peter@yuanha.com',
-            role: calendarManager.AttendeeRole.ORGANIZER,
+            role: calendarManager.AttendeeRole.ORGANIZER
           },
           {
             name: '小李',
