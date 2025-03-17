@@ -12,26 +12,38 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import taskPoolTaskGroupExecuteTest from './TaskPoolTaskGroupExecute.test';
-import taskPoolErrorSuccessTest from './TaskPoolErrorSuccessTest.test';
-import taskPoolErrorSuccess2Test from './TaskPoolErrorSuccess2Test.test';
-import taskPoolTaskMultipleTest from './TaskPoolTaskMultipleTest.test';
-import taskPoolTaskMultipleUITest from './TaskPoolTaskMultipleUITest.test';
-import taskPoolTaskGroupMultipleTest from './TaskPoolTaskGroupMultipleTest.test';
-import taskPoolTaskGroup from './TaskPoolTaskGroupTask.test';
-import taskPoolTaskGroupActTest from './TaskPoolTaskGroupActTest.test';
-import TaskGroupAbilityTest from './TaskGroupAbility.test';
-import TaskGroupAbilityTest2 from './TaskGroupAbility2.test';
+import functionsInTimerTest from "./TimerFunctionsTest.test";
+import taskPoolStaticCallbackTest from "./TaskPoolStaticCallbackTest.test";
+import taskPoolStaticThreadTest from "./TaskPoolStaticThreadTest.test";
+import taskPoolStaticWorkerTest from "./TaskPoolStaticWorkerTest.test";
+import TaskPoolTaskGroupDynamicsTest from "./TaskPoolTaskGroupDynamicsTest.test";
+import taskPoolTaskGroupLazyCallBackTest from "./TaskPoolTaskGroupLazyCallBackTest.test";
+import taskPoolTaskGroupLazyTest from "./TaskPoolTaskGroupLazyTest.test";
+import taskPoolTaskGroupLazyWorkerTest from "./TaskPoolTaskGroupLazyWorkerTest.test";
+import taskPoolTaskGroupShareTest from "./TaskPoolTaskGroupShareTest.test";
+import TimerClearIntervalTest from "./TimerClearIntervalTest.test";
+import clearTimeoutTest from "./TimerClearTimeoutTest.test";
+import TimerMemoryTest from "./TimerMemoryTest.test";
+import timerMultiThreadTest from "./TimerMultiThreadTest.test";
+import TimerSetIntervalTest from "./TimerSetIntervalTest.test";
+import setTimeoutTest from "./TimerSetTimeoutTest.test";
+
 
 export default function testsuite() {
-  taskPoolTaskGroupExecuteTest();
-  taskPoolErrorSuccessTest();
-  taskPoolErrorSuccess2Test();
-  taskPoolTaskMultipleTest();
-  taskPoolTaskMultipleUITest();
-  taskPoolTaskGroupMultipleTest();
-  taskPoolTaskGroup();
-  taskPoolTaskGroupActTest();
-  TaskGroupAbilityTest();
-  TaskGroupAbilityTest2();
+  functionsInTimerTest();
+  setTimeoutTest();
+  clearTimeoutTest();
+  taskPoolTaskGroupLazyCallBackTest();
+  taskPoolTaskGroupLazyTest();
+  taskPoolTaskGroupLazyWorkerTest();
+  TimerClearIntervalTest();
+  TimerMemoryTest();
+  TimerSetIntervalTest();
+  TaskPoolTaskGroupDynamicsTest();
+  taskPoolTaskGroupShareTest();
+  timerMultiThreadTest();
+  taskPoolStaticWorkerTest();
+  taskPoolStaticThreadTest();
+  taskPoolStaticCallbackTest();
+
 }
