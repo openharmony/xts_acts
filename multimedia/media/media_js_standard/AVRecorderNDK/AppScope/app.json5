@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.nativeavscreencapture.napitest",
+    "bundleName": "com.avrecorderndk.avrecorderndktest",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
