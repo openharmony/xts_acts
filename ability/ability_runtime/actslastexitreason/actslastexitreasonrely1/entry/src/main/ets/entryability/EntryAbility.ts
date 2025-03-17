@@ -24,8 +24,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', 'Ability onCreate LaunchParam: %{public}s', JSON.stringify(launchParam));
     publishEvent("Acts_OnCreate_LaunchParam_1_Event", launchParam.lastExitReason, launchParam.lastExitMessage,
-      launchParam.launchReasonMessage, launchParam.lastExitDetailInfo
-    );
+      launchParam.lastExitDetailInfo, launchParam.launchReasonMessage);
   }
 
   onDestroy() {

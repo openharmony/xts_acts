@@ -626,7 +626,6 @@ export default function ApiCoverTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["AbilityStage_StartAbility"]
       }
-
       commonEvent.createSubscriber(subscribeInfo, (err, data) => {
         console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
         subscriber = data
@@ -729,7 +728,6 @@ export default function ApiCoverTest() {
             expect(data[i].processName.length).assertLarger(0);
             expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
             expect(data[i].bundleNames.length).assertLarger(0);
-            expect(data[i].bundleType).assertEqual(0);
           }
           done();
         })

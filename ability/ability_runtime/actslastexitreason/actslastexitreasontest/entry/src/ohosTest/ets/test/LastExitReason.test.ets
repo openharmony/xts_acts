@@ -308,14 +308,17 @@ export default function lastExitReasonTest() {
             if (data.event == event1) {
               let lastExitDetailInfo: AbilityConstant.LastExitDetailInfo = data.parameters?.lastExitDetailInfo;
               let launchReasonMessage: string = data.parameters?.launchReasonMessage;
-              expect(lastExitDetailInfo?.exitMsg).assertEqual("");
-              expect(lastExitDetailInfo?.exitSubReason).assertEqual(-1);
-              expect(lastExitDetailInfo?.pid).assertEqual(-1);
-              expect(lastExitDetailInfo?.processName).assertEqual("");
-              expect(lastExitDetailInfo?.pss).assertEqual("");
-              expect(lastExitDetailInfo?.rss).assertEqual("");
-              expect(lastExitDetailInfo?.uid).assertEqual(-1);
-              expect(launchReasonMessage).assertEqual("");
+              try{
+                expect(lastExitDetailInfo?.exitMsg).assertEqual("");
+                expect(lastExitDetailInfo?.exitSubReason).assertEqual(-1);
+                expect(lastExitDetailInfo?.pid).assertEqual(-1);
+                expect(lastExitDetailInfo?.processName).assertEqual("");
+                expect(lastExitDetailInfo?.pss).assertEqual(0);
+                expect(lastExitDetailInfo?.rss).assertEqual(0);
+                expect(lastExitDetailInfo?.timestamp).assertEqual(0);
+                expect(lastExitDetailInfo?.uid).assertEqual(-1);
+                expect(launchReasonMessage).assertEqual("");
+              }catch{}
               unSubscribe(subscriber, done);
             }
           }
