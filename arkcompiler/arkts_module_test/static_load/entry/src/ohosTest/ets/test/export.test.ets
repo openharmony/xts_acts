@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect ,TestType, Size, Level } from "@ohos/hypium"
 import { name } from './exportTest/exportTest'
 import { variableName } from './exportTest/exportTest'
 import { variableA } from './exportTest/exportTest'
@@ -31,7 +31,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport01', 0, () => {
+    it('testStaticExport01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport01";
       try {
         expect(name).assertEqual("name");
@@ -49,7 +49,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport02', 0, () => {
+    it('testStaticExport02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport02";
       try {
         expect(variableName).assertEqual("name");
@@ -67,7 +67,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport03', 0, () => {
+    it('testStaticExport03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport03";
       try {
         expect(variableA).assertEqual("Variable A");
@@ -85,7 +85,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport04', 0, () => {
+    it('testStaticExport04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport04";
       try {
         expect(variableB).assertEqual("Variable B");
@@ -103,7 +103,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport05', 0, () => {
+    it('testStaticExport05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport05";
       try {
         expect(ModuleA.variableA).assertEqual("Variable A");
@@ -121,7 +121,7 @@ export default function staticExport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticExport06', 0, () => {
+    it('testStaticExport06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticExport06";
       try {
         expect(ModuleB.variableB).assertEqual("Variable B");

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import testNapi from 'libentry.so';
 
 export default function HspNapiLoadTest() {
@@ -40,7 +40,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0001', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0001';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -58,7 +58,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0002', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0002';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -76,7 +76,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0003', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0003';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -94,7 +94,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0004', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0004';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -112,7 +112,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0005', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0005', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0005';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -130,7 +130,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-      it('ARK_ETSRuntime_HSP_NAPI_LOAD_0006', 0, () => {
+      it('ARK_ETSRuntime_HSP_NAPI_LOAD_0006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
         TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0006';
         console.info(TAG, ' start');
         let result: Boolean = HspProject.loadSystemModule(TAG);
@@ -148,7 +148,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0007', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0007', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0007';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -166,7 +166,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0008', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0008', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0008';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -184,7 +184,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0009', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0009', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0009';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -202,7 +202,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0010', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0010', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0010';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -220,7 +220,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0011', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0011', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0011';
       console.info(TAG, ' start');
       let argc1 = 2;
@@ -238,7 +238,7 @@ export default function HspNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0012', 0, () => {
+    it('ARK_ETSRuntime_HSP_NAPI_LOAD_0012', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HSP_NAPI_LOAD_0012';
       console.info(TAG, ' start');
       let result: Boolean = HspProject.loadSystemModule2(TAG);

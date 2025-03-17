@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import { BusinessError } from "@kit.BasicServicesKit";
 
 export default function dynamicLoadHap() {
@@ -27,7 +27,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressions01', 0, () => {
+    it('testConstantExpressions01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressions01";
       import('./testAdd').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -46,7 +46,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressions02', 0, () => {
+    it('testConstantExpressions02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressions02";
       import('../testSubtract').then(m => {
         expect(m.subtract(3, 2)).assertEqual(1);
@@ -65,7 +65,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressions03', 0, () => {
+    it('testConstantExpressions03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressions03";
       import('./fileTest').then(m => {
         expect(m.multiply(3, 2)).assertEqual(6);
@@ -84,7 +84,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressions04', 0, () => {
+    it('testConstantExpressions04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressions04";
       import('./fileTest/中文').then(m => {
         expect(m.getInfo()).assertEqual("CN");
@@ -103,7 +103,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressions01', 0, () => {
+    it('testVariableExpressions01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressions01";
       let libname = './testAdd';
       import(libname).then((m: ESObject) => {
@@ -123,7 +123,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressions02', 0, () => {
+    it('testVariableExpressions02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressions02";
       let libname = '../testSubtract';
       import(libname).then((m: ESObject) => {
@@ -143,7 +143,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressions03', 0, () => {
+    it('testVariableExpressions03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressions03";
       let libname = './fileTest';
       import(libname).then((m: ESObject) => {
@@ -163,7 +163,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressions04', 0, () => {
+    it('testVariableExpressions04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressions04";
       let libname = './fileTest/中文';
       import(libname).then((m: ESObject) => {
@@ -183,7 +183,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoConstantExpressions01', 0, () => {
+    it('testNativeSoConstantExpressions01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testNativeSoConstantExpressions01";
       let res: string = '';
       import('@ohos.hilog').then(m => {
@@ -210,7 +210,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoConstantExpressions02', 0, () => {
+    it('testNativeSoConstantExpressions02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testNativeSoConstantExpressions02";
       let res: string = '';
       import('@system.app').then(m => {
@@ -233,7 +233,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoConstantExpressions03', 0, () => {
+    it('testNativeSoConstantExpressions03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testNativeSoConstantExpressions03";
       import('libentry.so').then(m => {
         expect(m.default.add(3, 2)).assertEqual(5);
@@ -252,7 +252,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoVariableExpressions01', 0, () => {
+    it('testNativeSoVariableExpressions01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testNativeSoVariableExpressions01";
       let res: string = '';
       let libname = '@ohos.hilog';
@@ -275,7 +275,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoVariableExpressions02', 0, () => {
+    it('testNativeSoVariableExpressions02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testNativeSoVariableExpressions02";
       let res: string = '';
       let libname = '@system.app';
@@ -299,7 +299,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeSoVariableExpressions03', 0, async () => {
+    it('testNativeSoVariableExpressions03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testNativeSoVariableExpressions03";
       let libname = 'libentry.so';
       try {
@@ -321,7 +321,7 @@ export default function dynamicLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testJsonConstantExpressions01', 0, () => {
+    it('testJsonConstantExpressions01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testJsonConstantExpressions01";
       import('./fileTest/1.json').then(m => {
         expect(m.default.name).assertEqual('testJson');

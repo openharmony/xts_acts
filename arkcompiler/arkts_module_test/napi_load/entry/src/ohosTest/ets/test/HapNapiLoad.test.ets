@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import testNapi from 'libentry.so';
 import { taskpool } from '@kit.ArkTS';
 
@@ -86,7 +86,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0001', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0001';
       console.info(TAG, " start");
       let argc1 = 2;
@@ -104,7 +104,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0002', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0002';
       console.info(TAG, ' start');
       let har: ESObject = testNapi.loadModuleWithInfo('harTwo', 'com.acts.arttsnapiloadtest/entry_test');
@@ -124,7 +124,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0003', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0003';
       console.info(TAG, ' start');
       let harFile: ESObject = testNapi.loadModuleWithInfo('harTwo/Index', 'com.acts.arttsnapiloadtest/entry_test');
@@ -144,7 +144,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0004', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0004';
       console.info(TAG, ' start');
       let hsp: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_test');
@@ -164,7 +164,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0005', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0005', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0005';
       console.info(TAG, ' start');
       let hspFile: ESObject = testNapi.loadModuleWithInfo('hspTwo/Test', 'com.acts.arttsnapiloadtest/entry_test');
@@ -184,7 +184,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0006', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0006';
       console.info(TAG, ' start');
       let myLog: ESObject = testNapi.loadModuleWithInfo('@ohos.hilog', '');
@@ -204,7 +204,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0007', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0007', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       try {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0007';
         console.info(TAG, ' start');
@@ -223,7 +223,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0008', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0008', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       try {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0008';
         console.info(TAG, ' start');
@@ -243,7 +243,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0009', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0009', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
       expect(sharedHarOne.value).assertEqual(1);
     })
@@ -256,7 +256,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0010', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0010', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne/Index", PATH)
       expect(sharedHarOne.test ? sharedHarOne.test(0, 1) : -1).assertEqual(0);
     })
@@ -269,7 +269,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0011', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0011', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const sharedHspOne: TestModule = testNapi.loadModuleWithInfo("sharedHspOne", PATH)
       expect(sharedHspOne.test ? sharedHspOne.test(2, 3) : -1).assertEqual(6);
     })
@@ -282,7 +282,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0012', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0012', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const sharedHspOne: TestModule = testNapi.loadModuleWithInfo("sharedHspOne/Index", PATH)
       expect(sharedHspOne.test ? sharedHspOne.test(2, 3) : -1).assertEqual(6);
     })
@@ -295,7 +295,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0013', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0013', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
       expect(sharedHarOne.add ? sharedHarOne.add(2, 3) : -1).assertEqual(5);
     })
@@ -332,7 +332,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0016', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0016', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0016';
       console.info(TAG, ' start');
       let har: ESObject = testNapi.loadModule('harTwo');
@@ -352,7 +352,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0017', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0017', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0017';
       console.info(TAG, ' start');
       let harFile: ESObject = testNapi.loadModule('harTwo/Index');
@@ -372,7 +372,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0018', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0018', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0018';
       console.info(TAG, ' start');
       let hsp: ESObject = testNapi.loadModule('hspTwo');
@@ -392,7 +392,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0019', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0019', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0019';
       console.info(TAG, ' start');
       let hspFile: ESObject = testNapi.loadModule('hspTwo/Test');
@@ -412,7 +412,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0020', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0020', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0020';
       console.info(TAG, ' start');
       let myLog: ESObject = testNapi.loadModule('@ohos.hilog');
@@ -432,7 +432,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0021', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0021', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0021';
       console.info(TAG, ' start');
       let har: ESObject = testNapi.loadModule('harTwo/src/main/ets/Test');
@@ -452,7 +452,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0022', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0022', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0022';
       console.info(TAG, ' start');
       let har: ESObject = testNapi.loadModule('hspTwo/src/main/ets/Test');
@@ -472,7 +472,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0023', 0, () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0023', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0023';
       console.info(TAG, ' start');
       let entry: ESObject = testNapi.loadModule('ets/Test2');
