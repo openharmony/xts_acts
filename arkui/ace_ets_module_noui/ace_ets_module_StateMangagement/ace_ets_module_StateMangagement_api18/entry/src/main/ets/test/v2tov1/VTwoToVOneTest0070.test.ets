@@ -66,7 +66,7 @@ export default function VTwoToVOneTest0070() {
       console.info("[VTwoToVOneTest0070_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ParentArkUI');
       await CommonFunc.sleep(500);
-      obj = JSON.parse(getInspectorByKey('tvParentProp0070'));
+      obj1 = JSON.parse(getInspectorByKey('tvParentProp0070'));
       console.info("[VTwoToVOneTest0070_001] component obj1 is: " + JSON.stringify(obj1));
       console.info("[VTwoToVOneTest0070_001] obj1 content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('ParentArkUI');
