@@ -22,7 +22,7 @@ export default function VTwoToVOneTest0070() {
     beforeEach(async (done: Function) => {
       console.info("VTwoToVOneTest0070 beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/ReuseV2/VTwoToVOne0070",
+        url: "MainAbility/pages/v2tov1/VTwoToVOne0070",
       }
       try {
         router.clear();
