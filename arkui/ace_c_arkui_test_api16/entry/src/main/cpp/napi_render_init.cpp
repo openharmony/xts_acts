@@ -20,7 +20,6 @@
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
 #include "drag/drag_test.h"
-#include "calendarPicker/calendar_picker_test.h"
 #include "calendarPicker/calendarPicker_date_test.h"
 #include "ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.h"
 #include "move/node_util_move_test.h"
@@ -57,8 +56,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"GetResult", nullptr, DragTest::GetResult, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"calendarPickerTest", nullptr, CalendarPickerTest::CalendarPickerMarkTodayTest,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testExpectedFrameRateRangeCallback", nullptr, ExpectedFrameRateRangeCallbackTest::testExpectedFrameRateRangeCallback001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testNodeUtilMove001", nullptr, NodeUtilMoveTest::testNodeUtilMove001, nullptr, nullptr,

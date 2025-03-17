@@ -15,12 +15,12 @@
 
 #ifndef ACE_C_ARKUI_TEST_API16_CALENDARPICKER_TEST_H
 #define ACE_C_ARKUI_TEST_API16_CALENDARPICKER_TEST_H
-
+ 
 #include "../common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
-
+ 
 namespace ArkUICapiTest {
-
+ 
 class CalendarPickerTest {
 public:
     ~CalendarPickerTest();
@@ -28,3 +28,4 @@ public:
 };
 } // namespace ArkUICapiTest
 #endif // ACE_C_ARKUI_TEST_API16_CALENDARPICKER_TEST_H
+ 
