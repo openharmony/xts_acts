@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "ohos.acts.multimedia.audio.audiorecorder",
+    "bundleName": "com.nativeavscreencapture.napitest",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
