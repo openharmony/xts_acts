@@ -51,10 +51,6 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-        "reason": "$string:TestAbility_desc"
-      },
-      {
         "name": "ohos.permission.MICROPHONE",
         "reason": "$string:TestAbility_desc"
       },
