@@ -37,3 +37,5 @@ export const GetResult: () => number[];
 export const testExpectedFrameRateRangeCallback: (a: string) => void;
 
 export const testNodeUtilMove001: (a: string) => void;
+
+export const timePickerTest: (a: string) => void;
