@@ -45,11 +45,11 @@ export default function listItemGroupNone() {
      * @tc.number    listItemGroupNone_001
      * @tc.name      listItemGroupNone_0100
      * @tc.desc      The enumeration value of itemGroupArea is NONE.
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('listItemGroupNone_0100', 0, async (done: Function) => {
+    it('listItemGroupNone_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[listItemGroupNone_0100] START');
       let driver = Driver.create();
       let strJson = getInspectorByKey('itemGroupArea_none');
