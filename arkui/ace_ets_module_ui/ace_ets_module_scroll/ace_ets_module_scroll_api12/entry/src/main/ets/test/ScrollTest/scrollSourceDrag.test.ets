@@ -45,11 +45,11 @@ export default function scrollSourceDrag() {
      * @tc.number    scrollSourceDrag_001
      * @tc.name      scrollSourceDrag_0100
      * @tc.desc      ScrollSource.DRAG: Drag event
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('scrollSourceDrag_0100', 0, async (done: Function) => {
+    it('scrollSourceDrag_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[scrollSourceDrag_0100] START');
       let swiperDrag = CommonFunc.getComponentRectOnScreen('scrollSource_drag');
       let top = swiperDrag.top;
