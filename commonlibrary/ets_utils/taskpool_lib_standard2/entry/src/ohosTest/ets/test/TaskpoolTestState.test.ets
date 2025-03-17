@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, TestType, Size, Level} from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base';
 import { printLang, AdditionDelay } from '../utils';
@@ -43,7 +43,7 @@ export default function TaskpoolTestState() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolState001', 0, async (done: Function) => {
+    it('testTaskpoolState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolState001';
       console.info(`${caseName} test start`);
       try {
@@ -87,7 +87,7 @@ export default function TaskpoolTestState() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolState002', 0, async (done: Function) => {
+    it('testTaskpoolState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolState002';
       console.info(`${caseName} test start`);
       try {

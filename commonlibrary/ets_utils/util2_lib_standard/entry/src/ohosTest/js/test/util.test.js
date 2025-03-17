@@ -52,7 +52,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsNumberObject001', 0, function() {
+    it('testIsNumberObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(new Number(0));
         expect(result).assertEqual(true);
@@ -66,7 +66,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsNumberObject002', 0, function() {
+    it('testIsNumberObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(new Number(10));
         expect(result).assertEqual(true);
@@ -80,7 +80,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsNumberObject003', 0, function() {
+    it('testIsNumberObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(new Number(200));
         expect(result).assertEqual(true);
@@ -94,7 +94,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsNumberObject004', 0, function() {
+    it('testIsNumberObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(0);
         expect(result).assertEqual(false);
@@ -108,7 +108,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsNumberObject005', 0, function() {
+    it('testIsNumberObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(100);
         expect(result).assertEqual(false);
@@ -122,7 +122,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsPromise001', 0, function() {
+    it('testIsPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(42));
         expect(result).assertEqual(true);
@@ -136,7 +136,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsPromise002', 0, function() {
+    it('testIsPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(33));
         expect(result).assertEqual(true);
@@ -150,7 +150,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsPromise003', 0, function() {
+    it('testIsPromise003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(44));
         expect(result).assertEqual(true);
@@ -164,7 +164,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsPromise004', 0, function() {
+    it('testIsPromise004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var err = Error(33);
         var result = proc.isPromise(Promise.reject(err));
@@ -179,7 +179,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsPromise005', 0, function() {
+    it('testIsPromise005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var err = Error(23);
         var result = proc.isPromise(Promise.reject(err));
@@ -194,7 +194,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsProxy001', 0, function() {
+    it('testIsProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
@@ -210,7 +210,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsProxy002', 0, function() {
+    it('testIsProxy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
@@ -226,7 +226,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsProxy003', 0, function() {
+    it('testIsProxy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -246,7 +246,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsProxy004', 0, function() {
+    it('testIsProxy004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -266,7 +266,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsProxy005', 0, function() {
+    it('testIsProxy005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -286,7 +286,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsRegExp001', 0, function() {
+    it('testIsRegExp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('abc'));
         expect(result).assertEqual(true);
@@ -300,7 +300,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsRegExp002', 0, function() {
+    it('testIsRegExp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(/abc/);
         expect(result).assertEqual(true);
@@ -314,7 +314,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsRegExp003', 0, function() {
+    it('testIsRegExp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('fgd'));
         expect(result).assertEqual(true);
@@ -328,7 +328,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsRegExp004', 0, function() {
+    it('testIsRegExp004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('123'));
         expect(result).assertEqual(true);
@@ -342,7 +342,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsRegExp005', 0, function() {
+    it('testIsRegExp005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp(/ab+c/, 'i'));
         expect(result).assertEqual(true);
@@ -356,7 +356,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSet001', 0, function() {
+    it('testIsSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Set());
         expect(result).assertEqual(true);
@@ -370,7 +370,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSet002', 0, function() {
+    it('testIsSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Map());
         expect(result).assertEqual(false);
@@ -384,7 +384,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSet003', 0, function() {
+    it('testIsSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new String());
         expect(result).assertEqual(false);
@@ -398,7 +398,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSet004', 0, function() {
+    it('testIsSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Boolean());
         expect(result).assertEqual(false);
@@ -412,7 +412,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSet005', 0, function() {
+    it('testIsSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new WeakSet());
         expect(result).assertEqual(false);
@@ -426,7 +426,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSetIterator001', 0, function() {
+    it('testIsSetIterator001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.keys());
@@ -441,7 +441,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSetIterator002', 0, function() {
+    it('testIsSetIterator002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.values());
@@ -456,7 +456,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSetIterator003', 0, function() {
+    it('testIsSetIterator003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.entries());
@@ -471,7 +471,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSetIterator004', 0, function() {
+    it('testIsSetIterator004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set[Symbol.iterator]());
@@ -486,7 +486,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSetIterator005', 0, function() {
+    it('testIsSetIterator005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set);
@@ -501,7 +501,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer001', 0, function() {
+    it('testIsSharedArrayBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new SharedArrayBuffer([]));
         expect(result).assertEqual(true);
@@ -515,7 +515,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer002', 0, function() {
+    it('testIsSharedArrayBuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -529,7 +529,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer003', 0, function() {
+    it('testIsSharedArrayBuffer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int32Array([]));
         expect(result).assertEqual(false);
@@ -543,7 +543,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer004', 0, function() {
+    it('testIsSharedArrayBuffer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(false);
@@ -557,7 +557,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer005', 0, function() {
+    it('testIsSharedArrayBuffer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -571,7 +571,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsStringObject001', 0, function() {
+    it('testIsStringObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('foo'));
         expect(result).assertEqual(true);
@@ -585,7 +585,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsStringObject002', 0, function() {
+    it('testIsStringObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('twoo'));
         expect(result).assertEqual(true);
@@ -599,7 +599,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsStringObject003', 0, function() {
+    it('testIsStringObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('fdfsfd'));
         expect(result).assertEqual(true);
@@ -613,7 +613,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsStringObject004', 0, function() {
+    it('testIsStringObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject('ffds111');
         expect(result).assertEqual(false);
@@ -627,7 +627,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsStringObject005', 0, function() {
+    it('testIsStringObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject('foo');
         expect(result).assertEqual(false);
@@ -641,7 +641,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSymbolObject001', 0, function() {
+    it('testIsSymbolObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(Object(symbols));
@@ -656,7 +656,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSymbolObject002', 0, function() {
+    it('testIsSymbolObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('s12');
         var result = proc.isSymbolObject(Object(symbols));
@@ -671,7 +671,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSymbolObject003', 0, function() {
+    it('testIsSymbolObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('sads');
         var result = proc.isSymbolObject(Object(symbols));
@@ -686,7 +686,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSymbolObject004', 0, function() {
+    it('testIsSymbolObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('asdd');
         var result = proc.isSymbolObject(symbols);
@@ -701,7 +701,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsSymbolObject005', 0, function() {
+    it('testIsSymbolObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(symbols);
@@ -716,7 +716,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsTypedArray001', 0, function() {
+    it('testIsTypedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Float64Array([]));
         expect(result).assertEqual(true);
@@ -730,7 +730,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsTypedArray002', 0, function() {
+    it('testIsTypedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint8Array([]));
         expect(result).assertEqual(true);
@@ -744,7 +744,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsTypedArray003', 0, function() {
+    it('testIsTypedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint16Array([]));
         expect(result).assertEqual(true);
@@ -758,7 +758,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsTypedArray004', 0, function() {
+    it('testIsTypedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint32Array([]));
         expect(result).assertEqual(true);
@@ -772,7 +772,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsTypedArray005', 0, function() {
+    it('testIsTypedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new ArrayBuffer());
         expect(result).assertEqual(false);
@@ -786,7 +786,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8Array001', 0, function() {
+    it('testIsUint8Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint8Array([]));
         expect(result).assertEqual(true);
@@ -800,7 +800,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8Array002', 0, function() {
+    it('testIsUint8Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint16Array([]));
         expect(result).assertEqual(false);
@@ -814,7 +814,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8Array003', 0, function() {
+    it('testIsUint8Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -828,7 +828,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8Array004', 0, function() {
+    it('testIsUint8Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -842,7 +842,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8Array005', 0, function() {
+    it('testIsUint8Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -856,7 +856,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray001', 0, function() {
+    it('testIsUint8ClampedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint8ClampedArray([]));
         expect(result).assertEqual(true);
@@ -870,7 +870,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray002', 0, function() {
+    it('testIsUint8ClampedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -884,7 +884,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray003', 0, function() {
+    it('testIsUint8ClampedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -898,7 +898,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray004', 0, function() {
+    it('testIsUint8ClampedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int32Array([]));
         expect(result).assertEqual(false);
@@ -912,7 +912,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray005', 0, function() {
+    it('testIsUint8ClampedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -926,7 +926,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint16Array001', 0, function() {
+    it('testIsUint16Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint16Array([]));
         expect(result).assertEqual(true);
@@ -940,7 +940,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint16Array002', 0, function() {
+    it('testIsUint16Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -954,7 +954,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint16Array003', 0, function() {
+    it('testIsUint16Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -968,7 +968,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint16Array004', 0, function() {
+    it('testIsUint16Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
@@ -982,7 +982,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint16Array005', 0, function() {
+    it('testIsUint16Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -996,7 +996,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint32Array001', 0, function() {
+    it('testIsUint32Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint32Array([]));
         expect(result).assertEqual(true);
@@ -1010,7 +1010,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint32Array002', 0, function() {
+    it('testIsUint32Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -1024,7 +1024,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint32Array003', 0, function() {
+    it('testIsUint32Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint16Array([]));
         expect(result).assertEqual(false);
@@ -1038,7 +1038,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint32Array004', 0, function() {
+    it('testIsUint32Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -1052,7 +1052,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsUint32Array005', 0, function() {
+    it('testIsUint32Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
@@ -1066,7 +1066,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakMap001', 0, function() {
+    it('testIsWeakMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new WeakMap());
         expect(result).assertEqual(true);
@@ -1080,7 +1080,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakMap002', 0, function() {
+    it('testIsWeakMap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new Map());
         expect(result).assertEqual(false);
@@ -1094,7 +1094,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakMap003', 0, function() {
+    it('testIsWeakMap003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new Set());
         expect(result).assertEqual(false);
@@ -1108,7 +1108,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakMap004', 0, function() {
+    it('testIsWeakMap004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new String());
         expect(result).assertEqual(false);
@@ -1122,7 +1122,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakMap005', 0, function() {
+    it('testIsWeakMap005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new WeakSet());
         expect(result).assertEqual(false);
@@ -1136,7 +1136,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakSet001', 0, function() {
+    it('testIsWeakSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new WeakSet());
         expect(result).assertEqual(true);
@@ -1150,7 +1150,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakSet002', 0, function() {
+    it('testIsWeakSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new WeakMap());
         expect(result).assertEqual(false);
@@ -1164,7 +1164,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakSet003', 0, function() {
+    it('testIsWeakSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new String());
         expect(result).assertEqual(false);
@@ -1178,7 +1178,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakSet004', 0, function() {
+    it('testIsWeakSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new Set());
         expect(result).assertEqual(false);
@@ -1192,7 +1192,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testIsWeakSet005', 0, function() {
+    it('testIsWeakSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
@@ -1206,7 +1206,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilRandomUUID001', 0, async function () {
+    it('testUtilRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomUUID(true);
         expect(result.length).assertEqual(36);
     })
@@ -1219,7 +1219,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilRandomUUID002', 0, async function () {
+    it('testUtilRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomUUID(false);
         expect(result.length).assertEqual(36);
     })
@@ -1232,7 +1232,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilRandomBinaryUUID001', 0, async function () {
+    it('testUtilRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomBinaryUUID(true);
         expect(result.length).assertEqual(16);
     })
@@ -1245,7 +1245,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilRandomBinaryUUID002', 0, async function () {
+    it('testUtilRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomBinaryUUID(false);
         expect(result.length).assertEqual(16);
     })
@@ -1258,7 +1258,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilParseUUID001', 0, async function () {
+    it('testUtilParseUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.parseUUID('84bdf796-66cc-4655-9b89-d6218d100f9c');
         expect(result.length).assertEqual(16);
     })
@@ -1271,7 +1271,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilParseUUID002', 0, async function () {
+    it('testUtilParseUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.parseUUID('84df796-66cc-4655-9b89-d6218d100f9c');
         } catch(e) {
@@ -1287,7 +1287,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilParseUUID003', 0, async function () {
+    it('testUtilParseUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.parseUUID('84Wdf796-66cc-4655-9b89-d6218d100f9c');
         } catch(e) {
@@ -1303,7 +1303,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID001', 0, async function () {
+    it('testUtilgenerateRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomUUID(true);
         expect(result.length).assertEqual(36);
     })
@@ -1316,7 +1316,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID002', 0, async function () {
+    it('testUtilgenerateRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomUUID(false);
         expect(result.length).assertEqual(36);
     })
@@ -1329,7 +1329,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID003', 0, async function () {
+    it('testUtilgenerateRandomUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let sum = 0
         for (let i = 0; i < 10; i++) {
           let result = util.generateRandomUUID(true);
@@ -1348,7 +1348,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomBinaryUUID001', 0, async function () {
+    it('testUtilgenerateRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomBinaryUUID(true);
         expect(result.length).assertEqual(16);
     })
@@ -1361,7 +1361,7 @@ describe('TextEncoderTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomBinaryUUID002', 0, async function () {
+    it('testUtilgenerateRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomBinaryUUID(false);
         expect(result.length).assertEqual(16);
     })
@@ -1376,7 +1376,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getLower_001', 0, function () {
+    it('test_getLower_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.getLower()
         expect(result.toString()).assertEqual('30')
     })
@@ -1389,7 +1389,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getLower_002', 0, function () {
+    it('test_getLower_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFir.getLower()
         expect(result.toString()).assertEqual('35')
     })
@@ -1402,7 +1402,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getLower_003', 0, function () {
+    it('test_getLower_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpSec.getLower()
         expect(result.toString()).assertEqual('20')
     })
@@ -1415,7 +1415,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getLower_004', 0, function () {
+    it('test_getLower_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpThi.getLower()
         expect(result.toString()).assertEqual('20')
     })
@@ -1428,7 +1428,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getLower_005', 0, function () {
+    it('test_getLower_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFif.getLower()
         expect(result.toString()).assertEqual('35')
     })
@@ -1441,7 +1441,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getUpper_001', 0, function () {
+    it('test_getUpper_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.getUpper()
         expect(result.toString()).assertEqual('40')
     })
@@ -1454,7 +1454,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getUpper_002', 0, function () {
+    it('test_getUpper_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFir.getUpper()
         expect(result.toString()).assertEqual('39')
     })
@@ -1467,7 +1467,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getUpper_003', 0, function () {
+    it('test_getUpper_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpSec.getUpper()
         expect(result.toString()).assertEqual('45')
     })
@@ -1480,7 +1480,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getUpper_004', 0, function () {
+    it('test_getUpper_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpThi.getUpper()
         expect(result.toString()).assertEqual('35')
     })
@@ -1493,7 +1493,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_getUpper_005', 0, function () {
+    it('test_getUpper_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFif.getUpper()
         expect(result.toString()).assertEqual('45')
     })
@@ -1506,7 +1506,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_001', 0, function () {
+    it('test_clamp_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempLess)
         expect(result.toString()).assertEqual('30')
     })
@@ -1519,7 +1519,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_002', 0, function () {
+    it('test_clamp_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempMiDF)
         expect(result.toString()).assertEqual('35')
     })
@@ -1532,7 +1532,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_003', 0, function () {
+    it('test_clamp_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempMore)
         expect(result.toString()).assertEqual('40')
     })
@@ -1545,7 +1545,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_004', 0, function () {
+    it('test_clamp_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempLower)
         expect(result.toString()).assertEqual('30')
     })
@@ -1558,7 +1558,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_005', 0, function () {
+    it('test_clamp_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempUpper)
         expect(result.toString()).assertEqual('40')
     })
@@ -1571,7 +1571,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_001', 0, function () {
+    it('test_contains_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempLess)
         expect(result).assertEqual(false)
     })
@@ -1584,7 +1584,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_002', 0, function () {
+    it('test_contains_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempMiDF)
         expect(result).assertEqual(true)
     })
@@ -1597,7 +1597,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_003', 0, function () {
+    it('test_contains_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempMore)
         expect(result).assertEqual(false)
     })
@@ -1610,7 +1610,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_004', 0, function () {
+    it('test_contains_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempLower)
         expect(result).assertEqual(true)
     })
@@ -1623,7 +1623,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_005', 0, function () {
+    it('test_contains_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempUpper)
         expect(result).assertEqual(true)
     })
@@ -1636,7 +1636,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_006', 0, function () {
+    it('test_contains_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpFir)
         expect(result).assertEqual(true)
     })
@@ -1649,7 +1649,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_007', 0, function () {
+    it('test_contains_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpSec)
         expect(result).assertEqual(false)
     })
@@ -1662,7 +1662,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_008', 0, function () {
+    it('test_contains_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpThi)
         expect(result).assertEqual(false)
     })
@@ -1675,7 +1675,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_009', 0, function () {
+    it('test_contains_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpFif)
         expect(result).assertEqual(false)
     })
@@ -1688,7 +1688,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_010', 0, function () {
+    it('test_contains_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHp)
         expect(result).assertEqual(true)
     })
@@ -1701,7 +1701,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_001', 0, function () {
+    it('test_expand_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1714,7 +1714,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_002', 0, function () {
+    it('test_expand_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess, tempMore)
         expect(result.toString()).assertEqual('[20, 45]')
     })
@@ -1727,7 +1727,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_003', 0, function () {
+    it('test_expand_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1740,7 +1740,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_004', 0, function () {
+    it('test_expand_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1753,7 +1753,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_005', 0, function () {
+    it('test_expand_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1766,7 +1766,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_006', 0, function () {
+    it('test_expand_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpFir)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1779,7 +1779,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_007', 0, function () {
+    it('test_expand_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpSec)
         expect(result.toString()).assertEqual('[20, 45]')
     })
@@ -1792,7 +1792,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_008', 0, function () {
+    it('test_expand_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpThi)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1805,7 +1805,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_009', 0, function () {
+    it('test_expand_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpFif)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1818,7 +1818,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_010', 0, function () {
+    it('test_expand_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHp)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1831,7 +1831,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_011', 0, function () {
+    it('test_expand_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1844,7 +1844,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_012', 0, function () {
+    it('test_expand_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1857,7 +1857,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_013', 0, function () {
+    it('test_expand_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1870,7 +1870,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_014', 0, function () {
+    it('test_expand_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLower)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1883,7 +1883,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_015', 0, function () {
+    it('test_expand_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1896,7 +1896,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_001', 0, function () {
+    it('test_intersect_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpFir)
         expect(result.toString()).assertEqual('[35, 39]')
     })
@@ -1909,7 +1909,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_002', 0, function () {
+    it('test_intersect_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpSec)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1922,7 +1922,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_003', 0, function () {
+    it('test_intersect_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpThi)
         expect(result.toString()).assertEqual('[30, 35]')
     })
@@ -1935,7 +1935,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_004', 0, function () {
+    it('test_intersect_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpFif)
         expect(result.toString()).assertEqual('[35, 40]')
     })
@@ -1948,7 +1948,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_005', 0, function () {
+    it('test_intersect_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHp)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1962,7 +1962,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_006', 0, function () {
+    it('test_intersect_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[35, 39]')
     })
@@ -1976,7 +1976,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_007', 0, function () {
+    it('test_intersect_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLess, tempMore)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1990,7 +1990,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_008', 0, function () {
+    it('test_intersect_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[30, 35]')
     })
@@ -2004,7 +2004,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_009', 0, function () {
+    it('test_intersect_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[35, 40]')
     })
@@ -2018,7 +2018,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_010', 0, function () {
+    it('test_intersect_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -2031,7 +2031,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_toString_001', 0, function () {
+    it('test_toString_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.toString()
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -2044,7 +2044,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_toString_002', 0, function () {
+    it('test_toString_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFir.toString()
         expect(result.toString()).assertEqual('[35, 39]')
     })
@@ -2057,7 +2057,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_toString_003', 0, function () {
+    it('test_toString_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpSec.toString()
         expect(result.toString()).assertEqual('[20, 45]')
     })
@@ -2070,7 +2070,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_toString_004', 0, function () {
+    it('test_toString_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpThi.toString()
         expect(result.toString()).assertEqual('[20, 35]')
     })
@@ -2083,7 +2083,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_toString_005', 0, function () {
+    it('test_toString_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFif.toString()
         expect(result.toString()).assertEqual('[35, 45]')
     })
@@ -2096,7 +2096,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_constructor_throwError_001', 0, function () {
+    it('test_constructor_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var range = new util.ScopeHelper(1, 2);
         } catch (e) {
@@ -2112,7 +2112,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_throwError_001', 0, function () {
+    it('test_intersect_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var result = rangeHp.intersect("str")
             expect(result.toString()).assertEqual('[35, 39]')
@@ -2131,7 +2131,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_intersect_throwError_002', 0, function () {
+    it('test_intersect_throwError_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var result = rangeHp.intersect(tempMiDF, 123)
             expect(result.toString()).assertEqual('[35, 39]')
@@ -2148,7 +2148,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_throwError_001', 0, function () {
+    it('test_expand_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var result = rangeHp.expand(tempMiDF, "123")
             expect(result.toString()).assertEqual('[30, 40]')
@@ -2165,7 +2165,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_throwError_002', 0, function () {
+    it('test_expand_throwError_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var result = rangeHp.expand(123)
             expect(result.toString()).assertEqual('[30, 40]')
@@ -2183,7 +2183,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_contains_throwError_001', 0, function () {
+    it('test_contains_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var result = rangeHp.contains("str")
             expect(result).assertEqual(true)
@@ -2201,7 +2201,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_clamp_throwError_001', 0, function () {
+    it('test_clamp_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
              var result = rangeHp.clamp(123)
              expect(result.toString()).assertEqual('30')
@@ -2220,7 +2220,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity001', 0, function () {
+    it('testLRUCacheUpdateGetCapacity001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.updateCapacity(10)
         var result = that.getCapacity()
@@ -2235,7 +2235,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity002', 0, function () {
+    it('testLRUCacheUpdateGetCapacity002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.updateCapacity(2147483646)
         var result = that.getCapacity()
@@ -2250,7 +2250,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity003', 0, function () {
+    it('testLRUCacheUpdateGetCapacity003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.updateCapacity(20)
         var result = that.getCapacity()
@@ -2265,7 +2265,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity004', 0, function () {
+    it('testLRUCacheUpdateGetCapacity004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(50)
         that.updateCapacity(2)
         var result = that.getCapacity()
@@ -2280,7 +2280,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity005', 0, function () {
+    it('testLRUCacheUpdateGetCapacity005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(200)
         that.updateCapacity(100)
         var result = that.getCapacity()
@@ -2295,7 +2295,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity006', 0, function () {
+    it('testLRUCacheUpdateGetCapacity006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(200)
         try {
             that.updateCapacity('a');
@@ -2314,7 +2314,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet001', 0, function () {
+    it('testLRUCacheGet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         var result = that.get(1)
@@ -2329,7 +2329,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet002', 0, function () {
+    it('testLRUCacheGet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         var result = that.get(5)
@@ -2344,7 +2344,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet003', 0, function () {
+    it('testLRUCacheGet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         that.put(2,10)
@@ -2365,7 +2365,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet004', 0, function () {
+    it('testLRUCacheGet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('1111','bcjdshc')
         that.put(20,'cdjcaxb')
@@ -2388,7 +2388,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet005', 0, function () {
+    it('testLRUCacheGet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('1111','bcjdshc')
         that.put(20,'cdjcaxb')
@@ -2412,7 +2412,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet006', 0, function () {
+    it('testLRUCacheGet006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         let un = undefined;
         that.put(20,'cdjcaxb')
@@ -2433,7 +2433,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut001', 0, function () {
+    it('testLRUCachePut001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var temp = that.put('1111','bcjdshc')
         expect(temp).assertEqual('bcjdshc')
@@ -2447,7 +2447,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut002', 0, function () {
+    it('testLRUCachePut002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var temp1 = that.put('1111','bcjdshc')
         var temp2 = that.put('1111',13)
@@ -2462,7 +2462,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut003', 0, function () {
+    it('testLRUCachePut003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var temp = that.put('1111','bcjdshc')
         var temp1 = that.put(1,12)
@@ -2483,7 +2483,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut004', 0, function () {
+    it('testLRUCachePut004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var temp = that.put('1111','bcjdshc')
         var temp1 = that.put(1,12)
@@ -2506,7 +2506,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut005', 0, function () {
+    it('testLRUCachePut005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var temp = that.put('1111','bcjdshc')
         var temp1 = that.put(1,12)
@@ -2530,7 +2530,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut006', 0, function () {
+    it('testLRUCachePut006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         let un = undefined;
         try {
@@ -2550,7 +2550,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCreateCount001', 0, function () {
+    it('testLRUCacheGetCreateCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2570,7 +2570,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCreateCount002', 0, function () {
+    it('testLRUCacheGetCreateCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2590,7 +2590,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCreateCount003', 0, function () {
+    it('testLRUCacheGetCreateCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2608,7 +2608,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCreateCount004', 0, function () {
+    it('testLRUCacheGetCreateCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(5,2)
         that.put(10,10)
@@ -2628,7 +2628,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCreateCount005', 0, function () {
+    it('testLRUCacheGetCreateCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('xsjk','bcjds')
         that.put('ajc',10)
@@ -2648,7 +2648,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount001', 0, function () {
+    it('testLRUCacheGetMissCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2668,7 +2668,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount002', 0, function () {
+    it('testLRUCacheGetMissCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(5,2)
         that.put(1,10)
@@ -2688,7 +2688,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount003', 0, function () {
+    it('testLRUCacheGetMissCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(10,10)
         that.put(3,20)
@@ -2708,7 +2708,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount004', 0, function () {
+    it('testLRUCacheGetMissCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('acb','asdc')
         that.put('vfb',1)
@@ -2728,7 +2728,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount005', 0, function () {
+    it('testLRUCacheGetMissCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2750,7 +2750,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMissCount006', 0, function () {
+    it('testLRUCacheGetMissCount006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2770,7 +2770,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetRemovalCount001', 0, function () {
+    it('testLRUCacheGetRemovalCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2789,7 +2789,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetRemovalCount002', 0, function () {
+    it('testLRUCacheGetRemovalCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(10,2)
         that.put(3,2)
@@ -2807,7 +2807,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetRemovalCount003', 0, function () {
+    it('testLRUCacheGetRemovalCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc',2)
         that.put('abcd','abcd')
@@ -2824,7 +2824,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetRemovalCount004', 0, function () {
+    it('testLRUCacheGetRemovalCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2844,7 +2844,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetRemovalCount005', 0, function () {
+    it('testLRUCacheGetRemovalCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2865,7 +2865,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount001', 0, function () {
+    it('testLRUCacheGetMatchCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2885,7 +2885,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount002', 0, function () {
+    it('testLRUCacheGetMatchCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(10,2)
         that.put(2,1)
@@ -2906,7 +2906,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount003', 0, function () {
+    it('testLRUCacheGetMatchCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(0,1)
         that.put(30,10)
@@ -2926,7 +2926,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount004', 0, function () {
+    it('testLRUCacheGetMatchCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2949,7 +2949,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount005', 0, function () {
+    it('testLRUCacheGetMatchCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2975,7 +2975,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetMatchCount006', 0, function () {
+    it('testLRUCacheGetMatchCount006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -2993,7 +2993,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetPutCount001', 0, function () {
+    it('testLRUCacheGetPutCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result = that.getPutCount()
@@ -3008,7 +3008,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetPutCount002', 0, function () {
+    it('testLRUCacheGetPutCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(5,3)
         that.put(2,10)
@@ -3024,7 +3024,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetPutCount003', 0, function () {
+    it('testLRUCacheGetPutCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string',2)
         that.put('abcd',1)
@@ -3041,7 +3041,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetPutCount004', 0, function () {
+    it('testLRUCacheGetPutCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string','string')
         that.put('ac','abc')
@@ -3058,7 +3058,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetPutCount005', 0, function () {
+    it('testLRUCacheGetPutCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3076,7 +3076,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCapacity001', 0, function () {
+    it('testLRUCacheGetCapacity001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.getCapacity()
         expect(result).assertEqual(64)
@@ -3090,7 +3090,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCapacity002', 0, function () {
+    it('testLRUCacheGetCapacity002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(2)
         var result = that.getCapacity()
         expect(result).assertEqual(2)
@@ -3104,7 +3104,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCapacity003', 0, function () {
+    it('testLRUCacheGetCapacity003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         var result = that.getCapacity()
         expect(result).assertEqual(100)
@@ -3118,7 +3118,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCapacity004', 0, function () {
+    it('testLRUCacheGetCapacity004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.updateCapacity(50)
         var result = that.getCapacity()
@@ -3133,7 +3133,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGetCapacity005', 0, function () {
+    it('testLRUCacheGetCapacity005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.updateCapacity(10)
         var result = that.getCapacity()
@@ -3148,7 +3148,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheLength001', 0, function () {
+    it('testLRUCacheLength001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.length
         expect(result).assertEqual(0)
@@ -3162,7 +3162,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheLength002', 0, function () {
+    it('testLRUCacheLength002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result = that.length
@@ -3177,7 +3177,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheLength003', 0, function () {
+    it('testLRUCacheLength003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc',2)
         that.put('string','string')
@@ -3193,7 +3193,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheLength004', 0, function () {
+    it('testLRUCacheLength004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3211,7 +3211,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheLength005', 0, function () {
+    it('testLRUCacheLength005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3232,7 +3232,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheClear001', 0, function () {
+    it('testLRUCacheClear001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result1 = that.length
@@ -3250,7 +3250,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheClear002', 0, function () {
+    it('testLRUCacheClear002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3271,7 +3271,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheClear003', 0, function () {
+    it('testLRUCacheClear003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc',2)
         that.put(2,'abc')
@@ -3292,7 +3292,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheClear004', 0, function () {
+    it('testLRUCacheClear004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3313,7 +3313,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheClear005', 0, function () {
+    it('testLRUCacheClear005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3335,7 +3335,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheIsEmpty001', 0, function () {
+    it('testLRUCacheIsEmpty001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result = that.isEmpty()
@@ -3350,7 +3350,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheIsEmpty002', 0, function () {
+    it('testLRUCacheIsEmpty002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3366,7 +3366,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheIsEmpty003', 0, function () {
+    it('testLRUCacheIsEmpty003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3383,7 +3383,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheIsEmpty004', 0, function () {
+    it('testLRUCacheIsEmpty004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc',2)
         that.put('string',10)
@@ -3400,7 +3400,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheIsEmpty005', 0, function () {
+    it('testLRUCacheIsEmpty005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(2,10)
@@ -3418,7 +3418,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains001', 0, function () {
+    it('testLRUCacheContains001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result = that.contains(1)
@@ -3433,7 +3433,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains002', 0, function () {
+    it('testLRUCacheContains002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(0,5)
         var result = that.contains(0)
@@ -3448,7 +3448,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains003', 0, function () {
+    it('testLRUCacheContains003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc','abc')
         var result = that.contains(1)
@@ -3463,7 +3463,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains004', 0, function () {
+    it('testLRUCacheContains004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put('abcd',20)
@@ -3481,7 +3481,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains005', 0, function () {
+    it('testLRUCacheContains005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put('string','string')
@@ -3501,7 +3501,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheContains006', 0, function () {
+    it('testLRUCacheContains006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('abc','abc')
         let un = undefined;
@@ -3522,7 +3522,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove001', 0, function () {
+    it('testLRUCacheRemove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result = that.remove(1)
@@ -3537,7 +3537,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove002', 0, function () {
+    it('testLRUCacheRemove002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put('abcd',20)
@@ -3555,7 +3555,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove003', 0, function () {
+    it('testLRUCacheRemove003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         var result1 = that.remove(1)
@@ -3572,7 +3572,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove004', 0, function () {
+    it('testLRUCacheRemove004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(0,'abc')
         that.put('abcd',20)
@@ -3590,7 +3590,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove005', 0, function () {
+    it('testLRUCacheRemove005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3611,7 +3611,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove006', 0, function () {
+    it('testLRUCacheRemove006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         let un = undefined;
@@ -3632,7 +3632,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault001', 0, function () {
+    it('testLRUCacheCreateDefault001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.createDefault(1)
         expect(result).assertEqual(undefined)
@@ -3646,7 +3646,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault002', 0, function () {
+    it('testLRUCacheCreateDefault002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.createDefault(0)
         expect(result).assertEqual(undefined)
@@ -3660,7 +3660,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault003', 0, function () {
+    it('testLRUCacheCreateDefault003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.createDefault('string')
         expect(result).assertEqual(undefined)
@@ -3674,7 +3674,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault004', 0, function () {
+    it('testLRUCacheCreateDefault004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result = that.createDefault(10)
         expect(result).assertEqual(undefined)
@@ -3688,7 +3688,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault005', 0, function () {
+    it('testLRUCacheCreateDefault005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         var result1 = that.createDefault('abc')
         var result2 = that.createDefault('ab')
@@ -3704,7 +3704,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheCreateDefault006', 0, function () {
+    it('testLRUCacheCreateDefault006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         let un = undefined;
         try {
@@ -3724,7 +3724,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheKeys001', 0, function () {
+    it('testLRUCacheKeys001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string','abc')
         var result = that.keys()
@@ -3739,7 +3739,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheKeys002', 0, function () {
+    it('testLRUCacheKeys002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3760,7 +3760,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheKeys003', 0, function () {
+    it('testLRUCacheKeys003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3782,7 +3782,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheKeys004', 0, function () {
+    it('testLRUCacheKeys004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3805,7 +3805,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheKeys005', 0, function () {
+    it('testLRUCacheKeys005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3830,7 +3830,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheValues001', 0, function () {
+    it('testLRUCacheValues001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string','abc')
         var result = that.values()
@@ -3845,7 +3845,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheValues002', 0, function () {
+    it('testLRUCacheValues002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3866,7 +3866,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheValues003', 0, function () {
+    it('testLRUCacheValues003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3888,7 +3888,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheValues004', 0, function () {
+    it('testLRUCacheValues004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3911,7 +3911,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheValues005', 0, function () {
+    it('testLRUCacheValues005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -3936,7 +3936,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheToString001', 0, function () {
+    it('testLRUCacheToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('1111','bcjdshc')
         that.put(1,2)
@@ -3952,7 +3952,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheToString002', 0, function () {
+    it('testLRUCacheToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('1111','bcjdshc')
         that.put(1,2)
@@ -3970,7 +3970,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheToString003', 0, function () {
+    it('testLRUCacheToString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         that.put(3,10)
@@ -3989,7 +3989,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheToString004', 0, function () {
+    it('testLRUCacheToString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         that.put(3,10)
@@ -4009,7 +4009,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheToString005', 0, function () {
+    it('testLRUCacheToString005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(100)
         that.put(1,2)
         that.put(3,10)
@@ -4031,7 +4031,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheEntries001', 0, function () {
+    it('testLRUCacheEntries001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string','abc')
         var i=0;
@@ -4053,7 +4053,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheEntries002', 0, function () {
+    it('testLRUCacheEntries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4078,7 +4078,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheEntries003', 0, function () {
+    it('testLRUCacheEntries003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4104,7 +4104,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheEntries004', 0, function () {
+    it('testLRUCacheEntries004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4132,7 +4132,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheEntries005', 0, function () {
+    it('testLRUCacheEntries005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4164,7 +4164,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCache[Symbol.iterator]001', 0, function () {
+    it('testLRUCache[Symbol.iterator]001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put('string','abc')
         that.put('abc',20)
@@ -4187,7 +4187,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCache[Symbol.iterator]002', 0, function () {
+    it('testLRUCache[Symbol.iterator]002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4212,7 +4212,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCache[Symbol.iterator]003', 0, function () {
+    it('testLRUCache[Symbol.iterator]003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4238,7 +4238,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCache[Symbol.iterator]004', 0, function () {
+    it('testLRUCache[Symbol.iterator]004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4266,7 +4266,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCache[Symbol.iterator]005', 0, function () {
+    it('testLRUCache[Symbol.iterator]005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         that.put(3,10)
@@ -4298,7 +4298,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval001', 0, function () {
+    it('testLRUCacheAfterRemoval001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4334,7 +4334,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval002', 0, function () {
+    it('testLRUCacheAfterRemoval002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4370,7 +4370,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval003', 0, function () {
+    it('testLRUCacheAfterRemoval003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4406,7 +4406,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval004', 0, function () {
+    it('testLRUCacheAfterRemoval004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4442,7 +4442,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval005', 0, function () {
+    it('testLRUCacheAfterRemoval005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4478,7 +4478,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval006', 0, function () {
+    it('testLRUCacheAfterRemoval006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4509,7 +4509,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval007', 0, function () {
+    it('testLRUCacheAfterRemoval007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arr = [];
         class ChildLRUCache extends util.LRUCache
         {
@@ -4540,7 +4540,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheAfterRemoval008', 0, function () {
+    it('testLRUCacheAfterRemoval008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var arrk = [];
         var arrv = [];
         class ChildLRUCache extends util.LRUCache
@@ -4579,7 +4579,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheConstrcutor001', 0, function () {
+    it('testLRUCacheConstrcutor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try{
             var that = new util.LRUCache(0.1)
         } catch(e) {
@@ -4597,7 +4597,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheConstrcutor002', 0, function () {
+    it('testLRUCacheConstrcutor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try{
             var that = new util.LRUCache(-0.1)
         } catch(e) {
@@ -4615,7 +4615,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity007', 0, function () {
+    it('testLRUCacheUpdateGetCapacity007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(200)
         try {
             that.updateCapacity(-20);
@@ -4634,7 +4634,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheUpdateGetCapacity008', 0, function () {
+    it('testLRUCacheUpdateGetCapacity008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache(200)
         try {
             that.updateCapacity(50.5);
@@ -4653,7 +4653,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheGet007', 0, function () {
+    it('testLRUCacheGet007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(20,'cdjcaxb')
         try {
@@ -4673,7 +4673,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut007', 0, function () {
+    it('testLRUCachePut007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         try {
             that.put(null,'bcjdshc')
@@ -4692,7 +4692,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCachePut008', 0, function () {
+    it('testLRUCachePut008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         try {
             that.put(123, null)
@@ -4711,7 +4711,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testLRUCacheRemove007', 0, function () {
+    it('testLRUCacheRemove007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.LRUCache()
         that.put(1,2)
         try {
@@ -4733,7 +4733,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformat001', 0, function () {
+    it('testUtilformat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var format = "%i,%s";
         var value1 = 1.5;
         var value2 = "qwer";
@@ -4750,7 +4750,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformat002', 0, function () {
+    it('testUtilformat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var format = "%O";
         var value = { name: 'jack' ,age: 15 };
         var result = util.format(format, value);
@@ -4765,7 +4765,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformat003', 0, function () {
+    it('testUtilformat003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var format = "%o";
         var value = [1, 2, 3];
         var result = util.format(format, value);
@@ -4781,7 +4781,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformat004', 0, function () {
+    it('testUtilformat004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var format = "%s,%s,%s";
         var value1 = "1.5";
         var value2 = "qwer";
@@ -4797,7 +4797,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformat005', 0, function () {
+    it('testUtilformat005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var format = "%d,%d";
         var value1 = 6;
         var value2 = 16;
@@ -4813,7 +4813,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilformatThrowError001', 0, function () {
+    it('testUtilformatThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var format = 123;
             var value1 = 1.5;
@@ -4835,7 +4835,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToString001', 0, async function () {
+    it('testUtilerrnoToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var errnum = 10;
         var result = util.errnoToString(errnum);
         expect(result).assertEqual('Unknown system error 10');
@@ -4849,7 +4849,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToString002', 0, async function () {
+    it('testUtilerrnoToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var errnum = 0;
         var result = util.errnoToString(errnum);
         expect(result).assertEqual('Unknown system error 0');
@@ -4863,7 +4863,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToString003', 0, async function () {
+    it('testUtilerrnoToString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var errnum = -1;
         var result = util.errnoToString(errnum);
         expect(result).assertEqual('operation not permitted');
@@ -4877,7 +4877,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToString004', 0, async function () {
+    it('testUtilerrnoToString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var errnum = 9;
         var result = util.errnoToString(errnum);
         expect(result).assertEqual('Unknown system error 9');
@@ -4891,7 +4891,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToString005', 0, async function () {
+    it('testUtilerrnoToString005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var errnum = 555;
         var result = util.errnoToString(errnum);
         expect(result).assertEqual('Unknown system error 555');
@@ -4905,7 +4905,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilerrnoToStringThrowError001', 0, async function () {
+    it('testUtilerrnoToStringThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var errnum = 'str';
             var result = util.errnoToString(errnum);
@@ -4924,7 +4924,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilPromisifyThrowError001', 0, async function () {
+    it('testUtilPromisifyThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var fn = 'str';
             (async () => {
@@ -4945,7 +4945,7 @@ describe('FunctionTest', function () {
      * @tc.level: Level 1
      */
 
-    it('testUtilRandomUUIDThrowError001', 0, async function () {
+    it('testUtilRandomUUIDThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.randomUUID(123);
             expect(result.length).assertEqual(36);
@@ -4962,7 +4962,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilRandomBinaryUUIDThrowError001', 0, async function () {
+    it('testUtilRandomBinaryUUIDThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.randomBinaryUUID(123);
             expect(result.length).assertEqual(16);
@@ -4979,7 +4979,7 @@ describe('FunctionTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilParseUUIDThrow001', 0, async function () {
+    it('testUtilParseUUIDThrow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.parseUUID(123);
             expect(result.length).assertEqual(16);
@@ -4998,7 +4998,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_parseRationalNumber_001', 0, function () {
+    it('test_parseRationalNumber_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.parseRationalNumber(2, 1)
         var result = res.valueOf()
         expect(result).assertEqual(2)
@@ -5012,7 +5012,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_parseRationalNumberThrowError_001', 0, function () {
+    it('test_parseRationalNumberThrowError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var pro = util.RationalNumber.parseRationalNumber('str', 2)
             var result = res.valueOf()
@@ -5030,7 +5030,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromString_001', 0, function () {
+    it('test_createRationalFromString_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.createRationalFromString('-1:2')
         var result = res.valueOf()
         expect(result).assertEqual(-0.5)
@@ -5044,7 +5044,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromString_002', 0, function () {
+    it('test_createRationalFromString_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.createRationalFromString('+3/4')
         var result = res.valueOf()
         expect(result).assertEqual(0.75)
@@ -5058,7 +5058,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromString_003', 0, function () {
+    it('test_createRationalFromString_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.createRationalFromString('+3:-4')
         var result = res.valueOf()
         expect(result).assertEqual(-0.75)
@@ -5072,7 +5072,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromString_004', 0, function () {
+    it('test_createRationalFromString_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.createRationalFromString('+2:4')
         var result = res.valueOf()
         expect(result).assertEqual(0.5)
@@ -5086,7 +5086,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromString_005', 0, function () {
+    it('test_createRationalFromString_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.createRationalFromString('+2:-4')
         var result = res.valueOf()
         expect(result).assertEqual(-0.5)
@@ -5100,7 +5100,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_createRationalFromStringThrowError_001', 0, function () {
+    it('test_createRationalFromStringThrowError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var res = util.RationalNumber.createRationalFromString(123)
             var result = res.valueOf()
@@ -5118,7 +5118,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compare_001', 0, function () {
+    it('test_compare_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var pro = util.RationalNumber.parseRationalNumber(2, 1)
         var proc = util.RationalNumber.parseRationalNumber(3, 4)
         var res = pro.compare(proc)
@@ -5133,7 +5133,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compare_002', 0, function () {
+    it('test_compare_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var pro = util.RationalNumber.parseRationalNumber(2, 1)
         var proc = util.RationalNumber.parseRationalNumber(0, 0)
         var res = pro.compare(proc)
@@ -5148,7 +5148,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compare_003', 0, function () {
+    it('test_compare_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var pro = util.RationalNumber.parseRationalNumber(2, 1)
         var proc = util.RationalNumber.parseRationalNumber(8, 3)
         var res = pro.compare(proc)
@@ -5163,7 +5163,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compare_004', 0, function () {
+    it('test_compare_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var pro = util.RationalNumber.parseRationalNumber(2, 1)
         var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
@@ -5178,7 +5178,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compare_005', 0, function () {
+    it('test_compare_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var pro = util.RationalNumber.parseRationalNumber(0, 0)
         var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
@@ -5193,7 +5193,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_compareThrowError_001', 0, function () {
+    it('test_compareThrowError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var pro = util.RationalNumber.parseRationalNumber(2, 1)
             var proc = 'str'
@@ -5212,7 +5212,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactor001', 0, function () {
+    it('testgetCommonFactor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.getCommonFactor(4, 8)
         expect(res).assertEqual(4)
     })
@@ -5225,7 +5225,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactor002', 0, function () {
+    it('testgetCommonFactor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.getCommonFactor(10, 15)
         expect(res).assertEqual(5)
     })
@@ -5238,7 +5238,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactor003', 0, function () {
+    it('testgetCommonFactor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.getCommonFactor(8, 4)
         expect(res).assertEqual(4)
     })
@@ -5251,7 +5251,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactor004', 0, function () {
+    it('testgetCommonFactor004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.getCommonFactor(8, 16)
         expect(res).assertEqual(8)
     })
@@ -5264,7 +5264,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactor005', 0, function () {
+    it('testgetCommonFactor005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var res = util.RationalNumber.getCommonFactor(2, 16)
         expect(res).assertEqual(2)
     })
@@ -5277,7 +5277,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testgetCommonFactorThrowError001', 0, function () {
+    it('testgetCommonFactorThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var res = util.RationalNumber.getCommonFactor('str', 8)
             expect(res).assertEqual(4)
@@ -5294,7 +5294,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash001', 0, function () {
+    it('testUtilGetHash001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let person = {
           name: "Alice",
           age: 30
@@ -5312,7 +5312,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash002', 0, function () {
+    it('testUtilGetHash002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let numbers = [1, 2, 3, 4, 5];
         let result1 = util.getHash(numbers);
         let result2 = util.getHash(numbers);
@@ -5327,7 +5327,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash003', 0, function () {
+    it('testUtilGetHash003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         class Car {
           make;
           model;
@@ -5352,7 +5352,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash004', 0, function () {
+    it('testUtilGetHash004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let now = new Date();
         let result1 = util.getHash(now);
         let result2 = util.getHash(now);
@@ -5367,7 +5367,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash005', 0, function () {
+    it('testUtilGetHash005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let regex = new RegExp("abc");
         let result1 = util.getHash(regex);
         let result2 = util.getHash(regex);
@@ -5382,7 +5382,7 @@ describe('RationalNumberTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUtilGetHash006', 0, function () {
+    it('testUtilGetHash006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let mathObject = Math;
         let result1 = util.getHash(mathObject);
         let result2 = util.getHash(mathObject);
@@ -5400,7 +5400,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_001', 0, function () {
+    it('test_encodeSync_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -5419,7 +5419,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_002', 0, function () {
+    it('test_encodeSync_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -5438,7 +5438,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_003', 0, function () {
+    it('test_encodeSync_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
         110,32,78,111,100,101,46,106,115]);
@@ -5459,7 +5459,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_004', 0, function () {
+    it('test_encodeSync_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -5478,7 +5478,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_005', 0, function () {
+    it('test_encodeSync_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -5497,7 +5497,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_006', 0, function () {
+    it('test_encodeSync_base64_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper();
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -5516,7 +5516,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_001', 0, function () {
+    it('test_encodeToStringSync_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([115,49,51]);
         var result = that.encodeToStringSync(array)
@@ -5531,7 +5531,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_002', 0, function () {
+    it('test_encodeToStringSync_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var result = that.encodeToStringSync(array);
@@ -5546,7 +5546,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_003', 0, function () {
+    it('test_encodeToStringSync_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,
         32,78,111,100,101,46,106,115]);
@@ -5562,7 +5562,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_004', 0, function () {
+    it('test_encodeToStringSync_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([168, 174, 155, 255]);
         var result = that.encodeToStringSync(array);
@@ -5577,7 +5577,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_005', 0, function () {
+    it('test_encodeToStringSync_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var result = that.encodeToStringSync(array);
@@ -5592,7 +5592,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-        it('test_encodeToStringSync_base64_006', 0, function () {
+        it('test_encodeToStringSync_base64_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -5612,7 +5612,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_001', 0, function () {
+    it('test_decodeSync_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'czEz';
         var rarray = new Uint8Array([115,49,51]);
@@ -5631,7 +5631,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_002', 0, function () {
+    it('test_decodeSync_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -5650,7 +5650,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_003', 0, function () {
+    it('test_decodeSync_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,
@@ -5670,7 +5670,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_004', 0, function () {
+    it('test_decodeSync_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'qK6b/w==';
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -5689,7 +5689,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_005', 0, function () {
+    it('test_decodeSync_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0';
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
@@ -5708,7 +5708,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_006', 0, function () {
+    it('test_decodeSync_base64_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([99,122,69,122]);
@@ -5728,7 +5728,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_007', 0, function () {
+    it('test_decodeSync_base64_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -5747,7 +5747,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_008', 0, function () {
+    it('test_decodeSync_base64_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,
         53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -5768,7 +5768,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_009', 0, function () {
+    it('test_decodeSync_base64_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -5787,7 +5787,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_010', 0, function () {
+    it('test_decodeSync_base64_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
@@ -5807,7 +5807,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeAsync_base64_001', 0, async function () {
+    it('test_encodeAsync_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = await new util.Base64Helper();
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -5827,7 +5827,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeAsync_base64_002', 0, async function () {
+    it('test_encodeAsync_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -5847,7 +5847,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeAsync_base64_003', 0, async function () {
+    it('test_encodeAsync_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
         78,111,100,101,46,106,115]);
@@ -5869,7 +5869,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeAsync_base64_004', 0, async function () {
+    it('test_encodeAsync_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -5889,7 +5889,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeAsync_base64_005', 0, async function () {
+    it('test_encodeAsync_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -5909,7 +5909,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1   
      */
-        it('test_encodeSync_base64_throwError_001', 0, async function () {
+        it('test_encodeSync_base64_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -5929,7 +5929,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_001', 0, async function () {
+    it('test_encodeToString_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([115,49,51]);
         that.encodeToString(array).then(val=>{
@@ -5945,7 +5945,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_002', 0, async function () {
+    it('test_encodeToString_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         that.encodeToString(array).then(val=>{
@@ -5961,7 +5961,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_003', 0, async function () {
+    it('test_encodeToString_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
         117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -5978,7 +5978,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_004', 0, async function () {
+    it('test_encodeToString_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([168, 174, 155, 255]);
         that.encodeToString(array).then(val=>{
@@ -5994,7 +5994,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_005', 0, async function () {
+    it('test_encodeToString_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         that.encodeToString(array).then(val=>{
@@ -6010,7 +6010,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-        it('test_encodeToString_base64_006', 0, async function () {
+        it('test_encodeToString_base64_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -6030,7 +6030,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_001', 0, async function () {
+    it('test_decode_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'czEz';
         var array = new Uint8Array([115,49,51]);
@@ -6050,7 +6050,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_002', 0, async function () {
+    it('test_decode_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -6070,7 +6070,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_003', 0, async function () {
+    it('test_decode_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,
@@ -6091,7 +6091,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_004', 0, async function () {
+    it('test_decode_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'qK6b/w==';
         var array = new Uint8Array([168, 174, 155, 255]);
@@ -6111,7 +6111,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1 
      */
-    it('test_decode_base64_005', 0, async function () {
+    it('test_decode_base64_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'QmFzZTY0';
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
@@ -6131,7 +6131,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_006', 0, async function () {
+    it('test_decode_base64_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([99,122,69,122]);
         var rarray = new Uint8Array([115,49,51]);
@@ -6151,7 +6151,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_007', 0, async function () {
+    it('test_decode_base64_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -6170,7 +6170,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_008', 0, async function () {
+    it('test_decode_base64_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
         117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -6192,7 +6192,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_009', 0, async function () {
+    it('test_decode_base64_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -6212,7 +6212,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_010', 0, async function () {
+    it('test_decode_base64_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
@@ -6232,7 +6232,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64_throwError_001', 0, async function () {
+    it('test_decode_base64_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint16Array([99,122,69,122]);
@@ -6251,7 +6251,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-	it('test_encodeToStringSync_mime_base64_001', 0, function () {
+	it('test_encodeToStringSync_mime_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
         var result = that.encodeToStringSync(array, util.Type.MIME);
@@ -6267,7 +6267,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_mime_base64_002', 0, function () {
+    it('test_decodeSync_mime_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz\r\naW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl\r\naGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=\r\n';
         var rarray = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
@@ -6285,7 +6285,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_mime_base64_003', 0, async function () {
+    it('test_encodeToString_mime_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
         that.encodeToString(array, util.Type.MIME).then(val=>{
@@ -6302,7 +6302,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_mime_base64_004', 0, async function () {
+    it('test_encodeToString_mime_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz\r\naW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl\r\naGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=\r\n';
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
@@ -6321,7 +6321,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_basic_base64_001', 0, function () {
+    it('test_encodeToStringSync_basic_base64_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
         var result = that.encodeToStringSync(array, util.Type.BASIC);
@@ -6337,7 +6337,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_basic_base64_002', 0, function () {
+    it('test_decodeSync_basic_base64_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.Base64Helper()
         var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=';
         var rarray = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
@@ -6355,7 +6355,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_basic_base64_003', 0, async function () {
+    it('test_encodeToString_basic_base64_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
         that.encodeToString(array, util.Type.BASIC).then(val=>{
@@ -6372,7 +6372,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_basic_base64_004', 0, async function () {
+    it('test_encodeToString_basic_base64_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var that = new util.Base64Helper()
         var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=';
         var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
@@ -6391,7 +6391,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_001', 0, function () {
+    it('test_decodeSync_base64_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([99,122,69,122, 115, 119, 58]);
@@ -6409,7 +6409,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_002', 0, function () {
+    it('test_decodeSync_base64_throwError_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([99, 42, 69,122, 115, 119, 36, 110]);
@@ -6427,7 +6427,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_003', 0, function () {
+    it('test_decodeSync_base64_throwError_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var str = "QmFzZTY0IE5vZGU@@";
@@ -6445,7 +6445,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_004', 0, function () {
+    it('test_decodeSync_base64_throwError_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var str = "QmFzZTY0IEVuY29k&&&aW5nIGluIE5vZGUua$$$%%%";
@@ -6463,7 +6463,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_005', 0, function () {
+    it('test_decodeSync_base64_throwError_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var str = "";
@@ -6481,7 +6481,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64_throwError_006', 0, function () {
+    it('test_decodeSync_base64_throwError_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var str = " ";
@@ -6500,7 +6500,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_mime_base64_throwError_007', 0, function () {
+    it('test_encodeToStringSync_mime_base64_throwError_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             let array = new Uint8Array([2,192,254,253,5,132,69]);
@@ -6519,7 +6519,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_mime_base64_throwError_008', 0, function () {
+    it('test_encodeToString_mime_base64_throwError_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             let array = new Uint8Array([2,192,254,253,5,132,69]);
@@ -6539,7 +6539,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64url_001', 0, function () {
+    it('test_encodeToStringSync_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,254,253,5,132,69]);
         let result = that.encodeToStringSync(array);
@@ -6558,7 +6558,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-     it('test_encodeToStringSync_base64url_002', 0, function () {
+     it('test_encodeToStringSync_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
         let result = that.encodeToStringSync(array);
@@ -6577,7 +6577,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64url_003', 0, function () {
+    it('test_encodeToStringSync_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         let result = that.encodeToStringSync(array);
@@ -6596,7 +6596,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64url_001', 0, function () {
+    it('test_encodeSync_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,254,253,5,132,69]);
         let result = that.encodeSync(array);
@@ -6617,7 +6617,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64url_002', 0, function () {
+    it('test_encodeSync_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
         let result = that.encodeSync(array);
@@ -6638,7 +6638,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64url_003', 0, function () {
+    it('test_encodeSync_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper()
         let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         let result = that.encodeSync(array);
@@ -6660,7 +6660,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64url_001', 0, function () {
+    it('test_encodeToString_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2, 192, 254, 253, 5, 132, 69]);
         that.encodeToString(array).then(result => {
@@ -6683,7 +6683,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64url_002', 0, function () {
+    it('test_encodeToString_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
         that.encodeToString(array).then(result => {
@@ -6706,7 +6706,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64url_003', 0, function () {
+    it('test_encodeToString_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         that.encodeToString(array).then(result => {
@@ -6729,7 +6729,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_base64url_001', 0, function () {
+    it('test_encode_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2, 192, 254, 253, 5, 132, 69]);
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
@@ -6754,7 +6754,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_base64url_002', 0, function () {
+    it('test_encode_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
         let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
@@ -6779,7 +6779,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_base64url_003', 0, function () {
+    it('test_encode_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
@@ -6803,7 +6803,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_001', 0, function () {
+    it('test_decodeSync_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD+/QWERQ==";
         let strUrl = "AsD-_QWERQ";
@@ -6824,7 +6824,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_002', 0, function () {
+    it('test_decodeSync_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD+QWERQ9+y";
         let strUrl = "AsD-QWERQ9-y";
@@ -6845,7 +6845,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_003', 0, function () {
+    it('test_decodeSync_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD/QWERQ9/y";
         let strUrl = "AsD_QWERQ9_y";
@@ -6866,7 +6866,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_004', 0, function () {
+    it('test_decodeSync_base64url_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrURL = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
@@ -6887,7 +6887,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_005', 0, function () {
+    it('test_decodeSync_base64url_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
         let arrURL = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
@@ -6908,7 +6908,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decodeSync_base64url_006', 0, function () {
+    it('test_decodeSync_base64url_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
         let arrURL = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
@@ -6930,7 +6930,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_001', 0, function () {
+    it('test_decode_base64url_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD+/QWERQ==";
         let strUrl = "AsD-_QWERQ";
@@ -6955,7 +6955,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_002', 0, function () {
+    it('test_decode_base64url_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD+QWERQ9+y";
         let strUrl = "AsD-QWERQ9-y";
@@ -6980,7 +6980,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_003', 0, function () {
+    it('test_decode_base64url_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let str = "AsD/QWERQ9/y";
         let strUrl = "AsD_QWERQ9_y";
@@ -7005,7 +7005,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_004', 0, function () {
+    it('test_decode_base64url_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
@@ -7030,7 +7030,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_005', 0, function () {
+    it('test_decode_base64url_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
         let arrUrl = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
@@ -7055,7 +7055,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_decode_base64url_006', 0, function () {
+    it('test_decode_base64url_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
         let arrUrl = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
@@ -7079,7 +7079,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodesync_throwError_001', 0, function () {
+    it('test_encodesync_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7098,7 +7098,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodesync_throwError_002', 0, function () {
+    it('test_encodesync_throwError_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7117,7 +7117,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodesync_throwError_003', 0, function () {
+    it('test_encodesync_throwError_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7136,7 +7136,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_throwError_001', 0, function () {
+    it('test_encodeToStringSync_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7155,7 +7155,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_throwError_001', 0, function () {
+    it('test_encode_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7174,7 +7174,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_throwError_002', 0, function () {
+    it('test_encode_throwError_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7193,7 +7193,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encode_throwError_003', 0, function () {
+    it('test_encode_throwError_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7212,7 +7212,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_throwError_001', 0, function () {
+    it('test_encodeToString_throwError_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new util.Base64Helper();
             let array = new Uint8Array([115,49,51]);
@@ -7232,7 +7232,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeSync_base64_throw_error_001', 0, function () {
+    it('test_encodeSync_base64_throw_error_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper();
             var array = new Uint8Array([]);
@@ -7251,7 +7251,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToStringSync_base64_throw_error_002', 0, function () {
+    it('test_encodeToStringSync_base64_throw_error_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([]);
@@ -7271,7 +7271,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('test_decodeSync_base64_throw_error_003', 0, function () {
+    it('test_decodeSync_base64_throw_error_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([]);
@@ -7291,7 +7291,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('test_encodeAsync_base64_throwError_004', 0, async function () {
+    it('test_encodeAsync_base64_throwError_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([]);
@@ -7310,7 +7310,7 @@ describe('Base64HelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_encodeToString_base64_throwError_005', 0, async function () {
+    it('test_encodeToString_base64_throwError_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([]);
@@ -7330,7 +7330,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('test_decode_base64_throwError_006', 0, async function () {
+    it('test_decode_base64_throwError_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint8Array([]);
@@ -7350,7 +7350,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('test_decode_base64_throwError_007', 0, async function () {
+    it('test_decode_base64_throwError_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let base64Helper = new util.Base64Helper();
         base64Helper.decode('1').then((val) => {
         }).catch((e) => {
@@ -7369,7 +7369,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('test_decode_base64_throwError_008', 0, async function () {
+    it('test_decode_base64_throwError_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let base64Helper = new util.Base64Helper();
         base64Helper.decode('12').then((val) => {
         }).catch((e) => {
@@ -7388,7 +7388,7 @@ describe('Base64HelperTest', function () {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-       it('test_decode_base64_throwError_009', 0, async function () {
+       it('test_decode_base64_throwError_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let base64Helper = new util.Base64Helper();
         base64Helper.decode('150').then((val) => {
         }).catch((e) => {
@@ -7408,7 +7408,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate001', 0, function () {
+    it('testTextDecoderCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var  that = util.TextDecoder.create('utf-8', { ignoreBOM : true })
         var retStr = that.encoding
         expect(retStr).assertEqual('utf-8')
@@ -7422,7 +7422,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate002', 0, function () {
+    it('testTextDecoderCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-16le')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16le')
@@ -7436,7 +7436,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate003', 0, function () {
+    it('testTextDecoderCreate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-16be')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
@@ -7450,7 +7450,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate004', 0, function () {
+    it('testTextDecoderCreate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-16be', { ignoreBOM : true })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
@@ -7464,7 +7464,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate005', 0, function () {
+    it('testTextDecoderCreate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-16be', { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
@@ -7478,7 +7478,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate006', 0, function () {
+    it('testTextDecoderCreate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create()
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-8')
@@ -7492,7 +7492,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate007', 0, function () {
+    it('testTextDecoderCreate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create(undefined, { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-8')
@@ -7506,7 +7506,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-     it('testTextDecoderCreate008', 0, function () {
+     it('testTextDecoderCreate008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create(undefined);
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7520,7 +7520,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate009', 0, function () {
+    it('testTextDecoderCreate009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-8', undefined);
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7534,7 +7534,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate0010', 0, function () {
+    it('testTextDecoderCreate0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create(undefined, { ignoreBOM : true });
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7548,7 +7548,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate011', 0, function () {
+    it('testTextDecoderCreate011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create(null);
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7562,7 +7562,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate012', 0, function () {
+    it('testTextDecoderCreate012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create('utf-8', null);
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7576,7 +7576,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreate0013', 0, function () {
+    it('testTextDecoderCreate0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextDecoder.create(null, { ignoreBOM : true });
         var encodingStr = that.encoding;
         expect(encodingStr).assertEqual('utf-8');
@@ -7590,7 +7590,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreateThrowError001', 0, function () {
+    it('testTextDecoderCreateThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = util.TextDecoder.create(123, { ignoreBOM : false })
             var encodingStr = that.encoding
@@ -7608,7 +7608,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreateThrowError002', 0, function () {
+    it('testTextDecoderCreateThrowError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = util.TextDecoder.create('utf-16be', 'ignoreBOM')
             var encodingStr = that.encoding
@@ -7626,7 +7626,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextDecoderCreateThrowError003', 0, function () {
+    it('testTextDecoderCreateThrowError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = util.TextDecoder.create('utf-16be', 123)
             var encodingStr = that.encoding
@@ -7644,7 +7644,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeWithStream001', 0, function () {
+    it('decodeWithStream001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         const that = util.TextDecoder.create('utf-8');
         const uint8arr = new Uint8Array([0,65,49,53,79,75,70,69]);
         var retStr = that.decodeWithStream(uint8arr);
@@ -7659,7 +7659,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeWithStream002', 0, function () {
+    it('decodeWithStream002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         const that = util.TextDecoder.create('utf-8');
         const uint8arr = new Uint8Array([67,65,49,53,0,109,112]);
         let retStr = that.decodeWithStream(uint8arr);
@@ -7674,7 +7674,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeWithStream003', 0, function () {
+    it('decodeWithStream003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         const that = util.TextDecoder.create('utf-8');
         const uint8arr = new Uint8Array([84,67,65,53,49,79,0]);
         var retStr = that.decodeWithStream(uint8arr);
@@ -7689,7 +7689,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring001', 0, function () {
+    it('decodeTostring001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:true});
         let uint8 = new Uint8Array([0xEF,0xBB,0xBF,228,189,160,0,0,229,165,189,0]);
         let resStr = textDecoder.decodeToString(uint8);
@@ -7705,7 +7705,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring002', 0, function () {
+    it('decodeTostring002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
         let uint8 = new Uint8Array([0xEF,0xBB,0xBF,228,189,160,0,0,229,165,189,0]);
         let resStr = textDecoder.decodeToString(uint8);
@@ -7722,7 +7722,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring003', 0, function () {
+    it('decodeTostring003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:true});
         let uint8 = new Uint8Array([228,189,160,0,0,229,165,189,0]);
         let resStr = textDecoder.decodeToString(uint8);
@@ -7738,7 +7738,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring004', 0, function () {
+    it('decodeTostring004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
         let uint8 = new Uint8Array([228,189,160,0,0,229,165,189,0]);
         let resStr = textDecoder.decodeToString(uint8);
@@ -7754,7 +7754,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring005', 0, function () {
+    it('decodeTostring005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
         let uint8 = new Uint8Array([228,189,160,229]);
         let retStr = textDecoder.decodeToString(uint8, {stream: true});
@@ -7772,7 +7772,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring006', 0, function () {
+    it('decodeTostring006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
         let uint8 = new Uint8Array();
         let resStr = textDecoder.decodeToString(uint8);
@@ -7787,7 +7787,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring007', 0, function () {
+    it('decodeTostring007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
         let resStr = textDecoder.decodeToString(undefined);
         expect(resStr).assertEqual('');
@@ -7801,7 +7801,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring008', 0, function () {
+    it('decodeTostring008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('gb18030');
         let result = that.encodeInto('abc哈哈熠熠');
         let textDecode = util.TextDecoder.create('gb18030', {ignoreBOM : true});
@@ -7817,7 +7817,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring009', 0, function () {
+    it('decodeTostring009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('big5');
         let result = that.encodeInto('abc哈哈熠熠');
         let textDecode = util.TextDecoder.create('big5', {ignoreBOM : true});
@@ -7833,7 +7833,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0010', 0, function () {
+    it('decodeTostring0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('shift_jis');
         let result = that.encodeInto('こんにちは');
         let textDecode = util.TextDecoder.create('shift_jis');
@@ -7849,7 +7849,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0011', 0, function () {
+    it('decodeTostring0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-2022-jp');
         let result = that.encodeInto('こんにちは');
         let textDecode = util.TextDecoder.create('iso-2022-jp', {ignoreBOM : true});
@@ -7865,7 +7865,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0012', 0, function () {
+    it('decodeTostring0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('ibm866');
         let result = that.encodeInto('Здравствуйте');
         let textDecode = util.TextDecoder.create('ibm866');
@@ -7881,7 +7881,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0013', 0, function () {
+    it('decodeTostring0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('GBK');
         let result = that.encodeInto('abc哈熠');
         let textDecode = util.TextDecoder.create('GBK', {ignoreBOM : true});
@@ -7897,7 +7897,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0014', 0, function () {
+    it('decodeTostring0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('GB2312');
         let result = that.encodeInto('abc哈熠');
         let textDecode = util.TextDecoder.create('GBK');
@@ -7913,7 +7913,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0015', 0, function () {
+    it('decodeTostring0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-2');
         let result = that.encodeInto('Szia');
         let textDecode = util.TextDecoder.create('iso-8859-2');
@@ -7929,7 +7929,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0016', 0, function () {
+    it('decodeTostring0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-4');
         let result = that.encodeInto('Tavaliselt tere päeval');
         let textDecode = util.TextDecoder.create('iso-8859-4', {ignoreBOM : true});
@@ -7945,7 +7945,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0017', 0, function () {
+    it('decodeTostring0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-5');
         let result = that.encodeInto('Здравствуйте');
         let textDecode = util.TextDecoder.create('iso-8859-5', {ignoreBOM : false});
@@ -7961,7 +7961,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0018', 0, function () {
+    it('decodeTostring0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-6');
         let result = that.encodeInto('مرحبا');
         let textDecode = util.TextDecoder.create('iso-8859-6');
@@ -7977,7 +7977,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0019', 0, function () {
+    it('decodeTostring0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-7');
         let result = that.encodeInto('Γεια σου');
         let textDecode = util.TextDecoder.create('iso-8859-7');
@@ -7993,7 +7993,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0020', 0, function () {
+    it('decodeTostring0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-8');
         let result = that.encodeInto('שלום');
         let textDecode = util.TextDecoder.create('iso-8859-8', {ignoreBOM : true});
@@ -8009,7 +8009,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0021', 0, function () {
+    it('decodeTostring0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-8');
         let result = that.encodeInto('שלום');
         let textDecode = util.TextDecoder.create('iso-8859-8', {ignoreBOM : true});
@@ -8025,7 +8025,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0022', 0, function () {
+    it('decodeTostring0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-8-i');
         let result = that.encodeInto('שלום');
         let textDecode = util.TextDecoder.create('iso-8859-8-i', {ignoreBOM : true});
@@ -8041,7 +8041,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0023', 0, function () {
+    it('decodeTostring0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-10');
         let result = that.encodeInto('Hei');
         let textDecode = util.TextDecoder.create('iso-8859-10', {ignoreBOM : true});
@@ -8057,7 +8057,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-     it('decodeTostring0024', 0, function () {
+     it('decodeTostring0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-13');
         let result = that.encodeInto('Sveiki');
         let textDecode = util.TextDecoder.create('iso-8859-13');
@@ -8073,7 +8073,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0025', 0, function () {
+    it('decodeTostring0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-14');
         let result = that.encodeInto('Diolch');
         let textDecode = util.TextDecoder.create('iso-8859-14', {ignoreBOM : true});
@@ -8089,7 +8089,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0026', 0, function () {
+    it('decodeTostring0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-15');
         let result = that.encodeInto('Hola');
         let textDecode = util.TextDecoder.create('iso-8859-15');
@@ -8105,7 +8105,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0027', 0, function () {
+    it('decodeTostring0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('koi8-r');
         let result = that.encodeInto('Привет, мир!');
         let textDecode = util.TextDecoder.create('koi8-r', {ignoreBOM : true});
@@ -8121,7 +8121,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('decodeTostring0028', 0, function () {
+    it('decodeTostring0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('koi8-u');
         let result = that.encodeInto('Привіт, світ');
         let textDecode = util.TextDecoder.create('koi8-u', {ignoreBOM : true});
@@ -8137,7 +8137,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeInto001', 0, function () {
+    it('testencodeInto001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8153,7 +8153,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto002', 0, function () {
+    it('testEncodeInto002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8169,7 +8169,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto003', 0, function () {
+    it('testEncodeInto003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8185,7 +8185,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto004', 0, function () {
+    it('testEncodeInto004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8201,7 +8201,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto005', 0, function () {
+    it('testEncodeInto005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8218,7 +8218,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto006', 0, function () {
+    it('testEncodeInto006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8234,7 +8234,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto007', 0, function () {
+    it('testEncodeInto007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8250,7 +8250,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto008', 0, function () {
+    it('testEncodeInto008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var result = new Uint8Array(buffer)
@@ -8266,7 +8266,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto009', 0, function () {
+    it('testEncodeInto009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('gb18030')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8286,7 +8286,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto010', 0, function () {
+    it('testEncodeInto010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('GB18030')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8306,7 +8306,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeIntoThrowError001', 0, function () {
+    it('testEncodeIntoThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.TextEncoder()
             var buffer = new ArrayBuffer(20)
@@ -8327,7 +8327,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeIntoThrowError002', 0, function () {
+    it('testEncodeIntoThrowError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.TextEncoder()
             var buffer = new ArrayBuffer(20)
@@ -8348,7 +8348,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array001', 0, function () {
+    it('testencodeIntoUint8Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 13)
@@ -8366,7 +8366,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array002', 0, function () {
+    it('testencodeIntoUint8Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(6)
         var dest = new Uint8Array(buffer)
@@ -8384,7 +8384,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array003', 0, function () {
+    it('testencodeIntoUint8Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(4)
         var dest = new Uint8Array(buffer)
@@ -8402,7 +8402,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array004', 0, function () {
+    it('testencodeIntoUint8Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(4)
         var dest = new Uint8Array(buffer)
@@ -8420,7 +8420,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array005', 0, function () {
+    it('testencodeIntoUint8Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(4)
         var dest = new Uint8Array(buffer)
@@ -8438,7 +8438,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array006', 0, function () {
+    it('testencodeIntoUint8Array006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(4)
         var dest = new Uint8Array(buffer)
@@ -8456,7 +8456,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array007', 0, function () {
+    it('testencodeIntoUint8Array007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer)
@@ -8474,7 +8474,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array008', 0, function () {
+    it('testencodeIntoUint8Array008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder()
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 0)
@@ -8492,7 +8492,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8ArrayThrowError001', 0, function () {
+    it('testencodeIntoUint8ArrayThrowError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.TextEncoder()
             var buffer = new ArrayBuffer(20)
@@ -8514,7 +8514,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8ArrayThrowError002', 0, function () {
+    it('testencodeIntoUint8ArrayThrowError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var that = new util.TextEncoder()
             var buffer = new ArrayBuffer(20)
@@ -8536,7 +8536,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_001', 0, function () {
+    it('testEncoding_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('big5')
         var str = that.encoding
         expect(str).assertEqual('big5')
@@ -8550,7 +8550,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_002', 0, function () {
+    it('testEncoding_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('iso-8859-2')
         var str = that.encoding
         expect(str).assertEqual('iso-8859-2')
@@ -8564,7 +8564,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_003', 0, function () {
+    it('testEncoding_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('euc-kr')
         var str = that.encoding
         expect(str).assertEqual('euc-kr')
@@ -8578,7 +8578,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_004', 0, function () {
+    it('testEncoding_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('ibm866')
         var str = that.encoding
         expect(str).assertEqual('ibm866')
@@ -8592,7 +8592,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_005', 0, function () {
+    it('testEncoding_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('x-mac-cyrillic')
         var str = that.encoding
         expect(str).assertEqual('x-mac-cyrillic')
@@ -8606,7 +8606,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_create_001', 0, function () {
+    it('testEncoding_create_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextEncoder.create()
         var str = that.encoding
         expect(str).assertEqual('utf-8')
@@ -8620,7 +8620,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_create_002', 0, function () {
+    it('testEncoding_create_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextEncoder.create('iso-8859-2')
         var str = that.encoding
         expect(str).assertEqual('iso-8859-2')
@@ -8634,7 +8634,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_create_003', 0, function () {
+    it('testEncoding_create_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextEncoder.create('euc-kr')
         var str = that.encoding
         expect(str).assertEqual('euc-kr')
@@ -8648,7 +8648,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_create_004', 0, function () {
+    it('testEncoding_create_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextEncoder.create('ibm866')
         var str = that.encoding
         expect(str).assertEqual('ibm866')
@@ -8662,7 +8662,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncoding_create_005', 0, function () {
+    it('testEncoding_create_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = util.TextEncoder.create('x-mac-cyrillic')
         var str = that.encoding
         expect(str).assertEqual('x-mac-cyrillic')
@@ -8676,7 +8676,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto011', 0, function () {
+    it('testEncodeInto011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('big5')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8696,7 +8696,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto012', 0, function () {
+    it('testEncodeInto012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('shift_jis')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8716,7 +8716,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto013', 0, function () {
+    it('testEncodeInto013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-2022-jp')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8736,7 +8736,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto014', 0, function () {
+    it('testEncodeInto014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('ibm866')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8754,7 +8754,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto015', 0, function () {
+    it('testEncodeInto015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('macintosh')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
@@ -8772,7 +8772,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto016', 0, function () {
+    it('testEncodeInto016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('GBK');
         let result = that.encodeInto('abc哈熠');
         let res = new Uint8Array([97,98,99,185,254,236,218]);
@@ -8789,7 +8789,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto017', 0, function () {
+    it('testEncodeInto017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('GB2312');
         let result = that.encodeInto('abc哈熠');
         let res = new Uint8Array([97,98,99,185,254,236,218]);
@@ -8806,7 +8806,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto018', 0, function () {
+    it('testEncodeInto018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-2');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8823,7 +8823,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto019', 0, function () {
+    it('testEncodeInto019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-3');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8840,7 +8840,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto020', 0, function () {
+    it('testEncodeInto020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-4');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8857,7 +8857,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto021', 0, function () {
+    it('testEncodeInto021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-5');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8874,7 +8874,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto022', 0, function () {
+    it('testEncodeInto022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-6');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8891,7 +8891,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto023', 0, function () {
+    it('testEncodeInto023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-7');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8908,7 +8908,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto024', 0, function () {
+    it('testEncodeInto024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-8');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8925,7 +8925,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto025', 0, function () {
+    it('testEncodeInto025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-8-i');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8942,7 +8942,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto026', 0, function () {
+    it('testEncodeInto026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-10');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8959,7 +8959,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto027', 0, function () {
+    it('testEncodeInto027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-13');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8976,7 +8976,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto028', 0, function () {
+    it('testEncodeInto028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-14');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -8993,7 +8993,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto029', 0, function () {
+    it('testEncodeInto029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('iso-8859-15');
         let result = that.encodeInto('¡Hola, Mundo!');
         let res = new Uint8Array([161,72,111,108,97,44,32,77,117,110,100,111,33]);
@@ -9010,7 +9010,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto030', 0, function () {
+    it('testEncodeInto030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('koi8-r');
         let result = that.encodeInto('Привет, мир!');
         let res = new Uint8Array([240,210,201,215,197,212,44,32,205,201,210,33]);
@@ -9027,7 +9027,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto031', 0, function () {
+    it('testEncodeInto031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('koi8-u');
         let result = that.encodeInto('Привіт, світ');
         let res = new Uint8Array([240,210,201,215,166,212,44,32,211,215,166,212]);
@@ -9044,7 +9044,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto032', 0, function () {
+    it('testEncodeInto032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-874');
         let result = that.encodeInto('สวัสดี，โลก');
         let res = new Uint8Array([202,199,209,202,180,213,63,226,197,161]);
@@ -9061,7 +9061,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto033', 0, function () {
+    it('testEncodeInto033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1250');
         let result = that.encodeInto('Ahoj, svět');
         let res = new Uint8Array([65,104,111,106,44,32,115,118,236,116]);
@@ -9078,7 +9078,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto034', 0, function () {
+    it('testEncodeInto034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1251');
         let result = that.encodeInto('Привет, мир');
         let res = new Uint8Array([207,240,232,226,229,242,44,32,236,232,240]);
@@ -9095,7 +9095,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto035', 0, function () {
+    it('testEncodeInto035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1252');
         let result = that.encodeInto('Hi, World');
         let res = new Uint8Array([72,105,44,32,87,111,114,108,100]);
@@ -9112,7 +9112,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto036', 0, function () {
+    it('testEncodeInto036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1253');
         let result = that.encodeInto('Γεια σας, κόσμο');
         let res = new Uint8Array([195,229,233,225,32,243,225,242,44,32,234,252,243,236,239]);
@@ -9129,7 +9129,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto037', 0, function () {
+    it('testEncodeInto037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1254');
         let result = that.encodeInto('Merhaba, dünya');
         let res = new Uint8Array([77,101,114,104,97,98,97,44,32,100,252,110,121,97]);
@@ -9146,7 +9146,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto038', 0, function () {
+    it('testEncodeInto038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1255');
         let result = that.encodeInto('שלום, עולם');
         let res = new Uint8Array([249,236,229,237,44,32,242,229,236,237]);
@@ -9163,7 +9163,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto039', 0, function () {
+    it('testEncodeInto039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1256');
         let result = that.encodeInto('مرحبا, العالم');
         let res = new Uint8Array([227,209,205,200,199,44,32,199,225,218,199,225,227]);
@@ -9180,7 +9180,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto040', 0, function () {
+    it('testEncodeInto040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1257');
         let result = that.encodeInto('Tere, maailma');
         let res = new Uint8Array([84,101,114,101,44,32,109,97,97,105,108,109,97]);
@@ -9197,7 +9197,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto041', 0, function () {
+    it('testEncodeInto041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('windows-1258');
         let result = that.encodeInto('Chào, thế giới');
         let res = new Uint8Array([67,104,224,111,44,32,116,104,26,32,103,105,26,105]);
@@ -9214,7 +9214,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto042', 0, function () {
+    it('testEncodeInto042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('euc-jp');
         let result = that.encodeInto('こんにちは、世界!');
         let res = new Uint8Array([164,179,164,243,164,203,164,193,164,207,161,162,192,164,179,166,33]);
@@ -9231,7 +9231,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto043', 0, function () {
+    it('testEncodeInto043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('euc-kr');
         let result = that.encodeInto('안녕, 세상!');
         let res = new Uint8Array([190,200,179,231,44,32,188,188,187,243,33]);
@@ -9248,7 +9248,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto044', 0, function () {
+    it('testEncodeInto044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('x-mac-cyrillic');
         let result = that.encodeInto('Привет, мир!');
         let res = new Uint8Array([143,240,232,226,229,242,44,32,236,232,240,33]);
@@ -9265,7 +9265,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto045', 0, function () {
+    it('testEncodeInto045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('utf-16be');
         let result = that.encodeInto('abc哈熠');
         let res = new Uint8Array([0,97,0,98,0,99,84,200,113,160]);
@@ -9282,7 +9282,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testEncodeInto046', 0, function () {
+    it('testEncodeInto046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let that = new util.TextEncoder('utf-16le');
         let result = that.encodeInto('abc哈熠');
         let res = new Uint8Array([97,0,98,0,99,0,200,84,160,113]);
@@ -9299,7 +9299,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array009', 0, function () {
+    it('testencodeIntoUint8Array009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('big5')
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 10)
@@ -9317,7 +9317,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array010', 0, function () {
+    it('testencodeIntoUint8Array010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('shift_jis')
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 5)
@@ -9335,7 +9335,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array011', 0, function () {
+    it('testencodeIntoUint8Array011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('iso-2022-jp')
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 7)
@@ -9353,7 +9353,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array012', 0, function () {
+    it('testencodeIntoUint8Array012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('ibm866')
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 4)
@@ -9371,7 +9371,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testencodeIntoUint8Array013', 0, function () {
+    it('testencodeIntoUint8Array013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var that = new util.TextEncoder('macintosh')
         var buffer = new ArrayBuffer(20)
         var dest = new Uint8Array(buffer, 0, 10)

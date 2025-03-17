@@ -14,7 +14,7 @@
  */
 
 import  uri from '@ohos.uri'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export function UriTest() {
 describe('UriTest', function () {
 
@@ -25,9 +25,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction001', 0, function () {
+    it('testUriConstruction001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
@@ -44,9 +44,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction002', 0, function () {
+    it('testUriConstruction002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var a = {name: 'gaogao'}
             let that = new uri.URI(a);
@@ -64,9 +64,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction003', 0, function () {
+    it('testUriConstruction003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('ht/tp://username:pas sword@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
@@ -83,9 +83,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction004', 0, function () {
+    it('testUriConstruction004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:password@[::]:8080/directory/file?Query#gaogao faofao');
         } catch (err) {
@@ -102,9 +102,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction005', 0, function () {
+    it('testUriConstruction005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -121,9 +121,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction006', 0, function () {
+    it('testUriConstruction006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -140,9 +140,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction007', 0, function () {
+    it('testUriConstruction007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -159,9 +159,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction008', 0, function () {
+    it('testUriConstruction008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -178,9 +178,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction009', 0, function () {
+    it('testUriConstruction009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -197,9 +197,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction010', 0, function () {
+    it('testUriConstruction010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -216,9 +216,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction011', 0, function () {
+    it('testUriConstruction011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let that = new uri.URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -235,9 +235,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction012', 0, function () {
+    it('testUriConstruction012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@www.baidu.com:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@www.baidu.com:99");
@@ -257,9 +257,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction013', 0, function () {
+    it('testUriConstruction013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1080::8:800:200C:417A]:99/path/66path1?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[1080::8:800:200C:417A]:99");
@@ -279,9 +279,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction014', 0, function () {
+    it('testUriConstruction014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[::]:88/path/path66?foooo#gaogao');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::]:88");
@@ -301,9 +301,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction015', 0, function () {
+    it('testUriConstruction015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66path1?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[1:0:0:1:2:1:2:1]:99");
@@ -323,9 +323,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction016', 0, function () {
+    it('testUriConstruction016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[::FFFF:129.144.52.38]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::FFFF:129.144.52.38]:99");
@@ -345,9 +345,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction017', 0, function () {
+    it('testUriConstruction017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[::192.9.5.5]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::192.9.5.5]:99");
@@ -367,9 +367,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction018', 0, function () {
+    it('testUriConstruction018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[22::22:2:2%ss]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[22::22:2:2%ss]:99");
@@ -389,9 +389,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction019', 0, function () {
+    it('testUriConstruction019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao =
                 new uri.URI('http://gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
@@ -412,9 +412,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction020', 0, function () {
+    it('testUriConstruction020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[fe80::0001:0000]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[fe80::0001:0000]:99");
@@ -434,9 +434,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction021', 0, function () {
+    it('testUriConstruction021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@199.98.55.44:99");
@@ -456,9 +456,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction022', 0, function () {
+    it('testUriConstruction022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://16.9.5.4:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("16.9.5.4:99");
@@ -478,9 +478,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction023', 0, function () {
+    it('testUriConstruction023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://49.99.54.12:50/path/path23?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("49.99.54.12:50");
@@ -500,9 +500,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction024', 0, function () {
+    it('testUriConstruction024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://user@49.10pe8.54.12:80/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@49.10pe8.54.12:80");
@@ -522,9 +522,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction025', 0, function () {
+    it('testUriConstruction025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://user@www.baidu.com/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.baidu.com");
@@ -544,9 +544,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction026', 0, function () {
+    it('testUriConstruction026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://user@www.hw.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.hw.com:77");
@@ -566,9 +566,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction027', 0, function () {
+    it('testUriConstruction027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('ht2tp://user@www.h12343w.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("ht2tp");
         expect(gaogao.authority).assertEqual("user@www.h12343w.com:77");
@@ -588,9 +588,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction028', 0, function () {
+    it('testUriConstruction028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('ht2tp://user@www.1hw.1com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("ht2tp");
         expect(gaogao.authority).assertEqual("user@www.1hw.1com:77");
@@ -610,9 +610,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction029', 0, function () {
+    it('testUriConstruction029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://user@hosthost/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@hosthost");
@@ -632,9 +632,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction030', 0, function () {
+    it('testUriConstruction030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://user@[::]/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@[::]");
@@ -654,9 +654,9 @@ describe('UriTest', function () {
      * @tc.desc: Constructs a URI by parsing the given string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction031', 0, function () {
+    it('testUriConstruction031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://[::192:0:5]/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("[::192:0:5]");
@@ -676,9 +676,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEquals001', 0, function () {
+    it('testEquals001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = gaogao;
         let res = gaogao.equals(gaogao1);
@@ -692,9 +692,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEquals002', 0, function () {
+    it('testEquals002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let res = gaogao.equals(gaogao1);
@@ -708,9 +708,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEquals003', 0, function () {
+    it('testEquals003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
@@ -724,9 +724,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEquals004', 0, function () {
+    it('testEquals004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@wwwaaa:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
@@ -740,9 +740,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEquals005', 0, function () {
+    it('testEquals005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://[1:0:0:1:2:1:2:1]/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
@@ -756,9 +756,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo001', 0, function () {
+    it('testEqualsTo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = gaogao;
         let res = gaogao.equalsTo(gaogao1);
@@ -772,9 +772,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo002', 0, function () {
+    it('testEqualsTo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let res = gaogao.equalsTo(gaogao1);
@@ -788,9 +788,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo003', 0, function () {
+    it('testEqualsTo003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equalsTo(gaogao1);
@@ -804,9 +804,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo004', 0, function () {
+    it('testEqualsTo004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@wwwaaa:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equalsTo(gaogao1);
@@ -820,9 +820,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests this URI for equality with another object.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo005', 0, function () {
+    it('testEqualsTo005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://[1:0:0:1:2:1:2:1]/path1?query#fagment123');
         let res = gaogao.equalsTo(gaogao1);
@@ -836,9 +836,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests for wrong input parameter type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testEqualsTo006', 0, function () {
+    it('testEqualsTo006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
             var gaogao1 = 666;
@@ -858,9 +858,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests for wrong input parameter type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-     it('testEqualsTo007', 0, function () {
+     it('testEqualsTo007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
             var gaogao1 = {"0" : "1"};
@@ -879,9 +879,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests Normalizes this URI's path.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testNormalize001', 0, function () {
+    it('testNormalize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66./../././mm/.././path1?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/path1");
@@ -895,9 +895,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests Normalizes this URI's path.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testNormalize002', 0, function () {
+    it('testNormalize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../path");
@@ -911,9 +911,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests Normalizes this URI's path.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testNormalize003', 0, function () {
+    it('testNormalize003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../../aa/bb/cc");
@@ -927,9 +927,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests Normalizes this URI's path.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testNormalize004', 0, function () {
+    it('testNormalize004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../path/.././../aa/bb/cc?query');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../aa/bb/cc");
@@ -943,9 +943,9 @@ describe('UriTest', function () {
      * @tc.desc: Tests Normalizes this URI's path.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testNormalize005', 0, function () {
+    it('testNormalize005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/./path/./aa/bb/cc?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/aa/bb/cc");
@@ -959,9 +959,9 @@ describe('UriTest', function () {
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testToString001', 0, function () {
+    it('testToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
@@ -974,9 +974,9 @@ describe('UriTest', function () {
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testToString002', 0, function () {
+    it('testToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('htt1p://gg:gaogao@[::192.9.5.5]:99/path/66path1?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('htt1p://gg:gaogao@[::192.9.5.5]:99/path/66path1?query#fagment');
@@ -989,9 +989,9 @@ describe('UriTest', function () {
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testToString003', 0, function () {
+    it('testToString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('ftp://username:password@www.baidu.com:88/path?query#fagment');
@@ -1004,9 +1004,9 @@ describe('UriTest', function () {
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testToString004', 0, function () {
+    it('testToString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gao你好gao@199.98.55.44:99/path/p你好ath?qu你好ery#fag你好ment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gao%E4%BD%A0%E5%A5%BDgao@199.98.55.44:99/path/' +
@@ -1020,9 +1020,9 @@ describe('UriTest', function () {
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testToString005', 0, function () {
+    it('testToString005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
@@ -1035,9 +1035,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckIsAbsolute001', 0, function () {
+    it('testCheckIsAbsolute001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('f/tp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(false);
@@ -1050,9 +1050,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckIsAbsolute002', 0, function () {
+    it('testCheckIsAbsolute002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
@@ -1065,9 +1065,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckIsAbsolute003', 0, function () {
+    it('testCheckIsAbsolute003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('htt/p://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(false);
@@ -1080,9 +1080,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckIsAbsolute004', 0, function () {
+    it('testCheckIsAbsolute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('https://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
@@ -1095,9 +1095,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckIsAbsolute005', 0, function () {
+    it('testCheckIsAbsolute005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let gaogao = new uri.URI('http1://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
@@ -1110,9 +1110,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is relative.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-     it('testCheckRelative001', 0, function () {
+     it('testCheckRelative001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/images/pic.jpg');
       let res = route.checkRelative();
       expect(res).assertEqual(false);
@@ -1125,9 +1125,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is relative.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckRelative002', 0, function () {
+    it('testCheckRelative002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('/images/pic.jpg');
       let res = route.checkRelative();
       expect(res).assertEqual(true);
@@ -1140,9 +1140,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is relative.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckRelative003', 0, function () {
+    it('testCheckRelative003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/images/logo.jpg');
       let res = route.checkRelative();
       expect(res).assertEqual(false);
@@ -1155,9 +1155,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is relative.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckRelative004', 0, function () {
+    it('testCheckRelative004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('aaa');
       let res = route.checkRelative();
       expect(res).assertEqual(true);
@@ -1170,9 +1170,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is relative.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckRelative005', 0, function () {
+    it('testCheckRelative005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let mailtoRoute = new uri.URI('mailto:user@test.com');
       expect(mailtoRoute.checkRelative()).assertEqual(false);
     })
@@ -1184,9 +1184,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckOpaque001', 0, function () {
+    it('testCheckOpaque001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/images/pic.jpg');
       let res = route.checkOpaque();
       expect(res).assertEqual(false);
@@ -1199,9 +1199,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckOpaque002', 0, function () {
+    it('testCheckOpaque002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('images/pic.jpg');
       let res = route.checkOpaque();
       expect(res).assertEqual(false);
@@ -1214,9 +1214,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckOpaque003', 0, function () {
+    it('testCheckOpaque003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:user@test.com');
       expect(route.checkOpaque()).assertEqual(true);
     })
@@ -1228,9 +1228,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckOpaque004', 0, function () {
+    it('testCheckOpaque004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('tel:1234567890');
       let res = route.checkOpaque();
       expect(res).assertEqual(true);
@@ -1243,9 +1243,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckHierarchical001', 0, function () {
+    it('testCheckHierarchical001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/images/pic.jpg');
       let res = route.checkHierarchical();
       expect(res).assertEqual(true);
@@ -1258,9 +1258,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckHierarchical002', 0, function () {
+    it('testCheckHierarchical002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:test@test.com');
       let res = route.checkHierarchical();
       expect(res).assertEqual(false);
@@ -1273,9 +1273,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckHierarchical003', 0, function () {
+    it('testCheckHierarchical003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('images/pic.jpg');
       let res = route.checkHierarchical();
       expect(res).assertEqual(true);
@@ -1288,9 +1288,9 @@ describe('UriTest', function () {
      * @tc.desc: Tells whether or not this URI is Opaque.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCheckHierarchical004', 0, function () {
+    it('testCheckHierarchical004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('path');
       expect(route.checkHierarchical()).assertEqual(true);
       let testUri = new uri.URI('path:');
@@ -1304,9 +1304,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue001', 0, function () {
+    it('testUriGetQueryValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&param2=value2');
       let param1Value = route.getQueryValue("param1");
       let param2Value = route.getQueryValue("param2");
@@ -1321,9 +1321,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue002', 0, function () {
+    it('testUriGetQueryValue002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       expect(route.getQueryValue("param1")).assertEqual(null);
       let include = new uri.URI('https://www.test.com?param1=value1');
@@ -1337,9 +1337,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue003', 0, function () {
+    it('testUriGetQueryValue003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&param1=value2&param1=value3');
       let param1Value = route.getQueryValue("param1");
       expect(param1Value).assertEqual("value1");
@@ -1353,9 +1353,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue004', 0, function () {
+    it('testUriGetQueryValue004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=hello%20world');
       expect(route.getQueryValue("param1")).assertEqual("hello world");
       let specialSymbol = new uri.URI('https://www.test.com?param1=hello+world');
@@ -1369,9 +1369,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue005', 0, function () {
+    it('testUriGetQueryValue005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param%201=hello');
       expect(route.getQueryValue("param 1")).assertEqual("hello");
       expect(route.getQueryValue("1")).assertNull();
@@ -1385,9 +1385,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue006', 0, function () {
+    it('testUriGetQueryValue006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=&param2=');
       expect(route.getQueryValue("param1")).assertEqual("");
       expect(route.getQueryValue("param2")).assertEqual("");
@@ -1402,9 +1402,9 @@ describe('UriTest', function () {
      * @tc.desc: Get specific query parameters from URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValue007', 0, function () {
+    it('testUriGetQueryValue007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let emptyParameter1 = new uri.URI('https://www.test.com?param1=value1&&param3=value3');
       expect(emptyParameter1.getQueryValue("")).assertEqual("");
       let emptyParameter12 = new uri.URI('https://www.test.com?param1=value1&');
@@ -1420,9 +1420,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue001', 0, function () {
+    it('testUriAddQueryValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param1", "value1");
       expect(newRoute.getQueryValue("param1")).assertEqual("value1");
@@ -1438,9 +1438,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue002', 0, function () {
+    it('testUriAddQueryValue002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param2", "value2");
       expect(newRoute.getQueryValue('param1')).assertEqual("value1");
@@ -1455,9 +1455,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue003', 0, function () {
+    it('testUriAddQueryValue003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param1", "hello world");
       expect(newRoute.toString()).assertEqual("https://www.test.com?param1=hello%20world");
@@ -1474,9 +1474,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue004', 0, function () {
+    it('testUriAddQueryValue004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param1", "value2");
       expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1&param1=value2");
@@ -1489,9 +1489,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue005', 0, function () {
+    it('testUriAddQueryValue005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param2", "null");
       expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1&param2=null");
@@ -1506,9 +1506,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue006', 0, function () {
+    it('testUriAddQueryValue006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let value = "value";
         let testUri = new uri.URI('https://www.test.com');
         let addQuery = testUri.addQueryValue("param", value);
@@ -1529,9 +1529,9 @@ describe('UriTest', function () {
      * @tc.desc: Add query parameters for URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddQueryValue007', 0, function () {
+    it('testUriAddQueryValue007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.addQueryValue("param 1", "value 1");
       expect(newRoute.getQueryValue("param 1")).assertEqual("value 1");
@@ -1544,9 +1544,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames001', 0, function () {
+    it('testUriGetQueryNames001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&param2=value2');
       let paramNames = route.getQueryNames();
       expect(paramNames.length).assertEqual(2);
@@ -1560,9 +1560,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames002', 0, function () {
+    it('testUriGetQueryNames002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let paramNames = route.getQueryNames();
       expect(paramNames.length).assertEqual(0);
@@ -1575,9 +1575,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames003', 0, function () {
+    it('testUriGetQueryNames003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&&param3=value3');
       let paramNames = route.getQueryNames();
       let values = paramNames.values();
@@ -1594,9 +1594,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames004', 0, function () {
+    it('testUriGetQueryNames004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&=value2&param3=value3');
       let paramNames = route.getQueryNames();
       expect(paramNames.length).assertEqual(3);
@@ -1613,9 +1613,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames005', 0, function () {
+    it('testUriGetQueryNames005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&&&a&b=v&param3');
       let paramNames = route.getQueryNames();
       expect(paramNames.length).assertEqual(5);
@@ -1634,9 +1634,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the names of all query parameters in the URI
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryNames006', 0, function () {
+    it('testUriGetQueryNames006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param%201=value1');
       let paramNames = route.getQueryNames();
       expect(paramNames.length).assertEqual(1);
@@ -1654,9 +1654,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues001', 0, function () {
+    it('testUriGetQueryValues001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=name&sort=asc&filter=f');
       let values = route.getQueryValues("query");
       expect(values.length).assertEqual(1);
@@ -1669,9 +1669,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues002', 0, function () {
+    it('testUriGetQueryValues002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=name');
       let values = route.getQueryValues("query");
       expect(values[0]).assertEqual("name");
@@ -1684,9 +1684,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues003', 0, function () {
+    it('testUriGetQueryValues003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let emptyParameter1 = new uri.URI('https://www.test.com/search?query=');
       let result1 = emptyParameter1.getQueryValues("query");
       expect(result1.length).assertEqual(1);
@@ -1714,9 +1714,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues004', 0, function () {
+    it('testUriGetQueryValues004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search');
       let values = route.getQueryValues("query");
       expect(values.length).assertEqual(0);
@@ -1729,9 +1729,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues005', 0, function () {
+    it('testUriGetQueryValues005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=my%20query');
       let values = route.getQueryValues("query");
       expect(values[0]).assertEqual("my query");
@@ -1744,9 +1744,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues006', 0, function () {
+    it('testUriGetQueryValues006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=name&query=my');
       let values = route.getQueryValues("query");
       expect(values[0]).assertEqual("name");
@@ -1760,9 +1760,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues007', 0, function () {
+    it('testUriGetQueryValues007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?query=hello+world');
       let values = route.getQueryValues("query");
       expect(values[0]).assertEqual("hello+world");
@@ -1775,9 +1775,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all parameters and their corresponding values in the URI query string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetQueryValues008', 0, function () {
+    it('testUriGetQueryValues008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route1 = new uri.URI('https://www.test.com?param_g=value_1');
       let values1 = route1.getQueryValues("param_g");
       expect(values1[0]).assertEqual("value_1");
@@ -1791,9 +1791,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the Boolean value of the URI query parameter
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetBooleanQueryValue001', 0, function () {
+    it('testUriGetBooleanQueryValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?active=true');
       let isActive = route.getBooleanQueryValue("active", false);
       expect(isActive).assertEqual(true);
@@ -1806,9 +1806,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the Boolean value of the URI query parameter
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetBooleanQueryValue002', 0, function () {
+    it('testUriGetBooleanQueryValue002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search');
       let isActive = route.getBooleanQueryValue("active", false);
       expect(isActive).assertEqual(false);
@@ -1821,9 +1821,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the Boolean value of the URI query parameter
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetBooleanQueryValue003', 0, function () {
+    it('testUriGetBooleanQueryValue003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?active=name');
       let isActive = route.getBooleanQueryValue("active", false);
       expect(isActive).assertEqual(true);
@@ -1836,9 +1836,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the Boolean value of the URI query parameter
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetBooleanQueryValue004', 0, function () {
+    it('testUriGetBooleanQueryValue004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search');
       let isActive = route.getBooleanQueryValue("active", true);
       expect(isActive).assertEqual(true);
@@ -1851,9 +1851,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the Boolean value of the URI query parameter
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetBooleanQueryValue005', 0, function () {
+    it('testUriGetBooleanQueryValue005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?active=true&active=false');
       let isActive = route.getBooleanQueryValue("active", false);
       expect(isActive).assertEqual(true);
@@ -1870,9 +1870,9 @@ describe('UriTest', function () {
      * @tc.desc: Clear URI query parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriClearQuery001', 0, function () {
+    it('testUriClearQuery001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com');
       let newRoute = route.clearQuery();
       expect(newRoute.toString()).assertEqual("https://www.test.com");
@@ -1885,9 +1885,9 @@ describe('UriTest', function () {
      * @tc.desc: Clear URI query parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriClearQuery002', 0, function () {
+    it('testUriClearQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1');
       let newRoute = route.clearQuery();
       expect(newRoute.toString()).assertEqual("https://www.test.com");
@@ -1900,9 +1900,9 @@ describe('UriTest', function () {
      * @tc.desc: Clear URI query parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriClearQuery003', 0, function () {
+    it('testUriClearQuery003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1%');
       let newRoute = route.clearQuery();
       expect(newRoute.toString()).assertEqual("https://www.test.com");
@@ -1915,9 +1915,9 @@ describe('UriTest', function () {
      * @tc.desc: Clear URI query parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriClearQuery004', 0, function () {
+    it('testUriClearQuery004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com?param1=value1&param1=value2');
       let newRoute = route.clearQuery();
       expect(newRoute.toString()).assertEqual("https://www.test.com");
@@ -1930,9 +1930,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment001', 0, function () {
+    it('testUriGetLastSegment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/image.jpg');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("image.jpg");
@@ -1945,9 +1945,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment002', 0, function () {
+    it('testUriGetLastSegment002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("");
@@ -1960,9 +1960,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment003', 0, function () {
+    it('testUriGetLastSegment003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("");
@@ -1975,9 +1975,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment004', 0, function () {
+    it('testUriGetLastSegment004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("files");
@@ -1990,9 +1990,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment005', 0, function () {
+    it('testUriGetLastSegment005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/my%20file.jpg');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("my file.jpg");
@@ -2005,9 +2005,9 @@ describe('UriTest', function () {
      * @tc.desc: Get the last segment of URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetLastSegment006', 0, function () {
+    it('testUriGetLastSegment006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/my+file.jpg');
       let lastSegment = route.getLastSegment();
       expect(lastSegment).assertEqual("my+file.jpg");
@@ -2020,9 +2020,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment007', 0, function () {
+    it('testUriGetSegment007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('content://com.test.uri/files/a a');
         let segments = route.getSegment();
@@ -2040,9 +2040,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment001', 0, function () {
+    it('testUriGetSegment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/images');
       let segments = route.getSegment();
       expect(segments.length).assertEqual(2);
@@ -2057,9 +2057,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment002', 0, function () {
+    it('testUriGetSegment002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/');
       let segments = route.getSegment();
       expect(segments.length).assertEqual(0);
@@ -2072,9 +2072,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment003', 0, function () {
+    it('testUriGetSegment003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/');
       let segments = route.getSegment();
       expect(segments.length).assertEqual(1);
@@ -2087,9 +2087,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment004', 0, function () {
+    it('testUriGetSegment004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri');
       let segments = route.getSegment();
       expect(segments.length).assertEqual(0);
@@ -2104,9 +2104,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment005', 0, function () {
+    it('testUriGetSegment005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('content://com.test.uri/files/a%20a/b%20b');
       let segments = route.getSegment();
       expect(segments[0]).assertEqual("files");
@@ -2121,9 +2121,9 @@ describe('UriTest', function () {
      * @tc.desc: Get all segments in the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriGetSegment006', 0, function () {
+    it('testUriGetSegment006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/path/to/image.jpg');
       let segments = route.getSegment();
       expect(segments[2]).assertEqual("image.jpg");
@@ -2136,9 +2136,9 @@ describe('UriTest', function () {
      * @tc.desc: Add a path segment to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddSegment001', 0, function () {
+    it('testUriAddSegment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/');
       let newRoute = route.addSegment("files").addSegment("image.jpg");
       expect(newRoute.toString()).assertEqual("http://www.test.com/files/image.jpg");
@@ -2152,9 +2152,9 @@ describe('UriTest', function () {
      * @tc.desc: Add a path segment to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddSegment002', 0, function () {
+    it('testUriAddSegment002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route1 = new uri.URI('http://www.test.com');
       let newRoute1 = route1.addSegment("files").addSegment("my image.jpg");
       expect(newRoute1.toString()).assertEqual("http://www.test.com/files/my%20image.jpg");
@@ -2173,9 +2173,9 @@ describe('UriTest', function () {
      * @tc.desc: Add a path segment to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddSegment003', 0, function () {
+    it('testUriAddSegment003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com');
       let newRoute = route.addSegment("files");
       expect(newRoute.getLastSegment()).assertEqual("files");
@@ -2189,9 +2189,9 @@ describe('UriTest', function () {
      * @tc.desc: Encode the path segment and add it to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddEncodedSegment001', 0, function () {
+    it('testUriAddEncodedSegment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com');
       let newRoute = route.addEncodedSegment("files").addEncodedSegment("image.jpg");
       expect(newRoute.getSegment()[1]).assertEqual("image.jpg");
@@ -2204,9 +2204,9 @@ describe('UriTest', function () {
      * @tc.desc: Encode the path segment and add it to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddEncodedSegment002', 0, function () {
+    it('testUriAddEncodedSegment002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route1 = new uri.URI('http://www.test.com?param%2B1=value1&param+2=value%202#fra+gemnt');
       let newRoute1 = route1.addSegment("my+files").addEncodedSegment("my+image.jpg");
       expect(newRoute1.toString()).
@@ -2246,9 +2246,9 @@ describe('UriTest', function () {
      * @tc.desc: Encode the path segment and add it to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddEncodedSegment003', 0, function () {
+    it('testUriAddEncodedSegment003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('http://www.test.com/');
         let newRoute = route.addEncodedSegment("my files");
@@ -2266,9 +2266,9 @@ describe('UriTest', function () {
      * @tc.desc: Build a new URI object
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriCreateFromParts001', 0, function () {
+    it('testUriCreateFromParts001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = uri.URI.createFromParts("http", "", "fragment");
       expect(route.toString()).assertEqual("http:#fragment");
     })
@@ -2280,9 +2280,9 @@ describe('UriTest', function () {
      * @tc.desc: Build a new URI object
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriCreateFromParts002', 0, function () {
+    it('testUriCreateFromParts002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = uri.URI.createFromParts("mailto", "no body", "top");
       expect(route.toString()).assertEqual("mailto:no%20body#top");
     })
@@ -2294,9 +2294,9 @@ describe('UriTest', function () {
      * @tc.desc: Build a new URI object
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriCreateFromParts003', 0, function () {
+    it('testUriCreateFromParts003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = uri.URI.createFromParts("foo", "", "");
       expect(route.toString()).assertEqual("foo:");
       try {
@@ -2329,9 +2329,9 @@ describe('UriTest', function () {
      * @tc.desc: Build a new URI object
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriCreateFromParts004', 0, function () {
+    it('testUriCreateFromParts004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let scheme = "https";
       let ssp = "www.test.com";
       let fragment = "fragment";
@@ -2346,9 +2346,9 @@ describe('UriTest', function () {
      * @tc.desc:Encoded URI user information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedUserInfo001', 0, function () {
+    it('testUriEncodedUserInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:name@www.test.com/');
       expect(route.encodedUserInfo).assertEqual("username:name");
     })
@@ -2360,9 +2360,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI user information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedUserInfo002', 0, function () {
+    it('testUriEncodedUserInfo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:@www.test.com/');
       expect(route.encodedUserInfo).assertEqual("username:");
     })
@@ -2374,9 +2374,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI user information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedUserInfo003', 0, function () {
+    it('testUriEncodedUserInfo003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:my%20name@www.test.com/');
       expect(route.encodedUserInfo).assertEqual("username:my%20name");
     })
@@ -2388,9 +2388,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI user information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedUserInfo004', 0, function () {
+    it('testUriEncodedUserInfo004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com');
       expect(route.encodedUserInfo).assertEqual(null);
       let mailRoute = new uri.URI('mailto:body');
@@ -2404,9 +2404,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedPath001', 0, function () {
+    it('testUriEncodedPath001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/file/image.jpg');
       expect(route.encodedPath).assertEqual("/file/image.jpg");
     })
@@ -2418,9 +2418,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedPath002', 0, function () {
+    it('testUriEncodedPath002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/');
       expect(route.encodedPath).assertEqual("/");
     })
@@ -2432,9 +2432,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedPath003', 0, function () {
+    it('testUriEncodedPath003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com');
       expect(route.encodedPath).assertEqual(null);
       let mailRoute = new uri.URI('mailto:body');
@@ -2448,9 +2448,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedPath004', 0, function () {
+    it('testUriEncodedPath004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://www.test.com/my%20file');
       expect(route.encodedPath).assertEqual("/my%20file");
     })
@@ -2462,9 +2462,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriUriEncodedQuery001', 0, function () {
+    it('testUriUriEncodedQuery001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=name&query=my');
       expect(route.encodedQuery).assertEqual("query=name&query=my");
     })
@@ -2476,9 +2476,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriUriEncodedQuery002', 0, function () {
+    it('testUriUriEncodedQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?');
       expect(route.encodedQuery).assertEqual(null);
     })
@@ -2490,9 +2490,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriUriEncodedQuery003', 0, function () {
+    it('testUriUriEncodedQuery003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/');
       expect(route.encodedQuery).assertEqual(null);
     })
@@ -2504,9 +2504,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI parameters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriUriEncodedQuery004', 0, function () {
+    it('testUriUriEncodedQuery004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=my%20test');
       expect(route.encodedQuery).assertEqual("query=my%20test");
     })
@@ -2518,9 +2518,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI fragment
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedFragment001', 0, function () {
+    it('testUriEncodedFragment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:body#top');
       expect(route.encodedFragment).assertEqual("top");
     })
@@ -2532,9 +2532,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI fragment
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedFragment002', 0, function () {
+    it('testUriEncodedFragment002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:body#');
       expect(route.encodedFragment).assertEqual(null);
     })
@@ -2546,9 +2546,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI fragment
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedFragment003', 0, function () {
+    it('testUriEncodedFragment003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:body#te%20st');
       expect(route.encodedFragment).assertEqual("te%20st");
     })
@@ -2560,9 +2560,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI fragment
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedFragment004', 0, function () {
+    it('testUriEncodedFragment004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:body');
       expect(route.encodedFragment).assertEqual(null);
     })
@@ -2574,9 +2574,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded resource location information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedAuthority001', 0, function () {
+    it('testUriEncodedAuthority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/search?query=name&query=my');
       expect(route.encodedAuthority).assertEqual("www.test.com");
     })
@@ -2588,9 +2588,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded resource location information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedAuthority002', 0, function () {
+    it('testUriEncodedAuthority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:my%20name@www.test.com/');
       expect(route.encodedAuthority).assertEqual("username:my%20name@www.test.com");
     })
@@ -2602,9 +2602,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded resource location information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedAuthority003', 0, function () {
+    it('testUriEncodedAuthority003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('mailto:body#top');
       expect(route.encodedAuthority).assertEqual(null);
     })
@@ -2616,9 +2616,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded resource location information
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedAuthority004', 0, function () {
+    it('testUriEncodedAuthority004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com:8080/');
       expect(route.encodedAuthority).assertEqual("www.test.com:8080");
     })
@@ -2630,9 +2630,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedSSP001', 0, function () {
+    it('testUriEncodedSSP001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:name@www.test.com/path?query=example');
       expect(route.encodedSSP).assertEqual("//username:name@www.test.com/path?query=example");
     })
@@ -2644,9 +2644,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedSSP002', 0, function () {
+    it('testUriEncodedSSP002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('http://username:my%20name@www.test.com');
       expect(route.encodedSSP).assertEqual("//username:my%20name@www.test.com");
       let route1 = new uri.URI('http://username:my_20name@www.test.com');
@@ -2660,9 +2660,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriEncodedSSP003', 0, function () {
+    it('testUriEncodedSSP003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let route = new uri.URI('https://www.test.com/');
       expect(route.encodedSSP).assertEqual("//www.test.com/");
     })
@@ -2674,9 +2674,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCreateFromPartsPara001', 0, function () {
+    it('testCreateFromPartsPara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         // @ts-ignore
         uri.URI.createFromParts(1, "ssp", "fragment");
@@ -2694,9 +2694,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCreateFromPartsPara002', 0, function () {
+    it('testCreateFromPartsPara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         // @ts-ignore
         uri.URI.createFromParts("aaa", 1, "fragment");
@@ -2714,9 +2714,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCreateFromPartsPara003', 0, function () {
+    it('testCreateFromPartsPara003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         // @ts-ignore
         uri.URI.createFromParts("aaa", "bbb", 1);
@@ -2734,9 +2734,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddQueryValuePara001', 0, function () {
+    it('testAddQueryValuePara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         // @ts-ignore
@@ -2755,9 +2755,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddQueryValuePara002', 0, function () {
+    it('testAddQueryValuePara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         // @ts-ignore
@@ -2776,9 +2776,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddEncodedSegmentPara001', 0, function () {
+    it('testAddEncodedSegmentPara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         // @ts-ignore
@@ -2797,9 +2797,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddSegmentPara001', 0, function () {
+    it('testAddSegmentPara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         // @ts-ignore
@@ -2818,9 +2818,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetQueryValuePara001', 0, function () {
+    it('testGetQueryValuePara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         // @ts-ignore
@@ -2839,9 +2839,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetQueryValuesPara001', 0, function () {
+    it('testGetQueryValuesPara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         // @ts-ignore
@@ -2860,9 +2860,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetBooleanQueryValuePara001', 0, function () {
+    it('testGetBooleanQueryValuePara001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         // @ts-ignore
@@ -2881,9 +2881,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetBooleanQueryValuePara002', 0, function () {
+    it('testGetBooleanQueryValuePara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         // @ts-ignore
@@ -2900,9 +2900,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-     it('testTildeUnderline001', 0, function () {
+     it('testTildeUnderline001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriTest = new uri.URI('http://www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
       expect(uriTest.host).assertEqual('www.bian~_cheng.net');
       expect(uriTest.path).assertEqual('/inde~_x');
@@ -2920,9 +2920,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testTildeUnderline002', 0, function () {
+    it('testTildeUnderline002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriTest = new uri.URI('http://www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
       expect(uriTest.host).assertEqual('www.bian_cheng.net');
       expect(uriTest.path).assertEqual('/inde_x');
@@ -2940,9 +2940,9 @@ describe('UriTest', function () {
      * @tc.desc:  Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testTildeUnderline003', 0, function () {
+    it('testTildeUnderline003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriTest = new uri.URI('http://www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
       expect(uriTest.host).assertEqual('www.bian~cheng.net');
       expect(uriTest.path).assertEqual('/inde~x');
@@ -2961,9 +2961,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI query add json
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-     it('testAddQueryJson001', 0, function () {
+     it('testAddQueryJson001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriTest = new uri.URI('aaa://drive/page?need=false&bbb=true');
       let newUri = uriTest.addQueryValue("data", '{"type": 0, "from": "from"}');
       expect(newUri.toString()).assertEqual('aaa://drive/page?need=false&bbb=true&data=%7B%22type%22%3A%200%2C%20%22from%22%3A%20%22from%22%7D');
@@ -2979,9 +2979,9 @@ describe('UriTest', function () {
      * @tc.desc: Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testCreateFromPartsPara004', 0, function () {
+    it('testCreateFromPartsPara004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         uri.URI.createFromParts(null, "bbb", "ccc");
       } catch (err) {
@@ -3012,9 +3012,9 @@ describe('UriTest', function () {
      * @tc.desc: Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddQueryValuePara003', 0, function () {
+    it('testAddQueryValuePara003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         route.addQueryValue("param", null);
@@ -3040,9 +3040,9 @@ describe('UriTest', function () {
      * @tc.desc: Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddEncodedSegmentPara002', 0, function () {
+    it('testAddEncodedSegmentPara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         route.addEncodedSegment(null);
@@ -3060,9 +3060,9 @@ describe('UriTest', function () {
      * @tc.desc: Encoded URI specific scheme section
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testAddSegmentPara002', 0, function () {
+    it('testAddSegmentPara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route = new uri.URI('https://www.test.com');
         route.addSegment(null);
@@ -3080,9 +3080,9 @@ describe('UriTest', function () {
      * @tc.desc: Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetQueryValuePara002', 0, function () {
+    it('testGetQueryValuePara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getQueryValue(null);
@@ -3100,9 +3100,9 @@ describe('UriTest', function () {
      * @tc.desc:  Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetQueryValuesPara002', 0, function () {
+    it('testGetQueryValuesPara002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getQueryValues(null);
@@ -3120,9 +3120,9 @@ describe('UriTest', function () {
      * @tc.desc: Abnormal parameters.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testGetBooleanQueryValuePara003', 0, function () {
+    it('testGetBooleanQueryValuePara003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getBooleanQueryValue("param_g", null);
@@ -3147,9 +3147,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI constructor json
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testConstructorJson001', 0, function () {
+    it('testConstructorJson001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriObj = new uri.URI("testUri://testHost/testNumPage?need=false&bbb=true&data={\"aaa\":0,\"bbb\":\"ccc\"}");
       expect(uriObj.query).assertEqual('need=false&bbb=true&data={"aaa":0,"bbb":"ccc"}');
       expect(JSON.parse(uriObj.getQueryValue('data')).aaa).assertEqual(0);
@@ -3162,9 +3162,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testSpecialCharacters001', 0, function () {
+    it('testSpecialCharacters001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let uriStr = "hta{}_b- c|~d!a$b&c=d+e,;'()*vvtp://www.bi an'|{}()$~,;*!_-+:80/index?par(,;/) '_$:?+a{}|m=10-!*&pa ra~m1=20!-~#par(,;/) '_$:?+a{}|m=10-!*&para~m1=20!-~";
       let newUri = new uri.URI(uriStr);
       expect(newUri.scheme).assertEqual("hta{}_b- c|~d!a$b&c=d+e,;'()*vvtp");
@@ -3184,9 +3184,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testspecialPort001', 0, function () {
+    it('testspecialPort001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let uriStr = "http://publickinfo:-1";
         let newUri = new uri.URI(uriStr);
         expect(newUri.toString()).assertEqual("http://publickinfo:-1");
@@ -3201,9 +3201,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testspecialPort002', 0, function () {
+    it('testspecialPort002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let uriStr = "http://publickinfo:2147483647";
         let newUri = new uri.URI(uriStr);
         expect(newUri.toString()).assertEqual("http://publickinfo:2147483647");
@@ -3218,9 +3218,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testspecialPort003', 0, function () {
+    it('testspecialPort003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let uriStr = "http://publickinfo:600000000332";
         let newUri = new uri.URI(uriStr);
         expect(newUri.toString()).assertEqual("http://publickinfo:600000000332");
@@ -3235,9 +3235,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testspecialPort004', 0, function () {
+    it('testspecialPort004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let uriStr = "http://publickinfo:0";
         let newUri = new uri.URI(uriStr);
         expect(newUri.toString()).assertEqual("http://publickinfo:0");
@@ -3252,9 +3252,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction032', 0, function () {
+    it('testUriConstruction032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
           let that = new uri.URI('ht/tp://username:pas sword@host:8080/di[rectory/file?foo=1&bar=2');
         } catch (err) {
@@ -3270,9 +3270,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction033', 0, function () {
+    it('testUriConstruction033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
           let that = new uri.URI('http://username:password@[::]:8080/directory/file?Query#abc^de');
         } catch (err) {
@@ -3288,9 +3288,9 @@ describe('UriTest', function () {
      * @tc.desc:  URI Special Characters
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriConstruction034', 0, function () {
+    it('testUriConstruction034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
           let route = new uri.URI('content://com.test.uri/files/a^a');
           let segments = route.getSegment();
@@ -3307,9 +3307,9 @@ describe('UriTest', function () {
      * @tc.desc: Encode the path segment and add it to the URI path
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('testUriAddEncodedSegment004', 0, function () {
+    it('testUriAddEncodedSegment004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
           let route = new uri.URI('http://www.test.com/');
           let newRoute = route.addEncodedSegment("my`files");
