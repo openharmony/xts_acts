@@ -23,7 +23,7 @@ group("codeparsingtest") {
       "builtinstest:ActsBuiltinsTest",
       "datetest:ActsDateTest",
       "decimallibtest:ActsDecimalLibTest",
-      "ETSSPECTest:ActsBuiltinsArrayStatementTest",
+      "etsspectest:ActsBuiltinsArrayStatementTest",
       "specialchartest:ActsSpecialCharTest",
     ]
   }
