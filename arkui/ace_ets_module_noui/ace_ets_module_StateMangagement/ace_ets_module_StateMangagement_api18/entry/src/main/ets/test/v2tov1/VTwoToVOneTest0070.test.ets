@@ -58,7 +58,7 @@ export default function VTwoToVOneTest0070() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let btn: Component = await driver.findComponent(ON.id("btnParent0010"));
+      let btn: Component = await driver.findComponent(ON.id("btnParent0070"));
       await btn.click();
       await CommonFunc.sleep(1000);
       let obj1: ESObject = JSON.parse(getInspectorByKey('tvParentState0070'));
