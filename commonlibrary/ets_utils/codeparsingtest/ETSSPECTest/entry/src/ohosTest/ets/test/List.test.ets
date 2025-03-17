@@ -12,17 +12,17 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import builtinsStatementBlockTest from "./BuiltinsStatementBlockTest.test";
-import BuiltinsStatementBreakTest from "./BuiltinsStatementBreakTest.test";
-import BuiltinsStatementContinueTest from "./BuiltinsStatementContinueTest.test";
-import builtinsStatementForOfTest from "./BuiltinsStatementForOfTest.test";
-import builtinsStatementForTest from "./BuiltinsStatementForTest.test";
-import builtinsStatementIfTest from "./BuiltinsStatementIfTest.test";
-import builtinsStatementThrowTest from "./BuiltinsStatementThrowTest.test";
-import builtinsStatementTry from "./BuiltinsStatementTryTest.test";
-import builtinsStatementWhileTest from "./BuiltinsStatementWhile.test";
-import builtinsStatementReturnTest from "./StatementReturnTest.test";
-import builtinsStatementSwitchTest from "./StatementSwitchTest.test";
+import builtinsStatementBlockTest from "./statement/BuiltinsStatementBlockTest.test";
+import BuiltinsStatementBreakTest from "./statement/BuiltinsStatementBreakTest.test";
+import BuiltinsStatementContinueTest from "./statement/BuiltinsStatementContinueTest.test";
+import builtinsStatementForOfTest from "./statement/BuiltinsStatementForOfTest.test";
+import builtinsStatementForTest from "./statement/BuiltinsStatementForTest.test";
+import builtinsStatementIfTest from "./statement/BuiltinsStatementIfTest.test";
+import builtinsStatementThrowTest from "./statement/BuiltinsStatementThrowTest.test";
+import builtinsStatementTry from "./statement/BuiltinsStatementTryTest.test";
+import builtinsStatementWhileTest from "./statement/BuiltinsStatementWhile.test";
+import builtinsStatementReturnTest from "./statement/StatementReturnTest.test";
+import builtinsStatementSwitchTest from "./statement/StatementSwitchTest.test";
 
 
 export default function testsuite() {
