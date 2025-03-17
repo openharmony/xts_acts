@@ -72,8 +72,18 @@ describe('btAccessTest', () => {
         await openPhone();
         done();
     })
-    beforeEach(() => {
+    beforeEach(async (done : Function) =>  {
         console.info('beforeEach called')
+        let state = bluetooth.getState();
+        console.info('[bluetooth_js] bluetooth state ='+ JSON.stringify(state));
+        if(state != bluetooth.BluetoothState.STATE_ON) {
+            bluetooth.enableBluetooth();
+            await clickRequestPermission(OPEN_BT_TEXT);
+            await sleep(3000);
+            let openSt = bluetooth.getState();
+            console.info('[bluetooth_js] bluetooth enable state ='+ JSON.stringify(openSt));
+        }
+        done();
     })
     afterEach(() => {
         console.info('afterEach called')
@@ -109,6 +119,12 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
+            if (error.code == 801) {
+                console.info('[bluetooth_js]enablebluetooth is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
             expect(Number(error.code)).assertEqual(2900099);
         }
         let openSt = bluetooth.getState();
@@ -144,6 +160,12 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
+            if (error.code == 801) {
+                console.info('[bluetooth_js]disablebluetooth is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
             expect(Number(error.code)).assertEqual(2900099);
         }
         let closeSt = bluetooth.getState();
@@ -166,6 +188,12 @@ describe('btAccessTest', () => {
             expect(state >= 0 && state <= 6).assertTrue();
         } catch (error) {
             console.error("[bluetooth_js] bluetooth getState errCode:" + error.code + ",bluetooth getState errMessage:" + error.message);
+            if (error.code == 801) {
+                console.info('[bluetooth_js]getState is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
             expect(Number(error.code)).assertEqual(2900099);
         }
         done();
@@ -194,6 +222,12 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]enable StateChange error, code is ${error.code},message is ${error.message}`);
+        if (error.code == 801) {
+            console.info('[bluetooth_js]OnStateChange is not support');
+            expect(true).assertTrue();
+        } else {
+            expect().assertFail();
+        }
         expect(Number(error.code)).assertEqual(2900099);
     }    
     bluetooth.off('stateChange', onReceiveEvent);
@@ -225,6 +259,12 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]disable StateChange error, code is ${error.code},message is ${error.message}`);
+        if (error.code == 801) {
+            console.info('[bluetooth_js]OffStateChange is not support');
+            expect(true).assertTrue();
+        } else {
+            expect().assertFail();
+        }
         expect(Number(error.code)).assertEqual(2900099);
     }    
     done();
@@ -314,6 +354,26 @@ describe('btAccessTest', () => {
     })
 
     /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_ISVALIDRANDOMDEVICEID_0200
+     * @tc.name testIsValidRandomDeviceId
+     * @tc.desc Test isValidRandomDeviceId api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_ACCESS_ISVALIDRANDOMDEVICEID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        let isValidRandom = bluetooth.isValidRandomDeviceId(null);
+        console.info("[bluetooth_js]isValidRandomDeviceId result:" + JSON.stringify(isValidRandom));
+        expect().assertFail();
+    } catch (error) {
+        console.info("isValidRandomDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+        expect(Number(error.code)).assertEqual(401);
+    }
+    done();
+    })
+
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_ACCESS_ADDPERSISTENTDEVICEID_0100
      * @tc.name testAddPersistentDeviceId
      * @tc.desc Test addPersistentDeviceId api16
@@ -361,6 +421,44 @@ describe('btAccessTest', () => {
         }else {
             expect(Number(error.code)).assertEqual(401);
         }
+    }
+    done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0700
+     * @tc.name testOnStateChange
+     * @tc.desc Test on 'stateChange' 401
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        bluetooth.on('stateChange', null);
+        expect().assertFail();
+    } catch (error) {
+        console.error(`[bluetooth_js]enable StateChange error, code is ${error.code},message is ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
+    }
+    done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0800
+     * @tc.name testOnStateChange
+     * @tc.desc Test off 'stateChange' 401
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+    try {
+        bluetooth.off('stateChange', null);
+        expect().assertFail();
+    } catch (error) {
+        console.error(`[bluetooth_js]enable StateChange error, code is ${error.code},message is ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
     }
     done();
     })

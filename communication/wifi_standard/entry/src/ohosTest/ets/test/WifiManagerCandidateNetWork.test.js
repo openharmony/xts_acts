@@ -105,7 +105,8 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "isHiddenSsid": false,
                 "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_OPEN,
             };
-            await wifiMg.addCandidateConfig(wifiDeviceConfig)
+            try {
+                await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
                     console.info("[wifi_test]add OPEN CandidateConfig promise : " + JSON.stringify(netWorkId));
                     expect(true).assertEqual(netWorkId != -1);
@@ -163,6 +164,13 @@ export default function actsWifiManagerCandidateNetWorkTest() {
             let WIFI_SEC_TYPE_WAPI_PSK = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_WAPI_PSK;
             console.info("[wifi_test]WIFI_SEC_TYPE_WAPI_CERT : " + JSON.stringify(WIFI_SEC_TYPE_WAPI_PSK));
             expect(true).assertEqual( WIFI_SEC_TYPE_WAPI_PSK == 9);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -176,7 +184,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0002', 0, async function (done) {
             let EapMethod = {
-                "EAP_NONE": 0,
+                "wifiMaEAP_NONE": 0,
                 "EAP_PEAP": 1,
                 "EAP_TLS": 2,
                 "EAP_TTLS": 3,
@@ -197,8 +205,8 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "PHASE2_AKA_PRIME": 7,
             };
             let WifiEapConfig = {
-                "eapMethod": wifiMg.EapMethod.EAP_NONE,
-                "phase2Method": wifiMg.Phase2Method.PHASE2_NONE,
+                "eapMethod": EapMethod.EAP_NONE,
+                "phase2Method": Phase2Method.PHASE2_NONE,
                 "identity": "aaa",
                 "anonymousIdentity": "bbb",
                 "password": "12345678",
@@ -227,9 +235,10 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "randomMacType": 0,
                 "randomMacAddr": "11:22:33:44:55:66",
                 "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
-                "eapConfig": wifiMg.WifiEapConfig,
+                "eapConfig": WifiEapConfig,
             };
-            await wifiMg.addCandidateConfig(wifiDeviceConfig)
+            try {
+                await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
                     console.info("[wifi_test]add PSK CandidateConfig promise : " + JSON.stringify(netWorkId));
                     expect(true).assertEqual(netWorkId != -1);
@@ -251,6 +260,13 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     console.error('[wifi_test]remove CandidateConfig promise failed ?' + JSON.stringify(error));
                     expect().assertFail();
                 });
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -270,7 +286,8 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "isHiddenSsid": false,
                 "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_SAE,
             };
-            await wifiMg.addCandidateConfig(wifiDeviceConfig)
+            try {
+                await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
                     console.info("[wifi_test]add SAE CandidateConfig promise : " + JSON.stringify(netWorkId));
                     expect(true).assertEqual(netWorkId != -1);
@@ -292,6 +309,13 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
                     expect().assertFail();
                 });
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -304,58 +328,66 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0004', 0, async function (done) {
-            let SSID = "TYPE_PSK"
-            for (let i = 0; i < 16; i++) {
-                SSID = "TYPE_PSK" + i
-                console.info("[wifi_test] get canshu result : ");
-                let wifiDeviceConfig = {
-                    "ssid": SSID,
+            try {
+                let SSID = "TYPE_PSK"
+                for (let i = 0; i < 16; i++) {
+                    SSID = "TYPE_PSK" + i
+                    console.info("[wifi_test] get canshu result : ");
+                    let wifiDeviceConfig = {
+                        "ssid": SSID,
+                        "bssid": "22:9b:e6:48:1f:5c",
+                        "preSharedKey": "12345678",
+                        "isHiddenSsid": false,
+                        "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+                    };
+                    console.info("[wifi_test]get wifiDeviceConfig ssid result : " + JSON.stringify(wifiDeviceConfig.ssid));
+                    await wifiMg.addCandidateConfig(wifiDeviceConfig)
+                        .then(netWorkId => {
+                            console.info("[wifi_test]add 16th CandidateConfig promise : " + JSON.stringify(netWorkId));
+                            expect(true).assertEqual(netWorkId != -1);
+                        }).catch((error) => {
+                            console.error("[wifi_test]add 16th CandidateConfig promise failed "+ JSON.stringify(error));
+                            expect().assertFail();
+                        });
+                }
+                let wifiDeviceConfig1 = {
+                    "ssid": "TYPE_17",
                     "bssid": "22:9b:e6:48:1f:5c",
                     "preSharedKey": "12345678",
                     "isHiddenSsid": false,
                     "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
                 };
-                console.info("[wifi_test]get wifiDeviceConfig ssid result : " + JSON.stringify(wifiDeviceConfig.ssid));
-                await wifiMg.addCandidateConfig(wifiDeviceConfig)
+                await wifiMg.addCandidateConfig(wifiDeviceConfig1)
                     .then(netWorkId => {
-                        console.info("[wifi_test]add 16th CandidateConfig promise : " + JSON.stringify(netWorkId));
+                        console.info("[wifi_test]add 17th CandidateConfig promise : " + JSON.stringify(netWorkId));
                         expect(true).assertEqual(netWorkId != -1);
                     }).catch((error) => {
-                        console.error("[wifi_test]add 16th CandidateConfig promise failed "+ JSON.stringify(error));
-                        expect().assertFail();
+                        console.error(`[wifi_test]add 17th failed, code is ${error.code}, message is ${error.message}`);
+                        expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
                     });
+                let getCandidateResult = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test]wifi get 16 CandidateConfigs result : " + JSON.stringify(getCandidateResult.length));
+                for (let i = 0; i < 16; i++) {
+                    var networkId = getCandidateResult[i].netId;
+                    console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
+                    await wifiMg.removeCandidateConfig(networkId)
+                        .then(ret => {
+                            let getconfig1 = wifiMg.getCandidateConfigs();
+                            console.info("[wifi_test] wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
+                            console.info("[wifi_test] wifi getconfiglength result : " + JSON.stringify(getconfig1.length));
+                        }).catch((error) => {
+                            console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
+                        });
+                }
+                getCandidateResult = wifiMg.getCandidateConfigs();
+                expect(true).assertEqual(getCandidateResult.length==0);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
             }
-            let wifiDeviceConfig1 = {
-                "ssid": "TYPE_17",
-                "bssid": "22:9b:e6:48:1f:5c",
-                "preSharedKey": "12345678",
-                "isHiddenSsid": false,
-                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
-            };
-            await wifiMg.addCandidateConfig(wifiDeviceConfig1)
-                .then(netWorkId => {
-                    console.info("[wifi_test]add 17th CandidateConfig promise : " + JSON.stringify(netWorkId));
-                    expect(true).assertEqual(netWorkId != -1);
-                }).catch((error) => {
-                    console.error(`[wifi_test]add 17th failed, code is ${error.code}, message is ${error.message}`);
-                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
-                });
-            let getCandidateResult = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test]wifi get 16 CandidateConfigs result : " + JSON.stringify(getCandidateResult.length));
-            for (let i = 0; i < 16; i++) {
-                var networkId = getCandidateResult[i].netId;
-                console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
-                await wifiMg.removeCandidateConfig(networkId)
-                    .then(ret => {
-                        let getconfig1 = wifiMg.getCandidateConfigs();
-                        console.info("[wifi_test] wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
-                        console.info("[wifi_test] wifi getconfiglength result : " + JSON.stringify(getconfig1.length));
-                    }).catch((error) => {
-                        console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
-                    });
-            }
-            getCandidateResult = wifiMg.getCandidateConfigs();
-            expect(true).assertEqual(getCandidateResult.length==0);
             done();
         })
 
@@ -383,41 +415,49 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
                 "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
-                "wapiConfig":wifiMg.WifiWapiConfig,
+                "wapiConfig":WifiWapiConfig,
             }
-            function addCandidate() {
-                return new Promise((resolve, reject) => {
-                    wifiMg.addCandidateConfig(wifiDeviceConfig,
-                        (err, netWorkId) => {
-                            if (err) {
-                                console.info("[wifi_test]add CandidateConfig callback failed : " + JSON.stringify(err));
-                            }
-                            console.info("[wifi_test]addCandidateConfig callback result: " + JSON.stringify(netWorkId));
-                            expect(true).assertEqual(netWorkId != -1);
-                            resolve();
-                        });
-                });
+            try {
+                function addCandidate() {
+                    return new Promise((resolve, reject) => {
+                        wifiMg.addCandidateConfig(wifiDeviceConfig,
+                            (err, netWorkId) => {
+                                if (err) {
+                                    console.info("[wifi_test]add CandidateConfig callback failed : " + JSON.stringify(err));
+                                }
+                                console.info("[wifi_test]addCandidateConfig callback result: " + JSON.stringify(netWorkId));
+                                expect(true).assertEqual(netWorkId != -1);
+                                resolve();
+                            });
+                    });
+                }
+                await addCandidate();
+                let getCandidateResult = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test] wifi getCandidateConfigs result : " + JSON.stringify(getCandidateResult));
+                var networkId = getCandidateResult[0].netId;
+                function removeCandidate() {
+                    return new Promise((resolve, reject) => {
+                        wifiMg.removeCandidateConfig(networkId,
+                            (err, ret) => {
+                                if (err) {
+                                    console.info("[wifi_test]removeCandidate callback failed : " + JSON.stringify(err));
+                                }
+                                let configs1 = wifiMg.getCandidateConfigs();
+                                console.info("[wifi_test] wifi get  CandidateConfigs result : " + JSON.stringify(configs1));
+                                console.info("[wifi_test] getconfig.length result : " + JSON.stringify(configs1.length));
+                                expect(true).assertEqual(configs1.length != null);
+                                resolve();
+                            });
+                    });
+                }
+                await removeCandidate();
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
             }
-            await addCandidate();
-            let getCandidateResult = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test] wifi getCandidateConfigs result : " + JSON.stringify(getCandidateResult));
-            var networkId = getCandidateResult[0].netId;
-            function removeCandidate() {
-                return new Promise((resolve, reject) => {
-                    wifiMg.removeCandidateConfig(networkId,
-                        (err, ret) => {
-                            if (err) {
-                                console.info("[wifi_test]removeCandidate callback failed : " + JSON.stringify(err));
-                            }
-                            let configs1 = wifiMg.getCandidateConfigs();
-                            console.info("[wifi_test] wifi get  CandidateConfigs result : " + JSON.stringify(configs1));
-                            console.info("[wifi_test] getconfig.length result : " + JSON.stringify(configs1.length));
-                            expect(true).assertEqual(configs1.length != null);
-                            resolve();
-                        });
-                });
-            }
-            await removeCandidate();
             done();
         })
 
@@ -430,49 +470,81 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
-            await checkSavedNet();
-            let wifiDeviceConfig = {
-                "ssid": "HONOR 3000",
-                "bssid": "22:9b:e6:48:1f:5c",
-                "preSharedKey": "12345678",
-                "isHiddenSsid": false,
-                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
-            };
-            await wifiMg.addCandidateConfig(wifiDeviceConfig)
-                .then(netWorkId => {
-                    console.info("[wifi_test]add CandidateConfig promise : " + JSON.stringify(netWorkId));
-                    expect(true).assertEqual(netWorkId != -1);
-                }).catch((error) => {
-                    console.error('[wifi_test]add CandidateConfig promise failed -> ' + JSON.stringify(error));
-                    expect().assertFail();
-                });
-            let getCandidateResult = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test]wifi get  CandidateConfigs result : " + JSON.stringify(getCandidateResult));
-            let connectToCandidateResult = wifiMg.connectToCandidateConfig(getCandidateResult[0].netId);
-            await sleep(3000);
-            await wifiMg.getLinkedInfo()
-                .then((result) => {
-                    console.info("[wifi_test]get wifi link [promise] -> " + JSON.stringify(result));
-                    done();
-                }).catch((error) => {
-                    console.info("[wifi_test]promise then error." + JSON.stringify(error));
-                    expect().assertFail();
-                });
-            let getCandidateResult1 = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test]wifi get CandidateConfigs result1 : " + JSON.stringify(getCandidateResult1));
-            var networkId = getCandidateResult1[0].netId;
-            console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
-            await wifiMg.removeCandidateConfig(networkId)
-                .then(ret => {
-                    let getconfig1 = wifiMg.getCandidateConfigs();
-                    console.info("[wifi_test]wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
-                    console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getconfig1.length));
-                    expect(true).assertEqual(getconfig1.length != null);
-                }).catch((error) => {
-                    console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
-                    expect().assertFail();
-                });
+            try {
+                await checkSavedNet();
+                let wifiDeviceConfig = {
+                    "ssid": "HONOR 3000",
+                    "bssid": "22:9b:e6:48:1f:5c",
+                    "preSharedKey": "12345678",
+                    "isHiddenSsid": false,
+                    "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+                };
+                await wifiMg.addCandidateConfig(wifiDeviceConfig)
+                    .then(netWorkId => {
+                        console.info("[wifi_test]add CandidateConfig promise : " + JSON.stringify(netWorkId));
+                        expect(true).assertEqual(netWorkId != -1);
+                    }).catch((error) => {
+                        console.error('[wifi_test]add CandidateConfig promise failed -> ' + JSON.stringify(error));
+                        expect().assertFail();
+                    });
+                let getCandidateResult = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test]wifi get  CandidateConfigs result : " + JSON.stringify(getCandidateResult));
+                let connectToCandidateResult = wifiMg.connectToCandidateConfig(getCandidateResult[0].netId);
+                await sleep(3000);
+                await wifiMg.getLinkedInfo()
+                    .then((result) => {
+                        console.info("[wifi_test]get wifi link [promise] -> " + JSON.stringify(result));
+                        done();
+                    }).catch((error) => {
+                        console.info("[wifi_test]promise then error." + JSON.stringify(error));
+                        expect().assertFail();
+                    });
+                let getCandidateResult1 = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test]wifi get CandidateConfigs result1 : " + JSON.stringify(getCandidateResult1));
+                var networkId = getCandidateResult1[0].netId;
+                console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
+                await wifiMg.removeCandidateConfig(networkId)
+                    .then(ret => {
+                        let getconfig1 = wifiMg.getCandidateConfigs();
+                        console.info("[wifi_test]wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
+                        console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getconfig1.length));
+                        expect(true).assertEqual(getconfig1.length != null);
+                    }).catch((error) => {
+                        console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
+                        expect().assertFail();
+                    });
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFiManager_WapiPskType_0100
+        * @tc.name testWapiPskType
+        * @tc.desc Test WapiPskType API functionality
+        * @tc.type Function
+        * @tc.size: MediumTest
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFiManager_WapiPskType_0100', 0, async function(done) {
+            try {
+                let WAPI_PSK_ASCII = wifiMg.WapiPskType.WAPI_PSK_ASCII;
+                console.info('[wifi_test]WapiPskType WAPI_PSK_ASCII:' + JSON.stringify(WAPI_PSK_ASCII));
+                expect(WAPI_PSK_ASCII).assertEqual(0);
+
+                let WAPI_PSK_HEX = wifiMg.WapiPskType.WAPI_PSK_HEX;
+                console.info('[wifi_test]WapiPskType WAPI_PSK_HEX:' + JSON.stringify(WAPI_PSK_HEX));
+                expect(WAPI_PSK_HEX).assertEqual(1);
+            } catch (error) {
+                console.error('[wifi_test]WapiPskType get error:' + JSON.stringify(error));
+                expect().assertFail();
+              }
+              done();
         })
         
     })

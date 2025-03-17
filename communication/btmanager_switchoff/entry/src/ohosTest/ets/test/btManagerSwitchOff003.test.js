@@ -15,11 +15,17 @@
 
 import bluetoothManager from '@ohos.bluetoothManager';
 import bluetooth from '@ohos.bluetooth';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import a2dp from '@ohos.bluetooth.a2dp';
+import access from '@ohos.bluetooth.access';
+import ble from '@ohos.bluetooth.ble';
+import socket from '@ohos.bluetooth.socket';
+import connection from '@ohos.bluetooth.connection';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let gattServer = null;
 let gattClient = null;
+let BleScanner = null;
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay));
 }
@@ -88,8 +94,9 @@ export default function btManagerError003Test() {
             await sleep(2000);
             await openPhone();
             await clickTheWindow(PERMISSION_TEXT);
-            gattServer = bluetoothManager.BLE.createGattServer();
-            gattClient = bluetoothManager.BLE.createGattClientDevice("11:22:33:44:55:66");
+            gattServer = ble.createGattServer();
+            gattClient = ble.createGattClientDevice("11:22:33:44:55:66");
+            BleScanner = ble.createBleScanner();
             console.info('beforeAll end');
             done();
         })
@@ -117,7 +124,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await sleep(3000);
             try {
                 let sta = bluetoothManager.getState();
@@ -143,7 +150,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.pairDevice("11:22:55:66:33:44");
                 expect(true).assertFalse();
@@ -164,7 +171,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0300', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let ret = bluetoothManager.getRemoteDeviceName("00:00:00:00:00:00");
                 console.info('[bluetooth_js] getRemoteDeviceName ret2:' + JSON.stringify(ret));
@@ -187,7 +194,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let DeviceClass = bluetoothManager.getRemoteDeviceClass("00:00:00:00:00:00");
                 console.info('[bluetooth_js] getRemoteDeviceClass ret2 :' + JSON.stringify(DeviceClass) 
@@ -211,7 +218,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0500', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let ret = bluetoothManager.getPairedDevices();
                 console.info('[bluetooth_js] getPairedDevices ret2:' + JSON.stringify(ret));
@@ -233,7 +240,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let a2dpSrcConn = bluetoothManager.getProfileConnectionState(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
                 console.info('[bluetooth_js]get a2dp result:' + JSON.stringify(a2dpSrcConn));
@@ -255,7 +262,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0700', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.setDevicePairingConfirmation("11:22:55:66:33:44",false);
                 expect(true).assertFalse();
@@ -276,7 +283,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let newName = 'my bluetooth';
                 bluetoothManager.setLocalName(newName);
@@ -298,7 +305,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.setBluetoothScanMode(bluetoothManager.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
                 expect(true).assertFalse();
@@ -319,7 +326,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let oldScanMode = bluetoothManager.getBluetoothScanMode();
                 console.info('[bluetooth_js] getBluetoothScanMode = '+ JSON.stringify(oldScanMode));
@@ -341,7 +348,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.startBluetoothDiscovery();
                 expect(true).assertFalse();
@@ -362,7 +369,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.stopBluetoothDiscovery();
                 expect(true).assertFalse();
@@ -383,7 +390,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let hfpSrc = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
                 let retArray = hfpSrc.getConnectionDevices();
@@ -406,7 +413,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1700', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let hfpSrc = bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
                 let ret = hfpSrc.getDeviceState('11:22:33:44:55:66');
@@ -429,7 +436,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
                 a2dpSrc.connect('11:22:33:44:55:77');
@@ -452,7 +459,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
                 a2dpSrc.disconnect('11:22:33:44:55:77');
@@ -474,7 +481,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
                 console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
@@ -498,7 +505,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let hfpSrc = 
                     bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
@@ -521,7 +528,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let hfpSrc = 
                 bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
@@ -544,7 +551,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.BLE.startBLEScan(
                     [{
@@ -576,7 +583,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 bluetoothManager.BLE.stopBLEScan();
                 expect(true).assertFalse();
@@ -597,7 +604,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 0
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let manufactureValueBuffer = new Uint8Array(4);
             manufactureValueBuffer[0] = 1;
             manufactureValueBuffer[1] = 2;
@@ -636,7 +643,7 @@ export default function btManagerError003Test() {
                 }],
             }
             try {
-                gattServer.startAdvertising(setting,advData,advResponse);
+                ble.startAdvertising(setting,advData,advResponse);
                 expect(true).assertFalse();
             }catch(error) {
                 console.error('[bluetooth_js]startAdvertising error.code:'+JSON.stringify(error.code)+
@@ -655,7 +662,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 0
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let manufactureValueBuffer = new Uint8Array(4);
             manufactureValueBuffer[0] = 1;
             manufactureValueBuffer[1] = 2;
@@ -689,7 +696,7 @@ export default function btManagerError003Test() {
                 }],
             }
             try {
-                gattServer.stopAdvertising();
+                ble.stopAdvertising();
                 expect(true).assertFalse();
             }catch(error) {
                 console.error('[bluetooth_js]stopAdvertising error.code:'+JSON.stringify(error.code)+
@@ -707,7 +714,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SwitchOff_3200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SwitchOff_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -746,7 +753,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3300', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
                 expect(true).assertFalse();
@@ -767,7 +774,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 gattServer.close();
                 expect(true).assertFalse();
@@ -788,7 +795,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let value =  new Uint8Array(arrayBuffer);
@@ -815,7 +822,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3700', 0, async function (done) { 
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) { 
             try {
                 gattClient.connect();
                 await sleep(2000);
@@ -836,7 +843,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 gattClient.disconnect();
                 expect(true).assertFalse();
@@ -856,7 +863,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 gattClient.close();
                 expect(true).assertFalse();
@@ -876,7 +883,7 @@ export default function btManagerError003Test() {
         * @tc.size MediumTest
         * @tc.level Level 3
         */
-        it('SUB_COMMUNICATION_BTMANAGER_BLESCAN_0800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_BLESCAN_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             function onReceiveEvent(data)
             {
                 console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
@@ -926,7 +933,7 @@ export default function btManagerError003Test() {
              * @tc.size MediumTest
              * @tc.level Level 3
              */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_4000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             bluetooth.disableBluetooth();
             await clickTheWindow(CLOSE_BT_TEXT);
             await sleep(3000);
@@ -961,7 +968,7 @@ export default function btManagerError003Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SWITCH_0400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_SWITCH_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let state = bluetooth.getState();
             console.info('[bluetooth_js] getState1 off = '+ JSON.stringify(state));
             if(state == bluetooth.BluetoothState.STATE_OFF) {
@@ -975,5 +982,1138 @@ export default function btManagerError003Test() {
             }
             done();
         })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_A2DP_0100
+         * @tc.name testGetPlayingState
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_A2DP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let a2dpProfile = a2dp.createA2dpSrcProfile();
+                let state = a2dpProfile.getPlayingState('11:22:33:44:55:66');
+                expect().assertFail();
+            } catch (err) {
+                console.info("bluetooth a2dp getPlayingState errCode:" + err.code + ",bluetooth a2dp getPlayingState errMessage:" + err.message);
+                expect(Number(err.code)).assertEqual(2900003);   
+            }
+            done();
+        })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0100
+         * @tc.name testAddPersistentDeviceId
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await access.addPersistentDeviceId('00:00:00:00:00:00').then(() => {
+                    console.info('[bluetooth_js] addPersistentDeviceId success');
+                });
+                expect().assertFail();
+            } catch (error) {
+                console.info("addPersistentDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0200
+         * @tc.name testDeletePersistentDeviceId
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await access.deletePersistentDeviceId('00:00:00:00:00:00').then(() => {
+                    console.info('[bluetooth_js] deletePersistentDeviceId success');
+                });
+                expect().assertFail();
+            } catch (error) {
+                console.info("deletePersistentDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0300
+         * @tc.name testGetPersistentDeviceIds
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let macs = access.getPersistentDeviceIds();
+                console.info("[bluetooth_js]getPersistentDeviceIds result:" + JSON.stringify(macs));
+                expect().assertFail();
+            } catch (error) {
+                console.info("getPersistentDeviceIds errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0400
+         * @tc.name testIsValidRandomDeviceId
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_ACCESS_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let isValidRandom = access.isValidRandomDeviceId("00:00:00:00:00:00");
+                console.info("[bluetooth_js]isValidRandomDeviceId result:" + JSON.stringify(isValidRandom));
+                expect().assertFail();
+            } catch (error) {
+                console.info("isValidRandomDeviceId errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BASEPROFILE_0100
+         * @tc.name testGetConnectedDevices
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BASEPROFILE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let a2dpProfile = a2dp.createA2dpSrcProfile();
+                let devices = a2dpProfile.getConnectedDevices();
+                console.info("address of connected devices list:" + devices);
+                expect().assertFail();
+            } catch (error) {
+                console.info("getConnectedDevices errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BASEPROFILE_0200
+         * @tc.name testGetConnectionState
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BASEPROFILE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let a2dpProfile = a2dp.createA2dpSrcProfile();
+                let state = a2dpProfile.getConnectionState("11:22:33:AA:BB:FF");
+                console.info("the connection state:" + state);
+                expect().assertFail();
+            } catch (error) {
+                console.info("getConnectionState errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0100
+         * @tc.name testSppListen
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let serverNumber = -1;
+                let serverSocket = (code, number) => {
+                if (code) {
+                    console.error('sppListen error, code is ' + code);
+                    return;
+                } else {
+                    serverNumber = number;
+                    console.info('sppListen success, serverNumber = ' + serverNumber);
+                }
+                }
+                let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+                socket.sppListen('server1', sppOption, serverSocket);
+            } catch (error) {
+                console.info("sppListen errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0200
+         * @tc.name testSppAccept
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            function acceptClientSocket(code, number) {
+                console.log('bluetooth error code: ' + code.code);
+                let clientNumber = -1;
+                if (code.code == 0) {
+                    console.log('bluetooth clientSocket Number: ' + number);
+                    clientNumber = number;
+                    expect(true).assertEqual(clientNumber != -1);
+                }
+            }
+            let serverNumber = -1;
+            try {
+                socket.sppAccept(serverNumber, acceptClientSocket);
+            } catch (error) {
+                console.info("sppAccept errCode:" + error.code + ",errMessage:" + error.message);
+                expect(true).assertEqual(Number(error.code) == 2900003 || Number(error.code) == 401);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0300
+         * @tc.name testSppAccept
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_SOCKET_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let clientSocket = (code, number) => {
+                    if (code) {
+                      console.error('sppListen error, code is ' + code);
+                      return;
+                    } else {
+                      console.info('bluetooth serverSocket Number: ' + number);
+                    }
+                  }
+                let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+                socket.sppConnect('00:11:22:33:44:55', sppOption, clientSocket);
+            } catch (error) {
+                console.info("sppConnect errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0100
+         * @tc.name testGetProfileConnectionState
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let connectionState = connection.getProfileConnectionState();
+                console.info("getProfileConnectionState result:" + connectionState);
+                expect().assertFail();
+            } catch (error) {
+                console.info("getProfileConnectionState errCode:" + error.code + ",errMessage:" + error.message);
+                expect(Number(error.code)).assertEqual(2900003);
+            }
+            done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0200
+         * @tc.name testPairDevice
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionPairDevice() {
+                    return new Promise((resolve,reject) => {
+                        connection.pairDevice('11:22:33:44:55:66', (error) => {
+                           if (error) {
+                               console.info('pairDevice failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionPairDevice().then(() => {
+                console.info("[bluetooth_js]functionPairDevice success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]functionPairDevice failed" + e);
+                    expect(e).assertEqual(2900003);
+                    done();
+                })
+              } catch (e) {
+                console.error(`pairDevice callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0300
+         * @tc.name testGetProfileConnectionState
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.pairDevice('11:22:33:44:55:66').then(() => {
+                  console.info('[bluetooth_js] pairDevice success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `pairDevice promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0400
+         * @tc.name testGetRemoteDeviceName
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let ret = connection.getRemoteDeviceName("00:00:00:00:00:00");
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `getRemoteDeviceName error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0500
+         * @tc.name testGetRemoteDeviceName
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let ret = connection.getRemoteDeviceName("00:00:00:00:00:00", true);
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `testGetRemoteDeviceName use alias error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0600
+         * @tc.name testGetRemoteDeviceClass
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let DeviceClass = connection.getRemoteDeviceClass("00:11:22:33:44:55");
+                except().assertFail();
+              } catch (e) {
+                console.error( `getRemoteDeviceClass error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0700
+         * @tc.name testGetPairedDevices
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let ret = connection.getPairedDevices();
+                except().assertFail();
+              } catch (e) {
+                console.error( `getPairedDevices error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0800
+         * @tc.name testGetPairState
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let state = connection.getPairState("00:11:22:33:44:55");
+              } catch (e) {
+                console.error( `getPairState error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0900
+         * @tc.name testSetDevicePairingConfirmation
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                connection.setDevicePairingConfirmation("00:11:22:33:44:55", true);
+                except().assertFail();
+              } catch (e) {
+                console.error( `setDevicePairingConfirmation error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1000
+         * @tc.name testSetDevicePinCode
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionSetDevicePinCode() {
+                    return new Promise((resolve,reject) => {
+                        connection.setDevicePinCode('11:22:33:44:55:66', '12345', (error) => {
+                           if (error) {
+                               console.info('setDevicePinCode failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionSetDevicePinCode().then(() => {
+                console.info("[bluetooth_js]setDevicePinCode success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]setDevicePinCode failed" + e);
+                    expect(true).assertEqual(Number(e) == 2900003 || Number(e) == 2900099);
+                    done();
+                })
+              } catch (e) {
+                console.error(`setDevicePinCode callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1100
+         * @tc.name testSetDevicePinCode
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
+                  console.info('[bluetooth_js] setDevicePinCode success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `setDevicePinCode promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 2900099);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1200
+         * @tc.name testSetBluetoothScanMode
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                connection.setBluetoothScanMode(-1, 0);
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `setBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1300
+         * @tc.name testGetBluetoothScanMode
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let scanMode = connection.getBluetoothScanMode();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `getBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1400
+         * @tc.name testStartBluetoothDiscovery
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                connection.startBluetoothDiscovery();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `startBluetoothDiscovery error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1500
+         * @tc.name testStopBluetoothDiscovery
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                connection.stopBluetoothDiscovery();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `stopBluetoothDiscovery error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1600
+         * @tc.name testIsBluetoothDiscovering
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let result = connection.isBluetoothDiscovering();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `isBluetoothDiscovering error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1700
+         * @tc.name testGetRemoteProfileUuids
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionGetRemoteProfileUuids() {
+                    return new Promise((resolve,reject) => {
+                        connection.getRemoteProfileUuids('11:22:33:44:55:66', (error) => {
+                           if (error) {
+                               console.info('getRemoteProfileUuids failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionGetRemoteProfileUuids().then(() => {
+                console.info("[bluetooth_js]getRemoteProfileUuids success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]getRemoteProfileUuids failed" + e);
+                    expect(e).assertEqual(2900003);
+                    done();
+                })
+              } catch (e) {
+                console.error(`getRemoteProfileUuids callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1800
+         * @tc.name testGetRemoteProfileUuids
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.getRemoteProfileUuids('11:22:33:44:55:66').then(() => {
+                  console.info('[bluetooth_js] getRemoteProfileUuids success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `getRemoteProfileUuids promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1900
+         * @tc.name testConnectAllowedProfiles
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionConnectAllowedProfiles() {
+                    return new Promise((resolve,reject) => {
+                        connection.connectAllowedProfiles('11:22:33:44:55:66', (error) => {
+                           if (error) {
+                               console.info('connectAllowedProfiles failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionConnectAllowedProfiles().then(() => {
+                console.info("[bluetooth_js]connectAllowedProfiles success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]connectAllowedProfiles failed" + e);
+                    expect(e).assertEqual(2900003);
+                    done();
+                })
+              } catch (e) {
+                console.error(`connectAllowedProfiles callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2000
+         * @tc.name testConnectAllowedProfiles
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.connectAllowedProfiles('11:22:33:44:55:66').then(() => {
+                  console.info('[bluetooth_js] connectAllowedProfiles success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `connectAllowedProfiles promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2100
+         * @tc.name testGetRemoteDeviceBatteryInfo
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.getRemoteDeviceBatteryInfo('11:22:33:44:55:66').then(() => {
+                  console.info('[bluetooth_js] getRemoteDeviceBatteryInfo success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `getRemoteDeviceBatteryInfo error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 2900099);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2200
+         * @tc.name testSetRemoteDeviceName
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
+                  console.info('[bluetooth_js] setRemoteDeviceName success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `setRemoteDeviceName error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2300
+         * @tc.name testGetLastConnectionTime
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_CONNECTION_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await connection.getLastConnectionTime('54:71:DD:5F:75:06').then((time) => {
+                  console.info('[bluetooth_js] getLastConnectionTime success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `getLastConnectionTime error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0100
+         * @tc.name testGetConnectedBLEDevices
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let result = ble.getConnectedBLEDevices();
+              } catch (e) {
+                console.error( `getConnectedBLEDevices error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0200
+         * @tc.name testStartBLEScan
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                ble.startBLEScan([{}]);
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `startBLEScan error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0300
+         * @tc.name testStopBLEScan
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                ble.stopBLEScan();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `stopBLEScan error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0400
+         * @tc.name testStartAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            let manufactureValueBuffer = new Uint8Array(4);
+            manufactureValueBuffer[0] = 1;
+            manufactureValueBuffer[1] = 2;
+            manufactureValueBuffer[2] = 3;
+            manufactureValueBuffer[3] = 4;
+            let serviceValueBuffer = new Uint8Array(4);
+            serviceValueBuffer[0] = 4;
+            serviceValueBuffer[1] = 6;
+            serviceValueBuffer[2] = 7;
+            serviceValueBuffer[3] = 8;
+            let setting = {
+              interval:32,
+              txPower:1,
+              connectable:true,
+            }
+            let manufactureDataUnit1 = {
+              manufactureId:4567,
+              manufactureValue:manufactureValueBuffer.buffer
+            };
+            let advData = {
+              serviceUuids : ["00001888-0000-1000-8000-00805f9b34fb"],
+              manufactureData : [manufactureDataUnit1],
+              serviceData:[{
+                serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                serviceValue:serviceValueBuffer.buffer
+              }],
+              includeDeviceName:false
+            }
+            let manufactureDataUnit2 = {
+              manufactureId:1789,
+              manufactureValue:manufactureValueBuffer.buffer
+            }
+            let serviceDataUnit = {
+              serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+              serviceValue:serviceValueBuffer.buffer
+            }
+            let advResponse = {
+              serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+              manufactureData : [manufactureDataUnit2],
+              serviceData : [serviceDataUnit],
+            }
+            try {
+                ble.startAdvertising(setting, advData, advResponse);
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `startAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0500
+         * @tc.name testStopAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                ble.stopAdvertising();
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `stopAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0600
+         * @tc.name testDisableAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await ble.disableAdvertising(0).then((data) => {
+                    console.info('[bluetooth_js] disableAdvertising promise success:' + JSON.stringify(data));
+                  });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 401);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0700
+         * @tc.name testDisableAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionDisableAdvertising() {
+                    return new Promise((resolve,reject) => {
+                        ble.disableAdvertising(0, (error) => {
+                           if (error) {
+                               console.info('disableAdvertising failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionDisableAdvertising().then(() => {
+                console.info("[bluetooth_js]disableAdvertising success");
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 401);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0800
+         * @tc.name testStopAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionStopAdvertising() {
+                    return new Promise((resolve,reject) => {
+                        ble.stopAdvertising(0, (error) => {
+                           if (error) {
+                               console.info('stopAdvertising failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionStopAdvertising().then(() => {
+                console.info("[bluetooth_js]stopAdvertising success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]stopAdvertising failed" + e);
+                    expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 401);
+                })
+              } catch (e) {
+                console.error(`stopAdvertising callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0900
+         * @tc.name testStopAdvertising
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await ble.stopAdvertising(0).then(() => {
+                  console.info('[bluetooth_js] stopAdvertising success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `stopAdvertising promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 401);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1000
+         * @tc.name testNotifyCharacteristicChanged
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            let descriptors = [];
+            let arrayBuffer = new ArrayBuffer(8);
+            let descV = new Uint8Array(arrayBuffer);
+            descV[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+            descriptors[0] = descriptor;
+            let arrayBufferC = new ArrayBuffer(8);
+            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+            let notifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: characteristic.characteristicValue, confirm: false};
+            try {
+                function functionNotifyCharacteristicChanged() {
+                    return new Promise((resolve,reject) => {
+                        gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic, (error) => {
+                           if (error) {
+                               console.info('notifyCharacteristicChanged failed' + error);
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionNotifyCharacteristicChanged().then(() => {
+                console.info("[bluetooth_js]notifyCharacteristicChanged success");
+                expect(true).assertFalse();
+                done();
+                })
+                .catch(e => {
+                    console.info("[bluetooth_js]notifyCharacteristicChanged failed" + e);
+                    expect(true).assertEqual(Number(e) == 2900003 || Number(e) == 2900099);
+                    done();
+                })
+              } catch (e) {
+                console.error(`notifyCharacteristicChanged callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1100
+         * @tc.name testNotifyCharacteristicChanged
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            let descriptors = [];
+            let arrayBuffer = new ArrayBuffer(8);
+            let descV = new Uint8Array(arrayBuffer);
+            descV[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+            descriptors[0] = descriptor;
+            let arrayBufferC = new ArrayBuffer(8);
+            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+            let notifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: characteristic.characteristicValue, confirm: false};
+            try {
+                await gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic).then(() => {
+                  console.info('[bluetooth_js] notifyCharacteristicChanged success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `notifyCharacteristicChanged promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(true).assertEqual(Number(e.code) == 2900003 || Number(e.code) == 2900099);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1200
+         * @tc.name testStartScan
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            let arrayBuffer = new ArrayBuffer(8);
+            let scanFilter = {
+                deviceId: "00:11:22:33:44:55",
+                name: "testStartScan",
+                serviceUuid: "00001888-0000-1000-8000-00805f9b34fb",
+                serviceUuidMask: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+                serviceSolicitationUuid: "00001888-0000-1000-8000-00805F9B34FB",
+                serviceSolicitationUuidMask: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+                serviceData: arrayBuffer,
+                serviceDataMask: arrayBuffer,
+                manufactureId: 4567,
+                manufactureData: arrayBuffer,
+                manufactureDataMask: arrayBuffer
+            };
+            try {
+                await BleScanner.startScan([scanFilter]).then(() => {
+                    console.info('[bluetooth_js] bleScanner startScan success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `bleScanner startScan promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
+
+        /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1300
+         * @tc.name testStopScan
+         * @tc.desc test disable bt use api
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_COMMUNICATION_BLUETOOTH_DISABLED_BLE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                await BleScanner.stopScan().then(() => {
+                    console.info('[bluetooth_js] bleScanner stopScan success');
+                });
+                expect(true).assertFalse();
+              } catch (e) {
+                console.error( `bleScanner stopScan promise error, error code is: ${e.code}, error message is: ${e.message}`);
+                expect(Number(e.code)).assertEqual(2900003);
+              }
+              done();
+            })
 })
 }

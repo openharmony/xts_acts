@@ -657,7 +657,31 @@ export default function actsWifiFunctionTest() {
             }
             await getP2pPeerDevicesResult();
             done();
-        });
+        })
+
+        /**
+        * @tc.number Communication_WiFi_XTS_P2P_P2pConnectState_0100
+        * @tc.name testP2pConnectState
+        * @tc.desc Test P2pConnectState API functionality
+        * @tc.type Function
+        * @tc.size: MediumTest
+        * @tc.level Level 0
+        */
+        it('Communication_WiFi_XTS_P2P_P2pConnectState_0100', 0, async function(done) {
+            try {
+                let DISCONNECTED = wifi.P2pConnectState.DISCONNECTED;
+                console.info('[wifi_test]P2pConnectState DISCONNECTED:' + JSON.stringify(DISCONNECTED));
+                expect(DISCONNECTED).assertEqual(0);
+
+                let CONNECTED = wifi.P2pConnectState.CONNECTED;
+                console.info('[wifi_test]P2pConnectState CONNECTED:' + JSON.stringify(CONNECTED));
+                expect(CONNECTED).assertEqual(1);
+            } catch (error) {
+                console.error('[wifi_test]P2pConnectState get error:' + JSON.stringify(error));
+                expect().assertFail();
+              }
+              done();
+        })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }

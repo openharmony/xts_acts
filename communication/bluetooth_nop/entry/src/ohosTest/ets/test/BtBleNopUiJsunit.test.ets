@@ -369,6 +369,63 @@ export default function btBleNopUiJsunit() {
       }
       done();
     })
+
+    /**
+     * @tc.number: testGetConnectedBLEDevicesNop
+     * @tc.name: testGetConnectedBLEDevices
+     * @tc.desc: test getConnectedBLEDevices without permission
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testGetConnectedBLEDevicesNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let bleDevices = ble.getConnectedBLEDevices();
+        console.info('getConnectedBLEDevices result:' + JSON.stringify(bleDevices));
+      } catch (error) {
+        hilog.error(Domain, TAG, `getConnectedBLEDevices error, error code is: ${error.code}, error message is: ${error.message}`);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number: testStartBleScanNop
+     * @tc.name: testStartBleScan
+     * @tc.desc: test startBLEScan without permission
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testStartBleScanNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        ble.startBLEScan([{}]);
+        expect(true).assertFalse();
+      } catch (error) {
+        hilog.error(Domain, TAG, `startBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number: testStopAdvertisingNoParamNop
+     * @tc.name: testStopAdvertising
+     * @tc.desc: test stopAdvertising without permission
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testStopAdvertisingNoParamNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        ble.stopAdvertising();
+        expect(true).assertFalse();
+      } catch (error) {
+        hilog.error(Domain, TAG, `stopAdvertising no param error, error code is: ${error.code}, error message is: ${error.message}`);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
+      }
+      done();
+    })
   })
 }
 
