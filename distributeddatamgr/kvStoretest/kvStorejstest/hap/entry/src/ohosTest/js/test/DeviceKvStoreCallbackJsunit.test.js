@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedData'
 
 const KEY_TEST_INT_ELEMENT = 'key_test_int_2';
@@ -147,8 +147,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1290
      * @tc.name [JS-API8]DeviceKvStore.Put(String)
      * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutString101', 0, async function (done) {
+    it('testDeviceKvStorePutString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutString101');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
@@ -171,8 +174,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1300
      * @tc.name [JS-API8]DeviceKvStore.Put(String)
      * @tc.desc Test Js Api DeviceKvStore.Put(String) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutString102', 0, async function (done) {
+    it('testDeviceKvStorePutString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutString102');
         try {
             var str = '';
@@ -199,8 +205,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0760
      * @tc.name [JS-API8]DeviceKvStore.Get(String)
      * @tc.desc Test Js Api DeviceKvStore.Get(String) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetString101', 0, async function (done) {
+    it('testDeviceKvStoreGetString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetString101');
         try{
             await kvStore.get(localDeviceId, KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -223,8 +232,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0770
      * @tc.name [JS-API8]DeviceKvStore.Get(String)
      * @tc.desc Test Js Api DeviceKvStore.Get(String) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetString102', 0, async function (done) {
+    it('testDeviceKvStoreGetString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetString102');
         try{
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -247,8 +259,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1210
      * @tc.name [JS-API8]DeviceKvStore.Put(Int)
      * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutInt101', 0, async function (done) {
+    it('testDeviceKvStorePutInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutInt101');
         try {
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -271,8 +286,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1220
      * @tc.name [JS-API8]DeviceKvStore.Put(Int)
      * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutInt102', 0, async function (done) {
+    it('testDeviceKvStorePutInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutInt102');
         try {
             var intValue = 987654321;
@@ -296,8 +314,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1230
      * @tc.name [JS-API8]DeviceKvStore.Put(Int)
      * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutInt103', 0, async function (done) {
+    it('testDeviceKvStorePutInt103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutInt103');
         try {
             var intValue = Number.MIN_VALUE;
@@ -321,8 +342,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1240
      * @tc.name [JS-API8]DeviceKvStore.Put(Int)
      * @tc.desc Test Js Api DeviceKvStore.Put(Int) testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutInt104', 0, async function (done) {
+    it('testDeviceKvStorePutInt104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutInt104');
         try {
             var intValue = Number.MAX_VALUE;
@@ -346,8 +370,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0560
      * @tc.name [JS-API8]DeviceKvStore.Get(Int)
      * @tc.desc Test Js Api DeviceKvStore.Get(Int) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetInt101', 0, async function (done) {
+    it('testDeviceKvStoreGetInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetInt101');
         try {
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -370,8 +397,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0570
      * @tc.name [JS-API8]DeviceKvStore.Get(Int)
      * @tc.desc Test Js Api DeviceKvStore.Get(Int) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetInt102', 0, async function (done) {
+    it('testDeviceKvStoreGetInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetInt102');
         try {
             await kvStore.get(localDeviceId, KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -394,8 +424,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1110
      * @tc.name [JS-API8]DeviceKvStore.Put(Bool)
      * @tc.desc Test Js Api DeviceKvStore.Put(Bool) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBool101', 0, async function (done) {
+    it('testDeviceKvStorePutBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBool101');
         try {
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -414,8 +447,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0450
      * @tc.name [JS-API8]DeviceKvStore.Get(Bool)
      * @tc.desc Test Js Api DeviceKvStore.Get(Bool) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetBool101', 0, async function (done) {
+    it('testDeviceKvStoreGetBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetBool101');
         try {
             await kvStore.get(localDeviceId, KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -438,8 +474,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0460
      * @tc.name [JS-API8]DeviceKvStore.Get(Bool)
      * @tc.desc Test Js Api DeviceKvStore.Get(Bool) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetBool102', 0, async function (done) {
+    it('testDeviceKvStoreGetBool102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetBool102');
         try {
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -462,8 +501,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1130
      * @tc.name [JS-API8]DeviceKvStore.Put(Float)
      * @tc.desc Test Js Api DeviceKvStore.Put(Float) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutFloat101', 0, async function (done) {
+    it('testDeviceKvStorePutFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutFloat101');
         try {
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -482,8 +524,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1140
      * @tc.name [JS-API8]DeviceKvStore.Put(Float)
      * @tc.desc Test Js Api DeviceKvStore.Put(Float) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutFloat102', 0, async function (done) {
+    it('testDeviceKvStorePutFloat102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutFloat102');
         try {
             var floatValue = 123456.654321;
@@ -508,8 +553,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1150
      * @tc.name [JS-API8]DeviceKvStore.Put(Float)
      * @tc.desc Test Js Api DeviceKvStore.Put(Float) testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutFloat103', 0, async function (done) {
+    it('testDeviceKvStorePutFloat103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutFloat103');
         try {
             var floatValue = 123456.0;
@@ -534,8 +582,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1160
      * @tc.name [JS-API8]DeviceKvStore.Put(Float)
      * @tc.desc Test Js Api DeviceKvStore.Put(Float) testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutFloat104', 0, async function (done) {
+    it('testDeviceKvStorePutFloat104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutFloat104');
         try {
             var floatValue = 123456.00;
@@ -560,8 +611,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0540
      * @tc.name [JS-API8]DeviceKvStore.Get(Float)
      * @tc.desc Test Js Api DeviceKvStore.Get(Float) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetFloat101', 0, async function (done) {
+    it('testDeviceKvStoreGetFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetFloat101');
         try {
             await kvStore.get(localDeviceId, KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -584,8 +638,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0340
      * @tc.name [JS-API8]DeviceKvStore.DeleteString()
      * @tc.desc Test Js Api DeviceKvStore.DeleteString testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteString101', 0, async function (done) {
+    it('testDeviceKvStoreDeleteString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteString101');
         try {
             await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -608,8 +665,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0350
      * @tc.name [JS-API8]DeviceKvStore.DeleteString()
      * @tc.desc Test Js Api DeviceKvStore.DeleteString testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteString102', 0, async function (done) {
+    it('testDeviceKvStoreDeleteString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteString102');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err, data) {
@@ -632,8 +692,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0290
      * @tc.name [JS-API8]DeviceKvStore.DeleteInt()
      * @tc.desc Test Js Api DeviceKvStore.DeleteInt testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteInt101', 0, async function (done) {
+    it('testDeviceKvStoreDeleteInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteInt101');
         try{
             await kvStore.delete(KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -656,8 +719,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0300
      * @tc.name [JS-API8]DeviceKvStore.DeleteInt()
      * @tc.desc Test Js Api DeviceKvStore.DeleteInt testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteInt102', 0, async function (done) {
+    it('testDeviceKvStoreDeleteInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteInt102');
         try{
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -680,8 +746,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0260
      * @tc.name [JS-API8]DeviceKvStore.DeleteFloat()
      * @tc.desc Test Js Api DeviceKvStore.DeleteFloat testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteFloat101', 0, async function (done) {
+    it('testDeviceKvStoreDeleteFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteFloat101');
         try{
             await kvStore.delete(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -704,8 +773,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0270
      * @tc.name [JS-API8]DeviceKvStore.DeleteFloat()
      * @tc.desc Test Js Api DeviceKvStore.DeleteFloat testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteFloat102', 0, async function (done) {
+    it('testDeviceKvStoreDeleteFloat102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteFloat102');
         try{
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, async function (err, data) {
@@ -728,8 +800,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0230
      * @tc.name [JS-API8]DeviceKvStore.DeleteBool()
      * @tc.desc Test Js Api DeviceKvStore.DeleteBool testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteBool101', 0, async function (done) {
+    it('testDeviceKvStoreDeleteBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteBool101');
         try{
             await kvStore.delete(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -752,8 +827,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0240
      * @tc.name [JS-API8]DeviceKvStore.DeleteBool()
      * @tc.desc Test Js Api DeviceKvStore.DeleteBool testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteBool102', 0, async function (done) {
+    it('testDeviceKvStoreDeleteBool102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteBool102');
         try{
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -776,8 +854,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0890
      * @tc.name [JS-API8]DeviceKvStore.OnChange()
      * @tc.desc Test Js Api DeviceKvStore.OnChange testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnChange101', 0, async function (done) {
+    it('testDeviceKvStoreOnChange101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreOnChange101');
         try {
             kvStore.on('dataChange', 0, function (data) {
@@ -800,8 +881,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0900
      * @tc.name [JS-API8]DeviceKvStore.OnChange()
      * @tc.desc Test Js Api DeviceKvStore.OnChange testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnChange102', 0, async function (done) {
+    it('testDeviceKvStoreOnChange102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreOnChange102');
         try {
             kvStore.on('dataChange', 1, function (data) {
@@ -824,8 +908,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0910
      * @tc.name [JS-API8]DeviceKvStore.OnChange()
      * @tc.desc Test Js Api DeviceKvStore.OnChange testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnChange103', 0, async function (done) {
+    it('testDeviceKvStoreOnChange103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreOnChange103');
         try {
             kvStore.on('dataChange', 2, function (data) {
@@ -848,8 +935,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0950
      * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
      * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnSyncComplete101', 0, async function (done) {
+    it('testDeviceKvStoreOnSyncComplete101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('testDeviceKvStoreOnSyncComplete101 dataChange');
@@ -880,8 +970,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0960
      * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
      * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnSyncComplete102', 0, async function (done) {
+    it('testDeviceKvStoreOnSyncComplete102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('testDeviceKvStoreOnSyncComplete102 dataChange');
@@ -912,8 +1005,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0970
      * @tc.name [JS-API8]DeviceKvStore.OnSyncComplete()
      * @tc.desc Test Js Api DeviceKvStore.OnSyncComplete testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreOnSyncComplete103', 0, async function (done) {
+    it('testDeviceKvStoreOnSyncComplete103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('testDeviceKvStoreOnSyncComplete103 dataChange');
@@ -944,8 +1040,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1480
      * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
      * @tc.desc Test Js Api DeviceKvStore.SetSyncRange testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreSetSyncRange101', 0, async function (done) {
+    it('testDeviceKvStoreSetSyncRange101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreSetSyncRange101');
         try {
             var localLabels = ['A', 'B'];
@@ -966,8 +1065,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1490
      * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
      * @tc.desc Test Js Api DeviceKvStore.SetSyncRange testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreSetSyncRange102', 0, async function (done) {
+    it('testDeviceKvStoreSetSyncRange102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreSetSyncRange102');
         try {
             var localLabels = ['A', 'B'];
@@ -988,8 +1090,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1500
      * @tc.name [JS-API8]DeviceKvStore.SetSyncRange()
      * @tc.desc Test Js Api DeviceKvStore.SetSyncRange testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreSetSyncRange103', 0, async function (done) {
+    it('testDeviceKvStoreSetSyncRange103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreSetSyncRange103');
         try {
             var localLabels = ['A', 'B'];
@@ -1010,8 +1115,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1040
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch101', 0, async function (done) {
+    it('testDeviceKvStorePutBatch101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch101');
         try {
             let entries = [];
@@ -1050,8 +1158,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1050
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch102', 0, async function (done) {
+    it('testDeviceKvStorePutBatch102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch102');
         try {
             let entries = [];
@@ -1090,8 +1201,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1060
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch103', 0, async function (done) {
+    it('testDeviceKvStorePutBatch103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch103');
         try {
             let entries = [];
@@ -1130,8 +1244,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1070
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch104', 0, async function (done) {
+    it('testDeviceKvStorePutBatch104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch104');
         try {
             let entries = [];
@@ -1170,8 +1287,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1080
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch105', 0, async function (done) {
+    it('testDeviceKvStorePutBatch105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch105');
         try {
             var bo = false;
@@ -1211,8 +1331,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1090
      * @tc.name [JS-API8]DeviceKvStore.Put(Batch)
      * @tc.desc Test Js Api DeviceKvStore.Put(Batch) testcase 106
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorePutBatch106', 0, async function (done) {
+    it('testDeviceKvStorePutBatch106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorePutBatch106');
         try {
             var arr = new Uint8Array([21,31]);
@@ -1252,8 +1375,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0190
      * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
      * @tc.desc Test Js Api DeviceKvStore.DeleteBatch testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteBatch101', 0, async function (done) {
+    it('testDeviceKvStoreDeleteBatch101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteBatch101');
         try {
             let entries = [];
@@ -1291,8 +1417,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0200
      * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
      * @tc.desc Test Js Api DeviceKvStore.DeleteBatch testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteBatch102', 0, async function (done) {
+    it('testDeviceKvStoreDeleteBatch102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteBatch102');
         try {
             let keys = ['batch_test_string_key1', 'batch_test_string_key2'];
@@ -1312,8 +1441,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0210
      * @tc.name [JS-API8]DeviceKvStore.DeleteBatch()
      * @tc.desc Test Js Api DeviceKvStore.DeleteBatch testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreDeleteBatch103', 0, async function (done) {
+    it('testDeviceKvStoreDeleteBatch103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreDeleteBatch103');
         try {
             let entries = [];
@@ -1350,8 +1482,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1560
      * @tc.name [JS-API8]DeviceKvStore.startTransaction()
      * @tc.desc Test Js Api DeviceKvStore.startTransaction testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorestartTransaction101', 0, async function (done) {
+    it('testDeviceKvStorestartTransaction101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorestartTransaction101');
         try {
             var count = 0;
@@ -1392,8 +1527,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1570
      * @tc.name [JS-API8]DeviceKvStore.startTransaction()
      * @tc.desc Test Js Api DeviceKvStore.startTransaction testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorestartTransaction102', 0, async function (done) {
+    it('testDeviceKvStorestartTransaction102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorestartTransaction102');
         try {
             var count = 0;
@@ -1434,8 +1572,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1580
      * @tc.name [JS-API8]DeviceKvStore.startTransaction()
      * @tc.desc Test Js Api DeviceKvStore.startTransaction testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorestartTransaction103', 0, async function (done) {
+    it('testDeviceKvStorestartTransaction103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorestartTransaction103');
         try {
             await kvStore.startTransaction(1, function (err,data) {
@@ -1457,8 +1598,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1590
      * @tc.name [JS-API8]DeviceKvStore.startTransaction()
      * @tc.desc Test Js Api DeviceKvStore.startTransaction testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorestartTransaction104', 0, async function (done) {
+    it('testDeviceKvStorestartTransaction104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorestartTransaction104');
         try {
             await kvStore.startTransaction('test_string', function (err,data) {
@@ -1480,8 +1624,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1600
      * @tc.name [JS-API8]DeviceKvStore.startTransaction()
      * @tc.desc Test Js Api DeviceKvStore.startTransaction testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStorestartTransaction105', 0, async function (done) {
+    it('testDeviceKvStorestartTransaction105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStorestartTransaction105');
         try {
             await kvStore.startTransaction(2.000, function (err,data) {
@@ -1503,8 +1650,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0130
      * @tc.name [JS-API8]DeviceKvStore.Commit()
      * @tc.desc Test Js Api DeviceKvStore.Commit testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCommit101', 0, async function (done) {
+    it('testDeviceKvStoreCommit101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCommit101');
         try {
             await kvStore.commit(1, function (err,data) {
@@ -1526,8 +1676,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0140
      * @tc.name [JS-API8]DeviceKvStore.Commit()
      * @tc.desc Test Js Api DeviceKvStore.Commit testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCommit102', 0, async function (done) {
+    it('testDeviceKvStoreCommit102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCommit102');
         try {
             await kvStore.commit('test_string', function (err,data) {
@@ -1549,8 +1702,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0150
      * @tc.name [JS-API8]DeviceKvStore.Commit()
      * @tc.desc Test Js Api DeviceKvStore.Commit testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCommit103', 0, async function (done) {
+    it('testDeviceKvStoreCommit103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCommit103');
         try {
             await kvStore.commit(2.000, function (err,data) {
@@ -1572,8 +1728,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1420
      * @tc.name [JS-API8]DeviceKvStore.Rollback()
      * @tc.desc Test Js Api DeviceKvStore.Rollback testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRollback101', 0, async function (done) {
+    it('testDeviceKvStoreRollback101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRollback101');
         try {
             await kvStore.rollback(1, function (err,data) {
@@ -1595,8 +1754,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1430
      * @tc.name [JS-API8]DeviceKvStore.Rollback()
      * @tc.desc Test Js Api DeviceKvStore.Rollback testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRollback102', 0, async function (done) {
+    it('testDeviceKvStoreRollback102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRollback102');
         try {
             await kvStore.rollback('test_string', function (err,data) {
@@ -1618,8 +1780,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1440
      * @tc.name [JS-API8]DeviceKvStore.Rollback()
      * @tc.desc Test Js Api DeviceKvStore.Rollback testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRollback103', 0, async function (done) {
+    it('testDeviceKvStoreRollback103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRollback103');
         try {
             await kvStore.rollback(2.000, function (err,data) {
@@ -1641,8 +1806,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0400
      * @tc.name [JS-API8]DeviceKvStore.EnableSync()
      * @tc.desc Test Js Api DeviceKvStore.EnableSync testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreEnableSync101', 0, async function (done) {
+    it('testDeviceKvStoreEnableSync101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreEnableSync101');
         try {
             await kvStore.enableSync(true, function (err,data) {
@@ -1666,8 +1834,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0410
      * @tc.name [JS-API8]DeviceKvStore.EnableSync()
      * @tc.desc Test Js Api DeviceKvStore.EnableSync testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreEnableSync102', 0, async function (done) {
+    it('testDeviceKvStoreEnableSync102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreEnableSync102');
         try {
             await kvStore.enableSync(false, function (err,data) {
@@ -1691,8 +1862,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0420
      * @tc.name [JS-API8]DeviceKvStore.EnableSync()
      * @tc.desc Test Js Api DeviceKvStore.EnableSync testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreEnableSync103', 0, async function (done) {
+    it('testDeviceKvStoreEnableSync103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreEnableSync103');
         try {
             await kvStore.enableSync(function (err,data) {
@@ -1714,8 +1888,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0430
      * @tc.name [JS-API8]DeviceKvStore.EnableSync()
      * @tc.desc Test Js Api DeviceKvStore.EnableSync testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreEnableSync104', 0, async function (done) {
+    it('testDeviceKvStoreEnableSync104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreEnableSync104');
         try {
             await kvStore.enableSync(null, function (err,data) {
@@ -1737,8 +1914,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1350
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRemoveDeviceData101', 0, async function (done) {
+    it('testDeviceKvStoreRemoveDeviceData101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData101');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -1771,8 +1951,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1360
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRemoveDeviceData102', 0, async function (done) {
+    it('testDeviceKvStoreRemoveDeviceData102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData102');
         try {
             await kvStore.removeDeviceData(function (err,data) {
@@ -1794,8 +1977,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1370
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-     it('testDeviceKvStoreRemoveDeviceData103', 0, async function (done) {
+     it('testDeviceKvStoreRemoveDeviceData103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData103');
         try {
             await kvStore.removeDeviceData('', function (err,data) {
@@ -1817,8 +2003,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_1380
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreRemoveDeviceData104', 0, async function (done) {
+    it('testDeviceKvStoreRemoveDeviceData104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData104');
         try {
             await kvStore.removeDeviceData(null, function (err,data) {
@@ -1840,8 +2029,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0640
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet101', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet101');
         try {
             let resultSet;
@@ -1882,8 +2074,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0650
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet102', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet102');
         try {
             let resultSet;
@@ -1908,8 +2103,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0660
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet103', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet103');
         try {
             let resultSet;
@@ -1929,8 +2127,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0670
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet104', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet104');
         try {
             let resultSet;
@@ -1950,8 +2151,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0680
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet105', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet105');
         try {
             let resultSet;
@@ -1994,8 +2198,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0690
      * @tc.name [JS-API8]DeviceKvStore.GetResultSet()
      * @tc.desc Test Js Api DeviceKvStore.GetResultSet() testcase 106
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSet106', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSet106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSet106');
         try {
             let resultSet;
@@ -2039,8 +2246,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0060
      * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
      * @tc.desc Test Js Api DeviceKvStore.CloseResultSet testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCloseResultSet101', 0, async function (done) {
+    it('testDeviceKvStoreCloseResultSet101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet101');
         try {
             console.info('testDeviceKvStoreCloseResultSet101 success');
@@ -2065,8 +2275,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0070
      * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
      * @tc.desc Test Js Api DeviceKvStore.CloseResultSet testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCloseResultSet102', 0, async function (done) {
+    it('testDeviceKvStoreCloseResultSet102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet102');
         try {
             let resultSet = null;
@@ -2095,8 +2308,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0080
      * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
      * @tc.desc Test Js Api DeviceKvStore.CloseResultSet testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCloseResultSet103', 0, async function (done) {
+    it('testDeviceKvStoreCloseResultSet103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet103');
         try {
             console.info('testDeviceKvStoreCloseResultSet103 success');
@@ -2120,8 +2336,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0090
      * @tc.name [JS-API8]DeviceKvStore.CloseResultSet()
      * @tc.desc Test Js Api DeviceKvStore.CloseResultSet testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreCloseResultSet104', 0, async function (done) {
+    it('testDeviceKvStoreCloseResultSet104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet104');
         try {
             kvStore.closeResultSet(1, (err, data) => {
@@ -2143,8 +2362,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0720
      * @tc.name [JS-API8]DeviceKvStore.Get(ResultSize)
      * @tc.desc Test Js Api DeviceKvStore.Get(ResultSize) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSize101', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSize101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSize101');
         try {
             let entries = [];
@@ -2182,8 +2404,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0730
      * @tc.name [JS-API8]DeviceKvStore.Get(ResultSize)
      * @tc.desc Test Js Api DeviceKvStore.Get(ResultSize) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetResultSize102', 0, async function (done) {
+    it('testDeviceKvStoreGetResultSize102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetResultSize102');
         try {
             let entries = [];
@@ -2220,8 +2445,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0490
      * @tc.name [JS-API8]DeviceKvStore.GetEntries()
      * @tc.desc Test Js Api DeviceKvStore.GetEntries() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetEntries101', 0, async function (done) {
+    it('testDeviceKvStoreGetEntries101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetEntries101');
         try {
             var arr = new Uint8Array([21,31]);
@@ -2265,8 +2493,11 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_DeviceStoreJsApiTest_0500
      * @tc.name [JS-API8]DeviceKvStore.GetEntries()
      * @tc.desc Test Js Api DeviceKvStore.GetEntries() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testDeviceKvStoreGetEntries102', 0, async function (done) {
+    it('testDeviceKvStoreGetEntries102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testDeviceKvStoreGetEntries102');
         try {
             var arr = new Uint8Array([21,31]);
