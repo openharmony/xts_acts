@@ -18,6 +18,6 @@
     "@ohos/hvigor-ohos-plugin": "4.0.5"
   },
   "properties": {
-    "ohos.nativeResolver":false
-  }
+    "ohos.nativeResolver": false,
+  },
 }
