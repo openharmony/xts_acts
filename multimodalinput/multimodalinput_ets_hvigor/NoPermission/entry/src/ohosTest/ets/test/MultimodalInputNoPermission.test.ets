@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError }  from '@ohos.base';
+import { infraredEmitter } from '@kit.InputKit';
 
 export default function MultimodalInputNoPermissionTest() {
   describe("MultimodalInputNoPermissionTest", ()=> {
@@ -57,6 +58,52 @@ export default function MultimodalInputNoPermissionTest() {
       } catch (error) {
         console.info(`${caseName} Failed to set capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0900
+     * @tc.name: SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0900
+     * @tc.desc: Test transmitInfrared interface to set non-permission.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0900";
+      try {
+        let infraredFrequency: number = 38000;
+        let pattern: Array<number> = [100, 200, 300, 400];
+        infraredEmitter.transmitInfrared(infraredFrequency, pattern);
+        console.info(`${caseName} transmitInfrared success.`);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 201);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0200
+     * @tc.name: SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0200
+     * @tc.desc: Test getInfraredFrequencies interface to set non-permission.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0200";
+      try {
+        let frequencies = infraredEmitter.getInfraredFrequencies();
+        console.info(`${caseName} getInfraredFrequencies success, frequencies: ${JSON.stringify(frequencies)}`);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 201);
         done();
       }
     });
