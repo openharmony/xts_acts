@@ -1699,13 +1699,13 @@ export default function locationComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Location_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Location_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == LocationButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-              console.info("====>[Test_Security_Button_Location_1600] ERR CASE 成功");
-              expect(clickData.data.clickResult == LocationButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_1600] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Location_1600] END====");
               done();
             } else {
-              console.info("====>[Test_Security_Button_Location_1600] ERR CASE 失败");
+              console.info("====>[Test_Security_Button_Location_1600] 设置权限失败");
               expect().assertFail()
               console.info("====>[Test_Security_Button_Location_1600] END====");
               done();
