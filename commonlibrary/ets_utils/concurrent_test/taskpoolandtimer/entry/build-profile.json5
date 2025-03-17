@@ -17,7 +17,17 @@
   "buildOption": {
     "sourceOption": {
       "workers": [
-       
+       "./src/ohosTest/ets/workers/Worker.ets",
+        "./src/ohosTest/ets/workers/Worker1.ets",
+        "./src/ohosTest/ets/workers/Worker2.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker1.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker2.ets",
+        "./src/ohosTest/ets/workers/WorkerOne.ets",
+        "./src/ohosTest/ets/workers/WorkerTwo.ets",
+        "./src/ohosTest/ets/workers/WorkerThree.ets",
+        "./src/ohosTest/ets/testability/pages/workers/CalculatorWorker1.ets",
+        "./src/ohosTest/ets/testability/pages/workers/CalculatorWorker2.ets"
       ]
     }
   },
