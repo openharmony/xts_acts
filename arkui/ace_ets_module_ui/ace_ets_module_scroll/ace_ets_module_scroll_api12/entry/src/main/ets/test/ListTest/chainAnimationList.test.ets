@@ -46,11 +46,11 @@ export default function chainAnimationList() {
      * @tc.number    chainAnimationList_001
      * @tc.name      chainAnimationList_0100
      * @tc.desc      ChainAnimationOptions: Set edgeEffect to STRETCH.
-     * @tc.level     Level 3
+     * @tc.level     Level 0
      * @tc.type
      * @tc.size
      */
-    it('chainAnimationList_0100', 0, async (done: Function) => {
+    it('chainAnimationList_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[chainAnimationList_0100] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
