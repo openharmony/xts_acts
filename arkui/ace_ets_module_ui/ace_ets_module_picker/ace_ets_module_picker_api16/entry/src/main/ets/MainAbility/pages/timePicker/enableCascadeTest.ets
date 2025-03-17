@@ -32,7 +32,7 @@ struct TimePickerPage {
 
     }
     let callback: Callback = (message: ESObject) => {
-      console.error('message = ' + message.name + "--" + message.value)
+      console.error('message = ' + message.name + '--' + message.value)
       if (message.name == 'isMilitaryTime') {
         this.isMilitaryTime = message.value
       }
