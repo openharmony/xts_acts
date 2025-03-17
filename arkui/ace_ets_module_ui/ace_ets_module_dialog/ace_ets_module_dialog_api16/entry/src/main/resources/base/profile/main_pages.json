@@ -14,6 +14,9 @@
     "MainAbility/pages/Menu/menuitemOnChangeModifier",
     "MainAbility/pages/Menu/menuBindMenuModifier",
     "MainAbility/pages/Menu/BlurStyleOptions",
-    "MainAbility/pages/Menu/EffectOptions"
+    "MainAbility/pages/Menu/EffectOptions",
+    "MainAbility/pages/dialogLife/ActionSheetLife",
+    "MainAbility/pages/dialogLife/AlertDialogLife",
+    "MainAbility/pages/dialogLife/CustomDialogLife"
   ]
 }
