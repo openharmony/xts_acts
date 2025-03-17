@@ -27,9 +27,12 @@ export default function avRecorderTest() {
     const FORMAT_M4A = media.ContainerFormatType.CFT_MPEG_4A;
     const FORMAT_MP3 = media.ContainerFormatType.CFT_MP3;
     const FORMAT_WAV = media.ContainerFormatType.CFT_WAV;
+    const FORMAT_AMR = media.ContainerFormatType.CFT_AMR;
     const ENCORDER_AAC = media.CodecMimeType.AUDIO_AAC;
     const ENCORDER_MP3 = media.CodecMimeType.AUDIO_MP3;
     const ENCORDER_WAV = media.CodecMimeType.AUDIO_G711MU;
+    const ENCODER_AMR_NB = media.CodecMimeType.AUDIO_AMR_NB;
+    const ENCODER_AMR_WB = media.CodecMimeType.AUDIO_AMR_WB;
     let fdObject: ESObject;
     let fdPath: string;
     let commonFun = new Common();
@@ -2131,6 +2134,58 @@ export default function avRecorderTest() {
       avConfig.profile.audioSampleRate = 8000;
       commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100 end');
+      done();
+    })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100
+        * @tc.name      : 003.test recording AMR 3 seconds to stop
+        * @tc.desc      : Local Video recording AMR 3 seconds to stop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100', 0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100 start')
+      let timestamp = Date.now();
+      let filename = `avRecorder_${timestamp}.wav`;
+      fdObject = await commonFun.getFd(filename);
+      fdPath = "fd://" + fdObject.fdNumber;
+      console.info('case fdPath is: ' + fdPath);
+      avConfig.url = fdPath;
+      console.info('avConfig.url ' + avConfig.url);
+      avConfig.profile.fileFormat = FORMAT_AMR;
+      avConfig.profile.audioCodec = ENCODER_AMR_NB;
+      avConfig.profile.audioBitrate = 4750;
+      avConfig.profile.audioChannels = 1;
+      avConfig.profile.audioSampleRate = 8000;
+      commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100 end');
+      done();
+    })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200
+        * @tc.name      : 003.test recording AMR 3 seconds to stop
+        * @tc.desc      : Local Video recording AMR 3 seconds to stop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200', 0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 start')
+      let timestamp = Date.now();
+      let filename = `avRecorder_${timestamp}.wav`;
+      fdObject = await commonFun.getFd(filename);
+      fdPath = "fd://" + fdObject.fdNumber;
+      console.info('case fdPath is: ' + fdPath);
+      avConfig.url = fdPath;
+      console.info('avConfig.url ' + avConfig.url);
+      avConfig.profile.fileFormat = FORMAT_AMR;
+      avConfig.profile.audioCodec = ENCODER_AMR_WB;
+      avConfig.profile.audioBitrate = 6600;
+      avConfig.profile.audioChannels = 1;
+      avConfig.profile.audioSampleRate = 16000;
+      commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 end');
       done();
     })
   })
