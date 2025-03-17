@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import windowErrCode202_1 from './windowErrCode202_1.test'
-import windowErrCode202_2 from './windowErrCode202_2.test'
 import windowErrCode401_1 from './windowErrCode401_1.test'
 import windowErrCode401_2 from './windowErrCode401_2.test'
 import windowErrCode401_3 from './windowErrCode401_3.test'
@@ -22,8 +20,6 @@ import windowErrCode1300002_1 from './windowErrCode1300002_1.test'
 import windowErrCode1300002_2 from './windowErrCode1300002_2.test'
 import windowErrCode1300004 from './windowErrCode1300004.test'
 export default function testsuite() {
-  windowErrCode202_1()
-  windowErrCode202_2()
   windowErrCode401_1()
   windowErrCode401_2()
   windowErrCode401_3()

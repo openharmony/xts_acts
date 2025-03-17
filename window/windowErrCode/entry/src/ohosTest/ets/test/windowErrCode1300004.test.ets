@@ -321,31 +321,32 @@ export default function windowErrCode1300004() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testTouchOutside_OnDialogWindow_ClickMainWindow",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
-      await (tempWnd as ohosWindow.Window).showWindow();
+      let subWin: ohosWindow.Window | undefined = undefined;
+      await windowStage.createSubWindow('testSetWindowTitleButtonVisibleErrCode1300004_SubWindow_Promise')
+        .then((data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          console.info(msgStr + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+        })
+        .catch((err: BusinessError) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+          expect().assertFail();
+          done()
+        });
+      expect(!!subWin).assertTrue();
+      await (subWin! as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (subWin! as ohosWindow.Window).showWindow();
 
       try {
-        (tempWnd as ohosWindow.Window).setWindowTitleButtonVisible(true, true, true);
+        (subWin! as ohosWindow.Window).setWindowTitleButtonVisible(true, true, true);
         console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
         expect().assertFail();
-        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        await (subWin!! as ohosWindow.Window).destroyWindow();
         done();
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setWindowTitleButtonVisible. Cause:' +
         JSON.stringify(exception));
-        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        await (subWin!! as ohosWindow.Window).destroyWindow();
         if (exception.code == 801) {
           console.info(msgStr + '此设备不支持getDecorButtonStyle能力.');
         } else {
@@ -453,30 +454,31 @@ export default function windowErrCode1300004() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetTitleAndDockHoverShownPromiseErrCode1300004_0100",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
-      await (tempWnd as ohosWindow.Window).showWindow();
+      let subWin: ohosWindow.Window | undefined = undefined;
+      await windowStage.createSubWindow('testSetTitleAndDockHoverShownPromiseErrCode1300004_SubWindow_Promise')
+        .then((data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          console.info(msgStr + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+        })
+        .catch((err: BusinessError) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+          expect().assertFail();
+          done()
+        });
+      expect(!!subWin).assertTrue();
+      await (subWin! as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (subWin! as ohosWindow.Window).showWindow();
 
       try {
-        await (tempWnd as ohosWindow.Window).setTitleAndDockHoverShown(true, true).then(async () => {
+        await (subWin! as ohosWindow.Window).setTitleAndDockHoverShown(true, true).then(async () => {
           console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
           expect().assertFail();
-          await (tempWnd! as ohosWindow.Window).destroyWindow();
+          await (subWin! as ohosWindow.Window).destroyWindow();
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
-          await (tempWnd! as ohosWindow.Window).destroyWindow();
+          await (subWin! as ohosWindow.Window).destroyWindow();
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
           } else {
@@ -487,8 +489,8 @@ export default function windowErrCode1300004() {
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' +
         JSON.stringify(exception));
-        await (tempWnd! as ohosWindow.Window).destroyWindow();
-        expect(exception.code).assertEqual(1300004);
+        await (subWin! as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
         done()
       }
     })
