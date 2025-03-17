@@ -95,6 +95,7 @@
         "MainAbility/pages/RichEditor/richEditorPage",
         "MainAbility/pages/text/textTextCase",
         "MainAbility/pages/text/textDecoration",
-        "MainAbility/pages/Search/searchPage1"
+        "MainAbility/pages/Search/searchPage1",
+        "MainAbility/pages/TextArea/TextAreaType"
     ]
 }

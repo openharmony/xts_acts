@@ -19,6 +19,8 @@ import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test';
 import StyledStringUrl from './TextTest/StyledStringTest.test';
 import EnableHapticFeedbackTest from './TextTest/enableHapticFeedback.test';
+import BarStateTest from './RichEditorTest/barState.test';
+import UnmarshallingErrorCodeTest from './StyledStringTest/unmarshalling.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -27,4 +29,6 @@ export default function testsuite() {
   StyledStringUrl();
   RichEditorStyledStringTest();
   EnableHapticFeedbackTest();
+  BarStateTest();
+  UnmarshallingErrorCodeTest();
 }

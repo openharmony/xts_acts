@@ -480,6 +480,8 @@
 
     "MainAbility/pages/RichEditorScroll/RichEditorScroll001",
     "MainAbility/pages/StyledString/getStyles",
-    "MainAbility/pages/StyledString/replaceString"
+    "MainAbility/pages/StyledString/replaceString",
+    "MainAbility/pages/TextArea/TextAreaType",
+    "MainAbility/pages/TextInput/TextInputType"
   ]
 }
