@@ -19,14 +19,14 @@ import image from '@ohos.multimedia.image';
 import Want from '@ohos.app.ability.Want';
 
 
-class Size {
+class Sizes {
   height: number = 3;
   width: number = 5;
 }
 
 
 let opt: ESObject = {
-  size: new Size(),
+  size: new Sizes(),
   pixelFormat: 3,
   editable: true,
   alphaType: 1,
@@ -71,7 +71,7 @@ export default function pasteBoardRecordTest() {
      * @tc.number SUB_Pasteboard_Local_SDK_PasteDataCreate_1000
      * @tc.name CreateData
      * @tc.desc Test pasteBoard create pixelMap data success
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

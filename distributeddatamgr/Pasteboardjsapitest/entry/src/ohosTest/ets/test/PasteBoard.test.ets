@@ -18,13 +18,13 @@ import pasteboard from '@ohos.pasteboard'
 import image from '@ohos.multimedia.image';
 import Want from '@ohos.app.ability.Want';
 
-class Size {
+class Sizes {
   height: number = 3;
   width: number = 5;
 }
 
 let opt: ESObject = {
-  size: new Size,
+  size: new Sizes,
   pixelFormat: 3,
   editable: true,
   alphaType: 1,
