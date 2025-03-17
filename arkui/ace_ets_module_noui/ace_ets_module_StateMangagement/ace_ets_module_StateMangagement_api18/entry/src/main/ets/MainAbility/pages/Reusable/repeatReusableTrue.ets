@@ -15,7 +15,7 @@
  
 @ObservedV2
 class RepeatreutrueClazz {
-  @Trace message: string = '';
+  @Trace message: string ;
 
   constructor(message: string) {
     this.message = message;
@@ -32,7 +32,7 @@ struct Repeatreutrue  {
   @Local selectIdx: number = 0;
   private scroller: Scroller = new Scroller()
 
-  @Monitor("simpleList")
+  @Monitor('simpleList')
   reloadSelectOptions(): void {
     this.selectOptions = [];
     for (let i = 0; i < this.simpleList.length; ++i) {
@@ -99,7 +99,7 @@ struct Repeatreutrue  {
             return item.message;
           })
           .virtualScroll({reusable: true })
-          .templateId(() => "a")
+          .templateId(() => 'a')
           .template('a', (ri) => {
             Text(`[a] index${ri.index}: ${ri.item.message}`)
               .fontSize(25)
