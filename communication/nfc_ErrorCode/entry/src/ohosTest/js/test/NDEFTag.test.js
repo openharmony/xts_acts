@@ -16,7 +16,7 @@
 
 import tag from '@ohos.nfc.tag';
 import cardEmulation from '@ohos.nfc.cardEmulation';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -735,7 +735,7 @@ export default function nfcNDEFErrorTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_2100', 0, function () {
+        it('SUB_Communication_NFC_nfcNDEF_js_2100', Level.LEVEL2, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 try{
                     let ndefMessage = tag.ndef.createNdefMessage('test');
