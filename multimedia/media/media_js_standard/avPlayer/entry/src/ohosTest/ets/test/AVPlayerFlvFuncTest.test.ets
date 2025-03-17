@@ -25,7 +25,7 @@ const RELEASED = 'released';
 const ERROR = 'error';
 let mediaTestBase = new MediaTestBase()
 let payloadTypes: Array<number> = [];
-let type: number = 5;
+let expectType: number = 5;
 
 let dataCanBeRead = false;
 let avPlayer: media.AVPlayer | null = null;
@@ -106,7 +106,7 @@ function setAVPlayerSeiMessageCb(avPlayer: media.AVPlayer | null, payloadTypes: 
       expect(messages.length).assertLarger(0);
       messages.forEach((message) => {
         expect(typeof message.payload === 'number').assertTrue();
-        expect(message.payloadType).assertEqual(type);
+        expect(message.payloadType).assertEqual(expectType);
         expect(message.payload !== null && message.payload !== undefined).assertTrue();
         expect(message.payload.byteLength).assertLarger(0);
       })
