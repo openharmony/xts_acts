@@ -23,7 +23,7 @@ const TAG = '[FocusAxisEventCTest]';
 struct FocusAxisEventExampleC {
   @State text: string = ''
   @State axisValue: string = ''
-  @State name: string = 'FocusAxisEventTest';
+  @State name: string = 'GameCtronllerCTest';
   @State Vue: boolean = false;
   @State intervalNum: number = 0;
 
