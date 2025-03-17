@@ -28,7 +28,6 @@ import textAreaNode from "./TextAreaTest/textAreaNode.test";
 import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
 import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
 
-
 export default function testsuite() {
   textAreaInputTest();
   KeyboardAvoidModeTest();
@@ -43,5 +42,5 @@ export default function testsuite() {
   marqueeNode();
   textAreaNode();
   SymbolGlyphNodeTest();
-  ImageOrientationTest();
+  ImageOrientationTest()
 }

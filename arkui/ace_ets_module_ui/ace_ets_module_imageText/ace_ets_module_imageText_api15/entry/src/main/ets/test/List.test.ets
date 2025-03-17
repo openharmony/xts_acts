@@ -34,7 +34,6 @@ import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.tes
 import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
 import imageMatrix from './imageMatrix/imageMatrix.test';
 
-
 export default function testsuite() {
   textAreaInputTest();
   TextInputKeyboardAppearanceTest();
@@ -44,6 +43,7 @@ export default function testsuite() {
   TextInputStopBackPressTest();
   TextAreaStopBackPressTest();
   SearchStopBackPressTest();
+  SelectionMenuOptions();
   PixelMapColorFilterTest();
   ResourceDefaultTest();
   VerticalAlignTest();

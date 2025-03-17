@@ -33,7 +33,6 @@ struct TextMenuItemIdExample {
     menuItems.forEach(value => {
       if (value.id.equals(TextMenuItemId.TRANSLATE)) {
         value.content = 'TRANSLATE'
-        this.flag = true
         extensionMenuItems.push(value)
       }
     });
