@@ -883,7 +883,7 @@ export default function usbDdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUsbGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testUsbGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices001---------------------------');
       try {
         if (dev < 0) {
@@ -911,7 +911,7 @@ export default function usbDdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUsbGetDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testUsbGetDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices002---------------------------');
       try {
         if (dev < 0) {
@@ -939,7 +939,7 @@ export default function usbDdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUsbGetDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testUsbGetDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices003---------------------------');
       try {
         if (dev < 0) {
