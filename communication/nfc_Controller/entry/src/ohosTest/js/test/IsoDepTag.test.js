@@ -15,7 +15,7 @@
 
 
 import tag from '@ohos.nfc.tag';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import cardEmulation from '@ohos.nfc.cardEmulation';
 import controller from '@ohos.nfc.controller';
 
@@ -366,9 +366,9 @@ export default function nfcIsoDepTagTest() {
          * @tc.desc Whether to support a certain type of card HceService transmit
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', 0,async function (done)  {
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', Level.level0,async function (done)  {
             let hceService = new cardEmulation.HceService();
             console.info('[NFC_test]10 hceService state is' + hceService )
             let responseData = [0x1, 0x2];
@@ -388,9 +388,9 @@ export default function nfcIsoDepTagTest() {
          * @tc.desc Whether to support a certain type of card HceService transmit
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', 0,async function (done)  {
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', Level.level0,async function (done)  {
             let hceService = new cardEmulation.HceService();
             console.info('[NFC_test]11 hceService state is' + hceService )
             let responseData = [0x1, 0x2];
