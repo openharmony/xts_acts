@@ -17,13 +17,14 @@ import { BusinessError } from '@ohos.base';
 import bluetooth from '@ohos.bluetooth.connection';
 import ble from '@ohos.bluetooth.ble';
 import btAccess from '@ohos.bluetooth.access';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
     function PinRequiredParam(data : bluetooth.PinRequiredParam) {
             console.info("[bluetooth_js] pinRequired on:" + JSON.stringify(data));
             bluetooth.setDevicePairingConfirmation(data.deviceId, false);
             console.info("[bluetooth_js] setDevicePairingConfirmation data.deviceId:" + data.deviceId);
+            console.info("[bluetooth_js] setDevicePairingConfirmation data.pinCode:" + data.pinCode);
         }
     function onReceiveEvent2(data : Array<string>) {
             console.info('[bluetooth_js] Device' + JSON.stringify(data) +
@@ -177,9 +178,9 @@ describe('btConnectionTest', () => {
      * @tc.desc Test pinRequired off api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             bluetooth.on('pinRequired', onReceiveEvent1);
             bluetooth.off('pinRequired', onReceiveEvent1);
@@ -199,7 +200,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0200', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let ret = bluetooth.getPairedDevices();
             console.info('[bluetooth_js] getPairedDevices ret2:' + JSON.stringify(ret));
@@ -219,7 +220,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0300', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
          try {
             let ret = bluetooth.getRemoteDeviceName("00:00:00:00:00:00");
             console.info('[bluetooth_js] getRemoteDeviceName ret2:' + JSON.stringify(ret));
@@ -236,9 +237,9 @@ describe('btConnectionTest', () => {
      * @tc.desc Test pairDevice callback api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0400', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             bluetooth.on('bondStateChange', BondStateParam);
             await bluetooth.pairDevice("11:22:55:66:33:44").then(() => {
@@ -262,9 +263,9 @@ describe('btConnectionTest', () => {
      * @tc.desc Test setDevicePairingConfirmation api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0500', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             bluetooth.on('pinRequired', PinRequiredParam);
             await sleep(2000);
@@ -282,9 +283,9 @@ describe('btConnectionTest', () => {
      * @tc.desc Test get RemoteDeviceClass api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 1
+     * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0600', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let DeviceClass = bluetooth.getRemoteDeviceClass("00:00:00:00:00:00");
             console.info('[bluetooth_js]getRemoteDeviceClass majorClass:' + DeviceClass.majorClass);
@@ -305,7 +306,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0700', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setDevicePinCode('11:22:33:44:55:66', '12345', (err, data) => {
                 console.info('setDevicePinCode callback,device name err:' + JSON.stringify(err) + ',device name:' + JSON.stringify(data));
@@ -325,7 +326,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0800', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
                 console.info('setDevicePinCode promise');
@@ -347,7 +348,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0900', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.on('bondStateChange', BondStateParam1);
             bluetooth.pairDevice("11:22:55:66:33:44").then((data) => {
@@ -375,7 +376,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0100', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let state = btAccess.getState();
        console.info('[bluetooth_js] get bluetooth state001'+ JSON.stringify(state));
        if(state == 2)
@@ -409,7 +410,7 @@ describe('btConnectionTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0200', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let state = btAccess.getState();
        console.info('[bluetooth_js] get bluetooth state002'+ JSON.stringify(state));
        if(state == 2)
@@ -439,9 +440,9 @@ describe('btConnectionTest', () => {
      * @tc.desc TEST scanmode api by promise.
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-   it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0300', 0, async (done : Function) => {
+   it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state003'+ JSON.stringify(state));
     if(state == 2)
@@ -472,9 +473,9 @@ describe('btConnectionTest', () => {
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 1
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0400', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
      let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state004'+ JSON.stringify(state));
     if(state == 2)
@@ -505,9 +506,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0400', 0, async (done : Funct
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 3
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0500', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state005'+ JSON.stringify(state));
     if(state == 2)
@@ -538,9 +539,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0500', 0, async (done : Funct
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 1
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0600', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state006'+ JSON.stringify(state));
     if(state == 2)
@@ -573,7 +574,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0600', 0, async (done : Funct
  * @tc.size MediumTest
  * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0700', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state007'+ JSON.stringify(state));
     if(state == 2)
@@ -604,9 +605,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0700', 0, async (done : Funct
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 1
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0800', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state008'+ JSON.stringify(state));
     if(state == 2)
@@ -637,9 +638,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0800', 0, async (done : Funct
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 3
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0900', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     let state = btAccess.getState();
     console.info('[bluetooth_js] get bluetooth state009'+ JSON.stringify(state));
     if(state == 2)
@@ -670,9 +671,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0900', 0, async (done : Funct
  * @tc.desc TEST scanmode api by promise.
  * @tc.type Function
  * @tc.size MediumTest
- * @tc.level Level 4
+ * @tc.level Level 2
  */
-it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Function) => {
+it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
     try {
         let state = btAccess.getState();
         console.info('[bluetooth_js] get bluetooth state010'+ JSON.stringify(state));
@@ -707,7 +708,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_DISCOVERY_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_DISCOVERY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
     try {
         bluetooth.on("bluetoothDeviceFind", onReceiveEvent2);
         bluetooth.startBluetoothDiscovery();
@@ -730,9 +731,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test setLocalName api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 1 
+     * @tc.level Level 3 
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.LETTERS_TEST);
             await sleep(1000);
@@ -754,7 +755,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0200', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.CHINESES_TEST2);
             await sleep(1000);
@@ -774,9 +775,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test setLocalName number
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 2
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0300', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.NUM_TEST);
             await sleep(1000);
@@ -796,9 +797,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test setLocalName api by SYMBOL.
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 1
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0400', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.SYMBOL_TEST);
             await sleep(1000);
@@ -818,9 +819,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 2
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0500', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let newName = 'my bluetooth';
             bluetooth.setLocalName(newName);
@@ -843,7 +844,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0600', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let newName = 'bluetooth1234ABCDEFGH';
             bluetooth.setLocalName(newName);
@@ -866,7 +867,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0700', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let newName = '蓝牙设备bluetooth';
             bluetooth.setLocalName(newName);
@@ -889,7 +890,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0800', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES4);
             await sleep(1000);
@@ -911,7 +912,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0900', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES2);
             await sleep(1000);
@@ -933,7 +934,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1000', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES3);
             await sleep(1000);
@@ -953,9 +954,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 2
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let newName = '蓝牙设备123';
             bluetooth.setLocalName(newName);
@@ -978,7 +979,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1200', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let newName = '蓝牙设备bluetooth12';
             bluetooth.setLocalName(newName);
@@ -1001,7 +1002,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-      it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1300', 0, async (done : Function) => {
+      it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES6);
             await sleep(1000);
@@ -1023,7 +1024,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1400', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES);
             await sleep(1000);
@@ -1045,7 +1046,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1500', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES5);
             await sleep(1000);
@@ -1067,7 +1068,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1600', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.NUM_TEST1);
             await sleep(1000);
@@ -1089,7 +1090,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1700', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             bluetooth.setLocalName(Btname.MIXES7);
             await sleep(1000);
@@ -1111,7 +1112,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1800', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let name = bluetooth.getLocalName();
             bluetooth.setLocalName('');
@@ -1134,7 +1135,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1900', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let localName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1900 localName = '+ JSON.stringify(localName));
@@ -1165,7 +1166,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PROFILE_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PROFILE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let connectionState = bluetooth.getProfileConnectionState();
             expect(true).assertEqual(connectionState == 0 || connectionState == 1 || connectionState == 2 || connectionState == 3);
@@ -1184,7 +1185,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PROFILE_0200', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PROFILE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let result = bluetooth.getProfileConnectionState(1);
             expect(true).assertEqual(result == 0 || result == 1 || result == 2 || result == 3);
@@ -1201,9 +1202,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test BluetoothTransport api10
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0100', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             let TRANSPORT_BR_EDR = bluetooth.BluetoothTransport.TRANSPORT_BR_EDR;
             let TRANSPORT_LE = bluetooth.BluetoothTransport.TRANSPORT_LE;
@@ -1222,9 +1223,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test DeviceChargeState api12
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0200', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             let deviceNormalChargeNotCharged = bluetooth.DeviceChargeState.DEVICE_NORMAL_CHARGE_NOT_CHARGED;
             let deviceNormalChargeInCharging = bluetooth.DeviceChargeState.DEVICE_NORMAL_CHARGE_IN_CHARGING;
@@ -1247,9 +1248,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test UnbondCause api12
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0300', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
             let userRemoved = bluetooth.UnbondCause.USER_REMOVED;
             let RemoteDeviceDown = bluetooth.UnbondCause.REMOTE_DEVICE_DOWN;
@@ -1276,7 +1277,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1000', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let state: bluetooth.BondState = bluetooth.getPairState("00:11:22:33:44:55");
             console.log('[bluetooth_js] getPairState: ' + state);
@@ -1294,9 +1295,9 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test isBluetoothDiscovering api11
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1100', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) => {
         try {
             let result: boolean = bluetooth.isBluetoothDiscovering();
             console.log('[bluetooth_js] isBluetoothDiscovering: ' + result);
@@ -1316,7 +1317,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1200', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             await bluetooth.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
                 console.info('setRemoteDeviceName success');
@@ -1336,7 +1337,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1300', 0, async (done : Function) => {
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             await bluetooth.getRemoteDeviceBatteryInfo('11:22:33:44:55:66').then((data) => {
                 console.info('getRemoteDeviceBatteryInfo success, BatteryInfo:' + JSON.stringify(data));
@@ -1363,7 +1364,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1400', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             let getRemoProUid = () => {
                 return new Promise<void>((resolve,reject) => {
@@ -1402,7 +1403,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.size MediumTest
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1500', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
         try {
             await bluetooth.getRemoteProfileUuids('44:55:66:77:88:99').then((value: bluetooth.ProfileUuids[]) => {
                 console.info('[bluetooth_js] getRemoteProfileUuids result:' + JSON.stringify(value));
@@ -1420,16 +1421,88 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
      * @tc.desc Test getLastConnectionTime promise.
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_GETLASTCONNECTIONTIME_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_GETLASTCONNECTIONTIME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         try {
-            await bluetooth.getLastConnectionTime('11:22:33:AA:BB:FF').then((time: number) => {
+            await bluetooth.getLastConnectionTime('54:71:DD:5F:75:06').then((time: number) => {
                 console.info('[bluetooth_js] getLastConnectionTime result:' + JSON.stringify(time));
             });
         } catch (error) {
             console.info("[bluetooth_js] error code getLastConnectionTime -> " + error.code + " error info getLastConnectionTime  -> " + error.message);
             expect(Number(error.code)).assertEqual(2900099);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0400
+     * @tc.name testScanMode
+     * @tc.desc Test ScanMode enum.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
+        try {
+            let SCAN_MODE_NONE = bluetooth.ScanMode.SCAN_MODE_NONE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_NONE: " + SCAN_MODE_NONE);
+            expect(SCAN_MODE_NONE).assertEqual(0);
+
+            let SCAN_MODE_CONNECTABLE = bluetooth.ScanMode.SCAN_MODE_CONNECTABLE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_CONNECTABLE: " + SCAN_MODE_CONNECTABLE);
+            expect(SCAN_MODE_CONNECTABLE).assertEqual(1);
+
+            let SCAN_MODE_GENERAL_DISCOVERABLE = bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_GENERAL_DISCOVERABLE: " + SCAN_MODE_GENERAL_DISCOVERABLE);
+            expect(SCAN_MODE_GENERAL_DISCOVERABLE).assertEqual(2);
+
+            let SCAN_MODE_LIMITED_DISCOVERABLE = bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_LIMITED_DISCOVERABLE: " + SCAN_MODE_LIMITED_DISCOVERABLE);
+            expect(SCAN_MODE_LIMITED_DISCOVERABLE).assertEqual(3);
+
+            let SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE = bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE: " + SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
+            expect(SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE).assertEqual(4);
+
+            let SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE = bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE;
+            console.info("[bluetooth_js]ScanMode SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE: " + SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
+            expect(SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE).assertEqual(5);
+        } catch (err) {
+            console.info("bluetooth a2dp CodecType errCode:" + err.code + ",bluetooth a2dp CodecType errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1600
+     * @tc.name testOnDiscoveryResult
+     * @tc.desc Test onDiscoveryResult offDiscoveryResult
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
+        let onReceiveEvent: (data: Array<bluetooth.DiscoveryResult>) => void = (data: Array<bluetooth.DiscoveryResult>) => {
+            console.info('bluetooth discoveryResult result:'+ JSON.stringify(data));
+            console.info('bluetooth discoveryResult deviceId result:'+ JSON.stringify(data[0].deviceId));
+            console.info('bluetooth discoveryResult rssi result:'+ JSON.stringify(data[0].rssi));
+            console.info('bluetooth discoveryResult deviceName result:'+ JSON.stringify(data[0].deviceName));
+            console.info('bluetooth discoveryResult deviceClass result:'+ JSON.stringify(data[0].deviceClass));
+        }
+        try {
+            bluetooth.on('discoveryResult', onReceiveEvent);
+            await sleep(900);
+            bluetooth.off('discoveryResult', onReceiveEvent);
+        } catch (err) {
+            console.info("discoveryResult errCode:" + err.code + ",errMessage:" + err.message);
+                if (Number(err.code) == 801) {
+                    console.info("discoveryResult on/off is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect().assertFail();
+                }
         }
         done();
     })
