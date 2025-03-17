@@ -368,7 +368,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', Level.level0,async function (done)  {
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', Level.LEVEL0,async function (done)  {
             let hceService = new cardEmulation.HceService();
             console.info('[NFC_test]10 hceService state is' + hceService )
             let responseData = [0x1, 0x2];
@@ -390,7 +390,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', Level.level0,async function (done)  {
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', Level.LEVEL0,async function (done)  {
             let hceService = new cardEmulation.HceService();
             console.info('[NFC_test]11 hceService state is' + hceService )
             let responseData = [0x1, 0x2];
