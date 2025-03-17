@@ -28,11 +28,11 @@ import tabIconJsunit from './TabsTest/tabIconJsunit.test';
 import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
 import ScrollSourceOther from './ScrollTest/ScrollSourceOther.test';
 import ScrollSource from './ScrollTest/ScrollSource.test';
-import alignItemsGrid from './Grid/alignItemsGrid.test';
-import chainAnimationList from './List/chainAnimationList.test'
-import listItemGroupNone from './List/listItemGroupNone.test'
-import nestedScrollSwiper from './Swiper/nestedScrollSwiper.test'; 
-import scrollSourceDrag from './Scroll/scrollSourceDrag.test'; 
+import alignItemsGrid from './GridTest/alignItemsGrid.test';
+import chainAnimationList from './ListTest/chainAnimationList.test'
+import listItemGroupNone from './ListTest/listItemGroupNone.test'
+import nestedScrollSwiper from './SwiperTest/nestedScrollSwiper.test'; 
+import scrollSourceDrag from './ScrollTest/scrollSourceDrag.test'; 
 import offsetRemain from './ScrollTest/offsetRemain.test';
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
