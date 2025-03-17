@@ -59,22 +59,22 @@ void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVReco
     OH_LOG_INFO(LOG_APP, "NDK xts OH_AVRecorder_StateChangeReason reason:%{public}d!", reasonStr);
     switch (state) {
         OH_LOG_INFO(LOG_APP, "NDK xts OH_AVRecorder_State state:%{public}d!", state);
-    case AVRECORDER_IDLE:
-        break;
-    case AVRECORDER_PREPARED:
-        break;
-    case AVRECORDER_STARTED:
-        break;
-    case AVRECORDER_PAUSED:
-        break;
-    case AVRECORDER_STOPPED:
-        break;
-    case AVRECORDER_RELEASED:
-        break;
-    case AVRECORDER_ERROR:
-        break;
-    default:
-        break;
+        case AVRECORDER_IDLE:
+            break;
+        case AVRECORDER_PREPARED:
+            break;
+        case AVRECORDER_STARTED:
+            break;
+        case AVRECORDER_PAUSED:
+            break;
+        case AVRECORDER_STOPPED:
+            break;
+        case AVRECORDER_RELEASED:
+            break;
+        case AVRECORDER_ERROR:
+            break;
+        default:
+            break;
     }
 }
 void OnError(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)
@@ -120,7 +120,6 @@ static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 }
 static napi_value setPreviewSurfaceId(napi_env env, napi_callback_info info)
 {
-
     (void)info;
     int result = AV_ERR_OK;
     if (result != AV_ERR_OK) {
@@ -146,7 +145,6 @@ static bool GetInt32Property(napi_env env, napi_value root, const char *utf8name
 
 static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
 {
-
     if (env == nullptr || arg == nullptr) {
         OH_LOG_ERROR(LOG_APP, "env is %{public}s || arg is %{public}s", env, arg);
         return false;
@@ -173,107 +171,107 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     switch (fileFormat) {
-    case AVRECORDER_CFT_MPEG_4:
-        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
-        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-        config.videoSourceType = AVRECORDER_SURFACE_YUV;
-        if (videoSourceType == 0) {
+        case AVRECORDER_CFT_MPEG_4:
+            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             config.videoSourceType = AVRECORDER_SURFACE_YUV;
-        } else if (videoSourceType == 1) {
-            config.videoSourceType = AVRECORDER_SURFACE_ES;
-        }
-        config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
-        if (videoCodec == 2) {
+            if (videoSourceType == 0) {
+                config.videoSourceType = AVRECORDER_SURFACE_YUV;
+            } else if (videoSourceType == 1) {
+                config.videoSourceType = AVRECORDER_SURFACE_ES;
+            }
             config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
-        } else if (videoCodec == 6) {
-            config.profile.videoCodec = AVRECORDER_VIDEO_MPEG4;
-        } else if (videoCodec == 8) {
-            config.profile.videoCodec = AVRECORDER_VIDEO_HEVC;
-        }
-        config.profile.isHdr = false;
-        config.profile.enableTemporalScale = true;
-        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
-
-        if (fileGenerationMode == 0) {
-            config.fileGenerationMode = AVRECORDER_APP_CREATE;
-        } else if (fileGenerationMode == 1) {
-            config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
-        }
-        config.profile.videoBitrate = 2000000;
-        GetInt32Property(env, arg, "videoBitrate", &(config.profile.videoBitrate));
-        config.profile.videoFrameWidth = 1920;
-        config.profile.videoFrameHeight = 1080;
-        GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
-        GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
-        config.profile.videoFrameRate = 30;
-        GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));
-        OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameWidth :%{public}d",
-                    config.profile.videoFrameWidth);
-        OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameHeight :%{public}d",
-                    config.profile.videoFrameHeight);
-        OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameRate :%{public}d",
-                    config.profile.videoFrameRate);
-        break;
-    case AVRECORDER_CFT_MPEG_4A:
-        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
-        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-        break;
-    case AVRECORDER_CFT_MP3:
-        config.profile.fileFormat = AVRECORDER_CFT_MP3;
-        config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
-        break;
-    case AVRECORDER_CFT_WAV:
-        config.profile.fileFormat = AVRECORDER_CFT_WAV;
-        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-        break;
-    default:
-        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
-        break;
+            if (videoCodec == 2) {
+                config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
+            } else if (videoCodec == 6) {
+                config.profile.videoCodec = AVRECORDER_VIDEO_MPEG4;
+            } else if (videoCodec == 8) {
+                config.profile.videoCodec = AVRECORDER_VIDEO_HEVC;
+            }
+            config.profile.isHdr = false;
+            config.profile.enableTemporalScale = true;
+            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+    
+            if (fileGenerationMode == 0) {
+                config.fileGenerationMode = AVRECORDER_APP_CREATE;
+            } else if (fileGenerationMode == 1) {
+                config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
+            }
+            config.profile.videoBitrate = 2000000;
+            GetInt32Property(env, arg, "videoBitrate", &(config.profile.videoBitrate));
+            config.profile.videoFrameWidth = 1920;
+            config.profile.videoFrameHeight = 1080;
+            GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
+            GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
+            config.profile.videoFrameRate = 30;
+            GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));
+            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameWidth :%{public}d",
+                        config.profile.videoFrameWidth);
+            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameHeight :%{public}d",
+                        config.profile.videoFrameHeight);
+            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameRate :%{public}d",
+                        config.profile.videoFrameRate);
+            break;
+        case AVRECORDER_CFT_MPEG_4A:
+            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
+            break;
+        case AVRECORDER_CFT_MP3:
+            config.profile.fileFormat = AVRECORDER_CFT_MP3;
+            config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
+            break;
+        case AVRECORDER_CFT_WAV:
+            config.profile.fileFormat = AVRECORDER_CFT_WAV;
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
+            break;
+        default:
+            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+            break;
     }
 
     int32_t audioSourceType = 0;
     GetInt32Property(env, arg, "audioSourceType", &audioSourceType);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioSourceType :%{public}d", audioSourceType);
     switch (audioSourceType) {
-    case AVRECORDER_DEFAULT:
-        config.audioSourceType = AVRECORDER_DEFAULT;
-        break;
-    case AVRECORDER_MIC:
-        config.audioSourceType = AVRECORDER_MIC;
-        break;
-    case AVRECORDER_VOICE_RECOGNITION:
-        config.audioSourceType = AVRECORDER_VOICE_RECOGNITION;
-        break;
-    case AVRECORDER_VOICE_COMMUNICATION:
-        config.audioSourceType = AVRECORDER_VOICE_COMMUNICATION;
-        break;
-    case AVRECORDER_VOICE_MESSAGE:
-        config.audioSourceType = AVRECORDER_VOICE_MESSAGE;
-        break;
-    case AVRECORDER_CAMCORDER:
-        config.audioSourceType = AVRECORDER_CAMCORDER;
-        break;
-    default:
-        config.audioSourceType = AVRECORDER_DEFAULT;
-        break;
+        case AVRECORDER_DEFAULT:
+            config.audioSourceType = AVRECORDER_DEFAULT;
+            break;
+        case AVRECORDER_MIC:
+            config.audioSourceType = AVRECORDER_MIC;
+            break;
+        case AVRECORDER_VOICE_RECOGNITION:
+            config.audioSourceType = AVRECORDER_VOICE_RECOGNITION;
+            break;
+        case AVRECORDER_VOICE_COMMUNICATION:
+            config.audioSourceType = AVRECORDER_VOICE_COMMUNICATION;
+            break;
+        case AVRECORDER_VOICE_MESSAGE:
+            config.audioSourceType = AVRECORDER_VOICE_MESSAGE;
+            break;
+        case AVRECORDER_CAMCORDER:
+            config.audioSourceType = AVRECORDER_CAMCORDER;
+            break;
+        default:
+            config.audioSourceType = AVRECORDER_DEFAULT;
+            break;
     }
 
     int32_t audioCodec = 3;
     GetInt32Property(env, arg, "audioCodec", &audioCodec);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioCodec :%{public}d", audioCodec);
     switch (audioCodec) {
-    case AVRECORDER_AUDIO_AAC:
-        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-        break;
-    case AVRECORDER_AUDIO_MP3:
-        config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
-        break;
-    case AVRECORDER_AUDIO_G711MU:
-        config.profile.audioCodec = AVRECORDER_AUDIO_G711MU;
-        break;
-    default:
-        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-        break;
+        case AVRECORDER_AUDIO_AAC:
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
+            break;
+        case AVRECORDER_AUDIO_MP3:
+            config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
+            break;
+        case AVRECORDER_AUDIO_G711MU:
+            config.profile.audioCodec = AVRECORDER_AUDIO_G711MU;
+            break;
+        default:
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
+            break;
     }
 
     return true;
@@ -510,7 +508,6 @@ static napi_value getAvailableEncoder(napi_env env, napi_callback_info info)
 
 static napi_value updateRotationAVRecorder(napi_env env, napi_callback_info info)
 {
-
     (void)info;
     size_t argc = 1;
     napi_value args[1] = {nullptr};

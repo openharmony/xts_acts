@@ -148,8 +148,9 @@ Camera_ErrorCode NDKCamera::ReleaseSession(void)
 Camera_ErrorCode NDKCamera::SessionRealese(void)
 {
     OH_LOG_ERROR(LOG_APP, " enter SessionRealese");
+    Camera_ErrorCode ret = CAMERA_OK;
     try {
-        Camera_ErrorCode ret = OH_CaptureSession_Release(captureSession_);
+        ret = OH_CaptureSession_Release(captureSession_);
     } catch (std::exception& err) {
         OH_LOG_ERROR(LOG_APP, " exit SessionRealese OH_CaptureSession_Release catch failed");
     }
