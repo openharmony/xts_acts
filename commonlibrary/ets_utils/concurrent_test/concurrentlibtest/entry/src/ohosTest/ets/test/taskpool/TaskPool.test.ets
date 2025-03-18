@@ -1679,7 +1679,7 @@ export default function TaskPoolTest() {
       console.info(`${caseName} test start`);
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
-        expect(task.isDone()).assertFalse();
+        expect(task.isdone()).assertFalse();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
@@ -1705,7 +1705,7 @@ export default function TaskPoolTest() {
         taskpool.execute(task2).then(() => {
           console.info("taskPool: execute task success");
         });
-        expect(task1.isDone()).assertFalse();
+        expect(task1.isdone()).assertFalse();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
@@ -1728,7 +1728,7 @@ export default function TaskPoolTest() {
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1000000);
         taskpool.execute(task).then(() => {
-          expect(task.isDone()).assertFalse();
+          expect(task.isdone()).assertFalse();
           console.info("taskPool: execute task success");
         });
       } catch (error) {
@@ -1754,7 +1754,7 @@ export default function TaskPoolTest() {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
         await taskpool.execute(task).then(() => {
           console.info("taskPool: execute task success");
-          expect(task.isDone()).assertTrue();
+          expect(task.isdone()).assertTrue();
         });
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
@@ -1781,7 +1781,7 @@ export default function TaskPoolTest() {
           taskpool.cancel(task);
           console.info("taskPool: execute task success");
         });
-        expect(task.isDone()).assertFalse();
+        expect(task.isdone()).assertFalse();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();

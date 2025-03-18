@@ -98,7 +98,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
       await sleep(500)
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -154,7 +154,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
       await sleep(500)
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -203,7 +203,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -252,7 +252,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(0).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -301,7 +301,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -350,7 +350,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
   })
 }

@@ -94,7 +94,7 @@ export default function taskPoolTaskGroupMultipleTest() {
 
       expect(100).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -140,7 +140,7 @@ export default function taskPoolTaskGroupMultipleTest() {
 
       expect(4).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

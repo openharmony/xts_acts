@@ -76,7 +76,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
         }
       })
       expect(allPoints).assertEqual(2 * step * repeatCount)
-      Done()
+      done()
     })
 
 
@@ -116,7 +116,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
         }
       })
       expect(allPoints).assertEqual(cycleCount * repeatCount * step)
-      Done()
+      done()
     })
 
 
@@ -172,7 +172,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
         }
       }
       expect(result).assertEqual(true)
-      Done()
+      done()
     })
 
 
@@ -212,7 +212,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
         }
       })
       expect(allPoints).assertEqual(repeatCount * step * 2)
-      Done()
+      done()
     })
 
     /**
@@ -261,7 +261,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
         }
       }
       expect(result).assertEqual(true)
-      Done()
+      done()
     })
 
 

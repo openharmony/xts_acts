@@ -113,7 +113,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -176,7 +176,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -239,7 +239,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -301,7 +301,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -363,7 +363,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

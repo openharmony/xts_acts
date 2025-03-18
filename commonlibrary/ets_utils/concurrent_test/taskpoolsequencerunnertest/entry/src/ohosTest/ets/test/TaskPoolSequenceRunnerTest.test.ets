@@ -96,7 +96,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -154,7 +154,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -194,7 +194,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -246,7 +246,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -292,7 +292,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect("Task2").assertEqual(name2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -336,7 +336,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -408,7 +408,7 @@ export default function TaskPoolSequenceRunnerTest() {
         expect(0).assertEqual(finalViews1.byteLength);
       }
 
-      Done();
+      done();
     })
 
 
@@ -458,7 +458,7 @@ export default function TaskPoolSequenceRunnerTest() {
       }
       expect(55).assertEqual(res1)
       expect(55).assertEqual(res2)
-      Done()
+      done()
     })
 
 
@@ -508,7 +508,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -564,7 +564,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -612,7 +612,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       expect(0).assertEqual(Count1.count)
       expect(0).assertEqual(Count2.count)
-      Done()
+      done()
     })
 
 
@@ -676,7 +676,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(0).assertEqual(Count4.count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -722,7 +722,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -778,7 +778,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -825,7 +825,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -880,7 +880,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -927,7 +927,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -980,7 +980,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -999,21 +999,21 @@ export default function TaskPoolSequenceRunnerTest() {
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
         sequenceRunner.execute(task1)
-        task1.isDone()
-        while (!task1.isDone()) {
+        task1.isdone()
+        while (!task1.isdone()) {
           await sleep(100)
         }
-        expect(task1.isDone()).assertTrue()
+        expect(task1.isdone()).assertTrue()
 
         let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
         sequenceRunner.execute(task2)
-        task2.isDone()
-        while (!task2.isDone()) {
+        task2.isdone()
+        while (!task2.isdone()) {
           await sleep(100)
         }
-        expect(task2.isDone()).assertTrue()
+        expect(task2.isdone()).assertTrue()
       }
-      Done()
+      done()
 
     })
 
@@ -1035,10 +1035,10 @@ export default function TaskPoolSequenceRunnerTest() {
         let task2: taskpool.Task = new taskpool.Task(printArgs6, 1);
         sequenceRunner.execute(task1)
         sequenceRunner.execute(task2)
-        expect(task1.isDone()).assertFalse()
-        expect(task2.isDone()).assertFalse()
+        expect(task1.isdone()).assertFalse()
+        expect(task2.isdone()).assertFalse()
       }
-      Done()
+      done()
     })
 
   })

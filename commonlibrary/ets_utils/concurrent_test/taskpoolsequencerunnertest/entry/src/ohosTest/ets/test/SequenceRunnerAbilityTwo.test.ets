@@ -181,7 +181,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2600_2
@@ -245,7 +245,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2700
@@ -295,7 +295,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2700_2
@@ -359,7 +359,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2800
@@ -409,7 +409,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2800_2
@@ -473,7 +473,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2900
@@ -523,7 +523,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_2900_2
@@ -587,7 +587,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3000
@@ -637,7 +637,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3000_2
@@ -701,7 +701,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3100
@@ -751,7 +751,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3100_2
@@ -815,7 +815,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3200
@@ -865,7 +865,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3200_2
@@ -929,7 +929,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3300
@@ -1001,7 +1001,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3400
@@ -1069,7 +1069,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3500
@@ -1119,7 +1119,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3500_2
@@ -1185,7 +1185,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3600
@@ -1224,7 +1224,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3700
@@ -1274,7 +1274,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3700_2
@@ -1338,7 +1338,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3800
@@ -1388,7 +1388,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3900
@@ -1440,7 +1440,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_3900_2
@@ -1506,7 +1506,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_4000
@@ -1561,7 +1561,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
     /**
      * @tc.number TASKPOOL_SEQUENCERUNNERCLASSIFY_TEST_4000_2
@@ -1629,7 +1629,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task3Count = 0;
       task4Count = 0;
       console.info(`${caseName} test end`)
-      Done();
+      done();
     })
   })
 }

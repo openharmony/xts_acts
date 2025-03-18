@@ -89,7 +89,7 @@ export default function taskPoolSequenceRunnerTwoMultipleTest() {
 
       expect(100).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -138,7 +138,7 @@ export default function taskPoolSequenceRunnerTwoMultipleTest() {
 
       expect(4).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

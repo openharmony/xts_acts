@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, afterEach, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, collections, ErrorEvent, JSON, lang, worker } from '@kit.ArkTS';
 import { GetTime, Sleep } from '../utils/utils';
 import { Obj } from '../../workers/postMessage//WorkerPostMessageObj';

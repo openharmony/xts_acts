@@ -111,7 +111,7 @@ export default function taskPoolTaskMultipleTest() {
 
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -170,7 +170,7 @@ export default function taskPoolTaskMultipleTest() {
 
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -231,7 +231,7 @@ export default function taskPoolTaskMultipleTest() {
 
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -290,7 +290,7 @@ export default function taskPoolTaskMultipleTest() {
 
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -350,7 +350,7 @@ export default function taskPoolTaskMultipleTest() {
       await sleep(1000)
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

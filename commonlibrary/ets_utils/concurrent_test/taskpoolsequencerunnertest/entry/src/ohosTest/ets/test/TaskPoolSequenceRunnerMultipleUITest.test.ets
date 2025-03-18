@@ -112,7 +112,7 @@ export default function taskPoolSequenceRunnerMultipleUITest() {
       expect(10).assertEqual(count2)
       expect(10).assertEqual(count1)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -165,7 +165,7 @@ export default function taskPoolSequenceRunnerMultipleUITest() {
 
       expect(20).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
 

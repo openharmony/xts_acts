@@ -72,7 +72,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done()
+      done()
     });
 
     /**
@@ -98,7 +98,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(10200014); // 错误码应为 10200014
-          Done()
+          done()
         });
     });
 
@@ -146,7 +146,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done();
+      done();
     });
     /**
      * @tc.number taskPoolExecuteDelayedTimeConsumTest0101_2
@@ -178,7 +178,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(undefined);
-          Done()
+          done()
         });
     });
 
@@ -222,7 +222,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done();
+      done();
     });
 
     /**
@@ -252,7 +252,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(undefined); // 错误码应为 10200028
-          Done()
+          done()
         });
     });
   })

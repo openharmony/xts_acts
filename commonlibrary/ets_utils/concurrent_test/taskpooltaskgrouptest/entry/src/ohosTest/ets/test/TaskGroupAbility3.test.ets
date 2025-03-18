@@ -99,7 +99,7 @@ export default function TaskGroupAbilityTest3() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -149,7 +149,7 @@ export default function TaskGroupAbilityTest3() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
     /**
@@ -189,7 +189,7 @@ export default function TaskGroupAbilityTest3() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -225,7 +225,7 @@ export default function TaskGroupAbilityTest3() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
   })
 }

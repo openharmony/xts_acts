@@ -92,7 +92,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -137,7 +137,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -175,7 +175,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -219,7 +219,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -258,7 +258,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect('TaskName2').assertEqual(task2.name)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -298,7 +298,7 @@ export default function taskPoolTaskGroupExecuteTest() {
         await sleep(100)
       }
       expect(1).assertEqual(count1)
-      Done()
+      done()
     })
 
     /**
@@ -333,7 +333,7 @@ export default function taskPoolTaskGroupExecuteTest() {
     //   expect(taskpool.Task.isCanceled()).assertTrue()
     //   Count1.count = 0
     //   Count2.count = 0
-    //   Done()
+    //   done()
     // })
 
     /**
@@ -397,7 +397,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(0).assertEqual(view1.byteLength)
       expect(0).assertEqual(views.byteLength)
       expect(0).assertEqual(views1.byteLength)
-      Done()
+      done()
     })
 
     /**
@@ -443,7 +443,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
       expect(55).assertEqual(ret1)
       expect(55).assertEqual(ret2)
-      Done()
+      done()
     })
 
     /**
@@ -493,7 +493,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -550,7 +550,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -598,7 +598,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(count2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -657,7 +657,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
 
     })
 
@@ -698,7 +698,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
       console.info('=====', count)
       expect(10).assertEqual(count + count2)
-      Done()
+      done()
     })
 
     /**
@@ -749,7 +749,7 @@ export default function taskPoolTaskGroupExecuteTest() {
         await sleep(100)
       }
       expect(10).assertEqual(count + count2)
-      Done()
+      done()
     })
 
     /**
@@ -790,7 +790,7 @@ export default function taskPoolTaskGroupExecuteTest() {
 
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -843,7 +843,7 @@ export default function taskPoolTaskGroupExecuteTest() {
 
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -883,7 +883,7 @@ export default function taskPoolTaskGroupExecuteTest() {
 
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -906,11 +906,11 @@ export default function taskPoolTaskGroupExecuteTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup)
       }
-      while (!task.isDone()) {
+      while (!task.isdone()) {
         await sleep(100)
       }
-      expect(task.isDone()).assertTrue()
-      Done()
+      expect(task.isdone()).assertTrue()
+      done()
     })
 
     /**
@@ -933,8 +933,8 @@ export default function taskPoolTaskGroupExecuteTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup)
       }
-      expect(task.isDone()).assertFalse()
-      Done()
+      expect(task.isdone()).assertFalse()
+      done()
     })
 
   })
