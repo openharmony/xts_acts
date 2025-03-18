@@ -1188,6 +1188,216 @@ export default function abilityTest() {
     })
 
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100
+     * @tc.name      : bind callbacks on setTargetLoopMode events
+     * @tc.desc      : Testing on setTargetLoopMode callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100', async (done: Function) => {
+        session.on('setTargetLoopMode', (callback: number) => {
+            if (callback === 1) {
+                console.info('TestLog: Set TargetLoopMode command callback registration successful');
+                expect(true).assertTrue();
+            } else {
+                console.error(`TestLog: Set TargetLoopMode command callback registration error`);
+                expect(false).assertTrue();
+            };
+        });
+
+        try {
+            await controller.sendControlCommand({
+                command: 'setTargetLoopMode',
+                parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+            });
+            console.info('TestLog: Controller sent setTargetLoopMode command successfully');
+        } catch (err) {
+            console.error(`TestLog: Controller command error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0200
+     * @tc.name      : on(setTargetLoopMode) with avsession does not exit(errcode 6600102)
+     * @tc.desc      : test on(setTargetLoopMode) errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0200', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      try {
+        await session.on('setTargetLoopMode', () => {
+          console.info('on setTargetLoopMode entry');
+        });
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`on setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(6600102);
+      }
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0300
+     * @tc.name      : on(setTargetLoopMode) with parameter check failed(errcode 401)
+     * @tc.desc      : test on(setTargetLoopMode) errcode 401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0300', 2, async (done: Function) => {
+      try {
+        await session.on('setTargetLoopMode'+'1', () => {
+          console.info('on setTargetLoopMode entry');
+        });
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`on setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(401);
+      }
+      session = null;
+      done();
+    })
+
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0100
+     * @tc.name      : unbind all callbacks on setTargetLoopMode events
+     * @tc.desc      : Testing off setTargetLoopMode all callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0100', 0, async (done: Function) => {
+        const callback1 = (data: number) => {
+            if (data === 1) {
+                console.info('TestLog: setTargetLoopMode command registration1 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        const callback2 = (data: number) => {
+            if (data === 2) {
+                console.info('TestLog: setTargetLoopMode command registration2 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        session.on('setTargetLoopMode', callback1);
+
+        session.on('setTargetLoopMode', callback2);
+
+        session.off('setTargetLoopMode');
+
+    try{
+        await controller.sendControlCommand({
+            command: 'setTargetLoopMode',
+            parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+        });
+            console.info('TestLog: Controller send command successfully');
+        } catch(err) {
+            console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+            expect(true).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0200
+      * @tc.name      : Unbind the specified callback on setTargetLoopMode events
+      * @tc.desc      : Testing off setTargetLoopMode specified callback
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0200', 0, async (done: Function) => {
+        const callback1 = (data: number) => {
+            if (data === 1) {
+                console.info('TestLog: setTargetLoopMode command registration1 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        const callback2 = (data: number) => {
+            if (data === 2) {
+                console.info('TestLog: setTargetLoopMode command registration2 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        session.on('setTargetLoopMode', callback1);
+
+        session.on('setTargetLoopMode', callback2);
+
+        session.off('setTargetLoopMode', callback1);
+      try{
+        await controller.sendControlCommand({
+            command: 'setTargetLoopMode',
+            parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+        });
+            console.info('TestLog: Controller send command successfully');
+        } catch(err) {
+            console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0300
+     * @tc.name      : off(setTargetLoopMode) with avsession does not exit(errcode 6600102)
+     * @tc.desc      : test off(setTargetLoopMode) errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0300', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      try {
+        await session.off('setTargetLoopMode');
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`off setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(6600102);
+      }
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0400
+     * @tc.name      : off(setTargetLoopMode) with parameter check failed(errcode 401)
+     * @tc.desc      : test off(setTargetLoopMode) errcode 401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0400', 2, async (done: Function) => {
+      try {
+        await session.off('setTargetLoopMode'+'1');
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`off setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(401);
+      }
+      session = null;
+      done();
+    })  
+
   })
 }
 
