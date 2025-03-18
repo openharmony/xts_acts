@@ -124,8 +124,8 @@ export default function setTest() {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0100
-     * @tc.name      : set_photo_title_001
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0200
+     * @tc.name      : set_photo_title_002
      * @tc.desc      : set photo title ['123123', '123123'], error code 14000014
      * @tc.size      : MEDIUM
      * @tc.type      : Function
