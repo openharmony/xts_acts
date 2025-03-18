@@ -28,14 +28,8 @@ const Tag = 'OHAVRecorderNdk_test:';
 let avRecorderNdkTestBase = new AVRecorderNdkTestBase();
 let fdObject: ESObject;
 let fdPath: string;
-let videoFrameWidth: number;
-let videoFrameHeight: number;
 let audioSampleRate: number;
 let audioBiterate: number;
-let videoFrameRate: number;
-let videoOrientation: number;
-let videoProfiles: Array<camera.VideoProfile>;
-let isSupportCameraVideoProfiles = true;
 
 
 export default function OhAVRecorderNDKM4aErrTest() { // L2
@@ -44,50 +38,15 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
     beforeAll(async () => {
       let permissionNames: Array<Permissions> =
         ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA', 'ohos.permission.WRITE_MEDIA',
-          'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'];
+          'ohos.permission.MICROPHONE'];
       await avRecorderNdkTestBase.getPermission(permissionNames);
       await avRecorderNdkTestBase.msleepAsync(200);
-      await avRecorderNdkTestBase.driveFn(4);
+      await avRecorderNdkTestBase.driveFn(3);
       await avRecorderNdkTestBase.msleepAsync(200);
-      if (avRecorderNdkTestBase.executeAVVideoRecorder()) {
-        let context: ESObject = AppStorage.get('testContext');
-        let cameraManager: camera.CameraManager = camera.getCameraManager(context);
-        if (avRecorderNdkTestBase.isEmpty(cameraManager)) {
-          console.info("[camera] case getCameraManager FAILED");
-          expect().assertFail();
-        }
-        let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
-
-        console.info("[camera] cameras[0]" + JSON.stringify(cameras[0]));
-        if (!avRecorderNdkTestBase.isEmpty(cameras[0])) {
-          let cameraoutputcapability: camera.CameraOutputCapability =
-            cameraManager.getSupportedOutputCapability(cameras[0]);
-          if (avRecorderNdkTestBase.isEmpty(cameraoutputcapability)) {
-            console.info("[camera] case getSupportedOutputCapability FAILED");
-            expect().assertFail();
-          }
-          videoProfiles = cameraoutputcapability.videoProfiles;
-        } else {
-          isSupportCameraVideoProfiles = false;
-          console.info("Failed to obtain the default videoProfiles object.Not support usb camera");
-        }
-      } else {
-        isSupportCameraVideoProfiles = false;
-        console.info("Failed to obtain the default  object.Not support usb camera");
-      }
     });
     beforeEach(async () => {
       console.info(`case to beforeEach `);
       await avRecorderNdkTestBase.msleepAsync(2000);
-      if (isSupportCameraVideoProfiles) {
-        console.info("[camera] [videoProfiles.lenth=]" + videoProfiles.length);
-        let random_int: number = Math.floor(Math.random() * videoProfiles.length)
-        console.info("[camera] [videoProfiles.random_int=]" + random_int);
-        videoFrameWidth = videoProfiles[random_int].size.width;
-        videoFrameHeight = videoProfiles[random_int].size.height;
-        console.info("[camera] [videoFrameWidth[0]=]" + JSON.stringify(videoFrameWidth));
-        console.info("[camera] [videoFrameHeight[0]=]" + JSON.stringify(videoFrameHeight));
-
         //audioSampleRate随机数
         // [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]
         let audioSampleRateList: Array<number> =
@@ -101,25 +60,13 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
         audioBiterate = audioBitrateList[audioBitrateIndex]
 
-        let videoFrameRateList: Array<number> = [15, 30, 60]
-        let videoFrameRateIndex: number = Math.floor(Math.random() * videoFrameRateList.length)
-        videoFrameRate = videoFrameRateList[videoFrameRateIndex]
-
-        let videoOrientationList: Array<number> = [0, 90, 180, 270]
-        let videoOrientationIndex: number = Math.floor(Math.random() * videoOrientationList.length)
-        videoOrientation = videoOrientationList[videoOrientationIndex]
-      }
-
     });
     afterEach(async () => {
       console.info(`case to afterEach `);
-      if (!avRecorderNdkTestBase.isRelease && isSupportCameraVideoProfiles) {
         console.info(`case to releaseAVRecorder isRelease==false`);
         let result = await testapi.releaseAVRecorder();
         expect(result).assertEqual(0);
         await avRecorderNdkTestBase.closeFd(fdObject.fdNumber);
-      }
-
     });
     afterAll(() => {
 
@@ -134,11 +81,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0011', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0011 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -185,11 +127,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0012', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0012 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -234,11 +171,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0013', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0013 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -284,11 +216,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0014', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0014 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -332,11 +259,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0015', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0015 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -380,11 +302,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0016', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0016 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -447,11 +364,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0021', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0021 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -489,11 +401,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0022', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0022 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -533,11 +440,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0023', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0023 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -579,11 +481,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0024', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0024 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -627,11 +524,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0025', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0025 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -669,11 +561,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0026', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0026 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -714,11 +601,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0027', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0027 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -758,11 +640,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0031', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0031 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -807,11 +684,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.level      : Level 3
      */
     it('testOhAvRecorder_m4a_errorevent_0041', 0, async (done: Function) => {
-      if (!isSupportCameraVideoProfiles) {
-        console.info("Failed to obtain the default  object.Not support usb camera");
-        expect(true).assertTrue();
-        done();
-      }
       console.info(`testOhAvRecorder_m4a_errorevent_0041 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);

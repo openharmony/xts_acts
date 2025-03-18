@@ -95,9 +95,9 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
 {
     (void)recorder;
     (void)userDate;
-    OH_LOG_INFO(LOG_APP, "NDK xts OnUri in!");
+    OH_LOG_INFO(LOG_APP, "NDK xts OnUri start!");
     if (asset != nullptr) {
-        OH_LOG_INFO(LOG_APP, "NDK xts OnUri in!");
+        OH_LOG_INFO(LOG_APP, "NDK xts OnUri start!");
         auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
         if (changeRequest == nullptr) {
             OH_LOG_INFO(LOG_APP, "NDK xts changeRequest is null!");
@@ -317,7 +317,7 @@ void SetConfig(OH_AVRecorder_Config &config)
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
 {
     (void)info;
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder in");
+    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder start");
     OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
     SetConfig(*config);
 
@@ -332,7 +332,7 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[1], fd, typeLen + 1, &typeLen);
     config->url = fd;
 
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder parseSetConfigOps in ");
+    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder parseSetConfigOps start ");
     parseSetConfigOps(env, args[0], *config);
 
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
@@ -467,7 +467,7 @@ static napi_value getAVRecorderConfig(napi_env env, napi_callback_info info)
     SetConfig(*config);
     int result = OH_AVRecorder_GetAVRecorderConfig(g_avRecorder, &config);
     if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK xtsgetAVRecorderConfig error");
+        OH_LOG_INFO(LOG_APP, "NDK OH_AVRecorder_GetAVRecorderConfig 配置失败");
     }
     OH_LOG_INFO(LOG_APP, "NDK xtsgetAVRecorderConfig sucuess", config->profile.audioBitrate);
     napi_value res;

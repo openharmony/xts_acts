@@ -40,10 +40,10 @@ export default function OhAVRecorderNDKMp3Test() { // L2
       console.info(`case to beforeAll `);
       let permissionNames: Array<Permissions> =
         ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA', 'ohos.permission.WRITE_MEDIA',
-          'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'];
+          'ohos.permission.MICROPHONE'];
       await avRecorderNdkTestBase.getPermission(permissionNames);
       await avRecorderNdkTestBase.msleepAsync(200);
-      await avRecorderNdkTestBase.driveFn(4);
+      await avRecorderNdkTestBase.driveFn(3);
       await avRecorderNdkTestBase.msleepAsync(200);
 
     });
