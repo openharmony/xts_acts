@@ -17,6 +17,8 @@
 #include "native_common.h"
 #include "usb/usb_ddk_api.h"
 #include "usb/usb_ddk_types.h"
+#include "scsi_peripheral/scsi_peripheral_api.h"
+#include "scsi_peripheral/scsi_peripheral_types.h"
 #include "ddk/ddk_api.h"
 #include <cstdlib>
 #include <js_native_api_types.h>
@@ -43,7 +45,27 @@ static uint64_t interfaceHandle = 0;
 static uint8_t settingIndex = 0;
 static uint32_t timeout = 1000;
 constexpr size_t MAX_USB_DEVICE_NUM = 128;
+const uint32_t CDB_LENGTH = 1;
 
+struct ScsiPeripheral_Device {
+    int32_t devFd = -1;
+    int32_t memMapFd = -1;
+    int32_t lbLength = 0;
+
+};
+
+static ScsiPeripheral_Device *NewScsiPeripheralDevice()
+{
+    return new ScsiPeripheral_Device;
+}
+
+static void DeleteScsiPeripheralDevice(ScsiPeripheral_Device **dev)
+{
+    if (*dev != nullptr) {
+        delete *dev;
+        *dev = nullptr;
+    }
+}
 
 static bool IsInterruptInEndpoint(const UsbEndpointDescriptor &epDesc)
 {
@@ -432,6 +454,206 @@ static napi_value UsbGetDevices(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value ScsiPeripheralInit(napi_env env, napi_callback_info info)
+{
+    int32_t returnValue = OH_ScsiPeripheral_Init();
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value ScsiPeripheralRelease(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+    int32_t returnValue = OH_ScsiPeripheral_Release();
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value ScsiPeripheralOpen(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    int32_t returnValue = OH_ScsiPeripheral_Open(0, 0, &dev);
+    NAPI_ASSERT(env, returnValue == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Open failed, no permission");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_ScsiPeripheral_Close(&dev);
+    OH_ScsiPeripheral_Release();
+    return result;
+}
+
+static napi_value ScsiPeripheralClose(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    int32_t returnValue = OH_ScsiPeripheral_Open(0, 0, &dev);
+    NAPI_ASSERT(env, returnValue == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Open failed, no permission");
+    returnValue = OH_ScsiPeripheral_Close(&dev);
+    NAPI_ASSERT(env, returnValue == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Close failed, no permission");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_ScsiPeripheral_Release();
+    return result;
+}
+
+static napi_value ScsiPeripheralTestUnitReady(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_TestUnitReadyRequest request = {0};
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_TestUnitReady(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralInquiry(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_InquiryRequest request = {0};
+    ScsiPeripheral_InquiryInfo inquiryInfo = {0};
+    uint8_t buff;
+    ScsiPeripheral_DeviceMemMap devMmap({&buff, sizeof(buff), 0, sizeof(buff), 0});
+    inquiryInfo.data = &devMmap;
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_Inquiry(dev, &request, &inquiryInfo, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralReadCapacity10(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_ReadCapacityRequest request = {0};
+    ScsiPeripheral_CapacityInfo capacityInfo = {0};
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_ReadCapacity10(dev, &request, &capacityInfo, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralRequestSense(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_RequestSenseRequest request = {0};
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_RequestSense(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralRead10(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_IORequest request = {0};
+    uint8_t buff;
+    ScsiPeripheral_DeviceMemMap devMmap({&buff, sizeof(buff), 0, sizeof(buff), 0});
+    request.data = &devMmap;
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_Read10(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralWrite10(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_IORequest request = {0};
+    uint8_t buff;
+    ScsiPeripheral_DeviceMemMap devMmap({&buff, sizeof(buff), 0, sizeof(buff), 0});
+    request.data = &devMmap;
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_Write10(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralVerify10(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_VerifyRequest request = {0};
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_Verify10(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
+static napi_value ScsiPeripheralSendRequestByCDB(napi_env env, napi_callback_info info)
+{
+    int32_t initRetVal = OH_ScsiPeripheral_Init();
+    NAPI_ASSERT(env, initRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Init failed, no permission");
+
+    ScsiPeripheral_Device *dev = NewScsiPeripheralDevice();
+    ScsiPeripheral_Request request = {{0}};
+    uint8_t buff;
+    ScsiPeripheral_DeviceMemMap devMmap({&buff, sizeof(buff), 0, sizeof(buff), 0});
+    request.data = &devMmap;
+    request.cdbLength = CDB_LENGTH;
+    ScsiPeripheral_Response response = {{0}};
+    int32_t returnValue = OH_ScsiPeripheral_SendRequestByCdb(dev, &request, &response);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    DeleteScsiPeripheralDevice(&dev);
+    int32_t releaseRetVal = OH_ScsiPeripheral_Release();
+    NAPI_ASSERT(env, releaseRetVal == SCSIPERIPHERAL_DDK_NO_PERM, "OH_ScsiPeripheral_Release failed, no permission");
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -459,6 +681,18 @@ static napi_value Init(napi_env env, napi_value exports)
         {"usbSendPipeRequestWithAshmem", nullptr, UsbSendPipeRequestWithAshmem, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"usbGetDevices", nullptr, UsbGetDevices, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralInit", nullptr, ScsiPeripheralInit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralRelease", nullptr, ScsiPeripheralRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralOpen", nullptr, ScsiPeripheralOpen, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralClose", nullptr, ScsiPeripheralClose, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralTestUnitReady", nullptr, ScsiPeripheralTestUnitReady, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralInquiry", nullptr, ScsiPeripheralInquiry, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralReadCapacity10", nullptr, ScsiPeripheralReadCapacity10, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralRequestSense", nullptr, ScsiPeripheralRequestSense, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralRead10", nullptr, ScsiPeripheralRead10, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralWrite10", nullptr, ScsiPeripheralWrite10, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralVerify10", nullptr, ScsiPeripheralVerify10, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scsiPeripheralSendRequestByCDB", nullptr, ScsiPeripheralSendRequestByCDB, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
