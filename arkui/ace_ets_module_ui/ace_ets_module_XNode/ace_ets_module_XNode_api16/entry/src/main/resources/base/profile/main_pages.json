@@ -8,6 +8,8 @@
         "MainAbility/pages/FrameNode/AddComponentContentErrorCodeTest",
         "MainAbility/pages/FrameNode/BindControllerErrorCodeTest",
         "MainAbility/pages/FrameNode/RenderNodeDisposeTest",
-        "MainAbility/pages/FrameNode/componentContentDisposeTest"
+        "MainAbility/pages/FrameNode/componentContentDisposeTest",
+        "MainAbility/pages/FrameNode/blendColorErrorCodeTest",
+        "MainAbility/pages/FrameNode/resourceColorErrorCodeTest"
     ]
 }
