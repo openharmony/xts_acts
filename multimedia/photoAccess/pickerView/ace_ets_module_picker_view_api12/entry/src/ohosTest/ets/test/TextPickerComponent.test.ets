@@ -1522,5 +1522,32 @@ export default function TextPicker() {
       console.log("testPicker29 btn click finish");
       done();
     });
+
+    /**
+    * @tc.number    : testPicker30
+    * @tc.name      : testPicker30
+    * @tc.desc      : Testing createAssetWithShortTermPermission
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level0
+    */
+    it('testPicker30', 0, async (done: Function) => {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+          title: 'test',
+          fileNameExtension: '',
+          photoType: photoAccessHelper.PhotoType.IMAGE,
+          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+        };
+        phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig);
+        expect(false).assertTrue();
+      } catch(error) {
+        console.error("testPicker30 error: " + JSON.stringify(error) + error.code);
+        expect(error.code).assertEqual(401);
+      }
+      console.info("testPicker30 finish");
+      done();
+    });
   })
 }

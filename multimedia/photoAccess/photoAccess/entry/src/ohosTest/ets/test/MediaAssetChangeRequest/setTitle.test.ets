@@ -58,5 +58,52 @@ export default function setTitleChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_SET_TITLE_CHANGE_REQUEST_0100
+     * @tc.name      : set_title_change_request_001
+     * @tc.desc      : change asset title '', error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('set_title_change_request_001', 2, async (done: Function) => {
+      let testNum = 'set_title_change_request_001';
+      try {
+        let asset:ESObject = await helper.createAsset('title.jpg');
+
+        let assetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+        assetChangeRequest.setTitle('');
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_SET_TITLE_CHANGE_REQUEST_0200
+     * @tc.name      : set_title_change_request_002
+     * @tc.desc      : change asset title undefined,error code is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('set_title_change_request_002', 2, async (done: Function) => {
+      let testNum = 'set_title_change_request_002';
+      try {
+        let asset:ESObject = await helper.createAsset('title.jpg');
+        let assetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+        assetChangeRequest.setTitle(undefined);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    })
   })
 }

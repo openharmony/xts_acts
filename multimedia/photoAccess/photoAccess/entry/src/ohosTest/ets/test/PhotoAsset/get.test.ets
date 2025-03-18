@@ -61,6 +61,34 @@ export default function getTest() {
       }
     }
 
+    let getNotExistKeysValue = async (done: Function, testNum: string, fetchOps: photoAccessHelper.FetchOptions,
+      key: string, value: string | number) => {
+      try {
+        let asset: photoAccessHelper.PhotoAsset = await getFileAsset(testContext, testNum, fetchOps);
+        console.info(`${testNum} key: ${key}, value: ${value}, asset.key: ${asset.get(key)}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error} ${error.code}`);
+        expect(error.code).assertEqual('14000014');
+        done();
+      }
+    }
+
+    let getErrorKeysValue = async (done: Function, testNum: string, fetchOps: photoAccessHelper.FetchOptions,
+      key: string | undefined, value: string | number) => {
+      try {
+        let asset: photoAccessHelper.PhotoAsset = await getFileAsset(testContext, testNum, fetchOps);
+        console.info(`${testNum} key: ${key}, value: ${value}, asset.key: ${asset.get(key)}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error} ${error.code}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
+        done();
+      }
+    }
+
     beforeAll(async () => {
       console.info('beforeAll case');
       await getPermission();
@@ -1070,6 +1098,41 @@ export default function getTest() {
       done();
     });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_002
+     * @tc.name      : get_video_date_taken_ms_002
+     * @tc.desc      : video get key '', error code 14000014
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+      it('get_video_date_taken_ms_002', 2, async (done: Function) => {
+        const testNum = 'get_video_date_taken_ms_002';
+        const displayName = 'getTest.mp4';
+        const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+        await getFileAsset(testContext, testNum, fetchOps);
+        const key = '';
+        const value = 1;
+        await getNotExistKeysValue(done, testNum, fetchOps, key, value);
+        done();
+      });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_003
+     * @tc.name      : get_video_date_taken_ms_003
+     * @tc.desc      : video get key undefined, error code 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('get_video_date_taken_ms_003', 2, async (done: Function) => {
+      const testNum = 'get_video_date_taken_ms_003';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await getFileAsset(testContext, testNum, fetchOps);
+      const value = 1;
+      await getErrorKeysValue(done, testNum, fetchOps, undefined, value);
+      done();
+    });
   })
 }
