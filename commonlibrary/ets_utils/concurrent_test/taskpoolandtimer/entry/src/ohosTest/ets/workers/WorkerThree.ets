@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import lazy{Calculator}from '../testability/pages/CalculateIndex'
+import {Calculator} from '../testability/pages/CalculateIndex'
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 

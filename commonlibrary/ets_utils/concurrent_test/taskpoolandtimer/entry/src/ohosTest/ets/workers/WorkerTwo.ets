@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import {Calculator}from '../testability/pages/CalculateIndex'
+import {Calculator} from '../testability/pages/CalculateIndex'
 
 const workerPort = worker.workerPort
 workerPort.onmessage = async (e: MessageEvents): Promise<void> => {

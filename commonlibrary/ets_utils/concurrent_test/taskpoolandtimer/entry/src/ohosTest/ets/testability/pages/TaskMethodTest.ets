@@ -15,7 +15,7 @@
 import { Calculator } from './Calculator';
 import { Worker, Worker1, Worker2 } from '../pages/Calculator'
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-import { HashMap, taskpool } from "@kit.ArkTS";
+import { HashMap, taskpool } from '@kit.ArkTS';
 
 
 @Concurrent
