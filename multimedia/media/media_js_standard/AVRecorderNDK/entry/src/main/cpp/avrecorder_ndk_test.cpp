@@ -175,7 +175,7 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     switch (fileFormat) {
-        case AVRECORDER_CFT_MPEG_4:
+        case 2:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             config.videoSourceType = AVRECORDER_SURFACE_YUV;
@@ -220,15 +220,15 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameRate :%{public}d",
                         config.profile.videoFrameRate);
             break;
-        case AVRECORDER_CFT_MPEG_4A:
+        case 6:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
-        case AVRECORDER_CFT_MP3:
+        case 9:
             config.profile.fileFormat = AVRECORDER_CFT_MP3;
             config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
             break;
-        case AVRECORDER_CFT_WAV:
+        case 10:
             config.profile.fileFormat = AVRECORDER_CFT_WAV;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
@@ -241,22 +241,22 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
     GetInt32Property(env, arg, "audioSourceType", &audioSourceType);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioSourceType :%{public}d", audioSourceType);
     switch (audioSourceType) {
-        case AVRECORDER_DEFAULT:
+        case 0:
             config.audioSourceType = AVRECORDER_DEFAULT;
             break;
-        case AVRECORDER_MIC:
+        case 1:
             config.audioSourceType = AVRECORDER_MIC;
             break;
-        case AVRECORDER_VOICE_RECOGNITION:
+        case 2:
             config.audioSourceType = AVRECORDER_VOICE_RECOGNITION;
             break;
-        case AVRECORDER_VOICE_COMMUNICATION:
+        case 7:
             config.audioSourceType = AVRECORDER_VOICE_COMMUNICATION;
             break;
-        case AVRECORDER_VOICE_MESSAGE:
+        case 10:
             config.audioSourceType = AVRECORDER_VOICE_MESSAGE;
             break;
-        case AVRECORDER_CAMCORDER:
+        case 13:
             config.audioSourceType = AVRECORDER_CAMCORDER;
             break;
         default:
@@ -268,13 +268,13 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
     GetInt32Property(env, arg, "audioCodec", &audioCodec);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioCodec :%{public}d", audioCodec);
     switch (audioCodec) {
-        case AVRECORDER_AUDIO_AAC:
+        case 3:
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
-        case AVRECORDER_AUDIO_MP3:
+        case 4:
             config.profile.audioCodec = AVRECORDER_AUDIO_MP3;
             break;
-        case AVRECORDER_AUDIO_G711MU:
+        case 5:
             config.profile.audioCodec = AVRECORDER_AUDIO_G711MU;
             break;
         default:
@@ -296,7 +296,7 @@ void SetConfig(OH_AVRecorder_Config &config)
     config.profile.audioChannels = AUDIO_CHANNELS_2;
     config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
     const int SAMPLE_RATE_48KHZ = 48000;
-    config.profile.audioSampleRate = SAMPLE_RATE_48K;
+    config.profile.audioSampleRate = SAMPLE_RATE_48KHZ;
     const int VIDEO_ORIENTATION_SIZE = 2;
     config.metadata.videoOrientation = (char *)malloc(VIDEO_ORIENTATION_SIZE);
     if (config.metadata.videoOrientation != nullptr) {
