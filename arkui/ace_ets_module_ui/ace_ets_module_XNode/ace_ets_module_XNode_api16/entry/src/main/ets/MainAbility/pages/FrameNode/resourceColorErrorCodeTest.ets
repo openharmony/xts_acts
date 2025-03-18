@@ -34,7 +34,7 @@ struct ColorMetricsIndex {
           }
         })
 
-      Button("ResourceColor ErrorCode 180003").id('error_bnt180003_id')
+      Button('ResourceColor ErrorCode 180003').id('error_bnt180003_id')
         .width('80%')
         .height(50)
         .onClick(() => {
