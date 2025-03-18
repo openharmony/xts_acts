@@ -11,7 +11,10 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBaseErrorCodeMethodTest.hap"
+                "ActsBaseErrorCodeMethodTest.hap",
+                "ActsmultiInstancEerrCodeMain.hap",
+                "ActsBaseErrorRely.hap",
+				"ActsBaseErrorAppcloneRely.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

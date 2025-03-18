@@ -19,7 +19,7 @@ import { childProcessManager } from '@kit.AbilityKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 let mpEnable: string;
 const PARAM_INVALID = 401;
-export default function ndkTest() {
+export default function ChildProcessTest() {
   describe('ChildProcessTest', () => {
     beforeAll(() => {
       try {

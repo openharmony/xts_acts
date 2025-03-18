@@ -19,7 +19,7 @@ import { common, sendableContextManager, WantAgent, wantAgent } from '@kit.Abili
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default function openLinkTest() {
+export default function ActsWantAgentTest() {
   describe('ActsWantAgentTest', () => {
 
     let TAG = 'ActsWantAgentTest ===>';

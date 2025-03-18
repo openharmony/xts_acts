@@ -23,7 +23,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let context = getContext(this) as common.UIAbilityContext;;
 let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator
-export default function openLinkTest() {
+export default function AbilityDelegatorTest() {
   describe('AbilityDelegatorTest', () => {
 
     let TAG = 'ActsWantAgentTest ===>';

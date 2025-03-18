@@ -16,8 +16,14 @@
 import WantAgentTest from './WantAgent.test'
 import AbilityDelegatorTest from './AbilityDelgator.test'
 import StartChildProcessTest from './StartChildProcess.test'
+import UiAbilityContextStartAbility from './uiabilitycontextstartability.test'
+import UIAbilityContexttest from './UIAbilityContexttest.test'
+import AbilityBase_UIAbilityContext from './AbilityBase_UIAbilityContext.test'
 export default function testsuite() {
   WantAgentTest();
   AbilityDelegatorTest();
-  StartChildProcessTest()
+  StartChildProcessTest();
+  UiAbilityContextStartAbility();
+  UIAbilityContexttest();
+  // AbilityBase_UIAbilityContext()
 }
