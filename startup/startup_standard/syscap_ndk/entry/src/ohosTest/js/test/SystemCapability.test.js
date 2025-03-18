@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import deviceinfo from '@ohos.deviceInfo'
 export default function SystemCapabilityTest() {
 describe('SystemCapabilityTest', function () {
@@ -29,7 +29,7 @@ describe('SystemCapabilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSysCaps01', 0, async function (done) {
+    it('testSysCaps01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testSysCaps01 start');
         let ret = false;
         try {
@@ -55,7 +55,7 @@ describe('SystemCapabilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('device_info_test_004', 0, function () {
+    it('device_info_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('testGetMarketName01 start')
         let ret = false;
         let marketNameInfo = deviceinfo.marketName;

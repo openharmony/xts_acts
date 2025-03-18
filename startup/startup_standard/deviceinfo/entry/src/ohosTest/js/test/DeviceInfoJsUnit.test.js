@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import deviceinfo from '@ohos.deviceInfo'
 
 export default function DeviceInfoTest() {
@@ -52,7 +52,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_001', 0, async function (done) {
+        it('device_info_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_001 start');
             let ret = false;
             let deviceTypeInfo = deviceinfo.deviceType;
@@ -81,7 +81,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_002', 0, async function (done) {
+        it('device_info_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_002 start');
             let ret = false;
             let manufactureInfo = deviceinfo.manufacture;
@@ -109,7 +109,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_003', 0, async function (done) {
+        it('device_info_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetDeviceBrand01 start');
             let ret = false;
             let brandInfo = deviceinfo.brand;
@@ -137,7 +137,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_004', 0, async function (done) {
+        it('device_info_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetMarketName01 start')
             let ret = false;
             let marketNameInfo = deviceinfo.marketName;
@@ -165,7 +165,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_005', 0, function () {
+        it('device_info_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetProductSeries01 start');
 
             let productSeriesInfo = deviceinfo.productSeries;
@@ -194,7 +194,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_006', 0, async function (done) {
+        it('device_info_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetProductModel01 start');
             let ret = false;
             let productModelInfo = deviceinfo.productModel;
@@ -222,7 +222,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_007', 0, function () {
+        it('device_info_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetSoftwareModel01 start');
 
             let softwareModelInfo = deviceinfo.softwareModel;
@@ -251,7 +251,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_008', 0, async function (done) {
+        it('device_info_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetHardWareModel01 start');
             let ret = false;
             let hardwareModelInfo = deviceinfo.hardwareModel;
@@ -279,7 +279,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_009', 0, function () {
+        it('device_info_test_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetHardWareProfile01 start');
 
             let hardwareProfileInfo = deviceinfo.hardwareProfile;
@@ -308,7 +308,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_010', 0, function () {
+        it('device_info_test_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetSerial01 start');
 
             let serialInfo = deviceinfo.serial;
@@ -337,7 +337,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_011', 0, function () {
+        it('device_info_test_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetBootLoaderVersion01 start');
 
             let bootloaderVersionInfo = deviceinfo.bootloaderVersion;
@@ -366,7 +366,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_012', 0, function () {
+        it('device_info_test_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetabiList01 start');
 
             let abiListInfo = deviceinfo.abiList;
@@ -395,7 +395,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_013', 0, function () {
+        it('device_info_test_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetSecurityPatchTag01 start');
 
             let securityPatchTagInfo = deviceinfo.securityPatchTag;
@@ -424,7 +424,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_014', 0, async function (done) {
+        it('device_info_test_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetDisplayVersion01 start');
             let ret = false;
             let displayVersionInfo = deviceinfo.displayVersion;
@@ -452,7 +452,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_015', 0, function () {
+        it('device_info_test_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetIncrementalVersion01 start');
 
             let incrementalVersionInfo = deviceinfo.incrementalVersion;
@@ -481,7 +481,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_016', 0, function () {
+        it('device_info_test_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetOSReleaserType01 start');
 
             let osReleaseTypeInfo = deviceinfo.osReleaseType;
@@ -510,7 +510,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_017', 0, function () {
+        it('device_info_test_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetOSFullName01 start');
 
             let osFullNameInfo = deviceinfo.osFullName;
@@ -539,7 +539,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_018', 0, function () {
+        it('device_info_test_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetMajorVersion01 start');
 
             let majorVersionInfo = deviceinfo.majorVersion;
@@ -569,7 +569,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_019', 0, function () {
+        it('device_info_test_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetSeniorVersion01 start');
 
             let seniorVersionInfo = deviceinfo.seniorVersion;
@@ -599,7 +599,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_020', 0, function () {
+        it('device_info_test_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetFeatureVersion01 start');
 
             let featureVersionInfo = deviceinfo.featureVersion;
@@ -629,7 +629,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_021', 0, function () {
+        it('device_info_test_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetBuildVersion01 start');
 
             let buildVersionInfo = deviceinfo.buildVersion;
@@ -659,7 +659,7 @@ export default function DeviceInfoTest() {
          * @tc.type    : Function
          * @tc.level   : Level 0
          */
-        it('device_info_test_022', 0, async function (done) {
+        it('device_info_test_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetSdkApiVersion01 start');
             let ret = false;
             let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
@@ -694,7 +694,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_023', 0, async function (done) {
+        it('device_info_test_023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetFirstApiVersion01 start');
             let ret = false;
             let firstApiVersionInfo = deviceinfo.firstApiVersion;
@@ -729,7 +729,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_024', 0, async function (done) {
+        it('device_info_test_024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetVersionId01 start');
             let ret = false;
             let versionIdInfo = deviceinfo.versionId;
@@ -757,7 +757,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_025', 0, function () {
+        it('device_info_test_025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetBuildType01 start');
 
             let buildTypeInfo = deviceinfo.buildType;
@@ -786,7 +786,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_026', 0, async function (done) {
+        it('device_info_test_026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetBuildUser01 start');
             let ret = false;
             let buildUserInfo = deviceinfo.buildUser;
@@ -814,7 +814,7 @@ export default function DeviceInfoTest() {
          * @tc.type    : Function
          * @tc.level   : Level 0
          */
-        it('device_info_test_027', 0, async function (done) {
+        it('device_info_test_027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetBuildHost01 start');
             let ret = false;
             let buildHostInfo = deviceinfo.buildHost;
@@ -842,7 +842,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_028', 0, async function (done) {
+        it('device_info_test_028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetBuildTime01 start');
             let ret = false;
             let buildTimeInfo = deviceinfo.buildTime;
@@ -870,7 +870,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_029', 0, function () {
+        it('device_info_test_029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('testGetBuildRootHash01 start');
 
             let buildRootHashInfo = deviceinfo.buildRootHash;
@@ -899,7 +899,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_030', 0, function () {
+        it('device_info_test_030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_030 start');
             let deviceTypeInfo = deviceinfo.deviceType;
             console.info('the value of the deviceinfo deviceType is:' + deviceTypeInfo);
@@ -919,7 +919,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_031', 0, function () {
+        it('device_info_test_031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_031 start');
             let manufactureInfo = deviceinfo.manufacture;
             console.info('the value of the deviceinfo manufacture is :' + manufactureInfo);
@@ -938,7 +938,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_032', 0, function () {
+        it('device_info_test_032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_032 start');
             let brandInfo = deviceinfo.brand;
             console.info('the value of the deviceinfo brand is :' + brandInfo);
@@ -957,7 +957,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_034', 0, function () {
+        it('device_info_test_034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_034 start');
             let productSeriesInfo = deviceinfo.productSeries;
             console.info('the value of the deviceinfo  productSeries is :' + productSeriesInfo);
@@ -983,7 +983,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_035', 0, function () {
+        it('device_info_test_035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_035 start');
             let productModelInfo = deviceinfo.productModel;
             console.info('the value of the deviceinfo productModel is :' + productModelInfo);
@@ -1002,7 +1002,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_036', 0, function () {
+        it('device_info_test_036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_036 start');
             let softwareModelInfo = deviceinfo.softwareModel;
             console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
@@ -1028,7 +1028,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_037', 0, function () {
+        it('device_info_test_037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_037 start');
             let hardwareModelInfo = deviceinfo.hardwareModel;
             console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
@@ -1047,7 +1047,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_038', 0, function () {
+        it('device_info_test_038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_038 start');
             let hardwareProfileInfo = deviceinfo.hardwareProfile;
             console.info('the value of the deviceinfo hardwareProfile is :' + hardwareProfileInfo);
@@ -1073,7 +1073,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_039', 0, function () {
+        it('device_info_test_039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_039 start');
             let serialInfo = deviceinfo.serial;
             console.info('the value of the deviceinfo serial is :' + serialInfo);
@@ -1099,7 +1099,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_040', 0, function () {
+        it('device_info_test_040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_040 start');
             let displayVersionInfo = deviceinfo.displayVersion;
             console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
@@ -1118,7 +1118,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_041', 0, function () {
+        it('device_info_test_041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_041 start');
             let osFullNameInfo = deviceinfo.osFullName;
             console.info('the value of the deviceinfo osFullName is :' + osFullNameInfo);
@@ -1144,7 +1144,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_042', 0, function () {
+        it('device_info_test_042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_042 start');
             let versionIdInfo = deviceinfo.versionId;
             console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
@@ -1163,7 +1163,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_043', 0, function () {
+        it('device_info_test_043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_043 start');
             let buildUserInfo = deviceinfo.buildUser;
             console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
@@ -1188,7 +1188,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_044', 0, function () {
+        it('device_info_test_044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_044 start');
             let buildHostInfo = deviceinfo.buildHost;
             console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
@@ -1214,7 +1214,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_045', 0, function () {
+        it('device_info_test_045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_045 start');
             let deviceTypeInfo = deviceinfo.deviceType;
             console.info('the value of the deviceinfo deviceType is :' + deviceTypeInfo);
@@ -1233,7 +1233,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_046', 0, function () {
+        it('device_info_test_046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_046 start');
             let manufactureInfo = deviceinfo.manufacture;
             console.info('the value of the deviceinfo manufacture is :' + manufactureInfo);
@@ -1252,7 +1252,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_047', 0, function () {
+        it('device_info_test_047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_047 start');
             let brandInfo = deviceinfo.brand;
             console.info('the value of the deviceinfo brand is :' + brandInfo);
@@ -1271,7 +1271,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_048', 0, function () {
+        it('device_info_test_048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_048 start');
             let marketNameInfo = deviceinfo.marketName;
             console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
@@ -1291,7 +1291,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_049', 0, function () {
+        it('device_info_test_049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_049 start');
             let productSeriesInfo = deviceinfo.productSeries;
             console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
@@ -1317,7 +1317,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_050', 0, function () {
+        it('device_info_test_050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_050 start');
             let productModelInfo = deviceinfo.productModel;
             console.info('the value of the deviceinfo productModel is :' + productModelInfo);
@@ -1336,7 +1336,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_051', 0, function () {
+        it('device_info_test_051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_051 start');
             let softwareModelInfo = deviceinfo.softwareModel;
             console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
@@ -1362,7 +1362,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_052', 0, function () {
+        it('device_info_test_052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_052 start');
             let hardwareModelInfo = deviceinfo.hardwareModel;
             console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
@@ -1381,7 +1381,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_053', 0, function () {
+        it('device_info_test_053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_053 start');
             let hardwareProfileInfo = deviceinfo.hardwareProfile;
             console.info('the value of the deviceinfo hardwareProfile is :' + hardwareProfileInfo);
@@ -1407,7 +1407,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_054', 0, function () {
+        it('device_info_test_054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_054 start');
             let serialInfo = deviceinfo.serial;
             console.info('the value of the deviceinfo serial is :' + serialInfo);
@@ -1433,7 +1433,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_055', 0, function () {
+        it('device_info_test_055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_055 start');
             let displayVersionInfo = deviceinfo.displayVersion;
             console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
@@ -1453,7 +1453,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_056', 0, function () {
+        it('device_info_test_056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_056 start');
             let incrementalVersionInfo = deviceinfo.incrementalVersion;
             console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
@@ -1479,7 +1479,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_057', 0, function () {
+        it('device_info_test_057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_057 start');
             let incrementalVersionInfo = deviceinfo.incrementalVersion;
             console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
@@ -1505,7 +1505,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_058', 0, function () {
+        it('device_info_test_058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_058 start');
             let versionIdInfo = deviceinfo.versionId;
             console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
@@ -1524,7 +1524,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_059', 0, function () {
+        it('device_info_test_059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_043 start');
             let buildUserInfo = deviceinfo.buildUser;
             console.info('the value of thebuildUser is :' + buildUserInfo);
@@ -1543,7 +1543,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_060', 0, function () {
+        it('device_info_test_060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_060 start');
             let buildHostInfo = deviceinfo.buildHost;
             console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
@@ -1562,7 +1562,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_061', 0, async function (done) {
+        it('device_info_test_061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testGetSecurityPatchTag02 start');
             let ret = false;
             let securityPatchTagInfo = deviceinfo.securityPatchTag;
@@ -1592,7 +1592,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_062', 0, function () {
+        it('device_info_test_062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_062 start');
             let udid = deviceinfo.udid;
             console.info('the value of the deviceinfo udid is :' + udid);
@@ -1611,7 +1611,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_063', 0, async function (done) {
+        it('device_info_test_063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_063 start');
             let ret = false;
             let udid = deviceinfo.udid;
@@ -1639,7 +1639,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_064', 0, function () {
+        it('device_info_test_064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_064 start');
             let udid = deviceinfo.udid;
             console.info('the value of the deviceinfo udid is :' + udid);
@@ -1657,7 +1657,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_0665', 0, function () {
+        it('device_info_test_0665', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_0665 start');
 
             let distributionOSNameInfo = deviceinfo.distributionOSName;
@@ -1683,7 +1683,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_0666', 0, function () {
+        it('device_info_test_0666', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_0666 start');
 
             let distributionOSVersionInfo = deviceinfo.distributionOSVersion;
@@ -1711,7 +1711,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_0667', 0, function () {
+        it('device_info_test_0667', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_0667 start');
             let distributionOSVersionInfo = deviceinfo.distributionOSVersion;
             console.info('the value of the deviceinfo distributionOSVersion is :' + distributionOSVersionInfo);
@@ -1736,7 +1736,7 @@ export default function DeviceInfoTest() {
        * @tc.type    : Function
        * @tc.level   : Level 0
        */
-        it('device_info_test_0668', 0, async function (done) {
+        it('device_info_test_0668', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_0668 start');
             let ret = false;
             let distributionOSApiVersionInfo = deviceinfo.distributionOSApiVersion;
@@ -1770,7 +1770,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_0669', 0, function () {
+        it('device_info_test_0669', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_0669 start');
 
             let distributionOSReleaseTypeInfo = deviceinfo.distributionOSReleaseType;
@@ -1799,7 +1799,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_070', 0, function () {
+        it('device_info_test_070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_070 start');
             let odid = deviceinfo.ODID;
             console.info('the value of the deviceinfo odid is :' + odid);
@@ -1818,7 +1818,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_071', 0, function () {
+        it('device_info_test_071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_071 start');
             let ret = false;
             let odid1 = deviceinfo.ODID;
@@ -1853,7 +1853,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_072', 0, function () {
+        it('device_info_test_072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             console.info('device_info_test_072 start');
             let distributionOSApiName = deviceinfo.distributionOSApiName;
             if (distributionOSApiName != "" && distributionOSApiName != null && distributionOSApiName != undefined) {
@@ -1871,7 +1871,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_073', 0, async function (done) {
+        it('device_info_test_073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_073 start');
             let ret = false;
             let productModelInfo = deviceinfo.productModelAlias;
@@ -1899,7 +1899,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_074', 0, async function (done) {
+        it('device_info_test_074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('device_info_test_074 start');
             let ret = false;
             let diskSN = deviceinfo.diskSN;

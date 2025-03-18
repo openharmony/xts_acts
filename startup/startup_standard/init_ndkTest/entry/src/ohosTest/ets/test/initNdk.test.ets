@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium'
 import initndk from 'libinitndk.so'
 
 export default function initNdkTest() {
@@ -29,7 +29,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDeviceType001', 0, async (done: Function) => {
+    it('testOHGetDeviceType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let deviceTypeInfo: string = initndk.oHGetDeviceType();
       console.info('the value of the deviceType is :' + deviceTypeInfo);
 
@@ -57,7 +57,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDeviceType002', 0, async (done: Function) => {
+    it('testOHGetDeviceType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let deviceTypeInfo: string = initndk.oHGetDeviceType();
       console.info('the value of the deviceType is :' + deviceTypeInfo);
       let len = deviceTypeInfo.length;
@@ -81,7 +81,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetManufacture001', 0, async (done: Function) => {
+    it('testOHGetManufacture001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let manufactureInfo: string = initndk.oHGetManufacture();
 
       let ret = false;
@@ -105,7 +105,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetManufacture002', 0, async (done: Function) => {
+    it('testOHGetManufacture002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let manufactureInfo: string = initndk.oHGetManufacture();
       let len = manufactureInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
@@ -121,7 +121,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBrand001', 0, async (done: Function) => {
+    it('testOHGetBrand001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let brandInfo: string = initndk.oHGetBrand();
 
       let ret = false;
@@ -145,7 +145,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBrand002', 0, async (done: Function) => {
+    it('testOHGetBrand002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let brandInfo: string = initndk.oHGetBrand();
       let len = brandInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
@@ -161,7 +161,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetMarketName001', 0, async (done: Function) => {
+    it('testOHGetMarketName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let ret = false;
       let marketNameInfo: string = initndk.oHGetMarketName();
 
@@ -186,7 +186,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetProductSeries001', 0, async (done: Function) => {
+    it('testOHGetProductSeries001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let productSeriesInfo: string = initndk.oHGetProductSeries();
       console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
 
@@ -214,7 +214,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetProductSeries002', 0, async (done: Function) => {
+    it('testOHGetProductSeries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let productSeriesInfo: string = initndk.oHGetProductSeries();
       console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
       let len = productSeriesInfo.length;
@@ -238,7 +238,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetProductModel001', 0, async (done: Function) => {
+    it('testOHGetProductModel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let productModelInfo: string = initndk.oHGetProductModel();
 
       console.info('the value of the deviceinfo productModel is :' + productModelInfo);
@@ -266,7 +266,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetProductModel002', 0, async (done: Function) => {
+    it('testOHGetProductModel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let productModelInfo: string = initndk.oHGetProductModel();
 
       console.info('the value of the deviceinfo productModel is :' + productModelInfo);
@@ -291,7 +291,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSoftwareModel001', 0, async (done: Function) => {
+    it('testOHGetSoftwareModel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let softwareModelInfo: string = initndk.oHGetSoftwareModel();
 
       console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
@@ -319,7 +319,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSoftwareModel002', 0, async (done: Function) => {
+    it('testOHGetSoftwareModel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let softwareModelInfo: string = initndk.oHGetSoftwareModel();
 
       console.info('the value of the deviceinfo softwareModel is :' + softwareModelInfo);
@@ -344,7 +344,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetHardwareModel001', 0, async (done: Function) => {
+    it('testOHGetHardwareModel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let hardwareModelInfo: string = initndk.oHGetHardwareModel();
 
       let ret = false;
@@ -369,7 +369,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetHardwareModel002', 0, async (done: Function) => {
+    it('testOHGetHardwareModel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let hardwareModelInfo: string = initndk.oHGetHardwareModel();
 
       console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
@@ -387,7 +387,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBootloaderVersion001', 0, async (done: Function) => {
+    it('testOHGetBootloaderVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let bootloaderVersionInfo: string = initndk.oHGetBootloaderVersion();
       console.info('the value of the deviceinfo bootloaderVersion is :' + bootloaderVersionInfo);
 
@@ -415,7 +415,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBootloaderVersion002', 0, async (done: Function) => {
+    it('testOHGetBootloaderVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let bootloaderVersionInfo: string = initndk.oHGetBootloaderVersion();
       console.info('the value of the deviceinfo bootloaderVersion is :' + bootloaderVersionInfo);
 
@@ -440,7 +440,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetAbiList001', 0, async (done: Function) => {
+    it('testOHGetAbiList001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abiListInfo: string = initndk.oHGetAbiList();
 
       console.info('the value of the deviceinfo abiList is :' + abiListInfo);
@@ -469,7 +469,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetAbiList002', 0, async (done: Function) => {
+    it('testOHGetAbiList002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abiListInfo: string = initndk.oHGetAbiList();
 
       console.info('the value of the deviceinfo abiList is :' + abiListInfo);
@@ -494,7 +494,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSecurityPatchTag001', 0, async (done: Function) => {
+    it('testOHGetSecurityPatchTag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let securityPatchTagInfo: string = initndk.oHGetSecurityPatchTag();
       let ret = false;
       console.info('the value of the deviceinfo securityPatchTag is :' + securityPatchTagInfo);
@@ -519,7 +519,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSecurityPatchTag002', 0, async (done: Function) => {
+    it('testOHGetSecurityPatchTag002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let securityPatchTagInfo: string = initndk.oHGetSecurityPatchTag();
       let len = securityPatchTagInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_TWO);
@@ -548,7 +548,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDisplayVersion001', 0, async (done: Function) => {
+    it('testOHGetDisplayVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let displayVersionInfo: string = initndk.oHGetDisplayVersion();
       console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
 
@@ -576,7 +576,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDisplayVersion002', 0, async (done: Function) => {
+    it('testOHGetDisplayVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let displayVersionInfo: string = initndk.oHGetDisplayVersion();
       console.info('the value of the deviceinfo displayVersion is :' + displayVersionInfo);
       let len = displayVersionInfo.length;
@@ -600,7 +600,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetIncrementalVersion001', 0, async (done: Function) => {
+    it('testOHGetIncrementalVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let incrementalVersionInfo: string = initndk.oHGetIncrementalVersion();
 
       console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
@@ -628,7 +628,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetIncrementalVersion002', 0, async (done: Function) => {
+    it('testOHGetIncrementalVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let incrementalVersionInfo: string = initndk.oHGetIncrementalVersion();
 
       console.info('the value of the deviceinfo incrementalVersion is :' + incrementalVersionInfo);
@@ -653,7 +653,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetOsReleaseType001', 0, async (done: Function) => {
+    it('testOHGetOsReleaseType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let osReleaseTypeInfo: string = initndk.oHGetOsReleaseType();
 
       console.info('the value of the deviceinfo osReleaseType is :' + osReleaseTypeInfo);
@@ -681,7 +681,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetOSFullName001', 0, async (done: Function) => {
+    it('testOHGetOSFullName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let osFullNameInfo: string = initndk.oHGetOSFullName();
 
       console.info('the value of the deviceinfo osFullName is :' + osFullNameInfo);
@@ -709,7 +709,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetOSFullName002', 0, async (done: Function) => {
+    it('testOHGetOSFullName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let osFullNameInfo: string = initndk.oHGetOSFullName();
 
       console.info('the value of the deviceinfo osFullName is :' + osFullNameInfo);
@@ -734,7 +734,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSdkApiVersion001', 0, async (done: Function) => {
+    it('testOHGetSdkApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sdkApiVersionInfo: number = initndk.oHGetSdkApiVersion();
       let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
       let arr = sdkApiVersionInfo.toString().match(str);
@@ -756,7 +756,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetSdkApiVersion002', 0, async (done: Function) => {
+    it('testOHGetSdkApiVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sdkApiVersionInfo: number = initndk.oHGetSdkApiVersion();
 
       let ret = false;
@@ -781,7 +781,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetFirstApiVersion001', 0, async (done: Function) => {
+    it('testOHGetFirstApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstApiVersionInfo: number = initndk.oHGetFirstApiVersion();
       let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
       let arr = firstApiVersionInfo.toString().match(str);
@@ -802,7 +802,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetFirstApiVersion002', 0, async (done: Function) => {
+    it('testOHGetFirstApiVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstApiVersionInfo: number = initndk.oHGetFirstApiVersion();
 
       let ret = false;
@@ -827,7 +827,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetVersionId001', 0, async (done: Function) => {
+    it('testOHGetVersionId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let versionIdInfo: string = initndk.oHGetVersionId();
 
       let ret = false;
@@ -852,7 +852,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetVersionId002', 0, async (done: Function) => {
+    it('testOHGetVersionId002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let versionIdInfo: string = initndk.oHGetVersionId();
 
       console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
@@ -870,7 +870,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildType001', 0, async (done: Function) => {
+    it('testOHGetBuildType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildTypeInfo: string = initndk.oHGetBuildType();
 
       console.info('the value of the deviceinfo buildType is :' + buildTypeInfo);
@@ -899,7 +899,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildType002', 0, async (done: Function) => {
+    it('testOHGetBuildType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildTypeInfo: string = initndk.oHGetBuildType();
 
       console.info('the value of the deviceinfo buildType is :' + buildTypeInfo);
@@ -925,7 +925,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildUser001', 0, async (done: Function) => {
+    it('testOHGetBuildUser001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildUserInfo: string = initndk.oHGetBuildUser();
 
       console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
@@ -953,7 +953,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildUser002', 0, async (done: Function) => {
+    it('testOHGetBuildUser002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildUserInfo: string = initndk.oHGetBuildUser();
 
       console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
@@ -978,7 +978,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildHost001', 0, async (done: Function) => {
+    it('testOHGetBuildHost001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildHostInfo: string = initndk.oHGetBuildHost();
 
       console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
@@ -1006,7 +1006,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildHost002', 0, async (done: Function) => {
+    it('testOHGetBuildHost002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildHostInfo: string = initndk.oHGetBuildHost();
 
       console.info('the value of the deviceinfo buildHost is :' + buildHostInfo);
@@ -1031,7 +1031,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildTime001', 0, async (done: Function) => {
+    it('testOHGetBuildTime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildTimeInfo: string = initndk.oHGetBuildTime();
 
       console.info('the value of the deviceinfo buildTime is :' + buildTimeInfo);
@@ -1062,7 +1062,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildTime002', 0, async (done: Function) => {
+    it('testOHGetBuildTime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildTimeInfo: string = initndk.oHGetBuildTime();
 
       console.info('the value of the deviceinfo buildTime is :' + buildTimeInfo);
@@ -1087,7 +1087,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetBuildRootHash001', 0, async (done: Function) => {
+    it('testOHGetBuildRootHash001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let buildRootHashInfo: string = initndk.oHGetBuildRootHash();
 
       console.info('the value of the deviceinfo buildRootHash is :' + buildRootHashInfo);
@@ -1115,7 +1115,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSName001', 0, async (done: Function) => {
+    it('testOHGetDistributionOSName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSNameInfo: string = initndk.oHGetDistributionOSName();
 
       console.info('the value of the distributionOSNameInfo is :' + distributionOSNameInfo);
@@ -1143,7 +1143,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSVersion001', 0, async (done: Function) => {
+    it('testOHGetDistributionOSVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSVersionInfo: string = initndk.oHGetDistributionOSVersion();
 
       console.info('the value of the deviceinfo distributionOSVersion is :' + distributionOSVersionInfo);
@@ -1171,7 +1171,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSVersion002', 0, async (done: Function) => {
+    it('testOHGetDistributionOSVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSVersionInfo: string = initndk.oHGetDistributionOSVersion();
 
       console.info('the value of the deviceinfo distributionOSVersion is :' + distributionOSVersionInfo);
@@ -1196,7 +1196,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSApiVersion001', 0, async (done: Function) => {
+    it('testOHGetDistributionOSApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSApiVersionInfo: number = initndk.oHGetDistributionOSApiVersion();
       let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
       let arr = distributionOSApiVersionInfo.toString().match(str);
@@ -1217,7 +1217,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSApiVersion002', 0, async (done: Function) => {
+    it('testOHGetDistributionOSApiVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSApiVersionInfo: number = initndk.oHGetDistributionOSApiVersion();
 
       let ret = false;
@@ -1242,7 +1242,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetDistributionOSReleaseType001', 0, async (done: Function) => {
+    it('testOHGetDistributionOSReleaseType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let distributionOSReleaseTypeInfo: string = initndk.oHGetDistributionOSReleaseType();
 
       console.info('the value of the deviceinfo distributiondistributionOSReleaseType is :' + distributionOSReleaseTypeInfo);
@@ -1270,7 +1270,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse001', 0, async (done: Function) => {
+    it('testCanIUse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = initndk.canIUse();
       expect(result).assertEqual(resultTrue);
@@ -1288,7 +1288,7 @@ export default function initNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCanIUse002', 0, async (done: Function) => {
+    it('testCanIUse002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = initndk.canIUseOther();
       expect(result).assertEqual(resultTrue);
