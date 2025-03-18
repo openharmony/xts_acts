@@ -33,7 +33,7 @@ struct PageOne {
         })
         .backgroundColor('#0D9FFB')
         .onClick(() => {
-          console.log("click the button")
+          console.log('click the button')
         })
       }
       .width('100%')
