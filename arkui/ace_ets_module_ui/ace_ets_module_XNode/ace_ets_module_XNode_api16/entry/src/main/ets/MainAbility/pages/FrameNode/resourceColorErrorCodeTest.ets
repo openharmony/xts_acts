@@ -31,7 +31,6 @@ struct ColorMetricsIndex {
             ColorMetrics.resourceColor(null);
           } catch (e) {
             this.errorStr401 = (e as BusinessError).code + '';
-            console.log("999999:" + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
           }
         })
 
@@ -44,7 +43,6 @@ struct ColorMetricsIndex {
             ColorMetrics.resourceColor(color);
           } catch (e) {
             this.errorStr180003 = (e as BusinessError).code + '';
-            console.log("999999:" + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
           }
         })
       Text(this.errorStr401).id('error_str401_id')
