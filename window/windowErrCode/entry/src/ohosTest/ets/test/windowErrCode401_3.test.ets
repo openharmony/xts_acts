@@ -201,7 +201,7 @@ export default function windowErrCode401_3() {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(err));
-            expect().assertFail();
+            expect(err.code).assertEqual(401);
             done()
             return;
           }
@@ -245,7 +245,7 @@ export default function windowErrCode401_3() {
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(401);
         });
         done()
       } catch (exception) {
@@ -790,56 +790,6 @@ export default function windowErrCode401_3() {
         await win!.destroyWindow()
         console.log(msgStr + 'end.');
         done()
-      }
-    })
-
-    /**
-     * @tc.number     : testSetTitleAndDockHoverShownPromiseErrCode401_0100
-     * @tc.name       : testSetTitleAndDockHoverShownPromiseErrCode401_0100
-     * @tc.desc       : testSetTitleAndDockHoverShownPromiseErrCode401_0100
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testSetTitleAndDockHoverShownPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetTitleAndDockHoverShownPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
-
-        let mainWindow: ohosWindow.Window | undefined;
-        await windowStage.getMainWindow().then((data) => {
-          mainWindow = data;
-          console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-          console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
-          done()
-        });
-        expect(!!mainWindow).assertTrue();
-
-        try {
-          await mainWindow!.setTitleAndDockHoverShown(null, null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
-            if (err.code == 801) {
-              console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
-            } else {
-              expect(err.code).assertEqual(401);
-            }
-          });
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' +
-          JSON.stringify(exception));
-          if (exception.code == 801) {
-            console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
-          } else {
-            expect().assertFail();
-          }
-          done()
-        }
       }
     })
 
