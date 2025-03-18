@@ -11,8 +11,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsOhRecorderNDKMainTest.hap",
-                "ActsAVRecorderNDKTest.hap"
+                "ActsOhAVRecorderNDKMainTest.hap",
+                "ActsOhAVRecorderNDKTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

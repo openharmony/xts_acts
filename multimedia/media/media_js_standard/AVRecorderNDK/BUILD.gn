@@ -17,7 +17,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("AVRecorder_ndk_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsOhRecorderNDKMainTest"
+  hap_name = "ActsOhAVRecorderNDKMainTest"
   subsystem_name = "multimedia"
   part_name = "player_framework"
 }
