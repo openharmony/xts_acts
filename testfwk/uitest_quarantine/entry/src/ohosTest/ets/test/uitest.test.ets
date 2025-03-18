@@ -162,8 +162,8 @@ export default function UiTest() {
     it('testFling', 0, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
-      let virtualDisplay = await display.getDisplayByIdSync(999)
-      if (virtualDisplay != null) {
+      let d = await display.getDefaultDisplaySync()
+      if (d.id == 999) {
         console.info('Can not create full screen application scene')
         return
       }
