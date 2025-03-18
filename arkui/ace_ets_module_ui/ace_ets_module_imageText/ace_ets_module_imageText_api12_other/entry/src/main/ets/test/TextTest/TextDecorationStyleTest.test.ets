@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import { Driver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -47,9 +47,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test Text TextDecorationStyle DOTTED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0001', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0001', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0001 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextDOTTED');
@@ -66,9 +66,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test Text TextDecorationStyle DASHED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0002', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0002', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0002 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextDASHED');
@@ -86,9 +86,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test Search TextDecorationStyle DOTTED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0003', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0003', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0003 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleSearchDOTTED');
@@ -106,9 +106,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test Search TextDecorationStyle DASHED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0004', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0004', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0004 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleSearchDASHED');
@@ -126,9 +126,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test TextArea TextDecorationStyle DOTTED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0005', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0005', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0005 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextAreaDOTTED');
@@ -146,9 +146,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test TextArea TextDecorationStyle DASHED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0006', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0006', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0006 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextAreaDASHED');
@@ -166,9 +166,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test TextInput TextDecorationStyle DOTTED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0007', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0007', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0007 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextInputDOTTED');
@@ -186,9 +186,9 @@ export default function TextDecorationStyleTest() {
     * @tc.desic        test TextInput TextDecorationStyle DASHED
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        1
+    * @tc.level        0
      */
-    it('TextDecorationStyleTest0008', 0, async (done: Function) => {
+    it('TextDecorationStyleTest0008', Level.LEVEL0, async (done: Function) => {
       console.info('TextDecorationStyleTest0008 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('TextDecorationStyleTextInputDASHED');
