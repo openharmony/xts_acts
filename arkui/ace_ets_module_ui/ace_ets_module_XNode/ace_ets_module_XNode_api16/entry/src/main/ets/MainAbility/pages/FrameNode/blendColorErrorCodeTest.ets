@@ -30,7 +30,6 @@ struct ColorMetricsTest {
             sourceColor.blendColor(null);
           } catch (e) {
             this.errorStr401 = (e as BusinessError).code + '';
-            console.log("999999:" + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
           }
         })
 
