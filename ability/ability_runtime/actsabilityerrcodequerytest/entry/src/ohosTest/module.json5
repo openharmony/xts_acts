@@ -47,6 +47,25 @@
         ]
       },
     ],
+    "extensionAbilities": [
+      {
+        "name": "UIExtensionProvider",
+        "srcEntry": "./ets/test/UIExtensionContentSession/UIExtensionContentSession.ts",
+        "description": "UIExtensionAbility",
+        "type": "sys/commonUI",
+        "exported": true,
+        "extensionProcessMode": "bundle"
+      },
+      //      {
+      //        "name": "UIExtensionContentSession03",
+      //        "srcEntry": "./ets/test/UIExtensionContentSession/UIExtensionContentSession03.ts",
+      //        "description": "$string:SecondAbility_desc",
+      //        "icon": "$media:icon",
+      //        "label": "$string:SecondAbility_label",
+      //        "type": "sys/commonUI",
+      //        "exported": true,
+      //      },
+    ],
     "requestPermissions": []
   }
 }

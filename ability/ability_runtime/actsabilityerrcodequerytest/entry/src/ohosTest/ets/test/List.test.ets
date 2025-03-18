@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import childProcessManager from './childProcessManager.test';
+import UIExtensionContentSessionTest from './UIExtensionContentSession.test'
 
 export default function testsuite() {
   childProcessManager();
+  UIExtensionContentSessionTest();
 }
