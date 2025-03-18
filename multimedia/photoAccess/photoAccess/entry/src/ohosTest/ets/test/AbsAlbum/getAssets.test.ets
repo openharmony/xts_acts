@@ -172,8 +172,8 @@ export default function albumGetAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0100
-      * @tc.name      : album_getAssets_promise_001
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0200
+      * @tc.name      : album_getAssets_promise_002
       * @tc.desc      : album getAssets undefined,error code is 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
