@@ -48,6 +48,28 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.MICROPHONE",
+        "reason": "$string:TestAbility_desc"
+      },
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:TestAbility_desc"
+      },
+      {
+        "name": "ohos.permission.MEDIA_LOCATION",
+        "reason": "$string:TestAbility_desc"
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:TestAbility_desc"
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "$string:TestAbility_desc"
+      }
     ]
   }
 }
