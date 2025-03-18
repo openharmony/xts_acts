@@ -11,7 +11,7 @@ struct TimePickerSelectedAreaExample {
         selected: this.selectedTime
       }).id('timePicker')
         .width('90%')
-        .height("80%")
+        .height('80%')
         .useMilitaryTime(this.isMilitaryTime)
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {

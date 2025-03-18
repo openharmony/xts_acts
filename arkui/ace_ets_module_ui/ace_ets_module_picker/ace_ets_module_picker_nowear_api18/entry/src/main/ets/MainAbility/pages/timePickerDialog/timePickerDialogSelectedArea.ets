@@ -1,19 +1,19 @@
 /**
  * Copyright (c) 2025 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 class SelectTime{
-  selectTime: Date = new Date('2020-12-25T08:30:00')
+  private selectTime: Date = new Date('2020-12-25T08:30:00')
   hours(h:number,m:number){
     this.selectTime.setHours(h,m)
   }
@@ -39,17 +39,17 @@ struct TimePickerDialogSelectedAreaExample {
               if(value.hour&&value.minute){
                 time.hours(value.hour, value.minute)
               }
-              console.info("TimePickerDialog:onAccept()" + JSON.stringify(value))
+              console.info('TimePickerDialog:onAccept()' + JSON.stringify(value))
             },
             onCancel: () => {
-              console.info("TimePickerDialog:onCancel()")
+              console.info('TimePickerDialog:onCancel()')
             },
             onChange: (value: TimePickerResult) => {
-              console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
+              console.info('TimePickerDialog:onChange()' + JSON.stringify(value))
             },
             onEnterSelectedArea: (value: TimePickerResult) => {
               this.selectedFlag = 'enter'
-              console.info("TimePickerDialog:onEnterSelectedArea()" + JSON.stringify(value))
+              console.info('TimePickerDialog:onEnterSelectedArea()' + JSON.stringify(value))
             }
           })
         })
