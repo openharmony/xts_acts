@@ -23,7 +23,7 @@ struct ColorMetricsIndex {
 
   build() {
     Column() {
-      Button("ResourceColor ErrorCode 401").id('error_bnt401_id')
+      Button('ResourceColor ErrorCode 401').id('error_bnt401_id')
         .width('80%')
         .height(50)
         .onClick(() => {
