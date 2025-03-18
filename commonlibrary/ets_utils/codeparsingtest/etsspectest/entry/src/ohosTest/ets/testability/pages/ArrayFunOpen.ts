@@ -57,7 +57,7 @@ export interface ExportObj2 {
 
 export const exportObj2: ExportObj2 = {
   a: 1
-}
+};
 
 export function any(obj: any): any {
   return obj;
