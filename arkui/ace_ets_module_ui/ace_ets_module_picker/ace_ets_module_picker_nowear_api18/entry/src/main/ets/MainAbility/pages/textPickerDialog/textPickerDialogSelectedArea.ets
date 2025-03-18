@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 class SelectedValue{
-  select: number = 2
+  private select: number = 2
   set(val:number){
     this.select = val
   }
