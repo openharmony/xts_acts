@@ -34,7 +34,7 @@ let audioSampleRate: number;
 let audioBiterate: number;
 let videoFrameRate: number;
 let videoOrientation: number;
-let videoProfiles: Array<camera.VideoProfile>;
+let cameraVideoProfile: Array<camera.VideoProfile>;
 let isSupportCameraVideoProfiles = true;
 
 export default function OhAVRecorderNDKMp4Test() { // L2
@@ -66,10 +66,10 @@ export default function OhAVRecorderNDKMp4Test() { // L2
             console.info("[camera] case getSupportedOutputCapability FAILED");
             expect().assertFail();
           }
-          videoProfiles = cameraoutputcapability.videoProfiles;
+          cameraVideoProfile = cameraoutputcapability.videoProfiles;
         } else {
           isSupportCameraVideoProfiles = false;
-          console.info("Failed to obtain the default videoProfiles object.Not support usb camera");
+          console.info("Failed to obtain the default cameraVideoProfile object.Not support usb camera");
         }
       } else {
         isSupportCameraVideoProfiles = false;
@@ -81,11 +81,11 @@ export default function OhAVRecorderNDKMp4Test() { // L2
     beforeEach(async () => {
       console.info(`case to beforeEach `);
       if (isSupportCameraVideoProfiles) {
-        console.info("[camera] [videoProfiles.lenth=]" + videoProfiles.length);
-        let random_int: number = Math.floor(Math.random() * videoProfiles.length)
+        console.info("[camera] [videoProfiles.lenth=]" + cameraVideoProfile.length);
+        let random_int: number = Math.floor(Math.random() * cameraVideoProfile.length)
         console.info("[camera] [videoProfiles.random_int=]" + random_int);
-        videoFrameWidth = videoProfiles[random_int].size.width;
-        videoFrameHeight = videoProfiles[random_int].size.height;
+        videoFrameWidth = cameraVideoProfile[random_int].size.width;
+        videoFrameHeight = cameraVideoProfile[random_int].size.height;
         console.info("[camera] [videoFrameWidth[0]=]" + JSON.stringify(videoFrameWidth));
         console.info("[camera] [videoFrameHeight[0]=]" + JSON.stringify(videoFrameHeight));
 

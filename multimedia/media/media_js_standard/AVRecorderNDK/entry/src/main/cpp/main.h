@@ -19,7 +19,7 @@
 #include <multimedia/player_framework/avrecorder_base.h>
 #include <multimedia/player_framework/avrecorder.h>
 
-static struct OH_AVRecorder *g_avRecorder = {};
+struct OH_AVRecorder *g_avRecorder = {};
 OH_AVRecorder *InitRecorder();
 void StartRecording(OH_AVRecorder *oH_AVRecorder);
 #endif // AVRECORDER_MAIN_H

@@ -145,8 +145,12 @@ static bool GetInt32Property(napi_env env, napi_value root, const char *utf8name
 
 static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
 {
-    if (env == nullptr || arg == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "env is %{public}s || arg is %{public}s", env, arg);
+    if (env == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "env is nullptr");
+        return false;
+    }
+    if (arg == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "arg nullptr");
         return false;
     }
     // Optional parameters, no need check error.
@@ -175,34 +179,38 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             config.videoSourceType = AVRECORDER_SURFACE_YUV;
-            if (videoSourceType == 0) {
+            if (videoSourceType == AVRECORDER_SURFACE_YUV) {
                 config.videoSourceType = AVRECORDER_SURFACE_YUV;
-            } else if (videoSourceType == 1) {
+            } else if (videoSourceType == AVRECORDER_SURFACE_ES) {
                 config.videoSourceType = AVRECORDER_SURFACE_ES;
             }
             config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
-            if (videoCodec == 2) {
+            if (videoCodec == AVRECORDER_VIDEO_AVC) {
                 config.profile.videoCodec = AVRECORDER_VIDEO_AVC;
-            } else if (videoCodec == 6) {
+            } else if (videoCodec == AVRECORDER_VIDEO_MPEG4) {
                 config.profile.videoCodec = AVRECORDER_VIDEO_MPEG4;
-            } else if (videoCodec == 8) {
+            } else if (videoCodec == AVRECORDER_VIDEO_HEVC) {
                 config.profile.videoCodec = AVRECORDER_VIDEO_HEVC;
             }
             config.profile.isHdr = false;
             config.profile.enableTemporalScale = true;
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
     
-            if (fileGenerationMode == 0) {
+            if (fileGenerationMode == AVRECORDER_APP_CREATE) {
                 config.fileGenerationMode = AVRECORDER_APP_CREATE;
-            } else if (fileGenerationMode == 1) {
+            } else if (fileGenerationMode == AVRECORDER_AUTO_CREATE_CAMERA_SCENE) {
                 config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
             }
-            config.profile.videoBitrate = 2000000;
+            const int VIDEO_BITRAGE_2000KHZ = 2000000;
+            config.profile.videoBitrate = VIDEO_BITRAGE_2000KHZ;
             GetInt32Property(env, arg, "videoBitrate", &(config.profile.videoBitrate));
-            config.profile.videoFrameWidth = 1920;
-            config.profile.videoFrameHeight = 1080;
+            const int VIDEO_FRAMEWIDTH_1920 = 1920;
+            const int VIDEO_FRAMEHEIGHT_1080 = 1080;
+            config.profile.videoFrameWidth = VIDEO_FRAMEWIDTH_1920;
+            config.profile.videoFrameHeight = VIDEO_FRAMEHEIGHT_1080;
             GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
             GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
+            const int VIDEO_FRAMERATE_30 = 30;
             config.profile.videoFrameRate = 30;
             GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));
             OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameWidth :%{public}d",
@@ -282,17 +290,21 @@ void SetConfig(OH_AVRecorder_Config &config)
 {
     config.audioSourceType = AVRECORDER_DEFAULT;
     //  设置媒体属性
-    config.profile.audioBitrate = 48000;
-    config.profile.audioChannels = 2;
+    const int AUDIO_BITRATE_48KHZ = 48000;
+    config.profile.audioBitrate = AUDIO_BITRATE_48KHZ;
+    const int AUDIO_CHANNELS_2 = 2;
+    config.profile.audioChannels = AUDIO_CHANNELS_2;
     config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
-    config.profile.audioSampleRate = 48000;
+    const int SAMPLE_RATE_48KHZ = 48000;
+    config.profile.audioSampleRate = SAMPLE_RATE_48K;
     const int VIDEO_ORIENTATION_SIZE = 2;
     config.metadata.videoOrientation = (char *)malloc(VIDEO_ORIENTATION_SIZE);
     if (config.metadata.videoOrientation != nullptr) {
         strcpy(config.metadata.videoOrientation, "0");
     }
-    config.metadata.location.latitude = 0;
-    config.metadata.location.longitude = 0;
+    const int VIDEO_LOCATION_SIZE = 27;
+    config.metadata.location.latitude = VIDEO_LOCATION_SIZE;
+    config.metadata.location.longitude = VIDEO_LOCATION_SIZE;
 }
 
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
@@ -313,7 +325,7 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[1], fd, typeLen + 1, &typeLen);
     config->url = fd;
 
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder in parseSetConfigOps");
+    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder parseSetConfigOps in ");
     parseSetConfigOps(env, args[0], *config);
 
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
