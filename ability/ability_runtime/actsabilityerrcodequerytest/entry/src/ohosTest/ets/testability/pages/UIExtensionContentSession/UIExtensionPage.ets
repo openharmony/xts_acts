@@ -1,14 +1,38 @@
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+/**
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { router } from '@kit.ArkUI';
 
-let context = getContext(this) as common.UIAbilityContext;;
-let tag = 'UIExtensionPage02'
+let tag = 'UIExtensionPage'
+
+class MyRouterParam {
+  constructor(from: string) {
+    this.fromPage = from;
+  }
+  fromPage: string = "";
+}
 @Entry
 @Component
-struct UIExtensionPage02 {
+struct UIExtensionPage {
   @State message: string = 'UIExtension User';
   private myProxy: UIExtensionProxy | undefined = undefined;
+  public params:string = ''
+
+  aboutToAppear(): void {
+    this.params = (router.getParams() as MyRouterParam).fromPage;
+  }
 
   build() {
     Row() {
@@ -22,8 +46,9 @@ struct UIExtensionPage02 {
         UIExtensionComponent(
           {
             bundleName: 'ohos.example.myapplication',
-            abilityName: 'UIExtensionProvider02',
+            abilityName: 'UIExtensionProvider',
             moduleName: 'entry_test',
+            action:this.params,
             parameters: {
               'ability.want.params.uiExtensionType': 'sys/commonUI',
             }
@@ -32,9 +57,6 @@ struct UIExtensionPage02 {
           .onRemoteReady((proxy) => {
             console.log('UIExtensionComponent onRemoteReady')
             this.myProxy = proxy;
-            commonEventManager.publish('ACTS_TEST_IN_USER', ()=> {
-              console.info('====>Sub_UIExtensionContentSession_errorCode_0100 publish ACTS_TEST_IN_USER');
-            });
           })
           .onReceive((data) => {
             console.log('UIExtensionComponent onReceive')
@@ -53,6 +75,7 @@ struct UIExtensionPage02 {
           .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
 
         Button("sendData")
+          .id('userSendData')
           .type(ButtonType.Capsule)
           .offset({ x: 0, y: 60 })
           .width('80%')
@@ -65,19 +88,6 @@ struct UIExtensionPage02 {
               "data": 123456,
               "message": "data from component"
             })
-            setTimeout(async () => {
-              try {
-                await router.pushUrl({
-                  url: 'testability/pages/UIExtensionContentSession/extension',
-                });
-                console.info(tag, 'push page UIExtensionProvider success');
-                commonEventManager.publish('ACTS_TEST_IN_PROVIDER', ()=> {
-                  console.info('====>Sub_UIExtensionContentSession_errorCode_0100 publish ACTS_TEST_IN_PROVIDER');
-                });
-              } catch (err) {
-                console.info(tag, 'push page UIExtensionProvider err,err is :',err);
-              }
-            }, 3000);
           })
       }
       .width('100%')

@@ -12,13 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BusinessError } from '@ohos.base';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base from '@ohos.base';
-import { common, Want } from '@kit.AbilityKit';
+import { common } from '@kit.AbilityKit';
 import { router } from '@kit.ArkUI';
-import { Driver, ON, Component } from '@kit.TestKit';
 
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: ['ACTS_TEST_LOADCONTENT',
@@ -30,15 +28,6 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
 let subscriber: commonEventManager.CommonEventSubscriber;
 let context = getContext(this) as common.UIAbilityContext;
 
-function publishCB(err: BusinessError) {
-  if (err) {
-    console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('====>publish ACTS_TEST_OPENSESSION');
-    console.info(`Succeeded in publishing common event.`);
-  }
-}
-
 class MyRouterParam {
   constructor(from: string) {
     this.fromPage = from;
@@ -46,20 +35,8 @@ class MyRouterParam {
   fromPage: string = "";
 }
 
-let link = ''
-let abilityName:string = 'UIExtensionContentSession01'
-let want: Want = {
-  uri: link,
-  parameters: {
-    appLinkingOnly: false,
-    demo_num: 111
-  }
-}
-
 export default function UIExtensionContentSessionTest() {
   describe('UIExtensionContentSessionTest', () => {
-
-    let params: string = 'UIExtensionContentSessionTest';
 
     beforeAll(() => {
       context = globalThis.context
@@ -81,8 +58,6 @@ export default function UIExtensionContentSessionTest() {
      */
     it('Sub_UIExtensionContentSession_errorCode_0100', 0, (done:Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0100`;
-      abilityName = 'UIExtensionContentSession01'
-      params = 'Sub_UIExtensionContentSession_errorCode_0100'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -105,10 +80,10 @@ export default function UIExtensionContentSessionTest() {
           setTimeout(async () => {
             try {
               router.pushUrl({
-                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage01',
-                params: new MyRouterParam(params)
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
               });
-              console.info(tag, 'push page UIExtensionPage01 success');
+              console.info(tag, 'push page UIExtensionPage success');
             } catch (err) {
               console.info(tag, 'push page err,err is :',err);
             }
@@ -126,7 +101,6 @@ export default function UIExtensionContentSessionTest() {
      */
     it('Sub_UIExtensionContentSession_errorCode_0200', 0, (done:Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0200`;
-      abilityName = 'UIExtensionContentSession02'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -149,9 +123,10 @@ export default function UIExtensionContentSessionTest() {
           setTimeout(async () => {
             try {
               router.pushUrl({
-                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage02',
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
               });
-              console.info(tag, 'push page UIExtensionPage02 success');
+              console.info(tag, 'push page UIExtensionPage success');
             } catch (err) {
               console.info(tag, 'push page err,err is :',err);
             }
@@ -191,9 +166,10 @@ export default function UIExtensionContentSessionTest() {
           setTimeout(async () => {
             try {
               router.pushUrl({
-                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage03',
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
               });
-              console.info(tag, 'push page UIExtensionPage02 success');
+              console.info(tag, 'push page UIExtensionPage success');
             } catch (err) {
               console.info(tag, 'push page err,err is :',err);
             }
@@ -211,7 +187,6 @@ export default function UIExtensionContentSessionTest() {
      */
     it('Sub_UIExtensionContentSession_errorCode_0400', 0, (done:Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0400`;
-      params = 'Sub_UIExtensionContentSession_errorCode_0400'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -234,10 +209,97 @@ export default function UIExtensionContentSessionTest() {
           setTimeout(async () => {
             try {
               router.pushUrl({
-                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage03',
-                params: new MyRouterParam(params)
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
               });
-              console.info(tag, 'push page UIExtensionPage02 success');
+              console.info(tag, 'push page UIExtensionPage success');
+            } catch (err) {
+              console.info(tag, 'push page err,err is :',err);
+            }
+          }, 2000);
+        })
+    })
+
+    /*
+     * @tc.number : Sub_UIExtensionContentSession_errorCode_0500
+     * @tc.name   : session.setWindowPrivacyMode promise
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 3
+     */
+    it('Sub_UIExtensionContentSession_errorCode_0500', 0, (done:Function) => {
+      let tag:string = `Sub_UIExtensionContentSession_errorCode_0500`;
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              console.log("subscribeCallBack ACTS_TEST_DESTROY")
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(async () => {
+            try {
+              router.pushUrl({
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
+              });
+              console.info(tag, 'push page UIExtensionPage success');
+            } catch (err) {
+              console.info(tag, 'push page err,err is :',err);
+            }
+          }, 2000);
+        })
+    })
+
+
+    /*
+     * @tc.number : Sub_UIExtensionContentSession_errorCode_0600
+     * @tc.name   : session.setWindowPrivacyMode callback
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 3
+     */
+    it('Sub_UIExtensionContentSession_errorCode_0600', 0, (done:Function) => {
+      let tag:string = `Sub_UIExtensionContentSession_errorCode_0600`;
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              console.log("subscribeCallBack ACTS_TEST_DESTROY")
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(async () => {
+            try {
+              router.pushUrl({
+                url: 'testability/pages/UIExtensionContentSession/UIExtensionPage',
+                params: new MyRouterParam(tag)
+              });
+              console.info(tag, 'push page UIExtensionPage success');
             } catch (err) {
               console.info(tag, 'push page err,err is :',err);
             }

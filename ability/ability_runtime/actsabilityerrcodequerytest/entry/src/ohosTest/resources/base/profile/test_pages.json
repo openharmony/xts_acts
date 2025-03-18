@@ -1,9 +1,7 @@
 {
   "src": [
     "testability/pages/Index",
-    "testability/pages/UIExtensionContentSession/UIExtensionPage01",
-    "testability/pages/UIExtensionContentSession/UIExtensionPage02",
-    "testability/pages/UIExtensionContentSession/UIExtensionPage03",
+    "testability/pages/UIExtensionContentSession/UIExtensionPage",
     "testability/pages/UIExtensionContentSession/extension"
   ]
 }
