@@ -83,7 +83,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0100_2', 0,  (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0100_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
