@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium";
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import usbNoPerDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
 
