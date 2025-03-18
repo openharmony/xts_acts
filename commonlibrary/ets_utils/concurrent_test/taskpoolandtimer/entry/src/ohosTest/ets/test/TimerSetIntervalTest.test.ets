@@ -76,11 +76,20 @@ export default function TimerSetIntervalTest() {
      */
     it('TimerSetIntervalTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const args: string = 'Hello, World!';
+      let flag = false
       let msg2: string = '';
+      let time1 = Date.now()
+      let time2 = Date.now()
       let TimeID = setInterval((msg: string) => {
         msg2 = msg;
+        flag = true
+        time2 = Date.now()
       }, 100, args);
-      await sleep(100);
+
+      while (!flag) {
+        await sleep(100);
+      }
+      expect(time2 - time1 >= 100).assertTrue()
       expect(msg2).assertEqual('Hello, World!');
       clearInterval(TimeID);
       Done();

@@ -28,6 +28,7 @@ export default function setTimeoutTest() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(async () => {
+      flag = false
       await sleep(100);
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -95,11 +96,19 @@ export default function setTimeoutTest() {
       console.info(`${caseName} test start`);
       const args: string = 'Hello, World!';
       let msg2: string = '';
+      let time1 = Date.now()
+      let time2 = Date.now()
       setTimeout((msg: string) => {
         msg2 = msg;
+        flag = true
+        time2 = Date.now()
       }, 100, args);
-      await sleep(100);
+      while (flag != true) {
+        await sleep(100);
+      }
+
       expect(msg2).assertEqual('Hello, World!');
+      expect(time2 - time1 >= 100).assertTrue()
       console.info(`${caseName} test end`);
       Done();
     })

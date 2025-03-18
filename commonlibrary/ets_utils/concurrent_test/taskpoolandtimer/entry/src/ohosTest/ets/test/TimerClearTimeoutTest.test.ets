@@ -122,7 +122,7 @@ export default function clearTimeoutTest() {
       while (flag != true) {
         await sleep(100);
       }
-      ;
+
       expect(flag).assertTrue();
       console.info(`${caseName} test end`);
       Done();
@@ -149,7 +149,7 @@ export default function clearTimeoutTest() {
       while (flag != true) {
         await sleep(100);
       }
-      ;
+
       expect(flag).assertTrue();
       console.info(`${caseName} test end`);
       Done();
@@ -177,7 +177,7 @@ export default function clearTimeoutTest() {
       while (flag != true) {
         await sleep(100);
       }
-      ;
+
       expect(flag).assertTrue();
       console.info(`${caseName} test end`);
       Done();
