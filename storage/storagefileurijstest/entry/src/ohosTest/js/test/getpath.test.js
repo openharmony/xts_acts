@@ -353,4 +353,3 @@ describe('file_uri_test', function () {
     });
   })
 };
-
