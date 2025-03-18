@@ -18,7 +18,7 @@ import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -92,7 +92,7 @@ export default function geolocationTest_GeoErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_GeoErr_0400', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_GeoErr_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let reverseGeocodeRequest = "1";
                 geolocationm.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
@@ -121,7 +121,7 @@ export default function geolocationTest_GeoErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_GeoErr_0500', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_GeoErr_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let reverseGeocodeRequest = "1";
@@ -144,7 +144,7 @@ export default function geolocationTest_GeoErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_GeoErr_0600', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_GeoErr_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let geocodeRequest = 1;
                 geolocationm.getAddressesFromLocationName(geocodeRequest, (err, data) => {
@@ -173,7 +173,7 @@ export default function geolocationTest_GeoErr(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_GeoErr_0700', 0, async function (done) {
+        it('SUB_HSS_LocationSystem_GeoErr_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let geocodeRequest = 1;

@@ -17,7 +17,7 @@ import geolocations from '@system.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -92,16 +92,17 @@ export default function geolocationTest_geo2() {
      * @tc.type Function
      * @tc.level Level 2
     */
-     it('SUB_HSS_LocationSystem_systemapi_0100', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_systemapi_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         geolocations.getLocation({
             timeout:30000,
             coordType:'wgs84',
             success: function(geolocationResponse) {
                 console.log('lbs_js [GetLocation-success], result' + JSON.stringify(geolocationResponse));
-                expect(true).assertEqual(geolocationResponse.length !=0);
-                console.info('[lbs_js] getLocation latitude: ' + geolocationResponse.latitude +
-                ' longitude: ' + geolocationResponse.longitude +' altitude: ' + geolocationResponse.altitude
-                +' accuracy: ' + geolocationResponse.accuracy +'time: ' + geolocationResponse.time);
+                expect(true).assertEqual(geolocationResponse.longitude != -1);
+                expect(true).assertEqual(geolocationResponse.latitude != -1);
+                expect(true).assertEqual(geolocationResponse.altitude != -1);
+                expect(true).assertEqual(geolocationResponse.accuracy != -1);
+                expect(true).assertEqual(geolocationResponse.time != -1);
             },
             fail: function(data, code) {
                 switch(code){
@@ -124,6 +125,9 @@ export default function geolocationTest_geo2() {
                         console.log('lbs_js [GetLocation-fail] data:' + data + ', code:' + code);
                 }
             },
+            complete: function() {
+                console.log('lbs_js [GetLocation-complete]');
+            }
         });
         done();
     })
@@ -136,7 +140,7 @@ export default function geolocationTest_geo2() {
      * @tc.type Function
      * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_systemapi_0200', 0,  async function (done) {
+    it('SUB_HSS_LocationSystem_systemapi_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         geolocations.subscribe({
             coordType:'wgs84',
             success: function(data) {
@@ -161,11 +165,15 @@ export default function geolocationTest_geo2() {
       * @tc.type Function
       * @tc.level Level 2
       */
-    it('SUB_HSS_LocationSystem_systemapi_0300', 0,  async function (done) {
+    it('SUB_HSS_LocationSystem_systemapi_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         geolocations.getLocationType({
             success: function(data) {
                 console.log('success get location type:' + JSON.stringify(data));
-                expect(true).assertEqual(data.types.length !=0);
+                expect(true).assertEqual(data.types != null)
+                expect(true).assertEqual(data.types.length != 0);
+                if (data.types.length != 0) {
+                    expect(true).assertEqual(data.types[0] == 'gps' || data.types[0] == 'network')
+                }
                 done()
             },
             fail: function(data, code) {
@@ -187,13 +195,12 @@ export default function geolocationTest_geo2() {
       * @tc.type Function
       * @tc.level Level 2
       */
-    it('SUB_HSS_LocationSystem_systemapi_0400', 0,  function () {
+    it('SUB_HSS_LocationSystem_systemapi_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         let types = geolocations.getSupportedCoordTypes();
         console.info('[lbs_js] getSupportedCoordTypes result: ' + JSON.stringify(types));
         expect(true).assertEqual(types.length !=0);
 
     })
-
     })
 }
 
