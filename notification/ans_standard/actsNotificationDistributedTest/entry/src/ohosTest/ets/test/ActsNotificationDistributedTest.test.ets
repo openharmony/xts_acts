@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import notification from '@ohos.notification'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Base from '@ohos.base';
 
 export default function ActsNotificationDistributedTest() {
@@ -26,7 +26,7 @@ export default function ActsNotificationDistributedTest() {
         * @tc.name      : function isDistributedEnabled(callback: AsyncCallback<boolean>): void
         * @tc.desc      : Obtains whether the device supports distributed notification
         */    
-        it('Sub_Notification_Ans_Enable_SetEnable_5000', 0, async (done:Function) => {
+        it('Sub_Notification_Ans_Enable_SetEnable_5000', Level.LEVEL2, async (done:Function) => {
           console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_5000 START`)
           notification.isDistributedEnabled((err, data) => {
             if (err.code) {
@@ -48,7 +48,7 @@ export default function ActsNotificationDistributedTest() {
         * @tc.name      : function isDistributedEnabled(): Promise<boolean>
         * @tc.desc      : Obtains whether the device supports distributed notification
         */
-        it('Sub_Notification_Ans_Enable_SetEnable_5100', 0, async (done:Function) => {
+        it('Sub_Notification_Ans_Enable_SetEnable_5100', Level.LEVEL2, async (done:Function) => {
           console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_5100 START`)
           notification.isDistributedEnabled().then((data) => {
             console.info(`${TAG} isDistributedEnabled Promise success: ${data}`)
