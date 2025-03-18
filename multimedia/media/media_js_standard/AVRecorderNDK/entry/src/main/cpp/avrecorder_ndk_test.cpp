@@ -481,38 +481,34 @@ static napi_value getAvailableEncoder(napi_env env, napi_callback_info info)
 
     if (result != AV_ERR_OK) {
         OH_LOG_INFO(LOG_APP, "NDK xtsgetAvailableEncorder error");
-    } else {
-        if (encoderInfo != nullptr) {
-            OH_LOG_INFO(LOG_APP, "Encorder Info in");
-            OH_LOG_INFO(LOG_APP, "Encorder mimeType %{public}d", encoderInfo->mimeType);
-
-            OH_LOG_INFO(LOG_APP, "Encorder mimeType  %{public}d", encoderInfo->type);
-            // bitRate
-            OH_LOG_INFO(LOG_APP, "Encorder BitRate Min: %{public}d,Max :%{public}d", encoderInfo->bitRate.min,
-                        encoderInfo->bitRate.max);
-            // frameRate
-            OH_LOG_INFO(LOG_APP, "Encorder frameRate Min: %{public}d,Max :%{public}d", encoderInfo->frameRate.min,
-                        encoderInfo->frameRate.max);
-            // width
-            OH_LOG_INFO(LOG_APP, "Encorder width Min: %{public}d,Max :%{public}d", encoderInfo->width.min,
-                        encoderInfo->width.max);
-            // height
-            OH_LOG_INFO(LOG_APP, "Encorder height Min: %{public}d,Max :%{public}d", encoderInfo->height.min,
-                        encoderInfo->height.max);
-            // channels
-            OH_LOG_INFO(LOG_APP, "Encorder channels Min: %{public}d,Max :%{public}d", encoderInfo->channels.min,
-                        encoderInfo->channels.max);
-
-            if (encoderInfo->sampleRate != nullptr) {
-                for (int i = 0; i < encoderInfo->sampleRateLen; i++) {
-                    OH_LOG_INFO(LOG_APP, "Encorder mimeType %{public}d", i, encoderInfo->sampleRate[i]);
-                }
-            }
-        } else {
-            OH_LOG_INFO(LOG_APP, "EncorderInfo is null");
-        }
     }
-
+    if (encoderInfo != nullptr) {
+        OH_LOG_INFO(LOG_APP, "Encorder Info in");
+        OH_LOG_INFO(LOG_APP, "Encorder mimeType %{public}d", encoderInfo->mimeType);
+        OH_LOG_INFO(LOG_APP, "Encorder mimeType  %{public}d", encoderInfo->type);
+        // bitRate
+        OH_LOG_INFO(LOG_APP, "Encorder BitRate Min: %{public}d,Max :%{public}d", encoderInfo->bitRate.min,
+                    encoderInfo->bitRate.max);
+        // frameRate
+        OH_LOG_INFO(LOG_APP, "Encorder frameRate Min: %{public}d,Max :%{public}d", encoderInfo->frameRate.min,
+                    encoderInfo->frameRate.max);
+        // width
+        OH_LOG_INFO(LOG_APP, "Encorder width Min: %{public}d,Max :%{public}d", encoderInfo->width.min,
+                    encoderInfo->width.max);
+        // height
+        OH_LOG_INFO(LOG_APP, "Encorder height Min: %{public}d,Max :%{public}d", encoderInfo->height.min,
+                    encoderInfo->height.max);
+        // channels
+        OH_LOG_INFO(LOG_APP, "Encorder channels Min: %{public}d,Max :%{public}d", encoderInfo->channels.min,
+                    encoderInfo->channels.max);
+        if (encoderInfo->sampleRate != nullptr) {
+            for (int i = 0; i < encoderInfo->sampleRateLen; i++) {
+                OH_LOG_INFO(LOG_APP, "Encorder mimeType %{public}d", i, encoderInfo->sampleRate[i]);
+            }
+        }
+    } else {
+        OH_LOG_INFO(LOG_APP, "EncorderInfo is null");
+    }
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
@@ -544,28 +540,28 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t focusMode;
-    napi_get_value_int32(env, args[0], &focusMode);
+    napi_get_value_int32(env, args[argc - 8], &focusMode);
 
     uint32_t cameraDeviceIndex;
-    napi_get_value_uint32(env, args[1], &cameraDeviceIndex);
+    napi_get_value_uint32(env, args[argc - 7], &cameraDeviceIndex);
 
     uint32_t sceneMode;
-    napi_get_value_uint32(env, args[2], &sceneMode);
+    napi_get_value_uint32(env, args[argc - 6], &sceneMode);
 
     char *previewId = nullptr;
-    napi_get_value_string_utf8(env, args[3], nullptr, 0, &typeLen);
+    napi_get_value_string_utf8(env, args[argc - 5], nullptr, 0, &typeLen);
     previewId = new char[typeLen + 1];
-    napi_get_value_string_utf8(env, args[3], previewId, typeLen + 1, &typeLen);
+    napi_get_value_string_utf8(env, args[argc - 5], previewId, typeLen + 1, &typeLen);
 
     char *photoId = nullptr;
-    napi_get_value_string_utf8(env, args[4], nullptr, 0, &typeLen);
+    napi_get_value_string_utf8(env, args[argc - 4], nullptr, 0, &typeLen);
     photoId = new char[typeLen + 1];
-    napi_get_value_string_utf8(env, args[4], photoId, typeLen + 1, &typeLen);
+    napi_get_value_string_utf8(env, args[argc - 4], photoId, typeLen + 1, &typeLen);
 
     uint32_t videoFrameWidth;
-    napi_get_value_uint32(env, args[6], &videoFrameWidth);
+    napi_get_value_uint32(env, args[argc - 2], &videoFrameWidth);
     uint32_t videoFrameHeight;
-    napi_get_value_uint32(env, args[7], &videoFrameHeight);
+    napi_get_value_uint32(env, args[argc - 1], &videoFrameHeight);
 
     // 获取surfaceId
     OHNativeWindow *window;
