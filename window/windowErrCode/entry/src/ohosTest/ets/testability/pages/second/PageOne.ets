@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct PageOne {
-  private content: string = "Page one"
+  private content: string = 'Page one'
 
   build() {
     Row() {
@@ -40,7 +40,7 @@ struct PageOne {
       .height('100%')
     }.width('100%')
     .height('100%')
-    .backgroundColor("#69b594")
+    .backgroundColor('#69b594')
 
   }
 }

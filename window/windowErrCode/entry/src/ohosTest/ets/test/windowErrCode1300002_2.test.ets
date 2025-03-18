@@ -1087,7 +1087,7 @@ export default function windowErrCode1300002_2() {
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call removeStartingWindow. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(1300002);
         });
         done()
       } catch (exception) {
@@ -1116,7 +1116,7 @@ export default function windowErrCode1300002_2() {
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(1300002);
         });
         done()
       } catch (exception) {
@@ -1146,7 +1146,7 @@ export default function windowErrCode1300002_2() {
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call isWindowRectAutoSave. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(1300002);
         });
         done()
       } catch (exception) {

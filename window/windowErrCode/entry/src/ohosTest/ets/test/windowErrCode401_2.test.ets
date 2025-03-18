@@ -898,23 +898,18 @@ export default function windowErrCode401_2() {
         let msgStr = 'jsunittest ' + caseName + ' ';
         console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTopmostPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
+        let mainWindow: ohosWindow.Window | undefined;
+        await windowStage.getMainWindow().then((data) => {
+          mainWindow = data;
+          console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
           done()
-        }
+        });
+        expect(!!mainWindow).assertTrue();
 
         try {
-          await win!.setWindowTopmost(null).then(async () => {
+          await mainWindow!.setWindowTopmost(null).then(async () => {
             console.info(msgStr + 'Succeeded in calling setWindowTopmost.');
             expect().assertFail();
           }).catch(async (err: BusinessError) => {
@@ -925,11 +920,9 @@ export default function windowErrCode401_2() {
               expect().assertFail();
             }
           });
-          await win!.destroyWindow()
           done()
         } catch (exception) {
           console.error(msgStr + 'Failed to set the call setWindowTopmost. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
           if (exception.code == 801) {
             console.info(msgStr + '此设备不支持setWindowTopmost能力.');
             done();

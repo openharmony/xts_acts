@@ -274,38 +274,36 @@ export default function windowErrCode1300004() {
       let caseName = "testGetDecorButtonStyleErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testGetDecorButtonStyleErrCode1300004_0100",
+      let config: ohosWindow.Configuration = {
+        name: "test1",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
+        ctx: context
       };
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
-      await (tempWnd as ohosWindow.Window).showWindow();
-
-      try {
-        (tempWnd as ohosWindow.Window).getDecorButtonStyle();
-        console.error(msgStr + 'Succeeded in calling getDecorButtonStyle.');
-        expect().assertFail();
-        await (tempWnd! as ohosWindow.Window).destroyWindow();
-        done();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the call getDecorButtonStyle. Cause:' + JSON.stringify(exception));
-        await (tempWnd! as ohosWindow.Window).destroyWindow();
-        if (exception.code == 801) {
-          console.info(msgStr + '此设备不支持getDecorButtonStyle能力.');
-        } else {
-          expect(exception.code).assertEqual(1300004);
+      ohosWindow.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
         }
-        done();
-      }
+        let win = data;
+        win.setUIContent("testability/pages/Index");
+        win.showWindow();
+
+        try {
+          (win! as ohosWindow.Window).getDecorButtonStyle();
+          console.error(msgStr + 'Succeeded in calling getDecorButtonStyle.');
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the call getDecorButtonStyle. Cause:' + JSON.stringify(exception.code));
+          if (exception.code == 801) {
+            done();
+          } else if (exception.code == 1300004) {
+            done()
+          } else {
+            expect(false).assertFail();
+            done()
+          }
+        }
+      })
     })
 
     /**
