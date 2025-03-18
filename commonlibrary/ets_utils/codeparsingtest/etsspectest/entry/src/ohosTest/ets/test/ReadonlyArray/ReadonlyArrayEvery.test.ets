@@ -15,6 +15,7 @@
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { TestA } from '../../testability/pages/InterfaceDefined';
+import { sleep } from '../../testability/pages/Utils';
 
 export default function builtinsReadonlyArrayEveryTest() {
   describe('builtinsReadonlyArrayEveryTest', () => {
@@ -23,7 +24,8 @@ export default function builtinsReadonlyArrayEveryTest() {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(100)
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
