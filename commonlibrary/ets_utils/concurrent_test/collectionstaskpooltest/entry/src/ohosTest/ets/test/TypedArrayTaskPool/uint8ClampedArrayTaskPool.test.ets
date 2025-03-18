@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections, taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -215,7 +215,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0001', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -243,7 +243,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0002', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -271,7 +271,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0003', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -301,7 +301,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0004', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -329,7 +329,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0005', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -357,7 +357,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0006', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -385,7 +385,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0007', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -413,7 +413,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0008', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -441,7 +441,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0009', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -469,7 +469,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0010', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -497,7 +497,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0011', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -525,7 +525,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0012', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -553,7 +553,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0013', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -581,7 +581,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0014', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -609,7 +609,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0015', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -637,7 +637,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0016', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -665,7 +665,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0017', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -693,7 +693,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0018', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -721,7 +721,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0019', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -749,7 +749,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0020', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -777,7 +777,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0021', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -805,7 +805,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0022', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -833,7 +833,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0023', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -861,7 +861,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0024', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -889,7 +889,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0025', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -917,7 +917,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0026', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0026';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -945,7 +945,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0027', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0027';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -973,7 +973,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0028', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0028';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1001,7 +1001,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0029', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0029';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1029,7 +1029,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0030', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0030';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1057,7 +1057,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0031', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0031';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1085,7 +1085,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0032', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0032';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1113,7 +1113,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0033', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0033';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1141,7 +1141,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0034', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1169,7 +1169,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0035', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0035';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1197,7 +1197,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0036', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0036';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1225,7 +1225,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0037', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0037';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1253,7 +1253,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0038', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0038';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1281,7 +1281,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0039', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0039';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1309,7 +1309,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0040', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0040';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1337,7 +1337,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0041', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0041';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1365,7 +1365,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0042', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0042';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1393,7 +1393,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0043', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0043';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1421,7 +1421,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0044', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0044';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1449,7 +1449,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0045', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0045';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1477,7 +1477,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0046', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0046';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1505,7 +1505,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0047', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0047';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1533,7 +1533,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0048', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0048';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1561,7 +1561,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0049', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0049';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1589,7 +1589,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0050', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0050';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1617,7 +1617,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0051', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0051';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1645,7 +1645,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0052', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0052';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1673,7 +1673,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0053', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0053';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1701,7 +1701,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0054', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0054';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1729,7 +1729,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0055', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0055';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1757,7 +1757,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0056', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0056';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1785,7 +1785,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0057', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0057';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1813,7 +1813,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0058', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0058';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1841,7 +1841,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0059', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1869,7 +1869,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0060', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0060';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1897,7 +1897,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0061', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0061';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1925,7 +1925,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0062', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0062';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1953,7 +1953,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0063', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0063';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1981,7 +1981,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0064', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0064';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2009,7 +2009,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0065', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0065';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2037,7 +2037,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0066', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0066';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2065,7 +2065,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0067', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0067';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2093,7 +2093,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0068', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0068';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2121,7 +2121,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0069', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0069';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2149,7 +2149,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0070', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0070';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2177,7 +2177,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0071', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0071';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2205,7 +2205,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0072', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0072';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2233,7 +2233,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0073', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0073';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2261,7 +2261,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0074', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0074';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2289,7 +2289,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0075', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0075';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2317,7 +2317,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0076', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0076';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2345,7 +2345,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0077', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0077';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2373,7 +2373,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0078', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0078';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2401,7 +2401,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0079', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0079';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2429,7 +2429,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0080', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0080';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2457,7 +2457,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0081', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0081';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2485,7 +2485,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0082', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0082';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2513,7 +2513,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0083', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0083';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2541,7 +2541,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0084', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0084';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2569,7 +2569,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0085', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0085';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2597,7 +2597,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0086', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0086';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2625,7 +2625,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0087', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0087';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2653,7 +2653,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0088', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0088';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2681,7 +2681,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0089', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0089';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2709,7 +2709,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0090', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0090';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2737,7 +2737,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0091', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0091';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2765,7 +2765,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0092', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0092';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2793,7 +2793,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0093', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0093';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2821,7 +2821,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0094', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0094';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2849,7 +2849,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0095', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0095';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2877,7 +2877,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0096', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0096';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2905,7 +2905,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0097', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0097';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2933,7 +2933,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0098', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0098';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2961,7 +2961,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0099', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0099';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2989,7 +2989,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0100', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3017,7 +3017,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0101', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0101';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3045,7 +3045,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0102', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0102';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3073,7 +3073,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0103', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0103';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3101,7 +3101,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0104', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0104';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3129,7 +3129,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0105', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0105';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3157,7 +3157,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0106', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0106';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3185,7 +3185,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0107', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0107';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3213,7 +3213,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0108', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0108';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3241,7 +3241,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0109', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0109';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3269,7 +3269,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0110', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0110';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3297,7 +3297,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0111', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0111';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3325,7 +3325,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0112', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0112';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3353,7 +3353,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0113', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0113';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3381,7 +3381,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0114', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0114';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3409,7 +3409,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0115', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0115';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3437,7 +3437,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0116', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0116';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3465,7 +3465,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0117', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0117';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3493,7 +3493,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0118', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0118';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3521,7 +3521,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0119', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0119';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3549,7 +3549,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0120', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0120';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3577,7 +3577,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0121', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0121';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3605,7 +3605,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0122', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0122';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3633,7 +3633,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0123', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0123';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3661,7 +3661,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0124', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0124';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3689,7 +3689,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0125', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0125';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3717,7 +3717,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0126', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0126';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3745,7 +3745,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0127', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0127';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3773,7 +3773,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0128', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0128';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3801,7 +3801,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0129', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0129';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3829,7 +3829,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0130', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0130';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3857,7 +3857,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0131', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0131';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3885,7 +3885,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0132', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0132';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3913,7 +3913,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0133', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0133';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3941,7 +3941,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0134', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0134';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3969,7 +3969,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0135', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0135';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3997,7 +3997,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0136', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0136';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4025,7 +4025,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0137', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0137';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4053,7 +4053,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0138', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0138';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4081,7 +4081,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0139', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0139';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4109,7 +4109,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0140', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0140';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4132,7 +4132,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0141', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0141';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4155,7 +4155,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0142', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0142';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4178,7 +4178,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0143', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0143';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4201,7 +4201,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0144', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0144';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4224,7 +4224,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0145', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0145';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4247,7 +4247,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0146', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0146';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4270,7 +4270,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0147', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0147';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4293,7 +4293,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0148', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0148';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4316,7 +4316,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0149', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0149';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4339,7 +4339,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0150', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0150';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4362,7 +4362,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0151', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0151';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4385,7 +4385,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0152', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0152';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4408,7 +4408,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0153', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0153';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4431,7 +4431,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0154', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0154';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4454,7 +4454,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0155', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0155';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4477,7 +4477,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0156', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0156';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4500,7 +4500,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0157', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0157';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4523,7 +4523,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0158', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0158';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4546,7 +4546,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0159', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0159';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4569,7 +4569,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0160', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0160';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4593,7 +4593,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0161', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0161';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4617,7 +4617,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0162', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0162';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4641,7 +4641,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0163', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0163';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4665,7 +4665,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0164', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0164';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4689,7 +4689,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0165', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0165';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4713,7 +4713,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0166', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0166';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4737,7 +4737,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0167', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0167', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0167';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4761,7 +4761,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0168', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0168', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0168';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4785,7 +4785,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0169', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0169', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0169';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4808,7 +4808,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0170', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0170';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4832,7 +4832,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0171', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0171';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4856,7 +4856,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0172', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0172';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4880,7 +4880,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0173', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0173', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0173';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4904,7 +4904,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0174', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0174', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0174';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4928,7 +4928,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0175', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0175', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0175';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4952,7 +4952,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0176', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0176';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4976,7 +4976,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0177', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0177', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0177';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5000,7 +5000,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0178', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0178', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0178';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5024,7 +5024,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0179', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0179';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5047,7 +5047,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0180', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0180';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5071,7 +5071,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0181', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0181';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5095,7 +5095,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0182', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0182';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5119,7 +5119,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0183', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0183', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0183';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5143,7 +5143,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0184', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0184', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0184';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5167,7 +5167,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0185', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0185', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0185';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5191,7 +5191,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0186', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0186', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0186';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5215,7 +5215,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUint8ClampedArrayTaskPool0187', 0, async () => {
+    it('testUint8ClampedArrayTaskPool0187', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testUint8ClampedArrayTaskPool0187';
       console.info(`${caseName} test start`);
       let num = 0;

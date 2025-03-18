@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 import {
@@ -61,7 +61,11 @@ export default function taskPoolTaskMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleTest0100', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleTest0100'
@@ -122,7 +126,11 @@ export default function taskPoolTaskMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleTest0200', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleTest0200'
@@ -181,7 +189,11 @@ export default function taskPoolTaskMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleTest0300', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       await sleep(5000)
@@ -242,7 +254,11 @@ export default function taskPoolTaskMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleTest0400', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleTest0400'
@@ -301,7 +317,11 @@ export default function taskPoolTaskMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleTest0500', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleTest0500'

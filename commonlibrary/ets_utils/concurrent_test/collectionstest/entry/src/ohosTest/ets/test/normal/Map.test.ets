@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections } from '@kit.ArkTS';
 
 export default function MapTest() {
@@ -45,7 +45,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0001', 0, () => {
+    it('testCollectionsMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0001";
       try {
           const testMap = new collections.Map<number, number>(
@@ -81,7 +81,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0002', 0, () => {
+    it('testCollectionsMap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0002";
       try {
           const testMap = new collections.Map<number, number>();
@@ -108,7 +108,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0003', 0, () => {
+    it('testCollectionsMap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0003";
       try {
           @Sendable
@@ -139,7 +139,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0004', 0, () => {
+    it('testCollectionsMap0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0004";
       try {
           const testMap = new collections.Map<number, string>();
@@ -161,7 +161,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0005', 0, () => {
+    it('testCollectionsMap0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0005";
       try {
         const testMap = new collections.Map<number, string>();
@@ -185,7 +185,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0006', 0, () => {
+    it('testCollectionsMap0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0006";
       try {
         const testMap = new collections.Map<number, string>();
@@ -213,7 +213,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0007', 0, () => {
+    it('testCollectionsMap0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0007";
       try {
         const testMap = new collections.Map<number, string>();
@@ -241,7 +241,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0008', 0, () => {
+    it('testCollectionsMap0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0008";
       try {
           const testMap = new collections.Map<number, string>();
@@ -260,7 +260,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0009', 0, () => {
+    it('testCollectionsMap0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0009";
       try {
           const testMap = new collections.Map<number, string>();
@@ -282,7 +282,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0010', 0, () => {
+    it('testCollectionsMap0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0010";
       try {
           const testMap = new collections.Map<number, string>();
@@ -301,7 +301,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0011', 0, () => {
+    it('testCollectionsMap0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0011";
       try {
           const testMap = new collections.Map<number, string>();
@@ -323,7 +323,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0012', 0, () => {
+    it('testCollectionsMap0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0012";
       try {
         const testMap = new collections.Map<number, string>()
@@ -347,7 +347,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0013', 0, () => {
+    it('testCollectionsMap0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0013";
       try {
         const testMap = new collections.Map<number, string>()
@@ -371,7 +371,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0014', 0, () => {
+    it('testCollectionsMap0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0014";
       try {
         const testMap = new collections.Map<number, string>()
@@ -395,7 +395,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0015', 0, () => {
+    it('testCollectionsMap0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0015";
       try {
         const testMap = new collections.Map<number, string>()
@@ -417,7 +417,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0016', 0, () => {
+    it('testCollectionsMap0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0016";
       try {
         const testMap = new collections.Map<number, string>()
@@ -441,7 +441,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0017', 0, () => {
+    it('testCollectionsMap0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0017";
       try {
         const testMap = new collections.Map<number, string>()
@@ -465,7 +465,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0018', 0, () => {
+    it('testCollectionsMap0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0018";
       try {
         const testMap = new collections.Map<string, string>()
@@ -483,7 +483,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0019', 0, () => {
+    it('testCollectionsMap0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0019";
       try {
         const testMap = new collections.Map<string, string>();
@@ -502,7 +502,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0020', 0, () => {
+    it('testCollectionsMap0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0020";
       try {
         const testMap = new collections.Map<null, string>();
@@ -520,7 +520,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0021', 0, () => {
+    it('testCollectionsMap0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0021";
       try {
         const testMap = new collections.Map<null, string>();
@@ -539,7 +539,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0022', 0, () => {
+    it('testCollectionsMap0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0022";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -557,7 +557,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0023', 0, () => {
+    it('testCollectionsMap0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0023";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -576,7 +576,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0024', 0, () => {
+    it('testCollectionsMap0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0024";
       try {
         const testMap = new collections.Map<number, string>();
@@ -594,7 +594,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0025', 0, () => {
+    it('testCollectionsMap0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0025";
       try {
         const testMap = new collections.Map<number, string>();
@@ -613,7 +613,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0026', 0, () => {
+    it('testCollectionsMap0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0026";
       try {
         const testMap = new collections.Map<number, string>();
@@ -632,7 +632,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0027', 0, () => {
+    it('testCollectionsMap0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0027";
       try {
         const testMap = new collections.Map<number, string>();
@@ -657,7 +657,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0028', 0, () => {
+    it('testCollectionsMap0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0028";
       try {
         let tempNum: number = 0;
@@ -679,7 +679,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0029', 0, () => {
+    it('testCollectionsMap0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0029";
       try {
         let tempNum: number = 0;
@@ -710,7 +710,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0030', 0, () => {
+    it('testCollectionsMap0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0030";
       try {
         let tempNum: number = 0;
@@ -736,7 +736,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0031', 0, () => {
+    it('testCollectionsMap0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0031";
       try {
         let tempNum: number = 0;
@@ -762,7 +762,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0032', 0, () => {
+    it('testCollectionsMap0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0032";
       try {
         const testMap = new collections.Map<string, string>();
@@ -780,7 +780,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0033', 0, () => {
+    it('testCollectionsMap0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0033";
       try {
         const testMap = new collections.Map<string, string>();
@@ -800,7 +800,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0034', 0, () => {
+    it('testCollectionsMap0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0034";
       try {
         const testMap = new collections.Map<null, string>();
@@ -818,7 +818,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0035', 0, () => {
+    it('testCollectionsMap0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0035";
       try {
         const testMap = new collections.Map<null, string>();
@@ -838,7 +838,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0036', 0, () => {
+    it('testCollectionsMap0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0036";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -857,7 +857,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0037', 0, () => {
+    it('testCollectionsMap0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0037";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -877,7 +877,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0038', 0, () => {
+    it('testCollectionsMap0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0038";
       try {
         const testMap = new collections.Map<number, string>();
@@ -897,7 +897,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0039', 0, () => {
+    it('testCollectionsMap0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0039";
       try {
         const testMap = new collections.Map<number, string>();
@@ -917,7 +917,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0040', 0, () => {
+    it('testCollectionsMap0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0040";
       try {
         const testMap = new collections.Map<number, string>();
@@ -943,7 +943,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0041', 0, () => {
+    it('testCollectionsMap0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0041";
       try {
         const testMap = new collections.Map<string, string>();
@@ -961,7 +961,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0042', 0, () => {
+    it('testCollectionsMap0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0042";
       try {
         const testMap = new collections.Map<string, string>();
@@ -981,7 +981,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0043', 0, () => {
+    it('testCollectionsMap0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0043";
       try {
         const testMap = new collections.Map<null, string>();
@@ -1000,7 +1000,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0044', 0, () => {
+    it('testCollectionsMap0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0044";
       try {
         const testMap = new collections.Map<null, string>();
@@ -1020,7 +1020,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0045', 0, () => {
+    it('testCollectionsMap0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0045";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -1039,7 +1039,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0046', 0, () => {
+    it('testCollectionsMap0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0046";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -1059,7 +1059,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0047', 0, () => {
+    it('testCollectionsMap0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0047";
       try {
         const testMap = new collections.Map<number, string>();
@@ -1078,7 +1078,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0048', 0, () => {
+    it('testCollectionsMap0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0048";
       try {
         const testMap = new collections.Map<number, string>();
@@ -1098,7 +1098,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0049', 0, () => {
+    it('testCollectionsMap0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0049";
       try {
         const testMap = new collections.Map<number, string>();
@@ -1118,7 +1118,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0050', 0, () => {
+    it('testCollectionsMap0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0050";
       try {
         const testMap = new collections.Map<number, string>();
@@ -1144,7 +1144,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0051', 0, () => {
+    it('testCollectionsMap0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0051";
       try {
         const testMap = new collections.Map<string, string>();
@@ -1165,7 +1165,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0052', 0, () => {
+    it('testCollectionsMap0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0052";
       try {
         const testMap = new collections.Map<string, string>();
@@ -1186,7 +1186,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0053', 0, () => {
+    it('testCollectionsMap0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0053";
       try {
         const testMap = new collections.Map<null, string>();
@@ -1207,7 +1207,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0054', 0, () => {
+    it('testCollectionsMap0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0054";
       try {
         const testMap = new collections.Map<undefined, string>();
@@ -1228,7 +1228,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0055', 0, () => {
+    it('testCollectionsMap0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0055";
       try {
         const testMap = new collections.Map<string, string>();
@@ -1250,7 +1250,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0056', 0, () => {
+    it('testCollectionsMap0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0056";
       try {
         const testMap = new collections.Map<string, null>();
@@ -1271,7 +1271,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0057', 0, () => {
+    it('testCollectionsMap0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0057";
       try {
         const testMap = new collections.Map<string, number>();
@@ -1292,7 +1292,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0058', 0, () => {
+    it('testCollectionsMap0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0058";
       try {
         const testMap = new collections.Map<string, undefined>();
@@ -1313,7 +1313,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0059', 0, () => {
+    it('testCollectionsMap0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0059";
       try {
           const testMap: collections.Map<number, string> = new collections.Map<number, string>();
@@ -1336,7 +1336,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0060', 0, () => {
+    it('testCollectionsMap0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsMap0060";
       try {
         const testMap: collections.Map<number, string> = new collections.Map<number, string>();

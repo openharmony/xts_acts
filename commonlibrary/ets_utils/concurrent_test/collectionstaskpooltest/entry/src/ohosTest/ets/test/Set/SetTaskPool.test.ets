@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -163,7 +163,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0001', 0, async () => {
+    it('testSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -191,7 +191,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0002', 0, async () => {
+    it('testSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -219,7 +219,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0003', 0, async () => {
+    it('testSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -247,7 +247,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0004', 0, async () => {
+    it('testSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -275,7 +275,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0005', 0, async () => {
+    it('testSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -303,7 +303,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0006', 0, async () => {
+    it('testSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -331,7 +331,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0007', 0, async () => {
+    it('testSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -359,7 +359,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0008', 0, async () => {
+    it('testSet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -387,7 +387,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0009', 0, async () => {
+    it('testSet0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -415,7 +415,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0010', 0, async () => {
+    it('testSet0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -443,7 +443,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0011', 0, async () => {
+    it('testSet0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -471,7 +471,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0012', 0, async () => {
+    it('testSet0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -499,7 +499,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0013', 0, async () => {
+    it('testSet0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -527,7 +527,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0014', 0, async () => {
+    it('testSet0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -555,7 +555,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0015', 0, async () => {
+    it('testSet0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -583,7 +583,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0016', 0, async () => {
+    it('testSet0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -611,7 +611,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0017', 0, async () => {
+    it('testSet0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -639,7 +639,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0018', 0, async () => {
+    it('testSet0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -667,7 +667,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0019', 0, async () => {
+    it('testSet0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -695,7 +695,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0020', 0, async () => {
+    it('testSet0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -723,7 +723,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0021', 0, async () => {
+    it('testSet0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -751,7 +751,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0022', 0, async () => {
+    it('testSet0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -779,7 +779,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0023', 0, async () => {
+    it('testSet0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -807,7 +807,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0024', 0, async () => {
+    it('testSet0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -835,7 +835,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0025', 0, async () => {
+    it('testSet0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -863,7 +863,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0026', 0, async () => {
+    it('testSet0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0026';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -891,7 +891,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0027', 0, async () => {
+    it('testSet0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0027';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -919,7 +919,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0028', 0, async () => {
+    it('testSet0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0028';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -947,7 +947,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0029', 0, async () => {
+    it('testSet0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0029';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -975,7 +975,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0030', 0, async () => {
+    it('testSet0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0030';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1003,7 +1003,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0031', 0, async () => {
+    it('testSet0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0031';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1031,7 +1031,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0032', 0, async () => {
+    it('testSet0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0032';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1059,7 +1059,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0033', 0, async () => {
+    it('testSet0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0033';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1087,7 +1087,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0034', 0, async () => {
+    it('testSet0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1115,7 +1115,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0035', 0, async () => {
+    it('testSet0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0035';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1143,7 +1143,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0036', 0, async () => {
+    it('testSet0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0036';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1171,7 +1171,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0037', 0, async () => {
+    it('testSet0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0037';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1199,7 +1199,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0038', 0, async () => {
+    it('testSet0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0038';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1227,7 +1227,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0039', 0, async () => {
+    it('testSet0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0039';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1255,7 +1255,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0040', 0, async () => {
+    it('testSet0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0040';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1283,7 +1283,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0041', 0, async () => {
+    it('testSet0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0041';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1311,7 +1311,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0042', 0, async () => {
+    it('testSet0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0042';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1339,7 +1339,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0043', 0, async () => {
+    it('testSet0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0043';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1367,7 +1367,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0044', 0, async () => {
+    it('testSet0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0044';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1395,7 +1395,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0045', 0, async () => {
+    it('testSet0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0045';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1423,7 +1423,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0046', 0, async () => {
+    it('testSet0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0046';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1451,7 +1451,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0047', 0, async () => {
+    it('testSet0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0047';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1479,7 +1479,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0048', 0, async () => {
+    it('testSet0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0048';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1507,7 +1507,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0049', 0, async () => {
+    it('testSet0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0049';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1535,7 +1535,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0050', 0, async () => {
+    it('testSet0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0050';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1563,7 +1563,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0051', 0, async () => {
+    it('testSet0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0051';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1591,7 +1591,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0052', 0, async () => {
+    it('testSet0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0052';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1619,7 +1619,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0053', 0, async () => {
+    it('testSet0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0053';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1647,7 +1647,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0054', 0, async () => {
+    it('testSet0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0054';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1675,7 +1675,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0055', 0, async () => {
+    it('testSet0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0055';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1703,7 +1703,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0056', 0, async () => {
+    it('testSet0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0056';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1731,7 +1731,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0057', 0, async () => {
+    it('testSet0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0057';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1759,7 +1759,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0058', 0, async () => {
+    it('testSet0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0058';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1787,7 +1787,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0059', 0, async () => {
+    it('testSet0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1815,7 +1815,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0060', 0, async () => {
+    it('testSet0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0060';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1843,7 +1843,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0061', 0, async () => {
+    it('testSet0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0061';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1871,7 +1871,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0062', 0, async () => {
+    it('testSet0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0062';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1899,7 +1899,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0063', 0, async () => {
+    it('testSet0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0063';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1927,7 +1927,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0064', 0, async () => {
+    it('testSet0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0064';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1955,7 +1955,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0065', 0, async () => {
+    it('testSet0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0065';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1983,7 +1983,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0066', 0, async () => {
+    it('testSet0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0066';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2011,7 +2011,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0067', 0, async () => {
+    it('testSet0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0067';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2039,7 +2039,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0068', 0, async () => {
+    it('testSet0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0068';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2067,7 +2067,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0069', 0, async () => {
+    it('testSet0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0069';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2095,7 +2095,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0070', 0, async () => {
+    it('testSet0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0070';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2123,7 +2123,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0071', 0, async () => {
+    it('testSet0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0071';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2151,7 +2151,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0072', 0, async () => {
+    it('testSet0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0072';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2179,7 +2179,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0073', 0, async () => {
+    it('testSet0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0073';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2207,7 +2207,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0074', 0, async () => {
+    it('testSet0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0074';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2235,7 +2235,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0075', 0, async () => {
+    it('testSet0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0075';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2263,7 +2263,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0076', 0, async () => {
+    it('testSet0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0076';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2291,7 +2291,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0077', 0, async () => {
+    it('testSet0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0077';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2319,7 +2319,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0078', 0, async () => {
+    it('testSet0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0078';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2347,7 +2347,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0079', 0, async () => {
+    it('testSet0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0079';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2375,7 +2375,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0080', 0, async () => {
+    it('testSet0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0080';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2403,7 +2403,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0081', 0, async () => {
+    it('testSet0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0081';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2431,7 +2431,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0082', 0, async () => {
+    it('testSet0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0082';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2459,7 +2459,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0083', 0, async () => {
+    it('testSet0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0083';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2487,7 +2487,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0084', 0, async () => {
+    it('testSet0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0084';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2515,7 +2515,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0085', 0, async () => {
+    it('testSet0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0085';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2543,7 +2543,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0086', 0, async () => {
+    it('testSet0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0086';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2571,7 +2571,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0087', 0, async () => {
+    it('testSet0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0087';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2599,7 +2599,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0088', 0, async () => {
+    it('testSet0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0088';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2627,7 +2627,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0089', 0, async () => {
+    it('testSet0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0089';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2655,7 +2655,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0090', 0, async () => {
+    it('testSet0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0090';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2683,7 +2683,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0091', 0, async () => {
+    it('testSet0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0091';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2711,7 +2711,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0092', 0, async () => {
+    it('testSet0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0092';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2739,7 +2739,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0093', 0, async () => {
+    it('testSet0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0093';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2767,7 +2767,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0094', 0, async () => {
+    it('testSet0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0094';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2795,7 +2795,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0095', 0, async () => {
+    it('testSet0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0095';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2823,7 +2823,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0096', 0, async () => {
+    it('testSet0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0096';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2851,7 +2851,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0097', 0, async () => {
+    it('testSet0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0097';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2879,7 +2879,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0098', 0, async () => {
+    it('testSet0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0098';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2907,7 +2907,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0099', 0, async () => {
+    it('testSet0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0099';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2935,7 +2935,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0100', 0, async () => {
+    it('testSet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2963,7 +2963,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0101', 0, async () => {
+    it('testSet0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0101';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2991,7 +2991,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0102', 0, async () => {
+    it('testSet0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0102';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3019,7 +3019,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0103', 0, async () => {
+    it('testSet0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0103';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3047,7 +3047,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0104', 0, async () => {
+    it('testSet0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0104';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3075,7 +3075,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0105', 0, async () => {
+    it('testSet0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0105';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3103,7 +3103,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0106', 0, async () => {
+    it('testSet0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0106';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3131,7 +3131,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0107', 0, async () => {
+    it('testSet0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0107';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3159,7 +3159,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0108', 0, async () => {
+    it('testSet0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0108';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3187,7 +3187,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0109', 0, async () => {
+    it('testSet0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0109';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3215,7 +3215,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0110', 0, async () => {
+    it('testSet0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0110';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3243,7 +3243,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0111', 0, async () => {
+    it('testSet0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0111';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3271,7 +3271,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0112', 0, async () => {
+    it('testSet0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0112';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3299,7 +3299,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0113', 0, async () => {
+    it('testSet0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0113';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3327,7 +3327,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0114', 0, async () => {
+    it('testSet0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0114';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3355,7 +3355,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0115', 0, async () => {
+    it('testSet0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0115';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3383,7 +3383,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0116', 0, async () => {
+    it('testSet0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0116';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3411,7 +3411,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0117', 0, async () => {
+    it('testSet0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0117';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3439,7 +3439,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0118', 0, async () => {
+    it('testSet0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0118';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3467,7 +3467,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0119', 0, async () => {
+    it('testSet0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0119';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3495,7 +3495,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0120', 0, async () => {
+    it('testSet0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0120';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3523,7 +3523,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0121', 0, async () => {
+    it('testSet0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0121';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3551,7 +3551,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0122', 0, async () => {
+    it('testSet0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0122';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3579,7 +3579,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0123', 0, async () => {
+    it('testSet0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0123';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3607,7 +3607,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0124', 0, async () => {
+    it('testSet0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0124';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3635,7 +3635,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0125', 0, async () => {
+    it('testSet0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0125';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3663,7 +3663,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0126', 0, async () => {
+    it('testSet0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0126';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3691,7 +3691,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0127', 0, async () => {
+    it('testSet0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0127';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3719,7 +3719,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0128', 0, async () => {
+    it('testSet0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0128';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3747,7 +3747,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0129', 0, async () => {
+    it('testSet0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0129';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3775,7 +3775,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0130', 0, async () => {
+    it('testSet0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0130';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3803,7 +3803,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0131', 0, async () => {
+    it('testSet0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0131';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3831,7 +3831,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0132', 0, async () => {
+    it('testSet0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0132';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3859,7 +3859,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0133', 0, async () => {
+    it('testSet0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0133';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3887,7 +3887,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0134', 0, async () => {
+    it('testSet0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0134';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3915,7 +3915,7 @@ export default function SetTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0135', 0, async () => {
+    it('testSet0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testSet0135';
       console.info(`${caseName} test start`);
       let num = 0;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -88,7 +88,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0001', 0, async () => {
+    it('testCollectionsMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -116,7 +116,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0002', 0, async () => {
+    it('testCollectionsMap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -144,7 +144,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0003', 0, async () => {
+    it('testCollectionsMap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -172,7 +172,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0004', 0, async () => {
+    it('testCollectionsMap0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -200,7 +200,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0005', 0, async () => {
+    it('testCollectionsMap0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -228,7 +228,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0006', 0, async () => {
+    it('testCollectionsMap0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -256,7 +256,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0007', 0, async () => {
+    it('testCollectionsMap0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -284,7 +284,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0008', 0, async () => {
+    it('testCollectionsMap0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -312,7 +312,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0009', 0, async () => {
+    it('testCollectionsMap0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -340,7 +340,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0010', 0, async () => {
+    it('testCollectionsMap0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -368,7 +368,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0011', 0, async () => {
+    it('testCollectionsMap0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -396,7 +396,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0012', 0, async () => {
+    it('testCollectionsMap0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -424,7 +424,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0013', 0, async () => {
+    it('testCollectionsMap0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -452,7 +452,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0014', 0, async () => {
+    it('testCollectionsMap0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -480,7 +480,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0015', 0, async () => {
+    it('testCollectionsMap0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -509,7 +509,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0016', 0, async () => {
+    it('testCollectionsMap0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -538,7 +538,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0017', 0, async () => {
+    it('testCollectionsMap0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -566,7 +566,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0018', 0, async () => {
+    it('testCollectionsMap0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -594,7 +594,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0019', 0, async () => {
+    it('testCollectionsMap0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -623,7 +623,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0020', 0, async () => {
+    it('testCollectionsMap0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -651,7 +651,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0021', 0, async () => {
+    it('testCollectionsMap0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -679,7 +679,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0022', 0, async () => {
+    it('testCollectionsMap0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -707,7 +707,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0023', 0, async () => {
+    it('testCollectionsMap0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -735,7 +735,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0024', 0, async () => {
+    it('testCollectionsMap0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -763,7 +763,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0025', 0, async () => {
+    it('testCollectionsMap0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -791,7 +791,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0026', 0, async () => {
+    it('testCollectionsMap0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0026';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -819,7 +819,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0027', 0, async () => {
+    it('testCollectionsMap0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0027';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -847,7 +847,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0028', 0, async () => {
+    it('testCollectionsMap0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0028';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -875,7 +875,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0029', 0, async () => {
+    it('testCollectionsMap0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0029';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -903,7 +903,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0030', 0, async () => {
+    it('testCollectionsMap0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0030';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -931,7 +931,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0031', 0, async () => {
+    it('testCollectionsMap0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0031';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -959,7 +959,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0032', 0, async () => {
+    it('testCollectionsMap0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0032';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -987,7 +987,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0033', 0, async () => {
+    it('testCollectionsMap0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0033';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1015,7 +1015,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0034', 0, async () => {
+    it('testCollectionsMap0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1043,7 +1043,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0035', 0, async () => {
+    it('testCollectionsMap0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0035';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1071,7 +1071,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0036', 0, async () => {
+    it('testCollectionsMap0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0036';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1099,7 +1099,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0037', 0, async () => {
+    it('testCollectionsMap0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0037';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1127,7 +1127,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0038', 0, async () => {
+    it('testCollectionsMap0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0038';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1155,7 +1155,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0039', 0, async () => {
+    it('testCollectionsMap0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0039';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1183,7 +1183,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0040', 0, async () => {
+    it('testCollectionsMap0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0040';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1211,7 +1211,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0041', 0, async () => {
+    it('testCollectionsMap0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0041';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1239,7 +1239,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0042', 0, async () => {
+    it('testCollectionsMap0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0042';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1267,7 +1267,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0043', 0, async () => {
+    it('testCollectionsMap0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0043';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1295,7 +1295,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0044', 0, async () => {
+    it('testCollectionsMap0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0044';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1323,7 +1323,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0045', 0, async () => {
+    it('testCollectionsMap0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0045';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1351,7 +1351,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      :  Level 1
      */
-    it('testCollectionsMap0046', 0, async () => {
+    it('testCollectionsMap0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0046';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1379,7 +1379,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0047', 0, async () => {
+    it('testCollectionsMap0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0047';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1407,7 +1407,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0048', 0, async () => {
+    it('testCollectionsMap0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0048';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1435,7 +1435,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0049', 0, async () => {
+    it('testCollectionsMap0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0049';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1463,7 +1463,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0050', 0, async () => {
+    it('testCollectionsMap0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0050';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1491,7 +1491,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0051', 0, async () => {
+    it('testCollectionsMap0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0051';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1519,7 +1519,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0052', 0, async () => {
+    it('testCollectionsMap0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0052';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1547,7 +1547,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0053', 0, async () => {
+    it('testCollectionsMap0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0053';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1575,7 +1575,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0054', 0, async () => {
+    it('testCollectionsMap0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0054';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1603,7 +1603,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0055', 0, async () => {
+    it('testCollectionsMap0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0055';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1631,7 +1631,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0056', 0, async () => {
+    it('testCollectionsMap0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0056';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1659,7 +1659,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0057', 0, async () => {
+    it('testCollectionsMap0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0057';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1687,7 +1687,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0058', 0, async () => {
+    it('testCollectionsMap0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0058';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1715,7 +1715,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0059', 0, async () => {
+    it('testCollectionsMap0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1743,7 +1743,7 @@ export default function MapTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsMap0060', 0, async () => {
+    it('testCollectionsMap0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsMap0060';
       console.info(`${caseName} test start`);
       let num = 0;

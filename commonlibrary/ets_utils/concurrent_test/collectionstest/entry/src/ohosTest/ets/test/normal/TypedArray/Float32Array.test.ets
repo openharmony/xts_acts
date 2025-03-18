@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections } from '@kit.ArkTS';
 
 export default function Float32ArrayTest() {
@@ -25,7 +25,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0001', 0, () => {
+    it('testFloat32Array0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0001";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(10);
@@ -47,7 +47,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0002', 0, () => {
+    it('testFloat32Array0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0002";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(10);
@@ -70,7 +70,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0003', 0, () => {
+    it('testFloat32Array0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0003";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array();
@@ -88,7 +88,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0004', 0, () => {
+    it('testFloat32Array0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0004";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(-1);
@@ -105,7 +105,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0005', 0, () => {
+    it('testFloat32Array0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0005";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(0);
@@ -123,7 +123,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0006', 0, () => {
+    it('testFloat32Array0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0006";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(10);
@@ -141,7 +141,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0007', 0, () => {
+    it('testFloat32Array0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0007";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array(100000);
@@ -159,7 +159,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0008', 0, () => {
+    it('testFloat32Array0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0008";
       try {
         let arrayLike = [1, 3, 5];
@@ -178,7 +178,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0009', 0, () => {
+    it('testFloat32Array0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0009";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(12);
@@ -197,7 +197,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0010', 0, () => {
+    it('testFloat32Array0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0010";
       try {
         let arrayLike = [1, 3, 5];
@@ -217,7 +217,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0011', 0, () => {
+    it('testFloat32Array0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0011";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([]);
@@ -236,7 +236,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0012', 0, () => {
+    it('testFloat32Array0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0012";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([1, 2, 3, 4, 5, 6]);
@@ -254,7 +254,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0013', 0, () => {
+    it('testFloat32Array0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0013";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([1, 2, 3, 4, 5, 6]);
@@ -272,7 +272,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0014', 0, () => {
+    it('testFloat32Array0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0014";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([1, 2, 3, 4, 5, 6]);
@@ -290,7 +290,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0015', 0, () => {
+    it('testFloat32Array0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0015";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -309,7 +309,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0016', 0, () => {
+    it('testFloat32Array0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0016";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -327,7 +327,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0017', 0, () => {
+    it('testFloat32Array0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0017";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -346,7 +346,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0018', 0, () => {
+    it('testFloat32Array0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0018";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -364,7 +364,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0019', 0, () => {
+    it('testFloat32Array0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0019";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -382,7 +382,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0020', 0, () => {
+    it('testFloat32Array0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0020";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6]);
@@ -400,7 +400,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0021', 0, () => {
+    it('testFloat32Array0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0021";
       try {
         let arrayLike = [1.5, 3.5, 5.5];
@@ -419,7 +419,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0022', 0, () => {
+    it('testFloat32Array0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0022";
       try {
         let arrayLike = [];
@@ -438,7 +438,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0023', 0, () => {
+    it('testFloat32Array0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0023";
       try {
         let array: collections.Float32Array = collections.Float32Array.from<number>(
@@ -459,7 +459,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0024', 0, () => {
+    it('testFloat32Array0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0024";
       try {
         let array: Float32Array = Float32Array.from<string>(
@@ -478,7 +478,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0025', 0, () => {
+    it('testFloat32Array0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0025";
       try {
         let array: Float32Array = Float32Array.from<string>(
@@ -497,7 +497,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0026', 0, () => {
+    it('testFloat32Array0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0026";
       try {
         let array: collections.Float32Array = collections.Float32Array.from<number>(
@@ -517,7 +517,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0027', 0, () => {
+    it('testFloat32Array0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0027";
       try {
         let nestedArray: number[][] = [[1.1, 2.2], [3.3, 4.4], [5.5, 6.6]];
@@ -540,7 +540,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0028', 0, () => {
+    it('testFloat32Array0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0028";
       try {
         let set: Set<number> = new Set<number>([1, 2, 3]);
@@ -559,7 +559,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0029', 0, () => {
+    it('testFloat32Array0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0029";
       try {
         let set: Set<number> = new Set<number>([1, 2, 3]);
@@ -579,7 +579,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0030', 0, () => {
+    it('testFloat32Array0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0030";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -598,7 +598,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0031', 0, () => {
+    it('testFloat32Array0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0031";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -617,7 +617,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0032', 0, () => {
+    it('testFloat32Array0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0032";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -636,7 +636,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0033', 0, () => {
+    it('testFloat32Array0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0033";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -655,7 +655,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0034', 0, () => {
+    it('testFloat32Array0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0034";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -674,7 +674,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0035', 0, () => {
+    it('testFloat32Array0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0035";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -693,7 +693,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0036', 0, () => {
+    it('testFloat32Array0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0036";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -712,7 +712,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0037', 0, () => {
+    it('testFloat32Array0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0037";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -731,7 +731,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0038', 0, () => {
+    it('testFloat32Array0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0038";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -750,7 +750,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0039', 0, () => {
+    it('testFloat32Array0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0039";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -769,7 +769,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0040', 0, () => {
+    it('testFloat32Array0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0040";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -788,7 +788,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0041', 0, () => {
+    it('testFloat32Array0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0041";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -807,7 +807,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0042', 0, () => {
+    it('testFloat32Array0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0042";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -826,7 +826,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0043', 0, () => {
+    it('testFloat32Array0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0043";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -845,7 +845,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0044', 0, () => {
+    it('testFloat32Array0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0044";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -864,7 +864,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0045', 0, () => {
+    it('testFloat32Array0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0045";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -883,7 +883,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0046', 0, () => {
+    it('testFloat32Array0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0046";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -902,7 +902,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0047', 0, () => {
+    it('testFloat32Array0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0047";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -921,7 +921,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0048', 0, () => {
+    it('testFloat32Array0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0048";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -940,7 +940,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0049', 0, () => {
+    it('testFloat32Array0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0049";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -959,7 +959,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0050', 0, () => {
+    it('testFloat32Array0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0050";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -978,7 +978,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0051', 0, () => {
+    it('testFloat32Array0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0051";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -997,7 +997,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0052', 0, () => {
+    it('testFloat32Array0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0052";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1016,7 +1016,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0053', 0, () => {
+    it('testFloat32Array0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0053";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1035,7 +1035,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0054', 0, () => {
+    it('testFloat32Array0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0054";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1054,7 +1054,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0055', 0, () => {
+    it('testFloat32Array0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0055";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1073,7 +1073,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0056', 0, () => {
+    it('testFloat32Array0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0056";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1092,7 +1092,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0057', 0, () => {
+    it('testFloat32Array0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0057";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1111,7 +1111,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0058', 0, () => {
+    it('testFloat32Array0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0058";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1130,7 +1130,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0059', 0, () => {
+    it('testFloat32Array0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0059";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1149,7 +1149,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0060', 0, () => {
+    it('testFloat32Array0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0060";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1168,7 +1168,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0061', 0, () => {
+    it('testFloat32Array0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0061";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1187,7 +1187,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0062', 0, () => {
+    it('testFloat32Array0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0062";
       try {
         let arrayLike = [12.7, 20.4, 300.5, -5.9, 127.6];
@@ -1206,7 +1206,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0063', 0, () => {
+    it('testFloat32Array0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0063";
       try {
         let arrayLike = [12.7, 20.4, 300.5, -5.9, 127.6];
@@ -1225,7 +1225,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0064', 0, () => {
+    it('testFloat32Array0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0064";
       try {
         let arrayLike = [10.5, 20.8, 30.1, 40.2, 50.6];
@@ -1244,7 +1244,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0065', 0, () => {
+    it('testFloat32Array0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0065";
       try {
         let arrayLike = [-1.0, 2.0, -3.0, 4.0, -5.0];
@@ -1263,7 +1263,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0066', 0, () => {
+    it('testFloat32Array0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0066";
       try {
         let arrayLike = [-1.0, 2.0, -3.0, 4.0, -5.0];
@@ -1282,7 +1282,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0067', 0, () => {
+    it('testFloat32Array0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0067";
       try {
         let arrayLike = [-1.0, 2.0, -3.0, 4.0, -5.0];
@@ -1301,7 +1301,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0068', 0, () => {
+    it('testFloat32Array0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0068";
       try {
         let arrayLike = [1, 2, 3];
@@ -1324,7 +1324,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0069', 0, () => {
+    it('testFloat32Array0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0069";
       try {
         let arrayLike = [1, 2, 3, 4, 5, 6];
@@ -1343,7 +1343,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0070', 0, () => {
+    it('testFloat32Array0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0070";
       try {
         let arrayLike = [1, 2, 3, 4, 5, 6];
@@ -1362,7 +1362,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0071', 0, () => {
+    it('testFloat32Array0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0071";
       try {
         let arrayLike = [1, 2, 3, 4, 5, 6];
@@ -1381,7 +1381,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0072', 0, () => {
+    it('testFloat32Array0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0072";
       try {
         let arrayLike = [1, 2, 3, 4, 5, 6];
@@ -1400,7 +1400,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0073', 0, () => {
+    it('testFloat32Array0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0073";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1419,7 +1419,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0074', 0, () => {
+    it('testFloat32Array0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0074";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1438,7 +1438,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0075', 0, () => {
+    it('testFloat32Array0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0075";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1457,7 +1457,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0076', 0, () => {
+    it('testFloat32Array0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0076";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1476,7 +1476,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0077', 0, () => {
+    it('testFloat32Array0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0077";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1495,7 +1495,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0078', 0, () => {
+    it('testFloat32Array0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0078";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1514,7 +1514,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0079', 0, () => {
+    it('testFloat32Array0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0079";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1533,7 +1533,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0080', 0, () => {
+    it('testFloat32Array0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0080";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1552,7 +1552,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0081', 0, () => {
+    it('testFloat32Array0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0081";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1571,7 +1571,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0082', 0, () => {
+    it('testFloat32Array0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0082";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1590,7 +1590,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0083', 0, () => {
+    it('testFloat32Array0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0083";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1609,7 +1609,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0084', 0, () => {
+    it('testFloat32Array0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0084";
       try {
         let arrayLike = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
@@ -1628,7 +1628,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0085', 0, () => {
+    it('testFloat32Array0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0085";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1648,7 +1648,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0086', 0, () => {
+    it('testFloat32Array0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0086";
       try {
         let arrayLike = [];
@@ -1668,7 +1668,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0087', 0, () => {
+    it('testFloat32Array0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0087";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1691,7 +1691,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0088', 0, () => {
+    it('testFloat32Array0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0088";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1711,7 +1711,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0089', 0, () => {
+    it('testFloat32Array0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0089";
       try {
         let arrayLike = [];
@@ -1731,7 +1731,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0090', 0, () => {
+    it('testFloat32Array0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0090";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1754,7 +1754,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0091', 0, () => {
+    it('testFloat32Array0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0091";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1774,7 +1774,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0092', 0, () => {
+    it('testFloat32Array0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0092";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1794,7 +1794,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0093', 0, () => {
+    it('testFloat32Array0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0093";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1814,7 +1814,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0094', 0, () => {
+    it('testFloat32Array0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0094";
       try {
         let arrayLike = [0, 1, 2, 3, 4];
@@ -1836,7 +1836,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0095', 0, () => {
+    it('testFloat32Array0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0095";
       try {
         const array: collections.Float32Array = collections.Float32Array.from([]);
@@ -1855,7 +1855,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0096', 0, () => {
+    it('testFloat32Array0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0096";
       try {
         const array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -1874,7 +1874,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0097', 0, () => {
+    it('testFloat32Array0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0097";
       try {
         const array: collections.Float32Array = collections.Float32Array.from([1, 3, 5]);
@@ -1893,7 +1893,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0098', 0, () => {
+    it('testFloat32Array0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0098";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([]);
@@ -1917,7 +1917,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0099', 0, () => {
+    it('testFloat32Array0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0099";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.5, 3]);
@@ -1942,7 +1942,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0100', 0, () => {
+    it('testFloat32Array0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0100";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.5, 3.7, 4.9, 5]);
@@ -1968,7 +1968,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0101', 0, () => {
+    it('testFloat32Array0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0101";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -1987,7 +1987,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0102', 0, () => {
+    it('testFloat32Array0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0102";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3]);
@@ -2006,7 +2006,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0103', 0, () => {
+    it('testFloat32Array0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0103";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3]);
@@ -2026,7 +2026,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0104', 0, () => {
+    it('testFloat32Array0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0104";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -2045,7 +2045,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0105', 0, () => {
+    it('testFloat32Array0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0105";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -2064,7 +2064,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0106', 0, () => {
+    it('testFloat32Array0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0106";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -2083,7 +2083,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0107', 0, () => {
+    it('testFloat32Array0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0107";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 4, 3, 5, 3, 6, 3, 3]);
@@ -2102,7 +2102,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0108', 0, () => {
+    it('testFloat32Array0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0108";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 4, 3, 5, 3, 6, 3, 3]);
@@ -2121,7 +2121,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0109', 0, () => {
+    it('testFloat32Array0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0109";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -2140,7 +2140,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0110', 0, () => {
+    it('testFloat32Array0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0110";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -2159,7 +2159,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0111', 0, () => {
+    it('testFloat32Array0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0111";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2178,7 +2178,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0112', 0, () => {
+    it('testFloat32Array0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0112";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2197,7 +2197,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0113', 0, () => {
+    it('testFloat32Array0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0113";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2216,7 +2216,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0114', 0, () => {
+    it('testFloat32Array0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0114";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2235,7 +2235,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0115', 0, () => {
+    it('testFloat32Array0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0115";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2254,7 +2254,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0116', 0, () => {
+    it('testFloat32Array0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0116";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2273,7 +2273,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0117', 0, () => {
+    it('testFloat32Array0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0117";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0, 4.0, 5.0]);
@@ -2292,7 +2292,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0118', 0, () => {
+    it('testFloat32Array0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0118";
       try {
         let array: collections.Float32Array = new collections.Float32Array([]);
@@ -2312,7 +2312,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0119', 0, () => {
+    it('testFloat32Array0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0119";
       try {
         let array: collections.Float32Array = new collections.Float32Array([25, 36, 49]);
@@ -2332,7 +2332,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0120', 0, () => {
+    it('testFloat32Array0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0120";
       try {
         let array: collections.Float32Array = new collections.Float32Array([25, 36, 49, 100, 256]);
@@ -2353,7 +2353,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0121', 0, () => {
+    it('testFloat32Array0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0121";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -2371,7 +2371,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0122', 0, () => {
+    it('testFloat32Array0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0122";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -2395,7 +2395,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0123', 0, () => {
+    it('testFloat32Array0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0123";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -2420,7 +2420,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0124', 0, () => {
+    it('testFloat32Array0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0124";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -2441,7 +2441,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0125', 0, () => {
+    it('testFloat32Array0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0125";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -2460,7 +2460,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0126', 0, () => {
+    it('testFloat32Array0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0126";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -2479,7 +2479,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0127', 0, () => {
+    it('testFloat32Array0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0127";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -2505,7 +2505,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0128', 0, () => {
+    it('testFloat32Array0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0128";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2525,7 +2525,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0129', 0, () => {
+    it('testFloat32Array0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0129";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2551,7 +2551,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0130', 0, () => {
+    it('testFloat32Array0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0130";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2571,7 +2571,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0131', 0, () => {
+    it('testFloat32Array0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0131";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2591,7 +2591,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0132', 0, () => {
+    it('testFloat32Array0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0132";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2617,7 +2617,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0133', 0, () => {
+    it('testFloat32Array0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0133";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2637,7 +2637,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0134', 0, () => {
+    it('testFloat32Array0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0134";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2663,7 +2663,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0135', 0, () => {
+    it('testFloat32Array0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0135";
       try {
         let buf: collections.ArrayBuffer = new collections.ArrayBuffer(32);
@@ -2683,7 +2683,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0136', 0, () => {
+    it('testFloat32Array0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0136";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array();
@@ -2702,7 +2702,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0137', 0, () => {
+    it('testFloat32Array0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0137";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array();
@@ -2721,7 +2721,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0138', 0, () => {
+    it('testFloat32Array0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0138";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2741,7 +2741,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0139', 0, () => {
+    it('testFloat32Array0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0139";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2761,7 +2761,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0140', 0, () => {
+    it('testFloat32Array0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0140";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2780,7 +2780,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0141', 0, () => {
+    it('testFloat32Array0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0141";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2799,7 +2799,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0142', 0, () => {
+    it('testFloat32Array0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0142";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2818,7 +2818,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0143', 0, () => {
+    it('testFloat32Array0143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0143";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2838,7 +2838,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0144', 0, () => {
+    it('testFloat32Array0144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0144";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2857,7 +2857,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0145', 0, () => {
+    it('testFloat32Array0145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0145";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2876,7 +2876,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0146', 0, () => {
+    it('testFloat32Array0146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0146";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2895,7 +2895,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0147', 0, () => {
+    it('testFloat32Array0147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0147";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2914,7 +2914,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0148', 0, () => {
+    it('testFloat32Array0148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0148";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 2.2, 3.3, 4.4, 5.5]);
@@ -2933,7 +2933,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0149', 0, () => {
+    it('testFloat32Array0149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0149";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array();
@@ -2952,7 +2952,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0150', 0, () => {
+    it('testFloat32Array0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0150";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array();
@@ -2971,7 +2971,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0151', 0, () => {
+    it('testFloat32Array0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0151";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([5.1, 2.1, 3.1, 4.1, 1.1]);
@@ -2991,7 +2991,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0152', 0, () => {
+    it('testFloat32Array0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0152";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([5.1, 2.1, 3.1, 4.1, 1.1]);
@@ -3011,7 +3011,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0153', 0, () => {
+    it('testFloat32Array0153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0153";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([5.1, 2.1, 3.1, 4.1, 1.1]);
@@ -3031,7 +3031,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0154', 0, () => {
+    it('testFloat32Array0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0154";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([5.1, 2.1, 3.1, 4.1, 1.1]);
@@ -3052,7 +3052,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0155', 0, () => {
+    it('testFloat32Array0155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0155";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3072,7 +3072,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0156', 0, () => {
+    it('testFloat32Array0156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0156";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3091,7 +3091,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0157', 0, () => {
+    it('testFloat32Array0157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0157";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3110,7 +3110,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0158', 0, () => {
+    it('testFloat32Array0158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0158";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3129,7 +3129,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0159', 0, () => {
+    it('testFloat32Array0159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0159";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3148,7 +3148,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0160', 0, () => {
+    it('testFloat32Array0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0160";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3167,7 +3167,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0161', 0, () => {
+    it('testFloat32Array0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0161";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3186,7 +3186,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0162', 0, () => {
+    it('testFloat32Array0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0162";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3205,7 +3205,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0163', 0, () => {
+    it('testFloat32Array0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0163";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3224,7 +3224,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0164', 0, () => {
+    it('testFloat32Array0164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0164";
       try {
         let arrList: collections.Float32Array = new collections.Float32Array([1.1, 3.1, 5.1, 7.1, 9.1]);
@@ -3243,7 +3243,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0165', 0, () => {
+    it('testFloat32Array0165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0165";
       try {
         let float32Array: collections.Float32Array = new collections.Float32Array();
@@ -3262,7 +3262,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0166', 0, () => {
+    it('testFloat32Array0166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0166";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1]);
@@ -3281,7 +3281,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0167', 0, () => {
+    it('testFloat32Array0167', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0167";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3300,7 +3300,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0168', 0, () => {
+    it('testFloat32Array0168', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0168";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3319,7 +3319,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0169', 0, () => {
+    it('testFloat32Array0169', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0169";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.0, 4.0, 5.0]);
@@ -3338,7 +3338,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0170', 0, () => {
+    it('testFloat32Array0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0170";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3357,7 +3357,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0171', 0, () => {
+    it('testFloat32Array0171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0171";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3376,7 +3376,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0172', 0, () => {
+    it('testFloat32Array0172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0172";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3395,7 +3395,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0173', 0, () => {
+    it('testFloat32Array0173', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0173";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3414,7 +3414,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0174', 0, () => {
+    it('testFloat32Array0174', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0174";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3433,7 +3433,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0175', 0, () => {
+    it('testFloat32Array0175', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0175";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.2, 4.1, 5.0]);
@@ -3452,7 +3452,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0176', 0, () => {
+    it('testFloat32Array0176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0176";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3472,7 +3472,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0177', 0, () => {
+    it('testFloat32Array0177', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0177";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([3.0, 4.1, 5.0]);
@@ -3492,7 +3492,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0178', 0, () => {
+    it('testFloat32Array0178', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0178";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3516,7 +3516,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0179', 0, () => {
+    it('testFloat32Array0179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0179";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3537,7 +3537,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0180', 0, () => {
+    it('testFloat32Array0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0180";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3561,7 +3561,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0181', 0, () => {
+    it('testFloat32Array0181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0181";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3581,7 +3581,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0182', 0, () => {
+    it('testFloat32Array0182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0182";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3603,7 +3603,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0183', 0, () => {
+    it('testFloat32Array0183', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0183";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3628,7 +3628,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0184', 0, () => {
+    it('testFloat32Array0184', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0184";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3654,7 +3654,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0185', 0, () => {
+    it('testFloat32Array0185', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0185";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3673,7 +3673,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0186', 0, () => {
+    it('testFloat32Array0186', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0186";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3693,7 +3693,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32Array0187', 0, () => {
+    it('testFloat32Array0187', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32Array0187";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([1.0, 2.0, 3.0]);
@@ -3712,7 +3712,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayReduceRight0001', 0, async (done: Function) => {
+    it('testFloat32ArrayReduceRight0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayReduceRight0001";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3732,7 +3732,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayReduceRight0002', 0, async (done: Function) => {
+    it('testFloat32ArrayReduceRight0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayReduceRight0002";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -3758,7 +3758,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayReduceRight0003', 0, async (done: Function) => {
+    it('testFloat32ArrayReduceRight0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayReduceRight0003";
       try {
         const array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -3785,7 +3785,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayReduceRight0004', 0, async (done: Function) => {
+    it('testFloat32ArrayReduceRight0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayReduceRight0004";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
@@ -3809,7 +3809,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testFloat32ArrayToLocaleString0001', 0, async (done: Function) => {
+    it('testFloat32ArrayToLocaleString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayToLocaleString0001";
       try {
         const array1 = new collections.Float32Array();
@@ -3831,7 +3831,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testFloat32ArrayToLocaleString0002', 0, async (done: Function) => {
+    it('testFloat32ArrayToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayToLocaleString0002";
       try {
         const array1 = new collections.Float32Array(1);
@@ -3853,7 +3853,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testFloat32ArrayToLocaleString0003', 0, async (done: Function) => {
+    it('testFloat32ArrayToLocaleString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayToLocaleString0003";
       try {
         const array1 = new collections.Float32Array([1,2,3]);
@@ -3875,7 +3875,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0001', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0001";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([]);
@@ -3896,7 +3896,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0002', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0002";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3]);
@@ -3917,7 +3917,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0003', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0003";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3]);
@@ -3939,7 +3939,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0004', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0004";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -3960,7 +3960,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0005', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0005";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -3981,7 +3981,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0006', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0006";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 4, 3, 5, 3, 6, 3, 3]);
@@ -4002,7 +4002,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0007', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0007";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 4, 3, 5, 3, 6, 3, 3]);
@@ -4023,7 +4023,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayLastIndexOf0008', 0, async (done: Function) => {
+    it('testFloat32ArrayLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayLastIndexOf0008";
       try {
         let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 3, 5, 3, 6, 3, 3]);
@@ -4044,7 +4044,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayOf0001', 0, async (done: Function) => {
+    it('testFloat32ArrayOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayOf0001";
       try {
         let result = collections.Float32Array.of(1);
@@ -4064,7 +4064,7 @@ export default function Float32ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayOf0002', 0, async (done: Function) => {
+    it('testFloat32ArrayOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testFloat32ArrayOf0002";
       try {
         let result = collections.Float32Array.of(1, 2, 3);

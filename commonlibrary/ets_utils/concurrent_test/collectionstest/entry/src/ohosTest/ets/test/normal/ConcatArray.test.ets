@@ -1,5 +1,5 @@
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections } from '@kit.ArkTS';
 
 export default function ConcatArrayTest() {
@@ -31,7 +31,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0001', 0, () => {
+    it('testCollectionsConcatArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0001";
       try {
       let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -50,7 +50,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0002', 0, () => {
+    it('testCollectionsConcatArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0002";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -70,7 +70,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0003', 0, () => {
+    it('testCollectionsConcatArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0003";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -90,7 +90,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0004', 0, () => {
+    it('testCollectionsConcatArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0004";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -110,7 +110,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0005', 0, () => {
+    it('testCollectionsConcatArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0005";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -130,7 +130,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0006', 0, () => {
+    it('testCollectionsConcatArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0006";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -150,7 +150,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0007', 0, () => {
+    it('testCollectionsConcatArray0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0007";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -170,7 +170,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0008', 0, () => {
+    it('testCollectionsConcatArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0008";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -190,7 +190,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0009', 0, () => {
+    it('testCollectionsConcatArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0009";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -210,7 +210,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0010', 0, () => {
+    it('testCollectionsConcatArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0010";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -230,7 +230,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0011', 0, () => {
+    it('testCollectionsConcatArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0011";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -250,7 +250,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0012', 0, () => {
+    it('testCollectionsConcatArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0012";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -270,7 +270,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0013', 0, () => {
+    it('testCollectionsConcatArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0013";
       try {
         let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
@@ -290,7 +290,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0014', 0, () => {
+    it('testCollectionsConcatArray0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0014";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -312,7 +312,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0015', 0, () => {
+    it('testCollectionsConcatArray0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0015";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -334,7 +334,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0016', 0, () => {
+    it('testCollectionsConcatArray0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0016";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -356,7 +356,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0017', 0, () => {
+    it('testCollectionsConcatArray0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0017";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -378,7 +378,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0018', 0, () => {
+    it('testCollectionsConcatArray0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0018";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -398,7 +398,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0019', 0, () => {
+    it('testCollectionsConcatArray0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0019";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -420,7 +420,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0020', 0, () => {
+    it('testCollectionsConcatArray0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0020";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -440,7 +440,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0021', 0, () => {
+    it('testCollectionsConcatArray0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0021";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -462,7 +462,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0022', 0, () => {
+    it('testCollectionsConcatArray0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0022";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -484,7 +484,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0023', 0, () => {
+    it('testCollectionsConcatArray0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0023";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -506,7 +506,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0024', 0, () => {
+    it('testCollectionsConcatArray0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0024";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -526,7 +526,7 @@ export default function ConcatArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0025', 0, () => {
+    it('testCollectionsConcatArray0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsConcatArray0025";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);

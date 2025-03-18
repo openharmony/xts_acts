@@ -1,5 +1,5 @@
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang } from '@kit.ArkTS';
 
 @Sendable
@@ -39,7 +39,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0001', 0, () => {
+    it('testCollectionsArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0001";
       try {
           let newArray : collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -63,7 +63,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0002', 0, () => {
+    it('testCollectionsArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0002";
       try {
         let newArray : collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -89,7 +89,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0003', 0, () => {
+    it('testCollectionsArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0003";
       try {
         let array : collections.Array<number> = new collections.Array<number>(1);
@@ -108,7 +108,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0004', 0, () => {
+    it('testCollectionsArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0004";
       try {
         let array : collections.Array<string> = new collections.Array<string>('a', 'b');
@@ -127,7 +127,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0005', 0, () => {
+    it('testCollectionsArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0005";
       try {
         let array : collections.Array<number> = new collections.Array<number>(1, 2, 3);
@@ -146,7 +146,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0006', 0, () => {
+    it('testCollectionsArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0006";
       try {
         let array : collections.Array<boolean> = new collections.Array<boolean>(true, false, true);
@@ -165,7 +165,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0007', 0, () => {
+    it('testCollectionsArray0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0007";
       try {
         let array : collections.Array<undefined> = new collections.Array<undefined>(undefined);
@@ -184,7 +184,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0008', 0, () => {
+    it('testCollectionsArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0008";
       try {
         let array : collections.Array<null> = new collections.Array<null>(null);
@@ -203,7 +203,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0009', 0, () => {
+    it('testCollectionsArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0009";
       try {
         let num1 : bigint = 98765432109876543210n;
@@ -227,7 +227,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0010', 0, () => {
+    it('testCollectionsArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0010";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -251,7 +251,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0011', 0, () => {
+    it('testCollectionsArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0011";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -274,7 +274,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0012', 0, () => {
+    it('testCollectionsArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0012";
       try {
         let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -296,7 +296,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0013', 0, () => {
+    it('testCollectionsArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0013";
       try {
         let array: collections.Array<number> = new collections.Array<number>(1,2,3);
@@ -318,7 +318,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0014', 0, () => {
+    it('testCollectionsArray0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0014";
       try {
         let array: collections.Array<number> = new collections.Array<number>(1,2,3);
@@ -342,7 +342,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0015', 0, () => {
+    it('testCollectionsArray0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0015";
       try {
         let array: collections.Array<number> = new collections.Array<number>(1,2,3);
@@ -363,7 +363,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0016', 0, () => {
+    it('testCollectionsArray0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0016";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(10);
@@ -387,7 +387,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0017', 0, () => {
+    it('testCollectionsArray0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0017";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(10);
@@ -413,7 +413,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0018', 0, () => {
+    it('testCollectionsArray0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0018";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(10);
@@ -434,7 +434,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0019', 0, () => {
+    it('testCollectionsArray0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0019";
       try {
         let int8Array: collections.Int8Array = collections.Int8Array.from([-1,2,3]);
@@ -457,7 +457,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0020', 0, () => {
+    it('testCollectionsArray0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0020";
       try {
         let int8Array: collections.Int8Array = collections.Int8Array.from([-1,2,3]);
@@ -479,7 +479,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0021', 0, () => {
+    it('testCollectionsArray0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0021";
       try {
         let int8Array: collections.Int8Array = collections.Int8Array.from([-1,2,3]);
@@ -503,7 +503,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0022', 0, () => {
+    it('testCollectionsArray0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0022";
       try {
         let uint8Array: collections.Uint8Array = collections.Uint8Array.from([-1,2,3]);
@@ -526,7 +526,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0023', 0, () => {
+    it('testCollectionsArray0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0023";
       try {
         let int8Array: collections.Uint8Array = collections.Uint8Array.from([-1,2,3]);
@@ -548,7 +548,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0024', 0, () => {
+    it('testCollectionsArray0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0024";
       try {
         let uint8Array: collections.Uint8Array = collections.Uint8Array.from([-1,2,3]);
@@ -572,7 +572,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0025', 0, () => {
+    it('testCollectionsArray0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0025";
       try {
         let uint8ClampedArray: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([-10,50,90]);
@@ -595,7 +595,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0026', 0, () => {
+    it('testCollectionsArray0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0026";
       try {
         let uint8ClampedArray: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([-10,50,90]);
@@ -617,7 +617,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0027', 0, () => {
+    it('testCollectionsArray0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0027";
       try {
         let uint8ClampedArray: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([-10,50,90]);
@@ -641,7 +641,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0028', 0, () => {
+    it('testCollectionsArray0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0028";
       try {
         let int16Array: collections.Int16Array = collections.Int16Array.from([-10,50]);
@@ -664,7 +664,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0029', 0, () => {
+    it('testCollectionsArray0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0029";
       try {
         let int16Array: collections.Int16Array = collections.Int16Array.from([-10,50]);
@@ -686,7 +686,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0030', 0, () => {
+    it('testCollectionsArray0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0030";
       try {
         let int16Array: collections.Int16Array = collections.Int16Array.from([-10,50,90]);
@@ -710,7 +710,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0031', 0, () => {
+    it('testCollectionsArray0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0031";
       try {
         let uint16Array: collections.Uint16Array = collections.Uint16Array.from([-10,50]);
@@ -733,7 +733,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0032', 0, () => {
+    it('testCollectionsArray0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0032";
       try {
         let uint16Array: collections.Uint16Array = collections.Uint16Array.from([-10,50]);
@@ -755,7 +755,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0033', 0, () => {
+    it('testCollectionsArray0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0033";
       try {
         let uint16Array: collections.Uint16Array = collections.Uint16Array.from([-10,50,90]);
@@ -780,7 +780,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0034', 0, () => {
+    it('testCollectionsArray0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0034";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([-10,50]);
@@ -803,7 +803,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0035', 0, () => {
+    it('testCollectionsArray0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0035";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([-10,50]);
@@ -825,7 +825,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0036', 0, () => {
+    it('testCollectionsArray0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0036";
       try {
         let int32Array: collections.Int32Array = collections.Int32Array.from([-10,50]);
@@ -850,7 +850,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0037', 0, () => {
+    it('testCollectionsArray0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0037";
       try {
         let uint32Array: collections.Uint32Array = collections.Uint32Array.from([-10,50]);
@@ -874,7 +874,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0038', 0, () => {
+    it('testCollectionsArray0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0038";
       try {
         let uint32Array: collections.Uint32Array = collections.Uint32Array.from([-10,50]);
@@ -896,7 +896,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0039', 0, () => {
+    it('testCollectionsArray0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0039";
       try {
         let uint32Array: collections.Uint32Array = collections.Uint32Array.from([-10,50]);
@@ -921,7 +921,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0040', 0, () => {
+    it('testCollectionsArray0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0040";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([0,5.0]);
@@ -945,7 +945,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0041', 0, () => {
+    it('testCollectionsArray0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0041";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([0,5.0]);
@@ -967,7 +967,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0042', 0, () => {
+    it('testCollectionsArray0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0042";
       try {
         let float32Array: collections.Float32Array = collections.Float32Array.from([-1.0,5.0]);
@@ -992,7 +992,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0043', 0, () => {
+    it('testCollectionsArray0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0043";
       try {
         const testMap = new collections.Map<number, string>([
@@ -1021,7 +1021,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0044', 0, () => {
+    it('testCollectionsArray0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0044";
       try {
         const testMap = new collections.Map<number, string>([
@@ -1047,7 +1047,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0045', 0, () => {
+    it('testCollectionsArray0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0045";
       try {
         const testMap = new collections.Map<number, string>([
@@ -1074,7 +1074,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0046', 0, () => {
+    it('testCollectionsArray0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0046";
       try {
         const testSet = new collections.Set<number>([1, 2]);
@@ -1098,7 +1098,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0047', 0, () => {
+    it('testCollectionsArray0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0047";
       try {
         const testSet = new collections.Set<number>([1, 2]);
@@ -1121,7 +1121,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0048', 0, () => {
+    it('testCollectionsArray0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0048";
       try {
         const testSet = new collections.Set<number>([1, 2]);
@@ -1145,7 +1145,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0049', 0, () => {
+    it('testCollectionsArray0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0049";
       try {
         let bitVector: collections.BitVector = new collections.BitVector(0);
@@ -1177,7 +1177,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0050', 0, () => {
+    it('testCollectionsArray0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0050";
       try {
         let bitVector: collections.BitVector = new collections.BitVector(0);
@@ -1205,7 +1205,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0051', 0, () => {
+    it('testCollectionsArray0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0051";
       try {
         let bitVector: collections.BitVector = new collections.BitVector(0);
@@ -1233,7 +1233,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0052', 0, () => {
+    it('testCollectionsArray0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0052";
       try {
         let lock1 = new ArkTSUtils.locks.AsyncLock();
@@ -1255,7 +1255,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0053', 0, () => {
+    it('testCollectionsArray0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0053";
       try {
         let lock1 = new ArkTSUtils.locks.AsyncLock();
@@ -1278,7 +1278,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0054', 0, () => {
+    it('testCollectionsArray0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0054";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1298,7 +1298,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0055', 0, () => {
+    it('testCollectionsArray0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0055";
       @Sendable
       class SendableTestClass {
@@ -1330,7 +1330,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0056', 0, () => {
+    it('testCollectionsArray0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0056";
       @Sendable
       class SendableTestClass {
@@ -1359,7 +1359,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0057', 0, () => {
+    it('testCollectionsArray0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0057";
       @Sendable
       class SendableTestClass {
@@ -1391,7 +1391,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0058', 0, () => {
+    it('testCollectionsArray0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0058";
       try {
         let sendableClass1 = new ImplISendableClass();
@@ -1416,7 +1416,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0059', 0, () => {
+    it('testCollectionsArray0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0059";
       try {
         let sendableClass = new ImplISendableClass();
@@ -1438,7 +1438,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0060', 0, () => {
+    it('testCollectionsArray0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0060";
       try {
         let sendableClass1 = new ImplISendableClass();
@@ -1463,7 +1463,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0061', 0, () => {
+    it('testCollectionsArray0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0061";
       try {
         let newArray = new collections.Array<number|string>(1);
@@ -1484,7 +1484,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0062', 0, () => {
+    it('testCollectionsArray0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0062";
       try {
         let newArray = new collections.Array<number|string>(1,'a',2,'b');
@@ -1504,7 +1504,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0063', 0, () => {
+    it('testCollectionsArray0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0063";
       try {
         let newArray = new collections.Array<number|string>(1,'a',2,'b');
@@ -1524,7 +1524,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0064', 0, () => {
+    it('testCollectionsArray0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0064";
       try {
         let array = collections.Array.create<number>(-1, 10);
@@ -1543,7 +1543,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0065', 0, () => {
+    it('testCollectionsArray0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0065";
       try {
         let array = collections.Array.create<number>(0, 10);
@@ -1564,7 +1564,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0066', 0, () => {
+    it('testCollectionsArray0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0066";
       try {
         let array = collections.Array.create<number>(10, 3);
@@ -1585,7 +1585,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0067', 0, () => {
+    it('testCollectionsArray0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0067";
       try {
         let array = collections.Array.create<number>(100000, 5);
@@ -1604,7 +1604,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0068', 0, () => {
+    it('testCollectionsArray0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0068";
       try {
         const regex = new RegExp("abc", "ig")
@@ -1625,7 +1625,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0069', 0, () => {
+    it('testCollectionsArray0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0069";
       try {
         let array : Array<string> = ['d', 'e', 'f'];
@@ -1645,7 +1645,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0070', 0, () => {
+    it('testCollectionsArray0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0070";
       try {
         let array : Array<string> = [];
@@ -1666,7 +1666,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0071', 0, () => {
+    it('testCollectionsArray0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0071";
       try {
         let array : Array<null> = [null];
@@ -1688,7 +1688,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0072', 0, () => {
+    it('testCollectionsArray0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0072";
       try {
         let array : Array<undefined> = [undefined];
@@ -1709,7 +1709,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0073', 0, () => {
+    it('testCollectionsArray0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0073";
       try {
         const regex = new RegExp("abc", "ig");
@@ -1729,7 +1729,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0074', 0, () => {
+    it('testCollectionsArray0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0074";
       try {
         let array = new collections.Array<number>();
@@ -1749,7 +1749,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0075', 0, () => {
+    it('testCollectionsArray0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0075";
       try {
         let array = new collections.Array<string>('');
@@ -1769,7 +1769,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0076', 0, () => {
+    it('testCollectionsArray0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0076";
       try {
         let array = new collections.Array<null>(null);
@@ -1789,7 +1789,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0077', 0, () => {
+    it('testCollectionsArray0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0077";
       try {
         let array = new collections.Array<undefined>(undefined);
@@ -1809,7 +1809,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0078', 0, () => {
+    it('testCollectionsArray0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0078";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -1829,7 +1829,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0079', 0, () => {
+    it('testCollectionsArray0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0079";
       try {
         let array = new collections.Array<number>();
@@ -1849,7 +1849,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0080', 0, () => {
+    it('testCollectionsArray0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0080";
       try {
         let array = new collections.Array<number>();
@@ -1869,7 +1869,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0081', 0, () => {
+    it('testCollectionsArray0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0081";
       try {
         let array = new collections.Array<string>();
@@ -1890,7 +1890,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0082', 0, () => {
+    it('testCollectionsArray0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0082";
       try {
         let array = new collections.Array<null>();
@@ -1911,7 +1911,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0083', 0, () => {
+    it('testCollectionsArray0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0083";
       try {
         let array = new collections.Array<undefined>();
@@ -1932,7 +1932,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0084', 0, () => {
+    it('testCollectionsArray0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0084";
       try {
         let array = new collections.Array<number>(1,2);
@@ -1953,7 +1953,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    // it('testCollectionsArray0085', 0, () => {
+    // it('testCollectionsArray0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   const TAG = "testCollectionsArray0085";
     //   try {
     //     let array = new collections.Array<number>(1,2);
@@ -1974,7 +1974,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0086', 0, () => {
+    it('testCollectionsArray0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0086";
       try {
         let array = new collections.Array<string>();
@@ -1994,7 +1994,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0087', 0, () => {
+    it('testCollectionsArray0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0087";
       try {
         let array = new collections.Array<string>();
@@ -2014,7 +2014,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0088', 0, () => {
+    it('testCollectionsArray0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0088";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -2034,7 +2034,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0089', 0, () => {
+    it('testCollectionsArray0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0089";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -2054,7 +2054,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0090', 0, () => {
+    it('testCollectionsArray0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0090";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -2074,7 +2074,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0091', 0, () => {
+    it('testCollectionsArray0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0091";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2094,7 +2094,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0092', 0, () => {
+    it('testCollectionsArray0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0092";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2114,7 +2114,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0093', 0, () => {
+    it('testCollectionsArray0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0093";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2134,7 +2134,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0094', 0, () => {
+    it('testCollectionsArray0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0094";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2154,7 +2154,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0095', 0, () => {
+    it('testCollectionsArray0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0095";
       try {
         let array = new collections.Array<number>();
@@ -2174,7 +2174,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0096', 0, () => {
+    it('testCollectionsArray0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0096";
       try {
         let array = new collections.Array<string>('');
@@ -2194,7 +2194,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0097', 0, () => {
+    it('testCollectionsArray0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0097";
       try {
         let array = new collections.Array<null>(null);
@@ -2214,7 +2214,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0098', 0, () => {
+    it('testCollectionsArray0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0098";
       try {
         let array = new collections.Array<undefined>(undefined);
@@ -2234,7 +2234,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0099', 0, () => {
+    it('testCollectionsArray0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0099";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -2254,7 +2254,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0100', 0, () => {
+    it('testCollectionsArray0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0100";
       try {
         let array = new collections.Array<number>();
@@ -2274,7 +2274,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0101', 0, () => {
+    it('testCollectionsArray0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0101";
       try {
         let array = new collections.Array<number>();
@@ -2294,7 +2294,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0102', 0, () => {
+    it('testCollectionsArray0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0102";
       try {
         let array = new collections.Array<string>();
@@ -2315,7 +2315,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0103', 0, () => {
+    it('testCollectionsArray0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0103";
       try {
         let array = new collections.Array<null>();
@@ -2336,7 +2336,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0104', 0, () => {
+    it('testCollectionsArray0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0104";
       try {
         let array = new collections.Array<undefined>();
@@ -2357,7 +2357,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0105', 0, () => {
+    it('testCollectionsArray0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0105";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -2378,7 +2378,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0106', 0, () => {
+    it('testCollectionsArray0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0106";
       try {
         let array = new collections.Array<number>();
@@ -2398,7 +2398,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0107', 0, () => {
+    it('testCollectionsArray0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0107";
       try {
         let array = new collections.Array<number>();
@@ -2418,7 +2418,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0108', 0, () => {
+    it('testCollectionsArray0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0108";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2438,7 +2438,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0109', 0, () => {
+    it('testCollectionsArray0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0109";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2458,7 +2458,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0110', 0, () => {
+    it('testCollectionsArray0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0110";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2478,7 +2478,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0111', 0, () => {
+    it('testCollectionsArray0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0111";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2498,7 +2498,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0112', 0, () => {
+    it('testCollectionsArray0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0112";
       try {
         let array = new collections.Array<number>(1,2);
@@ -2518,7 +2518,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0113', 0, () => {
+    it('testCollectionsArray0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0113";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -2538,7 +2538,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0114', 0, () => {
+    it('testCollectionsArray0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0114";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -2558,7 +2558,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0115', 0, () => {
+    it('testCollectionsArray0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0115";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -2578,7 +2578,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0116', 0, () => {
+    it('testCollectionsArray0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0116";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -2598,7 +2598,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0117', 0, () => {
+    it('testCollectionsArray0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0117";
       try {
         let array = new collections.Array<number>(1);
@@ -2618,7 +2618,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0118', 0, () => {
+    it('testCollectionsArray0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0118";
       try {
         let array = new collections.Array<number>(1);
@@ -2638,7 +2638,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0119', 0, () => {
+    it('testCollectionsArray0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0119";
       try {
         let array = new collections.Array<number>();
@@ -2658,7 +2658,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0120', 0, () => {
+    it('testCollectionsArray0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0120";
       try {
         let array = new collections.Array<number>();
@@ -2678,7 +2678,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0121', 0, () => {
+    it('testCollectionsArray0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0121";
       try {
         let array = new collections.Array<number>(5,2,3,1);
@@ -2698,7 +2698,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0122', 0, () => {
+    it('testCollectionsArray0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0122";
       try {
         let array = new collections.Array<number>(5,2,3,1);
@@ -2718,7 +2718,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0123', 0, () => {
+    it('testCollectionsArray0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0123";
       try {
         let array = new collections.Array<number>(5,2,3,1);
@@ -2738,7 +2738,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0124', 0, () => {
+    it('testCollectionsArray0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0124";
       try {
         let array = new collections.Array<number>(5,2,3,1);
@@ -2759,7 +2759,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0125', 0, () => {
+    it('testCollectionsArray0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0125";
       try {
         let array = new collections.Array<number>(5,3,1);
@@ -2781,7 +2781,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0126', 0, () => {
+    it('testCollectionsArray0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0126";
       try {
         let array = new collections.Array<number>(5,3,1);
@@ -2803,7 +2803,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0127', 0, () => {
+    it('testCollectionsArray0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0127";
       try {
         let array = new collections.Array<number>(5,3,1);
@@ -2825,7 +2825,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0128', 0, () => {
+    it('testCollectionsArray0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0128";
       try {
         let array = new collections.Array<string>();
@@ -2845,7 +2845,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0129', 0, () => {
+    it('testCollectionsArray0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0129";
       try {
         let array = new collections.Array<string>('a','b','c');
@@ -2866,7 +2866,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0130', 0, () => {
+    it('testCollectionsArray0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0130";
       try {
         let array = new collections.Array<string>('a','b','c');
@@ -2887,7 +2887,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0131', 0, () => {
+    it('testCollectionsArray0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0131";
       try {
         let array = new collections.Array<string>('a','b','c','a','a');
@@ -2908,7 +2908,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0132', 0, () => {
+    it('testCollectionsArray0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0132";
       try {
         let array = new collections.Array<string>('a','b','c','a','a');
@@ -2929,7 +2929,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0133', 0, () => {
+    it('testCollectionsArray0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0133";
       try {
         let array = new collections.Array<string>('a','b','c','a','d','a');
@@ -2949,7 +2949,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0134', 0, () => {
+    it('testCollectionsArray0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0134";
       try {
         let array = new collections.Array<string>();
@@ -2971,7 +2971,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0135', 0, () => {
+    it('testCollectionsArray0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0135";
       try {
         let array = new collections.Array<number>(2,3,4);
@@ -2994,7 +2994,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0136', 0, () => {
+    it('testCollectionsArray0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0136";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3018,7 +3018,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0137', 0, () => {
+    it('testCollectionsArray0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0137";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3042,7 +3042,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0138', 0, () => {
+    it('testCollectionsArray0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0138";
       try {
         let array = new collections.Array<number>();
@@ -3069,7 +3069,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0139', 0, () => {
+    it('testCollectionsArray0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0139";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3100,7 +3100,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0140', 0, () => {
+    it('testCollectionsArray0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0140";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3132,7 +3132,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0141', 0, () => {
+    it('testCollectionsArray0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0141";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3164,7 +3164,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0142', 0, () => {
+    it('testCollectionsArray0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0142";
       try {
         let array = new collections.Array<number>();
@@ -3185,7 +3185,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0143', 0, () => {
+    it('testCollectionsArray0143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0143";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3212,7 +3212,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0144', 0, () => {
+    it('testCollectionsArray0144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0144";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3237,7 +3237,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0145', 0, () => {
+    it('testCollectionsArray0145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0145";
       try {
         let array = new collections.Array<number>(1,2,3,4,5);
@@ -3261,7 +3261,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0146', 0, () => {
+    it('testCollectionsArray0146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0146";
       try {
         let array = new collections.Array<number>();
@@ -3281,7 +3281,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0147', 0, () => {
+    it('testCollectionsArray0147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0147";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3302,7 +3302,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0148', 0, () => {
+    it('testCollectionsArray0148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0148";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3324,7 +3324,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0149', 0, () => {
+    it('testCollectionsArray0149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0149";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3352,7 +3352,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0150', 0, () => {
+    it('testCollectionsArray0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0150";
       try {
         let array = new collections.Array<number>(1,2,3,4);
@@ -3379,7 +3379,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0151', 0, () => {
+    it('testCollectionsArray0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0151";
       try {
         let array = new collections.Array<number>();
@@ -3399,7 +3399,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0152', 0, () => {
+    it('testCollectionsArray0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0152";
       try {
         let array = new collections.Array<number>(1,2,3,4,5);
@@ -3419,7 +3419,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0153', 0, () => {
+    it('testCollectionsArray0153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0153";
       try {
         let array = new collections.Array<number>(1,2,3,4,5);
@@ -3439,7 +3439,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0154', 0, () => {
+    it('testCollectionsArray0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0154";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3459,7 +3459,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0155', 0, () => {
+    it('testCollectionsArray0155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0155";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3479,7 +3479,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0156', 0, () => {
+    it('testCollectionsArray0156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0156";
       try {
         let array = new collections.Array<string>();
@@ -3499,7 +3499,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0157', 0, () => {
+    it('testCollectionsArray0157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0157";
       try {
         let array = new collections.Array<string>('a','b','c');
@@ -3522,7 +3522,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0158', 0, () => {
+    it('testCollectionsArray0158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0158";
       try {
         let array = new collections.Array<string>();
@@ -3547,7 +3547,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0159', 0, () => {
+    it('testCollectionsArray0159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0159";
       try {
         let array = new collections.Array<string>('a','b','c');
@@ -3571,7 +3571,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0160', 0, () => {
+    it('testCollectionsArray0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0160";
       try {
         let array = new collections.Array<string>('a','b','c');
@@ -3595,7 +3595,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0161', 0, () => {
+    it('testCollectionsArray0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0161";
       try {
         let array = new collections.Array<string>();
@@ -3614,7 +3614,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0162', 0, () => {
+    it('testCollectionsArray0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0162";
       try {
         let array = new collections.Array<string>('e','f','g');
@@ -3636,7 +3636,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0163', 0, () => {
+    it('testCollectionsArray0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0163";
       try {
         let array = new collections.Array<string>('e','f','g');
@@ -3659,7 +3659,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0164', 0, () => {
+    it('testCollectionsArray0164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0164";
       try {
         let array = new collections.Array<string>('e','f','g');
@@ -3682,7 +3682,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0165', 0, () => {
+    it('testCollectionsArray0165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0165";
       try {
         let array = new collections.Array<number>();
@@ -3702,7 +3702,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0166', 0, () => {
+    it('testCollectionsArray0166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0166";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -3722,7 +3722,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0167', 0, () => {
+    it('testCollectionsArray0167', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0167";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -3742,7 +3742,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0168', 0, () => {
+    it('testCollectionsArray0168', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0168";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -3762,7 +3762,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0169', 0, () => {
+    it('testCollectionsArray0169', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0169";
       try {
         let array = new collections.Array<number>(3,5);
@@ -3782,7 +3782,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0170', 0, () => {
+    it('testCollectionsArray0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0170";
       try {
         let array = new collections.Array<number>();
@@ -3803,7 +3803,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0171', 0, () => {
+    it('testCollectionsArray0171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0171";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3824,7 +3824,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0172', 0, () => {
+    it('testCollectionsArray0172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0172";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3845,7 +3845,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0173', 0, () => {
+    it('testCollectionsArray0173', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0173";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3866,7 +3866,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0174', 0, () => {
+    it('testCollectionsArray0174', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0174";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3887,7 +3887,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0175', 0, () => {
+    it('testCollectionsArray0175', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0175";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -3908,7 +3908,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0176', 0, () => {
+    it('testCollectionsArray0176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0176";
       try {
         let array = new collections.Array<number>();
@@ -3928,7 +3928,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0177', 0, () => {
+    it('testCollectionsArray0177', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0177";
       try {
         let array = new collections.Array<number>(2,4);
@@ -3948,7 +3948,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0178', 0, () => {
+    it('testCollectionsArray0178', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0178";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -3968,7 +3968,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0179', 0, () => {
+    it('testCollectionsArray0179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0179";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -3988,7 +3988,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0180', 0, () => {
+    it('testCollectionsArray0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0180";
       try {
         let array = new collections.Array<number>(1,3,5);
@@ -4008,7 +4008,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0181', 0, () => {
+    it('testCollectionsArray0181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0181";
       try {
         let array = new collections.Array(1,2,3,4,5);
@@ -4028,7 +4028,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0182', 0, () => {
+    it('testCollectionsArray0182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0182";
       try {
         let array = new collections.Array(1,2,3,4,5);
@@ -4048,7 +4048,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0183', 0, () => {
+    it('testCollectionsArray0183', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0183";
       try {
         let array = new collections.Array(1,2,3,4,5);
@@ -4068,7 +4068,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0184', 0, () => {
+    it('testCollectionsArray0184', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0184";
       try {
         let array = new collections.Array(1, 2, 3, 4, 5);
@@ -4088,7 +4088,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0185', 0, () => {
+    it('testCollectionsArray0185', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0185";
       try {
         let array = new collections.Array<null>(null);
@@ -4108,7 +4108,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0186', 0, () => {
+    it('testCollectionsArray0186', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0186";
       try {
         let array = new collections.Array<undefined>();
@@ -4128,7 +4128,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0187', 0, () => {
+    it('testCollectionsArray0187', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0187";
       try {
         let array = new collections.Array<number>(1,2,3,4,5);
@@ -4148,7 +4148,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0188', 0, () => {
+    it('testCollectionsArray0188', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0188";
       try {
         let array = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -4168,7 +4168,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0189', 0, () => {
+    it('testCollectionsArray0189', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0189";
       try {
         let array = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -4188,7 +4188,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0190', 0, () => {
+    it('testCollectionsArray0190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0190";
       try {
         let array = new collections.Array<number>(1, 2, 3, 4, 5);
@@ -4208,7 +4208,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0191', 0, () => {
+    it('testCollectionsArray0191', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0191";
       try {
         let array = new collections.Array<number>(1,2,3,4,5);
@@ -4228,7 +4228,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0192', 0, () => {
+    it('testCollectionsArray0192', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0192";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4248,7 +4248,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0193', 0, () => {
+    it('testCollectionsArray0193', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0193";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4268,7 +4268,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0194', 0, () => {
+    it('testCollectionsArray0194', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0194";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4288,7 +4288,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0195', 0, () => {
+    it('testCollectionsArray0195', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0195";
       try {
         let array1 = new collections.Array<number>(1,2,3);
@@ -4309,7 +4309,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0196', 0, () => {
+    it('testCollectionsArray0196', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0196";
       try {
         let array = new collections.Array<null>(null);
@@ -4330,7 +4330,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0197', 0, () => {
+    it('testCollectionsArray0197', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0197";
       try {
         let array = new collections.Array<number>();
@@ -4350,7 +4350,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0198', 0, () => {
+    it('testCollectionsArray0198', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0198";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4372,7 +4372,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0199', 0, () => {
+    it('testCollectionsArray0199', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0199";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4394,7 +4394,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0200', 0, () => {
+    it('testCollectionsArray0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0200";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4416,7 +4416,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0201', 0, () => {
+    it('testCollectionsArray0201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0201";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4438,7 +4438,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0202', 0, () => {
+    it('testCollectionsArray0202', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0202";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4460,7 +4460,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0203', 0, () => {
+    it('testCollectionsArray0203', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0203";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4482,7 +4482,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0204', 0, () => {
+    it('testCollectionsArray0204', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0204";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4504,7 +4504,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0205', 0, () => {
+    it('testCollectionsArray0205', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0205";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4526,7 +4526,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0206', 0, () => {
+    it('testCollectionsArray0206', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0206";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4548,7 +4548,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0207', 0, () => {
+    it('testCollectionsArray0207', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0207";
       try {
         let array = new collections.Array<null>(null,null,null);
@@ -4570,7 +4570,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0208', 0, () => {
+    it('testCollectionsArray0208', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0208";
       try {
         let array = new collections.Array<undefined>(undefined,undefined);
@@ -4592,7 +4592,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0209', 0, () => {
+    it('testCollectionsArray0209', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0209";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4612,7 +4612,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0210', 0, () => {
+    it('testCollectionsArray0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0210";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4632,7 +4632,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArray0211', 0, () => {
+    it('testCollectionsArray0211', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArray0211";
       try {
         let array = new collections.Array<number>(1,2,3);
@@ -4652,7 +4652,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayOf0001', 0, async (done: Function) => {
+    it('testCollectionsArrayOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayOf0001";
       try {
         let result = collections.Array.of(1);
@@ -4672,7 +4672,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayOf0002', 0, async (done: Function) => {
+    it('testCollectionsArrayOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayOf0002";
       try {
         let result = collections.Array.of(1, 2, 3);
@@ -4692,7 +4692,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayOf0003', 0, async (done: Function) => {
+    it('testCollectionsArrayOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayOf0003";
       try {
         let result = collections.Array.of(undefined);
@@ -4712,7 +4712,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayOf0004', 0, async (done: Function) => {
+    it('testCollectionsArrayOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayOf0004";
       try {
         let result = collections.Array.of(null);
@@ -4733,7 +4733,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayCopyWithin0001', 0, async (done: Function) => {
+    it('testCollectionsArrayCopyWithin0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayCopyWithin0001";
       try {
         let arr1 = new collections.Array(1, 2, 3, 4, 5);
@@ -4755,7 +4755,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayCopyWithin0002', 0, async (done: Function) => {
+    it('testCollectionsArrayCopyWithin0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayCopyWithin0002";
       try {
         let arr1 = new collections.Array(1, 2, 3, 4, 5);
@@ -4777,7 +4777,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayCopyWithin0003', 0, async (done: Function) => {
+    it('testCollectionsArrayCopyWithin0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayCopyWithin0003";
       try {
         let arr1 = new collections.Array(1, 2, 3, 4, 5);
@@ -4799,7 +4799,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayCopyWithin0004', 0, async (done: Function) => {
+    it('testCollectionsArrayCopyWithin0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayCopyWithin0004";
       try {
         let arr1 = new collections.Array(1, 2, 3, 4, 5);
@@ -4821,7 +4821,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayReverse0001', 0, async (done: Function) => {
+    it('testCollectionsArrayReverse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayReverse0001";
       try {
         const items = new collections.Array(1, 2, 3);
@@ -4842,7 +4842,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayReverse0002', 0, async (done: Function) => {
+    it('testCollectionsArrayReverse0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayReverse0002";
       try {
         const items = new collections.Array(1, 2, undefined);
@@ -4863,7 +4863,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayReverse0003', 0, async (done: Function) => {
+    it('testCollectionsArrayReverse0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayReverse0003";
       try {
         const items = new collections.Array<number | null>(1, null , 3);
@@ -4884,7 +4884,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0001', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0001";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -4906,7 +4906,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0002', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0002";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -4928,7 +4928,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0003', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0003";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -4950,7 +4950,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0004', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0004";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -4972,7 +4972,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0005', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0005";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -4994,7 +4994,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0006', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0006";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -5016,7 +5016,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0008', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0008";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -5038,7 +5038,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0009', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0009";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -5060,7 +5060,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayLastIndexOf0010', 0, async (done: Function) => {
+    it('testCollectionsArrayLastIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayLastIndexOf0010";
       try {
         const numbers = new collections.Array(2, 5, 9, 2);
@@ -5082,7 +5082,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0001', 0, async (done: Function) => {
+    it('testCollectionsArraySome0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0001";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5104,7 +5104,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0002', 0, async (done: Function) => {
+    it('testCollectionsArraySome0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0002";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5126,7 +5126,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0003', 0, async (done: Function) => {
+    it('testCollectionsArraySome0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0003";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5148,7 +5148,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0004', 0, async (done: Function) => {
+    it('testCollectionsArraySome0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0004";
       try {
         let array = new collections.Array<number | null>(1, null , 3);
@@ -5170,7 +5170,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0005', 0, async (done: Function) => {
+    it('testCollectionsArraySome0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0005";
       try {
         let array = new collections.Array<number | null>(1, null , 3);
@@ -5192,7 +5192,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0006', 0, async (done: Function) => {
+    it('testCollectionsArraySome0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0006";
       try {
         let array = new collections.Array<number | null >(1, null , 3);
@@ -5214,7 +5214,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0007', 0, async (done: Function) => {
+    it('testCollectionsArraySome0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0007";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5236,7 +5236,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0008', 0, async (done: Function) => {
+    it('testCollectionsArraySome0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0008";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5258,7 +5258,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0009', 0, async (done: Function) => {
+    it('testCollectionsArraySome0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0009";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5280,7 +5280,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0010', 0, async (done: Function) => {
+    it('testCollectionsArraySome0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0010";
       try {
         let array = new collections.Array(1, 2, undefined);
@@ -5302,7 +5302,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0011', 0, async (done: Function) => {
+    it('testCollectionsArraySome0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0011";
       try {
         let array = new collections.Array(1, 2, undefined);
@@ -5324,7 +5324,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArraySome0012', 0, async (done: Function) => {
+    it('testCollectionsArraySome0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArraySome0012";
       try {
         let array = new collections.Array(1, 2, undefined);
@@ -5346,7 +5346,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToString0001', 0, async (done: Function) => {
+    it('testCollectionsArrayToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToString0001";
       try {
         const array1 = new collections.Array<number|string>(1, 2, 'a', '1a');
@@ -5368,7 +5368,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToString0002', 0, async (done: Function) => {
+    it('testCollectionsArrayToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToString0002";
       try {
         const array1 = new collections.Array('1a');
@@ -5390,7 +5390,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToString0003', 0, async (done: Function) => {
+    it('testCollectionsArrayToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToString0003";
       try {
         const array1 = new collections.Array('');
@@ -5412,7 +5412,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToString0004', 0, async (done: Function) => {
+    it('testCollectionsArrayToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToString0004";
       try {
         const array1 = new collections.Array(null);
@@ -5434,7 +5434,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToLocaleString0002', 0, async (done: Function) => {
+    it('testCollectionsArrayToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToLocaleString0002";
       try {
         const array1 = new collections.Array<number>();
@@ -5456,7 +5456,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToLocaleString0003', 0, async (done: Function) => {
+    it('testCollectionsArrayToLocaleString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToLocaleString0003";
       try {
         const array1 = new collections.Array(undefined);
@@ -5478,7 +5478,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToLocaleString0004', 0, async (done: Function) => {
+    it('testCollectionsArrayToLocaleString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToLocaleString0004";
       try {
         const array1 = new collections.Array(null);
@@ -5500,7 +5500,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToLocaleString0005', 0, async (done: Function) => {
+    it('testCollectionsArrayToLocaleString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToLocaleString0005";
       try {
         const array1 = new collections.Array(1);
@@ -5522,7 +5522,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayToLocaleString0006', 0, async (done: Function) => {
+    it('testCollectionsArrayToLocaleString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayToLocaleString0006";
       try {
         const array1 = new collections.Array('Test');
@@ -5544,7 +5544,7 @@ export default function ArrayTest() {
       * @tc.type  : Function
       * @tc.level : level 2
       */
-    it('testCollectionsArrayReduceRight0100', 0, async (done: Function) => {
+    it('testCollectionsArrayReduceRight0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayReduceRight0100';
       console.log(`${caseName} test start `);
       try {
@@ -5570,7 +5570,7 @@ export default function ArrayTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testCollectionsArrayReduceRight0200', 0, async (done: Function) => {
+    it('testCollectionsArrayReduceRight0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayReduceRight0200';
       console.log(`${caseName} test start `);
       try {
@@ -5596,7 +5596,7 @@ export default function ArrayTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testCollectionsArrayReduceRight0300', 0, async (done: Function) => {
+    it('testCollectionsArrayReduceRight0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayReduceRight0300';
       console.log(`${caseName} test start `);
       try {
@@ -5622,7 +5622,7 @@ export default function ArrayTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testCollectionsArrayReduceRight0400', 0, async (done: Function) => {
+    it('testCollectionsArrayReduceRight0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayReduceRight0400';
       console.log(`${caseName} test start `);
       try {
@@ -5647,7 +5647,7 @@ export default function ArrayTest() {
       * @tc.type  : Function
       * @tc.level : level 2
       */
-    it('testCollectionsArrayFrom0400', 0, async (done: Function) => {
+    it('testCollectionsArrayFrom0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayFrom0400';
       console.log(`${caseName} test start `);
       try {
@@ -5671,7 +5671,7 @@ export default function ArrayTest() {
       * @tc.type  : Function
       * @tc.level : level 2
       */
-    it('testCollectionsArrayFrom0500', 0, async (done: Function) => {
+    it('testCollectionsArrayFrom0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCollectionsArrayFrom0500';
       console.log(`${caseName} test start `);
       try {
@@ -5696,7 +5696,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0001', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0001";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5718,7 +5718,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0002', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0002";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5740,7 +5740,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0003', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0003";
       try {
         let array = new collections.Array(1, 2, 3);
@@ -5762,7 +5762,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0004', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0004";
       try {
         let array = new collections.Array<number | null >(1, null , 3);
@@ -5784,7 +5784,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0005', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0005";
       try {
         let array = new collections.Array<number | null >(1, null , 3);
@@ -5806,7 +5806,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0006', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0006";
       try {
         let array = new collections.Array<number | null >(1, null , 3);
@@ -5828,7 +5828,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0007', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0007";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5850,7 +5850,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0008', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0008";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5872,7 +5872,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0009', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0009";
       try {
         let array = new collections.Array<number|string>(1, '2', 3);
@@ -5894,7 +5894,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0010', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0010";
       try {
         let array = new collections.Array(1, 2, undefined);
@@ -5916,7 +5916,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0011', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0011";
       try {
         let array = new collections.Array(1, 2, undefined);
@@ -5938,7 +5938,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayEvery0012', 0, async (done: Function) => {
+    it('testCollectionsArrayEvery0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayEvery0012";
       try {
         let array = new collections.Array(1, 2, undefined);

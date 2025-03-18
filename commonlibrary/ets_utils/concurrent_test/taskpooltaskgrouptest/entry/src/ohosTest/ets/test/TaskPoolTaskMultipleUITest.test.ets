@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 
 
@@ -61,7 +61,11 @@ export default function taskPoolTaskMultipleUITest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleUITest0100', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleUITest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleUITest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleUITest0100'
@@ -103,7 +107,11 @@ export default function taskPoolTaskMultipleUITest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskMultipleUITest0200', 0, async (Done: Function) => {
+<<<<<<< HEAD
+    it('taskPoolTaskMultipleUITest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+=======
+    it('taskPoolTaskMultipleUITest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+>>>>>>> 3d862a389b (更新LEVEL)
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskMultipleUITest0200'
