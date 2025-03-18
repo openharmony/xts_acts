@@ -237,6 +237,137 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
+        * @tc.number SUB_Communication_WiFi_Event_Test_0007
+        * @tc.name testP2pGroup
+        * @tc.desc Test createGroup and getCurrentGroup promise and removeGroup
+        * @tc.type Function
+        * @tc.level Level 2
+        * @tc.size: Mediumtest
+        */
+        it('SUB_Communication_WiFi_Event_Test_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            let wifiP2PConfig = {
+                deviceAddress: "00:11:22:33:44:55",
+                deviceAddressType: wifiMg.DeviceAddressType.RANDOM_DEVICE_ADDRESS,
+                netId: -1,
+                passphrase : "12345678",
+                groupName : "createTemporaryP2pGroup",
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO
+            }
+            try {
+                wifiMg.createGroup(wifiP2PConfig);
+                await sleep(900);
+            } catch(error) {
+                console.info("createGroup: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info('[wifi_js] createGroup api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            try {
+                await wifiMg.getCurrentGroup().then((wifiP2pGroupInfo) => {
+                    console.info("[wifi_js] getCurrentGroup result -> " + JSON.stringify(wifiP2pGroupInfo));
+                    expect(true).assertEqual(wifiP2pGroupInfo.length != 0);
+                });
+            } catch(error) {
+                console.info("getCurrentGroup: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info('[wifi_js] getCurrentGroup api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            try {
+                wifiMg.removeGroup();
+            } catch(error) {
+                console.info("removeGroup: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info('[wifi_js] removeGroup api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_Event_Test_0006
+        * @tc.name testGetCurrentGroup
+        * @tc.desc Test getCurrentGroup callback
+        * @tc.type Function
+        * @tc.level Level 2
+        * @tc.size: Mediumtest
+        */
+        it('SUB_Communication_WiFi_Event_Test_0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                function functionGetCurrentGroup() {
+                    return new Promise((resolve,reject) => {
+                        wifiMg.getCurrentGroup((error) => {
+                           if (error) {
+                               console.info('[wifi_js] getCurrentGroup callback failed' + JSON.stringify(error));
+                               reject(error.code);
+                           }
+                           resolve();
+                       });
+                   });
+               }
+               await functionGetCurrentGroup().then((data) => {
+                console.info("[wifi_js] getCurrentGroup callback result:" + JSON.stringify(data));
+                })
+                .catch(e => {
+                    console.info("[wifi_js] getCurrentGroup callback failed" + e);
+                    if (Number(e) == 801) {
+                        console.info("[wifi_js] api is not support");
+                        expect(true).assertTrue();
+                    }else {
+                        expect().assertFail();
+                    }
+                })
+              } catch (e) {
+                console.error(`[wifi_js] getCurrentGroup callback error, error code is: ${e.code}, error message is: ${e.message}`);
+              }
+              done();
+            })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_Event_Test_0005
+        * @tc.name testDiscoverDevices
+        * @tc.desc Test startDiscoverDevices and stopDiscoverDevices
+        * @tc.type Function
+        * @tc.level Level 2
+        * @tc.size: Mediumtest
+        */
+        it('SUB_Communication_WiFi_Event_Test_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                wifiMg.startDiscoverDevices();
+                await sleep(900);
+            } catch(error) {
+                console.info("startDiscoverDevices: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info('[wifi_js] startDiscoverDevices api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            try {
+                wifiMg.stopDiscoverDevices();
+            } catch(error) {
+                console.info("stopDiscoverDevices: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info('[wifi_js] stopDiscoverDevices api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            done();
+        })
+
+        /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0011
         * @tc.name testpp2pDiscoveryChange
         * @tc.desc Test p2pDiscoveryChange callback
