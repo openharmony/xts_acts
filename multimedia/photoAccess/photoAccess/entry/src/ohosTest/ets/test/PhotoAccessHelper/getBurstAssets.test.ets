@@ -194,15 +194,15 @@ export default function getBurstAssetsTest () {
     })
 
     /**
-     * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_002
-     * @tc.name      : get_burst_assets_image_002
+     * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_003
+     * @tc.name      : get_burst_assets_image_003
      * @tc.desc      : getBurstAssets image,ops is undefined,error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("get_burst_assets_image_002", 2, async (done: Function) => {
-      const testNum = "get_burst_assets_image_002";
+    it("get_burst_assets_image_003", 2, async (done: Function) => {
+      const testNum = "get_burst_assets_image_003";
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
         let ops: ESObject = undefined;
