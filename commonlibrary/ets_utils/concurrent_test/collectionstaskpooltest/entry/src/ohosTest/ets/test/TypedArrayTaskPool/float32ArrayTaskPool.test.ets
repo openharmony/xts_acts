@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections, taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -215,7 +215,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0001', 0, async () => {
+    it('testFloat32ArrayTaskPool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -243,7 +243,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0002', 0, async () => {
+    it('testFloat32ArrayTaskPool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -271,7 +271,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0003', 0, async () => {
+    it('testFloat32ArrayTaskPool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -301,7 +301,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0004', 0, async () => {
+    it('testFloat32ArrayTaskPool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -329,7 +329,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0005', 0, async () => {
+    it('testFloat32ArrayTaskPool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -357,7 +357,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0006', 0, async () => {
+    it('testFloat32ArrayTaskPool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -385,7 +385,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0007', 0, async () => {
+    it('testFloat32ArrayTaskPool0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -413,7 +413,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0008', 0, async () => {
+    it('testFloat32ArrayTaskPool0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -441,7 +441,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0009', 0, async () => {
+    it('testFloat32ArrayTaskPool0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -469,7 +469,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0010', 0, async () => {
+    it('testFloat32ArrayTaskPool0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -497,7 +497,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0011', 0, async () => {
+    it('testFloat32ArrayTaskPool0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -525,7 +525,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0012', 0, async () => {
+    it('testFloat32ArrayTaskPool0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -553,7 +553,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0013', 0, async () => {
+    it('testFloat32ArrayTaskPool0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -581,7 +581,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0014', 0, async () => {
+    it('testFloat32ArrayTaskPool0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -609,7 +609,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0015', 0, async () => {
+    it('testFloat32ArrayTaskPool0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -637,7 +637,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0016', 0, async () => {
+    it('testFloat32ArrayTaskPool0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -665,7 +665,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0017', 0, async () => {
+    it('testFloat32ArrayTaskPool0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -693,7 +693,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0018', 0, async () => {
+    it('testFloat32ArrayTaskPool0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -721,7 +721,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0019', 0, async () => {
+    it('testFloat32ArrayTaskPool0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -749,7 +749,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0020', 0, async () => {
+    it('testFloat32ArrayTaskPool0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -777,7 +777,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0021', 0, async () => {
+    it('testFloat32ArrayTaskPool0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -805,7 +805,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0022', 0, async () => {
+    it('testFloat32ArrayTaskPool0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -833,7 +833,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0023', 0, async () => {
+    it('testFloat32ArrayTaskPool0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -861,7 +861,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0024', 0, async () => {
+    it('testFloat32ArrayTaskPool0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -889,7 +889,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0025', 0, async () => {
+    it('testFloat32ArrayTaskPool0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -917,7 +917,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0026', 0, async () => {
+    it('testFloat32ArrayTaskPool0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0026';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -945,7 +945,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0027', 0, async () => {
+    it('testFloat32ArrayTaskPool0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0027';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -973,7 +973,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0028', 0, async () => {
+    it('testFloat32ArrayTaskPool0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0028';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1001,7 +1001,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0029', 0, async () => {
+    it('testFloat32ArrayTaskPool0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0029';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1029,7 +1029,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0030', 0, async () => {
+    it('testFloat32ArrayTaskPool0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0030';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1057,7 +1057,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0031', 0, async () => {
+    it('testFloat32ArrayTaskPool0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0031';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1085,7 +1085,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0032', 0, async () => {
+    it('testFloat32ArrayTaskPool0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0032';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1113,7 +1113,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0033', 0, async () => {
+    it('testFloat32ArrayTaskPool0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0033';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1141,7 +1141,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0034', 0, async () => {
+    it('testFloat32ArrayTaskPool0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1169,7 +1169,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0035', 0, async () => {
+    it('testFloat32ArrayTaskPool0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0035';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1197,7 +1197,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0036', 0, async () => {
+    it('testFloat32ArrayTaskPool0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0036';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1225,7 +1225,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0037', 0, async () => {
+    it('testFloat32ArrayTaskPool0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0037';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1253,7 +1253,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0038', 0, async () => {
+    it('testFloat32ArrayTaskPool0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0038';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1281,7 +1281,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0039', 0, async () => {
+    it('testFloat32ArrayTaskPool0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0039';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1309,7 +1309,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0040', 0, async () => {
+    it('testFloat32ArrayTaskPool0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0040';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1337,7 +1337,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0041', 0, async () => {
+    it('testFloat32ArrayTaskPool0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0041';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1365,7 +1365,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0042', 0, async () => {
+    it('testFloat32ArrayTaskPool0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0042';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1393,7 +1393,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0043', 0, async () => {
+    it('testFloat32ArrayTaskPool0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0043';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1421,7 +1421,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0044', 0, async () => {
+    it('testFloat32ArrayTaskPool0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0044';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1449,7 +1449,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0045', 0, async () => {
+    it('testFloat32ArrayTaskPool0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0045';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1477,7 +1477,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0046', 0, async () => {
+    it('testFloat32ArrayTaskPool0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0046';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1505,7 +1505,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0047', 0, async () => {
+    it('testFloat32ArrayTaskPool0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0047';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1533,7 +1533,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0048', 0, async () => {
+    it('testFloat32ArrayTaskPool0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0048';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1561,7 +1561,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0049', 0, async () => {
+    it('testFloat32ArrayTaskPool0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0049';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1589,7 +1589,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0050', 0, async () => {
+    it('testFloat32ArrayTaskPool0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0050';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1617,7 +1617,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0051', 0, async () => {
+    it('testFloat32ArrayTaskPool0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0051';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1645,7 +1645,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0052', 0, async () => {
+    it('testFloat32ArrayTaskPool0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0052';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1673,7 +1673,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0053', 0, async () => {
+    it('testFloat32ArrayTaskPool0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0053';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1701,7 +1701,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0054', 0, async () => {
+    it('testFloat32ArrayTaskPool0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0054';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1729,7 +1729,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0055', 0, async () => {
+    it('testFloat32ArrayTaskPool0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0055';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1757,7 +1757,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0056', 0, async () => {
+    it('testFloat32ArrayTaskPool0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0056';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1785,7 +1785,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0057', 0, async () => {
+    it('testFloat32ArrayTaskPool0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0057';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1813,7 +1813,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0058', 0, async () => {
+    it('testFloat32ArrayTaskPool0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0058';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1841,7 +1841,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0059', 0, async () => {
+    it('testFloat32ArrayTaskPool0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1869,7 +1869,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0060', 0, async () => {
+    it('testFloat32ArrayTaskPool0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0060';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1897,7 +1897,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0061', 0, async () => {
+    it('testFloat32ArrayTaskPool0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0061';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1925,7 +1925,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0062', 0, async () => {
+    it('testFloat32ArrayTaskPool0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0062';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1953,7 +1953,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0063', 0, async () => {
+    it('testFloat32ArrayTaskPool0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0063';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1981,7 +1981,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0064', 0, async () => {
+    it('testFloat32ArrayTaskPool0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0064';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2009,7 +2009,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0065', 0, async () => {
+    it('testFloat32ArrayTaskPool0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0065';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2037,7 +2037,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0066', 0, async () => {
+    it('testFloat32ArrayTaskPool0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0066';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2065,7 +2065,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0067', 0, async () => {
+    it('testFloat32ArrayTaskPool0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0067';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2093,7 +2093,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0068', 0, async () => {
+    it('testFloat32ArrayTaskPool0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0068';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2121,7 +2121,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0069', 0, async () => {
+    it('testFloat32ArrayTaskPool0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0069';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2149,7 +2149,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0070', 0, async () => {
+    it('testFloat32ArrayTaskPool0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0070';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2177,7 +2177,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0071', 0, async () => {
+    it('testFloat32ArrayTaskPool0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0071';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2205,7 +2205,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0072', 0, async () => {
+    it('testFloat32ArrayTaskPool0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0072';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2233,7 +2233,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0073', 0, async () => {
+    it('testFloat32ArrayTaskPool0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0073';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2261,7 +2261,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0074', 0, async () => {
+    it('testFloat32ArrayTaskPool0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0074';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2289,7 +2289,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0075', 0, async () => {
+    it('testFloat32ArrayTaskPool0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0075';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2317,7 +2317,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0076', 0, async () => {
+    it('testFloat32ArrayTaskPool0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0076';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2345,7 +2345,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0077', 0, async () => {
+    it('testFloat32ArrayTaskPool0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0077';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2373,7 +2373,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0078', 0, async () => {
+    it('testFloat32ArrayTaskPool0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0078';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2401,7 +2401,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0079', 0, async () => {
+    it('testFloat32ArrayTaskPool0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0079';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2429,7 +2429,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0080', 0, async () => {
+    it('testFloat32ArrayTaskPool0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0080';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2457,7 +2457,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0081', 0, async () => {
+    it('testFloat32ArrayTaskPool0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0081';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2485,7 +2485,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0082', 0, async () => {
+    it('testFloat32ArrayTaskPool0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0082';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2513,7 +2513,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0083', 0, async () => {
+    it('testFloat32ArrayTaskPool0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0083';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2541,7 +2541,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0084', 0, async () => {
+    it('testFloat32ArrayTaskPool0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0084';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2569,7 +2569,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0085', 0, async () => {
+    it('testFloat32ArrayTaskPool0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0085';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2597,7 +2597,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0086', 0, async () => {
+    it('testFloat32ArrayTaskPool0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0086';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2625,7 +2625,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0087', 0, async () => {
+    it('testFloat32ArrayTaskPool0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0087';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2653,7 +2653,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0088', 0, async () => {
+    it('testFloat32ArrayTaskPool0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0088';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2681,7 +2681,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0089', 0, async () => {
+    it('testFloat32ArrayTaskPool0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0089';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2709,7 +2709,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0090', 0, async () => {
+    it('testFloat32ArrayTaskPool0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0090';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2737,7 +2737,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0091', 0, async () => {
+    it('testFloat32ArrayTaskPool0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0091';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2765,7 +2765,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0092', 0, async () => {
+    it('testFloat32ArrayTaskPool0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0092';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2793,7 +2793,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0093', 0, async () => {
+    it('testFloat32ArrayTaskPool0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0093';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2821,7 +2821,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0094', 0, async () => {
+    it('testFloat32ArrayTaskPool0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0094';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2849,7 +2849,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0095', 0, async () => {
+    it('testFloat32ArrayTaskPool0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0095';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2877,7 +2877,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0096', 0, async () => {
+    it('testFloat32ArrayTaskPool0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0096';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2905,7 +2905,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0097', 0, async () => {
+    it('testFloat32ArrayTaskPool0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0097';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2933,7 +2933,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0098', 0, async () => {
+    it('testFloat32ArrayTaskPool0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0098';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2961,7 +2961,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0099', 0, async () => {
+    it('testFloat32ArrayTaskPool0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0099';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2989,7 +2989,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0100', 0, async () => {
+    it('testFloat32ArrayTaskPool0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3017,7 +3017,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0101', 0, async () => {
+    it('testFloat32ArrayTaskPool0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0101';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3045,7 +3045,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0102', 0, async () => {
+    it('testFloat32ArrayTaskPool0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0102';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3073,7 +3073,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0103', 0, async () => {
+    it('testFloat32ArrayTaskPool0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0103';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3101,7 +3101,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0104', 0, async () => {
+    it('testFloat32ArrayTaskPool0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0104';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3129,7 +3129,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0105', 0, async () => {
+    it('testFloat32ArrayTaskPool0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0105';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3157,7 +3157,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0106', 0, async () => {
+    it('testFloat32ArrayTaskPool0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0106';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3185,7 +3185,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0107', 0, async () => {
+    it('testFloat32ArrayTaskPool0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0107';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3213,7 +3213,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0108', 0, async () => {
+    it('testFloat32ArrayTaskPool0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0108';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3241,7 +3241,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0109', 0, async () => {
+    it('testFloat32ArrayTaskPool0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0109';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3269,7 +3269,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0110', 0, async () => {
+    it('testFloat32ArrayTaskPool0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0110';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3297,7 +3297,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0111', 0, async () => {
+    it('testFloat32ArrayTaskPool0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0111';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3325,7 +3325,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0112', 0, async () => {
+    it('testFloat32ArrayTaskPool0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0112';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3353,7 +3353,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0113', 0, async () => {
+    it('testFloat32ArrayTaskPool0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0113';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3381,7 +3381,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0114', 0, async () => {
+    it('testFloat32ArrayTaskPool0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0114';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3409,7 +3409,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0115', 0, async () => {
+    it('testFloat32ArrayTaskPool0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0115';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3437,7 +3437,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0116', 0, async () => {
+    it('testFloat32ArrayTaskPool0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0116';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3465,7 +3465,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0117', 0, async () => {
+    it('testFloat32ArrayTaskPool0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0117';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3493,7 +3493,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0118', 0, async () => {
+    it('testFloat32ArrayTaskPool0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0118';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3521,7 +3521,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0119', 0, async () => {
+    it('testFloat32ArrayTaskPool0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0119';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3549,7 +3549,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0120', 0, async () => {
+    it('testFloat32ArrayTaskPool0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0120';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3577,7 +3577,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0121', 0, async () => {
+    it('testFloat32ArrayTaskPool0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0121';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3605,7 +3605,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0122', 0, async () => {
+    it('testFloat32ArrayTaskPool0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0122';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3633,7 +3633,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0123', 0, async () => {
+    it('testFloat32ArrayTaskPool0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0123';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3661,7 +3661,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0124', 0, async () => {
+    it('testFloat32ArrayTaskPool0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0124';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3689,7 +3689,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0125', 0, async () => {
+    it('testFloat32ArrayTaskPool0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0125';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3717,7 +3717,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0126', 0, async () => {
+    it('testFloat32ArrayTaskPool0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0126';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3745,7 +3745,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0127', 0, async () => {
+    it('testFloat32ArrayTaskPool0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0127';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3773,7 +3773,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0128', 0, async () => {
+    it('testFloat32ArrayTaskPool0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0128';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3801,7 +3801,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0129', 0, async () => {
+    it('testFloat32ArrayTaskPool0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0129';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3829,7 +3829,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0130', 0, async () => {
+    it('testFloat32ArrayTaskPool0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0130';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3857,7 +3857,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0131', 0, async () => {
+    it('testFloat32ArrayTaskPool0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0131';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3885,7 +3885,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0132', 0, async () => {
+    it('testFloat32ArrayTaskPool0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0132';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3913,7 +3913,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0133', 0, async () => {
+    it('testFloat32ArrayTaskPool0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0133';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3941,7 +3941,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0134', 0, async () => {
+    it('testFloat32ArrayTaskPool0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0134';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3969,7 +3969,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0135', 0, async () => {
+    it('testFloat32ArrayTaskPool0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0135';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -3997,7 +3997,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0136', 0, async () => {
+    it('testFloat32ArrayTaskPool0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0136';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4025,7 +4025,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0137', 0, async () => {
+    it('testFloat32ArrayTaskPool0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0137';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4053,7 +4053,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0138', 0, async () => {
+    it('testFloat32ArrayTaskPool0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0138';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4081,7 +4081,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0139', 0, async () => {
+    it('testFloat32ArrayTaskPool0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0139';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4109,7 +4109,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0140', 0, async () => {
+    it('testFloat32ArrayTaskPool0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0140';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4132,7 +4132,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0141', 0, async () => {
+    it('testFloat32ArrayTaskPool0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0141';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4155,7 +4155,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0142', 0, async () => {
+    it('testFloat32ArrayTaskPool0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0142';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4178,7 +4178,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0143', 0, async () => {
+    it('testFloat32ArrayTaskPool0143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0143';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4201,7 +4201,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0144', 0, async () => {
+    it('testFloat32ArrayTaskPool0144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0144';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4224,7 +4224,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0145', 0, async () => {
+    it('testFloat32ArrayTaskPool0145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0145';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4247,7 +4247,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0146', 0, async () => {
+    it('testFloat32ArrayTaskPool0146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0146';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4270,7 +4270,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0147', 0, async () => {
+    it('testFloat32ArrayTaskPool0147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0147';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4293,7 +4293,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0148', 0, async () => {
+    it('testFloat32ArrayTaskPool0148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0148';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4316,7 +4316,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0149', 0, async () => {
+    it('testFloat32ArrayTaskPool0149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0149';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4339,7 +4339,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0150', 0, async () => {
+    it('testFloat32ArrayTaskPool0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0150';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4362,7 +4362,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0151', 0, async () => {
+    it('testFloat32ArrayTaskPool0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0151';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4385,7 +4385,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0152', 0, async () => {
+    it('testFloat32ArrayTaskPool0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0152';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4408,7 +4408,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0153', 0, async () => {
+    it('testFloat32ArrayTaskPool0153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0153';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4431,7 +4431,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0154', 0, async () => {
+    it('testFloat32ArrayTaskPool0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0154';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4454,7 +4454,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0155', 0, async () => {
+    it('testFloat32ArrayTaskPool0155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0155';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4477,7 +4477,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0156', 0, async () => {
+    it('testFloat32ArrayTaskPool0156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0156';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4500,7 +4500,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0157', 0, async () => {
+    it('testFloat32ArrayTaskPool0157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0157';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4523,7 +4523,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0158', 0, async () => {
+    it('testFloat32ArrayTaskPool0158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0158';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4546,7 +4546,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0159', 0, async () => {
+    it('testFloat32ArrayTaskPool0159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0159';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4569,7 +4569,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0160', 0, async () => {
+    it('testFloat32ArrayTaskPool0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0160';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4593,7 +4593,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0161', 0, async () => {
+    it('testFloat32ArrayTaskPool0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0161';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4617,7 +4617,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0162', 0, async () => {
+    it('testFloat32ArrayTaskPool0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0162';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4641,7 +4641,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0163', 0, async () => {
+    it('testFloat32ArrayTaskPool0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0163';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4665,7 +4665,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0164', 0, async () => {
+    it('testFloat32ArrayTaskPool0164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0164';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4689,7 +4689,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0165', 0, async () => {
+    it('testFloat32ArrayTaskPool0165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0165';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4713,7 +4713,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0166', 0, async () => {
+    it('testFloat32ArrayTaskPool0166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0166';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4737,7 +4737,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0167', 0, async () => {
+    it('testFloat32ArrayTaskPool0167', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0167';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4761,7 +4761,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0168', 0, async () => {
+    it('testFloat32ArrayTaskPool0168', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0168';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4785,7 +4785,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0169', 0, async () => {
+    it('testFloat32ArrayTaskPool0169', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0169';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4808,7 +4808,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0170', 0, async () => {
+    it('testFloat32ArrayTaskPool0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0170';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4832,7 +4832,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0171', 0, async () => {
+    it('testFloat32ArrayTaskPool0171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0171';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4856,7 +4856,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0172', 0, async () => {
+    it('testFloat32ArrayTaskPool0172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0172';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4880,7 +4880,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0173', 0, async () => {
+    it('testFloat32ArrayTaskPool0173', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0173';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4904,7 +4904,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0174', 0, async () => {
+    it('testFloat32ArrayTaskPool0174', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0174';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4928,7 +4928,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0175', 0, async () => {
+    it('testFloat32ArrayTaskPool0175', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0175';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4952,7 +4952,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0176', 0, async () => {
+    it('testFloat32ArrayTaskPool0176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0176';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -4976,7 +4976,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0177', 0, async () => {
+    it('testFloat32ArrayTaskPool0177', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0177';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5000,7 +5000,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0178', 0, async () => {
+    it('testFloat32ArrayTaskPool0178', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0178';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5024,7 +5024,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0179', 0, async () => {
+    it('testFloat32ArrayTaskPool0179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0179';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5047,7 +5047,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0180', 0, async () => {
+    it('testFloat32ArrayTaskPool0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0180';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5071,7 +5071,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0181', 0, async () => {
+    it('testFloat32ArrayTaskPool0181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0181';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5095,7 +5095,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0182', 0, async () => {
+    it('testFloat32ArrayTaskPool0182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0182';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5119,7 +5119,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0183', 0, async () => {
+    it('testFloat32ArrayTaskPool0183', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0183';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5143,7 +5143,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0184', 0, async () => {
+    it('testFloat32ArrayTaskPool0184', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0184';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5167,7 +5167,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0185', 0, async () => {
+    it('testFloat32ArrayTaskPool0185', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0185';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5191,7 +5191,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0186', 0, async () => {
+    it('testFloat32ArrayTaskPool0186', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0186';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -5215,7 +5215,7 @@ export default function float32ArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFloat32ArrayTaskPool0187', 0, async () => {
+    it('testFloat32ArrayTaskPool0187', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testFloat32ArrayTaskPool0187';
       console.info(`${caseName} test start`);
       let num = 0;

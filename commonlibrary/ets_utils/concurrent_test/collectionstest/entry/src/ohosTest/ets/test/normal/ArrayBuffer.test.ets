@@ -1,5 +1,5 @@
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections } from '@kit.ArkTS';
 
 export default function ArrayBufferTest() {
@@ -31,7 +31,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0001', 0, () => {
+    it('testCollectionsArrayBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0001";
       try {
           let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(-1);
@@ -50,7 +50,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0002', 0, () => {
+    it('testCollectionsArrayBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0002";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(0);
@@ -69,7 +69,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-      it('testCollectionsArrayBuffer0003', 0, () => {
+      it('testCollectionsArrayBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0003";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(1);
@@ -88,7 +88,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0004', 0, () => {
+    it('testCollectionsArrayBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0004";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -108,7 +108,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0005', 0, () => {
+    it('testCollectionsArrayBuffer0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0005";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -128,7 +128,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0006', 0, () => {
+    it('testCollectionsArrayBuffer0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0006";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -148,7 +148,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0007', 0, () => {
+    it('testCollectionsArrayBuffer0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0007";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -168,7 +168,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0008', 0, () => {
+    it('testCollectionsArrayBuffer0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0008";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -188,7 +188,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0009', 0, () => {
+    it('testCollectionsArrayBuffer0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0009";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);
@@ -208,7 +208,7 @@ export default function ArrayBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0010', 0, () => {
+    it('testCollectionsArrayBuffer0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testCollectionsArrayBuffer0010";
       try {
         let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(5);

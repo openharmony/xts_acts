@@ -48,7 +48,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0001', 0, () => {
+    it('testThreadWorker0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0001";
       try {
         const workerInstance = new worker.ThreadWorker('entry_test/ets/workers/Worker.ets');
@@ -68,7 +68,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0002', 0, () => {
+    it('testThreadWorker0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0002";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -88,7 +88,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0006', 0, () => {
+    it('testThreadWorker0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0006";
       try {
         const workerInstance = new worker.ThreadWorker('entry_test/ets/workers/NotConfigureWorker.ets');
@@ -107,7 +107,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0007', 0, () => {
+    it('testThreadWorker0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0007";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/NotConfigureWorker.ets');
@@ -126,7 +126,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0011', 0, () => {
+    it('testThreadWorker0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0011";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -148,7 +148,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0013', 0, () => {
+    it('testThreadWorker0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0013";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -170,7 +170,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0014', 0, () => {
+    it('testThreadWorker0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0014";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -192,7 +192,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0016', 0, () => {
+    it('testThreadWorker0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0016";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -214,7 +214,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0017', 0, () => {
+    it('testThreadWorker0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0017";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -234,7 +234,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorker0018', 0, () => {
+    it('testThreadWorker0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testThreadWorker0018";
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets', {
@@ -257,7 +257,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0001', 0, async () => {
+    it('testPostMessage0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0001';
       try {
         let state: boolean = false;
@@ -291,7 +291,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0002', 0, () => {
+    it('testPostMessage0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0002';
       try {
         const workerInstance = new worker.ThreadWorker("../../workers/postMessage/WorkerPostMessage.ets");
@@ -321,7 +321,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0003', 0, () => {
+    it('testPostMessage0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0003';
       try {
         const workerInstance = new worker.ThreadWorker("../../workers/postMessage/WorkerPostMessage.ets");
@@ -351,7 +351,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0004', 0, async () => {
+    it('testPostMessage0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0004';
       try {
         let state: boolean = false;
@@ -389,7 +389,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0006', 0, async () => {
+    it('testPostMessage0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0006';
       try {
         let state: boolean = false;
@@ -424,7 +424,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0007', 0, async () => {
+    it('testPostMessage0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0007';
       try {
         let state: boolean = false;
@@ -459,7 +459,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0008', 0, async () => {
+    it('testPostMessage0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0008';
       try {
         let state: boolean = false;
@@ -494,7 +494,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0009', 0, async () => {
+    it('testPostMessage0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0009';
       try {
         let state: boolean = false;
@@ -529,7 +529,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0010', 0, async () => {
+    it('testPostMessage0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0010';
       try {
         let state: boolean = false;
@@ -565,7 +565,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0011', 0, async () => {
+    it('testPostMessage0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0011';
       try {
         let state: boolean = false;
@@ -600,7 +600,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0012', 0, async () => {
+    it('testPostMessage0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0012';
       try {
         let state: boolean = false;
@@ -636,7 +636,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0013', 0, async () => {
+    it('testPostMessage0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0013';
       try {
         let state: boolean = false;
@@ -672,7 +672,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0014', 0, async () => {
+    it('testPostMessage0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0014';
       try {
         let state: boolean = false;
@@ -708,7 +708,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0015', 0, async () => {
+    it('testPostMessage0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0015';
       try {
         let state: boolean = false;
@@ -744,7 +744,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0016', 0, async () => {
+    it('testPostMessage0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0016';
       try {
         let state: boolean = false;
@@ -780,7 +780,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0017', 0, async () => {
+    it('testPostMessage0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0017';
       try {
         let state: boolean = false;
@@ -817,7 +817,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0018', 0, async () => {
+    it('testPostMessage0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0018';
       try {
         let state: boolean = false;
@@ -854,7 +854,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0019', 0, async () => {
+    it('testPostMessage0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0019';
       try {
         let state: boolean = false;
@@ -889,7 +889,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0020', 0, async () => {
+    it('testPostMessage0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0020';
       try {
         let state: boolean = false;
@@ -924,7 +924,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0021', 0, async () => {
+    it('testPostMessage0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0021';
       try {
         let state: boolean = false;
@@ -959,7 +959,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0022', 0, async () => {
+    it('testPostMessage0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0022';
       try {
         let state: boolean = false;
@@ -995,7 +995,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0023', 0, async () => {
+    it('testPostMessage0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0023';
       try {
         let state: boolean = false;
@@ -1030,7 +1030,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0024', 0, async () => {
+    it('testPostMessage0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0024';
       try {
         let state: boolean = false;
@@ -1065,7 +1065,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0025', 0, async () => {
+    it('testPostMessage0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0025';
       try {
         let state: boolean = false;
@@ -1100,7 +1100,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0026', 0, async () => {
+    it('testPostMessage0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0026';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/postMessage/WorkerPostMessageFunction.ets');
@@ -1126,7 +1126,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0027', 0, async () => {
+    it('testPostMessage0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0027';
       try {
         let state: boolean = false;
@@ -1161,7 +1161,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0028', 0, async () => {
+    it('testPostMessage0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0028';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/postMessage/WorkerPostMessageFunction.ets');
@@ -1187,7 +1187,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0029', 0, async () => {
+    it('testPostMessage0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0029';
       try {
         let state: boolean = false;
@@ -1222,7 +1222,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0030', 0, async () => {
+    it('testPostMessage0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0030';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/postMessage/WorkerPostMessageFunction.ets');
@@ -1247,7 +1247,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0031', 0, async () => {
+    it('testPostMessage0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0031';
       try {
         let state: boolean = false;
@@ -1282,7 +1282,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0032', 0, async () => {
+    it('testPostMessage0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0032';
       try {
         let state: boolean = false;
@@ -1317,7 +1317,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0033', 0, async () => {
+    it('testPostMessage0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0033';
       try {
         let state: boolean = false;
@@ -1351,7 +1351,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0034', 0, async () => {
+    it('testPostMessage0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0034';
       try {
         let state: boolean = false;
@@ -1386,7 +1386,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0035', 0, async () => {
+    it('testPostMessage0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0035';
       try {
         let state: boolean = false;
@@ -1423,7 +1423,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0036', 0, async () => {
+    it('testPostMessage0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0036';
       try {
         let state: boolean = false;
@@ -1458,7 +1458,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0037', 0, async () => {
+    it('testPostMessage0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0037';
       try {
         let state: boolean = false;
@@ -1493,7 +1493,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0040', 0, async () => {
+    it('testPostMessage0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0040';
       try {
         let state: boolean = false;
@@ -1530,7 +1530,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0041', 0, async () => {
+    it('testPostMessage0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0041';
       try {
         let state: boolean = false;
@@ -1565,7 +1565,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0042', 0, async () => {
+    it('testPostMessage0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0042';
       try {
         let state: boolean = false;
@@ -1599,7 +1599,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0043', 0, async () => {
+    it('testPostMessage0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0043';
       try {
         let state: boolean = false;
@@ -1634,7 +1634,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0044', 0, async () => {
+    it('testPostMessage0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0044';
       try {
         let state: boolean = false;
@@ -1669,7 +1669,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0046', 0, async () => {
+    it('testPostMessage0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0046';
       try {
         let state: boolean = false;
@@ -1703,7 +1703,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0047', 0, async () => {
+    it('testPostMessage0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0047';
       try {
         let state: boolean = false;
@@ -1737,7 +1737,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0048', 0, async () => {
+    it('testPostMessage0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0048';
       try {
         let state: boolean = false;
@@ -1772,7 +1772,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0049', 0, async () => {
+    it('testPostMessage0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0049';
       try {
         let state: boolean = false;
@@ -1807,7 +1807,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessage0050', 0, async () => {
+    it('testPostMessage0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessage0050';
       try {
         let state: boolean = false;
@@ -1848,7 +1848,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0001', 0, async () => {
+    it('testPostMessageWithSharedSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0001';
       try {
         let state: boolean = false;
@@ -1882,7 +1882,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0002', 0, () => {
+    it('testPostMessageWithSharedSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0002';
       try {
         const workerInstance = new worker.ThreadWorker("../../workers/sharedSendable/WorkerPostMessage.ets");
@@ -1913,7 +1913,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0003', 0, () => {
+    it('testPostMessageWithSharedSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0003';
       try {
         const workerInstance = new worker.ThreadWorker("../../workers/sharedSendable/WorkerPostMessage.ets");
@@ -1944,7 +1944,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0004', 0, async () => {
+    it('testPostMessageWithSharedSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0004';
       try {
         let state: boolean = false;
@@ -1982,7 +1982,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0006', 0, async () => {
+    it('testPostMessageWithSharedSendable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0006';
       try {
         let state: boolean = false;
@@ -2017,7 +2017,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0007', 0, async () => {
+    it('testPostMessageWithSharedSendable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0007';
       try {
         let state: boolean = false;
@@ -2052,7 +2052,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0008', 0, async () => {
+    it('testPostMessageWithSharedSendable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0008';
       try {
         let state: boolean = false;
@@ -2087,7 +2087,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0009', 0, async () => {
+    it('testPostMessageWithSharedSendable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0009';
       try {
         let state: boolean = false;
@@ -2122,7 +2122,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0010', 0, async () => {
+    it('testPostMessageWithSharedSendable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0010';
       try {
         let state: boolean = false;
@@ -2159,7 +2159,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0011', 0, async () => {
+    it('testPostMessageWithSharedSendable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0011';
       try {
         let state: boolean = false;
@@ -2196,7 +2196,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0012', 0, async () => {
+    it('testPostMessageWithSharedSendable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0012';
       try {
         let state: boolean = false;
@@ -2233,7 +2233,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0013', 0, async () => {
+    it('testPostMessageWithSharedSendable0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0013';
       try {
         let state: boolean = false;
@@ -2270,7 +2270,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0014', 0, async () => {
+    it('testPostMessageWithSharedSendable0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0014';
       try {
         let state: boolean = false;
@@ -2307,7 +2307,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0015', 0, async () => {
+    it('testPostMessageWithSharedSendable0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0015';
       try {
         let state: boolean = false;
@@ -2344,7 +2344,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0016', 0, async () => {
+    it('testPostMessageWithSharedSendable0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0016';
       try {
         let state: boolean = false;
@@ -2381,7 +2381,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0017', 0, async () => {
+    it('testPostMessageWithSharedSendable0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0017';
       try {
         let state: boolean = false;
@@ -2419,7 +2419,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0018', 0, async () => {
+    it('testPostMessageWithSharedSendable0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0018';
       try {
         let state: boolean = false;
@@ -2457,7 +2457,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0019', 0, async () => {
+    it('testPostMessageWithSharedSendable0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0019';
       try {
         let state: boolean = false;
@@ -2493,7 +2493,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0020', 0, async () => {
+    it('testPostMessageWithSharedSendable0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0020';
       try {
         let state: boolean = false;
@@ -2529,7 +2529,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0021', 0, async () => {
+    it('testPostMessageWithSharedSendable0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0021';
       try {
         let state: boolean = false;
@@ -2565,7 +2565,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0022', 0, async () => {
+    it('testPostMessageWithSharedSendable0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0022';
       try {
         let state: boolean = false;
@@ -2602,7 +2602,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0023', 0, async () => {
+    it('testPostMessageWithSharedSendable0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0023';
       try {
         let state: boolean = false;
@@ -2638,7 +2638,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0024', 0, async () => {
+    it('testPostMessageWithSharedSendable0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0024';
       try {
         let state: boolean = false;
@@ -2674,7 +2674,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0025', 0, async () => {
+    it('testPostMessageWithSharedSendable0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0025';
       try {
         let state: boolean = false;
@@ -2710,7 +2710,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0026', 0, async () => {
+    it('testPostMessageWithSharedSendable0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0026';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/sharedSendable/WorkerPostMessageFunction.ets');
@@ -2736,7 +2736,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0027', 0, async () => {
+    it('testPostMessageWithSharedSendable0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0027';
       try {
         let state: boolean = false;
@@ -2772,7 +2772,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0028', 0, async () => {
+    it('testPostMessageWithSharedSendable0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0028';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/sharedSendable/WorkerPostMessageFunction.ets');
@@ -2798,7 +2798,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0029', 0, async () => {
+    it('testPostMessageWithSharedSendable0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0029';
       try {
         let state: boolean = false;
@@ -2833,7 +2833,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0030', 0, async () => {
+    it('testPostMessageWithSharedSendable0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0030';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/sharedSendable/WorkerPostMessageFunction.ets');
@@ -2858,7 +2858,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0031', 0, async () => {
+    it('testPostMessageWithSharedSendable0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0031';
       try {
         let state: boolean = false;
@@ -2895,7 +2895,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0032', 0, async () => {
+    it('testPostMessageWithSharedSendable0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0032';
       try {
         let state: boolean = false;
@@ -2932,7 +2932,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0033', 0, async () => {
+    it('testPostMessageWithSharedSendable0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0033';
       try {
         let state: boolean = false;
@@ -2967,7 +2967,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0034', 0, async () => {
+    it('testPostMessageWithSharedSendable0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0034';
       try {
         let state: boolean = false;
@@ -3003,7 +3003,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0035', 0, async () => {
+    it('testPostMessageWithSharedSendable0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0035';
       try {
         let state: boolean = false;
@@ -3040,7 +3040,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0036', 0, async () => {
+    it('testPostMessageWithSharedSendable0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0036';
       try {
         let state: boolean = false;
@@ -3077,7 +3077,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0037', 0, async () => {
+    it('testPostMessageWithSharedSendable0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0037';
       try {
         let state: boolean = false;
@@ -3114,7 +3114,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0038', 0, async () => {
+    it('testPostMessageWithSharedSendable0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0038';
       try {
         let state: boolean = false;
@@ -3151,7 +3151,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0039', 0, async () => {
+    it('testPostMessageWithSharedSendable0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0039';
       try {
         let state: boolean = false;
@@ -3187,7 +3187,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0040', 0, async () => {
+    it('testPostMessageWithSharedSendable0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0040';
       try {
         let state: boolean = false;
@@ -3224,7 +3224,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0041', 0, async () => {
+    it('testPostMessageWithSharedSendable0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0041';
       try {
         let state: boolean = false;
@@ -3259,7 +3259,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0042', 0, async () => {
+    it('testPostMessageWithSharedSendable0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0042';
       try {
         let state: boolean = false;
@@ -3293,7 +3293,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0043', 0, async () => {
+    it('testPostMessageWithSharedSendable0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0043';
       try {
         let state: boolean = false;
@@ -3328,7 +3328,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0044', 0, async () => {
+    it('testPostMessageWithSharedSendable0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0044';
       try {
         let state: boolean = false;
@@ -3364,7 +3364,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0046', 0, async () => {
+    it('testPostMessageWithSharedSendable0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0046';
       try {
         let state: boolean = false;
@@ -3398,7 +3398,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0047', 0, async () => {
+    it('testPostMessageWithSharedSendable0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0047';
       try {
         let state: boolean = false;
@@ -3432,7 +3432,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0048', 0, async () => {
+    it('testPostMessageWithSharedSendable0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0048';
       try {
         let state: boolean = false;
@@ -3468,7 +3468,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0049', 0, async () => {
+    it('testPostMessageWithSharedSendable0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0049';
       try {
         let state: boolean = false;
@@ -3504,7 +3504,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPostMessageWithSharedSendable0050', 0, async () => {
+    it('testPostMessageWithSharedSendable0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testPostMessageWithSharedSendable0050';
       try {
         let state: boolean = false;
@@ -3546,7 +3546,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0001', 0, async () => {
+    it('testOn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0001'
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -3578,7 +3578,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0002', 0, async () => {
+    it('testOn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0002'
       try {
         let results = 0;
@@ -3610,7 +3610,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0003', 0, async () => {
+    it('testOn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0003'
       try {
         let results = 0;
@@ -3642,7 +3642,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0004', 0, async () => {
+    it('testOn0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0004'
       try {
         let results = 0;
@@ -3674,7 +3674,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0005', 0, async () => {
+    it('testOn0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0005'
       try {
         let results = 0;
@@ -3706,7 +3706,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0006', 0, async () => {
+    it('testOn0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0006'
       try {
         let results = 0;
@@ -3738,7 +3738,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0007', 0, async () => {
+    it('testOn0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0007'
       try {
         let results = 0;
@@ -3771,7 +3771,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0008', 0, async () => {
+    it('testOn0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0008'
       try {
         let results = 0;
@@ -3803,7 +3803,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0009', 0, async () => {
+    it('testOn0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0009'
       try {
         let results = 0;
@@ -3835,7 +3835,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0010', 0, async () => {
+    it('testOn0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0010'
       try {
         let results = 0;
@@ -3867,7 +3867,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0011', 0, async () => {
+    it('testOn0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0011'
       try {
         let results = 0;
@@ -3899,7 +3899,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0012', 0, async () => {
+    it('testOn0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0012'
       try {
         let results = 0;
@@ -3931,7 +3931,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0013', 0, async () => {
+    it('testOn0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0013'
       try {
         let results = 0;
@@ -3963,7 +3963,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0014', 0, async () => {
+    it('testOn0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0014'
       try {
         let results = 0;
@@ -3995,7 +3995,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOn0015', 0, async () => {
+    it('testOn0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOn0015'
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4028,7 +4028,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0001', 0, async () => {
+    it('testOnce0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0001';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4061,7 +4061,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0002', 0, async () => {
+    it('testOnce0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0002';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4094,7 +4094,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0003', 0, async () => {
+    it('testOnce0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0003';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4127,7 +4127,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0004', 0, async () => {
+    it('testOnce0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0004';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4160,7 +4160,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0005', 0, async () => {
+    it('testOnce0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0005';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4193,7 +4193,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0006', 0, async () => {
+    it('testOnce0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0006';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4225,7 +4225,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0007', 0, async () => {
+    it('testOnce0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0007';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4258,7 +4258,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0008', 0, async () => {
+    it('testOnce0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0008';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4291,7 +4291,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0009', 0, async () => {
+    it('testOnce0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0009';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4323,7 +4323,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0010', 0, async () => {
+    it('testOnce0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0010';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4356,7 +4356,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0011', 0, async () => {
+    it('testOnce0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0011';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4388,7 +4388,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0012', 0, async () => {
+    it('testOnce0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0012';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4420,7 +4420,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0013', 0, async () => {
+    it('testOnce0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0013';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4452,7 +4452,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0014', 0, async () => {
+    it('testOnce0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0014';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4484,7 +4484,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOnce0015', 0, async () => {
+    it('testOnce0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnce0015';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4516,7 +4516,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0001', 0, async () => {
+    it('testOff0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0001';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4550,7 +4550,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0002', 0, async () => {
+    it('testOff0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0002';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4584,7 +4584,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0003', 0, async () => {
+    it('testOff0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0003';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4618,7 +4618,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0004', 0, async () => {
+    it('testOff0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0004';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4652,7 +4652,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0005', 0, async () => {
+    it('testOff0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0005';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4686,7 +4686,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0006', 0, async () => {
+    it('testOff0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0006';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4720,7 +4720,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0007', 0, async () => {
+    it('testOff0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0007';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4754,7 +4754,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0008', 0, async () => {
+    it('testOff0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0008';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4788,7 +4788,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0009', 0, async () => {
+    it('testOff0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0009';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4822,7 +4822,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0010', 0, async () => {
+    it('testOff0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0010';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4856,7 +4856,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0011', 0, async () => {
+    it('testOff0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0011';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4890,7 +4890,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0012', 0, async () => {
+    it('testOff0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0012';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4924,7 +4924,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0013', 0, async () => {
+    it('testOff0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0013';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4958,7 +4958,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0014', 0, async () => {
+    it('testOff0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0014';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -4992,7 +4992,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0015', 0, async () => {
+    it('testOff0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0015';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5026,7 +5026,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0016', 0, async () => {
+    it('testOff0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0016';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5060,7 +5060,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOff0017', 0, async () => {
+    it('testOff0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testOff0017';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5094,7 +5094,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0001', 0, async () => {
+    it('testRegisterGlobalCallObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0001';
       try {
         let state: boolean = false;
@@ -5129,7 +5129,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0002', 0, async () => {
+    it('testRegisterGlobalCallObject0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0002';
       let workerInstance: worker.ThreadWorker | undefined;
       try {
@@ -5158,7 +5158,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0003', 0, async () => {
+    it('testRegisterGlobalCallObject0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0003';
       let workerInstance: worker.ThreadWorker | undefined;
       try {
@@ -5187,7 +5187,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0004', 0, async () => {
+    it('testRegisterGlobalCallObject0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0004';
       try {
         let state: boolean = false;
@@ -5222,7 +5222,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0005', 0, async () => {
+    it('testRegisterGlobalCallObject0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0005';
       try {
         let state: boolean = false;
@@ -5257,7 +5257,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0006', 0, async () => {
+    it('testRegisterGlobalCallObject0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0006';
       try {
         let state: boolean = false;
@@ -5296,7 +5296,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRegisterGlobalCallObject0007', 0, async () => {
+    it('testRegisterGlobalCallObject0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRegisterGlobalCallObject0007';
       try {
         let state: boolean = false;
@@ -5331,7 +5331,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0001', 0, async () => {
+    it('testUnRegisterGlobalCallObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0001';
       try {
         let state: boolean = false;
@@ -5370,7 +5370,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0002', 0, async () => {
+    it('testUnRegisterGlobalCallObject0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0002';
       let workerInstance: worker.ThreadWorker | undefined;
       try {
@@ -5403,7 +5403,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0003', 0, async () => {
+    it('testUnRegisterGlobalCallObject0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0003';
       let workerInstance: worker.ThreadWorker | undefined;
       try {
@@ -5436,7 +5436,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0004', 0, async () => {
+    it('testUnRegisterGlobalCallObject0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0004';
       try {
         let state: boolean = false;
@@ -5475,7 +5475,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0005', 0, async () => {
+    it('testUnRegisterGlobalCallObject0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0005';
       try {
         let state: boolean = false;
@@ -5514,7 +5514,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0006', 0, async () => {
+    it('testUnRegisterGlobalCallObject0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0006';
       try {
         let state: boolean = false;
@@ -5557,7 +5557,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0007', 0, async () => {
+    it('testUnRegisterGlobalCallObject0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0007';
       try {
         let state: boolean = false;
@@ -5596,7 +5596,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0008', 0, async () => {
+    it('testUnRegisterGlobalCallObject0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0008';
       try {
         let state: boolean = false;
@@ -5635,7 +5635,7 @@ export default function workerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnRegisterGlobalCallObject0009', 0, async () => {
+    it('testUnRegisterGlobalCallObject0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUnRegisterGlobalCallObject0009';
       try {
         let state: boolean = false;
@@ -5674,7 +5674,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTerminate0001', 0, () => {
+    it('testTerminate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testTerminate0001';
       let res = true;
       try {
@@ -5696,7 +5696,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTerminate0002', 0, () => {
+    it('testTerminate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testTerminate0002';
       let res = true;
       try {
@@ -5719,7 +5719,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTerminate0003', 0, () => {
+    it('testTerminate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testTerminate0003';
       let res = true;
       try {
@@ -5742,7 +5742,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnexit0001', 0, async () => {
+    it('testOnexit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnexit0001';
       try {
         let state: boolean = false;
@@ -5770,7 +5770,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnexit0002', 0, async () => {
+    it('testOnexit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnexit0002';
       try {
         let state: boolean = false;
@@ -5798,7 +5798,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnerror0001', 0, async () => {
+    it('testOnerror0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testOnerror0001';
       let state: boolean = false;
       try {
@@ -5834,7 +5834,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAddEventListener0001', 0, async () => {
+    it('testAddEventListener0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testAddEventListener0001';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5866,7 +5866,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAddEventListener0002', 0, async () => {
+    it('testAddEventListener0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testAddEventListener0002';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5898,7 +5898,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveEventListener0001', 0, async () => {
+    it('testRemoveEventListener0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testRemoveEventListener0001';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5932,7 +5932,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0001', 0, async () => {
+    it('testRemoveAllListener0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0001';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -5966,7 +5966,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0002', 0, async () => {
+    it('testRemoveAllListener0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0002';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6000,7 +6000,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0003', 0, async () => {
+    it('testRemoveAllListener0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0003';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6034,7 +6034,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0004', 0, async () => {
+    it('testRemoveAllListener0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0004';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6068,7 +6068,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0005', 0, async () => {
+    it('testRemoveAllListener0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0005';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6102,7 +6102,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0006', 0, async () => {
+    it('testRemoveAllListener0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0006';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6136,7 +6136,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0007', 0, async () => {
+    it('testRemoveAllListener0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0007';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6170,7 +6170,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0008', 0, async () => {
+    it('testRemoveAllListener0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0008';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6204,7 +6204,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0009', 0, async () => {
+    it('testRemoveAllListener0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0009';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6238,7 +6238,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0010', 0, async () => {
+    it('testRemoveAllListener0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0010';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6272,7 +6272,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0011', 0, async () => {
+    it('testRemoveAllListener0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0011';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6306,7 +6306,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0012', 0, async () => {
+    it('testRemoveAllListener0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0012';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6340,7 +6340,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0013', 0, async () => {
+    it('testRemoveAllListener0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0013';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6374,7 +6374,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0014', 0, async () => {
+    it('testRemoveAllListener0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0014';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6408,7 +6408,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0015', 0, async () => {
+    it('testRemoveAllListener0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0015';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6442,7 +6442,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0016', 0, async () => {
+    it('testRemoveAllListener0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0016';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6476,7 +6476,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveAllListener0017', 0, async () => {
+    it('testRemoveAllListener0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testRemoveAllListener0017';
       try {
         const workerInstance = new worker.ThreadWorker('../../workers/Worker.ets');
@@ -6510,7 +6510,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlobalScope0001', 0, async () => {
+    it('testGlobalScope0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testGlobalScope0001';
       try {
         let state: boolean = false;
@@ -6545,7 +6545,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlobalScope0002', 0, async () => {
+    it('testGlobalScope0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testGlobalScope0002';
       try {
         let state: boolean = false;
@@ -6580,7 +6580,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComposite0001', 0, async () => {
+    it('testComposite0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testComposite0001';
       try {
         let state: boolean = false;
@@ -6612,7 +6612,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testComposite0002', 0, async () => {
+    it('testComposite0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testComposite0002';
       try {
         let state: boolean = false;

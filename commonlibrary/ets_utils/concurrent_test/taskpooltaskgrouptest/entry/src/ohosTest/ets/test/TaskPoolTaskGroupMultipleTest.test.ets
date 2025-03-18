@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   printArgs1,
@@ -56,7 +56,8 @@ export default function taskPoolTaskGroupMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupMultipleTest0100', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskGroupMultipleTest0100'
@@ -104,7 +105,8 @@ export default function taskPoolTaskGroupMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupMultipleTest0200', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       const caseName = 'taskPoolTaskGroupMultipleTest0200'

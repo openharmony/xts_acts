@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   printArgs1,
@@ -58,7 +58,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1025', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -99,7 +100,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1026', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -145,7 +147,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1027', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -185,7 +188,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1028', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -225,7 +229,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1029', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -265,7 +270,8 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupExecute1030', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupExecute1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);

@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import {
   printAny1,
@@ -71,7 +71,7 @@ export default function TaskGroupAbilityTest3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask5300', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -110,7 +110,7 @@ export default function TaskGroupAbilityTest3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask5400', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -160,9 +160,7 @@ export default function TaskGroupAbilityTest3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask5500', 0, async (Done: Function) => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
+    it('taskPoolTaskGroupTask5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
 
       taskGroup.addTask(printSendableFunction1, sampleFunction);
@@ -202,7 +200,7 @@ export default function TaskGroupAbilityTest3() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask5600', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
