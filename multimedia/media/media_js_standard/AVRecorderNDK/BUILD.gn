@@ -22,11 +22,11 @@ ohos_app_assist_suite("AVRecorder_ndk_main") {
   part_name = "player_framework"
 }
 
-ohos_js_app_suite("ActsAVRecorderNDKTest") {
+ohos_js_app_suite("ActsOhAVRecorderNDKTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAVRecorderNDKTest"
+  hap_name = "ActsOhAVRecorderNDKTest"
   subsystem_name = "multimedia"
   part_name = "player_framework"
   deps = [ ":AVRecorder_ndk_main" ]
