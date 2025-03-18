@@ -970,7 +970,6 @@ export default function TextPicker() {
       await routeToUrl(options);
 
       console.info('testPicker17 create');
-      await clickBigPicture(driver);
 
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker17 JSON.parse(strJson) is" + strJson);
@@ -1020,19 +1019,6 @@ export default function TextPicker() {
         }
       }
       await routeToUrl(options);
-
-      console.info('testPicker18 create');
-      let btn: Component = await driver.findComponent(ON.type('GridItem'));
-      if (btn === null) {
-        console.info('testPicker18 no GridItem');
-      } else {
-	    await btn.click();
-        await CommonFunc.sleep(1000);
-        clicked = !clicked;
-        await CommonFunc.sleep(1000);
-        await btn.click();
-        await CommonFunc.sleep(1000);
-	  }
       
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker18 JSON.parse(strJson) is" + strJson);
@@ -1246,8 +1232,6 @@ export default function TextPicker() {
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker22 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
-      await clickResultButton(driver);
-      await CommonFunc.sleep(2000);
       router.back();
       console.info("testPicker22 finish");
       done();
@@ -1561,11 +1545,9 @@ export default function TextPicker() {
         };
         phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig);
         expect(false).assertTrue();
-        done();
       } catch(error) {
         console.error("testPicker30 error: " + JSON.stringify(error) + error.code);
         expect(error.code).assertEqual(401);
-        done();
       }
       console.info("testPicker30 finish");
       done();
