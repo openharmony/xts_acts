@@ -24,6 +24,7 @@ struct NestedScroll {
               }.width("100%").height(100)
             }, (item: string) => item)
           }
+          .id('list_offsetRemain')
           .width("100%")
           .height("80%")
           .edgeEffect(EdgeEffect.None)

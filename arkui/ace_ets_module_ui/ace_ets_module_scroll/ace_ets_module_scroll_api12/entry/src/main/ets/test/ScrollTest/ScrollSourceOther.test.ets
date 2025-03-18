@@ -131,16 +131,17 @@ export default function ScrollSourceOther() {
     it('ScrollSourceOther_0400', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0400 START');
       let driver = Driver.create();
-      let size = await driver.getDisplaySize();
-      let sizeX = size.x;
-      let sizeY = size.y;
-      console.info("[ScrollSourceOther_0400] size is: " + JSON.stringify(size));
-      console.info("[ScrollSourceOther_0400] size x is: " + JSON.stringify(sizeX));
-      console.info("[ScrollSourceOther_0400] size Y is: " + JSON.stringify(sizeY));
+      let swiperScroll = CommonFunc.getComponentRectOnScreen('scrollSourceOther');
+      let top = swiperScroll.top;
+      let right = swiperScroll.right;
+      let left = swiperScroll.left;
+      let bottom = swiperScroll.bottom;
+      console.info("ScrollSourceOther_0400 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
       await CommonFunc.sleep(1000);
-
-      await driver.swipe(sizeX * 1/2, sizeY*1/2, sizeX * 1/2, 0, 600);
-      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(left + width/2),Math.round(top + height*0.6),Math.round(left + width/2),Math.round(top + height*0.2));
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('EDGE_EFFECT');
       let obj: ESObject = JSON.parse(strJson);
@@ -162,16 +163,19 @@ export default function ScrollSourceOther() {
     it('ScrollSourceOther_0500', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0500 START');
       let driver = Driver.create();
-      let size = await driver.getDisplaySize();
-      let sizeX = size.x;
-      let sizeY = size.y;
-      console.info("[ScrollSourceOther_0500] size is: " + JSON.stringify(size));
-      console.info("[ScrollSourceOther_0500] size x is: " + JSON.stringify(sizeX));
-      console.info("[ScrollSourceOther_0500] size Y is: " + JSON.stringify(sizeY));
+      let swiperScroll = CommonFunc.getComponentRectOnScreen('scrollSourceOther');
+      let top = swiperScroll.top;
+      let right = swiperScroll.right;
+      let left = swiperScroll.left;
+      let bottom = swiperScroll.bottom;
+      console.info("ScrollSourceOther_0500 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
       await CommonFunc.sleep(1000);
-
-      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, false, 20)
-      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true, 20)
+      
+      await driver.mouseScroll({x:Math.round(left + width/2), y: Math.round(top + height*0.3)}, false, 20)
+      await driver.mouseScroll({x:Math.round(left + width/2), y: Math.round(top + height*0.3)}, true, 20)
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('SCROLLER_ANIMATION');
       let obj: ESObject = JSON.parse(strJson);

@@ -11,6 +11,7 @@ include_directories(
 )
 
 add_library(nativerender SHARED
+    calendarPicker/calendarPicker_date_test.cpp
     component/component.cpp
     component/calendarPicker_component.cpp
     manager/plugin_manager.cpp

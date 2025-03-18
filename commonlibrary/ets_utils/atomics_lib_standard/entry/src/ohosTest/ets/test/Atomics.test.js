@@ -14,7 +14,7 @@
  */
 import app from '@system.app'
 import worker from "@ohos.worker"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 export default function WaitTest() {
     describe('WaitTest', function () {
@@ -38,7 +38,7 @@ export default function WaitTest() {
          * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
          * @tc.author: jiangkai
          */
-        it('testNotify001', 0, async function (done) {
+        it('testNotify001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             var sab = new SharedArrayBuffer(20);
             var int32 = new Int32Array(sab);
             var flag = false
@@ -126,7 +126,7 @@ export default function WaitTest() {
          * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
          * @tc.author: jiangkai
          */
-        it('testWait001', 0, async function (done) {
+        it('testWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             var sab = new SharedArrayBuffer(20);
             var flag = false;
             var int32 = new Int32Array(sab);
@@ -172,7 +172,7 @@ export default function WaitTest() {
          * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
          * @tc.author: jiangkai
          */
-        it('testAdd001', 0, async function (done) {
+        it('testAdd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             var sab = new SharedArrayBuffer(20);
             var int32 = new Uint32Array(sab);
             int32[0] = 1;

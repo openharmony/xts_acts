@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import calendarPickerDialogStartEndTest from './calendarPickerDialogTest/calendarPickerDialogStartEndTest.test';
+import calendarPickerStartEndTest from './calendarPickerTest/calendarPickerStartEndTest.test';
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
 import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRangeAndMarkToday.test'
@@ -22,7 +24,9 @@ import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialo
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
 
 export default function testsuite() {
-    datePickerDialogMode();
+    calendarPickerDialogStartEndTest()
+    calendarPickerStartEndTest()
+    datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
     disableDateRangeAndMarkTodayTest();
     dialogDisableDateRangeAndMarkTodayTest();
