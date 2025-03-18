@@ -1110,7 +1110,7 @@ export default function getTest() {
         const testNum = 'get_video_date_taken_ms_002';
         const displayName = 'getTest.mp4';
         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
-        let asset = await getFileAsset(testContext, testNum, fetchOps);
+        await getFileAsset(testContext, testNum, fetchOps);
         const key = '';
         const value = 1;
         await getNotExistKeysValue(done, testNum, fetchOps, key, value);
@@ -1129,7 +1129,7 @@ export default function getTest() {
       const testNum = 'get_video_date_taken_ms_003';
       const displayName = 'getTest.mp4';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
-      let asset = await getFileAsset(testContext, testNum, fetchOps);
+      await getFileAsset(testContext, testNum, fetchOps);
       const value = 1;
       await getErrorKeysValue(done, testNum, fetchOps, undefined, value);
       done();
