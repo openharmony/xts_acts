@@ -12,5 +12,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-// 导出文件全部,相当于传递导出
-export * from './EnumOrderStatus4'
+// 对象导出 先定义再导出对象
+const OrderStatus = {
+  Pending: 'PENDING', // 订单待处理
+  Shipped: 'SHIPPED', // 订单已发货
+  Delivered: 'DELIVERED', // 订单已送达
+  Cancelled: 'CANCELLED', // 订单已取消
+}
+
+// 先定义，再导出对象，取别名
+export { OrderStatus as OrderStatus3 }
+

@@ -13,4 +13,4 @@
 * limitations under the License.
 */
 // 导出文件别名
-export * as OrderStatus5 from './OrderStatus'
+export * as OrderStatus5 from './EnumOrderStatus'

@@ -16,11 +16,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 import DefaultObjOrderStatus from '../enumeration/DefaultObjOrderStatus';
 import DefaultObjOrderStatus1 from '../enumeration/DefaultObjOrderStatus1';
 import DefaultOrderStatus from '../enumeration/DefaultOrderStatus';
-import { OrderStatus } from '../enumeration/OrderStatus';
+import { EnumOrderStatus } from '../enumeration/EnumOrderStatus';
 import { OrderStatus1 } from '../enumeration/OrderStatus1';
 import { OrderStatus2 } from '../enumeration/OrderStatus2';
-import { OrderStatus3 } from '../enumeration/OrderStatus3';
-import { OrderStatus4 } from '../enumeration/UtilOrderStatus';
+import { OrderStatus3 } from '../enumeration/EnumOrderStatus3';
+import { EnumOrderStatus4 } from '../enumeration/UtilOrderStatus';
 import { OrderStatus5 } from '../enumeration/UtilOrderStatus1';
 import { sleep } from '../utils/Utils';
 
@@ -98,7 +98,7 @@ export default function exportEnumerationTest() {
      * @tc.level Level 3
      */
     it('exportEnumerationTest0103', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
-      const result = OrderStatus.Pending;
+      const result = EnumOrderStatus.Pending;
       const expectedResult = 'PENDING';
       expect(result).assertEqual(expectedResult)
     });
@@ -154,7 +154,7 @@ export default function exportEnumerationTest() {
      * @tc.level Level 5
      */
     it('exportEnumerationTest0107', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
-      const result = OrderStatus4.Pending;
+      const result = EnumOrderStatus4.Pending;
       const expectedResult = 'PENDING';
       expect(result).assertEqual(expectedResult)
     });
@@ -168,7 +168,7 @@ export default function exportEnumerationTest() {
      * @tc.level Level 5
      */
     it('exportEnumerationTest0108', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
-      const result = OrderStatus5.OrderStatus.Pending;
+      const result = OrderStatus5.EnumOrderStatus.Pending;
       const expectedResult = 'PENDING';
       expect(result).assertEqual(expectedResult)
     });
