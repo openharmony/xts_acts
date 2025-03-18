@@ -999,19 +999,19 @@ export default function TaskPoolSequenceRunnerTest() {
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
         sequenceRunner.execute(task1)
-        task1.isdone()
-        while (!task1.isdone()) {
+        task1.isDone()
+        while (!task1.isDone()) {
           await sleep(100)
         }
-        expect(task1.isdone()).assertTrue()
+        expect(task1.isDone()).assertTrue()
 
         let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
         sequenceRunner.execute(task2)
-        task2.isdone()
-        while (!task2.isdone()) {
+        task2.isDone()
+        while (!task2.isDone()) {
           await sleep(100)
         }
-        expect(task2.isdone()).assertTrue()
+        expect(task2.isDone()).assertTrue()
       }
       done()
 
@@ -1035,8 +1035,8 @@ export default function TaskPoolSequenceRunnerTest() {
         let task2: taskpool.Task = new taskpool.Task(printArgs6, 1);
         sequenceRunner.execute(task1)
         sequenceRunner.execute(task2)
-        expect(task1.isdone()).assertFalse()
-        expect(task2.isdone()).assertFalse()
+        expect(task1.isDone()).assertFalse()
+        expect(task2.isDone()).assertFalse()
       }
       done()
     })

@@ -906,10 +906,10 @@ export default function taskPoolTaskGroupExecuteTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup)
       }
-      while (!task.isdone()) {
+      while (!task.isDone()) {
         await sleep(100)
       }
-      expect(task.isdone()).assertTrue()
+      expect(task.isDone()).assertTrue()
       done()
     })
 
@@ -933,7 +933,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup)
       }
-      expect(task.isdone()).assertFalse()
+      expect(task.isDone()).assertFalse()
       done()
     })
 
