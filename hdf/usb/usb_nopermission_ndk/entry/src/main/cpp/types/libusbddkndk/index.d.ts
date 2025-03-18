@@ -29,3 +29,16 @@ export const usbCreateDeviceMemMap: (a: number) => number;
 export const usbDestroyDeviceMemMap: (a: number) => number;
 export const usbSendPipeRequestWithAshmem: (a: number) => number;
 export const usbGetDevices: (a: number) => number;
+
+export const scsiPeripheralInit: () => number;
+export const scsiPeripheralRelease: () => number;
+export const scsiPeripheralOpen: (a: number) => number;
+export const scsiPeripheralClose: (a: number) => number;
+export const scsiPeripheralTestUnitReady: (a: number) => number;
+export const scsiPeripheralInquiry: (a: number) => number;
+export const scsiPeripheralReadCapacity10: (a: number) => number;
+export const scsiPeripheralRequestSense: (a: number) => number;
+export const scsiPeripheralRead10: (a: number) => number;
+export const scsiPeripheralWrite10: (a: number) => number;
+export const scsiPeripheralVerify10: (a: number) => number;
+export const scsiPeripheralSendRequestByCDB: (a: number) => number;
