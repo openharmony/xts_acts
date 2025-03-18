@@ -22,7 +22,7 @@ struct ColorMetricsTest {
 
   build() {
     Column() {
-      Button("ResourceColor ErrorCode 401").id('error_button401_id')
+      Button('ResourceColor ErrorCode 401').id('error_button401_id')
         .width('80%')
         .onClick(() => {
           let sourceColor: ColorMetrics = ColorMetrics.resourceColor(Color.Red);
