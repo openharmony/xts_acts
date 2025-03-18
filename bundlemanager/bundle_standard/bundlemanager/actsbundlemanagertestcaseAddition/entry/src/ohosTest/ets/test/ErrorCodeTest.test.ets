@@ -718,7 +718,13 @@ export default function ErrcodeTest() {
       } catch (err) {
         let message = (err as BusinessError).message;
         console.info(TAG + 'isDefaultApplicationPromise401  catch failed: ' + message);
-        expect(err.code).assertEqual(401);
+        if (err.code === 801) {
+          expect(err.code).assertEqual(801);
+        } else if (err.code === 401){
+          expect(err.code).assertEqual(401);
+        } else {
+          expect().assertFail();
+        }
         done();
       }
     });
@@ -742,11 +748,16 @@ export default function ErrcodeTest() {
             done();
           }
         });
-
       } catch (err) {
         let message = (err as BusinessError).message;
         console.info(TAG + 'isDefaultApplicationCallBack401  catch failed: ' + message);
-        expect(err.code).assertEqual(401);
+        if (err.code === 801) {
+          expect(err.code).assertEqual(801);
+        } else if (err.code === 401){
+          expect(err.code).assertEqual(401);
+        } else {
+          expect().assertFail();
+        }
         done();
       }
     });

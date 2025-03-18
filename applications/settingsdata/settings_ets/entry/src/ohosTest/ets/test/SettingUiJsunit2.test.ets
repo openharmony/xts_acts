@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium";
 import settings from '@ohos.settings'
 import { BusinessError } from '@ohos.base';
 
@@ -823,6 +823,31 @@ export default function settingUiJsunit() {
         console.error("[settings_set_value_118] error = " + err);
         expect(err == "Error: assertion (valueType == napi_object) failed: Wrong argument[0] type. Object expected.")
           .assertTrue();
+      }
+      done();
+    });
+
+    it('open_manager_settings_119', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done:Function) => {
+      let context = null;
+      try{
+        let value = settings.openNetworkManagerSettings(context);
+        expect(true).assertTrue();
+        done();
+      }catch (err) {
+        console.error("[open_manager_settings_119] error = " + err);
+        expect(err.code).assertEqual(14800000);
+      }
+      done();
+    });
+
+    it('open_manager_settings_120', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done:Function) => {
+      try{
+        let value = settings.openNetworkManagerSettings(globalThis.abilityContext);
+        expect(true).assertTrue();
+        done();
+      }catch (err) {
+        console.error("[open_manager_settings_120] error = " + err);
+        expect(err.code).assertEqual(14800010);
       }
       done();
     });

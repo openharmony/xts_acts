@@ -51,7 +51,9 @@ export default function AVPlayerMediaSource() {
         preferredWidth: 1,
         preferredHeight: 2,
         preferredBufferDuration: 3,
-        preferredHdr: false
+        preferredHdr: false,
+        preferredBufferDurationForPlaying: 1,
+        showFirstFrameOnPrepare: false
       };
       player.setMediaSource(mediaSource, playStrategy);
       done();
