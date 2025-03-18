@@ -138,6 +138,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextNormal, TestSi
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -163,6 +164,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextNull, TestSize
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, false, imageInfo2);
     EXPECT_EQ(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -186,6 +188,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextBoundary, Test
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, false, imageInfo);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -206,6 +209,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceDestroyNormal, TestSize.Level0) {
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -249,6 +253,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNormal, TestSize.Level0) 
     EXPECT_NE(canvas_, nullptr);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -273,6 +278,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNull, TestSize.Level3) {
     canvas_ = OH_Drawing_SurfaceGetCanvas(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -299,6 +305,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasBoundary, TestSize.Level0
     EXPECT_NE(canvas_, nullptr);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -321,6 +328,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Lev
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     // 2. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -380,6 +388,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestS
         // Free memory
         OH_Drawing_SurfaceDestroy(surface_);
     }
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -404,6 +413,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
     EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -442,6 +452,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushAbnormal, TestSize.Level3) {
     EXPECT_NE(result, OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -504,6 +515,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     }
 
     OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 /*
@@ -549,6 +561,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushTiming, TestSize.Level3) {
     OH_Drawing_SurfaceDestroy(surface_);
     OH_Drawing_SurfaceDestroy(surface1);
     OH_Drawing_SurfaceDestroy(surface2);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 } // namespace Drawing
