@@ -8,6 +8,7 @@
     "MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday",
     "MainAbility/pages/CalendarPicker/dialogDisableDateRangeAndMarkToday",
     "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",
-    "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback"
+    "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback",
+    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest"
   ]
 }
