@@ -122,7 +122,7 @@ struct TitleOptionsToolOptions {
             })
             .height('10%')
             .margin({top: '20%'})
-          Button("push")
+          Button('push')
             .onClick(() => {
               this.navPathStack.pushPathByName('NavigationMenu', null);
             })

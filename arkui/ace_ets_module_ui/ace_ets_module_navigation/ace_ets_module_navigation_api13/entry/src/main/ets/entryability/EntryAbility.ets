@@ -18,7 +18,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@ohos.base';
 
 export default class EntryAbility extends UIAbility {
-  storage: LocalStorage = new LocalStorage();  
+  private storage: LocalStorage = new LocalStorage();  
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     this.storage.setOrCreate('eee',333);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');

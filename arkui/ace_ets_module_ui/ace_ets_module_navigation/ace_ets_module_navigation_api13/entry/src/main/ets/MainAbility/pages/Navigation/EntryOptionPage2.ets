@@ -1,5 +1,5 @@
 let storages1 = new LocalStorage();
-storages1.setOrCreate('eee',22)
+storages1.setOrCreate('eee', 22)
 
 @Entry({storage: storages1, useSharedStorage: true})
 @Component
@@ -9,7 +9,7 @@ struct EntryOptionPage2 {
   build() {
     Navigation() {
       Column() {
-        Text(this.eee + '').id('textId')
+        Text(this.eee + '').id('text2Id')
       }
     }
     .title('MainPage')

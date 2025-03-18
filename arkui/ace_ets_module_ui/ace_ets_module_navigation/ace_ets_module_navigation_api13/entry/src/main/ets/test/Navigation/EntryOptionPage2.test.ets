@@ -54,14 +54,14 @@ export default function EntryOptionPage2() {
      * @tc.desc      Test EntryOptionPage2 useSharedStorage is true
      * @tc.level     Level 0
      */
-    it('EntryOptionPage2_0100', Level.LEVEL0,, async (done: Function) => {
+    it('EntryOptionPage2_0100', Level.LEVEL0, async (done: Function) => {
       console.info('EntryOptionPage2_0100 START');
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
 
-      let strJson: string = getInspectorByKey('textId');
+      let strJson: string = getInspectorByKey('text2Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[MultiNavigation_0100] component obj is: ' + JSON.stringify(obj));
       console.info('[MultiNavigation_0100] content obj is: ' + JSON.stringify(obj.$attrs.content));

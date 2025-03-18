@@ -54,7 +54,7 @@ export default function EntryOptionPage() {
      * @tc.desc      Test EntryOptionPage useSharedStorage is false
      * @tc.level     Level 0
      */
-    it('EntryOptionPage_0100', Level.LEVEL0,, async (done: Function) => {
+    it('EntryOptionPage_0100', Level.LEVEL0, async (done: Function) => {
       console.info('EntryOptionPage_0100 START');
       await CommonFunc.sleep(1000);
 

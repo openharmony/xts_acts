@@ -1,5 +1,5 @@
 let storages = new LocalStorage();
-storages.setOrCreate('eee',22)
+storages.setOrCreate('eee', 22)
 
 @Entry({storage: storages, useSharedStorage: false})
 @Component
