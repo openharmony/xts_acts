@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level  } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -50,7 +50,7 @@ export default function textAreaInputTest() {
      * @tc.name         textAreaInputTest0001
      * @tc.desic        textAreaInputTest0001
      */
-    it('textAreaInputTest0001', 0, async () => {
+    it('textAreaInputTest0001', Level.LEVEL0, async () => {
       if (globalThis.winLeft == 0) {
         let driver = Driver.create();
         console.info('textAreaInputTest textAreaInputTest0001 START');
