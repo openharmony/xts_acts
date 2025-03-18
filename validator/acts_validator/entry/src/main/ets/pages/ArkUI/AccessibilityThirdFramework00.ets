@@ -16,7 +16,7 @@ let params = LocalStorage.getShared();
 @Component
 struct AccessibilityThirdFramework {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'AccessibilityProperty';
+  @State name: string = 'AccessibilityThirdFramework00';
   @State StepTips: string = '设备安装且开启辅助应用时（1、从compatibility仓对应acts-validator目录下载setting.zip，' +
     '解压后运行send_hap.bat；2、从compatibility仓对应acts-validator目录下载MyApplication.hap并安装；' +
     '3、开启手机，点击设置-辅助功能-扩展服务-已安装的服务-打开label）'+

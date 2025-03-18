@@ -16,6 +16,7 @@ import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.te
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
 import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRangeAndMarkToday.test'
 import dialogDisableDateRangeAndMarkTodayTest from './CalendarPickerTest/dialogDisableDateRangeAndMarkToday.test'
+import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
@@ -28,4 +29,5 @@ export default function testsuite() {
     EnableHapticFeedback();
     textPickerDialogSelectedAreaTest();
     timePickerDialogSelectedAreaTest();
+    textPickerDialogEnableHapticFeedback();
 }
