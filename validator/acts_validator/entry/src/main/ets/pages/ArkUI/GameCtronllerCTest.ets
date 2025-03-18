@@ -28,7 +28,7 @@ struct FocusAxisEventExampleC {
   @State intervalNum: number = 0;
 
   @State StepTips: string = '设备使用游戏手柄操作时\n' + '操作步骤:\n' + '1、使用游戏手柄走焦在按钮上(十字键,左右遥感,LT,RT),查看返回的数据\n' +
-    '预期结果：\n' + '1.使用十字键时,上键时absHat0Y的值为1,下键时absHat0Y的值为-1,左键时absHat0X的值为-1,右键时absHat0X的值为1\n' +
+    '预期结果：\n' + '1.使用十字键时,上键时absHat0Y的值为-1,下键时absHat0Y的值为1,左键时absHat0X的值为-1,右键时absHat0X的值为1\n' +
     '2.使用左摇杆时,上操作的absY的值范围在[-1,0]区间, 下操作的absY的值范围在[0,1]区间, 左操作的absX的值范围在[-1,0]区间, 右操作的absX的值范围在[0,1]区间\n' +
     '3.使用右摇杆时,上操作的absRz的值范围在[-1,0]区间, 下操作的absRz的值范围在[0,1]区间, 左操作的absZ的值范围在[-1,0]区间, 右操作的absRz的值范围在[0,1]区间\n' +
     '4.使用LT操作时, absBrake的值范围在[0,1]区间,使用RT操作时absGas的值范围在[0,1]区间';
