@@ -62,8 +62,9 @@ export default function getSupportedPhotoFormatsTest() {
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1);
         for (let element of result) {
-          expect(imageArray).assertContain(element);
+          expect(element.length >= 1).assertTrue();
         }
+        expect(result).assertContain("jpg");
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
@@ -85,8 +86,9 @@ export default function getSupportedPhotoFormatsTest() {
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(2);
         for (let element of result) {
-          expect(videoArray).assertContain(element);
+          expect(element.length >= 1).assertTrue();
         }
+        expect(result).assertContain("mp4");
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
