@@ -43,7 +43,7 @@ export default function relationalStoreEtsTest() {
       try {
         store = await relationalStore.getRdbStore(context, STORE_CONFIG)
         console.info(TAG + 'Get RdbStore successfully.');
-        (store as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
+        await (store as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
       } catch (err) {
         console.error(TAG + `Get RdbStore failed, code is ${err.code},message is ${err.message}`);
       }
