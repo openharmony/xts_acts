@@ -15,6 +15,7 @@
 
 import fileUri from "@ohos.file.fileuri";
 import { describe, it, expect } from '@ohos/hypium';
+import { TestType, Size, Level } from '@ohos/hypium';
 export default function filegetpath_test() {
 describe('file_uri_test', function () {
 
@@ -47,12 +48,12 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_002', 0, function () {
+    it('test_Fileuri_Getpath_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       try{
-        let fileuristr = "file://media/storage/el2/base/files/test.txt";
+        let fileuristr = "file://media/Photo/1/IMG_1739175198_000/displayname.jpg";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
-        expect(fpath === '/storage/el2/base/files').assertTrue();
+        expect(fpath === '/data/storage/el2/media/Photo/1/IMG_1739175198_000/displayname.jpg').assertTrue();
       }catch(e){
         console.log('test_Fileuri_Getpath_002 has failed for:' + e.message);
         expect(false).assertTrue();
@@ -112,12 +113,12 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_005', 0, function () {
+    it('test_Fileuri_Getpath_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       try{
         let fileuristr = "file://media/storage/el2/base/files";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
-        expect(fpath === '/storage/el2/base/files').assertTrue();
+        expect(fpath === '/data/storage/el2/media/storage/el2/base/files').assertTrue();
       }catch(e){
         console.log('test_Fileuri_Getpath_005 has failed for:' + e.message);
         expect(false).assertTrue();
@@ -352,3 +353,4 @@ describe('file_uri_test', function () {
     });
   })
 };
+
