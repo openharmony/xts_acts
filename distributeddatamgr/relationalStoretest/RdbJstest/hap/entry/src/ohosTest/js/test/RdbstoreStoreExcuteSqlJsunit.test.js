@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
@@ -50,8 +50,11 @@ export default function rdbstoreStoreExcuteSqlTest() {
          * @tc.name resultSet ExcuteSql normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0340
          * @tc.desc resultSet ExcuteSql normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('ExcuteSqlTest0001', 0, async function (done) {
+        it('ExcuteSqlTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* ExcuteSqlTest0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             //插入
@@ -127,8 +130,11 @@ export default function rdbstoreStoreExcuteSqlTest() {
          * @tc.name resultSet ExcuteSql normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0350
          * @tc.desc resultSet ExcuteSql normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('ExcuteSqlTest0002', 0, async function (done) {
+        it('ExcuteSqlTest0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* ExcuteSqlTest0002 start *************");
             var u8 = new Uint8Array([2, 3, 4])
             //插入
@@ -202,8 +208,11 @@ export default function rdbstoreStoreExcuteSqlTest() {
          * @tc.name resultSet ExcuteSql normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0360
          * @tc.desc resultSet ExcuteSql normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('ExcuteSqlTest0003', 0, async function (done) {
+        it('ExcuteSqlTest0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* ExcuteSqlTest0003 start *************");
             var u8 = new Uint8Array([3, 4, 5])
             var nameStr = "lisi" + "e".repeat(2000) + "zhangsan"
@@ -298,8 +307,11 @@ export default function rdbstoreStoreExcuteSqlTest() {
          * @tc.name resultSet ExcuteSql normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0370
          * @tc.desc resultSet ExcuteSql normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('ExcuteSqlTest0004', 0, async function (done) {
+        it('ExcuteSqlTest0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* ExcuteSqlTest0004 start *************");
             var u8 = new Uint8Array([3, 4, 5])
             //插入

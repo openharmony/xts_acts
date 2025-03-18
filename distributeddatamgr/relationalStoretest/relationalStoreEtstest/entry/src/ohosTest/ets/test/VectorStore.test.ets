@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -63,7 +63,7 @@ export default function VectorStoreTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('VectorStoreTest0100', 0, async (done:Function) => {
+        it('VectorStoreTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuInsert0100 ";
             const res = data_Rdb.isVectorSupported();
             console.info(TAGTEST + "res=" + res);

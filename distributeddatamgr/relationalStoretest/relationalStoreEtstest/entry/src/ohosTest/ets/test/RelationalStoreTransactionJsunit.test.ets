@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -63,7 +63,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionInsert0001', 0, async function (done) {
+        it('testRdbTransactionInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -101,7 +101,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionInsert0002', 0, async function (done) {
+        it('testRdbTransactionInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0002 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -156,7 +156,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionInsert0003', 0, async function (done) {
+        it('testRdbTransactionInsert0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionInsert0003 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -208,7 +208,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionRollBack0001', 0, async function (done) {
+        it('testRdbTransactionRollBack0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionRollBack0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -246,7 +246,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionMulti0001', 0, async function (done) {
+        it('testRdbTransactionMulti0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('ttt' + "************* testRdbTransactionMulti0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -297,7 +297,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionMulti0002', 0, async function (done) {
+        it('testRdbTransactionMulti0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionMulti0002 start *************");
             let u8 = new Uint8Array([1, 2, 3])
             try {
@@ -351,7 +351,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionMulti0003', 0, async function (done) {
+        it('testRdbTransactionMulti0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionMulti0003 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -409,7 +409,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbTransactionDelete0001', 0, async function (done) {
+        it('testRdbTransactionDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionDelete0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -473,7 +473,7 @@ export default function relationalStoreTransactionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_028', 0, async function (done) {
+        it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             if(rdbStore != null) {
                 try {
                     let txId : number=rdbStore.beginTrans()

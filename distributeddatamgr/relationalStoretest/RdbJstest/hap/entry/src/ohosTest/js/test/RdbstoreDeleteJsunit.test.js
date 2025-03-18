@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = '[RDB_JSKITS_TEST]'
@@ -52,8 +52,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0100
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0001', 0, async function (done) {
+    it('testRdbStoreDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0001 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -101,8 +104,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0200
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0002', 0, async function (done) {
+    it('testRdbStoreDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0002 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -151,8 +157,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0300
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0003', 0, async function (done) {
+    it('testRdbStoreDelete0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0003 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -205,8 +214,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0400
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0004', 0, async function (done) {
+    it('testRdbStoreDelete0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0004 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -255,8 +267,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0500
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0005', 0, async function (done) {
+    it('testRdbStoreDelete0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0005 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -306,8 +321,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name rdb delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0600
      * @tc.desc rdb delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0006', 0, async function (done) {
+    it('testRdbStoreDelete0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0006 start *************');
         let errInfo = undefined;
         let u8 = new Uint8Array([1, 2, 3])
@@ -358,8 +376,11 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.name setDistributedTables success
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0700
      * @tc.desc setDistributedTables success
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-        it('dataRdbTest001', 0, async function (done) {
+        it('dataRdbTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* dataRdbTest001 start *************");
             try {
                 let u8 = new Uint8Array([1, 2, 3]);
@@ -391,8 +412,11 @@ describe('rdbStoreDeleteTest', function () {
            * @tc.name update success
            * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0800
            * @tc.desc update success
-           */
-          it('dataRdbTest002', 0, async function (done) {
+           * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+          it('dataRdbTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* dataRdbTest002 start *************");
             let u8 = new Uint8Array([1, 2, 3]);
             {
@@ -432,8 +456,11 @@ describe('rdbStoreDeleteTest', function () {
            * @tc.name query success
            * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0900
            * @tc.desc query success
-           */
-          it('dataRdbTest003', 0, async function (done) {
+           * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+          it('dataRdbTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* dataRdbTest003 start *************");
             let u8 = new Uint8Array([1, 2, 3]);
             {
@@ -465,8 +492,11 @@ describe('rdbStoreDeleteTest', function () {
            * @tc.name querysql success
            * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_1000
            * @tc.desc querysql success
-           */
-          it('dataRdbTest004', 0, async function (done) {
+           * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+          it('dataRdbTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* dataRdbTest004 start *************");
             let u8 = new Uint8Array([1, 2, 3]);
             {
@@ -497,8 +527,11 @@ describe('rdbStoreDeleteTest', function () {
            * @tc.name executesql success
            * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_1100
            * @tc.desc executesql success
-           */
-          it('dataRdbTest005', 0, async function (done) {
+           * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+          it('dataRdbTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* dataRdbTest005 start *************");
             let u8 = new Uint8Array([1, 2, 3]);
             {

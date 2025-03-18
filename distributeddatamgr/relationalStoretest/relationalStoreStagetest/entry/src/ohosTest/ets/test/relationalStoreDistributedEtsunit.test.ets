@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import deviceManager from '@ohos.distributedDeviceManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.relationalStore';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -66,7 +66,7 @@ describe('relationalStoreDistributedTest', () => {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0100', 0, async (done: Function) => {
+    it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
         let deviceId: string | undefined = undefined;
         let errInfo : BusinessError | undefined = undefined;
         try{
@@ -89,7 +89,7 @@ describe('relationalStoreDistributedTest', () => {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0200',0,async (done: Function)=> {
+     it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function)=> {
         let deviceId: string | undefined = "";
         let errInfo: BusinessError | undefined = undefined;
         try{
