@@ -90,7 +90,7 @@ export default function builtinsConcatArraySliceTest() {
       let sparseArr = new ConcatArrayTest<number | undefined>([1, , 3])
       const result: number[] = sparseArr.slice(0, 2);
       expect(result.length).assertEqual(2);
-      expect(result[0]?.toString()).assertEqual(1);
+      expect(result[0]?.toString()).assertEqual('1');
       expect(result[1] === undefined).assertTrue();
     });
 
