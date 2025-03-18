@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import deviceInfo from '@ohos.deviceInfo'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function UtilInI18nTest() {
 describe('UtilInI18nTest', function () {
@@ -330,6 +330,25 @@ describe('UtilInI18nTest', function () {
                                 'long');
         console.log('i18n_util_test_1500 ' + value);
         expect(value).assertEqual('1,000米');
+    })
+
+    /**
+     * @tc.number   : i18n_util_test_1600
+     * @tc.name     : i18n_util_test_1600
+     * @tc.desc     : unitConvert
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('i18n_util_test_1600', Level.LEVEL2, function () {
+        console.log('i18n_util_test_1600 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+            {unit: 'liter', measureSystem: 'SI'},
+            1000,
+            'en-US');
+        console.log('i18n_util_test_1600 ' + value);
+        expect(value).assertContain('236.588');
     })
 
     console.log('*************end UtilInI18nTest*************');
