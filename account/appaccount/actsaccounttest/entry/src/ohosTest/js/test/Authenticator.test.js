@@ -14,7 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
@@ -66,7 +66,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0100', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -96,7 +96,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0200', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -126,7 +126,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0300', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -156,7 +156,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0400', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             await appAccountManager.addAccount(name, 'test_extraInfo').then((data) =>{
@@ -192,7 +192,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0500', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             await appAccountManager.addAccount(name, 'test_extraInfo').then((data) =>{
@@ -229,7 +229,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0600', 0, async function (done) {
+        it('ActsAccountCheckAccountLabels_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             await appAccountManager.addAccount('CheckAccountLabels_0600', 'test_extraInfo').then((data) =>{
@@ -264,7 +264,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAppAccess_0100', 0, async function (done) {
+        it('ActsAccountCheckAppAccess_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAppAccess_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(name, (err)=>{
@@ -314,7 +314,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAppAccess_0200', 0, async function (done) {
+        it('ActsAccountCheckAppAccess_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCheckAppAccess_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(name, 'test_extraInfo').then((data) =>{
@@ -382,7 +382,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountDeleteAccountCredential_0100', 0, async function (done) {
+        it('ActsAccountDeleteAccountCredential_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountDeleteAccountCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -424,7 +424,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountDeleteAccountCredential_0200', 0, async function (done) {
+        it('ActsAccountDeleteAccountCredential_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountDeleteAccountCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(name, 'test_extraInfo').then((data) =>{
@@ -474,7 +474,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountVerifyCredential_0100', 0, async function (done) {
+        it('ActsAccountVerifyCredential_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountVerifyCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {credentialType: "PIN", credential: "123456"}
@@ -514,7 +514,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountVerifyCredential_0200', 0, async function (done) {
+        it('ActsAccountVerifyCredential_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountVerifyCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -553,7 +553,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSetAuthenticatorProperties_0100', 0, async function (done) {
+        it('ActsAccountSetAuthenticatorProperties_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetAuthenticatorProperties_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {credentialType: "PIN", credential: "123456"}
@@ -591,7 +591,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSetAuthenticatorProperties_0200', 0, async function (done) {
+        it('ActsAccountSetAuthenticatorProperties_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetAuthenticatorProperties_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
@@ -628,7 +628,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -666,7 +666,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -704,7 +704,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0300', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {requiredLabels: ["male", "30-40"]}
@@ -742,7 +742,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0400', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -776,7 +776,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0500', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -810,7 +810,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountSelectAccountByOptions_0600', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {requiredLabels: ["male", "30-40"]}

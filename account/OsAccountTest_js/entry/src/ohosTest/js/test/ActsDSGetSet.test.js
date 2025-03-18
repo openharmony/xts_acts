@@ -46,7 +46,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('ActsDADeviceId_0100', 0, async function(done){
+        it('ActsDADeviceId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             console.log("====>ActsDADeviceId_0100 test query distribtued id start");
             const accountAbility = account.getDistributedAccountAbility();
             accountAbility.setOsAccountDistributedInfo(LOGININFO, (err)=>{
@@ -81,7 +81,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getDistributedAccountAbility_test', 0, async function (done) {
+        it('getDistributedAccountAbility_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var ret = false;
             const accountAbility = account.getDistributedAccountAbility()
             console.info("====>getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
@@ -100,7 +100,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfo_test001', 0, async function (done) {
+        it('getOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo().then( (data) => {
                 console.info('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
@@ -119,7 +119,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfo_test002', 0, async function (done) {
+        it('getOsAccountDistributedInfo_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo((err, data) => {
                 console.info('====>getOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
@@ -140,7 +140,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfoByLocalId_test001', 0, async function (done) {
+        it('getOsAccountDistributedInfoByLocalId_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100).then(function (data) {
                 console.info('====>getOsAccountDistributedInfoByLocalId_test001 data:' + JSON.stringify(data))
@@ -159,7 +159,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfoByLocalId_test002', 0, async function (done) {
+        it('getOsAccountDistributedInfoByLocalId_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100, function (err, data) {
                 console.info('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))
@@ -180,7 +180,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test001', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -225,7 +225,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test002', 0,  async function (done)  {
+        it('setOsAccountDistributedInfo_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async function (done)  {
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -265,7 +265,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test003', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility();
             let tokenInvalidInfo = {
                 name: 'ZhangSan',
@@ -297,7 +297,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test004', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -340,7 +340,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test005', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -385,7 +385,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test006', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -429,7 +429,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test007', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -474,7 +474,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test008', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -521,7 +521,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test009', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
             for (var i = 0; i < 1025; i++) {
@@ -551,7 +551,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test010', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
             for (var i = 0; i < 1025; i++) {
@@ -585,7 +585,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test011', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility();
             let limitAvatar = '';
             if (deviceType === 'wearable') {
@@ -619,7 +619,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test012', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>setOsAccountDistributedInfo_test012 start");
             const accountAbility = account.getDistributedAccountAbility();
             let limitAvatar = '';
@@ -659,7 +659,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test013', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitInfo = {};
             for (var i = 0; i < 513; i++) {
@@ -687,7 +687,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfo_test014', 0, async function (done) {
+        it('setOsAccountDistributedInfo_test014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitInfo = {};
             for (var i = 0; i < 513; i++) {
@@ -719,7 +719,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfoByLocalId_test0100', 0, async function (done) {
+        it('setOsAccountDistributedInfoByLocalId_test0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -764,7 +764,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('setOsAccountDistributedInfoByLocalId_test0200', 0, async function (done) {
+        it('setOsAccountDistributedInfoByLocalId_test0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -810,7 +810,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountEnum_0100', 0, async function (done) {
+        it('DistributedAccountEnum_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             try {
                 expect(0).assertEqual(account.DistributedAccountStatus.NOT_LOGGED_IN)
                 console.info("====>DistributedAccountEnum_0100 success:")
@@ -830,7 +830,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountEnum_0200', 0, async function (done) {
+        it('DistributedAccountEnum_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             try {
                 expect(1).assertEqual(account.DistributedAccountStatus.LOGGED_IN)
                 console.info("====>DistributedAccountEnum_0200 success:")
@@ -851,7 +851,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0100', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -898,7 +898,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0200', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -947,7 +947,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0300', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -994,7 +994,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0400', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1043,7 +1043,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0500', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1086,7 +1086,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0600', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1131,7 +1131,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('DistributedAccountOptionalParameter_0700', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1178,7 +1178,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('DistributedAccountOptionalParameter_0800', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1227,7 +1227,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('DistributedAccountOptionalParameter_0900', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -1274,7 +1274,7 @@ export default function ActsDAGetSetTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('DistributedAccountOptionalParameter_1000', 0, async function (done) {
+        it('DistributedAccountOptionalParameter_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',

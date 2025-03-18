@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 import distributedAccount from '@ohos.account.distributedAccount'
 
@@ -28,7 +28,7 @@ export default function ActsDANoPermissionTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_NoPermission_0100', 0, async (done) => {
+        it('SUB_Account_DistributedAccount_NoPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
             console.info("====>SUB_Account_DistributedAccount_NoPermission_0100 start====");
             let accountAbility = distributedAccount.getDistributedAccountAbility();
             try {
@@ -56,7 +56,7 @@ export default function ActsDANoPermissionTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_NoPermission_0200', 0, async (done) => {
+        it('SUB_Account_DistributedAccount_NoPermission_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
             console.info("====>SUB_Account_DistributedAccount_NoPermission_0200 start====");
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             try {
@@ -78,7 +78,7 @@ export default function ActsDANoPermissionTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_NoPermission_0300', 0, async (done) => {
+        it('SUB_Account_DistributedAccount_NoPermission_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
             console.info("====>SUB_Account_DistributedAccount_NoPermission_0300 start====");
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             let accountInfo = { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
@@ -107,7 +107,7 @@ export default function ActsDANoPermissionTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_NoPermission_0400', 0, async (done) => {
+        it('SUB_Account_DistributedAccount_NoPermission_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
             console.info("====>SUB_Account_DistributedAccount_NoPermission_0400 start====");
             let accountAbility = distributedAccount.getDistributedAccountAbility();
             let accountInfo = { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
@@ -26,7 +26,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : The setAccountCredential setting credential is called when the forwarding parameters
         *                 are correct, and then getAccountCredential is called for the credential(callback)
         */
-        it('ActsAccountCredential_0100', 0, async function (done) {
+        it('ActsAccountCredential_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -58,7 +58,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : The setAssociatedData setting credential is called when the forwarding parameters
         *                 are correct, and then getAccountCredential is called for the credential(promise)
         */
-        it('ActsAccountCredential_0200', 0, async function (done) {
+        it('ActsAccountCredential_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -97,7 +97,7 @@ export default function ActsAccountCredential() {
         *                 is called,the setting of the credential is different if the call getAccountCredential
         *                 can get the second credential(callback)
         */
-        it('ActsAccountCredential_0300', 0, async function (done) {
+        it('ActsAccountCredential_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -134,7 +134,7 @@ export default function ActsAccountCredential() {
         *                 is called,the setting of the credential is different if the call getAccountCredential
         *                 can get the second credential(promise)
         */
-        it('ActsAccountCredential_0400', 0, async function (done) {
+        it('ActsAccountCredential_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -170,7 +170,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is null
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming credential is null(callback)
         */
-        it('ActsAccountCredential_0500', 0, async function (done) {
+        it('ActsAccountCredential_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -201,7 +201,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is null
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming credential is null(promise)
         */
-        it('ActsAccountCredential_0600', 0, async function (done) {
+        it('ActsAccountCredential_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -224,7 +224,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter type is null(callback)
         */
-        it('ActsAccountCredential_0700', 0, async function (done) {
+        it('ActsAccountCredential_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -249,7 +249,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter type is null(promise)
         */
-        it('ActsAccountCredential_0800', 0, async function (done) {
+        it('ActsAccountCredential_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -273,7 +273,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : getAccountCredential getting value is called when the argument is wrong
         * @tc.desc      : Call getAccountCredential getting credential when the incoming parameter type is wrong(callback)
         */
-        it('ActsAccountCredential_0900', 0, async function (done) {
+        it('ActsAccountCredential_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -298,7 +298,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : getAccountCredential getting value is called when the argument is wrong
         * @tc.desc      : Call getAccountCredential getting credential when the incoming parameter type is wrong(promise)
         */
-        it('ActsAccountCredential_1000', 0, async function (done) {
+        it('ActsAccountCredential_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -323,7 +323,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter type is space
         *                 then use getAccountCredential getting the credential(callback)
         */
-        it('ActsAccountCredential_1100', 0, async function (done) {
+        it('ActsAccountCredential_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -355,7 +355,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter type is space
         *                 then use getAccountCredential getting the credential(promise)
         */
-        it('ActsAccountCredential_1200', 0, async function (done) {
+        it('ActsAccountCredential_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -378,7 +378,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData setting credential is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter name is null(callback)
         */
-        it('ActsAccountCredential_1300', 0, async function (done) {
+        it('ActsAccountCredential_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -403,7 +403,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAssociatedData setting credential is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting credential when the incoming parameter name is null(promise)
         */
-        it('ActsAccountCredential_1400', 0, async function (done) {
+        it('ActsAccountCredential_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountCredential_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -427,7 +427,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : Get it directly without setting credential callback
         * @tc.desc      : Call getAccountCredential directly to get credential without calling setAccountCredential
         */
-        it('ActsAccountCredential_1500', 0, async function (done) {
+        it('ActsAccountCredential_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -452,7 +452,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : Get it directly without setting credential promise
         * @tc.desc      : Call getAccountCredential directly to get credential without calling setAccountCredential
         */
-        it('ActsAccountCredential_1600', 0, async function (done) {
+        it('ActsAccountCredential_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -476,7 +476,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong callback
         * @tc.desc      : Call setAccountCredential setting credential when the incoming parameter credential is wrong
         */
-        it('ActsAccountCredential_1700', 0, async function (done) {
+        it('ActsAccountCredential_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1700 start====");
             var CREDENTIALOVERSIZE = "K"
             for(var i = 0;i < 256;i++)
@@ -506,7 +506,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong promise
         * @tc.desc      : Call setAccountCredential setting credential when the incoming parameter credential is wrong
         */
-        it('ActsAccountCredential_1800', 0, async function (done) {
+        it('ActsAccountCredential_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1800 start====");
             var bigStr = "K"
             for(var i = 0;i < 256;i++)
@@ -535,7 +535,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong
         * @tc.desc      : Call setAccountCredential setting type when the incoming parameter credential is wrong(callback)
         */
-        it('ActsAccountCredential_1900', 0, async function (done) {
+        it('ActsAccountCredential_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountCredential_1900 start====");
             var CREDENTIALTYPEOVERSIZE = "K"
             for(var i = 0;i < 256;i++)
@@ -565,7 +565,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong
         * @tc.desc      : Call setAccountCredential setting type when the incoming parameter credential is wrong(promise)
         */
-        it('ActsAccountCredential_2000', 0, async function (done) {
+        it('ActsAccountCredential_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountCredential_2000 start====");
             var CREDENTIALTYPEOVERSIZE = "K"
             for(var i = 0;i < 256;i++)
@@ -594,7 +594,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong
         * @tc.desc      : Call setAccountCredential setting name when the incoming parameter name is wrong(callback)
         */
-        it('ActsAccountCredential_2100', 0, async function (done) {
+        it('ActsAccountCredential_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountCredential_2100 start====");
             var NAMEOVERSIZE = "n"
             for(var i = 0;i < 256;i++)
@@ -622,7 +622,7 @@ export default function ActsAccountCredential() {
         * @tc.name      : setAccountCredential setting credential is called when the argument is wrong
         * @tc.desc      : Call setAccountCredential setting name when the incoming parameter name is wrong(promise)
         */
-        it('ActsAccountCredential_2200', 0, async function (done) {
+        it('ActsAccountCredential_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountCredential_2200 start====");
             var NAMEOVERSIZE ="n"
             for(var i=0;i<256;i++)

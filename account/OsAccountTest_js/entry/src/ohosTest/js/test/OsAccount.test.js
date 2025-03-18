@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 import account from '@ohos.account.distributedAccount'
 const LOGININFO = {
@@ -38,7 +38,7 @@ export default function AccountTest() {
         * @tc.name       Test query the distribruted id by callback.
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
-        it('ActsDistributedAccountDeviceId_0100', 0, async function(done){
+        it('ActsDistributedAccountDeviceId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done){
             console.info('====>ActsDistributedAccountDeviceId_0100 start====')
             try {
                 console.log("====>test query distribtued id start");
@@ -79,7 +79,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.getDistributedAccountAbility.
         * @tc.desc      Test distributedAccount.getDistributedAccountAbility API functionality.
         */
-        it('account_getDistributedAccountAbility_test', 0, async function (done) {
+        it('account_getDistributedAccountAbility_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('====>account_getDistributedAccountAbility_test start====')
             try {
                 var ret = false;
@@ -102,7 +102,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.queryOsAccountDistributedInfo.
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality.
         */
-        it('account_queryOsAccountDistributedInfo_test001', 0, async function (done) {
+        it('account_queryOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('====>account_queryOsAccountDistributedInfo_test001 start====')
             try {
                 let accountAbility = account.getDistributedAccountAbility()
@@ -124,7 +124,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.queryOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_queryOsAccountDistributedInfo_test002', 0, async function (done) {
+        it('account_queryOsAccountDistributedInfo_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('====>account_queryOsAccountDistributedInfo_test002 start')
             try {
                 let accountAbility = account.getDistributedAccountAbility()
@@ -148,7 +148,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
         */
-        it('account_updateOsAccountDistributedInfo_test001', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test001 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
@@ -187,7 +187,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_updateOsAccountDistributedInfo_test002', 0,  async function (done)  {
+        it('account_updateOsAccountDistributedInfo_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async function (done)  {
             console.info('====>account_updateOsAccountDistributedInfo_test002 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -225,7 +225,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_updateOsAccountDistributedInfo_test003', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test003 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
@@ -256,7 +256,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_updateOsAccountDistributedInfo_test004', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test004 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -296,7 +296,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
-        it('account_updateOsAccountDistributedInfo_test005', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test005 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -341,7 +341,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
-        it('account_updateOsAccountDistributedInfo_test006', 0,  async function (done)  {
+        it('account_updateOsAccountDistributedInfo_test006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async function (done)  {
             console.info('====>account_updateOsAccountDistributedInfo_test006 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -382,7 +382,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
-        it('account_updateOsAccountDistributedInfo_test007', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test007 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -423,7 +423,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
-        it('account_updateOsAccountDistributedInfo_test008', 0,  async function (done)  {
+        it('account_updateOsAccountDistributedInfo_test008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async function (done)  {
             console.info('====>account_updateOsAccountDistributedInfo_test008 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -464,7 +464,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
-        it('account_updateOsAccountDistributedInfo_test009', 0, async function (done) {
+        it('account_updateOsAccountDistributedInfo_test009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info('====>account_updateOsAccountDistributedInfo_test009 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
@@ -501,7 +501,7 @@ export default function AccountTest() {
          * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
-        it('account_updateOsAccountDistributedInfo_test010', 0,  async function (done)  {
+        it('account_updateOsAccountDistributedInfo_test010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async function (done)  {
             console.info('====>account_updateOsAccountDistributedInfo_test010 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {

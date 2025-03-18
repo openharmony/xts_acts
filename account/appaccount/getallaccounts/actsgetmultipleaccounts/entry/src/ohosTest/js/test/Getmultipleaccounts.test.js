@@ -14,7 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsGetMultipleAccounts() {
   describe('ActsGetMultipleAccounts', function () {
@@ -45,7 +45,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.desc      : This application adds multiple account, other applications authorizes multiple accounts to this
     *                 application and this application obtains authorization
     */
-    it('ActsgetAllAccounts_0100', 0, async function (done) {
+    it('ActsgetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("====>ActsGetMultipleAccounts_0100 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -126,7 +126,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.desc      : This application adds multiple account, other applications authorizes multiple accounts to this
     *                 application and this application obtains authorization
     */
-    it('ActsgetAllAccounts_0200', 0, async function (done) {
+    it('ActsgetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("====>ActsgetAllAccounts_0200 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -207,7 +207,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : add null user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0100', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0100 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -233,7 +233,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : add null user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0200', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0100 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -257,7 +257,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : add one user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0300', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0300 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -296,7 +296,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : add one user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0400', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0400 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -334,7 +334,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : add three user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0500', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0500 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -391,7 +391,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : add three user in current app, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0600', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0600 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -447,7 +447,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : add three user in current app and delete second user, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0700', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0700 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -500,7 +500,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : add three user in current app and delete second user, then getAllAccessibleAccounts
     */
-    it('ActsGetAllAccessibleAccounts_0800', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0800 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -552,7 +552,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : twice getAllAccessibleAccounts with two user of current app
     */
-    it('ActsGetAllAccessibleAccounts_0900', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_0900 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -620,7 +620,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : twice getAllAccessibleAccounts with two user of current app
     */
-    it('ActsGetAllAccessibleAccounts_1000', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_1000 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -690,7 +690,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts callback
     * @tc.desc      : one user of current app and two users of other app
     */
-    it('ActsGetAllAccessibleAccounts_1100', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_1100 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -753,7 +753,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.name      : getAllAccessibleAccounts promise
     * @tc.desc      : one user of current app and two users of other app
     */
-    it('ActsGetAllAccessibleAccounts_1200', 0, async function (done) {
+    it('ActsGetAllAccessibleAccounts_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsGetAllAccessibleAccounts_1200 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();

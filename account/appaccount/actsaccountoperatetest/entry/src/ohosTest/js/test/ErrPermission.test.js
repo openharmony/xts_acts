@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const ERR_PERMISSION_DENIED = 201;
 export default function ActsAccountErrPermission() {
@@ -23,7 +23,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : setDataSyncEnabled callback
         * @tc.desc      : Set the added account to allow synchronization without permission
         */
-        it('ActsAccountErrPermission_0100', 0, async function (done) {
+        it('ActsAccountErrPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -48,7 +48,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : setDataSyncEnabled promise
         * @tc.desc      : Set the added account to allow synchronization without permission
         */
-        it('ActsAccountErrPermission_0200', 0, async function (done) {
+        it('ActsAccountErrPermission_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -73,7 +73,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : Check sync flag callback form
         * @tc.desc      : Check the added account synchronization without permission
         */
-        it('ActsAccountErrPermission_0300', 0, async function (done) {
+        it('ActsAccountErrPermission_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountErrPermission_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -98,7 +98,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : Check sync flag promise form
         * @tc.desc      : Check the added account synchronization without permission
         */
-        it('ActsAccountErrPermission_0400', 0, async function (done) {
+        it('ActsAccountErrPermission_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountErrPermission_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -122,7 +122,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : This application gets authorization after adding a single account without permission
         */
-        it('ActsAccountErrPermission_0500', 0, async function (done) {
+        it('ActsAccountErrPermission_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -149,7 +149,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : This application gets authorization after adding a single account without permission
         */
-        it('ActsAccountErrPermission_0600', 0, async function (done) {
+        it('ActsAccountErrPermission_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -178,7 +178,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : getAccountsByOwner callback
         * @tc.desc      : This application gets its own application information after adding an account without permission
         */
-        it('ActsAccountErrPermission_0700', 0, async function (done) {
+        it('ActsAccountErrPermission_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -205,7 +205,7 @@ export default function ActsAccountErrPermission() {
         * @tc.name      : getAccountsByOwner promise
         * @tc.desc      : This application gets its own application information after adding an account without permission
         */
-        it('ActsAccountErrPermission_0800', 0, async function (done) {
+        it('ActsAccountErrPermission_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountErrPermission_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

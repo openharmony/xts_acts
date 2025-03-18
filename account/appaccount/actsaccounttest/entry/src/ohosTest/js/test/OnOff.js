@@ -15,7 +15,7 @@
 import account from '@ohos.account.appAccount'
 import commonevent from '@ohos.commonEventManager'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsAccountChangeOnOff() {
     describe('ActsAccountChangeOnOff', async function () {
@@ -51,7 +51,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the additional information
         */
-        it('ActsAccountChangeOnOff_0100', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await testInit(); 
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0100 start====");
@@ -128,7 +128,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the associatal data
         */
-        it('ActsAccountChangeOnOff_0200', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0200 start====");
@@ -196,7 +196,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the credential
         */
-        it('ActsAccountChangeOnOff_0300', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0300 start====");
@@ -264,7 +264,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to delete
         *                 authorized account
         */
-        it('ActsAccountChangeOnOff_0400', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0400 start====");
@@ -336,7 +336,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to delete
         *                 the only authorized account
         */
-        it('ActsAccountChangeOnOff_0500', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0500 start====");
@@ -399,7 +399,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to cancel
         *                 authorized account   
         */
-        it('ActsAccountChangeOnOff_0600', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0600 start====");
@@ -479,7 +479,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to cancel
         *                 the only authorized account
         */
-        it('ActsAccountChangeOnOff_0700', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0700 start====");
@@ -546,7 +546,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.name      : Subscribe/unsubscribe to the change event of application
         * @tc.desc      : Receive account information after the app subscribes to itself and changes additional information
         */
-        it('ActsAccountChangeOnOff_0800', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_0800 start====");
             let dataMap = new Map();
             var appAccountManager = account.createAppAccountManager();
@@ -606,7 +606,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Receiving account information after adding two accounts to the app, subscribing to itself,
         *                 and changing one of the associatal data
         */
-        it('ActsAccountChangeOnOff_0900', 0, async function (done) {
+        it('ActsAccountChangeOnOff_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_0900 start====");
             let dataMap = new Map();
             var appAccountManager = account.createAppAccountManager();
@@ -681,7 +681,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.name      : Subscribe/unsubscribe to the change event of application
         * @tc.desc      : Repeat subscription account information changes, the subscription behavior is independent
         */
-        it('ActsAccountChangeOnOff_1000', 0, async function (done) {
+        it('ActsAccountChangeOnOff_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_1000 start====");
             let dataMapFir = new Map();
             let dataMapSec = new Map();
@@ -760,7 +760,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Subscription account information changes, where the bundleName in the parameter owners is
         *                 duplicated
         */
-        it('ActsAccountChangeOnOff_1100', 0, async function (done) {
+        it('ActsAccountChangeOnOff_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_1100 start====");
             let dataMap = new Map();
             var appAccountManager = account.createAppAccountManager();
@@ -823,7 +823,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.name      : Subscribe/unsubscribe to the change event of application
         * @tc.desc      : Repeatedly cancel the subscription after the subscription account information is changed
         */
-        it('ActsAccountChangeOnOff_1200', 0, async function (done) {
+        it('ActsAccountChangeOnOff_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_1200 start====");
             let dataMap = new Map();
             var appAccountManager = account.createAppAccountManager();
@@ -888,7 +888,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : There is an unauthorized bundleName in the subscription parameter owners array, and the
         *                 subscription fails
         */
-        it('ActsAccountChangeOnOff_1300', 0, async function (done) {
+        it('ActsAccountChangeOnOff_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat appAccountManager finish");
@@ -936,7 +936,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : There is a bundleName that does not exist in the subscription parameter owners array, and the
         *                 subscription fails
         */
-        it('ActsAccountChangeOnOff_1400', 0, async function (done) {
+        it('ActsAccountChangeOnOff_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountChangeOnOff_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat appAccountManager finish");

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
@@ -25,7 +25,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo callback form
         * @tc.desc      : Get additional information about an existing account
         */
-        it('ActsAccountSetGetExtraInfo_0100', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var extraInfoStr = "account_extrainfo_callback_first";
@@ -53,7 +53,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo promise form
         * @tc.desc      : Get additional information about an existing account
         */
-        it('ActsAccountSetGetExtraInfo_0200', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var extraInfoStr = "account_extrainfo_promise_first";
@@ -81,7 +81,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo callback form
         * @tc.desc      : Get additional information about a non-existent account
         */
-        it('ActsAccountSetGetExtraInfo_0300', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -99,7 +99,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo promise form
         * @tc.desc      : Get additional information about a non-existent account
         */
-        it('ActsAccountSetGetExtraInfo_0400', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -123,7 +123,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo callback form
         * @tc.desc      : Get additional information about deleted account
         */
-        it('ActsAccountSetGetExtraInfo_0500', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -149,7 +149,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo promise form
         * @tc.desc      : Get additional information about deleted account
         */
-        it('ActsAccountSetGetExtraInfo_0600', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -176,7 +176,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo callback form
         * @tc.desc      : Get additional information that is not set
         */
-        it('ActsAccountSetGetExtraInfo_0700', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -203,7 +203,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo promise form
         * @tc.desc      : Get additional information that is not set
         */
-        it('ActsAccountSetGetExtraInfo_0800', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -231,7 +231,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo callback form
         * @tc.desc      : Set account extension information that does not exist
         */
-        it('ActsAccountSetGetExtraInfo_0900', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -249,7 +249,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo promise form
         * @tc.desc      : Set account extension information that does not exist
         */
-        it('ActsAccountSetGetExtraInfo_1000', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -273,7 +273,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo callback form
         * @tc.desc      : Get additional information that has been set
         */
-        it('ActsAccountSetGetExtraInfo_1100', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -304,7 +304,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo promise form
         * @tc.desc      : Get additional information that has been set
         */
-        it('ActsAccountSetGetExtraInfo_1200', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -333,7 +333,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo callback form
         * @tc.desc      : Get repeated setting of different additional information
         */
-        it('ActsAccountSetGetExtraInfo_1300', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -367,7 +367,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo promise form
         * @tc.desc      : Get repeated setting of different additional information
         */
-        it('ActsAccountSetGetExtraInfo_1400', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -409,7 +409,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo callback form
         * @tc.desc      : Get repeated setting of same additional information
         */
-        it('ActsAccountSetGetExtraInfo_1500', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -443,7 +443,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : setAccountExtraInfo getAccountExtraInfo promise form
         * @tc.desc      : Get repeated setting of same additional information
         */
-        it('ActsAccountSetGetExtraInfo_1600', 0, async function (done) {
+        it('ActsAccountSetGetExtraInfo_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

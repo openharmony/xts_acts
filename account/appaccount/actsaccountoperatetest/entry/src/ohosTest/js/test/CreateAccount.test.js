@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { AccountErrCode } from './AccountErrCode.test.js'
 
 const NAMELIMIT = 512;
@@ -31,7 +31,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form without additional information
     */
-    it('ActsAccountCreateAccount_0100', 0, async function (done) {
+    it('ActsAccountCreateAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("====>ActsAccountCreateAccount_0100 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -52,7 +52,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form without additional information
     */
-    it('ActsAccountCreateAccount_0200', 0, async function (done) {
+    it('ActsAccountCreateAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("====>ActsAccountCreateAccount_0200 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -78,7 +78,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form with additional information
     */
-    it('ActsAccountCreateAccount_0300', 0, async function (done) {
+    it('ActsAccountCreateAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsAccountCreateAccount_0300 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -99,7 +99,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form with additional information
     */
-    it('ActsAccountCreateAccount_0400', 0, async function (done) {
+    it('ActsAccountCreateAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsAccountCreateAccount_0400 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -126,7 +126,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
-    it('ActsAccountCreateAccount_0500', 0, async function (done) {
+    it('ActsAccountCreateAccount_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_0500 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("account_name_callback_third", createAccountOptions, (err) => {
@@ -151,7 +151,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
-    it('ActsAccountCreateAccount_0600', 0, async function (done) {
+    it('ActsAccountCreateAccount_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_0600 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>add account for the first time ActsAccountCreateAccount_0600====");
@@ -173,7 +173,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : The account name exceeds the length limit of 512 characters
     */
-    it('ActsAccountCreateAccount_0700', 0, async function (done) {
+    it('ActsAccountCreateAccount_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_0700 start====");
       var limitAccountName = '';
       for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -193,7 +193,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : The account name exceeds the length limit of 512 characters
     */
-    it('ActsAccountCreateAccount_0800', 0, async function (done) {
+    it('ActsAccountCreateAccount_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_0800 start====");
       var limitAccountName = '';
       for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -217,7 +217,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
     */
-    it('ActsAccountCreateAccount_0900', 0, async function (done) {
+    it('ActsAccountCreateAccount_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_0900 start====");
       var limitAccountExtra = '';
       for (var i = 0; i < LENGTHLIMIT + 1; i++) {
@@ -241,7 +241,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
     */
-    it('ActsAccountCreateAccount_1000', 0, async function (done) {
+    it('ActsAccountCreateAccount_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1000 start====");
       var limitAccountExtra = '';
       for (var i = 0; i < LENGTHLIMIT + 1; i++) {
@@ -267,7 +267,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : The account name is an empty string
     */
-    it('ActsAccountCreateAccount_1100', 0, async function (done) {
+    it('ActsAccountCreateAccount_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1100 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("", createAccountOptions, (err) => {
@@ -283,7 +283,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : The account name is an empty string
     */
-    it('ActsAccountCreateAccount_1200', 0, async function (done) {
+    it('ActsAccountCreateAccount_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1200 start====");
       console.info("====>ActsAccountCreateAccount_1200 add account start====");
       var appAccountManager = account.createAppAccountManager();
@@ -302,7 +302,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Additional information is an empty string
     */
-    it('ActsAccountCreateAccount_1300', 0, async function (done) {
+    it('ActsAccountCreateAccount_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1300 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
@@ -322,7 +322,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Additional information is an empty string
     */
-    it('ActsAccountCreateAccount_1400', 0, async function (done) {
+    it('ActsAccountCreateAccount_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1400 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>add account ActsAccountCreateAccount_1400 start====");
@@ -340,7 +340,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : The account name is a special character such as a space
     */
-    it('ActsAccountCreateAccount_1500', 0, async function (done) {
+    it('ActsAccountCreateAccount_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1500 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
@@ -366,7 +366,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : The account name is a special character such as a space
     */
-    it('ActsAccountCreateAccount_1600', 0, async function (done) {
+    it('ActsAccountCreateAccount_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1600 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
@@ -388,7 +388,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : The account name is a special string
     */
-    it('ActsAccountCreateAccount_1700', 0, async function (done) {
+    it('ActsAccountCreateAccount_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1700 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
@@ -409,7 +409,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : The account name is a special string
     */
-    it('ActsAccountCreateAccount_1800', 0, async function (done) {
+    it('ActsAccountCreateAccount_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1800 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
@@ -435,7 +435,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Additional information is a special character such as a space
     */
-    it('ActsAccountCreateAccount_1900', 0, async function (done) {
+    it('ActsAccountCreateAccount_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_1900 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
@@ -456,7 +456,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Additional information is a special character such as a space
     */
-    it('ActsAccountCreateAccount_2000', 0, async function (done) {
+    it('ActsAccountCreateAccount_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_2000 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
@@ -476,7 +476,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Additional information is a special string
     */
-    it('ActsAccountCreateAccount_2100', 0, async function (done) {
+    it('ActsAccountCreateAccount_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_2100 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
@@ -497,7 +497,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Additional information is a special string
     */
-    it('ActsAccountCreateAccount_2200', 0, async function (done) {
+    it('ActsAccountCreateAccount_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_2200 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
@@ -517,7 +517,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Repeatedly add accounts with the same name and different additional information
     */
-    it('ActsAccountCreateAccount_2300', 0, async function (done) {
+    it('ActsAccountCreateAccount_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_2300 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("account_name_callback_same", createAccountOptions, (err) => {
@@ -541,7 +541,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Repeatedly add accounts with the same name and different additional information
     */
-    it('ActsAccountCreateAccount_2400', 0, async function (done) {
+    it('ActsAccountCreateAccount_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("====>ActsAccountCreateAccount_2400 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>add account for the first time ActsAccountCreateAccount_2400====");
@@ -563,7 +563,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : The account name reaches the limit of 512 characters
     */
-    it('ActsAccountCreateAccount_2500', 0, async function (done) {
+    it('ActsAccountCreateAccount_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
       console.info("====>ActsAccountCreateAccount_2500 start====");
       var limitName = '';
       for (var i = 0; i < NAMELIMIT; i++) {
@@ -587,7 +587,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : The account name reaches the limit of 512 characters
     */
-    it('ActsAccountCreateAccount_2600', 0, async function (done) {
+    it('ActsAccountCreateAccount_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
       console.info("====>ActsAccountCreateAccount_2600 start====");
       var nameLimit = '';
       for (var i = 0; i < NAMELIMIT; i++) {
@@ -616,7 +616,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Additional information reaches the limit of 1024 characters
     */
-    it('ActsAccountCreateAccount_2700', 0, async function (done) {
+    it('ActsAccountCreateAccount_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
       console.info("====>ActsAccountCreateAccount_2700 start====");
       var limitExtra = '';
       for (var i = 0; i < LENGTHLIMIT; i++) {
@@ -640,7 +640,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Additional information reaches the limit of 1024 characters
     */
-    it('ActsAccountCreateAccount_2800', 0, async function (done) {
+    it('ActsAccountCreateAccount_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
       console.info("====>ActsAccountCreateAccount_2800 start====");
       var extraLimit = '';
       for (var i = 0; i < LENGTHLIMIT; i++) {

@@ -14,7 +14,7 @@
  */
 import osAccount from '@ohos.account.osAccount'
 import distributedAccount from '@ohos.account.distributedAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const TIMEOUT = 1000;
 const ERR_PERMISSION_DENIED = 201;
@@ -29,7 +29,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : queryDistributedVirtualDeviceId callback
         * @tc.desc    : get distributed virtual device ID
         */
-        it('ActsOsAccountDeviceId_0100', 0, async function (done) {
+        it('ActsOsAccountDeviceId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountDeviceId_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -57,7 +57,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : queryDistributedVirtualDeviceId promise
         * @tc.desc    : get distributed virtual device ID
         */
-        it('ActsOsAccountDeviceId_0200', 0, async function (done) {
+        it('ActsOsAccountDeviceId_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountDeviceId_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -83,7 +83,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated callback
         * @tc.desc    : Verify query 0 user status is true
         */
-        it('ActsOsAccountCheckActived_0100', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -102,7 +102,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated promise
         * @tc.desc    : Verify query 0 user status is true
         */
-        it('ActsOsAccountCheckActived_0200', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -124,7 +124,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated callback
         * @tc.desc    : Authentication failed to query the active status of the user that does not exist
         */
-        it('ActsOsAccountCheckActived_0300', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0300 start");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -142,7 +142,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated promise
         * @tc.desc    : Authentication failed to query the active status of the user that does not exist
         */
-        it('ActsOsAccountCheckActived_0400', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0400 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -162,7 +162,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated callback
         * @tc.desc    : Verify that the query active state is not received with parameter type mismatch
         */
-        it('ActsOsAccountCheckActived_0500', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0500 start");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -183,7 +183,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated promise
         * @tc.desc    : Verify that the query active state is not received with parameter type mismatch
         */
-        it('ActsOsAccountCheckActived_0600', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0600 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -204,7 +204,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated callback
         * @tc.desc    : Verify that the query active state is not received with parameter undefined
         */
-        it('ActsOsAccountCheckActived_0700', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0700 start");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -224,7 +224,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountActivated promise
         * @tc.desc    : Verify that the query active state is not received with parameter undefined
         */
-        it('ActsOsAccountCheckActived_0800', 0, async function (done) {
+        it('ActsOsAccountCheckActived_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckActived_0800 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>ActsOsAccountCheckActived_0800 get os AccountManager finish====");
@@ -244,7 +244,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkMultiOsAccountEnabled callback
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
-        it('ActsOsAccountCheckMulty_0100', 0, async function (done) {
+        it('ActsOsAccountCheckMulty_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckMulty_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -263,7 +263,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkMultiOsAccountEnabled promise
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
-        it('ActsOsAccountCheckMulty_0200', 0, async function (done) {
+        it('ActsOsAccountCheckMulty_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckMulty_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -285,7 +285,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified callback
         * @tc.desc    : Verify that the initial state query is unlocked to false
         */
-        it('ActsOsAccountCheckVerified_0100', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>checkOsAccountVerified_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -304,7 +304,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified promise
         * @tc.desc    : Verify that the initial state query is unlocked to false
         */
-        it('ActsOsAccountCheckVerified_0200', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>checkOsAccountVerified_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -320,7 +320,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified callback
         * @tc.desc    : Verify that the initial state query 0 user is unlocked to false
         */
-        it('ActsOsAccountCheckVerified_0300', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0300 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -338,7 +338,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified promise
         * @tc.desc    : Verify that the initial state query 0 user is unlocked to false
         */
-        it('ActsOsAccountCheckVerified_0400', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0400 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -354,7 +354,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified callback
         * @tc.desc    : Verify query "100" user is unlocked failed
         */
-        it('ActsOsAccountCheckVerified_0500', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0500 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -376,7 +376,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified promise
         * @tc.desc    : Verify query "100" user is unlocked failed
         */
-        it('ActsOsAccountCheckVerified_0600', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0600 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -398,7 +398,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified callback
         * @tc.desc    : Verify query undefined user is unlocked failed
         */
-        it('ActsOsAccountCheckVerified_0700', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0700 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -420,7 +420,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified promise
         * @tc.desc    : Verify query undefined user is unlocked failed
         */
-        it('ActsOsAccountCheckVerified_0800', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0800 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -442,7 +442,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified callback
         * @tc.desc    : Verify query does not exist user unlock failed
         */
-        it('ActsOsAccountCheckVerified_0900', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_0900 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -460,7 +460,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountVerified promise
         * @tc.desc    : Verify query does not exist user unlock failed
         */
-        it('ActsOsAccountCheckVerified_1000', 0, async function (done) {
+        it('ActsOsAccountCheckVerified_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckVerified_1000 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -480,7 +480,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountTestable callback
         * @tc.desc    : check whether this OS account is a test OS account
         */
-        it('ActsOsAccountCheckTest_0100', 0, async function (done) {
+        it('ActsOsAccountCheckTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsOsAccountCheckTest_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -499,7 +499,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkOsAccountTestable promise
         * @tc.desc    : check whether this OS account is a test OS account
         */
-        it('ActsOsAccountCheckTest_0200', 0, async function (done) {
+        it('ActsOsAccountCheckTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsOsAccountCheckTest_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -517,7 +517,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountIsOsAccountUnlocked_0100', 0, async function (done) {
+        it('ActsOsAccountIsOsAccountUnlocked_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountIsOsAccountUnlocked_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");

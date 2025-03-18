@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 const NAMELIMIT = 512;
 const TIMEOUT = 5000;
 export default function ActsAccountDeleteAccount() {
@@ -24,7 +24,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete the added account in callback form
         */
-        it('ActsAccountDeleteAccount_0100', 0, async function (done) {
+        it('ActsAccountDeleteAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountDeleteAccount_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -45,7 +45,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete the added account in promise form
         */
-        it('ActsAccountDeleteAccount_0200',0,async function (done){
+        it('ActsAccountDeleteAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async function (done){
             console.info("====>ActsAccountDeleteAccount_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountAddAccount_0200 start====");
@@ -67,7 +67,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete unadded account in callback form
         */
-        it('ActsAccountDeleteAccount_0300', 0, async function (done) {
+        it('ActsAccountDeleteAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountDeleteAccount_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -84,7 +84,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete unadded account in promise form
         */
-        it('ActsAccountDeleteAccount_0400', 0, async function(done){
+        it('ActsAccountDeleteAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             console.info("====>ActsAccountDeleteAccount_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             try{
@@ -103,7 +103,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
         */
-        it('ActsAccountDeleteAccount_0500', 0, async function (done) {
+        it('ActsAccountDeleteAccount_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountDeleteAccount_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("deleteAccount_name_callback_third", "extraInfo_callback_third", (err)=>{
@@ -127,7 +127,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete the added account, the first time it can be deleted, the second time the deletion fails
         */
-        it('ActsAccountDeleteAccount_0600', 0, async function (done){
+        it('ActsAccountDeleteAccount_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done){
             console.info("====>ActsAccountDeleteAccount_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountAddAccount_0600 start====");
@@ -151,7 +151,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete the account name exceeds the length limit of 512 characters
         */
-        it('ActsAccountDeleteAccount_0700',0, async function (done){
+        it('ActsAccountDeleteAccount_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountDeleteAccount_0700 start====");
             var nameLimit = '';
             for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -171,7 +171,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete the account name exceeds the length limit of 512 characters
         */
-        it('ActsAccountDeleteAccount_0800', 0, async function (done){
+        it('ActsAccountDeleteAccount_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountDeleteAccount_0800 start====");
             var nameLimit = '';
             for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -195,7 +195,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete the account name is an empty string
         */
-        it('ActsAccountDeleteAccount_0900',0, async function (done){
+        it('ActsAccountDeleteAccount_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountDeleteAccount_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.deleteAccount("", (err)=>{
@@ -211,7 +211,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete the account name is an empty string
         */
-        it('ActsAccountDeleteAccount_1000', 0, async function (done){
+        it('ActsAccountDeleteAccount_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountDeleteAccount_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>delete Account ActsAccountDeleteAccount_1000 start====");

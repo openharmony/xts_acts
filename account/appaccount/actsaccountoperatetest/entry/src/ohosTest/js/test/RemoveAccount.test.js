@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 const NAMELIMIT = 512;
 const ERR_INVALID_PARAMETER = 12300002
 const ERR_ACCOUNT_NO_EXIST = 12300003
@@ -26,7 +26,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove the added account in callback form
         */
-        it('ActsAccountRemoveAccount_0100', 0, async function (done) {
+        it('ActsAccountRemoveAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountRemoveAccount_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -47,7 +47,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove the added account in promise form
         */
-        it('ActsAccountRemoveAccount_0200',0,async function (done){
+        it('ActsAccountRemoveAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async function (done){
             console.info("====>ActsAccountRemoveAccount_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountcreateAccount_0200 start====");
@@ -69,7 +69,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove unadded account in callback form
         */
-        it('ActsAccountRemoveAccount_0300', 0, async function (done) {
+        it('ActsAccountRemoveAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountRemoveAccount_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -86,7 +86,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove unadded account in promise form
         */
-        it('ActsAccountRemoveAccount_0400', 0, async function(done){
+        it('ActsAccountRemoveAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             console.info("====>ActsAccountRemoveAccount_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             try{
@@ -105,7 +105,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove the added account, the first time it can be deleted, the second time the deletion fails
         */
-        it('ActsAccountRemoveAccount_0500', 0, async function (done) {
+        it('ActsAccountRemoveAccount_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountRemoveAccount_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.createAccount("removeAccount_name_callback_third", createAccountOptions, (err)=>{
@@ -129,7 +129,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove the added account, the first time it can be deleted, the second time the deletion fails
         */
-        it('ActsAccountRemoveAccount_0600', 0, async function (done){
+        it('ActsAccountRemoveAccount_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done){
             console.info("====>ActsAccountRemoveAccount_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountcreateAccount_0600 start====");
@@ -153,7 +153,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove the account name exceeds the length limit of 512 characters
         */
-        it('ActsAccountRemoveAccount_0700',0, async function (done){
+        it('ActsAccountRemoveAccount_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountRemoveAccount_0700 start====");
             var nameLimit = '';
             for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -173,7 +173,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove the account name exceeds the length limit of 512 characters
         */
-        it('ActsAccountRemoveAccount_0800', 0, async function (done){
+        it('ActsAccountRemoveAccount_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountRemoveAccount_0800 start====");
             var nameLimit = '';
             for (var i = 0; i < NAMELIMIT + 1; i++) {
@@ -197,7 +197,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove the account name is an empty string
         */
-        it('ActsAccountRemoveAccount_0900',0, async function (done){
+        it('ActsAccountRemoveAccount_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountRemoveAccount_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.removeAccount("", (err)=>{
@@ -213,7 +213,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove the account name is an empty string
         */
-        it('ActsAccountRemoveAccount_1000', 0, async function (done){
+        it('ActsAccountRemoveAccount_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done){
             console.info("====>ActsAccountRemoveAccount_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>delete Account ActsAccountRemoveAccount_1000 start====");
