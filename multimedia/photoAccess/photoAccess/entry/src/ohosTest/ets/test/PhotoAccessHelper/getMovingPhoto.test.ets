@@ -405,8 +405,8 @@ export default function getMovingPhotoTest() {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CANEL_REQUEST_0100
-     * @tc.name      : cancel_request_001
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CANEL_REQUEST_0200
+     * @tc.name      : cancel_request_002
      * @tc.desc      : cancelRequest by error requestId,error code is 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
