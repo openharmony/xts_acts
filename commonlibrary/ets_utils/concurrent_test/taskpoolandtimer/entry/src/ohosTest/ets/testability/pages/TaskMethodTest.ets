@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import lazy { Calculator } from './Calculator';
+import { Calculator } from './Calculator';
 import { Worker, Worker1, Worker2 } from '../pages/Calculator'
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 import { HashMap, taskpool } from "@kit.ArkTS";

@@ -15,7 +15,8 @@
 import { describe, expect, it, afterEach, TestType, Size, Level, beforeAll, beforeEach, afterAll } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import { attemptClearTimer, createTimer, mainTimer, Timer } from '../testability/pages/TaskMethodTest1';
-import { sleep } from './TaskPoolTaskGroupLazyWorkerTest.test';
+import { sleep } from '../testability/pages/Utils';
+
 
 const timerIds: number[] = [];
 

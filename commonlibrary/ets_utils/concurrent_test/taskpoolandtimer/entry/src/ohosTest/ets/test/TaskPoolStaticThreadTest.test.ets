@@ -24,7 +24,7 @@ import {
   promiseCompute,
   promiseThen,
 } from '../testability/pages/TaskMethodTest';
-import { sleep } from './TaskPoolTaskGroupLazyWorkerTest.test';
+import { sleep } from '../testability/pages/Utils';
 
 const TASK_COUNT = 10;
 

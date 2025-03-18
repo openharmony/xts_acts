@@ -32,7 +32,7 @@ import {
   sendTaskData,
 } from '../testability/pages/TaskMethodTest';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { sleep } from './TaskPoolTaskGroupLazyWorkerTest.test';
+import { sleep } from '../testability/pages/Utils';
 
 const TASK_COUNT = 10;
 
