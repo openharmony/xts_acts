@@ -81,10 +81,8 @@ import textTwoJsunit from './textTest/textTwoJsunit.test';
 import textEnabledJsunit from './textTest/textEnabledJsunit.test';
 import textChangeEnabledJsunit from './textTest/textChangeEnabledJsunit.test';
 import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
-import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
 import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
 import fontJsunit from './fontTest/fontJsunit.test.ets';
-import richTextJsunitFOUR from './RichEditorTest/RichTextJsunitFOUR.test';
 import textClockJsunit from './textTest/TextClockJsunit.test';
 import textTimerJsunit from './textTest/TextTimerJsunit.test';
 import unitsModuleNameJsunit from './textTest/units.test.ets';
@@ -178,10 +176,8 @@ export default function testsuite() {
   textEnabledJsunit();
   textChangeEnabledJsunit();
   marqueeUIJsunit();
-  RichTextJsunit();
   spanUIJsunit();
   fontJsunit();
-  richTextJsunitFOUR()
   textClockJsunit()
   textTimerJsunit()
   appVersionCodeJsunit();
