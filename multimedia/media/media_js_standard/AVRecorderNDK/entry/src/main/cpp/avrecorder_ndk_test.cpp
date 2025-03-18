@@ -359,7 +359,7 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     }
     napi_value res;
     napi_create_int32(env, result, &res);
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder out");
+    OH_LOG_INFO(LOG_APP, "AVRecorder prepare completed");
     return res;
 }
 
