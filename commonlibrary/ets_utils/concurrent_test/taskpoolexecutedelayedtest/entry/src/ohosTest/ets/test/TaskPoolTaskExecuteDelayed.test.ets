@@ -49,7 +49,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskExecuteDelayed1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskExecuteDelayed1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info('testTag', '%{public}s', 'it begin');
 
@@ -88,7 +88,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskExecuteDelayed1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskExecuteDelayed1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info('testTag', '%{public}s', 'it begin');
 
@@ -128,7 +128,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskExecuteDelayed1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskExecuteDelayed1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info('testTag', '%{public}s', 'it begin');
 
@@ -184,7 +184,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskExecuteDelayed1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskExecuteDelayed1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info('testTag', '%{public}s', 'it begin');
 
@@ -223,7 +223,7 @@ export default function taskPoolTaskExecuteDelayedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskExecuteDelayed1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskExecuteDelayed1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info('testTag', '%{public}s', 'it begin');
 
