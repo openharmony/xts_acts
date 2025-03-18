@@ -49,6 +49,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getBundleName();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getBundleName_17000002 error is: ${JSON.stringify(e)}`);
@@ -95,6 +96,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getBounds();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getBounds_17000002 error is: ${JSON.stringify(e)}`);
@@ -140,6 +142,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getTitle();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getTitle_17000002 error is: ${JSON.stringify(e)}`);
@@ -185,6 +188,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getWindowMode();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getWindowMode_17000002 error is: ${JSON.stringify(e)}`);
@@ -230,6 +234,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.isFocused();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_isFocused_17000002 error is: ${JSON.stringify(e)}`);
@@ -275,6 +280,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.isActive();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_isActive_17000002 error is: ${JSON.stringify(e)}`);
@@ -320,6 +326,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.focus();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_focus_17000002 error is: ${JSON.stringify(e)}`);
@@ -365,6 +372,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.moveTo(100, 100)
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_moveTo_17000002 error is: ${JSON.stringify(e)}`);
@@ -408,8 +416,6 @@ export default function uitestUiWindowErrorTest() {
           expect(e.code).assertEqual(InvisibleErrorCode);
         }
       }
-
-
       await sleep(waitUiReadyMs);
       console.log(`${TestTag}, test_UiWindow_moveTo_17000004 end`);
     })
@@ -444,6 +450,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.resize(100, 100, ResizeDirection.LEFT);
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_resize_17000002 error is: ${JSON.stringify(e)}`);
@@ -523,6 +530,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.split();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_split_17000002 error is: ${JSON.stringify(e)}`);
@@ -603,6 +611,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.maximize();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_maximize_17000002 error is: ${JSON.stringify(e)}`);
@@ -681,6 +690,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.minimize();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_minimize_17000002 error is: ${JSON.stringify(e)}`);
@@ -758,6 +768,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.resume();
         await driver.delayMs(waitUiReadyMs);
       }catch (e) {
@@ -837,6 +848,7 @@ export default function uitestUiWindowErrorTest() {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.close();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_close_17000002 error is: ${JSON.stringify(e)}`);
