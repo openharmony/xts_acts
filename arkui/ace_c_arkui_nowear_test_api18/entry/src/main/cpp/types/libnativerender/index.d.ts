@@ -14,3 +14,5 @@
  */
 
 export const calendarPickerTest: (a: string) => void;
+
+export const testCalendarPickerDate: (a: string) => void;

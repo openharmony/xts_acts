@@ -1,6 +1,8 @@
 {
   "src": [
     "MainAbility/pages/index/index",
+    "MainAbility/pages/calendarPickerDialog/calendarPickerDialogStartEndTest",
+    "MainAbility/pages/calendarPicker/calendarPickerStartEndTest",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
     "MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday",
