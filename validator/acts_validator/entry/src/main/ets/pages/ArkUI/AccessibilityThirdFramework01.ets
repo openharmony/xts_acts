@@ -16,7 +16,7 @@ let params = LocalStorage.getShared();
 @Component
 struct AccessibilityThirdFramework {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'AccessibilityProperty';
+  @State name: string = 'AccessibilityThirdFramework01';
   @State StepTips: string = '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从SubWind组件开始依次从上到下滑动观察屏幕朗读情况\n'+'\n'+
     '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”button1xcomponentId1“\n' +
     '2、绿框绘制在组件上，屏幕朗读朗读“button2xcomponentId1”\n' +
