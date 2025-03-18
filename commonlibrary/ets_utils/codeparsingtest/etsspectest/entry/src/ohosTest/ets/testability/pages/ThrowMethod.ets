@@ -33,7 +33,7 @@ export function throwUsers(username: string, age: number): void {
 
 }
 
-export function positiveNumbers(numbers: number[]) : void{
+export function positiveNumbers(numbers: number[]): void {
   for (let i = 0; i < numbers.length; i++) {
     const num = numbers[i];
     if (num == 0) {

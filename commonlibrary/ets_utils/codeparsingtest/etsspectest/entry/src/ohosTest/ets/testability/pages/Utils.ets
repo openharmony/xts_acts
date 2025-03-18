@@ -46,15 +46,16 @@ export function update(x: number): number {
 }
 
 let count = 0;
+
 export function shouldContinue() {
   count++;
   return count <= 3;
 }
 
-export interface MyObject{
-  a:number;
-  b:number;
-  c:number;
+export interface MyObject {
+  a: number;
+  b: number;
+  c: number;
 }
 
 export class MyClass {
@@ -77,4 +78,10 @@ export function getNumber() {
     }
     return 0;
   };
+}
+
+export interface myObject {
+  name: string;
+  age: number;
+  like: number[];
 }
