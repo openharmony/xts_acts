@@ -20,6 +20,13 @@
 
 #define LOG_DOMIN 0x3200
 #define LOG_TAG "MY_NDKDEMO_"
+#define FOCUS_MODE_INDEX 0
+#define CAMERA_DEVICE_INDEX 1
+#define SCENE_MODE_INDEX 2
+#define PREVIEW_ID_INDEX 3
+#define PHOTO_ID_INDEX 4
+#define VIDEO_FRAME_WIDTH_INDEX 6
+#define VIDEO_FRAME_HHEIGHT_INDEX 7
 
 
 #include <multimedia/player_framework/avplayer.h>
@@ -538,30 +545,29 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     napi_value args[8] = {nullptr};
     size_t typeLen = 0;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
     int32_t focusMode;
-    napi_get_value_int32(env, args[argc - 8], &focusMode);
+    napi_get_value_int32(env, args[FOCUS_MODE_INDEX], &focusMode);
 
     uint32_t cameraDeviceIndex;
-    napi_get_value_uint32(env, args[argc - 7], &cameraDeviceIndex);
+    napi_get_value_uint32(env, args[CAMERA_DEVICE_INDEX], &cameraDeviceIndex);
 
     uint32_t sceneMode;
-    napi_get_value_uint32(env, args[argc - 6], &sceneMode);
+    napi_get_value_uint32(env, args[SCENE_MODE_INDEX], &sceneMode);
 
     char *previewId = nullptr;
-    napi_get_value_string_utf8(env, args[argc - 5], nullptr, 0, &typeLen);
+    napi_get_value_string_utf8(env, args[PREVIEW_ID_INDEX], nullptr, 0, &typeLen);
     previewId = new char[typeLen + 1];
-    napi_get_value_string_utf8(env, args[argc - 5], previewId, typeLen + 1, &typeLen);
+    napi_get_value_string_utf8(env, args[PREVIEW_ID_INDEX], previewId, typeLen + 1, &typeLen);
 
     char *photoId = nullptr;
-    napi_get_value_string_utf8(env, args[argc - 4], nullptr, 0, &typeLen);
+    napi_get_value_string_utf8(env, args[PHOTO_ID_INDEX], nullptr, 0, &typeLen);
     photoId = new char[typeLen + 1];
-    napi_get_value_string_utf8(env, args[argc - 4], photoId, typeLen + 1, &typeLen);
+    napi_get_value_string_utf8(env, args[PHOTO_ID_INDEX], photoId, typeLen + 1, &typeLen);
 
     uint32_t videoFrameWidth;
-    napi_get_value_uint32(env, args[argc - 2], &videoFrameWidth);
+    napi_get_value_uint32(env, args[VIDEO_FRAME_WIDTH_INDEX], &videoFrameWidth);
     uint32_t videoFrameHeight;
-    napi_get_value_uint32(env, args[argc - 1], &videoFrameHeight);
+    napi_get_value_uint32(env, args[VIDEO_FRAME_HHEIGHT_INDEX], &videoFrameHeight);
 
     // 获取surfaceId
     OHNativeWindow *window;
