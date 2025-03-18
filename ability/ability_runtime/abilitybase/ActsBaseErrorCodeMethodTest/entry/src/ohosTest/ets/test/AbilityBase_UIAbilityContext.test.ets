@@ -26,8 +26,8 @@ import { bundleManager } from '@kit.MDMKit';
 
 let context = getContext(this) as common.UIAbilityContext;;
 
-export default function AbilityBaseUIAbilityContext() {
-  describe('AbilityBaseUIAbilityContext', () => {
+export default function openLinkTest() {
+  describe('AbilityBaseUIAbilityContextTest', () => {
     beforeAll(() => {
       context = globalThis.context;
     });

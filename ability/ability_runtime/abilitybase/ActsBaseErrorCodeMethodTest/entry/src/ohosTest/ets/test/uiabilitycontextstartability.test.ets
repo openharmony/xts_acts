@@ -20,9 +20,9 @@ import { BusinessError, systemParameterEnhance } from '@kit.BasicServicesKit';
 let context: common.UIAbilityContext
 let mpEnable: string;
 let npEnable: string;
-export default function ActsStartAbilityErrorTest() {
+export default function openLinkTest() {
   describe('ActsStartAbilityErrorTest', () => {
-    let TAG = 'ActsWantAgentTest ===>';
+    let TAG = 'ActsStartAbilityErrorTest ===>';
     beforeAll(()=>{
       context = AppStorage.get('context') as common.UIAbilityContext;
       try {
@@ -86,7 +86,7 @@ export default function ActsStartAbilityErrorTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:'com.acts.actsbaseerrrocodemethodtest',
+            bundleName:'com.acts.ability.baseerrorappclonerely',
             abilityName:'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true
@@ -168,7 +168,7 @@ export default function ActsStartAbilityErrorTest() {
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0100 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0600 ${err?.code}`);
           expect().assertFail();
           done();
         }
@@ -179,7 +179,7 @@ export default function ActsStartAbilityErrorTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0300
+     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0800
      * @tc.name   : To verify StartAbility with option ErrorCode.
      * @tc.desc   : Expect: 16000078
      * @tc.type   : Function
@@ -187,11 +187,11 @@ export default function ActsStartAbilityErrorTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0800', 0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0800 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:'com.acts.actsbaseerrrocodemethodtest',
+            bundleName:'com.acts.ability.baseerrorappclonerely',
             abilityName:'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true
@@ -200,12 +200,12 @@ export default function ActsStartAbilityErrorTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0800 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000078);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0800 ${err?.code}`);
           expect().assertFail();
           done();
         }
@@ -228,7 +228,7 @@ export default function ActsStartAbilityErrorTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:'com.acts.ability.baseerrorrely',
+            bundleName:'com.acts.ability.multiinstaceerrcodetest',
             abilityName:'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true
@@ -237,12 +237,12 @@ export default function ActsStartAbilityErrorTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0500 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1000 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000080);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0500 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1000 ${err?.code}`);
           expect().assertFail();
           done();
         }
@@ -344,12 +344,8 @@ export default function ActsStartAbilityErrorTest() {
           expect().assertFail();
           done();
         }
-      }else if(npEnable == 'false'){
-        console.error(`${TAG} startChildProcess error, current device not support.`);
-        done();
       }else{
         console.error(`${TAG} startChildProcess error, current device not set param value.`);
-        expect().assertFail();
         done();
       }
     })
@@ -415,7 +411,7 @@ export default function ActsStartAbilityErrorTest() {
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1500 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1600 ${err?.code}`);
           expect().assertFail();
           done();
         }
@@ -428,7 +424,7 @@ export default function ActsStartAbilityErrorTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_1700
      * @tc.name   : To verify StartAbility with option ErrorCode.
-     * @tc.desc   : Expect: 16000072
+     * @tc.desc   : Expect: 16000004
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 3
@@ -440,9 +436,6 @@ export default function ActsStartAbilityErrorTest() {
           context.startAbility({
             bundleName:'com.acts.ability.baseerrorrely',
             abilityName:'EntryAbility1',
-            parameters: {
-              [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_0"
-            }
           }, {
             windowLeft: 20,
             windowTop: 20
@@ -452,7 +445,7 @@ export default function ActsStartAbilityErrorTest() {
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1500 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1700 ${err?.code}`);
           expect().assertFail();
           done();
         }
@@ -462,37 +455,6 @@ export default function ActsStartAbilityErrorTest() {
       }
     })
 
-    /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_2000
-     * @tc.name   : To verify StartAbility with option ErrorCode.
-     * @tc.desc   : Expect: 16000072
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityBase_StartAbilityError_2000', 0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_2000 start');
-        try {
-          context.openAtomicService("com.ohos.errcode", {
-            flags:wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
-            parameters:{
-             "KEY":"VALUE"
-            }
-          }).then((data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_2000 ${data}`);
-            try{expect().assertFail();}catch(e){}
-            done();
-          }).catch((err: BusinessError)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_2000 ${err?.code}`);
-            try{expect(err?.code).assertEqual(16000003);}catch(e){}
-            done();
-          })
-        } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_2000 catch ${err?.code}`);
-          try{expect().assertFail();}catch(e){}
-          done();
-        }
-    })
   })
 }
 

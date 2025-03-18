@@ -14,7 +14,7 @@
                 "ActsBaseErrorCodeMethodTest.hap",
                 "ActsmultiInstancEerrCodeMain.hap",
                 "ActsBaseErrorRely.hap",
-				"ActsBaseErrorAppcloneRely.hap"
+                "ActsBaseErrorAppcloneRely.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

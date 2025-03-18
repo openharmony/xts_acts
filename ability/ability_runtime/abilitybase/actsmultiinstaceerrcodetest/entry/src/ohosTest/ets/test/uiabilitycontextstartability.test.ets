@@ -25,7 +25,7 @@ let context: common.UIAbilityContext
 export default function openLinkTest() {
   describe('ActsStartAbilityErrorTest', () => {
 
-    let TAG = 'ActsWantAgentTest ===>';
+    let TAG = 'ActsStartAbilityErrorTest ===>';
 
     beforeAll(()=>{
       context = AppStorage.get('context') as common.UIAbilityContext;

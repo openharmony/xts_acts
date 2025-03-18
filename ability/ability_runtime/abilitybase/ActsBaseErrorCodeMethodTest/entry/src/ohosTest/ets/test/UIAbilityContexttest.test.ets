@@ -30,7 +30,7 @@ let mpEnable: string;
 let context:common.UIAbilityContext;
 let device: string;
 
-export default function AbilityUIAbilityContextTest() {
+export default function UIAbilityContextTest() {
   describe('AbilityUIAbilityContextTest', () => {
 
     let TAG = 'AbilityUIAbilityContextTest ===>';
