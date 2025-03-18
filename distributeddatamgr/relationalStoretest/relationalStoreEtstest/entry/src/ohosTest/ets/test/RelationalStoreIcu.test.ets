@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -63,7 +63,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuInsert0100', 0, async (done:Function) => {
+        it('testRdbStoreIcuInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuInsert0100 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -128,7 +128,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuInsert0200', 0, async (done:Function) => {
+        it('testRdbStoreIcuInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuInsert0200 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -200,7 +200,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuInsert0300', 0, async (done:Function) => {
+        it('testRdbStoreIcuInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuInsert0300 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -258,7 +258,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuUpdate0100', 0, async (done:Function) => {
+        it('testRdbStoreIcuUpdate0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuUpdate0100 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -362,7 +362,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuUpdate0200', 0, async (done:Function) => {
+        it('testRdbStoreIcuUpdate0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuUpdate0200 ";
             console.info(TAGTEST + "************* testRdbStoreIcuUpdate0100 start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -449,7 +449,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuDelete0100', 0, async (done:Function) => {
+        it('testRdbStoreIcuDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuDelete0100 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -541,7 +541,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuDelete0200', 0, async (done:Function) => {
+        it('testRdbStoreIcuDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuDelete0200 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -626,7 +626,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0100', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0100 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -691,7 +691,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0102', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0102 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -757,7 +757,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0103', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0103 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -814,7 +814,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0104', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0104 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -871,7 +871,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0200', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0200 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于中文本文本的分词和索引。')";
@@ -936,7 +936,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0202', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0202', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0202 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于中文本文本的分词和索引。')";
@@ -994,7 +994,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0203', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0203', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0203 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于中文本文本的分词和索引。')";
@@ -1052,7 +1052,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0204', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0204', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0204 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于中文本文本的分词和索引。')";
@@ -1109,7 +1109,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0300', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0300 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -1174,7 +1174,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0302', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0302', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0300 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
@@ -1232,7 +1232,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0400', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0400 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '峻岭欣欣向荣崇山')";
@@ -1289,7 +1289,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0500', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0500 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行。')";
@@ -1346,7 +1346,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0600', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0600 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行，行行出状元，谚语。比喻不论干哪一行，只要热爱本职工作，都能做出优异的成绩。')";
@@ -1403,7 +1403,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0700', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0700 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行，行行出状元，谚语。比喻不论干哪一行，只要热爱本职工作，都能做出优异的成绩。')";
@@ -1461,7 +1461,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0800', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0800 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行，行行出 状元，谚语。比喻不论干哪一行，只要热爱本职工作，都能做出优异的成绩。')";
@@ -1518,7 +1518,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery0900', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery0900 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行，行行出状元，谚语。比喻不论干哪一行，只要热爱本职工作，都能做出优异的成绩。')";
@@ -1575,7 +1575,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery1000', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery1000 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '三百六十行，行行出状元，【谚语】。比喻不论干哪一行，只要热爱本职工作，都能做出优异的成绩。')";
@@ -1632,7 +1632,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery1100', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery1100 ";
             console.info(TAGTEST + "*************  start *************");
 
@@ -1679,7 +1679,7 @@ export default function RelationalStoreIcu() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreIcuQuery1200', 0, async (done:Function) => {
+        it('testRdbStoreIcuQuery1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuQuery1200 ";
             console.info(TAGTEST + "*************  start *************");
 

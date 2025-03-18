@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -65,7 +65,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0100', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0100 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个文档，用于,测试,中文本文本的分词和索引。')";
@@ -108,7 +108,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0200', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0200 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', 'test123')";
@@ -161,7 +161,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0300', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0300 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是1一个测试文档,1,用于测试中文本文本的分词和索引。')";
@@ -224,7 +224,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0400', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0400 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试,测试test1,文档，用于测试中文本文本的分词和索引。')";
@@ -267,7 +267,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0500', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0500 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个,测试 test 1,文档，用于测试中文本文本的分词和索引。')";
@@ -322,7 +322,7 @@ export default function RelationalStoreNoneTokenizer() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreNoneTokenizerQuery0600', 0, async (done:Function) => {
+        it('testRdbStoreNoneTokenizerQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreNoneTokenizerQuery0600 ";
             console.info(TAGTEST + "*************  start *************");
             const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档,测试《test》1,用于测试中文本文本的分词和索引。')";

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import common from '@ohos.app.ability.common';
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,7 +66,7 @@ export default function relationalStoreEtsTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreGetvalueEtstest0100', 0, async (done: Function) => {
+    it('testRdbStoreGetvalueEtstest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreGetvalueEtstest0100 start *************");
       let u8 = new Uint8Array()
       const valueBucket: relationalStore.ValuesBucket = {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
@@ -59,7 +59,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_0900
      * @tc.desc RelationalStore store getRdbStore test
      */
-    it('testRdbStore0001', 0, async function (done) {
+    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0001 start *************");
         await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (store) => {
             try {
@@ -82,7 +82,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1000
      * @tc.desc RelationalStore store getRdbStore and create table
      */
-    it('testRdbStore0002', 0, async function (done) {
+    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = data_Rdb.getRdbStore(context, STORE_CONFIG);
         await storePromise.then(async (store) => {
@@ -107,7 +107,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1100
      * @tc.desc RelationalStore store getRdbStore with wrong path
      */
-    it('testRdbStore0003', 0, async function (done) {
+    it('testRdbStore0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0003 start *************");
 
         let storeConfig = {
@@ -138,7 +138,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1200
      * @tc.desc RelationalStore store deleteRdbStore
      */
-    it('testRdbStore0004', 0, async function (done) {
+    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0004 start *************");
         try {
             let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
@@ -159,7 +159,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1300
      * @tc.desc RelationalStore store deleteRdbStore
      */
-    it('testRdbStore0005', 0, async function (done) {
+    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0005 start *************");
         try {
             let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
@@ -181,7 +181,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1400
      * @tc.desc RelationalStore store getRdbStore test
      */
-    it('testRdbStore0006', 0, async function (done) {
+    it('testRdbStore0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0006 start *************");
         let rdbstore = null;
         try {
@@ -210,7 +210,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1500
      * @tc.desc RelationalStore store getRdbStore test
      */
-    it('testRdbStore0007', 0, async function (done) {
+    it('testRdbStore0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0007 start *************");
         let rdbstore = null;
         try {
@@ -239,7 +239,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1600
      * @tc.desc RelationalStore store deleteRdbStore test
      */
-    it('testRdbStore0008', 0, async function (done) {
+    it('testRdbStore0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0008 start *************");
         data_Rdb.getRdbStore(context, STORE_CONFIG, async (err, data) => {
             console.info(TAG + "getRdbStore finish");
@@ -260,7 +260,7 @@ describe('relationalStoreTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1700
      * @tc.desc RelationalStore store deleteRdbStore test
      */
-    it('testRdbStore0009', 0, async function (done) {
+    it('testRdbStore0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0009 start *************");
         data_Rdb.getRdbStore(contextApplication, STORE_CONFIG, async (err, data) => {
             console.info(TAG + "getRdbStore finish");
@@ -281,7 +281,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Version_0010', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Version_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0010 start *************");
         let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
 
@@ -314,7 +314,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Version_0020', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Version_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0020 start *************");
         let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
 
@@ -352,7 +352,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0010', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 start *************");
         const STORE_CONFIGS1 = {
             name: "rdbstore10.db",
@@ -389,7 +389,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0020', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0020 start *************");
         const STORE_CONFIGS1 = {
             name: "rdbstore20.db",
@@ -426,7 +426,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0030', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0030 start *************");
         const STORE_CONFIGS1 = {
             name: "rdbstore30.db",
@@ -463,7 +463,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0040', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0040 start *************");
         const STORE_CONFIGS2 = {
             name: "rdbstore40.db",
@@ -500,7 +500,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0050', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0050 start *************");
         const STORE_CONFIGS2 = {
             name: "rdbstore50.db",
@@ -537,7 +537,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0060', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0060 start *************");
         const STORE_CONFIGS1 = {
             name: "rdbstore60.db",
@@ -575,7 +575,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Different_Version_0070', 0, async function () {
+    it('SUB_DDM_RelationalStore_Different_Version_0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0070 start *************");
         const STORE_CONFIGS3 = {
             name: "rdbstore70.db",
@@ -613,7 +613,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Same_Version_0010', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Same_Version_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0010 start *************");
         let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
         console.info(`SUB_DDM_RelationalStore_Same_Version_0010 S1 Get RdbStore successfully.`);
@@ -647,7 +647,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Same_Version_0020', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Same_Version_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0020 start *************");
         const STORE_CONFIGS2 = {
             name: "rdbstore.db",
@@ -685,7 +685,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Same_Version_0030', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Same_Version_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0030 start *************");
         const STORE_CONFIGS3 = {
             name: "rdbstore.db",
@@ -722,7 +722,7 @@ describe('relationalStoreTest', function () {
      * @tc.size MediumTest
      * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_Same_Version_0040', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_Same_Version_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0040 start *************");
         const STORE_CONFIGS4 = {
             name: "rdbstore.db",

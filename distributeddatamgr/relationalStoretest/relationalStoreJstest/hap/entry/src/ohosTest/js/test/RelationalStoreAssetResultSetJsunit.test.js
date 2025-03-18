@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import ability_featureAbility from '@ohos.ability.featureAbility'
 
@@ -157,8 +157,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0100
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAsset0001', 0, async function (done) {
+        it('testGetAsset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAsset0001 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -198,8 +201,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0200
          * @tc.desc resultSet getAsset insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAsset0002', 0, async function (done) {
+        it('testGetAsset0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAsset0002 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -230,8 +236,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0300
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAsset0003', 0, async function (done) {
+        it('testGetAsset0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAsset0003 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -259,8 +268,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0400
          * @tc.desc resultSet getAsset delete test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAsset0004', 0, async function (done) {
+        it('testGetAsset0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testGetAsset0004 start *************");
             let assets5 = [asset5];
             const valuesBucket = {
@@ -292,8 +304,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0500
          * @tc.desc resultSet getAsset ABNORMAL test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-         it('testGetAsset0005', 0, async function (done) {
+         it('testGetAsset0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testGetAsset0005 start *************");
             let assets6 = [asset6];
             const valuesBucket = {
@@ -325,8 +340,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0600
          * @tc.desc resultSet getAsset DOWNLOADING test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-         it('testGetAsset0006', 0, async function (done) {
+         it('testGetAsset0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testGetAsset0006 start *************");
             let assets7 = [asset7];
             const valuesBucket = {
@@ -358,8 +376,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0700
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testAssetNoStatus0010', 0, async function (done) {
+        it('testAssetNoStatus0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testAssetNoStatus0010 start *************");
             await createStatusTest();
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -390,8 +411,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0800
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testAssetStatusUndefined0010', 0, async function (done) {
+        it('testAssetStatusUndefined0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testAssetStatusUndefined0010 start *************");
             const asset = {
                 name: "name4",
@@ -435,8 +459,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0900
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testAssetStatusNull0010', 0, async function (done) {
+        it('testAssetStatusNull0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testAssetStatusNull0010 start *************");
             const asset = {
                 name: "name4",
@@ -480,8 +507,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1000
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAssetUndefined', 0, async function (done) {
+        it('testGetAssetUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testGetAssetUndefined start *************");
             const asset = {
                 name: undefined,
@@ -510,8 +540,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1100
          * @tc.desc resultSet getAsset normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAssetNull', 0, async function (done) {
+        it('testGetAssetNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testGetAssetNull start *************");
             const asset = {
                 name: null,
@@ -540,8 +573,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAssets normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1200
          * @tc.desc resultSet getAssets normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAssets0001', 0, async function (done) {
+        it('testGetAssets0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAssets0001 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -574,8 +610,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAssets normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1300
          * @tc.desc resultSet getAssets normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAssets0002', 0, async function (done) {
+        it('testGetAssets0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAssets0002 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -625,8 +664,11 @@ export default function relationalStoreAssetResultSetTest() {
          * @tc.name resultSet getAssets normal test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1400
          * @tc.desc resultSet getAssets normal test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testGetAssets0003', 0, async function (done) {
+        it('testGetAssets0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await createTest();
             console.log(TAG + "************* testGetAssets0003 start *************");
             let predicates = await new data_relationalStore.RdbPredicates("test")

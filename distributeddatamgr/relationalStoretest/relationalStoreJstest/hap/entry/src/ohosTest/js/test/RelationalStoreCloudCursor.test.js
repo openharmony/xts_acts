@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility'
 
@@ -107,7 +107,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0001', 0, async function (done) {
+        it('testRdbQueryWithCursor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0001 start *************");
             let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
@@ -142,7 +142,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0002', 0, async function (done) {
+        it('testRdbQueryWithCursor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0002 start *************");
     
             let predicates = new relationalStore.RdbPredicates("query_tb");
@@ -180,7 +180,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0003', 0, async function (done) {
+        it('testRdbQueryWithCursor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0003 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0003 rdbStore == undefined");
@@ -227,7 +227,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0004', 0, async function (done) {
+        it('testRdbQueryWithCursor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0004 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0004 rdbStore == undefined");
@@ -264,7 +264,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0005', 0, async function (done) {
+        it('testRdbQueryWithCursor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0005 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0005 rdbStore == undefined");
@@ -302,7 +302,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-         it('testRdbCleanDirtyData0001', 0, async function (done) {
+         it('testRdbCleanDirtyData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbCleanDirtyData0001 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0001 rdbStore == undefined");
@@ -330,7 +330,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbCleanDirtyData0002', 0, async function (done) {
+        it('testRdbCleanDirtyData0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbCleanDirtyData0002 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0002 rdbStore == undefined");
@@ -357,7 +357,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbCleanDirtyData0003', 0, async function (done) {
+        it('testRdbCleanDirtyData0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbCleanDirtyData0003 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0003 rdbStore == undefined");
@@ -384,7 +384,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-         it('testRdbCleanDirtyData0004', 0, async function (done) {
+         it('testRdbCleanDirtyData0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* testRdbCleanDirtyData0004 start *************");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0004 rdbStore == undefined");
@@ -411,7 +411,7 @@ export default function relationalStoreCloudCursor() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testRdbQueryWithCursor0006', 0, async function (done) {
+    it('testRdbQueryWithCursor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.log(TAG + "************* testRdbQueryWithCursor0006 start *************");
         let predicates = new relationalStore.RdbPredicates("query_tb");
         predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
@@ -448,7 +448,7 @@ export default function relationalStoreCloudCursor() {
        * @tc.type Function
        * @tc.level Level 3
        */
-      it('testRdbQueryWithCursor0007', 0, async function (done) {
+      it('testRdbQueryWithCursor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.log(TAG + "************* testRdbQueryWithCursor0007 start *************");
         let predicates = new relationalStore.RdbPredicates("query_tb");
         predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
@@ -485,7 +485,7 @@ export default function relationalStoreCloudCursor() {
        * @tc.type Function
        * @tc.level Level 3
        */
-      it('testRdbQueryWithCursor0008', 0, async function (done) {
+      it('testRdbQueryWithCursor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.log(TAG + "************* testRdbQueryWithCursor0008 start *************");
         let predicates = new relationalStore.RdbPredicates("query_tb");
         predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
@@ -523,7 +523,7 @@ export default function relationalStoreCloudCursor() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('testRdbQueryWithCursor0009', 0, async function (done) {
+        it('testRdbQueryWithCursor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.log(TAG + "************* testRdbQueryWithCursor0009 start *************");
         let predicates = new relationalStore.RdbPredicates("query_tb");
         predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);

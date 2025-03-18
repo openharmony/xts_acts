@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,7 +74,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0100', 0, async (done: Function) => {
+    it('rdbrootDirTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0100 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -109,7 +109,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0200', 0, async (done: Function)  => {
+    it('rdbrootDirTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function)  => {
       console.log(TAG + "************* rdbrootDirTest0200 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -145,7 +145,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0300', 0, async (done: Function) => {
+    it('rdbrootDirTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0300 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -180,7 +180,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0400', 0, async (done: Function) => {
+    it('rdbrootDirTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0400 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -216,7 +216,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest0500', 0, async (done: Function) => {
+    it('rdbrootDirTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0500 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -259,7 +259,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest0600', 0, async (done: Function) => {
+    it('rdbrootDirTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0600 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -303,7 +303,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0700', 0, async (done: Function) => {
+    it('rdbrootDirTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0700 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -343,7 +343,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest0800', 0, async (done: Function) => {
+    it('rdbrootDirTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest0800 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -383,7 +383,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest0900', 0, async (done: Function)  => {
+    it('rdbrootDirTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function)  => {
       console.log(TAG + "************* rdbrootDirTest0900 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -420,7 +420,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest1000', 0, async (done: Function)  => {
+    it('rdbrootDirTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function)  => {
       console.log(TAG + "************* rdbrootDirTest1000 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -457,7 +457,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1100', 0, async (done: Function)  => {
+    it('rdbrootDirTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function)  => {
       console.log(TAG + "************* rdbrootDirTest1100 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -492,7 +492,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1200', 0, async (done: Function) =>{
+    it('rdbrootDirTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>{
       console.log(TAG + "************* rdbrootDirTest1200 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -527,7 +527,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1300', 0, async (done: Function) => {
+    it('rdbrootDirTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1300 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -561,7 +561,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1400',0, async (done: Function) =>  {
+    it('rdbrootDirTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>  {
       console.log(TAG + "************* rdbrootDirTest1400 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -595,7 +595,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1500', 0, async (done: Function) => {
+    it('rdbrootDirTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1500 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         encrypt: true,
@@ -633,7 +633,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1600', 0, async (done: Function) => {
+    it('rdbrootDirTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1600 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         encrypt: true,
@@ -670,7 +670,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest1700', 0, async (done: Function) => {
+    it('rdbrootDirTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1700 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         encrypt: true,
@@ -715,7 +715,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1800', 0, async (done: Function) => {
+    it('rdbrootDirTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1800 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         encrypt: true,
@@ -757,7 +757,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest1900', 0, async (done: Function) => {
+    it('rdbrootDirTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest1900 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -800,7 +800,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest2000', 0, async (done: Function) => {
+    it('rdbrootDirTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest2000 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -842,7 +842,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbrootDirTest2100', 0, async (done: Function) => {
+    it('rdbrootDirTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest2100 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -877,7 +877,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest2200', 0, async (done: Function) => {
+    it('rdbrootDirTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbrootDirTest2200 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
@@ -918,7 +918,7 @@ export default function rdbrootDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbrootDirTest2300', 0, async (done: Function)  => {
+    it('rdbrootDirTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function)  => {
       console.log(TAG + "************* rdbrootDirTest2300 start *************");
       const STORE_CONFIG  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",

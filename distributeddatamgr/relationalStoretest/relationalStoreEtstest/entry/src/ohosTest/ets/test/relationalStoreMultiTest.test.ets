@@ -17,7 +17,7 @@
 
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import relationalStore from "@ohos.data.relationalStore"
 import taskpool from '@ohos.taskpool';
@@ -160,7 +160,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -199,7 +199,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -239,7 +239,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -279,7 +279,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -319,7 +319,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -359,7 +359,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsert0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsert0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsert0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -399,7 +399,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -440,7 +440,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -480,7 +480,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -521,7 +521,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -562,7 +562,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -603,7 +603,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransInsertSync0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransInsertSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransInsertSync0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -644,7 +644,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -689,7 +689,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -733,7 +733,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -777,7 +777,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -821,7 +821,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -865,7 +865,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsert0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsert0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsert0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -909,7 +909,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -953,7 +953,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -997,7 +997,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1041,7 +1041,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1085,7 +1085,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1129,7 +1129,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransBatchInsertSync0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransBatchInsertSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransBatchInsertSync0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1172,7 +1172,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1220,7 +1220,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1268,7 +1268,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1316,7 +1316,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1364,7 +1364,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1412,7 +1412,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdate0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdate0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdate0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1461,7 +1461,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1509,7 +1509,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1557,7 +1557,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1605,7 +1605,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1653,7 +1653,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1701,7 +1701,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransUpdateSync0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransUpdateSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransUpdateSync0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1749,7 +1749,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1795,7 +1795,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1841,7 +1841,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1888,7 +1888,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1933,7 +1933,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -1978,7 +1978,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDelete0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDelete0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2023,7 +2023,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDelete0700 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2069,7 +2069,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDeleteSync0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2115,7 +2115,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDeleteSync0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2162,7 +2162,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDeleteSync0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2210,7 +2210,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDeleteSync0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2257,7 +2257,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDeleteSync0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDeleteSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDeleteSync0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2304,7 +2304,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2344,7 +2344,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2384,7 +2384,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2424,7 +2424,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2464,7 +2464,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2504,7 +2504,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransQuery0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransQuery0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2546,7 +2546,7 @@ export default function relationalStoreMultiTransTest() {
 
 
 
-    it('testRdbTransSameThreadInsert0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2595,7 +2595,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2645,7 +2645,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadInsert0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2695,7 +2695,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadInsert0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2748,7 +2748,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2797,7 +2797,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2846,7 +2846,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0700', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0700 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2895,7 +2895,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0800', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0800 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2944,7 +2944,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransSameThreadInsert0900', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadInsert0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadInsert0900 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -2995,7 +2995,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3047,7 +3047,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDiffThreadInsert0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3097,7 +3097,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3148,7 +3148,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3199,7 +3199,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3249,7 +3249,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3300,7 +3300,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0700', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0700 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3351,7 +3351,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0800', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0800 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3402,7 +3402,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadInsert0900', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadInsert0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadInsert0900 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3453,7 +3453,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3507,7 +3507,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3557,7 +3557,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3610,7 +3610,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3659,7 +3659,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3709,7 +3709,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3758,7 +3758,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0700', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0700 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3808,7 +3808,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0800', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0800 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3858,7 +3858,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransSameThreadQuery0900', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransSameThreadQuery0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransSameThreadQuery0900 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3908,7 +3908,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDiffThreadQuery0100', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0100 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -3959,7 +3959,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0200', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0200 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4009,7 +4009,7 @@ export default function relationalStoreMultiTransTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbTransDiffThreadQuery0300', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0300 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4060,7 +4060,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0400', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0400 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4114,7 +4114,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0500', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0500 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4165,7 +4165,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0600', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0600 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4216,7 +4216,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0700', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0700 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);
@@ -4267,7 +4267,7 @@ export default function relationalStoreMultiTransTest() {
      */
 
 
-    it('testRdbTransDiffThreadQuery0800', TestType.FUNCTION, async (done: () => void) => {
+    it('testRdbTransDiffThreadQuery0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbTransDiffThreadQuery0800 start *************");
       try {
         const u8 = new Uint8Array([1, 2, 3]);

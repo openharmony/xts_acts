@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
 
@@ -62,7 +62,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0001', 0, async function (done) {
+    it('testValueType0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0001 start *************");
       let bucket = {
         "value1":BigInt(45),
@@ -105,7 +105,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0002', 0, async function (done) {
+    it('testValueType0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0002 start *************");
       let bucket = {
         "value1":BigInt("15822401018187971961171"),
@@ -147,7 +147,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0003', 0, async function (done) {
+    it('testValueType0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0003 start *************");
       let bucket = {
         "value1":BigInt("15822401018187971961171"),
@@ -206,7 +206,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0004', 0, async function (done) {
+    it('testValueType0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0004 start *************");
       let bucket = {
         "value1":BigInt("15822401018187971961171"),
@@ -269,7 +269,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0005', 0, async function (done) {
+    it('testValueType0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0005 start *************");
       let bucket = {
         "value1":BigInt(40),
@@ -311,7 +311,7 @@ export default function RdbStoreValueTypeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testValueType0006', 0, async function (done) {
+    it('testValueType0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testValueType0006 start *************");
       let bucket = {
         "value1":BigInt("15822401018187971961171"),

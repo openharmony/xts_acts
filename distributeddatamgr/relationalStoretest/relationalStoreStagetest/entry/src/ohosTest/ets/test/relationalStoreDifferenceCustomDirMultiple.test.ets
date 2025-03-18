@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import { BusinessError } from '@ohos.base'
 import common from '@ohos.app.ability.common';
@@ -88,7 +88,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('DifferenceCustomDirMultiple0100', 0, async (done: Function) => {
+    it('DifferenceCustomDirMultiple0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(TAG + "************* testRdbStore0001 start *************");
         await data_Rdb.getRdbStore(context, STORE_CONFIG1).then(async (rdbStore: data_Rdb.RdbStore) => {
           rdbStore1 = rdbStore;
@@ -158,7 +158,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('DifferenceCustomDirMultiple0200', 0, async (done: Function) => {
+    it('DifferenceCustomDirMultiple0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(TAG + "************* testRdbStore0002 start *************");
       await data_Rdb.getRdbStore(context, STORE_CONFIG1).then(async (rdbStore) => {
         rdbStore1 = rdbStore;
@@ -188,7 +188,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('DifferenceCustomDirMultiple0300', 0, async (done: Function) => {
+    it('DifferenceCustomDirMultiple0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(TAG + "************* testRdbStore0003 start *************");
       await data_Rdb.getRdbStore(context, STORE_CONFIG1).then(async (rdbStore) => {
         rdbStore1 = rdbStore;
@@ -218,7 +218,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('DifferenceCustomDirMultiple0400', 0, async (done: Function) => {
+    it('DifferenceCustomDirMultiple0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info(TAG + "************* testRdbStore0004 start *************");
       await data_Rdb.getRdbStore(context, STORE_CONFIG1).then(async (rdbStore) => {
         rdbStore1 = rdbStore;

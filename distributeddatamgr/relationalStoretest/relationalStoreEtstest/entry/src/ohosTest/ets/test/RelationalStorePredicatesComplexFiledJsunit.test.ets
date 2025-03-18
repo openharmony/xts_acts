@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -71,7 +71,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('RelationalStorePredicatesComplexFiled0001', 0, async function (done) {
+    it('RelationalStorePredicatesComplexFiled0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* RelationalStorePredicatesComplexFiled0001 start *************");
 
         let predicates = await new data_Rdb.RdbPredicates("test")
@@ -100,7 +100,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('RelationalStorePredicatesComplexFiled0002', 0, async function (done) {
+    it('RelationalStorePredicatesComplexFiled0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* RelationalStorePredicatesComplexFiled0002 start *************");
 
         let predicates = await new data_Rdb.RdbPredicates("test")
