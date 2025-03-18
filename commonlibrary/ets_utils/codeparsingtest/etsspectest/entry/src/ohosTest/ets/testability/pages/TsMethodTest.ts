@@ -56,11 +56,11 @@ export class ArrayLikeTest<T> {
     this.arr = arr;
   }
 
-  public length() {
+  public length(): number {
     return this.arr.length;
   }
 
-  public index(index) {
+  public index(index): T {
     return this.arr[index];
   }
 }
@@ -70,7 +70,7 @@ export function sleep(time: number): Promise<void> {
     setTimeout(() => {
       re();
     }, time);
-  })
+  });
 }
 
 export class ReadonlyArrayTest<T> {

@@ -14,7 +14,8 @@
 */
 
 
-export function isArrayEqual(arr1: Array<number | undefined | string>, arr2: Array<number | undefined | string>) {
+export function isArrayEqual(arr1: Array<number | undefined | string>,
+  arr2: Array<number | undefined | string>): boolean {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -49,7 +50,7 @@ export function isObjectEqual(arr1: any, arr2: any): boolean {
 }
 
 
-export function isArrayArrayEqual(arr1: any, arr2: any) {
+export function isArrayArrayEqual(arr1: any, arr2: any): boolean {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -70,8 +71,7 @@ export function isArrayArrayEqual(arr1: any, arr2: any) {
 export function sleep(time: number): Promise<void> {
   return new Promise((re, je) => {
     setTimeout(() => {
-      re()
+      re();
     }, time);
   });
 }
-;
