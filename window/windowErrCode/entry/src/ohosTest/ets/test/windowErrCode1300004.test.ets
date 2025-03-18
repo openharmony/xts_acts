@@ -286,7 +286,7 @@ export default function windowErrCode1300004() {
           return;
         }
         let win = data;
-        win.setUIContent("testability/pages/Index");
+        win.setUIContent("testability/pages/second/PageOne");
         win.showWindow();
 
         try {
