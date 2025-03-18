@@ -14,10 +14,10 @@
  */
 
 import AssetNorightTest from './AssetNoright.test';
-
+import AssetErrorCodeTest from './AssetErrorCode.test';
 
 export default function testsuite() {
-
+  AssetErrorCodeTest();
   AssetNorightTest();
 
 }
