@@ -14,6 +14,7 @@
  */
 #include "common/common.h"
 
+#include "slider/slider_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -24,6 +25,16 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"testSliderEnableHpaticFeedback001", nullptr, TestSliderEnableHpaticFeedback001,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderEnableHpaticFeedback002", nullptr, TestSliderEnableHpaticFeedback002,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderEnableHpaticFeedback003", nullptr, TestSliderEnableHpaticFeedback003,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderEnableHpaticFeedback004", nullptr, TestSliderEnableHpaticFeedback004,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderEnableHpaticFeedback005", nullptr, TestSliderEnableHpaticFeedback005,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

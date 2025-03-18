@@ -49,6 +49,7 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let button = await driver.findComponent(ON.type('Scroll'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.scrollToTop();
         expect().assertFail();
       }catch (e) {
@@ -98,7 +99,8 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
-        driver.delayMs(waitUiReadyMs * 2);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.scrollSearch(ON.text('next page'));
         expect().assertFail();
       }catch (e) {
@@ -148,6 +150,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.type('Scroll'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.scrollToBottom();
         expect().assertFail();
       }catch (e) {
@@ -199,6 +202,7 @@ export default function uitestComponentErrorTest() {
       let button = await driver.findComponent(ON.text('MainPage'));
       try {
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.click();
         expect().assertFail();
       }catch (e) {
@@ -248,7 +252,8 @@ export default function uitestComponentErrorTest() {
       await driver.delayMs(waitUiReadyMs);
       let button = await driver.findComponent(ON.text('MainPage'));
       try {
-        driver.delayMs(waitUiReadyMs * 2);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.doubleClick();
         expect().assertFail();
       }catch (e) {
@@ -274,7 +279,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.doubleClick();
         expect().assertFail();
       }catch (e) {
@@ -298,7 +303,8 @@ export default function uitestComponentErrorTest() {
       await driver.delayMs(waitUiReadyMs);
       let button = await driver.findComponent(ON.text('MainPage'));
       try {
-        driver.delayMs(waitUiReadyMs);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.longClick();
         expect().assertFail();
       }catch (e) {
@@ -324,7 +330,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.longClick();
         expect().assertFail();
       }catch (e) {
@@ -347,7 +353,8 @@ export default function uitestComponentErrorTest() {
       await driver.delayMs(waitUiReadyMs);
       let button = await driver.findComponent(ON.text('MainPage'));
       try {
-        driver.delayMs(waitUiReadyMs * 2);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getId();
         expect().assertFail();
       }catch (e) {
@@ -373,7 +380,7 @@ export default function uitestComponentErrorTest() {
       let button = await driver.findComponent(ON.text('MainPage'));
       await stopApplication('com.uitestScene.acts');
       try {
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getId();
         expect().assertFail();
       }catch (e) {
@@ -397,6 +404,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getText();
         expect().assertFail();
       }catch (e) {
@@ -422,7 +430,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getText();
         expect().assertFail();
       }catch (e) {
@@ -446,6 +454,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getType();
         expect().assertFail();
       }catch (e) {
@@ -471,7 +480,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getType();
         expect().assertFail();
       }catch (e) {
@@ -495,6 +504,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getBounds();
         expect().assertFail();
       }catch (e) {
@@ -520,7 +530,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getBounds();
         expect().assertFail();
       }catch (e) {
@@ -544,6 +554,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getBoundsCenter();
         expect().assertFail();
       }catch (e) {
@@ -569,7 +580,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getBoundsCenter();
         expect().assertFail();
       }catch (e) {
@@ -593,6 +604,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isClickable();
         expect().assertFail();
       }catch (e) {
@@ -618,7 +630,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isClickable();
         expect().assertFail();
       }catch (e) {
@@ -642,6 +654,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isLongClickable();
         expect().assertFail();
       }catch (e) {
@@ -667,7 +680,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isLongClickable();
         expect().assertFail();
       }catch (e) {
@@ -691,6 +704,7 @@ export default function uitestComponentErrorTest() {
         await sleep(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isChecked();
         expect().assertFail();
       }catch (e) {
@@ -716,7 +730,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isChecked();
         expect().assertFail();
       }catch (e) {
@@ -740,6 +754,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isCheckable();
         expect().assertFail();
       }catch (e) {
@@ -765,7 +780,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isCheckable();
         expect().assertFail();
       }catch (e) {
@@ -789,6 +804,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isScrollable();
         expect().assertFail();
       }catch (e) {
@@ -814,7 +830,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isScrollable();
         expect().assertFail();
       }catch (e) {
@@ -837,6 +853,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isScrollable();
         expect().assertFail();
       }catch (e) {
@@ -862,7 +879,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isEnabled();
         expect().assertFail();
       }catch (e) {
@@ -885,6 +902,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isFocused();
         expect().assertFail();
       }catch (e) {
@@ -910,7 +928,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isFocused();
         expect().assertFail();
       }catch (e) {
@@ -934,6 +952,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.isSelected();
         expect().assertFail();
       }catch (e) {
@@ -959,7 +978,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.isSelected();
         expect().assertFail();
       }catch (e) {
@@ -983,6 +1002,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.inputText('hello');
         expect().assertFail();
       }catch (e) {
@@ -1008,7 +1028,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.inputText('hello');
         expect().assertFail();
       }catch (e) {
@@ -1032,6 +1052,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.clearText();
         expect().assertFail();
       }catch (e) {
@@ -1058,7 +1079,7 @@ export default function uitestComponentErrorTest() {
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.clearText();
         expect().assertFail();
       }catch (e) {
@@ -1098,6 +1119,7 @@ export default function uitestComponentErrorTest() {
           text2 = await scorll.scrollSearch(ON.text('two'))
         }
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await text1.dragTo(text2)
         expect().assertFail();
       }catch (e) {
@@ -1139,7 +1161,7 @@ export default function uitestComponentErrorTest() {
           text2 = await scorll.scrollSearch(ON.text('two'));
         }
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await text1.dragTo(text2)
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();
@@ -1174,6 +1196,7 @@ export default function uitestComponentErrorTest() {
           image1 = await scorll.scrollSearch(ON.id('test_pict'));
         }
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await image1.pinchOut(1.2);
         expect().assertFail();
       }catch (e) {
@@ -1210,7 +1233,7 @@ export default function uitestComponentErrorTest() {
           image1 = await scorll.scrollSearch(ON.id('test_pict'));
         }
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await image1.pinchOut(1.2);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
@@ -1248,6 +1271,7 @@ export default function uitestComponentErrorTest() {
           image1 = await scorll.scrollSearch(ON.id('test_pict'));
         }
         driver.delayMs(waitUiReadyMs * 3)
+        await sleep(100);
         await image1.pinchIn(0.5);
         expect().assertFail();
       }catch (e) {
@@ -1284,7 +1308,7 @@ export default function uitestComponentErrorTest() {
           image1 = await scorll.scrollSearch(ON.id('test_pict'));
         }
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await image1.pinchIn(0.5);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
@@ -1315,6 +1339,7 @@ export default function uitestComponentErrorTest() {
           button = await scorll.scrollSearch(ON.type('Button'));
         }
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getDescription();
         expect().assertFail();
       }catch (e) {
@@ -1345,7 +1370,7 @@ export default function uitestComponentErrorTest() {
         }
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getDescription();
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();
@@ -1376,6 +1401,7 @@ export default function uitestComponentErrorTest() {
           button = await scorll.scrollSearch(ON.hint('welcome'))
         }
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await button.getHint();
         expect().assertFail();
       }catch (e) {
@@ -1406,7 +1432,7 @@ export default function uitestComponentErrorTest() {
         }
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(waitUiReadyMs * 2);
         await button.getHint();
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();

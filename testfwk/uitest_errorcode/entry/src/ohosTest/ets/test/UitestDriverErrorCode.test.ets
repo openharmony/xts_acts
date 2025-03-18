@@ -45,6 +45,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();
       }catch (e) {
@@ -66,7 +67,8 @@ export default function uitestDriverErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.findComponent(on);
         expect().assertFail();
       }catch (e) {
@@ -89,7 +91,8 @@ export default function uitestDriverErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.findComponents(on);
         expect().assertFail();
       }catch (e) {
@@ -110,7 +113,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_findWindow_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.findWindow({bundleName:'com.uitestScene.acts'});
         expect().assertFail();
       }catch (e) {
@@ -133,7 +137,8 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.waitForComponent(on, waitUiReadyMs);
         expect().assertFail();
       }catch (e) {
@@ -157,7 +162,8 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.assertComponentExist(on);
         expect().assertFail();
       }catch (e) {
@@ -198,7 +204,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_pressBack_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.pressBack();
         expect().assertFail();
       }catch (e) {
@@ -218,7 +225,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_triggerKey_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.triggerKey(2);
         expect().assertFail();
       }catch (e) {
@@ -238,7 +246,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_triggerCombineKeys_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.triggerCombineKeys(2072, 2017);
         expect().assertFail();
       }catch (e) {
@@ -259,7 +268,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_click_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.click(100, 100);
         expect().assertFail();
       }catch (e) {
@@ -279,7 +289,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_doubleClick_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.doubleClick(100, 100);
         expect().assertFail();
       }catch (e) {
@@ -299,7 +310,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_longClick_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.longClick(100, 100);
         expect().assertFail();
       }catch (e) {
@@ -320,7 +332,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_swipe_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.swipe(300, 600, 300, 100)
         expect().assertFail();
       }catch (e) {
@@ -340,7 +353,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_drag_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.drag(100,100,200,200,600);
         expect().assertFail();
       }catch (e) {
@@ -360,7 +374,8 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_drag_17000002 start`);
       try {
         let driver: Driver = Driver.create();
-        driver.delayMs(waitUiReadyMs * 5);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.screenCap('/data/storage/el2/base/cache/1.png');
         expect().assertFail();
       }catch (e) {
@@ -381,6 +396,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
         expect().assertFail();
       }catch (e) {
@@ -401,6 +417,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.getDisplayRotation();
         expect().assertFail();
       }catch (e) {
@@ -422,6 +439,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 4);
+        await sleep(100);
         await driver.setDisplayRotationEnabled(false);
         expect().assertFail();
       }catch (e) {
@@ -442,6 +460,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.getDisplaySize();
         expect().assertFail();
       }catch (e) {
@@ -462,6 +481,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.getDisplayDensity();
         expect().assertFail();
       }catch (e) {
@@ -482,6 +502,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.wakeUpDisplay();
         expect().assertFail();
       }catch (e) {
@@ -502,6 +523,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.pressHome();
         expect().assertFail();
       }catch (e) {
@@ -522,6 +544,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.waitForIdle(4000,5000)
         expect().assertFail();
       }catch (e) {
@@ -542,6 +565,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.fling({x: 500, y: 480},{x: 450, y: 480},5,600);
         expect().assertFail();
       }catch (e) {
@@ -574,6 +598,7 @@ export default function uitestDriverErrorTest() {
         pointers.setPoint(1,3,{x:250,y:360});
         pointers.setPoint(1,4,{x:250,y:320});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.injectMultiPointerAction(pointers);
         expect().assertFail();
       }catch (e) {
@@ -594,6 +619,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.fling(UiDirection.DOWN, 10000);
         expect().assertFail();
       }catch (e) {
@@ -614,6 +640,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
         expect().assertFail();
       }catch (e) {
@@ -634,6 +661,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
         expect().assertFail();
       }catch (e) {
@@ -654,6 +682,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
         expect().assertFail();
       }catch (e) {
@@ -674,6 +703,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseMoveTo({x:100, y:100});
         expect().assertFail();
       }catch (e) {
@@ -694,6 +724,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.createUIEventObserver();
         expect().assertFail();
       }catch (e) {
@@ -714,6 +745,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
         expect().assertFail();
       }catch (e) {
@@ -734,6 +766,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
         expect().assertFail();
       }catch (e) {
@@ -754,6 +787,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
         expect().assertFail();
       }catch (e) {
@@ -774,6 +808,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseMoveWithTrack({x:100, y:100},{x:200, y:200},600);
         expect().assertFail();
       }catch (e) {
@@ -794,6 +829,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.mouseDrag({x:100, y:100}, {x:200, y:200}, 600);
         expect().assertFail();
       }catch (e) {
@@ -814,6 +850,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver: Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.inputText({x: 100, y: 100}, '123');
         expect().assertFail();
       }catch (e) {
@@ -834,6 +871,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver:Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
         expect().assertFail();
       }catch (e) {
@@ -854,6 +892,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver:Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.penClick({x: 100, y: 100});
         expect().assertFail();
       }catch (e) {
@@ -874,6 +913,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver:Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.penLongClick({x: 100, y: 100}, 0.5);
         expect().assertFail();
       }catch (e) {
@@ -894,6 +934,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver:Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.penDoubleClick({x: 100, y: 100});
         expect().assertFail();
       }catch (e) {
@@ -914,6 +955,7 @@ export default function uitestDriverErrorTest() {
       try {
         let driver:Driver = Driver.create();
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
         expect().assertFail();
       }catch (e) {
@@ -938,6 +980,7 @@ export default function uitestDriverErrorTest() {
           pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
         }
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await driver.injectPenPointerAction(pointer, 600, 0.5);
         expect().assertFail();
       }catch (e) {

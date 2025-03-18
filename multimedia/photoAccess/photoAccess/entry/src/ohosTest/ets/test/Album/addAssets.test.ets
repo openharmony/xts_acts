@@ -185,6 +185,7 @@ export default function addAssetsTest () {
         })
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
@@ -312,6 +313,7 @@ export default function addAssetsTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
