@@ -33,10 +33,13 @@ export default function getSupportedPhotoFormatsTest() {
   let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
   let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
   const imageArray = ["gif", "heic", "heics", "heifs", "bmp", "bm", "heif", "hif", "avif", "cur", "webp", "dng",
-                    "raf", "ico", "nrw", "rw2", "pef", "srw", "arw", "jpg", "jpeg", "jpe", "png", "svg", "raw"];
+                    "raf", "ico", "nrw", "rw2", "pef", "srw", "arw", "jpg", "jpeg", "jpe", "png", "svg", "raw", "svgz",
+                     "ief", "jp2", "jpg2", "ipm", "jpm", "jpx", "jpf", "pcx", "tiff", "tif", "djvu", "djv", "wbmp", 
+                     "xbm", "xpm", "xwd"];
   const videoArray = ["3gpp2", "3gp2", "3g2", "3gpp", "3gp", "m4v", "f4v", "mp4v", "mpeg4", "mp4", "m2ts", "mts",
                     "ts", "yt", "wrf", "mpeg", "mpeg2", "mpv2", "mp2v", "m2v", "m2t", "mpeg1", "mpv1", "mp1v",
-                    "m1v", "mpg", "mov", "mkv", "webm", "h264", "flv", "avi"];
+                    "m1v", "mpg", "mov", "mkv", "webm", "h264", "flv", "avi", "mpe", "qt", "mpv", "rmvb", "axv",
+                    "dl", "dif", "dv", "fli", "gl", "ogv", "mxu", "lsf", "lsx", "wmx", "wvx", "movie"];
 
   describe('getSupportedPhotoFormatsTest', () => {
     beforeAll(async () => {
