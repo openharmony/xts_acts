@@ -49,8 +49,8 @@ export async function waitForAssert<T,U>(
   expectValue: U,
   eventId: number,
   testsuite: string,
-  interval=3000,
-  tryTime=20): Promise<T>{
+  interval=2000,
+  tryTime=30): Promise<T>{
   let nums = 0;
   let isSuccess = false;
   while(nums < tryTime) {
@@ -84,8 +84,8 @@ export async function waitForExist<T> (
   stateGetter: () => T,
   testsuite: string,
   expectValue: string | number | null = null,
-  interval=3000,
-  tryTime=20
+  interval=1000,
+  tryTime=30
 ):Promise<T>{
   let nums = 0;
   let isSuccess = false;
