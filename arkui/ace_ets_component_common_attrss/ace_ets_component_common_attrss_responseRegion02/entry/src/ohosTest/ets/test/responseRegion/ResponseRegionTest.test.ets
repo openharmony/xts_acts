@@ -253,6 +253,14 @@ export default function responseRegionTest() {
       let secondOffsetHeight = 0;
       //Calculate offset and hot zone width and height
       if ('SetNumber' == data.testValue.describe) {
+        if (
+        data.pageConfig.targetView == "TextInput" ||
+        data.pageConfig.targetView == "TextArea"
+        ) {
+        await Utils.sleep(4000)
+        } else {
+        await Utils.sleep(1000)
+        }
         offsetX = vp2px(data.testValue.setValue.x);
         offsetY = vp2px(data.testValue.setValue.y);
         offsetWidth = vp2px(data.testValue.setValue.width);
