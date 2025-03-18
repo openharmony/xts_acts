@@ -14,3 +14,5 @@
  */
 
 export const testDatePickerMode: (a: string) => void;
+
+export const datePickerEnableHapticFeedback: (a: string) => void;

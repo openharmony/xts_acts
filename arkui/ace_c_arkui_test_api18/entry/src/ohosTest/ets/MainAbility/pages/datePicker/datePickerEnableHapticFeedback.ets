@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,21 @@
  * limitations under the License.
  */
 
-import datePickerTest from "./datepicker/DatePickerMode.test"
-import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export default function testsuite() {
-  datePickerTest();
-  datePickerEnableHapticFeedbackTest();
+@Entry
+@Component
+struct DatePickerEnableHapticFeedbackTest {
+  PAGE_TAG: string = 'DatePickerEnableHapticFeedback';
+
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.datePickerEnableHapticFeedback(this.PAGE_TAG);
+      })
+    }
+  }
 }
