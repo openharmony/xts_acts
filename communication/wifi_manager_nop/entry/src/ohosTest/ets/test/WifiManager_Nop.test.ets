@@ -18,7 +18,7 @@ import wifiManager from '@ohos.wifiManager';
 import wifiManagerExt from '@ohos.wifiManagerExt';
 import geoLocationManager from '@ohos.geoLocationManager'
 import { BusinessError } from '@ohos.base'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 
 // no permission.
@@ -60,7 +60,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop begin');
       try {
         wifiManager.on("p2pDiscoveryChange", () => {
@@ -83,7 +83,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop begin');
       try {
         wifiManager.off("p2pDiscoveryChange", () => {
@@ -106,7 +106,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop begin');
       try {
         wifiManager.on('p2pPersistentGroupChange', () => {
@@ -129,7 +129,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop begin');
 
       try {
@@ -153,7 +153,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop begin');
       try {
         wifiManager.on('p2pPeerDeviceChange', () => {
@@ -177,7 +177,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop begin');
 
       try {
@@ -201,7 +201,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop begin');
       try {
         wifiManager.on('p2pConnectionChange', () => {
@@ -225,7 +225,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop begin');
       try {
         wifiManager.off('p2pConnectionChange', () => {
@@ -248,7 +248,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop begin');
       try {
         wifiManager.on('p2pStateChange', () => {
@@ -270,7 +270,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop begin');
       try {
         wifiManager.off('p2pStateChange', () => {
@@ -293,7 +293,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop begin');
       try {
         wifiManager.on('hotspotStateChange', () => {
@@ -316,7 +316,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop begin');
       try {
         wifiManager.off('hotspotStateChange', () => {
@@ -339,7 +339,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop begin');
       try {
         wifiManager.on('hotspotStateChange', () => {
@@ -362,7 +362,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop begin');
       try {
         wifiManager.off('wifiRssiChange', () => {
@@ -385,7 +385,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_P2P_CreateGroup_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_P2P_CreateGroup_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_P2P_CreateGroup_Nop begin');
 
       try {
@@ -414,7 +414,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_IsMeteredHotspot_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_IsMeteredHotspot_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_IsMeteredHotspot_Nop begin');
       try {
         wifiManager.isMeteredHotspot();
@@ -435,7 +435,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_IsBandTypeSupported_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_IsBandTypeSupported_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_IsBandTypeSupported_Nop begin');
       try {
         let type: wifiManager.WifiBandType = wifiManager.WifiBandType.WIFI_BAND_2G;
@@ -461,7 +461,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetCountryCode_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetCountryCode_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetCountryCode_Nop begin');
       try {
         wifiManager.getCountryCode();
@@ -482,7 +482,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetIpv6Info_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetIpv6Info_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetIpv6Info_Nop begin');
       try {
         wifiManager.getIpv6Info();
@@ -503,7 +503,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetCurrentGroup_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetCurrentGroup_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetCurrentGroup_Callback_Nop begin');
       try {
         wifiManager.getCurrentGroup((err, data) => {
@@ -531,7 +531,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop begin');
       wifiManager.getCurrentGroup().then((WifiP2pGroupInfo: wifiManager.WifiP2pGroupInfo) => {
         hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop success');
@@ -562,7 +562,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_StartDiscoverDevices_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_StartDiscoverDevices_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_StartDiscoverDevices_Nop begin');
       try {
         wifiManager.startDiscoverDevices();
@@ -583,7 +583,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_StopDiscoverDevices_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_StopDiscoverDevices_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_StopDiscoverDevices_Nop begin');
       try {
         wifiManager.stopDiscoverDevices();
@@ -604,7 +604,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_RemoveGroup_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_RemoveGroup_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_RemoveGroup_Nop begin');
       try {
         wifiManager.removeGroup();
@@ -625,7 +625,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -660,7 +660,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -692,7 +692,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetPowerMode_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetPowerMode_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -724,7 +724,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetPowerMode_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetPowerMode_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -759,7 +759,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_isHotspotActive_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_isHotspotActive_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_isHotspotActive_Nop begin');
       try {
         wifiManager.isHotspotActive();
@@ -779,7 +779,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_Disconnect_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_Disconnect_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Disconnect_Nop begin');
       try {
         wifiManager.disconnect();
@@ -799,7 +799,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_EnableWifi_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_EnableWifi_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_EnableWifi_Nop begin');
       try {
         wifiManager.enableWifi();
@@ -819,7 +819,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_RemoveDevice_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_RemoveDevice_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_RemoveDevice_Nop begin');
       try {
         wifiManager.removeDevice(0);
@@ -839,7 +839,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_ConnectToNetwork_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_ConnectToNetwork_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_ConnectToNetwork_Nop begin');
       try {
         wifiManager.connectToNetwork(0);
@@ -859,7 +859,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetDeviceConfigs_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetDeviceConfigs_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceConfigs_Nop begin');
       try {
         wifiManager.getDeviceConfigs();
@@ -879,7 +879,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_AddDeviceConfig_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_AddDeviceConfig_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_AddDeviceConfig_Nop begin');
       let wifiDeviceConfig: wifiManager.WifiDeviceConfig = {
         "ssid": "public201Test",
@@ -909,7 +909,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetDeviceMacAddress_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetDeviceMacAddress_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceMacAddress_Nop begin');
       try {
         wifiManager.getDeviceMacAddress();
@@ -929,7 +929,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_EnableHotspot_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_EnableHotspot_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_EnableHotspot_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -954,7 +954,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_DisableHotspot_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_DisableHotspot_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_DisableHotspot_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -979,7 +979,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_SetPowerMode_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_SetPowerMode_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_SetPowerMode_Nop begin');
       try {
         if (!wifiManagerExtAvailable()) {
@@ -1004,7 +1004,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetScanResultsCallback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetScanResultsCallback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetScanResultsCallback_Nop begin');
       let functionGetScanResults = async ()=>{
         return new Promise<void>((resolve,reject)=>{
@@ -1036,7 +1036,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetScanResultsPromise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetScanResultsPromise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetScanResultsPromise_Nop begin');
       try {
         await wifiManager.getScanResults();
@@ -1057,7 +1057,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetScanResultsSync_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetScanResultsSync_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetScanResultsSync_Nop begin');
       try {
         wifiManager.getScanResultsSync();
@@ -1077,7 +1077,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetMultiLinkedInfo_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetMultiLinkedInfo_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetMultiLinkedInfo_Nop begin');
       try {
         wifiManager.getMultiLinkedInfo();
@@ -1097,7 +1097,7 @@ export default function wifiManagerTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_WiFi_GetLinkedInfoSync_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_WiFi_GetLinkedInfoSync_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetLinkedInfoSync_Nop begin');
       try {
         wifiManager.getLinkedInfoSync();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 import wifiMg from '@ohos.wifiManager'
@@ -97,7 +97,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0001', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_OPEN",
                 "bssid": "22:9b:e6:48:1f:5c",
@@ -182,7 +182,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0002', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let EapMethod = {
                 "wifiMaEAP_NONE": 0,
                 "EAP_PEAP": 1,
@@ -278,7 +278,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0003', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_SAE",
                 "bssid": "22:9b:e6:48:1f:5c",
@@ -327,7 +327,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0004', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let SSID = "TYPE_PSK"
                 for (let i = 0; i < 16; i++) {
@@ -399,7 +399,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0005', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wapiPskType={
                 "WAPI_PSK_ASCII":0,
                 "WAPI_PSK_HEX":1,
@@ -469,7 +469,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await checkSavedNet();
                 let wifiDeviceConfig = {
@@ -531,7 +531,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         * @tc.size: MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFiManager_WapiPskType_0100', 0, async function(done) {
+        it('SUB_Communication_WiFiManager_WapiPskType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try {
                 let WAPI_PSK_ASCII = wifiMg.WapiPskType.WAPI_PSK_ASCII;
                 console.info('[wifi_test]WapiPskType WAPI_PSK_ASCII:' + JSON.stringify(WAPI_PSK_ASCII));

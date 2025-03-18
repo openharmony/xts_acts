@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 import wifi from '@ohos.wifi'
@@ -66,7 +66,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0001', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiStateChange callback, result: " + JSON.stringify(result));
@@ -84,7 +84,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0002', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiConnectionState = "wifiConnectionChange";
             let wifiConnectionChangeCallback = result => {
                 console.info("[wifi_test]wifiConnectionChange callback, result: " + JSON.stringify(result));
@@ -102,7 +102,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0003', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiScanState = "wifiScanStateChange";
             let wifiScanStateChangeCallback = result => {
                 console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
@@ -126,7 +126,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0004', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiRssiState = "wifiRssiChange";
             let wifiRssiChangeCallback = result => {
                 console.info("[wifi_test]wifiRssiChange callback, result: " + JSON.stringify(result));
@@ -144,7 +144,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0005', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let hotspotState = "hotspotStateChange";
             let hotspotStateChangeCallback = result => {
                 console.info("[wifi_test]hotspotStateChange callback, result: " + JSON.stringify(result));
@@ -161,7 +161,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test enableHotspot api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0001', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0001 start');
             let ret = false;
             try {
@@ -185,7 +185,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test disableHotspot api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0002', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0002 start');
             let ret = false;
             try {
@@ -209,7 +209,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test getSupportedPowerModel api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0003', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0003 start');
             let ret = false;
             try {
@@ -236,7 +236,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test getSupportedPowerModel api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0004', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0004 start');
             let ret = false;
             try {
@@ -273,7 +273,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test getPowerModel api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0005', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0005 start');
             let ret = false;
             try {
@@ -300,7 +300,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test getPowerModel api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0006', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0006 start');
             let ret = false;
             try {
@@ -337,7 +337,7 @@ export default function actsWifiEventTest() {
         * @tc.desc Test setPowerModel api.
         * @tc.type Function
         */
-        it('SUB_Communication_WiFi_SysCaps_Test_0007', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0007 start');
             let ret = false;
             try {

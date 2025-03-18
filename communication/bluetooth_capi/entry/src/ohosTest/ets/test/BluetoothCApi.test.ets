@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import bluetoothCApi from 'libentry.so';
 import access from '@ohos.bluetooth.access';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 function sleep(delay : number) : Promise<void> {
@@ -131,14 +131,14 @@ export default function bluetoothCApiTest() {
     afterAll(() => {
     })
     /**
-     * @tc.number     : SUB_COMMUNICATION_BLUETOOTH_NAPI_0100
-     * @tc.name       : testOHBluetoothGetBluetoothSwitchState
-     * @tc.desc       : test OH_Bluetooth_GetBluetoothSwitchState
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.number: SUB_COMMUNICATION_BLUETOOTH_NAPI_0100
+     * @tc.name: testOHBluetoothGetBluetoothSwitchState
+     * @tc.desc: test OH_Bluetooth_GetBluetoothSwitchState
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_NAPI_0100', 0, async (done: Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_NAPI_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let state:number = access.getState();
         console.info('[bluetooth_js] getState info: ' + JSON.stringify(state));

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import wifi from '@ohos.wifi'
 import osaccount from '@ohos.account.osAccount'
@@ -72,7 +72,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0008', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pState = "p2pStateChange";
             let p2pStateChangeCallback = result => {
                 console.info("[wifi_test]p2pStateChange callback, result: " + JSON.stringify(result));
@@ -90,7 +90,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0009', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pConnectionState = "p2pConnectionChange";
             let p2pConnectionChangeCallback = result => {
                 console.info("[wifi_test]p2pConnectionChange callback, result: " + JSON.stringify(result));
@@ -127,7 +127,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0012', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pDeviceState = "p2pDeviceChange";
             let p2pDeviceChangeCallback = result => {
                 console.info("[wifi_test]p2pDeviceChange callback, result: " + JSON.stringify(result));
@@ -145,7 +145,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0010', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pPeerDeviceState = "p2pPeerDeviceChange";
             let p2pPeerDeviceChangeCallback = result => {
                 console.info("[wifi_test]p2pPeerDeviceChange callback, result: " + JSON.stringify(result));
@@ -167,7 +167,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0013', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pGroupState = "p2pPersistentGroupChange";
             let p2pPersistentGroupChangeCallback = () => {
                 console.info("[wifi_test]p2pPersistentGroupChange callback, result: " + JSON.stringify(result));
@@ -205,7 +205,7 @@ export default function actsWifiEventTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_Event_Test_0011', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let p2pPeerDeviceState = "p2pDiscoveryChange";
             let p2pDiscoveryChangeCallback = result => {
                 console.info("[wifi_test]p2pDiscoveryChange callback, result: " + JSON.stringify(result));

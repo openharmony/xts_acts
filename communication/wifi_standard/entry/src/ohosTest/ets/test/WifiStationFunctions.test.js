@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import wifi from '@ohos.wifi'
 function sleep(delay) {
@@ -62,7 +62,7 @@ export default function actsWifiFunctionsTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
+        it('Communication_WiFi_XTS_Sta_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await wifi.getScanInfos()
                 .then(result => {
                     let clen = Object.keys(result).length;
@@ -103,7 +103,7 @@ export default function actsWifiFunctionsTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_XTS_Sta_0021', 0, function () {
+        it('Communication_WiFi_XTS_Sta_0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             console.info("[wifi_test] check the 2.4G rssi assgined to level test.");
             console.info("[wifi_test] getSignalLevel " + wifi.getSignalLevel(-65, 1));
             expect(wifi.getSignalLevel(-65, 1)).assertEqual(4);
@@ -152,7 +152,7 @@ export default function actsWifiFunctionsTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_XTS_Sta_0017', 0, function () {
+        it('Communication_WiFi_XTS_Sta_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             expect(wifi.isWifiActive()).assertTrue();
             let getCountryCodeResult = wifi.getCountryCode();
             console.info("[wifi_test]getCountryCode :" + JSON.stringify(getCountryCodeResult));
@@ -168,7 +168,7 @@ export default function actsWifiFunctionsTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('Communication_WiFi_XTS_Sta_0020', 0, function () {
+        it('Communication_WiFi_XTS_Sta_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             expect(wifi.isWifiActive()).assertTrue();
             let wifiUtils = {
                 WIFI_FEATURE_INFRA: 0x0001,
@@ -211,7 +211,7 @@ export default function actsWifiFunctionsTest() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('Communication_WiFi_XTS_Sta_0004', 0, async function (done) {
+        it('Communication_WiFi_XTS_Sta_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let isConnectedResult = wifi.isConnected();
             let ipInfoResult = wifi.getIpInfo();
             expect(JSON.stringify(ipInfoResult)).assertContain("gateway");

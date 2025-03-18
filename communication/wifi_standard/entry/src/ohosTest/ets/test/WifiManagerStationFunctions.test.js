@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import wifiMg from '@ohos.wifiManager'
 
@@ -65,7 +65,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0021', 0, function () {
+        it('SUB_Communication_WiFi_XTS_Sta_0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             console.info("[wifi_test] check the 2.4G rssi assgined to level test.");
             console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-65, 1));
             expect(wifiMg.getSignalLevel(-65, 1)).assertEqual(4);
@@ -115,7 +115,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0017', 0, function () {
+        it('SUB_Communication_WiFi_XTS_Sta_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             expect(wifiMg.isWifiActive()).assertTrue();
             let getCountryCodeResult = wifiMg.getCountryCode();
             console.info("[wifi_test]getCountryCode :" + JSON.stringify(getCountryCodeResult));
@@ -150,7 +150,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0020', 0, function () {
+        it('SUB_Communication_WiFi_XTS_Sta_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiUtils = {
                 WIFI_FEATURE_INFRA: 0x0001,
@@ -194,7 +194,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 1
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0004', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_Sta_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let isConnectedResult = wifiMg.isConnected();
             let ipInfoResult = wifiMg.getIpInfo();
             expect(JSON.stringify(ipInfoResult)).assertContain("gateway");
@@ -314,7 +314,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 0
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_Sta_0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try
             {
                 let scanResult = wifiMg.scan();
@@ -362,7 +362,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 0
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0035', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_Sta_0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try {
                 let isBandTypeSupported = wifiMg.isBandTypeSupported(wifiMg.WifiBandType.WIFI_BAND_NONE);
                 console.info("[wifi_test]isBandTypeSupported." + JSON.stringify(isBandTypeSupported));
@@ -398,7 +398,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 0
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0036', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_Sta_0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await wifiMg.getScanResults()
                 .then(result => {
@@ -449,7 +449,7 @@ export default function actsWifiManagerFunctionsTest() {
         * @tc.size LargeTest
         * @tc.level Level 0
         */
-         it('Communication_WiFi_XTS_Sta_0037', 0, async function (done) {
+         it('Communication_WiFi_XTS_Sta_0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let ipv6InfoResult = wifiMg.getIpv6Info();
                 console.info("[wifi_test]ipv6InfoResult." + JSON.stringify(ipv6InfoResult));
@@ -479,7 +479,7 @@ export default function actsWifiManagerFunctionsTest() {
         * @tc.size LargeTest
         * @tc.level Level 0
         */
-        it('Communication_WiFi_XTS_Sta_0099', 0, function () {
+        it('Communication_WiFi_XTS_Sta_0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let WifiCategoryDefault = wifiMg.WifiCategory.DEFAULT;
                 console.info("[wifi_test]DEFAULT: " + JSON.stringify(WifiCategoryDefault));

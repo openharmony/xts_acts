@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import wifiCApi from 'libentry.so';
 import wifiMg from '@ohos.wifiManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 async function openPhone() {
@@ -47,14 +47,14 @@ export default function wifiCApiTest() {
     afterAll(() => {
     })
     /**
-     * @tc.number     : SUB_COMMUNICATION_WIFI_NAPI_0100
-     * @tc.name       : testOHWifiIsWifiEnabled
-     * @tc.desc       : test OH_Wifi_IsWifiEnabled
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.number: SUB_COMMUNICATION_WIFI_NAPI_0100
+     * @tc.name: testOHWifiIsWifiEnabled
+     * @tc.desc: test OH_Wifi_IsWifiEnabled
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
-    it('SUB_COMMUNICATION_WIFI_NAPI_0100', 0, async (done: Function) => {
+    it('SUB_COMMUNICATION_WIFI_NAPI_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let state:boolean = wifiMg.isWifiActive();
         console.info('[wifi_js] getState info: ' + JSON.stringify(state));

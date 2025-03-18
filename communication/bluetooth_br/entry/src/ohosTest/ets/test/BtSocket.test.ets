@@ -478,5 +478,59 @@ describe('btSocketTest', () =>  {
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1100
+     * @tc.name testSppWriteAsync
+     * @tc.desc Test sppWriteAsync api18
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        let arrayBuffer = new ArrayBuffer(8);
+        let data = new Uint8Array(arrayBuffer);
+        try {
+            await bluetooth.sppWriteAsync(0, data).then(() => {
+                console.info('[bluetooth_js]:sppWriteAsync success');
+        });
+        expect().assertFail();
+        } catch (err) {
+            console.error("sppWriteAsync: errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]sppWriteAsync is not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(401);
+            }
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1200
+     * @tc.name testSppReadAsync
+     * @tc.desc Test sppReadAsync api18
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        try {
+            await bluetooth.sppReadAsync(0).then((data: ArrayBuffer) => {
+                console.info('[bluetooth_js]:sppReadAsync success, result:' + JSON.stringify(data));
+        });
+        expect().assertFail();
+        } catch (err) {
+            console.error("sppReadAsync: errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]sppWriteAsync is not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(401);
+            }
+        }
+        done();
+    })
 })
 }
