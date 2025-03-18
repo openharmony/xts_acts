@@ -24,4 +24,5 @@ export interface TestDate extends Record<string, string> {
   day: string;
 }
 
-export class MyArray extends Array {}
+export class MyArray extends Array {
+}

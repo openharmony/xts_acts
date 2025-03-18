@@ -13,46 +13,46 @@
 * limitations under the License.
 */
 export function at(arr: Array<any>, num: any): any {
-  return (arr as any).at(num)
+  return (arr as any).at(num);
 }
 
 export function atUnDefinition(): any {
-  let array: Array<number>
-  return (array as any).at(0)
+  let array: Array<number>;
+  return (array as any).at(0);
 }
 
 export function lastIndexOf(arr: Array<any>, values: any): any {
-  return arr.lastIndexOf(values)
+  return arr.lastIndexOf(values);
 }
 
 export function slice(arrayBuffer: ArrayBuffer, begin?: any, end?: any): any {
-  return arrayBuffer.slice(begin, end)
+  return arrayBuffer.slice(begin, end);
 }
 
 export function checkInnerCalculate1(arr: Array<any>, x: number): any {
   (arr as any).at(x + x);
-  (arr as any).at(x * x)
+  (arr as any).at(x * x);
 }
 
 export function checkInnerCalculate2(arr: Array<any>, v: number): any {
-  (arr as any).at(Math.floor(v))
+  (arr as any).at(Math.floor(v));
 }
 
 export function testMap(arr: Array<any>): any {
-  return arr.map(element => element * 2)
+  return arr.map(element => element * 2);
 }
 
 export function testMapReadonly(arr: readonly any[]): any {
-  return arr.map(element => element * 2)
+  return arr.map(element => element * 2);
 }
 
 export function exportObj(): any {
-  return {}
+  return {};
 }
 
 
 export interface ExportObj2 {
-  a: number
+  a: number;
 }
 
 export const exportObj2: ExportObj2 = {
@@ -60,5 +60,5 @@ export const exportObj2: ExportObj2 = {
 }
 
 export function any(obj: any): any {
-  return obj
+  return obj;
 }

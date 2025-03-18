@@ -29,7 +29,7 @@ export function throwUsers(username: string, age: number): void {
     throw new Error('Age must be numeric and greater than or equal to 18 years');
   }
 
-  console.log('用户验证通过');
+  console.log('pass');
 
 }
 

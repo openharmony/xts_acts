@@ -14,43 +14,43 @@
 */
 
 export class ConcatArrayTest<T> {
-  private arr: ConcatArray<T>
+  private arr: ConcatArray<T>;
 
   constructor(arr: ConcatArray<T>) {
     this.arr = arr;
   }
 
-  public slice(start?, end?) {
+  public slice(start?, end?): any {
     return this.arr.slice(start, end);
   }
 
-  public join(separator?) {
+  public join(separator?): string {
     return this.arr.join(separator);
   }
 
-  public length() {
+  public length(): number {
     return this.arr.length;
   }
 
-  public index(index) {
+  public index(index): T {
     return this.arr[index];
   }
 
-  public setLength(length) {
+  public setLength(length): void {
     this.arr = {
       length: length,
       join: function (separator?: string | undefined): string {
-        throw new Error("Function not implemented.");
+        throw new Error('Function not implemented.');
       },
       slice: function (start?: number | undefined, end?: number | undefined): T[] {
-        throw new Error("Function not implemented.");
+        throw new Error('Function not implemented.');
       }
-    }
+    };
   }
 }
 
 export class ArrayLikeTest<T> {
-  private arr: ArrayLike<T>
+  private arr: ArrayLike<T>;
 
   constructor(arr: ArrayLike<T>) {
     this.arr = arr;
@@ -68,35 +68,35 @@ export class ArrayLikeTest<T> {
 export function sleep(time: number): Promise<void> {
   return new Promise((re, je) => {
     setTimeout(() => {
-      re()
+      re();
     }, time);
   })
 }
 
 export class ReadonlyArrayTest<T> {
-  private arr: ReadonlyArray<T>
+  private arr: ReadonlyArray<T>;
 
   constructor(arr: ReadonlyArray<T>) {
     this.arr = arr;
   }
 
-  public length() {
+  public length(): number {
     return this.arr.length;
   }
 
-  public index(index) {
+  public index(index): T {
     return this.arr[index];
   }
 
-  public toString() {
+  public toString(): string {
     return this.arr.toString();
   }
 
-  public toLocaleString() {
+  public toLocaleString(): string {
     return this.arr.toLocaleString();
   }
 
-  public forEach(a, b?) {
+  public forEach(a, b?): void {
     return this.arr.forEach(a, b);
   }
 }

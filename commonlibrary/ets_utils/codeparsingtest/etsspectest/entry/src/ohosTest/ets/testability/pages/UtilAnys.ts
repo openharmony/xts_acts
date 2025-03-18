@@ -14,12 +14,12 @@
 */
 
 
-export function isArrayEqual(arr1:Array<number|undefined|string>, arr2:Array<number|undefined|string>) {
-  if (arr1.length!== arr2.length) {
+export function isArrayEqual(arr1: Array<number | undefined | string>, arr2: Array<number | undefined | string>) {
+  if (arr1.length !== arr2.length) {
     return false;
   }
   for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i]!== arr2[i]) {
+    if (arr1[i] !== arr2[i]) {
       return false;
     }
   }
@@ -28,7 +28,7 @@ export function isArrayEqual(arr1:Array<number|undefined|string>, arr2:Array<num
 
 
 export function isObjectEqual(arr1: any, arr2: any): boolean {
-  if (arr1.length!== arr2.length) {
+  if (arr1.length !== arr2.length) {
     return false;
   }
   for (let i = 0; i < arr1.length; i++) {
@@ -36,11 +36,11 @@ export function isObjectEqual(arr1: any, arr2: any): boolean {
     const obj2 = arr2[i];
     const keys1 = Object.keys(obj1);
     const keys2 = Object.keys(obj2);
-    if (keys1.length!== keys2.length) {
+    if (keys1.length !== keys2.length) {
       return false;
     }
     for (let key of keys1) {
-      if (obj1[key]!== obj2[key]) {
+      if (obj1[key] !== obj2[key]) {
         return false;
       }
     }
@@ -49,8 +49,8 @@ export function isObjectEqual(arr1: any, arr2: any): boolean {
 }
 
 
-export function isArrayArrayEqual(arr1:any, arr2:any) {
-  if (arr1.length!== arr2.length) {
+export function isArrayArrayEqual(arr1: any, arr2: any) {
+  if (arr1.length !== arr2.length) {
     return false;
   }
   for (let i = 0; i < arr1.length; i++) {
@@ -60,7 +60,7 @@ export function isArrayArrayEqual(arr1:any, arr2:any) {
       if (!isArrayEqual(item1, item2)) {
         return false;
       }
-    } else if (item1!== item2) {
+    } else if (item1 !== item2) {
       return false;
     }
   }
@@ -73,4 +73,5 @@ export function sleep(time: number): Promise<void> {
       re()
     }, time);
   });
-};
+}
+;
