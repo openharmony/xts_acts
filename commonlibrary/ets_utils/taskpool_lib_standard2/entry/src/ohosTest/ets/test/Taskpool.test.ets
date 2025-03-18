@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, TestType, Size, Level} from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base';
 import {
@@ -92,7 +92,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolGetTaskPoolInfo001', 0, async (done: Function) => {
+    it('testTaskpoolGetTaskPoolInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolGetTaskPoolInfo001';
       console.info(`${caseName} test start`);
       try {
@@ -121,7 +121,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecute001', 0, async (done: Function) => {
+    it('testTaskpoolExecute001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecute001';
       console.info(`${caseName} test start`);
       try {
@@ -178,7 +178,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecute002', 0, async (done: Function) => {
+    it('testTaskpoolExecute002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecute002';
       console.info(`${caseName} test start`);
       try {
@@ -235,7 +235,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecute003', 0, async (done: Function) => {
+    it('testTaskpoolExecute003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecute003';
       console.info(`${caseName} test start`);
       try {
@@ -276,7 +276,7 @@ export default function TaskpoolTest() {
      * @tc.type      : FunctionGroup
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecute004', 0, async (done: Function) => {
+    it('testTaskpoolExecute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecute004';
       console.info(`${caseName} test start`);
       try {
@@ -329,7 +329,7 @@ export default function TaskpoolTest() {
      * @tc.type      : FunctionGroup
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecute005', 0, async (done: Function) => {
+    it('testTaskpoolExecute005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecute005';
       console.info(`${caseName} test start`);
       try {
@@ -383,7 +383,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecuteDelayed001', 0, async (done: Function) => {
+    it('testTaskpoolExecuteDelayed001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecuteDelayed001';
       console.info(`${caseName} test start`);
       try {
@@ -449,7 +449,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolExecuteDelayed002', 0, async (done: Function) => {
+    it('testTaskpoolExecuteDelayed002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolExecuteDelayed002';
       console.info(`${caseName} test start`);
       try {
@@ -501,7 +501,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolCancel001', 0, async (done: Function) => {
+    it('testTaskpoolCancel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolCancel001';
       console.info(`${caseName} test start`);
       try {
@@ -556,7 +556,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolCancel002', 0, async (done: Function) => {
+    it('testTaskpoolCancel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolCancel002';
       console.info(`${caseName} test start`);
       try {
@@ -615,7 +615,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolCancel003', 0, async (done: Function) => {
+    it('testTaskpoolCancel003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolCancel003';
       console.info(`${caseName} test start`);
       try {
@@ -677,7 +677,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolCancel004', 0, async (done: Function) => {
+    it('testTaskpoolCancel004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolCancel004';
       console.info(`${caseName} test start`);
       try {
@@ -727,7 +727,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolCancel005', 0, async (done: Function) => {
+    it('testTaskpoolCancel005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolCancel005';
       console.info(`${caseName} test start`);
       try {
@@ -780,7 +780,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolPriority001', 0, async (done: Function) => {
+    it('testTaskpoolPriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolPriority001';
       console.info(`${caseName} test start`);
       try {
@@ -832,7 +832,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor001', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor001';
       console.info(`${caseName} test start`);
       try {
@@ -885,7 +885,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor002', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor002';
       console.info(`${caseName} test start`);
       try {
@@ -940,7 +940,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor003', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor003';
       console.info(`${caseName} test start`);
       try {
@@ -996,7 +996,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor004', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor004';
       console.info(`${caseName} test start`);
       try {
@@ -1053,7 +1053,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor005', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor005';
       console.info(`${caseName} test start`);
       try {
@@ -1106,7 +1106,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskConstructor006', 0, async (done: Function) => {
+    it('testTaskpoolTaskConstructor006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskConstructor006';
       console.info(`${caseName} test start`);
       try {
@@ -1159,7 +1159,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskIsCanceled001', 0, async (done: Function) => {
+    it('testTaskpoolTaskIsCanceled001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskIsCanceled001';
       console.info(`${caseName} test start`);
       try {
@@ -1213,7 +1213,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskIsCanceled002', 0, async (done: Function) => {
+    it('testTaskpoolTaskIsCanceled002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskIsCanceled002';
       console.info(`${caseName} test start`);
       try {
@@ -1267,7 +1267,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskSetTransferList001', 0, async (done: Function) => {
+    it('testTaskpoolTaskSetTransferList001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskSetTransferList001';
       console.info(`${caseName} test start`);
       try {
@@ -1319,7 +1319,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskSetCloneList001', 0, async (done: Function) => {
+    it('testTaskpoolTaskSetCloneList001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskSetCloneList001';
       console.info(`${caseName} test start`);
       try {
@@ -1372,7 +1372,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskSendData001', 0, async (done: Function) => {
+    it('testTaskpoolTaskSendData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskSendData001';
       console.info(`${caseName} test start`);
       try {
@@ -1436,7 +1436,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskOnReceiveData001', 0, async (done: Function) => {
+    it('testTaskpoolTaskOnReceiveData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskOnReceiveData001';
       console.info(`${caseName} test start`);
       try {
@@ -1476,7 +1476,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskOnReceiveData002', 0, async (done: Function) => {
+    it('testTaskpoolTaskOnReceiveData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskOnReceiveData002';
       console.info(`${caseName} test start`);
       try {
@@ -1513,7 +1513,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskAddDependency001', 0, async (done: Function) => {
+    it('testTaskpoolTaskAddDependency001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskAddDependency001';
       console.info(`${caseName} test start`);
       try {
@@ -1562,7 +1562,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskRemoveDependency001', 0, async (done: Function) => {
+    it('testTaskpoolTaskRemoveDependency001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskRemoveDependency001';
       console.info(`${caseName} test start`);
       try {
@@ -1613,7 +1613,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupConstructor001', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupConstructor001';
       console.info(`${caseName} test start`);
       try {
@@ -1663,7 +1663,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupConstructor002', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupConstructor002';
       console.info(`${caseName} test start`);
       try {
@@ -1709,7 +1709,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupConstructor003', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupConstructor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupConstructor003';
       console.info(`${caseName} test start`);
       try {
@@ -1771,7 +1771,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupConstructor004', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupConstructor004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupConstructor004';
       console.info(`${caseName} test start`);
       try {
@@ -1833,7 +1833,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupConstructor005', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupConstructor005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupConstructor005';
       console.info(`${caseName} test start`);
       try {
@@ -1888,7 +1888,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupAddTask001', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupAddTask001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupAddTask001';
       console.info(`${caseName} test start`);
       try {
@@ -1934,7 +1934,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolTaskGroupAddTask002', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupAddTask002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupAddTask002';
       console.info(`${caseName} test start`);
       try {
@@ -1982,7 +1982,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolTaskGroupAddTask003', 0, async (done: Function) => {
+    it('testTaskpoolTaskGroupAddTask003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolTaskGroupAddTask003';
       console.info(`${caseName} test start`);
       try {
@@ -2077,7 +2077,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolSequenceRunnerConstructor001', 0, async (done: Function) => {
+    it('testTaskpoolSequenceRunnerConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolSequenceRunnerConstructor001';
       console.info(`${caseName} test start`);
       try {
@@ -2153,7 +2153,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolSequenceRunnerConstructor002', 0, async (done: Function) => {
+    it('testTaskpoolSequenceRunnerConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolSequenceRunnerConstructor002';
       console.info(`${caseName} test start`);
       try {
@@ -2284,7 +2284,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolSequenceRunnerConstructor003', 0, async (done: Function) => {
+    it('testTaskpoolSequenceRunnerConstructor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolSequenceRunnerConstructor003';
       console.info(`${caseName} test start`);
       try {
@@ -2341,7 +2341,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolSequenceRunnerExecute001', 0, async (done: Function) => {
+    it('testTaskpoolSequenceRunnerExecute001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolSequenceRunnerExecute001';
       console.info(`${caseName} test start`);
       try {
@@ -2402,7 +2402,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolState002', 0, async (done: Function) => {
+    it('testTaskpoolState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolState002';
       console.info(`${caseName} test start`);
       try {
@@ -2444,7 +2444,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError001', 0, async (done: Function) => {
+    it('testTaskpoolError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError001';
       console.info(`${caseName} test start`);
       try {
@@ -2472,7 +2472,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError002', 0, async (done: Function) => {
+    it('testTaskpoolError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError002';
       console.info(`${caseName} test start`);
       try {
@@ -2498,7 +2498,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError003', 0, async (done: Function) => {
+    it('testTaskpoolError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError003';
       console.info(`${caseName} test start`);
       try {
@@ -2543,7 +2543,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError004', 0, async (done: Function) => {
+    it('testTaskpoolError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError004';
       console.info(`${caseName} test start`);
       try {
@@ -2570,7 +2570,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError005', 0, async (done: Function) => {
+    it('testTaskpoolError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError005';
       console.info(`${caseName} test start`);
       try {
@@ -2596,7 +2596,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError006', 0, async (done: Function) => {
+    it('testTaskpoolError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError006';
       console.info(`${caseName} test start`);
       try {
@@ -2639,7 +2639,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError007', 0, async (done: Function) => {
+    it('testTaskpoolError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError007';
       console.info(`${caseName} test start`);
       try {
@@ -2668,7 +2668,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError008', 0, async (done: Function) => {
+    it('testTaskpoolError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError008';
       console.info(`${caseName} test start`);
       try {
@@ -2717,7 +2717,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError009', 0, async (done: Function) => {
+    it('testTaskpoolError009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError009';
       console.info(`${caseName} test start`);
       try {
@@ -2751,7 +2751,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError010', 0, async (done: Function) => {
+    it('testTaskpoolError010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError010';
       console.info(`${caseName} test start`);
       try {
@@ -2789,7 +2789,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError011', 0, async (done: Function) => {
+    it('testTaskpoolError011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError011';
       console.info(`${caseName} test start`);
       try {
@@ -2832,7 +2832,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError012', 0, async (done: Function) => {
+    it('testTaskpoolError012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError012';
       console.info(`${caseName} test start`);
       try {
@@ -2871,7 +2871,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTaskpoolError013', 0, async (done: Function) => {
+    it('testTaskpoolError013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolError013';
       console.info(`${caseName} test start`);
       try {
@@ -2906,7 +2906,7 @@ export default function TaskpoolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskpoolGetTaskPoolInfo002', 0, async (done: Function) => {
+    it('testTaskpoolGetTaskPoolInfo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskpoolGetTaskPoolInfo002';
       console.info(`${caseName} test start`);
       try {
