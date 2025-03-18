@@ -75,5 +75,62 @@ export default function AVPlayerMediaSource() {
       mediaSource.setMimeType(mimeType);
       done();
     });
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0300
+      * @tc.name      : 003.testMediaSource
+      * @tc.desc      : flv live stream with createMediaSourceWithStreamData success
+      * @tc.size      : MediumTest
+      * @tc.type      : Function Test
+      * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0300', 0, async (done: Function) => {
+      let streams : Array<media.MediaStream> = [];
+      for (let i = 0; i < 5; i++) {
+        streams.push({url:
+        "http://live-xxx.flv",
+          width: 100 * (i + 1),
+          height: 120 * (i + 1),
+          bitrate: 1000000 * (i + 1)});
+      }
+      let mediaSource = media.createMediaSourceWithStreamData(streams);
+      expect(mediaSource != undefined).assertTrue();
+      done();
+    });
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0400
+      * @tc.name      : 004.testMediaSource
+      * @tc.desc      : flv live stream with createMediaSourceWithStreamData return empty for exceed maxStreamNum
+      * @tc.size      : MediumTest
+      * @tc.type      : Function Test
+      * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0400', 0, async (done: Function) => {
+      let streams : Array<media.MediaStream> = [];
+      const maxStreamNum = 10;
+      for (let i = 0; i < maxStreamNum + 1; i++) {
+        streams.push({url:
+        "http://live-xxx.flv",
+          width: 100 * (i + 1),
+          height: 120 * (i + 1),
+          bitrate: 1000000 * (i + 1)});
+      }
+      let mediaSource = media.createMediaSourceWithStreamData(streams);
+      expect(mediaSource != undefined).assertFalse();
+      done();
+    });
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0500
+    * @tc.name      : 005.testMediaSource
+    * @tc.desc      : flv live stream with createMediaSourceWithStreamData return empty for empty MediaStream
+    * @tc.size      : MediumTest
+    * @tc.type      : Function Test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0500', 0, async (done: Function) => {
+      let streams : Array<media.MediaStream> = [];
+      let mediaSource = media.createMediaSourceWithStreamData(streams);
+      expect(mediaSource != undefined).assertFalse();
+      done();
+    });
   })
 }
