@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore'
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
@@ -87,8 +87,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.GetKVStore() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.GetKVStore() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0100');
         try {
             await kvManager.getKVStore(TEST_STORE_ID).then((store) => {
@@ -109,8 +111,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.GetKVStore() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.GetKVStore() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0200', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0200');
         try {
             await kvManager.getKVStore(options).then((store) => {
@@ -131,8 +135,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.GetKVStore() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.GetKVStore() testcase 03
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0300', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0300');
         const optionsInfo = {
             createIfMissing: false,
@@ -158,8 +164,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.CloseKVStore() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.CloseKVStore() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100');
         await kvManager.getKVStore(TEST_STORE_ID, options).then( async () => {
             console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100 getKVStore success');
@@ -178,8 +186,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.GetAllKVStoreId() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.GetAllKVStoreId() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_GETALLKVSTORE_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_GETALLKVSTORE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_GETALLKVSTORE_PROMISE_0100');
         await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME).then((data) => {
             console.info('SUB_DDM_DKV_KVMANAGER_GETALLKVSTORE_PROMISE_0100 getAllKVStoreId success');
@@ -196,8 +206,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.On() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.On() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100');
             var deathCallback = function () {
@@ -218,8 +230,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.On() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.On() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200');
             var deathCallback1 = function () {
@@ -244,8 +258,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.On() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.On() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300');
             var deathCallback = function () {
@@ -266,8 +282,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.Off() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Off() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100');
             var deathCallback = function () {
@@ -286,8 +304,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.Off() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Off() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200');
             var deathCallback = function () {
@@ -307,8 +327,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.Off() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Off() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300');
             var deathCallback1 = function () {
@@ -332,8 +354,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.Off() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Off() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400');
             var deathCallback = function () {
@@ -354,8 +378,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.Off() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Off() testcase 005
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500', 0, function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         try{
             console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500');
             var deathCallback = function () {
@@ -375,8 +401,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVStore.Put() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVStore.Put() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_PUT_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_PUT_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_PUT_PROMISE_0100');
         try {
             await kvStoreNew.put(TEST_BUNDLE_NAME, TEST_STORE_ID).then((data) => {
@@ -399,8 +427,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc: Test Js Api KVManager.Delete testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KVManager.Delete testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVMANAGER_DELETE_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_KVMANAGER_DELETE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_DELETE_PROMISE_0100');
         try {
             kvStoreNew.put(STORE_KEY, STORE_VALUE).then((data) => {
@@ -425,8 +455,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc: Test Js Api createKVManager testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api createKVManager testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100', 0, async function (done) {
+     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100');
         const config = {
             bundleName: TEST_BUNDLE_NAME,
@@ -466,8 +498,10 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc: Test Js Api createKVManager testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api createKVManager testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200', 0, async function (done) {
+     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200');
         const config = {
             bundleName: TEST_BUNDLE_NAME,

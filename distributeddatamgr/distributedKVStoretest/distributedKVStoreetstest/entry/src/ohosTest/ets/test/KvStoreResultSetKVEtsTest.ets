@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore'
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 import common from "@ohos.app.ability.common";
@@ -133,8 +133,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetCount() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetCount() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0100 getCount " + count);
@@ -151,8 +153,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetCount() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetCount() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let rs;
         await kvStore.getResultSet('test').then((result) => {
@@ -181,8 +185,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetCount() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetCount() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0300 getCount " + count);
@@ -198,8 +204,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetCount() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetCount() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETCOUNT_0400 getCount " + count);
@@ -215,8 +223,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetPosition() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetPosition() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0100 getPosition " + position);
@@ -233,8 +243,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetPosition() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetPosition() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0200 getPosition " + position);
@@ -255,8 +267,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetPosition() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetPosition() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0300 getPosition " + position);
@@ -272,8 +286,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetPosition() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetPosition() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETPOSITION_0400 getPosition " + position);
@@ -289,8 +305,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToFirst() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0100 moveToFirst " + moved);
@@ -307,8 +325,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToFirst() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0200 moveToFirst " + moved);
@@ -328,8 +348,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToFirst() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0300 moveToFirst " + moved);
@@ -345,8 +367,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToFirst() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0400 moveToFirst " + moved);
@@ -362,8 +386,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToFirst() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToFirst() testcase 005
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0500', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOFIRST_0500 moveToFirst " + moved);
@@ -381,8 +407,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToLast() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToLast() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0100 moveToLast " + moved);
@@ -399,8 +427,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToLast() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToLast() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0200 moveToLast " + moved);
@@ -417,8 +447,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToLast() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToLast() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0300 moveToLast " + moved);
@@ -434,8 +466,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToLast() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToLast() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOLAST_0400 moveToLast " + moved);
@@ -451,8 +485,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToNext() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToNext() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0100 moveToNext " + moved);
@@ -469,8 +505,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToNext() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToNext() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0200 moveToNext " + moved);
@@ -489,8 +527,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToNext() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToNext() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0300 moveToNext " + moved);
@@ -506,8 +546,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToNext() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToNext() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETONEXT_0400 moveToNext " + moved);
@@ -523,8 +565,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPrevious() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0100 moveToPrevious " + moved);
@@ -541,8 +585,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPrevious() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         expect(moved && (resultSet.getPosition() == 0)).assertTrue();
@@ -564,8 +610,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPrevious() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious(123);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0300 moveToPrevious " + moved);
@@ -581,8 +629,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPrevious() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious(123, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0400 moveToPrevious " + moved);
@@ -598,8 +648,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPrevious() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPrevious() testcase 005
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0500', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVETOPREVIOUS_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         expect(moved && (resultSet.getPosition() == 0)).assertTrue();
@@ -620,8 +672,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.Move() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.Move() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.move();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0100 move " + moved);
@@ -637,8 +691,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.Move() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.Move() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         resultSet.moveToFirst();
         expect(resultSet.getPosition() == 0).assertTrue();
@@ -658,8 +714,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.Move() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.Move() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_SETMOVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         expect(resultSet.getPosition() == -1).assertTrue();
         let moved = resultSet.move(3);
@@ -680,8 +738,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPosition() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPosition();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0100 moveToPosition " + moved);
@@ -697,8 +757,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPosition() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPosition(5);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0200 moveToPosition " + moved);
@@ -714,8 +776,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.MoveToPosition() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.MoveToPosition() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.move(3);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_MOVETOPOSITION_0300 moveToPosition " + moved);
@@ -734,8 +798,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsFirst() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsFirst() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0100 isFirst " + flag);
@@ -752,8 +818,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsFirst() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsFirst() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0200 isFirst " + flag);
@@ -774,8 +842,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsFirst() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsFirst() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst(1);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0300 isFirst " + flag);
@@ -791,8 +861,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsFirst() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsFirst() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst(1, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISFIRST_0400 isFirst " + flag);
@@ -808,8 +880,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsLast() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsLast() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0100 isLast " + flag);
@@ -826,8 +900,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsLast() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsLast() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         resultSet.moveToLast();
         let flag = resultSet.isLast();
@@ -845,8 +921,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsLast() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsLast() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast(1);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0300 isLast " + flag);
@@ -862,8 +940,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsLast() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsLast() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast(1, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISLAST_0400 isLast " + flag);
@@ -879,8 +959,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0100 isBeforeFirst " + flag);
@@ -897,8 +979,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious();
         expect(!moved).assertTrue();
@@ -917,8 +1001,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst(1);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0300 isBeforeFirst " + flag);
@@ -934,8 +1020,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsBeforeFirst() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst(1, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISBEFOREFIRST_0400 isBeforeFirst " + flag);
@@ -951,8 +1039,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsAfterLast() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0100 isAfterLast " + flag);
@@ -969,8 +1059,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsAfterLast() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0200  moveToLast  moved=" + moved);
@@ -993,8 +1085,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsAfterLast() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast(1);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0300 isAfterLast " + flag);
@@ -1010,8 +1104,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.IsAfterLast() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.IsAfterLast() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast(1, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_ISAFTERLAST_0400 isAfterLast " + flag);
@@ -1027,8 +1123,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetEntry() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetEntry() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         let entry = resultSet.getEntry();
@@ -1047,8 +1145,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetEntry() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetEntry() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         let entry = resultSet.getEntry();
@@ -1073,8 +1173,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetEntry() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetEntry() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let entry = resultSet.getEntry(1);
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0300 getEntry " + entry);
@@ -1090,8 +1192,10 @@ export default function KvStoreResultSetTest(){
      * @tc.desc Test Js Api KvStoreResultSet.GetEntry() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api KvStoreResultSet.GetEntry() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0400', 0, async function(done) {
+    it('SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let entry = resultSet.getEntry(1, 'test_string');
         console.info("SUB_DDM_DKV_KVSTORERESULTSET_GETENTRY_0400 getEntry " + entry);

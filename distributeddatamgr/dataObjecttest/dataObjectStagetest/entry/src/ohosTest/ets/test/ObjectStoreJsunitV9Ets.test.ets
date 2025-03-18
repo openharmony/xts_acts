@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import distributedObject from '@ohos.data.distributedDataObject';
 import commonType from '@ohos.data.commonType';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -52,7 +52,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetCommunType0100', 0, async function (done) {
+    it('V9testbindAssetCommunType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetCommunType0100 start *************");
         expect(commonType.AssetStatus.ASSET_NORMAL == 1).assertTrue();
         expect(commonType.AssetStatus.ASSET_INSERT == 2).assertTrue();
@@ -71,7 +71,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetCommunType0200', 0, async function (done) {
+    it('V9testbindAssetCommunType0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetCommunType0200 start *************");
         let asset1  = {
             status:0,
@@ -110,7 +110,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetCommunType0300', 0, async function (done) {
+    it('V9testbindAssetCommunType0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetCommunType0300 start *************");
         let asset1  = {
             status:0,
@@ -156,7 +156,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetCommunType0400', 0, async function (done) {
+    it('V9testbindAssetCommunType0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetCommunType0400 start *************");
 
         let asset1 : commonType.Asset = {
