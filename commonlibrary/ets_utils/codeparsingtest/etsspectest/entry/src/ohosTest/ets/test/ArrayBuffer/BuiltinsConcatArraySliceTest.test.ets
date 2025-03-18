@@ -88,9 +88,9 @@ export default function builtinsConcatArraySliceTest() {
      */
     it('builtinsConcatArraySliceTest1004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       let sparseArr = new ConcatArrayTest<number | undefined>([1, , 3])
-      const result = sparseArr.slice(0, 2);
+      const result: number[] = sparseArr.slice(0, 2);
       expect(result.length).assertEqual(2);
-      expect(result[0]).assertEqual(1);
+      expect(result[0]?.toString()).assertEqual(1);
       expect(result[1] === undefined).assertTrue();
     });
 
@@ -165,7 +165,7 @@ export default function builtinsConcatArraySliceTest() {
       }, {
         c: 3
       }]);
-      const sliced = objArr.slice(0, 2);
+      const sliced: number[] = objArr.slice(0, 2);
       expect(sliced.length).assertEqual(2);
       expect(JSON.stringify(sliced)).assertEqual(JSON.stringify([{
         a: 1
