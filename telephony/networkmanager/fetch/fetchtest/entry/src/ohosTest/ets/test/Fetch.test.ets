@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import {describe, TestType, Level, Size, it, expect } from '@ohos/hypium';
 import Fetch, { FetchResponse } from '@system.fetch';
 import connection from '@ohos.net.connection';
 
@@ -404,5 +404,25 @@ export default function httpFetchTest() {
         console.info(`${caseName} test end `);
       }
     });
+
+    /* *
+      * @tc.number: SUB_NetworkMgr_Http_FetchRequestMethod_01700
+      * @tc.name  : testHttpFetchRequestMethod01700
+      * @tc.desc  : Test fetch api with param that method is DELETE.
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 3
+      */
+    it('testHttpFetchRequestMethod01700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testHttpFetchRequestMethod01700';
+      runFetchTestCase(caseName, {
+        url: "www.baidu.com",
+      }, done, (data: FetchResponse) => {
+        ExpectTrue(data.headers != undefined)
+      }, () => {
+        ExpectTrue(false);
+      });
+    });
   });
 }
+
