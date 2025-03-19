@@ -84,7 +84,7 @@ struct Repeatreutrue  {
         .onClick(() => {
           this.scroller.scrollToIndex(this.simpleList.length - 1); // Slide to the specified index
         })
-      List({ space: 10 ,scroller: this.scroller}) {
+      List({ scroller: this.scroller}) {
         Repeat<RepeatreutrueClazz>(this.simpleList)
           .each((obj: RepeatItem<RepeatreutrueClazz>) => {
             ListItem() {
