@@ -58,6 +58,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -78,6 +79,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -97,6 +99,7 @@ export default function workerTest() {
       } catch (err) {
         console.error(`${caseName} failed, error: ${err}`);
       }
+      done()
     });
 
     /**
@@ -116,6 +119,7 @@ export default function workerTest() {
       } catch (err) {
         console.error(`${caseName} failed, error: ${err}`);
       }
+      done()
     });
 
     /**
@@ -138,6 +142,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -160,6 +165,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -182,6 +188,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -204,6 +211,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -224,6 +232,7 @@ export default function workerTest() {
       } catch (err) {
         console.error(`${caseName} failed, error: ${err.message}`);
       }
+      done()
     });
 
     /**
@@ -246,6 +255,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -281,6 +291,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -311,6 +322,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -341,6 +353,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -379,6 +392,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -414,6 +428,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -449,6 +464,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -484,6 +500,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -519,6 +536,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -554,6 +572,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -590,6 +609,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -626,6 +646,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -662,6 +683,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -698,6 +720,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -734,6 +757,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -770,6 +794,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -807,6 +832,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -844,6 +870,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -879,6 +906,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -914,6 +942,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -949,6 +978,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -985,6 +1015,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1020,6 +1051,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1055,6 +1087,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1090,6 +1123,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1116,6 +1150,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -1151,6 +1186,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1177,6 +1213,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -1212,6 +1249,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1237,6 +1275,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -1272,6 +1311,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1307,6 +1347,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1341,6 +1382,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1376,6 +1418,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1413,6 +1456,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1448,6 +1492,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1483,6 +1528,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1520,6 +1566,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1555,6 +1602,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1589,6 +1637,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1624,6 +1673,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1659,6 +1709,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1693,6 +1744,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1727,6 +1779,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1762,6 +1815,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1797,6 +1851,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1838,6 +1893,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1872,6 +1928,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1903,6 +1960,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1934,6 +1992,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -1972,6 +2031,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error.message}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2007,6 +2067,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2042,6 +2103,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2077,6 +2139,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2112,6 +2175,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2148,6 +2212,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -2186,6 +2251,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2223,6 +2289,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2260,6 +2327,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2297,6 +2365,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2334,6 +2403,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2371,6 +2441,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2409,6 +2480,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2447,6 +2519,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2483,6 +2556,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2519,6 +2593,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2555,6 +2630,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2592,6 +2668,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2628,6 +2705,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2664,6 +2742,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2700,6 +2779,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2726,6 +2806,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -2762,6 +2843,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2788,6 +2870,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -2823,6 +2906,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2848,6 +2932,7 @@ export default function workerTest() {
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
       }
+      done()
     });
 
     /**
@@ -2885,6 +2970,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2922,6 +3008,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2957,6 +3044,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -2993,6 +3081,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3030,6 +3119,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3067,6 +3157,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3104,6 +3195,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3141,6 +3233,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3177,6 +3270,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3214,6 +3308,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3249,6 +3344,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3283,6 +3379,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3318,6 +3415,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3354,6 +3452,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3388,6 +3487,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3422,6 +3522,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3458,6 +3559,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3493,6 +3595,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -3535,6 +3638,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -3568,6 +3672,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3600,6 +3705,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3632,6 +3738,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3664,6 +3771,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3696,6 +3804,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3728,6 +3837,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3760,6 +3870,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
 
@@ -3793,6 +3904,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3825,6 +3937,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3857,6 +3970,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3889,6 +4003,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3921,6 +4036,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3953,6 +4069,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -3985,6 +4102,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4017,6 +4135,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4215,6 +4334,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0700
@@ -4313,6 +4433,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1000
@@ -4378,6 +4499,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1200
@@ -4410,6 +4532,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1300
@@ -4442,6 +4565,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1400
@@ -4474,6 +4598,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1500
@@ -4506,6 +4631,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -4540,6 +4666,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -4574,6 +4701,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4608,6 +4736,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4642,6 +4771,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4676,6 +4806,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4710,6 +4841,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4744,6 +4876,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4778,6 +4911,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4812,6 +4946,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4846,6 +4981,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4880,6 +5016,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4914,6 +5051,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4948,6 +5086,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -4982,6 +5121,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5016,6 +5156,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5050,6 +5191,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5084,6 +5226,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5119,6 +5262,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5148,6 +5292,7 @@ export default function workerTest() {
           workerInstance.terminate();
         }
       }
+      done()
     });
 
     /**
@@ -5177,6 +5322,7 @@ export default function workerTest() {
           workerInstance.terminate();
         }
       }
+      done()
     });
 
     /**
@@ -5212,6 +5358,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5247,6 +5394,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5286,6 +5434,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5321,6 +5470,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5360,6 +5510,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5393,6 +5544,7 @@ export default function workerTest() {
           workerInstance.terminate();
         }
       }
+      done()
     });
 
     /**
@@ -5426,6 +5578,7 @@ export default function workerTest() {
           workerInstance.terminate();
         }
       }
+      done()
     });
 
     /**
@@ -5465,6 +5618,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5504,6 +5658,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5547,6 +5702,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5586,6 +5742,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5625,6 +5782,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5664,6 +5822,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5760,6 +5919,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5788,6 +5948,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5824,6 +5985,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5856,6 +6018,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5888,6 +6051,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5922,6 +6086,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -5956,6 +6121,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -5990,6 +6156,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6024,6 +6191,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6058,6 +6226,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6092,6 +6261,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6126,6 +6296,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6160,6 +6331,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6194,6 +6366,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6228,6 +6401,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6262,6 +6436,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6296,6 +6471,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6330,6 +6506,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6364,6 +6541,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6398,6 +6576,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6432,6 +6611,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6466,6 +6646,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6500,6 +6681,7 @@ export default function workerTest() {
         console.error(`${caseName} failed, error: ${e.code}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6535,6 +6717,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6570,6 +6753,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6602,6 +6786,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
 
     /**
@@ -6634,6 +6819,7 @@ export default function workerTest() {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     });
   })
 }

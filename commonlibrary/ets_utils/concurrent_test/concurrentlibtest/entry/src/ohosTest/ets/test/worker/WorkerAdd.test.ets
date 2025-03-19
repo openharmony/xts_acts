@@ -61,6 +61,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Add_0200
@@ -96,6 +97,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Add_0300
@@ -131,6 +133,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Add_0400
@@ -166,6 +169,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Add_0500
@@ -202,6 +206,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Add_0600
@@ -238,6 +243,7 @@ export default function workerAddTest() {
         expect().assertFail();
         done()
       }
+      done()
     });
   })
 }

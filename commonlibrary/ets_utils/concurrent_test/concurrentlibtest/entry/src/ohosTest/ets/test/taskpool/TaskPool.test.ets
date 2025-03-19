@@ -3939,6 +3939,7 @@ export default function TaskPoolTest() {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect(err.code).assertEqual(10200014);
       }
+      done()
     });
 
     /**
@@ -4647,6 +4648,7 @@ export default function TaskPoolTest() {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect(err.code).assertEqual(10200014);
       }
+      done()
     });
     /**
      * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_0100
@@ -5208,6 +5210,7 @@ export default function TaskPoolTest() {
         expect().assertFail();
         done();
       }
+      done()
     });
 
     /**

@@ -104,7 +104,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0001";
       let num = 0;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -118,12 +120,14 @@ export default function workerErrorCodeTest() {
             })
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
-            num = err.code;
+            num++;
+            expect(err.code).assertEqual(10200004)
           }
         })
       }
-      await Sleep(1000)
-      expect(num).assertEqual(10200004)
+      while (num < 1) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -138,7 +142,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0003";
       let num = 0;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -152,12 +158,14 @@ export default function workerErrorCodeTest() {
             })
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
-            num = err.code;
+            num++;
+            expect(err.code).assertEqual(10200004)
           }
         })
       }
-      await Sleep(200)
-      expect(num).assertEqual(10200004)
+      while (num < 1) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -172,7 +180,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0005";
       let num = 0;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -181,15 +191,19 @@ export default function workerErrorCodeTest() {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
         setTimeout(() => {
           try {
-            workerInstance.dispatchEvent({ type: "eventType", timeStamp: 0 });
+            workerInstance.dispatchEvent({
+              type: "eventType", timeStamp: 0
+            });
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
-            num = err.code;
+            num++;
+            expect(err.code).assertEqual(10200004)
           }
         })
       }
-      await Sleep(200)
-      expect(num).assertEqual(10200004)
+      while (num < 1) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -204,7 +218,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0006";
       let num = 0;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -219,12 +235,14 @@ export default function workerErrorCodeTest() {
             workerInstance.removeEventListener("workerInstance_addEventListener");
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
-            num = err.code;
+            num++;
+            expect(err.code).assertEqual(10200004)
           }
         })
       }
-      await Sleep(200)
-      expect(num).assertEqual(10200004)
+      while (num < 1) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -239,7 +257,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0007";
       let num = 0;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -254,12 +274,14 @@ export default function workerErrorCodeTest() {
             workerInstance.removeAllListener();
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
-            num = err.code;
+            num++;
+            expect(err.code).assertEqual(10200004)
           }
         })
       }
-      await Sleep(200)
-      expect(num).assertEqual(10200004)
+      while (num < 1) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -275,7 +297,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerOnmessage1", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerOnmessage1", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           console.log(`${caseName} main onmessage code: ` + JSON.stringify(e));
@@ -294,6 +318,7 @@ export default function workerErrorCodeTest() {
         expect().assertFail();
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1300
@@ -308,7 +333,9 @@ export default function workerErrorCodeTest() {
       try {
         const workerInstance: worker.ThreadWorker =
           new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage1",
-            { priority: ThreadWorkerPriority.IDLE });
+            {
+              priority: ThreadWorkerPriority.HIGH
+            });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -323,6 +350,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1400
@@ -335,7 +363,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0014";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage4", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage4", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -359,7 +389,9 @@ export default function workerErrorCodeTest() {
       try {
         const workerInstance: worker.ThreadWorker =
           new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage3",
-            { priority: ThreadWorkerPriority.IDLE });
+            {
+              priority: ThreadWorkerPriority.HIGH
+            });
         workerInstance.onmessage = (e) => {
         }
         workerInstance.onexit = (code) => {
@@ -373,6 +405,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1600
@@ -387,7 +420,9 @@ export default function workerErrorCodeTest() {
       try {
         const workerInstance: worker.ThreadWorker =
           new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage4",
-            { priority: ThreadWorkerPriority.IDLE });
+            {
+              priority: ThreadWorkerPriority.HIGH
+            });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -402,6 +437,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200006)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1700
@@ -416,7 +452,9 @@ export default function workerErrorCodeTest() {
       try {
         const workerInstance: worker.ThreadWorker =
           new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage5",
-            { priority: ThreadWorkerPriority.IDLE });
+            {
+              priority: ThreadWorkerPriority.HIGH
+            });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate()
@@ -431,6 +469,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1800
@@ -443,7 +482,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0018";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage6", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerPostMessage6", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -466,7 +507,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0019";
       try {
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister1", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister1", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         let registerObj = new TestObj();
         workerInstance.registerGlobalCallObject("myObj", registerObj);
@@ -483,6 +526,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2000
@@ -495,7 +539,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0020";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister2", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister2", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       let registerObj = new TestObj();
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
@@ -519,7 +565,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0021";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister3", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister3", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -541,7 +589,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0022";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister4", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister4", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       let registerObj = new TestObjAsync();
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
@@ -565,7 +615,9 @@ export default function workerErrorCodeTest() {
     it('testThreadWorkerErrorCode0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0023";
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister5", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister5", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       let registerObj = new TestObjTime();
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
@@ -605,6 +657,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200007)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2600
@@ -618,7 +671,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0026";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.terminate();
       workerInstance.onmessage = (e) => {
@@ -657,7 +712,9 @@ export default function workerErrorCodeTest() {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
           new worker.ThreadWorker("../../workers/ErrorCode/WorkerOnmessageError2",
-            { priority: ThreadWorkerPriority.IDLE });
+            {
+              priority: ThreadWorkerPriority.HIGH
+            });
         workerInstance.postMessage(10);
         workerInstance.terminate();
         workerInstance.onmessage = (e) => {
@@ -689,6 +746,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2800
@@ -702,7 +760,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0028";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.terminate();
       workerInstance.onmessage = (e) => {
@@ -740,7 +800,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -769,6 +831,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_3000
@@ -782,7 +845,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0030";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.terminate();
       workerInstance.onmessage = (e) => {
       }
@@ -815,7 +880,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0031";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.terminate();
       workerInstance.onmessage = (e) => {
       }
@@ -848,7 +915,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0032";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.terminate();
       let object: SendableObject = new SendableObject();
       workerInstance.onmessage = (e) => {
@@ -883,7 +952,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         let task: taskpool.Task = new taskpool.Task(printNum, 10)
         workerInstance.postMessageWithSharedSendable(task);
         workerInstance.onmessage = (e) => {
@@ -905,6 +976,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200006)
         done();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_3400
@@ -919,7 +991,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -947,6 +1021,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
 
     /**
@@ -962,7 +1037,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -990,6 +1067,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
 
     /**
@@ -1005,7 +1083,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -1034,6 +1114,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
 
     /**
@@ -1049,7 +1130,9 @@ export default function workerErrorCodeTest() {
       try {
         let bool = false;
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -1077,6 +1160,7 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
+      done()
     });
 
     /**
@@ -1091,7 +1175,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0042";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -1100,7 +1186,9 @@ export default function workerErrorCodeTest() {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
         setTimeout(() => {
           try {
-            workerInstance.dispatchEvent({ type: "eventType", timeStamp: 0 });
+            workerInstance.dispatchEvent({
+              type: "eventType", timeStamp: 0
+            });
           } catch (err) {
             console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
             expect(err.code).assertEqual(10200004)
@@ -1125,7 +1213,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0043";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         workerInstance.terminate();
@@ -1163,7 +1253,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0045";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       let registerObj = new TestObj();
       workerInstance.postMessage(10);
       workerInstance.terminate();
@@ -1198,7 +1290,9 @@ export default function workerErrorCodeTest() {
       const caseName = "testThreadWorkerErrorCode0046";
       let bool = false;
       const workerInstance: worker.ThreadWorker =
-        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
       let registerObj = new TestObj();
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
@@ -1236,10 +1330,14 @@ export default function workerErrorCodeTest() {
         const workerInstancesONE: worker.ThreadWorker[] = [];
         for (let i: number = 0; i < 64; i++) {
           workerInstancesONE.push(new worker.ThreadWorker('../../workers/ErrorCode/WorkerData',
-            { priority: ThreadWorkerPriority.HIGH }));
+            {
+              priority: ThreadWorkerPriority.HIGH
+            }));
         }
         const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           workerInstance.terminate();
@@ -1255,6 +1353,83 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200003)
         done();
       }
+      done()
     });
+    /**
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_4301
+     * @tc.name       : testThreadWorkerErrorCode0043_2
+     * @tc.desc       : ThreadWorker9+ removeEventListener9+ 10200004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testThreadWorkerErrorCode0043_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        const caseName = "testThreadWorkerErrorCode0043_2";
+        let bool = false;
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+            priority: ThreadWorkerPriority.HIGH
+          });
+        workerInstance.postMessage(10);
+        workerInstance.onmessage = (e) => {
+          workerInstance.terminate();
+        }
+        workerInstance.on("workerInstance_on", () => {
+          console.log('workerInstance_on callback');
+        })
+        workerInstance.onexit = (code) => {
+          console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+          setTimeout(() => {
+            try {
+              workerInstance.removeEventListener("workerInstance_on", () => {
+                console.log('workerInstance_on removeEventListener callback');
+              })
+            } catch (err) {
+              console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
+              expect(err.code).assertEqual(10200004)
+              bool = true;
+            }
+          })
+        }
+        while (!bool) {
+          await Sleep(200)
+        }
+        done();
+      });
+    /**
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1000
+     * @tc.name       : testThreadWorkerErrorCode0010
+     * @tc.desc       : ThreadWorkerGlobalScope onmessageerror9+ 10200004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testThreadWorkerErrorCode0010', 0, async (done: Function) => {
+      const caseName = "testThreadWorkerErrorCode0010";
+      try {
+        let bool = false;
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerOnmessageError1", {
+            priority: ThreadWorkerPriority.HIGH
+          });
+        workerInstance.postMessage('aa');
+        workerInstance.onmessage = (e) => {
+        }
+        workerInstance.onexit = (code) => {
+          console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        }
+        while (!bool) {
+          await Sleep(200)
+          console.log(`${caseName} main while code: ` + JSON.stringify(bool));
+        }
+        done();
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
+        expect(err.code).assertEqual(10200004)
+        done();
+      }
+    });
+
   })
 }
