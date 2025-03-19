@@ -18,7 +18,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
@@ -620,8 +620,8 @@ export default function CameraMirrorTest() {
               expect().assertFail();
             }
           } else {
-              console.info(TAG +
-                "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with mirror not support");
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with mirror not support");
           }
 
           await sleep(1000);
@@ -634,5 +634,80 @@ export default function CameraMirrorTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200
+     * @tc.name      : Test photo output enable mirror with errorCode 7400101
+     * @tc.desc      : Test photo output enable mirror with errorCode 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200--------------");
+      let cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[0]);
+      if (isEmpty(cameraOutputCap)) {
+        console.info('Enter cameraOutputCap == undefined | null')
+      }
+
+      mPhotoOutput = mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[0], mPhotoSurface);
+      if (isEmpty(mPhotoOutput)) {
+        console.info('Enter mPhotoOutput == undefined | null')
+      }
+
+      let isCreateInput = await createInput(0)
+      if (isCreateInput) {
+        mCameraSession.addInput(mCameraInput)
+      }
+      if (!isEmpty(mPhotoOutput)) {
+        mCameraSession.addOutput(mPhotoOutput)
+      }
+      await mCameraSession.commitConfig()
+      try {
+        mPhotoOutput.enableMirror(null);
+        console.info(TAG + "Enter SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200 Success");
+        expect(true).assertFalse()
+      } catch (err) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200 FAILED err : " + JSON.stringify(err));
+        expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+      }
+      stopCameraSession()
+      done()
+    })
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300
+     * @tc.name      : Test photo output enable mirror with errorCode 7400103
+     * @tc.desc      : Test photo output enable mirror with errorCode 7400103
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300--------------");
+      await releaseCameraSessionInstance()
+      let cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[0]);
+      if (isEmpty(cameraOutputCap)) {
+        console.info('Enter cameraOutputCap == undefined | null')
+      }
+
+      mPhotoOutput = mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[0], mPhotoSurface);
+      if (isEmpty(mPhotoOutput)) {
+        console.info('Enter mPhotoOutput == undefined | null')
+      }
+
+      try {
+        mPhotoOutput.enableMirror(true);
+        console.info(TAG + "Enter SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300 Success");
+      } catch (err) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300 FAILED err : " + JSON.stringify(err));
+        expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+      }
+      done()
+    })
+
   })
 }
