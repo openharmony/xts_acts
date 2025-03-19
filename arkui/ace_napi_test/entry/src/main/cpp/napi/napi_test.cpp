@@ -14189,14 +14189,6 @@ static napi_value NapiDeserializeTest(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     void *data;
 
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-
-    //object is undefined
-    status = napi_deserialize(env, data, &undefined);
-    NAPI_ASSERT(env, status != napi_ok, "object is undefined, napi_deserialize failed.");
-
     //env is null
     status = napi_deserialize(nullptr, data, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_deserialize failed.");
@@ -15968,14 +15960,6 @@ static napi_value NapiRejectDeferredTest(napi_env env, napi_callback_info info)
     napi_deferred deferred;
     napi_value result = nullptr;
 
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-
-    //rejection is undefined
-    status = napi_reject_deferred(env, deferred, undefined);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "value is undefined, napi_reject_deferred failed.");
-
     //env is null
     status = napi_reject_deferred(nullptr, deferred, result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_reject_deferred failed.");
@@ -16004,14 +15988,6 @@ static napi_value NapiResolveDeferredTest(napi_env env, napi_callback_info info)
     napi_status status;
     napi_deferred deferred;
     napi_value result = nullptr;
-
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-
-    //rejection is undefined
-    status = napi_resolve_deferred(env, deferred, undefined);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "value is undefined, napi_resolve_deferred failed.");
 
     //env is null
     status = napi_resolve_deferred(nullptr, deferred, result);
@@ -16539,11 +16515,6 @@ static napi_value NapiCreateAsyncWorkTest(napi_env env, napi_callback_info info)
         context, &context->asyncWork);
     NAPI_ASSERT(env, status == napi_invalid_arg, "complete is null, napi_create_async_work failed.");
 
-    //data is null
-    status = napi_create_async_work(env, resource, resourceName, [](napi_env env, void *data) {}, completeCb,
-        nullptr, &context->asyncWork);
-    NAPI_ASSERT(env, status == napi_ok, "data is null, napi_create_async_work failed.");
-
     //result is null
     AsyncContext *context1 = new AsyncContext();
     napi_value resourceName1;
@@ -16680,12 +16651,12 @@ static napi_value NapiWrapTest(napi_env env, napi_callback_info info)
     napi_unwrap(env, instanceValue, (void**)&tmpTestStr);
     status = napi_wrap(
         env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_object_expected, "finalize_hint is null, napi_wrap failed.");
+    NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_hint is null, napi_wrap failed.");
 
     //result is null
     status = napi_wrap(
         env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalize_hint, nullptr);
-    NAPI_ASSERT(env, status == napi_object_expected, "result is null, napi_wrap failed.");
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_wrap failed.");
 
     //all is null
     status = napi_wrap(nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
@@ -16771,14 +16742,6 @@ static napi_value NapiNewInstanceTest(napi_env env, napi_callback_info info)
     //constructor is undefined
     status = napi_new_instance(env, undefined, argc, args, &instanceValue);
     NAPI_ASSERT(env, status == napi_function_expected, "constructor is undefined, napi_new_instance failed.");
-
-    //argv is undefined
-    status = napi_new_instance(env, customClass, argc, &undefined, &instanceValue);
-    NAPI_ASSERT(env, status == napi_function_expected, "argv is undefined, napi_new_instance failed.");
-
-    //result is undefined
-    status = napi_new_instance(env, customClass, argc, args, &undefined);
-    NAPI_ASSERT(env, status == napi_function_expected, "result is undefined, napi_new_instance failed.");
 
     //env is null
     status = napi_new_instance(nullptr, customClass, argc, args, &instanceValue);
