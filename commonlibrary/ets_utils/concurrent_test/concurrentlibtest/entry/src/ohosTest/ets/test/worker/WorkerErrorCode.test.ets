@@ -318,7 +318,6 @@ export default function workerErrorCodeTest() {
         expect().assertFail();
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1300
@@ -350,7 +349,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1400
@@ -405,7 +403,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1600
@@ -437,7 +434,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200006)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1700
@@ -469,7 +465,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_1800
@@ -526,7 +521,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2000
@@ -657,7 +651,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200007)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2600
@@ -746,7 +739,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2800
@@ -831,7 +823,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_3000
@@ -976,7 +967,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200006)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_3400
@@ -1021,7 +1011,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
 
     /**
@@ -1067,7 +1056,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
 
     /**
@@ -1114,7 +1102,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
 
     /**
@@ -1160,7 +1147,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200004)
         done();
       }
-      done()
     });
 
     /**
@@ -1353,7 +1339,6 @@ export default function workerErrorCodeTest() {
         expect(err.code).assertEqual(10200003)
         done();
       }
-      done()
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_4301
