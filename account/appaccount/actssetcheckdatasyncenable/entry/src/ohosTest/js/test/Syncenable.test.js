@@ -54,7 +54,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check sync flag callback form
         * @tc.desc      : Get the synchronization flag of the account that has not set the synchronization flag
         */
-        it('ActsSetCheckDataSyncEnabled_0100', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -93,7 +93,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check sync flag promise form
         * @tc.desc      : Get the synchronization flag of the account that has not set the synchronization flag
         */
-        it('ActsSetCheckDataSyncEnabled_0200', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -135,7 +135,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check the set synchronization flag callback form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
-        it('ActsSetCheckDataSyncEnabled_0300', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -182,7 +182,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check the set synchronization flag promise form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
-        it('ActsSetCheckDataSyncEnabled_0400', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -226,7 +226,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check the set synchronization flag callback form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to false for the account
         */
-        it('ActsSetCheckDataSyncEnabled_0500', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -273,7 +273,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : Check the set synchronization flag promise form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to false for the account
         */
-        it('ActsSetCheckDataSyncEnabled_0600', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -318,7 +318,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to false
         *                 for the first time and true for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_0700', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -374,7 +374,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to false
         *                 for the first time and true for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_0800', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -414,7 +414,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to true
         *                 for the first time and false for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_0900', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -470,7 +470,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to true
         *                 for the first time and false for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_1000', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -510,7 +510,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to true
         *                 for the first time and true for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_1100', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -566,7 +566,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag for the account to true
         *                 for the true time and true for the second time
         */
-        it('ActsSetCheckDataSyncEnabled_1200', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -605,7 +605,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : setDataSyncEnabled callback form
         * @tc.desc      : Set synchronization flag for non-existent account
         */
-        it('ActsSetCheckDataSyncEnabled_1300', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -628,7 +628,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : setDataSyncEnabled promise form
         * @tc.desc      : Set synchronization flag for non-existent account
         */
-        it('ActsSetCheckDataSyncEnabled_1400', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -650,7 +650,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : checkDataSyncEnabled callback form
         * @tc.desc      : Check synchronization flag for non-existent account
         */
-        it('ActsSetCheckDataSyncEnabled_1500', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -673,7 +673,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.name      : checkDataSyncEnabled promise form
         * @tc.desc      : Check synchronization flag for non-existent account
         */
-        it('ActsSetCheckDataSyncEnabled_1600', 0, async function (done) {
+        it('ActsSetCheckDataSyncEnabled_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsSetCheckDataSyncEnabled_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -698,7 +698,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_1700 "
             console.info(tag + "start====");
             let accountName = '';
@@ -727,7 +727,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_1800 "
             console.info(tag + "start====");
             let accountName = '';
@@ -757,7 +757,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_1900 "
             console.info(tag + "start====");
             let accountName = 'i';
@@ -783,7 +783,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_2000 "
             console.info(tag + "start====");
             let accountName = '';
@@ -810,7 +810,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_2100 "
             console.info(tag + "start====");
             let accountName = '';
@@ -839,7 +839,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_2200 "
             console.info(tag + "start====");
             let accountName = '';
@@ -869,7 +869,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_2300 "
             console.info(tag + "start====");
             let accountName = 'i';
@@ -895,7 +895,7 @@ export default function ActsSetCheckDataSyncEnabled() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsSetCheckDataSyncEnabled_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('ActsSetCheckDataSyncEnabled_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done) => {
             let tag = "====>ActsSetCheckDataSyncEnabled_2400 "
             console.info(tag + "start====");
             let accountName = '';
