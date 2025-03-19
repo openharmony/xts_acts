@@ -1265,7 +1265,6 @@ export default function abilityTest() {
         console.info(`on setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
         expect(err.code).assertEqual(401);
       }
-      session = null;
       done();
     })
 
@@ -1394,10 +1393,9 @@ export default function abilityTest() {
         console.info(`off setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
         expect(err.code).assertEqual(401);
       }
-      session = null;
       done();
     })  
-
+    
   })
 }
 
