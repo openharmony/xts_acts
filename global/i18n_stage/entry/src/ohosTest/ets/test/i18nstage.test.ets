@@ -1108,6 +1108,32 @@ export default function i18nStageTest() {
       }
     })
 
+    /**
+     * @tc.number   : SUB_GLOBAL_I18N_addPreferredLanguage_0100
+     * @tc.name     : SUB_GLOBAL_I18N_addPreferredLanguage_0100
+     * @tc.desc     : addPreferredLanguage
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_I18N_addPreferredLanguage_0100', Level.LEVEL2, () => {
+      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + 'start');
+      let list = I18n.getPreferredLanguageList();
+      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + list);
+      expect(list.length).assertLarger(0);
+      if(list[0] != 'zh-Hans-CN' && list[0] != 'zh-Hans'){
+        let value = I18n.addPreferredLanguage('zh-Hans-CN', 1);
+        console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + value);
+        expect(list.length > 0).assertTrue();
+      }
+      else{
+        let value = I18n.addPreferredLanguage('en-Latn-US', 2);
+        console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + value);
+        expect(list.length > 0).assertTrue();
+      }
+      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + I18n.getPreferredLanguageList());
+    })
+
     console.log('*************end i18nStageTest*************');
   })
 }
