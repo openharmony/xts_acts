@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import emitter from '@ohos.events.emitter';
 
@@ -32,7 +32,7 @@ export default function ActsNotificationEmitterPublishTest() {
       * @tc.type   : Function
       * @tc.level  : Level 2
       */
-    it('Sub_Notification_Emitter_Publish_Emit_0500', 2, (done: Function) => {
+    it('Sub_Notification_Emitter_Publish_Emit_0500', Level.LEVEL2, (done: Function) => {
       const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0500'
       let eventId01: emitter.InnerEvent = {
         eventId: 1
@@ -78,7 +78,7 @@ export default function ActsNotificationEmitterPublishTest() {
       * @tc.type   : Function
       * @tc.level  : Level 2
       */
-    it('Sub_Notification_Emitter_Publish_Emit_0600', 2, (done: Function) => {
+    it('Sub_Notification_Emitter_Publish_Emit_0600', Level.LEVEL2, (done: Function) => {
       const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0600'
       let eventId02: emitter.InnerEvent = {
         eventId: 2
@@ -124,7 +124,7 @@ export default function ActsNotificationEmitterPublishTest() {
       * @tc.type   : Function
       * @tc.level  : Level 2
       */
-    it('Sub_Notification_Emitter_Publish_Emit_0700', 2, (done: Function) => {
+    it('Sub_Notification_Emitter_Publish_Emit_0700', Level.LEVEL2, (done: Function) => {
       const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0700'
       let eventId03: emitter.InnerEvent = {
         eventId: 3
@@ -170,7 +170,7 @@ export default function ActsNotificationEmitterPublishTest() {
       * @tc.type   : Function
       * @tc.level  : Level 2
       */
-    it('Sub_Notification_Emitter_Publish_Emit_0800', 2, (done: Function) => {
+    it('Sub_Notification_Emitter_Publish_Emit_0800', Level.LEVEL2, (done: Function) => {
       const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0800'
       let eventId04: emitter.InnerEvent = {
         eventId: 4
