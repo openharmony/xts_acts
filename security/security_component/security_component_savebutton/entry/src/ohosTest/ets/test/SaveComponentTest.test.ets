@@ -1697,9 +1697,9 @@ export default function saveComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Save_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Save_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
+            if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
               console.info("====>[Test_Security_Button_Save_1600] 设置权限成功");
-              expect(clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+              expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Save_1600] END====");
               done();
             } else {
