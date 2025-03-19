@@ -23,7 +23,7 @@ export default function indexTabs() {
     beforeEach(async (done: Function) => {
       console.info("indexTabs beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/observerTest/indexTabs",
+        url: "MainAbility/pages/observer/indexTabs",
       }
       try {
         router.clear();
