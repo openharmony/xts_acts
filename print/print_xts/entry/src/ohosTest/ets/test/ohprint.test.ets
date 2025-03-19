@@ -14,7 +14,7 @@
  */
 
 import common from '@ohos.app.ability.common';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level } from '@ohos/hypium'
 import entry from 'libentry.so'
 
 export default function oHPrintTest() {
@@ -27,7 +27,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint001', 0, async () => {
+    it('testOHPrint001', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintInit();
       expect(result).assertEqual(0);
     });
@@ -40,7 +40,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint002', 0, async () => {
+    it('testOHPrint002', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintListener();
       expect(result).assertEqual(0);
     });
@@ -53,7 +53,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint003', 0, async () => {
+    it('testOHPrint003', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintDiscovery();
       expect(result).assertEqual(0);
     });
@@ -66,7 +66,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint004', 0, async () => {
+    it('testOHPrint004', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintConnect();
       expect(result).assertEqual(0);
     });
@@ -79,7 +79,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint005', 0, async () => {
+    it('testOHPrint005', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintJob();
       expect(result).assertEqual(0);
     });
@@ -92,7 +92,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint006', 0, async () => {
+    it('testOHPrint006', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintList();
       expect(result).assertEqual(0);
     });
@@ -105,7 +105,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint007', 0, async () => {
+    it('testOHPrint007', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintInfo();
       expect(result).assertEqual(0);
     });
@@ -118,7 +118,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint008', 0, async () => {
+    it('testOHPrint008', Level.LEVEL1, async () => {
       let result: number = await entry.oHPrintProperty();
       expect(result).assertEqual(0);
     });
@@ -131,7 +131,7 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint009', 0, async () => {
+    it('testOHPrint009', Level.LEVEL1, async () => {
       let context = AppStorage.get<common.UIAbilityContext>("testContext") as common.UIAbilityContext;
       let result: number = await entry.oHPrintStartPrintByNative(context);
       expect(result).assertEqual(0);
