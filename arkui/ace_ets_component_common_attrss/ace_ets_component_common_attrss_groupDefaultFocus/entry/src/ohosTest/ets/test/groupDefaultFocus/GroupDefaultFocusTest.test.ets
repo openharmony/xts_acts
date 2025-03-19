@@ -107,7 +107,11 @@ export default function GroupDefaultFocusTest() {
                 //Pressing the Tab key for the first time
                 let tab = Utils.performKeyEventDownUp(2049, "Tab")
                 expect(tab).assertEqual(true)
-                await Utils.sleep(1000)
+                if (data.pageConfig.targetView == "TextArea") {
+                    await Utils.sleep(4000)
+                } else {
+                    await Utils.sleep(1000)
+                }
 
                 if ("SetTrue" == data.testValue.describe) {
                     //First confirmation of target component focus

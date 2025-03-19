@@ -13,7 +13,7 @@
  *  limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import collections from '@arkts.collections';
 
 export default function collectionsMapTest() {
@@ -46,7 +46,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapConstructor0100', 0, async (done: Function) => {
+    it('testMapConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapConstructor0100';
       console.log(`${caseName} test start `);
       try {
@@ -70,7 +70,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapConstructor0200', 0, async (done: Function) => {
+    it('testMapConstructor0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapConstructor0200';
       console.log(`${caseName} test start `);
       try {
@@ -94,7 +94,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapConstructor0300', 0, async (done: Function) => {
+    it('testMapConstructor0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapConstructor0300';
       console.log(`${caseName} test start `);
       try {
@@ -118,7 +118,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapConstructor0400', 0, async (done: Function) => {
+    it('testMapConstructor0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapConstructor0400';
       console.log(`${caseName} test start `);
       try {
@@ -142,7 +142,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapEntries0100', 0, async (done: Function) => {
+    it('testMapEntries0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0100';
       console.log(`${caseName} test start `);
       try {
@@ -168,7 +168,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapEntries0200', 0, async (done: Function) => {
+    it('testMapEntries0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0200';
       console.log(`${caseName} test start `);
       try {
@@ -195,7 +195,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapEntries0300', 0, async (done: Function) => {
+    it('testMapEntries0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0300';
       console.log(`${caseName} test start `);
       try {
@@ -221,7 +221,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapKeys0100', 0, async (done: Function) => {
+    it('testMapKeys0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0100';
       console.log(`${caseName} test start `);
       try {
@@ -247,7 +247,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapKeys0200', 0, async (done: Function) => {
+    it('testMapKeys0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0200';
       console.log(`${caseName} test start `);
       try {
@@ -274,7 +274,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapKeys0300', 0, async (done: Function) => {
+    it('testMapKeys0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0300';
       console.log(`${caseName} test start `);
       try {
@@ -299,7 +299,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapValues0100', 0, async (done: Function) => {
+    it('testMapValues0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0100';
       console.log(`${caseName} test start `);
       try {
@@ -325,7 +325,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapValues0200', 0, async (done: Function) => {
+    it('testMapValues0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0200';
       console.log(`${caseName} test start `);
       try {
@@ -352,7 +352,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapValues0300', 0, async (done: Function) => {
+    it('testMapValues0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0300';
       console.log(`${caseName} test start `);
       try {
@@ -377,7 +377,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapClear0100', 0, async (done: Function) => {
+    it('testMapClear0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0100';
       console.log(`${caseName} test start `);
       try {
@@ -403,7 +403,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapClear0200', 0, async (done: Function) => {
+    it('testMapClear0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0200';
       console.log(`${caseName} test start `);
       try {
@@ -429,7 +429,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapClear0300', 0, async (done: Function) => {
+    it('testMapClear0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0300';
       console.log(`${caseName} test start `);
       try {
@@ -455,7 +455,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapDelete0100', 0, async (done: Function) => {
+    it('testMapDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0100';
       console.log(`${caseName} test start `);
       try {
@@ -481,7 +481,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapDelete0200', 0, async (done: Function) => {
+    it('testMapDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0200';
       console.log(`${caseName} test start `);
       try {
@@ -507,7 +507,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapDelete0300', 0, async (done: Function) => {
+    it('testMapDelete0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0300';
       console.log(`${caseName} test start `);
       try {
@@ -533,7 +533,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapForEach0100', 0, async (done: Function) => {
+    it('testMapForEach0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapForEach0100';
       console.log(`${caseName} test start `);
       try {
@@ -562,7 +562,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapForEach0200', 0, async (done: Function) => {
+    it('testMapForEach0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapForEach0200';
       console.log(`${caseName} test start `);
       try {
@@ -591,7 +591,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapGet0100', 0, async (done: Function) => {
+    it('testMapGet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0100';
       console.log(`${caseName} test start `);
       try {
@@ -617,7 +617,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapGet0200', 0, async (done: Function) => {
+    it('testMapGet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0200';
       console.log(`${caseName} test start `);
       try {
@@ -643,7 +643,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapGet0300', 0, async (done: Function) => {
+    it('testMapGet0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0300';
       console.log(`${caseName} test start `);
       try {
@@ -670,7 +670,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapHas0100', 0, async (done: Function) => {
+    it('testMapHas0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0100';
       console.log(`${caseName} test start `);
       try {
@@ -696,7 +696,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapHas0200', 0, async (done: Function) => {
+    it('testMapHas0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0200';
       console.log(`${caseName} test start `);
       try {
@@ -722,7 +722,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapHas0300', 0, async (done: Function) => {
+    it('testMapHas0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0300';
       console.log(`${caseName} test start `);
       try {
@@ -748,7 +748,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapSet0100', 0, async (done: Function) => {
+    it('testMapSet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0100';
       console.log(`${caseName} test start `);
       try {
@@ -774,7 +774,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapSet0200', 0, async (done: Function) => {
+    it('testMapSet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0200';
       console.log(`${caseName} test start `);
       try {
@@ -800,7 +800,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapSet0300', 0, async (done: Function) => {
+    it('testMapSet0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0300';
       console.log(`${caseName} test start `);
       try {
@@ -826,7 +826,7 @@ export default function collectionsMapTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testMapSet0400', 0, async (done: Function) => {
+    it('testMapSet0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0400';
       console.log(`${caseName} test start `);
       try {

@@ -82,6 +82,7 @@ import getSendableAlbumsTest from './Sendable/Album/getSendableAlbums.test'
 import sendableAlbumModifyTest from './Sendable/Album/sendableAlbumModify.test'
 import cloneAssetTest from './PhotoAsset/cloneAsset.test';
 import getSupportedPhotoFormatsTest from './PhotoAccessHelper/getSupportedPhotoFormats';
+import setTest from './PhotoAsset/set.test.ets';
 
 export default function testsuite() {
   provisionResourcesTest();
@@ -154,4 +155,5 @@ export default function testsuite() {
   setOrientationChangeRequestTest();
   cloneAssetTest();
   getSupportedPhotoFormatsTest();
+  setTest();
 }

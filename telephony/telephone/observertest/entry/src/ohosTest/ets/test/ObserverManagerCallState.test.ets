@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import observer from '@ohos.telephony.observer';
 import sim from '@ohos.telephony.sim';
 import call from '@ohos.telephony.call';
@@ -148,5 +148,79 @@ export default function observerManagerCallStateTest() {
       console.info(`${caseName} test end `);
     });
 
+    /* *
+     * @tc.number: SUB_Telephony_Observer_CallStateChangeOn_0500
+     * @tc.name  : testTelephonyObserverCallStateChangeOn0500
+     * @tc.desc  : Unsubscribe to call status change event
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testTelephonyObserverCallStateChangeOn0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testTelephonyObserverCallStateChangeOn0500';
+      console.info(`${caseName} test start `);
+      try {
+        let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
+          console.log("on callStateChange, data:" + JSON.stringify(data));
+        }
+        observer.on(null, callback);
+      } catch (error) {
+        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /* *
+     * @tc.number: SUB_Telephony_Observer_CallStateChangeOn_0600
+     * @tc.name  : testTelephonyObserverCallStateChangeOn0600
+     * @tc.desc  : Unsubscribe to call status change event
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testTelephonyObserverCallStateChangeOn0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testTelephonyObserverCallStateChangeOn0600';
+      console.info(`${caseName} test start `);
+      try {
+        let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
+          console.log("on callStateChange, data:" + JSON.stringify(data));
+        }
+        let options: observer.ObserverOptions = {
+          slotId: 0
+        }
+        observer.on(null, options, callback);
+      } catch (error) {
+        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /* *
+     * @tc.number: SUB_Telephony_Observer_CallStateChangeOff_0700
+     * @tc.name  : testTelephonyObserverCallStateChangeOff0700
+     * @tc.desc  : Unsubscribe to call status change event
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testTelephonyObserverCallStateChangeOff0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testTelephonyObserverCallStateChangeOff0700';
+      console.info(`${caseName} test start `);
+      try {
+        let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
+          console.log("on callStateChange, data:" + JSON.stringify(data));
+        }
+        observer.off(null, callback);
+      } catch (error) {
+        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
   });
 }

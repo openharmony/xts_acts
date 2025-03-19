@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
 
@@ -168,7 +168,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0001', 0, async function () {
+        it('testRdbStoreAttach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0001 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -190,7 +190,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0002', 0, async function () {
+        it('testRdbStoreAttach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0002 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -212,7 +212,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0003', 0, async function () {
+        it('testRdbStoreAttach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0003 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG3);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -234,7 +234,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0004', 0, async function () {
+        it('testRdbStoreAttach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0004 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG3);
             try {
@@ -255,7 +255,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0005', 0, async function () {
+        it('testRdbStoreAttach0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0005 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -280,7 +280,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0006', 0, async function () {
+        it('testRdbStoreAttach0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0006 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -308,7 +308,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0007', 0, async function () {
+        it('testRdbStoreAttach0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0007 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST1);
@@ -343,7 +343,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0008', 0, async function () {
+        it('testRdbStoreAttach0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0008 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -372,7 +372,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach0009', 0, async function () {
+        it('testRdbStoreAttach0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach0009 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -404,7 +404,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach00010', 0, async function () {
+        it('testRdbStoreAttach00010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach00010 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -436,7 +436,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach00011', 0, async function () {
+        it('testRdbStoreAttach00011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach00011 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -469,7 +469,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach00012', 0, async function () {
+        it('testRdbStoreAttach00012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach00012 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -492,7 +492,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach00013', 0, async function () {
+        it('testRdbStoreAttach00013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach00013 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);
@@ -515,7 +515,7 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreAttach00014', 0, async function () {
+        it('testRdbStoreAttach00014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.log(TAG + "************* testRdbStoreAttach00014 start *************");
             let store = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await store.executeSql(CREATE_TABLE_TEST);

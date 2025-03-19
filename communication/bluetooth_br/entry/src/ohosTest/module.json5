@@ -47,6 +47,9 @@
     "requestPermissions":[
       {
           "name": "ohos.permission.ACCESS_BLUETOOTH",
+      },
+      {
+          "name": "ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC"
       }
     ],
     "testRunner": {

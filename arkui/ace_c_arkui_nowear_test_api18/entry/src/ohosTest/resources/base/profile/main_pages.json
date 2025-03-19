@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest"
+    "MainAbility/pages/calendarPicker/TestCalendarPickerDate",
+    "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest",
+    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest"
   ]
 }

@@ -15,9 +15,19 @@
 import frameNodeIsVisibleTest from './FrameNodeTest/frameNodeIsVisible.test';
 import frameNodeMoveOneTest from './FrameNodeTest/frameNodeMoveOne.test';
 import frameNodeMoveTwoTest from './FrameNodeTest/frameNodeMoveTwo.test';
+import frameNodeMoveToErrorCodeTest from './FrameNodeTest/frameNodeMoveToErrorCode.test';
+import addComponentContentErrorCodeTest from './FrameNodeTest/AddComponentContentErrorCode.test';
+import bindControllerErrorCodeTest from './FrameNodeTest/BindControllerErrorCode.test';
+import renderNodeDisposeTest from './FrameNodeTest/RenderNodeDispose.test';
+import componentContentDisposeTest from './FrameNodeTest/componentContentDispose.test';
 
 export default function testsuite() {
   frameNodeIsVisibleTest();
   frameNodeMoveOneTest();
   frameNodeMoveTwoTest();
+  frameNodeMoveToErrorCodeTest();
+  addComponentContentErrorCodeTest();
+  bindControllerErrorCodeTest();
+  renderNodeDisposeTest();
+  componentContentDisposeTest();
 }

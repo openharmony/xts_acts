@@ -61,14 +61,16 @@ export default function waterFlowStart2() {
       console.info('[waterFlowStart2_0100] onReachStartText' + text1);
       expect(text1).assertEqual('onReachStart:succ');
       await CommonFunc.sleep(1000);
-      let size = await driver.getDisplaySize();
-      let sizeX = size.x;
-      let sizeY = size.y;
-      console.info("[ScrollSourceOther_0500] size is: " + JSON.stringify(size));
-      console.info("[ScrollSourceOther_0500] size x is: " + JSON.stringify(sizeX));
-      console.info("[ScrollSourceOther_0500] size Y is: " + JSON.stringify(sizeY));
+      let swiperScroll = CommonFunc.getComponentRectOnScreen('waterFlowStart2');
+      let top = swiperScroll.top;
+      let right = swiperScroll.right;
+      let left = swiperScroll.left;
+      let bottom = swiperScroll.bottom;
+      console.info("waterFlowStart2_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
       await CommonFunc.sleep(1000);
-      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true ,20)
+      await driver.mouseScroll({x:Math.round(left + width/2), y: Math.round(top + height*0.3)}, true ,20)
       await CommonFunc.sleep(2000)
 
       let onScrollStartText = await driver.findComponent(ON.id('onScrollStart_wText_2'));

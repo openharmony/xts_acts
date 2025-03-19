@@ -13,7 +13,7 @@
  *  limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';
 import { test } from './CollectionBitVectorImport';
 
@@ -92,7 +92,7 @@ export default function collectionsBitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass001', 0, async (done: Function) => {
+    it('CollectionsTestClass001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag:boolean = false;
       try {
         let bitvector:collections.BitVector = new collections.BitVector(0);
@@ -121,7 +121,7 @@ export default function collectionsBitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass002', 0, async (done: Function) => {
+    it('CollectionsTestClass002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let t = new Test();
       await taskpool.execute(test001, t).catch((err: Error) => {
         console.log("taskpool execute fail" + err);
@@ -142,7 +142,7 @@ export default function collectionsBitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass003', 0, async (done: Function) => {
+    it('CollectionsTestClass003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
        let bitvector = new collections.BitVector(0);
        let flag = test(bitvector);
        if(!flag){

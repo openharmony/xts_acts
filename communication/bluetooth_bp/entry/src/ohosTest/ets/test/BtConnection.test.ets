@@ -1506,5 +1506,74 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', TestType.FUNCTION | Si
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONNECTION_CONNECTALLOWEDPROFILES_0100
+     * @tc.name testConnectAllowedProfiles
+     * @tc.desc Test connectAllowedProfiles callback.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_CONNECTION_CONNECTALLOWEDPROFILES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
+        try {
+            let connectAP = () => {
+                return new Promise<void>((resolve,reject) => {
+                    bluetooth.connectAllowedProfiles('00:11:22:33:44:55', (err, data: void)=> {
+                        if (err) {
+                            console.info('connectAllowedProfiles failed' + JSON.stringify(err));
+                            reject(err.code);
+                        } else
+                        {
+                            console.info('[bluetooth_js]connectAllowedProfiles success');
+                        }
+                        resolve();
+                    });
+                });
+            }
+            await connectAP().then(() => {
+                console.info("[bluetooth_js]connectAllowedProfiles success");
+            },
+            (e: BusinessError) => {
+                console.info("[bluetooth_js]connectAllowedProfiles failed info:" + JSON.stringify(e));
+                expect(Number(e)).assertEqual(2900099);
+            })
+        } catch (err) {
+            console.info("connectAllowedProfiles errCode:" + err.code + ",errMessage:" + err.message);
+                if (Number(err.code) == 801) {
+                    console.info("connectAllowedProfiles is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect(Number(err.code)).assertEqual(2900099);
+                }
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONNECTION_CONNECTALLOWEDPROFILES_0200
+     * @tc.name testConnectAllowedProfiles
+     * @tc.desc Test connectAllowedProfiles promise.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_CONNECTION_CONNECTALLOWEDPROFILES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done : Function) => {
+        try {
+            await bluetooth.connectAllowedProfiles('11:22:33:44:55:66').then(() => {
+                console.info('[bluetooth_js] connectAllowedProfiles success');
+            });
+            expect().assertFail();
+        } catch (err) {
+            console.info("connectAllowedProfiles errCode:" + err.code + ",errMessage:" + err.message);
+                if (Number(err.code) == 801) {
+                    console.info("connectAllowedProfiles is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect(Number(err.code)).assertEqual(2900099);
+                }
+        }
+        done();
+    })
 })
 }

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import { ClassB, MyClass, MyClass2, MySendAbleClass, SendAbleClassB, SendableA, A, sendableAFunc1,
   ClassB2 } from '../utils/SendAbleClass';
 import taskpool from '@ohos.taskpool';
@@ -141,7 +141,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0100', 0, async (done: Function) => {
+    it('testSendableExecute0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0100";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -171,7 +171,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0200', 0, async (done: Function) => {
+    it('testSendableExecute0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0200";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -201,7 +201,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0300', 0, async (done: Function) => {
+    it('testSendableExecute0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0300";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -231,7 +231,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0400', 0, async (done: Function) => {
+    it('testSendableExecute0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0400";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -261,7 +261,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0500', 0, async (done: Function) => {
+    it('testSendableExecute0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0500";
       console.log(`${caseName} test start `);
       let arr1: collections.Array<number> = new collections.Array<number>();
@@ -293,7 +293,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0600', 0, async (done: Function) => {
+    it('testSendableExecute0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0600";
       console.log(`${caseName} test start `);
       const myMap: collections.Map<number, string> = new collections.Map<number, string>([
@@ -327,7 +327,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0700', 0, async (done: Function) => {
+    it('testSendableExecute0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0700";
       console.log(`${caseName} test start `);
       let mySet: collections.Set<string> = new collections.Set<string>();
@@ -358,7 +358,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0800', 0, async (done: Function) => {
+    it('testSendableExecute0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0800";
       console.log(`${caseName} test start `);
       let num1: ClassB = new ClassB();
@@ -388,7 +388,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute0900', 0, async (done: Function) => {
+    it('testSendableExecute0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0900";
       console.log(`${caseName} test start `);
       let sendableA1: SendableA = new SendableA();
@@ -418,7 +418,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute1000', 0, async (done: Function) => {
+    it('testSendableExecute1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1000";
       console.log(`${caseName} test start `);
       let a1: A = new SendableA() as A;
@@ -448,7 +448,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute1100', 0, async (done: Function) => {
+    it('testSendableExecute1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1100";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -485,7 +485,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute1200', 0, async (done: Function) => {
+    it('testSendableExecute1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1200";
       console.log(`${caseName} test start `);
       let sendAble1: SendAbleClassB = new SendAbleClassB();
@@ -526,7 +526,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableExecute1300', 0, async (done: Function) => {
+    it('testSendableExecute1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1300";
       console.log(`${caseName} test start `);
       let num1: ClassB2 = new ClassB2();
@@ -556,7 +556,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0100', 0, async (done: Function) => {
+    it('testSendableSetCloneList0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0100";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -587,7 +587,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0200', 0, async (done: Function) => {
+    it('testSendableSetCloneList0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0200";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -618,7 +618,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0300', 0, async (done: Function) => {
+    it('testSendableSetCloneList0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0300";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -649,7 +649,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0400', 0, async (done: Function) => {
+    it('testSendableSetCloneList0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0400";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -680,7 +680,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0500', 0, async (done: Function) => {
+    it('testSendableSetCloneList0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0500";
       console.log(`${caseName} test start `);
       let arr1: collections.Array<number> = new collections.Array<number>();
@@ -713,7 +713,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0600', 0, async (done: Function) => {
+    it('testSendableSetCloneList0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0600";
       console.log(`${caseName} test start `);
       const myMap: collections.Map<number, string> = new collections.Map<number, string>([
@@ -748,7 +748,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0700', 0, async (done: Function) => {
+    it('testSendableSetCloneList0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0700";
       console.log(`${caseName} test start `);
       let mySet: collections.Set<string> = new collections.Set<string>();
@@ -780,7 +780,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0800', 0, async (done: Function) => {
+    it('testSendableSetCloneList0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0800";
       console.log(`${caseName} test start `);
       let num1: ClassB = new ClassB();
@@ -811,7 +811,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList0900', 0, async (done: Function) => {
+    it('testSendableSetCloneList0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0900";
       console.log(`${caseName} test start `);
       let sendableA1: SendableA = new SendableA();
@@ -842,7 +842,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList1000', 0, async (done: Function) => {
+    it('testSendableSetCloneList1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1000";
       console.log(`${caseName} test start `);
       let a1: A = new SendableA() as A;
@@ -873,7 +873,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList1100', 0, async (done: Function) => {
+    it('testSendableSetCloneList1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1100";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -912,7 +912,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList1200', 0, async (done: Function) => {
+    it('testSendableSetCloneList1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1200";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -952,7 +952,7 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testSendableSetCloneList1300', 0, async (done: Function) => {
+    it('testSendableSetCloneList1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1300";
       console.log(`${caseName} test start `);
       let num1: ClassB2 = new ClassB2();

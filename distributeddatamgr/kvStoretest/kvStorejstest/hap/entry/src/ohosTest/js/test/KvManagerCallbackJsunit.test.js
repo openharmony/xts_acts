@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.kvStore';
@@ -77,8 +77,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4600
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore101', 0, async function (done) {
+    it('testKVManagerGetKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore101');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
@@ -102,8 +105,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3800
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore102', 0, async function (done) {
+    it('testKVManagerGetKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore102');
         try {
             await kvManager.getKVStore(options, function (err, store) {
@@ -126,8 +132,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3900
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore103', 0, async function (done) {
+    it('testKVManagerGetKVStore103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore103');
         const optionsInfo = {
             createIfMissing : true,
@@ -157,8 +166,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4000
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore104', 0, async function (done) {
+    it('testKVManagerGetKVStore104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore104');
         const optionsInfo = {
             createIfMissing : false,
@@ -189,8 +201,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4100
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore105', 0, async function (done) {
+    it('testKVManagerGetKVStore105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore105');
         const optionsInfo = {
             createIfMissing : true,
@@ -219,8 +234,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4200
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 106
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore106', 0, async function (done) {
+    it('testKVManagerGetKVStore106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore106');
         const optionsInfo = {
             createIfMissing : true,
@@ -249,8 +267,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4300
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 107
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore107', 0, async function (done) {
+    it('testKVManagerGetKVStore107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore107');
         const optionsInfo = {
             createIfMissing : true,
@@ -279,8 +300,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 108
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore108', 0, async function (done) {
+    it('testKVManagerGetKVStore108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore108');
         const optionsInfo = {
             createIfMissing : true,
@@ -309,8 +333,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4500
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 109
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore109', 0, async function (done) {
+    it('testKVManagerGetKVStore109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore109');
         const optionsInfo = {
             createIfMissing : true,
@@ -339,8 +366,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3700
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 110
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore110', 0, async function (done) {
+    it('testKVManagerGetKVStore110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore110');
         const optionsInfo = {
             createIfMissing : true,
@@ -369,8 +399,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4700
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 111
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore111', 0, async function (done) {
+    it('testKVManagerGetKVStore111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore111');
         const optionsInfo = {
             createIfMissing : true,
@@ -399,8 +432,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4800
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 112
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore112', 0, async function (done) {
+    it('testKVManagerGetKVStore112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore112');
         const optionsInfo = {
             createIfMissing : true,
@@ -429,8 +465,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4900
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 113
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore113', 0, async function (done) {
+    it('testKVManagerGetKVStore113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore113');
         const optionsInfo = {
             createIfMissing : true,
@@ -462,8 +501,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5000
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 114
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore114', 0, async function (done) {
+    it('testKVManagerGetKVStore114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore114');
         const optionsInfo = {
             createIfMissing : true,
@@ -492,8 +534,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5100
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 115
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore115', 0, async function (done) {
+    it('testKVManagerGetKVStore115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore115');
         const optionsInfo = {
             createIfMissing : true,
@@ -521,8 +566,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5200
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 116
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore116', 0, async function (done) {
+    it('testKVManagerGetKVStore116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore116');
         const optionsInfo = {
             createIfMissing : true,
@@ -550,8 +598,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5300
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 117
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore117', 0, async function (done) {
+    it('testKVManagerGetKVStore117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore117');
         const optionsInfo = {
             createIfMissing : true,
@@ -579,8 +630,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 118
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore118', 0, async function (done) {
+    it('testKVManagerGetKVStore118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore118');
         const optionsInfo = {
             createIfMissing : true,
@@ -608,8 +662,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5500
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 119
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore119', 0, async function (done) {
+    it('testKVManagerGetKVStore119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore119');
         const optionsInfo = {
             createIfMissing : true,
@@ -637,8 +694,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_6400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 120
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetKVStore120', 0, async function (done) {
+    it('testKVManagerGetKVStore120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetKVStore120');
         const optionsInfo = {
             createIfMissing : true,
@@ -666,8 +726,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0500
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerCloseKVStore101', 0, async function (done) {
+    it('testKVManagerCloseKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerCloseKVStore101');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -690,8 +753,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0600
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerCloseKVStore102', 0, async function (done) {
+    it('testKVManagerCloseKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerCloseKVStore102');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -723,8 +789,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0700
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerCloseKVStore103', 0, async function (done) {
+    it('testKVManagerCloseKVStore103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerCloseKVStore103');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -756,8 +825,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0800
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerCloseKVStore104', 0, async function (done) {
+    it('testKVManagerCloseKVStore104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerCloseKVStore104');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -783,8 +855,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1100
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerDeleteKVStore101', 0, async function (done) {
+    it('testKVManagerDeleteKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerDeleteKVStore101');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -807,8 +882,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1200
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerDeleteKVStore102', 0, async function (done) {
+    it('testKVManagerDeleteKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerDeleteKVStore102');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -840,8 +918,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1300
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerDeleteKVStore103', 0, async function (done) {
+    it('testKVManagerDeleteKVStore103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerDeleteKVStore103');
         try {
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, function (err, data) {
@@ -863,8 +944,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1600
      * @tc.name [JS-API8]KVManager.GetAllKVStoreId.
      * @tc.desc Test Js Api KVManager.GetAllKVStoreId testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetAllKVStoreId101', 0, async function (done) {
+    it('testKVManagerGetAllKVStoreId101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetAllKVStoreId101');
         try {
             await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME, function (err, data) {
@@ -884,8 +968,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1700
      * @tc.name [JS-API8]KVManager.GetAllKVStoreId.
      * @tc.desc Test Js Api KVManager.GetAllKVStoreId testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVManagerGetAllKVStoreId102', 0, async function (done) {
+    it('testKVManagerGetAllKVStoreId102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVManagerGetAllKVStoreId102');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -920,8 +1007,11 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0100
      * @tc.name [JS-API8]KVStore.Put
      * @tc.desc Test Js Api KVManager.Put testcase 100
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testKVStorePut100', 0, async function (done) {
+    it('testKVStorePut100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testKVStorePut100');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -950,8 +1040,11 @@ describe('kvManagerCallbackTest', function () {
       * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1000
       * @tc.name [JS-API8]createKVManager
       * @tc.desc Test Js Api createKVManager testcase 001
-      */
-    it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100', 0, async function (done) {
+      * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100 start');
         const kvManagerConfig = {
             bundleName: [TEST_BUNDLE_NAME],
@@ -976,8 +1069,11 @@ describe('kvManagerCallbackTest', function () {
       * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_6700
       * @tc.name [JS-API8]createKVManager
       * @tc.desc Test Js Api createKVManager testcase 001
-      */
-     it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200', 0, async function (done) {
+      * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+     it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200 start');
         try{
             factory.createKVManager("kvManagerConfig", (err, data) => {

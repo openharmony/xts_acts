@@ -12,3 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+export const testSliderEnableHpaticFeedback001: () => number;
+export const testSliderEnableHpaticFeedback002: () => number;
+export const testSliderEnableHpaticFeedback003: () => number;
+export const testSliderEnableHpaticFeedback004: () => number;
+export const testSliderEnableHpaticFeedback005: () => number;

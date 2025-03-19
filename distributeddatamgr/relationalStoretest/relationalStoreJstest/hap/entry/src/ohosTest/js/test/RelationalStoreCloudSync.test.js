@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
@@ -138,8 +138,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong table null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0100
          * @tc.desc rdb get modify time using wrong table null
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0001', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0001 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -160,8 +163,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong table undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0200
          * @tc.desc rdb get modify time using wrong table undefined
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0002', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0002 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -182,8 +188,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong table 123456
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0300
          * @tc.desc rdb get modify time using wrong table 123456
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0003', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0003 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -203,8 +212,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong columnName null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0400
          * @tc.desc rdb get modify time using wrong columnName null
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0004', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0004 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -225,8 +237,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong columnName undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0500
          * @tc.desc rdb get modify time using wrong columnName undefined
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0005', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0005 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -247,8 +262,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong columnName 123456
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0600
          * @tc.desc rdb get modify time using wrong columnName 123456
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0006', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0006 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -269,8 +287,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong PRIKey null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0700
          * @tc.desc rdb get modify time using wrong PRIKey null
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0007', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0007 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -291,8 +312,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong PRIKey undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0800
          * @tc.desc rdb get modify time using wrong PRIKey undefined
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0008', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0008 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -313,8 +337,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong PRIKey 123
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_0900
          * @tc.desc rdb get modify time using wrong PRIKey 123
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreGetModifyTime0009', 0, async function (done) {
+        it('testRdbStoreGetModifyTime0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreGetModifyTime0009 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -336,8 +363,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using wrong primary key type
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1000
          * @tc.desc rdb get modify time using wrong primary key type
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0001', 0, async function (done) {
+        it('testRdbStoreCloudSync0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0001 start *************");
             try {
                 let key = new Array();
@@ -359,8 +389,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using string primary key type and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1100
          * @tc.desc get modify time using string primary key type and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0002', 0, async function (done) {
+        it('testRdbStoreCloudSync0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0002 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -384,8 +417,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using string primary key type and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1200
          * @tc.desc get modify time using string primary key type and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0003', 0, async function (done) {
+        it('testRdbStoreCloudSync0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0003 start *************");
             try {
                 let PRIKey = ["test_key1", "test_key2"];
@@ -408,8 +444,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using rowid and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1300
          * @tc.desc get modify time using rowid and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0004', 0, async function (done) {
+        it('testRdbStoreCloudSync0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0004 start *************");
             try {
                 let PRIKey = [1, 3, 4];
@@ -433,8 +472,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using rowid and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1400
          * @tc.desc get modify time using rowid and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0005', 0, async function (done) {
+        it('testRdbStoreCloudSync0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0005 start *************");
             try {
                 let PRIKey = [2, 4];
@@ -457,8 +499,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time, but not set distributed table
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1500
          * @tc.desc get modify time, but not set distributed table
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0006', 0, async function (done) {
+        it('testRdbStoreCloudSync0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0006 start *************");
             try {
                 for (let i = 0; i < 5; i++) {
@@ -490,8 +535,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using int primary key type and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1600
          * @tc.desc get modify time using int primary key type and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0007', 0, async function (done) {
+        it('testRdbStoreCloudSync0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0007 start *************");
             try {
                 let PRIKey = [1, 2, 4];
@@ -515,8 +563,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name get modify time using int primary key type and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1700
          * @tc.desc get modify time using int primary key type and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0008', 0, async function (done) {
+        it('testRdbStoreCloudSync0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0008 start *************");
             try {
                 let PRIKey = [2, 4];
@@ -539,8 +590,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with no table, SyncMode is SYNC_MODE_TIME_FIRST and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1800
          * @tc.desc cloud sync with no table, SyncMode is SYNC_MODE_TIME_FIRST and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0009', 0, async function (done) {
+        it('testRdbStoreCloudSync0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* 1111  testRdbStoreCloudSync0009 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -569,8 +623,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with no table, SyncMode is SYNC_MODE_TIME_FIRST and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_1900
          * @tc.desc cloud sync with no table, SyncMode is SYNC_MODE_TIME_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0010', 0, async function (done) {
+        it('testRdbStoreCloudSync0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0010 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -598,8 +655,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with table, SyncMode is SYNC_MODE_TIME_FIRST and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2000
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_TIME_FIRST and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0011', 0, async function (done) {
+        it('testRdbStoreCloudSync0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0011 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -629,8 +689,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with table, SyncMode is SYNC_MODE_TIME_FIRST and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2100
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_TIME_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0012', 0, async function (done) {
+        it('testRdbStoreCloudSync0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0012 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -660,8 +723,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with table, SyncMode is SYNC_MODE_NATIVE_FIRST and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2200
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_NATIVE_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0013', 0, async function (done) {
+        it('testRdbStoreCloudSync0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0013 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -691,8 +757,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2300
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0014', 0, async function (done) {
+        it('testRdbStoreCloudSync0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0014 start *************");
             if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
                 try {
@@ -722,8 +791,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong no SyncMode
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2400
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0015', 0, async function (done) {
+        it('testRdbStoreCloudSync0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0015 start *************");
             try {
                 await rdbStore.cloudSync( Progess ).then(() => {
@@ -743,8 +815,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong SyncMode err
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2500
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSync0016', 0, async function (done) {
+        it('testRdbStoreCloudSync0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0016 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -765,8 +840,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong SyncMode null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2600
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0001', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0001 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -787,8 +865,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong SyncMode undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2700
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0002', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0002 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -809,8 +890,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong SyncMode 123
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2800
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0003', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0003 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -831,8 +915,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong table null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_2900
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0004', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0004 start *************");
             try {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, null, Progess).then(() => {
@@ -852,8 +939,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong table undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3000
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0005', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0005 start *************");
             try {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, undefined, Progess).then(() => {
@@ -873,8 +963,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong table 123
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3100
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0006', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0006 start *************");
             try {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, 123, Progess).then(() => {
@@ -894,8 +987,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong table ""
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3200
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0007', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0007 start *************");
             try {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, "", Progess).then(() => {
@@ -915,8 +1011,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong table "table123"
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3300
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0008', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0008 start *************");
             try {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, "table123", Progess).then(() => {
@@ -936,8 +1035,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong Progess null
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3400
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0009', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0009 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -958,8 +1060,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong Progess undefined
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3500
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0010', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0010 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -980,8 +1085,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong Progess "progess"
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3600
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0011', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0011 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -1002,8 +1110,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with wrong Progess no
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3700
          * @tc.desc cloud sync with table, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreCloudSyncTable0012', 0, async function (done) {
+        it('testRdbStoreCloudSyncTable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSyncTable0012 start *************");
             try {
                 let tableArray = ["cloud_text"];
@@ -1024,8 +1135,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3800
          * @tc.desc cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbCloudSyncFirst0001', 0, async function (done) {
+        it('testRdbCloudSyncFirst0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudSyncFirst0001 start *************");
 
         function Progress(detail) {
@@ -1048,8 +1162,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3900
          * @tc.desc cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbCloudSyncFirst0002', 0, async function (done) {
+        it('testRdbCloudSyncFirst0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbCloudSyncFirst0002 start *************");
             try {
 
@@ -1073,8 +1190,11 @@ export default function relationalStoreCloudSyncTest() {
          * @tc.name cloud sync with exception parameter, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4000
          * @tc.desc cloud sync with exception parameter, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbCloudSyncFirst0003', 0, async function (done) {
+        it('testRdbCloudSyncFirst0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbCloudSyncFirst0003 start *************");
             try {
 
@@ -1096,8 +1216,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name subscribe test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4100
      * @tc.desc normal testcase for autoSyncProgress of interface 'on'
-     */
-     it('testRdbCloudAutoSyncProgress0001', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+     it('testRdbCloudAutoSyncProgress0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0001 start *************");
         try {
             rdbStore.on("autoSyncProgress", function (detail) {
@@ -1119,8 +1242,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name subscribe test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4200
      * @tc.desc normal testcase for autoSyncProgress of interface 'off'
-     */
-    it('testRdbCloudAutoSyncProgress0002', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+    it('testRdbCloudAutoSyncProgress0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0002 start *************");
         try {
             rdbStore.off("autoSyncProgress", function (detail) {
@@ -1142,8 +1268,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name subscribe test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4300
      * @tc.desc normal testcase for autoSyncProgress of interface 'off'
-     */
-    it('testRdbCloudAutoSyncProgress0003', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+    it('testRdbCloudAutoSyncProgress0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0003 start *************");
         try {
             rdbStore.off("autoSyncProgress", null);
@@ -1161,8 +1290,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name subscribe test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4400
      * @tc.desc normal testcase for autoSyncProgress of interface 'off'
-     */
-    it('testRdbCloudAutoSyncProgress0004', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+    it('testRdbCloudAutoSyncProgress0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0004 start *************");
         try {
             rdbStore.off("autoSyncProgress", undefined);
@@ -1180,8 +1312,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name subscribe test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4500
      * @tc.desc normal testcase for autoSyncProgress of interface 'off'
-     */
-    it('testRdbCloudAutoSyncProgress0005', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+    it('testRdbCloudAutoSyncProgress0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 start *************");
         try {
             rdbStore.off("autoSyncProgress");
@@ -1199,8 +1334,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name lockCloudContainer with RdbPredicates, SyncMode is relationalStore.RdbPredicates and promise method
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4600
      * @tc.desc lockCloudContainer with RdbPredicates, SyncMode is relationalStore.RdbPredicates and promise method
-     */
-    it('testRdbCloudlockCloudContainer0001', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+    it('testRdbCloudlockCloudContainer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudlockCloudContainer0001 start *************");
         let predicates = new relationalStore.RdbPredicates("cloud_text")
         predicates.in("num", ["1","2"]);
@@ -1220,8 +1358,11 @@ export default function relationalStoreCloudSyncTest() {
      * @tc.name unlockCloudContainer with RdbPredicates, relationalStore.RdbPredicates promise method
      * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4700
      * @tc.desc unlockCloudContainer RdbPredicates, relationalStore.RdbPredicates and promise method
-     */
-     it('testRdbCloudUnlockCloudContainer0001', 0, async function (done) {
+     * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
+         */
+     it('testRdbCloudUnlockCloudContainer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* testRdbCloudUnlockCloudContainer0001 start *************");
         let predicates = new relationalStore.RdbPredicates("cloud_text")
         predicates.in("num", ["1","2"]);

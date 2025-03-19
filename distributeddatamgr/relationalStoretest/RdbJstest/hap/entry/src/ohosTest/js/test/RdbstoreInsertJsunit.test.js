@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
@@ -60,8 +60,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0100
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreInsert0001', 0, async function (done) {
+        it('testRdbStoreInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             {
@@ -126,8 +129,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0200
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreInsert0002', 0, async function (done) {
+        it('testRdbStoreInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0002 start *************");
             let u8 = new Uint8Array([1, 2, 3])
             {
@@ -153,8 +159,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0300
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreInsert0003', 0, async function (done) {
+        it('testRdbStoreInsert0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0003 start *************");
             let u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -185,8 +194,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0400
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreInsert0004', 0, async function (done) {
+        it('testRdbStoreInsert0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreInsert0004 start *************");
             let u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -211,8 +223,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0500
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0001', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0001 start *************");
             await rdbStore.executeSql(CREATE_TABLE_NAME + "1" + CREATE_TABLE)
             var u8 = new Uint8Array([1, 2, 3])
@@ -275,8 +290,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0600
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0002', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await rdbStore.executeSql(CREATE_TABLE_NAME + "2" + CREATE_TABLE)
             console.info(TAG + "************* testRdbStorebatchInsertPromise0002 start *************");
             var u8 = new Uint8Array([1, 2, 3])
@@ -356,8 +374,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0700
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0003', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0003 start *************");
             await rdbStore.executeSql(CREATE_TABLE_NAME + "3" + CREATE_TABLE)
             var u8 = new Uint8Array([1, 2, 3])
@@ -463,8 +484,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0800
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0004', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0004 start *************");
             await rdbStore.executeSql(CREATE_TABLE_NAME + "4" + CREATE_TABLE)
             var u8 = new Uint8Array([1, 2, 3])
@@ -516,8 +540,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0900
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0005', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0005 start *************");
             await rdbStore.executeSql(CREATE_TABLE_NAME + "5" + CREATE_TABLE)
             var u8 = new Uint8Array([1, 2, 3])
@@ -576,8 +603,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1000
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0006', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0006 start *************");
             await rdbStore.executeSql(CREATE_TABLE_NAME + "6" + CREATE_TABLE)
             let errInfo = undefined;
@@ -616,8 +646,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1100
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertPromise0007', 0, async function (done) {
+        it('testRdbStorebatchInsertPromise0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertPromise0007 start *************");
             let errInfo = undefined;
             await rdbStore.executeSql(CREATE_TABLE_NAME + "7" + CREATE_TABLE)
@@ -638,8 +671,11 @@ export default function rdbstoreInsertTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1200
          * @tc.desc rdb insert test
          * zheg s
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0001', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket1 = {
@@ -726,8 +762,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1300
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0002', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0002 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket1 = {
@@ -795,8 +834,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1400
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0003', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0003 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket1 = {
@@ -899,8 +941,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1500
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0004', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0004 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             var valueBuckets = new Array(100);
@@ -952,8 +997,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1600
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0005', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0005 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket1 = {
@@ -1016,8 +1064,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1700
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0006', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0006 start *************");
             let errInfo = undefined;
             var u8 = new Uint8Array([1, 2, 3])
@@ -1065,8 +1116,11 @@ export default function rdbstoreInsertTest() {
          * @tc.name rdb batchInsert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1800
          * @tc.desc rdb insert test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
+        it('testRdbStorebatchInsertCallback0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0007 start *************");
             let errInfo = undefined;
             await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common'
 
@@ -58,7 +58,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0001', 0, async function () {
+    it('testPluginLibs0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0001 start *************");
         try {
             storeConfig.pluginLibs = [ "", "" ];
@@ -78,7 +78,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0002', 0, async function () {
+    it('testPluginLibs0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0002 start *************");
         try {
             storeConfig.pluginLibs = [ "./" ];
@@ -99,7 +99,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0003', 0, async function () {
+    it('testPluginLibs0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0003 start *************");
         try {
             storeConfig.pluginLibs = [ "/data/errPath/err.so" ];
@@ -120,7 +120,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0004', 0, async function () {
+    it('testPluginLibs0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0004 start *************");
         try {
             storeConfig.pluginLibs = [ "/data/app/el1/bundle/public/" ];
@@ -141,7 +141,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0005', 0, async function () {
+    it('testPluginLibs0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0005 start *************");
         try {
             let path = await context.filesDir;
@@ -164,7 +164,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0006', 0, async function () {
+    it('testPluginLibs0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0006 start *************");
         try {
             let path = new Array(17).fill("").map((_, index) => `dir${index + 1}`);
@@ -186,7 +186,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0007', 0, async function () {
+    it('testPluginLibs0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0007 start *************");
         try {
             storeConfig.pluginLibs = null;
@@ -207,7 +207,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0008', 0, async function () {
+    it('testPluginLibs0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0008 start *************");
         try {
             storeConfig.pluginLibs = undefined;
@@ -228,7 +228,7 @@ describe('rdbStorePluginLibsTest', function () {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testPluginLibs0009', 0, async function () {
+    it('testPluginLibs0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         console.log(TAG + "************* testPluginLibs0008 start *************");
         try {
             rdbStore = await data_relationalStore.getRdbStore(context, storeConfig);

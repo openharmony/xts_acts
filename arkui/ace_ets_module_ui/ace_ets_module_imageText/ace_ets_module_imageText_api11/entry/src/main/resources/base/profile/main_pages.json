@@ -73,10 +73,8 @@
         "MainAbility/pages/text/textEnabled",
         "MainAbility/pages/text/textChangeEnabled",
         "MainAbility/pages/marquee/marqueeUI",
-        "MainAbility/pages/RichEditor/RichTextPage",
         "MainAbility/pages/span/spanUI",
         "MainAbility/pages/font/fontAdd",
-        "MainAbility/pages/RichEditor/richText",
         "MainAbility/pages/text/textTimer",
         "MainAbility/pages/text/textClock",
         "MainAbility/pages/TextArea/textArea3",
@@ -95,6 +93,8 @@
         "MainAbility/pages/RichEditor/richEditorPage",
         "MainAbility/pages/text/textTextCase",
         "MainAbility/pages/text/textDecoration",
-        "MainAbility/pages/Search/searchPage1"
+        "MainAbility/pages/Search/searchPage1",
+        "MainAbility/pages/TextArea/TextAreaType",
+        "MainAbility/pages/Search/SearchType"
     ]
 }

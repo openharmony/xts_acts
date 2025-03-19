@@ -15,7 +15,7 @@
 
 import app from '@system.app'
 import worker from "@ohos.worker"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function threadWorkerTest() {
 describe('threadWorkerTest', function () {
 
@@ -38,7 +38,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_001
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_001', 0, async function (done) {
+    it('threadWorker_constructor_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
         let isTerminate = false
 
@@ -59,7 +59,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_002
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_002', 0, async function (done) {
+    it('threadWorker_constructor_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {name:"1st worker", shared: false})
         let isTerminate = false
 
@@ -80,7 +80,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_003
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_003', 0, async function (done) {
+    it('threadWorker_constructor_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                          {type:"classic", name:"2st worker", shared: false})
         let isTerminate = false
@@ -102,7 +102,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_004
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_004', 0, async function (done) {
+    it('threadWorker_constructor_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                          {type:"classic", name:"3st worker", shared: true})
         let isTerminate = false
@@ -124,7 +124,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_005
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_005', 0, async function (done) {
+    it('threadWorker_constructor_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {type:"other", name:"worker"})
         } catch (error) {
@@ -139,7 +139,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_006
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_006', 0, async function (done) {
+    it('threadWorker_constructor_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                              {type:1, name:"new worker", shared: true})
@@ -155,7 +155,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_007
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_007', 0, async function (done) {
+    it('threadWorker_constructor_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {type:"classic", name:1, shared: true})
         } catch (error) {
@@ -170,7 +170,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_008
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-     it('threadWorker_constructor_test_008', 0, async function (done) {
+     it('threadWorker_constructor_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let ss = new worker.ThreadWorker()
         } catch (error) {
@@ -185,7 +185,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_009
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_009', 0, async function (done) {
+    it('threadWorker_constructor_test_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("/entry_test/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -203,7 +203,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_010
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_010', 0, async function (done) {
+    it('threadWorker_constructor_test_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("@bundle:com.example.threadWorkertest/entry_test/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -223,7 +223,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_001
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_001', 0, async function (done) {
+    it('threadWorker_postMessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_002.js")
 
         let res = undefined
@@ -258,7 +258,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_002
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_002', 0, async function (done) {
+    it('threadWorker_postMessage_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_003.js")
 
         let res = undefined
@@ -292,7 +292,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_003
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_003', 0, async function (done) {
+    it('threadWorker_postMessage_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_004.js")
 
         let res = undefined
@@ -326,7 +326,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_004
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_004', 0, async function (done) {
+    it('threadWorker_postMessage_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_005.js", {name: "zhangsan"})
 
         let res = undefined
@@ -362,7 +362,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_005
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_005', 0, async function (done) {
+    it('threadWorker_postMessage_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_006.js")
         let isTerminate = false
 
@@ -402,7 +402,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_006
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_006', 0, async function (done) {
+    it('threadWorker_postMessage_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         const ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js")
 
         let res = undefined
@@ -435,7 +435,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_007
      * @tc.desc: Sends a message to the worker thread when throw error.
      */
-     it('threadWorker_postMessage_test_007', 0, async function (done) {
+     it('threadWorker_postMessage_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let isTerminate = false;
         ss.onexit = function () {
@@ -460,7 +460,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_008
      * @tc.desc: Sends a message to the worker thread when throw error.
      */
-    it('threadWorker_postMessage_test_008', 0, async function (done) {
+    it('threadWorker_postMessage_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let isTerminate = false;
         ss.onexit = function () {
@@ -485,7 +485,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_terminate_test_001
      * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
      */
-    it('threadWorker_terminate_test_001', 0, async function (done) {
+    it('threadWorker_terminate_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
         let res = 0
         let flag = false
@@ -509,7 +509,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_terminate_test_002
      * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
      */
-    it('threadWorker_terminate_test_002', 0, async function (done) {
+    it('threadWorker_terminate_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
         let res = 0
         let flag = false
@@ -536,7 +536,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_terminate_test_003
      * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
      */
-    it('threadWorker_terminate_test_003', 0, async function (done) {
+    it('threadWorker_terminate_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
         let res = 0
         let flag = false
@@ -571,7 +571,7 @@ describe('threadWorkerTest', function () {
          * @tc.name: threadWorker_terminate_test_004
          * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
          */
-        it('threadWorker_terminate_test_004', 0, async function (done) {
+        it('threadWorker_terminate_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_002.js")
             let res = 0
             let flag = false
@@ -595,7 +595,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_001
      * @tc.desc: Adds an event listener to the worker.
      */
-    it('threadWorker_on_test_001', 0, async function (done) {
+    it('threadWorker_on_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -624,7 +624,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_002
      * @tc.desc: Adds an event listener to the worker.
      */
-    it('threadWorker_on_test_002', 0, async function (done) {
+    it('threadWorker_on_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -657,7 +657,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_003
      * @tc.desc: Adds an event listener to the worker.
      */
-    it('threadWorker_on_test_003', 0, async function (done) {
+    it('threadWorker_on_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -690,7 +690,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_004
      * @tc.desc: Adds an event listener to the worker when throw error.
      */
-     it('threadWorker_on_test_004', 0, async function (done) {
+     it('threadWorker_on_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -716,7 +716,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_005
      * @tc.desc: Adds an event listener to the worker when throw error.
      */
-     it('threadWorker_on_test_005', 0, async function (done) {
+     it('threadWorker_on_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -742,7 +742,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_on_test_006
      * @tc.desc: Adds an event listener to the worker when throw error.
      */
-     it('threadWorker_on_test_006', 0, async function (done) {
+     it('threadWorker_on_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -768,7 +768,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once when throw error.
      */
-       it('threadWorker_on_test_007', 0, async function (done) {
+       it('threadWorker_on_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -803,7 +803,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once.
      */
-    it('threadWorker_once_test_001', 0, async function (done) {
+    it('threadWorker_once_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -832,7 +832,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once.
      */
-    it('threadWorker_once_test_002', 0, async function (done) {
+    it('threadWorker_once_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -864,7 +864,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once.
      */
-    it('threadWorker_once_test_003', 0, async function (done) {
+    it('threadWorker_once_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -898,7 +898,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once when throw error.
      */
-       it('threadWorker_once_test_004', 0, async function (done) {
+       it('threadWorker_once_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -928,7 +928,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once when throw error.
      */
-       it('threadWorker_once_test_005', 0, async function (done) {
+       it('threadWorker_once_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -955,7 +955,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once when throw error.
      */
-       it('threadWorker_once_test_006', 0, async function (done) {
+       it('threadWorker_once_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -982,7 +982,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: Adds an event listener to the worker and removes the event listener automically
        after it is invoked once when throw error.
      */
-       it('threadWorker_once_test_007', 0, async function (done) {
+       it('threadWorker_once_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let isTerminate = false
@@ -1016,7 +1016,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_001
      * @tc.desc: Add an event listener to the Worker.
      */
-    it('threadWorker_addEventListener_test_001', 0, async function (done) {
+    it('threadWorker_addEventListener_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1046,7 +1046,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_002
      * @tc.desc: Add an event listener to the Worker.
      */
-    it('threadWorker_addEventListener_test_002', 0, async function (done) {
+    it('threadWorker_addEventListener_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1079,7 +1079,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_003
      * @tc.desc: Add an event listener to the Worker.
      */
-    it('threadWorker_addEventListener_test_003', 0, async function (done) {
+    it('threadWorker_addEventListener_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1111,7 +1111,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_004
      * @tc.desc: Add an event listener to the Worker when throw error.
      */
-     it('threadWorker_addEventListener_test_004', 0, async function (done) {
+     it('threadWorker_addEventListener_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1141,7 +1141,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_005
      * @tc.desc: Add an event listener to the Worker when throw error.
      */
-     it('threadWorker_addEventListener_test_005', 0, async function (done) {
+     it('threadWorker_addEventListener_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1169,7 +1169,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_006
      * @tc.desc: Add an event listener to the Worker when throw error.
      */
-     it('threadWorker_addEventListener_test_006', 0, async function (done) {
+     it('threadWorker_addEventListener_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1197,7 +1197,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_007
      * @tc.desc: Add an event listener to the Worker when throw error.
      */
-     it('threadWorker_addEventListener_test_007', 0, async function (done) {
+     it('threadWorker_addEventListener_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1234,7 +1234,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_addEventListener_test_008
      * @tc.desc: Add an event listener to the Worker when throw error.
      */
-     it('threadWorker_addEventListener_test_008', 0, async function (done) {
+     it('threadWorker_addEventListener_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let times = 0
@@ -1267,7 +1267,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_off_test_001
      * @tc.desc: Removes an event listener to the worker.
      */
-    it('threadWorker_off_test_001', 0, async function (done) {
+    it('threadWorker_off_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1302,7 +1302,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_off_test_002
      * @tc.desc: Removes an event listener to the worker.
      */
-    it('threadWorker_off_test_002', 0, async function (done) {
+    it('threadWorker_off_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1340,7 +1340,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_off_test_003
      * @tc.desc: Removes an event listener to the worker when throw error.
      */
-     it('threadWorker_off_test_003', 0, async function (done) {
+     it('threadWorker_off_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1371,7 +1371,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_off_test_004
      * @tc.desc: Removes an event listener to the worker when throw error.
      */
-     it('threadWorker_off_test_004', 0, async function (done) {
+     it('threadWorker_off_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1402,7 +1402,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_off_test_005
      * @tc.desc: Removes an event listener to the worker when throw error.
      */
-     it('threadWorker_off_test_005', 0, async function (done) {
+     it('threadWorker_off_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1433,7 +1433,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_001
      * @tc.desc: Removes an event defined for the worker.
      */
-    it('threadWorker_removeListener_test_001', 0, async function (done) {
+    it('threadWorker_removeListener_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1468,7 +1468,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_002
      * @tc.desc: Removes an event defined for the worker.
      */
-    it('threadWorker_removeListener_test_002', 0, async function (done) {
+    it('threadWorker_removeListener_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1506,7 +1506,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_003
      * @tc.desc: Removes an event defined for the worker.
      */
-    it('threadWorker_removeListener_test_003', 0, async function (done) {
+    it('threadWorker_removeListener_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1554,7 +1554,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_004
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_004', 0, async function (done) {
+     it('threadWorker_removeListener_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1584,7 +1584,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_005
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_005', 0, async function (done) {
+     it('threadWorker_removeListener_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1614,7 +1614,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_006
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_006', 0, async function (done) {
+     it('threadWorker_removeListener_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1645,7 +1645,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_removeListener_test_007
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_007', 0, async function (done) {
+     it('threadWorker_removeListener_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1676,7 +1676,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_parentPortClose_test_001
      * @tc.desc: Close the worker thread to stop the worker from receiving messages.
      */
-    it('threadWorker_parentPortClose_test_001', 0, async function (done) {
+    it('threadWorker_parentPortClose_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_008.js")
         let res = 0
         let flag = false
@@ -1700,7 +1700,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_parentPortClose_test_002
      * @tc.desc: Close the worker thread to stop the worker from receiving messages.
      */
-    it('threadWorker_parentPortClose_test_002', 0, async function (done) {
+    it('threadWorker_parentPortClose_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_008.js")
         let res = 0
         let flag = false
@@ -1736,7 +1736,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: The onmessage attribute of the worker specifies the event handler when the worker receives
        a message that cannot be serialized. The event handler is executed in the host thread
      */
-    it('threadWorker_onmessageerror_test_001', 0, async function (done) {
+    it('threadWorker_onmessageerror_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_008.js")
         let res = 0
         let flag = false
@@ -1763,7 +1763,7 @@ describe('threadWorkerTest', function () {
      * @tc.desc: The onmessage attribute of the worker specifies the event handler when the worker receives
        a message that cannot be serialized. The event handler is executed in the host thread
      */
-    it('threadWorker_onmessageerror_test_002', 0, async function (done) {
+    it('threadWorker_onmessageerror_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             var ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_008.js")
             var res = 0
@@ -1799,7 +1799,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_new_second_worker_test_001
      * @tc.desc: Create a second worker.
      */
-    it('threadWorker_new_second_worker_test_001', 0, async function (done) {
+    it('threadWorker_new_second_worker_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_009.js")
         let flag = false
         let res = undefined
@@ -1842,7 +1842,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_new_second_worker_test_002
      * @tc.desc: Create a third worker.
      */
-    it('threadWorker_new_second_worker_test_002', 0, async function (done) {
+    it('threadWorker_new_second_worker_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_012.js")
         let flag = false
         let res = undefined
@@ -1886,7 +1886,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_second_worker_postMessage_test_001
      * @tc.desc: Check if the postMessage function of the second worker is ok.
      */
-    it('threadWorker_second_worker_postMessage_test_001', 0, async function (done) {
+    it('threadWorker_second_worker_postMessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_010.js")
         let flag = false
         let res = undefined
@@ -1930,7 +1930,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_second_worker_postMessage_test_002
      * @tc.desc: Check if the postMessage function of the second worker is ok.
      */
-    it('threadWorker_second_worker_postMessage_test_002', 0, async function (done) {
+    it('threadWorker_second_worker_postMessage_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_013.js")
         let flag = false
         let res = undefined
@@ -1974,7 +1974,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_second_worker_postMessage_test_003
      * @tc.desc: Check if the postMessage function of the second worker is ok.
      */
-    it('threadWorker_second_worker_postMessage_test_003', 0, async function (done) {
+    it('threadWorker_second_worker_postMessage_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_014.js")
         let flag = false
         let res = undefined
@@ -2019,7 +2019,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_third_worker_postMessage_test_001
      * @tc.desc: Check if the postMessage function of the third worker is ok.
      */
-    it('threadWorker_third_worker_postMessage_test_001', 0, async function (done) {
+    it('threadWorker_third_worker_postMessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_015.js")
         let flag = false
         let res = undefined
@@ -2055,7 +2055,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_second_worker_terminate_test_001
      * @tc.desc: Check if the terminate function of the second worker is ok.
      */
-    it('threadWorker_second_worker_terminate_test_001', 0, async function (done) {
+    it('threadWorker_second_worker_terminate_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_011.js")
         let flag = false
         let res = undefined
@@ -2128,7 +2128,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_001
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_001', 0, async function (done) {
+    it('threadWorker_support_types_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_016.js");
         let array = []
         for (let i = 0; i < 10; i++) {
@@ -2168,7 +2168,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_002
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_002', 0, async function (done) {
+    it('threadWorker_support_types_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_017.js");
         let res;
         let flag = false;
@@ -2199,7 +2199,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_003
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_003', 0, async function (done) {
+    it('threadWorker_support_types_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_018.js");
         let res;
         let flag = false;
@@ -2232,7 +2232,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_004
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_004', 0, async function (done) {
+    it('threadWorker_support_types_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_019.js");
         let res;
         let flag = false;
@@ -2263,7 +2263,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_005
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_005', 0, async function (done) {
+    it('threadWorker_support_types_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_020.js");
         let res;
         let flag = false;
@@ -2294,7 +2294,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_006
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_006', 0, async function (done) {
+    it('threadWorker_support_types_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_021.js");
         let res;
         let flag = false;
@@ -2325,7 +2325,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_007
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_007', 0, async function (done) {
+    it('threadWorker_support_types_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_021.js");
         let flag = false;
         let isTerminate = false;
@@ -2357,7 +2357,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_008
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-     it('threadWorker_support_types_test_008', 0, async function (done) {
+     it('threadWorker_support_types_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_026.js");
         let flag = false;
         let result;
@@ -2395,7 +2395,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_support_types_test_009
      * @tc.desc: Check the transmission types supported by Worker is ok.
      */
-    it('threadWorker_support_types_test_009', 0, async function (done) {
+    it('threadWorker_support_types_test_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_027.js");
         let result = "";
         let isTerminate = false;
@@ -2428,7 +2428,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_postmessage_test_001
      * @tc.desc: Check the postmessage of worker is ok.
      */
-    it('threadWorker_worker_postmessage_test_001', 0, async function (done) {
+    it('threadWorker_worker_postmessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_022.js");
         let res = "";
         let flag = false;
@@ -2459,7 +2459,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_postmessage_test_002
      * @tc.desc: Check the postmessage of worker is ok.
      */
-    it('threadWorker_worker_postmessage_test_002', 0, async function (done) {
+    it('threadWorker_worker_postmessage_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_023.js");
         let res = "";
         let flag = false;
@@ -2488,7 +2488,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_postmessage_test_003
      * @tc.desc: Check the postmessage of worker is ok.
      */
-    it('threadWorker_worker_postmessage_test_003', 0, async function (done) {
+    it('threadWorker_worker_postmessage_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_024.js");
         let res = "";
         let flag = false;
@@ -2517,7 +2517,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_close_test_001
      * @tc.desc: Check the close of worker is ok.
      */
-    it('threadWorker_worker_close_test_001', 0, async function (done) {
+    it('threadWorker_worker_close_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_025.js");
         let res = 0;
         let isTerminate = false;
@@ -2539,7 +2539,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_SharedArrayBuffer_test_001
      * @tc.desc: Check the SharedArrayBuffer with worker is ok.
      */
-    it('threadWorker_worker_SharedArrayBuffer_test_001', 0, async function (done) {
+    it('threadWorker_worker_SharedArrayBuffer_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_028.js");
         let sab = new SharedArrayBuffer(20);
         let int32 = new Uint32Array(sab);
@@ -2568,7 +2568,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_001
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_001', 0, async function (done) {
+    it('threadWorker_worker_listener_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_029.js");
         let res = undefined;
         let flag = false;
@@ -2598,7 +2598,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_002
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_002', 0, async function (done) {
+    it('threadWorker_worker_listener_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_029.js");
         let res = 0;
         let flag = false;
@@ -2634,7 +2634,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_003
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_003', 0, async function (done) {
+    it('threadWorker_worker_listener_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let res = undefined;
         let isTerminate = false;
@@ -2661,7 +2661,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_004
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_004', 0, async function (done) {
+    it('threadWorker_worker_listener_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let res = undefined;
         let isTerminate = false;
@@ -2688,7 +2688,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_005
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_005', 0, async function (done) {
+    it('threadWorker_worker_listener_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_029.js");
         let res1 = "";
         let res2 = "";
@@ -2729,7 +2729,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_worker_listener_test_006
      * @tc.desc: Check the listener of worker is ok.
      */
-    it('threadWorker_worker_listener_test_006', 0, async function (done) {
+    it('threadWorker_worker_listener_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_030.js");
         let res = 0;
         let isTerminate = false;
@@ -2790,7 +2790,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_worker_callObject_test_001', 0, async function (done) {
+    it('threadWorker_worker_callObject_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_031.js");
         let res = "";
         let isTerminate = false;
@@ -2823,7 +2823,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_worker_callObject_test_002', 0, async function (done) {
+    it('threadWorker_worker_callObject_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_032.js");
         let res = "";
         let isTerminate = false;
@@ -2856,7 +2856,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_worker_callObject_test_003', 0, async function (done) {
+    it('threadWorker_worker_callObject_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_033.js");
         let res = "";
         let isTerminate = false;
@@ -2891,7 +2891,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_worker_callObject_test_004', 0, async function (done) {
+    it('threadWorker_worker_callObject_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_033.js");
         let res = "";
         let isTerminate = false;
@@ -2927,7 +2927,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_worker_callObject_test_005', 0, async function (done) {
+    it('threadWorker_worker_callObject_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_034.js");
         let res = "";
         let isTerminate = false;
@@ -2964,7 +2964,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_timer_test_001', 0, async function (done) {
+    it('threadWorker_timer_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_035.js");
         let res = "";
         let isTerminate = false;
@@ -2993,7 +2993,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_nestedCall_test_001', 0, async function (done) {
+    it('threadWorker_nestedCall_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_036.js");
         let res = "";
         let isTerminate = false;
@@ -3022,7 +3022,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorke_async_call_test_001', 0, async function (done) {
+    it('threadWorke_async_call_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_038.js");
         let res = "";
         let isTerminate = false;
@@ -3051,7 +3051,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_primitive_serialization_test_001', 0, async function (done) {
+    it('threadWorker_primitive_serialization_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_039.js");
         let res = "";
         let isTerminate = false;
@@ -3080,7 +3080,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_primitive_serialization_test_002', 0, async function (done) {
+    it('threadWorker_primitive_serialization_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_040.js");
         let res = "";
         let isTerminate = false;
@@ -3109,7 +3109,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_primitive_serialization_test_003', 0, async function (done) {
+    it('threadWorker_primitive_serialization_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_041.js");
         let res = "";
         let isTerminate = false;
@@ -3138,7 +3138,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_multi_level_test_001', 0, async function (done) {
+    it('threadWorker_multi_level_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let parentworker = new worker.ThreadWorker("entry_test/ets/workers/parentworker.ets");
         let res = "";
         let isTerminate = false;
@@ -3169,7 +3169,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_multi_level_test_002', 0, async function (done) {
+    it('threadWorker_multi_level_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let parentworker = new worker.ThreadWorker("entry_test/ets/workers/parentworker1.ets");
         let res = "";
         let isTerminate = false;
@@ -3200,7 +3200,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_001', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_042.js");
         let res = "";
         let isTerminate = false;
@@ -3252,7 +3252,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_002', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_043.js");
         let res = "";
         let isTerminate = false;
@@ -3303,7 +3303,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_003', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_044.js");
         let res = "";
         let isTerminate = false;
@@ -3354,7 +3354,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_004', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         class MyModel
         {
             name = "module";
@@ -3414,7 +3414,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_005', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_046.js");
         let res = "";
         let isTerminate = false;
@@ -3464,7 +3464,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_006', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_047.js");
         let res = "";
         let isTerminate = false;
@@ -3526,7 +3526,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_onAllErrors_test_007', 0, async function (done) {
+    it('threadWorker_onAllErrors_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let workerInstance = new worker.ThreadWorker("entry_test/ets/workers/newworker_047.js");
         let res = "";
         let isTerminate = false;
@@ -3575,7 +3575,7 @@ describe('threadWorkerTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('threadWorker_finally_test_001', 0, async function (done) {
+    it('threadWorker_finally_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         var ss = []
         let flag = 0
         try {

@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef ACE_C_ARKUI_TEST_API16_DATEPICKER_COMPONENT_H
-#define ACE_C_ARKUI_TEST_API16_DATEPICKER_COMPONENT_H
+#ifndef ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H
+#define ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H
 
 #include "component.h"
 namespace ArkUICapiTest {
@@ -27,4 +27,4 @@ public:
     void SetCalendarPickerEnd(const std::string& endDate);
 };
 } // ArkUICapiTest
-#endif //ACE_C_ARKUI_TEST_API16_DATEPICKER_COMPONENT_H
+#endif //ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H

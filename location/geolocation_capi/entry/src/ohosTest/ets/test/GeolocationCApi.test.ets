@@ -16,7 +16,7 @@ import hilog from '@ohos.hilog';
 import geolocationCApi from 'libgeolocationcapi.so';
 import geolocationm from '@ohos.geoLocationManager';
 import geolocation from '@ohos.geolocation';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { BusinessError } from '@kit.BasicServicesKit';
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
@@ -96,7 +96,7 @@ export default function geolocationCApiTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHLocationIsEnabled001', 0, async (done: Function) => {
+    it('testOHLocationIsEnabled001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let capiResult: number = geolocationCApi.ohLocationIsEnabled();
       let api12Result: boolean = geolocationm.isLocationEnabled();
       expect(capiResult).assertEqual(api12Result);
@@ -111,7 +111,7 @@ export default function geolocationCApiTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHLocationStartLocatingAndStopLocating001', 0, async (done: Function) => {
+    it('testOHLocationStartLocatingAndStopLocating001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result1: number = geolocationCApi.ohLocationStartLocating();
       expect(result1).assertEqual(0);
       let result2: number = geolocationCApi.ohLocationStopLocating();

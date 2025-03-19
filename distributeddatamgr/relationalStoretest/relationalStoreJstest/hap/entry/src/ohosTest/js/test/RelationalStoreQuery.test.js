@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import factory from '@ohos.data.distributedData';
 import ability_featureAbility from '@ohos.ability.featureAbility';
@@ -153,9 +153,12 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0100
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
         
-        it('RdbRemoteQueryPromiseTest0010', 0, async function (done){
+        it('RdbRemoteQueryPromiseTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0010 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -180,8 +183,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0200
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryPromiseTest0020', 0, async function (done){
+        it('RdbRemoteQueryPromiseTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -204,8 +210,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0300
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryPromiseTest0030', 0, async function (done){
+        it('RdbRemoteQueryPromiseTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0030 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -228,8 +237,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0400
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryPromiseTest0040', 0, async function (done){
+        it('RdbRemoteQueryPromiseTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0040 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -252,8 +264,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0500
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryCallbackTest0010', 0, async function (done){
+        it('RdbRemoteQueryCallbackTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0010 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -278,8 +293,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0600
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryCallbackTest0020', 0, async function (done){
+        it('RdbRemoteQueryCallbackTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -304,8 +322,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0700
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryCallbackTest0030', 0, async function (done){
+        it('RdbRemoteQueryCallbackTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -330,8 +351,11 @@ export default function relationalStoreQueryTest(){
          * @tc.name RelationalStore remotequery test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0800
          * @tc.desc RelationalStore remotequery function test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('RdbRemoteQueryCallbackTest0040', 0, async function (done){
+        it('RdbRemoteQueryCallbackTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0040 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")

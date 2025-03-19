@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import ddm from '@ohos.data.distributedKVStore';
 export default function FieldNodeTest(){
 describe('FieldNodeTest', function() {
@@ -23,8 +23,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0600
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
             let child1 = new ddm.FieldNode("child1");
@@ -53,8 +55,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 002
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0500
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
@@ -75,8 +79,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 003
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0400
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode();
@@ -94,8 +100,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0100
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0100', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
@@ -113,8 +121,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 002
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0200
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
@@ -132,8 +142,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 003
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0300
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_FIELDNODE_TOJSON_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode();
             let child = new ddm.FieldNode();
@@ -151,8 +163,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.default testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0700
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0100', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.default = 'first name';
@@ -171,8 +185,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.nullable testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0800
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_NULLABLE_0100', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_NULLABLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.nullable = false;
@@ -191,8 +207,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1400
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0100', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.STRING;
@@ -211,8 +229,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 002
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1300
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0200', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.INTEGER;
@@ -231,8 +251,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 003
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1200
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0300', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.FLOAT;
@@ -251,8 +273,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 004
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1000
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0400', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.BYTE_ARRAY;
@@ -271,8 +295,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 005
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0900
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0500', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.BOOLEAN;
@@ -291,8 +317,10 @@ describe('FieldNodeTest', function() {
      * @tc.desc  Test Js Api FieldNode.type testcase 006
      * @tc.type: FUNC
      * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1100
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_FIELDNODE_TYPE_0600', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_TYPE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.DOUBLE;

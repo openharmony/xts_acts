@@ -123,5 +123,49 @@ export default function addRemoveAssetsChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_APPLY_CHANGES_0100
+     * @tc.name      : apply_Changes_001
+     * @tc.desc      : applyChanges undefined error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('apply_Changes_001', 2, async (done: Function) => {
+      let testNum:string = 'apply_Changes_001';
+      try {
+        let albumChangeRequest: ESObject = undefined;
+        await helper.applyChanges(albumChangeRequest);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_APPLY_CHANGES_0200
+     * @tc.name      : apply_Changes_002
+     * @tc.desc      : applyChanges array<string> error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('apply_Changes_002', 2, async (done: Function) => {
+      let testNum:string = 'apply_Changes_002';
+      try {
+        let albumChangeRequest: ESObject = ['123123'];
+        await helper.applyChanges(albumChangeRequest);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
   })
 }

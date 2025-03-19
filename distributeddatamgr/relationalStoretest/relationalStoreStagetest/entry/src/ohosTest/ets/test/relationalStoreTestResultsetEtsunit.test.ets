@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -104,7 +104,7 @@ describe('relationalStoreResultSetTest', () => {
 	 * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RELATIONALETS_RESULTSET_0010', 0, async (done: Function) => {
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
         console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0010 start *************');
         let predicates = await new dataRdb.RdbPredicates('test');
         let resultSet: dataRdb.ResultSet = await rdbStore.query(predicates);
@@ -135,7 +135,7 @@ describe('relationalStoreResultSetTest', () => {
    * @tc.type Function
    * @tc.level Level 2
    */
-    it('SUB_DDM_RELATIONALETS_RESULTSET_0020', 0, async (done: Function) => {
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0020 start *************');
       let predicates = new dataRdb.RdbPredicates('test');
       let resultSet = await rdbStore.query(predicates);
@@ -165,7 +165,7 @@ describe('relationalStoreResultSetTest', () => {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RELATIONALETS_RESULTSET_0030', 0, async (done: Function) => {
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
         console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0030 start *************');
         let predicates = new dataRdb.RdbPredicates('test');
         let resultSet = await rdbStore.query(predicates);

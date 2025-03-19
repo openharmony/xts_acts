@@ -17,7 +17,7 @@ import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -86,9 +86,9 @@ export default function geolocationTest_counterr(){
          * @tc.name Test getCountryCode
          * @tc.desc Incorrect input parameter to obtain the country code information.
          * @tc.type Function
-         * @tc.level since 9
+         * @tc.level Level 2
          */
-         it('SUB_HSS_LocationSystem_CountryCodeErr_0100', 0, async function (done) {
+         it('SUB_HSS_LocationSystem_CountryCodeErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 geolocationm.getCountryCode("test",(err,data) => {
                     if (err) {

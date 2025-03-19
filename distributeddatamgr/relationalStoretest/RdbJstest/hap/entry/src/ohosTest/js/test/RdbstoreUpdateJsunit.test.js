@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
@@ -49,8 +49,11 @@ export default function rdbStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0100
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0001', 0, async function (done) {
+        it('testRdbStoreUpdate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             //插入
@@ -118,8 +121,11 @@ export default function rdbStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0200
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0002', 0, async function (done) {
+        it('testRdbStoreUpdate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0002 start *************");
             //更新
             {
@@ -175,8 +181,11 @@ export default function rdbStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0300
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0003', 0, async function (done) {
+        it('testRdbStoreUpdate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0003 start *************");
             //更新
             {
@@ -219,8 +228,11 @@ export default function rdbStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0400
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0004', 0, async function (done) {
+        it('testRdbStoreUpdate0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0004 start *************");
             //更新
             {

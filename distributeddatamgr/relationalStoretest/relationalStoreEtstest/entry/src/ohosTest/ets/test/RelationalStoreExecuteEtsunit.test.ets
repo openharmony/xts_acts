@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore'
 import common from "@ohos.app.ability.common";
 
@@ -71,7 +71,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute sql: PRAGMA integrity_check
      *          2. Check returned value
      */
-    it('testExecute0001', 0, async function (done) {
+    it('testExecute0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0001 start *************");
       try {
         let ret = await rdbStore.execute("PRAGMA integrity_check");
@@ -93,7 +93,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute sql: PRAGMA quick_check
      *          2. Check returned value
      */
-    it('testExecute0002', 0, async function (done) {
+    it('testExecute0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0002 start *************");
       try {
         let ret = await rdbStore.execute("PRAGMA quick_check");
@@ -115,7 +115,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute sql: PRAGMA user_version
      *          2. Check returned value
      */
-    it('testExecute0003', 0, async function (done) {
+    it('testExecute0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0003 start *************");
       try {
         rdbStore.version = 5;
@@ -138,7 +138,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute select sql
      *          2. Check returned value
      */
-    it('testExecute0004', 0, async function (done) {
+    it('testExecute0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0004 start *************");
       try {
         await rdbStore.execute("SELECT * FROM test");
@@ -160,7 +160,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute insert sql
      *          2. Check returned value
      */
-    it('testExecute0005', 0, async function (done) {
+    it('testExecute0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0005 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES ('tt', 28, 50000)");
@@ -182,7 +182,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute insert sql
      *          2. Check returned value
      */
-    it('testExecute0006', 0, async function (done) {
+    it('testExecute0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0006 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?)", ['tt', 28, 50000]);
@@ -204,7 +204,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute batch insert sql
      *          2. Check returned value
      */
-    it('testExecute0007', 0, async function (done) {
+    it('testExecute0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0007 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
@@ -227,7 +227,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute update sql
      *          2. Check returned value
      */
-    it('testExecute0008', 0, async function (done) {
+    it('testExecute0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0008 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
@@ -253,7 +253,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute delete sql
      *          2. Check returned value
      */
-    it('testExecute0009', 0, async function (done) {
+    it('testExecute0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0009 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
@@ -280,7 +280,7 @@ export default function rdbStoreExcuteTest(){
      *          3. Execute transaction sql
      *          4. Check returned value
      */
-    it('testExecute0010', 0, async function (done) {
+    it('testExecute0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0010 start *************");
       try {
         await rdbStore.execute("ATTACH DATABASE 'execute_attach_test.db' AS 'attach.db'");
@@ -338,7 +338,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Create table
      *          2. Drop table
      */
-    it('testExecute0011', 0, async function (done) {
+    it('testExecute0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0011 start *************");
       try {
         let ret = await rdbStore.execute(CREATE_TABLE_TEST2);
@@ -374,7 +374,7 @@ export default function rdbStoreExcuteTest(){
      *          3. Query data
      *          4. Drop table
      */
-    it('testExecute0012', 0, async function (done) {
+    it('testExecute0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0012 start *************");
       try {
         await rdbStore.execute(CREATE_TABLE_TEST2);
@@ -405,7 +405,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Execute sql: ""
      *          2. Check returned value
      */
-    it('testExecute0013', 0, async function (done) {
+    it('testExecute0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0013 start *************");
       try {
         await rdbStore.execute("");
@@ -428,7 +428,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Insert data
      *          2. Check returned value
      */
-    it('testExecute0014', 0, async function (done) {
+    it('testExecute0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0014 start *************");
       try {
         await rdbStore.execute("INSERT INTO test (name, age, salary) VALUES (?, ?, ?)");
@@ -450,7 +450,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Insert data and set sql as null or undefined
      *          2. Check returned value
      */
-    it('testExecute0015', 0, async function (done) {
+    it('testExecute0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0015 start *************");
       try {
         await rdbStore.execute(null);
@@ -480,7 +480,7 @@ export default function rdbStoreExcuteTest(){
      * @tc.desc 1. Insert data and set args as null or undefined
      *          2. Check returned value
      */
-    it('testExecute0016', 0, async function (done) {
+    it('testExecute0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testExecute0016 start *************");
       try {
         await rdbStore.execute("INSERT INTO test (name, age, salary) VALUES (?, ?, ?)", null);
@@ -512,7 +512,7 @@ export default function rdbStoreExcuteTest(){
      *          2. Check returned value
      */
 
-    it('testExecute0017', 0, async function (done) {
+    it('testExecute0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testExecute0017 start *************");
         try {
             let ret = await rdbStore.execute("PRAGMA user_version=5");
@@ -537,7 +537,7 @@ export default function rdbStoreExcuteTest(){
      *          2. Check returned value
      */
 
-    it('testExecute0018', 0, async function (done) {
+    it('testExecute0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testExecute0018 start *************");
         try {
             await rdbStore.execute("PRAGMA table_info(test)");
