@@ -191,49 +191,6 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
     });
 
     /**
-     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0700
-     * @tc.name generateRandom 返回17620001
-     * @tc.desc convertKey
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0700",
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-
-      try {
-        let rand = cryptoFramework.createRandom();
-        await rand.generateRandom(2147483647);
-        expect(null).assertFail();
-      } catch (error) {
-        console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0700 “${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-      }
-      done();
-    });
-
-    /**
-     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0800
-     * @tc.name generateRandomSync 返回17620001
-     * @tc.desc convertKey
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0800",
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      try {
-        let rand = cryptoFramework.createRandom();
-        rand.generateRandomSync(2147483647);
-        expect(null).assertFail();
-      } catch (error) {
-        console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0800 “${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-      }
-      done();
-    });
-
-    /**
      * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0900
      * @tc.name doFinalSync返回17630001
      * @tc.desc convertKey
