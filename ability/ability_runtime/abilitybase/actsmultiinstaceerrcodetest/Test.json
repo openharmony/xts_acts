@@ -13,7 +13,8 @@
             "test-file-name": [
                 "ActsBaseErrorCodeMethodTest.hap",
                 "ActsmultiInstancEerrCodeMain.hap",
-                "ActsBaseErrorRely.hap"
+                "ActsBaseErrorRely.hap",
+                "ActsMultiInstancEerrCodeTest.hap"
               ],
             "type": "AppInstallKit",
             "cleanup-apps": true
