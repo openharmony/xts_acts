@@ -93,7 +93,6 @@ export default function abilityTest() {
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let resultCode: dialogRequest.ResultCode;
-
       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.info("====>ACTS_requestDialog_0200 Create Subscriber====>");
         subscriber = data;

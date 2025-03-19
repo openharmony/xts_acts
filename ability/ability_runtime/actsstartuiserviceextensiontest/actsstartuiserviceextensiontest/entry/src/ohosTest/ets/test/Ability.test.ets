@@ -276,10 +276,14 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_fontId_0100', 0, async (done: Function) => {
       console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] start');
       if(testAbilityContext.config?.fontId != undefined){
-        expect(typeof(testAbilityContext.config.fontId)).assertEqual("string")
+        expect(typeof(testAbilityContext.config.fontId)).assertEqual("string");
       }else{
-        expect(testAbilityContext.config.fontId).assertEqual(undefined)
+        expect(testAbilityContext.config.fontId).assertEqual(undefined);
       }
+      console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] ' + JSON.stringify(testAbilityContext.config));
+      expect(typeof testAbilityContext.config.displayId).assertEqual("number");
+      expect(typeof testAbilityContext.config.fontSizeScale).assertEqual("number")
+      expect(typeof testAbilityContext.config.fontWeightScale).assertEqual("number")
       console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] end');
       done();
     })
