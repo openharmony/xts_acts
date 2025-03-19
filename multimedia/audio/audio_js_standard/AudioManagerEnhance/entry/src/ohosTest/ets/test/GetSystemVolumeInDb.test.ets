@@ -272,8 +272,7 @@ export default function audioManagerTest() {
               console.info(`${index} getSystemVolumeInDb :SUCCESS ${data}`);
             })
             .catch((error: BusinessError) => {
-              if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP' ||
-                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST') {
+              if (index !== null && index !== undefined && index !== '') {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
