@@ -25,7 +25,7 @@ const TAG = '[Swiper]';
 @Component
 struct stopWhenTouchedSwiper {
   @State name: string = 'Swiper';
-  @State StepTips: string = '操作步骤：子组件自动播放，当stopWhenTouched设置为true时，手指在组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
+  @State stepTips: string = '操作步骤：子组件自动播放，当stopWhenTouched设置为true时，手指在组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State isVertical: boolean = false;
@@ -99,7 +99,7 @@ struct stopWhenTouchedSwiper {
   }
 
   aboutToAppear() {
-    FirstDialog.ChooseDialog(this.StepTips, this.name);
+    FirstDialog.ChooseDialog(this.stepTips, this.name);
     for (let i = 1; i < 11; i++) {
       Logger.info(TAG, 'data.push i =>' + i)
       this.data.push(i)
@@ -176,7 +176,7 @@ struct stopWhenTouchedSwiper {
               .fontSize(30)
           }, (item: string) => item)
         }
-        .autoPlay(this.isAutoPlay, { stopWhenTouched: this.isStopWhenTouched }) // 新加接口内容
+        .autoPlay(this.isAutoPlay, { stopWhenTouched: this.isStopWhenTouched })
         .interval(this.intervalArg)
         .duration(this.duration)
         .loop(this.loop)
@@ -265,7 +265,7 @@ struct stopWhenTouchedSwiper {
           AlertDialog.show(
             {
               title: '操作提示',
-              message: this.StepTips,
+              message: this.stepTips,
               confirm: {
                 value: 'OK',
                 action: () => {
