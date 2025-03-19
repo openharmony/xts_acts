@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
         "shell-timeout": "300000",
-        "bundle-name": "com.acts.actsbaseerrrocodemethodtest",
+        "bundle-name": "com.acts.ability.multiinstaceerrcodetest",
         "module-name": "entry_test",
         "testcase-timeout": "15000"
     },
