@@ -48,15 +48,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.CreateAxisEvent();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -79,15 +72,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventAction();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -110,15 +96,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAction();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -141,15 +120,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventDisplayX();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -172,15 +144,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayX();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -203,15 +168,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventDisplayY();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -234,15 +192,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayY();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -265,15 +216,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventAxisValue();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -296,15 +240,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAxisValue();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -327,15 +264,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventActionTime();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -358,15 +288,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventActionTime();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -389,15 +312,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventType();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -420,15 +336,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventType();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -451,15 +360,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventSourceType();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -482,15 +384,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventSourceType();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -513,15 +408,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.DestroyAxisEvent();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -544,15 +432,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.DestroyAxisEvent2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -575,15 +456,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventAction2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -606,15 +480,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAction2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -637,15 +504,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAction3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -668,15 +528,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventDisplayX2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -699,15 +552,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayX2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -730,15 +576,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayX3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -761,15 +600,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventDisplayY2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -792,15 +624,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayY2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -823,15 +648,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayY3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -854,15 +672,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventDisplayY4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -885,15 +696,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventAxisValue2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -916,15 +720,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAxisValue2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -947,15 +744,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAxisValue3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -978,15 +768,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAxisValue4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1009,15 +792,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventAxisValue5();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1040,15 +816,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventActionTime2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1071,15 +840,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventActionTime2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1102,15 +864,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventActionTime3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1133,15 +888,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventActionTime4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1164,15 +912,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventType2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1195,15 +936,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventType2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1226,15 +960,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventType3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1257,15 +984,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventType4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1288,15 +1008,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventSourceType2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1319,15 +1032,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventSourceType2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1350,15 +1056,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventSourceType3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1381,15 +1080,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventSourceType4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1412,15 +1104,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1443,15 +1128,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1474,15 +1152,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1505,15 +1176,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1536,15 +1200,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1567,15 +1224,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1598,15 +1248,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventMonitor4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1629,15 +1272,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddMouseEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1660,15 +1296,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveMouseEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1691,15 +1320,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddMouseEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1722,15 +1344,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveMouseEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1753,15 +1368,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveMouseEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1784,15 +1392,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddMouseEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1814,16 +1415,9 @@ export default function MultimodalInputNdkSysTest() {
       console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
       try {
         let data = input.RemoveMouseEventMonitor4();
-        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1846,15 +1440,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddTouchEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1877,15 +1464,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveTouchEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1908,15 +1488,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddTouchEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1939,15 +1512,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveTouchEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -1970,15 +1536,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveTouchEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2001,15 +1560,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddTouchEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2032,15 +1584,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveTouchEventMonitor4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2063,15 +1608,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitorForAll();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2094,15 +1632,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitorForAll();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2125,15 +1656,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitorForAll2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2156,15 +1680,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitorForAll2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2187,15 +1704,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitorForAll3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2218,15 +1728,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitorForAll3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2249,15 +1752,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitorForAll4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2280,15 +1776,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2311,15 +1800,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2342,15 +1824,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2373,15 +1848,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2404,15 +1872,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2435,15 +1896,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddAxisEventMonitor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2466,15 +1920,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitor4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2497,15 +1944,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveAxisEventMonitor5();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2528,15 +1968,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventInterceptor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2559,15 +1992,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventInterceptor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2590,15 +2016,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventInterceptor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2621,15 +2040,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventInterceptor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2652,15 +2064,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventInterceptor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2683,15 +2088,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddKeyEventInterceptor4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2714,15 +2112,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveKeyEventInterceptor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2745,15 +2136,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddInputEventInterceptor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2776,15 +2160,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddInputEventInterceptor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2807,15 +2184,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddInputEventInterceptor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2838,15 +2208,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveInputEventInterceptor();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2869,15 +2232,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveInputEventInterceptor2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2900,15 +2256,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.AddInputEventInterceptor4();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2931,15 +2280,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.RemoveInputEventInterceptor3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2962,15 +2304,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetKeyEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2993,15 +2328,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetKeyEventWindowId2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3024,15 +2352,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetKeyEventWindowId3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3055,15 +2376,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetKeyEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3086,15 +2400,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetMouseEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3117,15 +2424,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetMouseEventWindowId2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3148,15 +2448,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetMouseEventWindowId3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3179,15 +2472,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetMouseEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3210,15 +2496,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetTouchEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3241,15 +2520,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetTouchEventWindowId2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3272,15 +2544,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetTouchEventWindowId3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3303,15 +2568,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetTouchEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3334,15 +2592,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3365,15 +2616,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventWindowId2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3396,15 +2640,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.SetAxisEventWindowId3();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3427,15 +2664,8 @@ export default function MultimodalInputNdkSysTest() {
       try {
         let data = input.GetAxisEventWindowId();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
-        }
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
