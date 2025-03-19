@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
@@ -197,7 +195,7 @@ export default function imageDecodeOptionsYuvTest() {
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
                                   decodingOptions: image.DecodingOptions) => {
-    imageSourceApi.createPixelMap(decodingOptions, async (err : BusinessError, pixelMap : image.PixelMap) => {
+    await imageSourceApi.createPixelMap(decodingOptions, async (err : BusinessError, pixelMap : image.PixelMap) => {
         if (!err) {
           globalPixelMap = pixelMap;
           await pixelMap.getImageInfo().then((imageInfo) => {
@@ -642,6 +640,7 @@ export default function imageDecodeOptionsYuvTest() {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200",
           480, 360, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "rawfile",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3));
+        await sleep(200);
         expect(result).assertTrue();
         done();
       } catch (e) {
@@ -798,6 +797,7 @@ export default function imageDecodeOptionsYuvTest() {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800",
           481, 361, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "fd",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998));
+        await sleep(200);
         expect(result).assertTrue();
         done();
       } catch (e) {
