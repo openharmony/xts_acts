@@ -20,6 +20,8 @@ import addComponentContentErrorCodeTest from './FrameNodeTest/AddComponentConten
 import bindControllerErrorCodeTest from './FrameNodeTest/BindControllerErrorCode.test';
 import renderNodeDisposeTest from './FrameNodeTest/RenderNodeDispose.test';
 import componentContentDisposeTest from './FrameNodeTest/componentContentDispose.test';
+import blendColorErrorCodeTest from './FrameNodeTest/blendColorErrorCode.test';
+import resourceColorErrorCodeTest from './FrameNodeTest/resourceColorErrorCode.test';
 
 export default function testsuite() {
   frameNodeIsVisibleTest();
@@ -30,4 +32,6 @@ export default function testsuite() {
   bindControllerErrorCodeTest();
   renderNodeDisposeTest();
   componentContentDisposeTest();
+  blendColorErrorCodeTest();
+  resourceColorErrorCodeTest();
 }
