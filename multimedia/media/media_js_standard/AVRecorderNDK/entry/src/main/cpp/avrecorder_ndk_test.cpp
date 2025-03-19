@@ -97,7 +97,6 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
     (void)userDate;
     OH_LOG_INFO(LOG_APP, "NDK xts OnUri start!");
     if (asset != nullptr) {
-        OH_LOG_INFO(LOG_APP, "NDK xts OnUri start!");
         auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
         if (changeRequest == nullptr) {
             OH_LOG_INFO(LOG_APP, "NDK xts changeRequest is null!");
@@ -111,7 +110,7 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
     } else {
         OH_LOG_INFO(LOG_APP, "NDK xts Received null media asset! ");
     }
-    OH_LOG_INFO(LOG_APP, "NDK xts OnUri out ! ");
+    OH_LOG_INFO(LOG_APP, "NDK xts OnUri completed ! ");
 }
 static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 {
@@ -304,14 +303,14 @@ void SetConfig(OH_AVRecorder_Config &config)
     config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
     const int SAMPLE_RATE_48KHZ = 48000;
     config.profile.audioSampleRate = SAMPLE_RATE_48KHZ;
-    const int VIDEO_ORIENTATION_SIZE = 2;
-    config.metadata.videoOrientation = (char *)malloc(VIDEO_ORIENTATION_SIZE);
+    const int g_videoOrientationSize = 2;
+    config.metadata.videoOrientation = (char *)malloc(g_videoOrientationSize);
     if (config.metadata.videoOrientation != nullptr) {
         strcpy(config.metadata.videoOrientation, "0");
     }
-    const int VIDEO_LOCATION_SIZE = 27;
-    config.metadata.location.latitude = VIDEO_LOCATION_SIZE;
-    config.metadata.location.longitude = VIDEO_LOCATION_SIZE;
+    const int g_videoLocationSize = 27;
+    config.metadata.location.latitude = g_videoLocationSize;
+    config.metadata.location.longitude = g_videoLocationSize;
 }
 
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
@@ -332,7 +331,7 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[1], fd, typeLen + 1, &typeLen);
     config->url = fd;
 
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder parseSetConfigOps start ");
+    OH_LOG_INFO(LOG_APP, "NDK AVRecorder parseSetConfigOps start ");
     parseSetConfigOps(env, args[0], *config);
 
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
@@ -467,7 +466,7 @@ static napi_value getAVRecorderConfig(napi_env env, napi_callback_info info)
     SetConfig(*config);
     int result = OH_AVRecorder_GetAVRecorderConfig(g_avRecorder, &config);
     if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK OH_AVRecorder_GetAVRecorderConfig 配置失败");
+        OH_LOG_INFO(LOG_APP, "NDK OH_AVRecorder_GetAVRecorderConfig configuration failed");
     }
     OH_LOG_INFO(LOG_APP, "NDK xtsgetAVRecorderConfig sucuess", config->profile.audioBitrate);
     napi_value res;

@@ -469,7 +469,7 @@ Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
     DRAWING_LOGD("NDKCamera::CreatePhotoOutput start!");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     if (videoProfile_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "Get photoProfiles failed.");
+        OH_LOG_ERROR(LOG_APP, "Get VideoProfiles failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_ERROR(LOG_APP, "CreateVideoOutput width:%{public}d", videoProfile_->size.width);
@@ -702,12 +702,12 @@ Camera_ErrorCode NDKCamera::IsFocusPoint(float x, float y)
     focusPoint.y = y;
     result_ = OH_CaptureSession_SetFocusPoint(captureSession_, focusPoint);
     if (result_ != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFocusPoint failed.");
+        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFocusPoint is not available.");
         return CAMERA_INVALID_ARGUMENT;
     }
     result_ = OH_CaptureSession_GetFocusPoint(captureSession_, &focusPoint);
     if (&focusPoint == nullptr || result_ != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint failed.");
+        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint is not available.");
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "IsFocusPoint end.");
@@ -716,10 +716,10 @@ Camera_ErrorCode NDKCamera::IsFocusPoint(float x, float y)
 
 int32_t NDKCamera::GetVideoFrameWidth(void)
 {
-    OH_LOG_ERROR(LOG_APP, "enter IsFocusPoint.");
+    OH_LOG_ERROR(LOG_APP, "enter GetVideoFrameWidth.");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     if (videoProfile_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint failed.");
+        OH_LOG_ERROR(LOG_APP, "profile is not available.");
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "GetVideoFrameWidth end.");
@@ -728,25 +728,25 @@ int32_t NDKCamera::GetVideoFrameWidth(void)
 
 int32_t NDKCamera::GetVideoFrameHeight(void)
 {
-    OH_LOG_ERROR(LOG_APP, "enter IsFocusPoint.");
+    OH_LOG_ERROR(LOG_APP, "enter GetVideoFrameHeight.");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     if (videoProfile_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint failed.");
+        OH_LOG_ERROR(LOG_APP, "profile is not available failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
-    OH_LOG_INFO(LOG_APP, "GetVideoFrameWidth end.");
+    OH_LOG_INFO(LOG_APP, "GetVideoFrameHeight end.");
     return videoProfile_->size.height;
 }
 
 int32_t NDKCamera::GetVideoFrameRate(void)
 {
-    OH_LOG_ERROR(LOG_APP, "enter IsFocusPoint.");
+    OH_LOG_ERROR(LOG_APP, "enter GetVideoFrameRate.");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     if (videoProfile_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint failed.");
+        OH_LOG_ERROR(LOG_APP, "GetVideoFrameRate failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
-    OH_LOG_INFO(LOG_APP, "GetVideoFrameWidth end.");
+    OH_LOG_INFO(LOG_APP, "GetVideoFrameRate end.");
     return videoProfile_->range.min;
 }
 
