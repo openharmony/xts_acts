@@ -49,7 +49,7 @@ struct RepeatVirtualScroll {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Button('Click to last')
         .id('reusablefalse')
         .height('5%')
