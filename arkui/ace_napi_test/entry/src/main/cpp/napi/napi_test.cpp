@@ -11726,6 +11726,1181 @@ static napi_value NapiGetValueInt64Test(napi_env env, napi_callback_info info)
     napi_get_boolean(env, bRet, &rst);
     return rst;
 }
+//napi_get_value_string_latin1
+static napi_value NapiGetValueStringLatin1Test(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+    
+    const char *str = "string latin1";
+    napi_value  valueRst = nullptr;
+    status = napi_create_string_latin1(env, str, NAPI_AUTO_LENGTH, &valueRst);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create string latin1 value");
+    }
+    char buf[128] = {0};
+    size_t length = 0;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_get_value_string_latin1(env, undefined, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_string_expected, "value is undefined, napi_get_value_int64 failed.");
+
+    //env is null
+    status = napi_get_value_string_latin1(nullptr, valueRst, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_value_string_latin1 failed.");
+    //value is null
+    status = napi_get_value_string_latin1(env, nullptr, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_value_string_latin1 failed.");
+    //buf is null
+    status = napi_get_value_string_latin1(env, valueRst, nullptr, 128, &length);
+    NAPI_ASSERT(env, status == napi_ok, "buf is null, napi_get_value_string_latin1 ok.");
+    //bufsize is null
+    status = napi_get_value_string_latin1(env, valueRst, buf, 0, &length);
+    NAPI_ASSERT(env, status == napi_ok, "bufsize is 0, napi_get_value_string_latin1 ok.");
+    //result is null
+    status = napi_get_value_string_latin1(env, valueRst, buf, 128, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "result is null, napi_get_value_string_latin1 ok.");
+    //all is null
+    status = napi_get_value_string_latin1(nullptr, nullptr, nullptr, 0, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_string_latin1 failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_value_string_utf8
+static napi_value NapiGetValueStringUtf8Test(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    const char *str = "string utf8";
+    napi_value strRst = nullptr;
+    status = napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &strRst);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create string utf8 value");
+    }
+    char buf[128] = {0};
+    size_t length = 0;
+    napi_get_value_string_utf8(env, strRst, buf, 128, &length);
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_get_value_string_utf8(env, undefined, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_string_expected, "value is undefined, napi_get_value_string_utf8 failed.");
+
+    //env is null
+    status = napi_get_value_string_utf8(nullptr, strRst, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_value_string_utf8 failed.");
+    //value is null
+    status = napi_get_value_string_utf8(env, nullptr, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_value_string_utf8 failed.");
+    //buf is null
+    status = napi_get_value_string_utf8(env, strRst, nullptr, 128, &length);
+    NAPI_ASSERT(env, status == napi_ok, "buf is null, napi_get_value_string_utf8 ok.");
+    //bufsize is null
+    status = napi_get_value_string_utf8(env, strRst, buf, 0, &length);
+    NAPI_ASSERT(env, status == napi_ok, "bufsize is 0, napi_get_value_string_utf8 ok.");
+    //result is null
+    status = napi_get_value_string_utf8(env, strRst, buf, 128, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "result is null, napi_get_value_string_utf8 ok.");
+    //all is null
+    status = napi_get_value_string_utf8(nullptr, nullptr, nullptr, 0, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_string_utf8 failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_value_string_utf16
+static napi_value NapiGetValueStringUtf16Test(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    const char16_t *str = u"string utf16";
+    napi_value strRst = nullptr;
+    status = napi_create_string_utf16(env, str, NAPI_AUTO_LENGTH, &strRst);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create string utf16 value");
+    }
+    char16_t buf[128] = {0};
+    size_t length = 0;
+    napi_get_value_string_utf16(env, strRst, buf, 128, &length);
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_get_value_string_utf16(env, undefined, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_string_expected, "value is undefined, napi_get_value_string_utf16 failed.");
+
+    //env is null
+    status = napi_get_value_string_utf16(nullptr, strRst, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_value_string_utf16 failed.");
+    //value is null
+    status = napi_get_value_string_utf16(env, nullptr, buf, 128, &length);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_value_string_utf16 failed.");
+    //buf is null
+    status = napi_get_value_string_utf16(env, strRst, nullptr, 128, &length);
+    NAPI_ASSERT(env, status == napi_ok, "buf is null, napi_get_value_string_utf16 ok.");
+    //bufsize is null
+    status = napi_get_value_string_utf16(env, strRst, buf, 0, &length);
+    NAPI_ASSERT(env, status == napi_ok, "bufsize is 0, napi_get_value_string_utf16 ok.");
+    //result is null
+    status = napi_get_value_string_utf16(env, strRst, buf, 128, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "result is null, napi_get_value_string_utf16 ok.");
+    //all is null
+    status = napi_get_value_string_utf16(nullptr, nullptr, nullptr, 0, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_string_utf16 failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_value_uint32
+static napi_value NapiGetValueUint32Test(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+    
+    uint32_t value = 0;
+    napi_value uint32Rst = nullptr;
+    napi_create_uint32(env, value, &uint32Rst);
+    uint32_t result;
+    napi_get_value_uint32(env, uint32Rst, &result);
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_get_value_uint32(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_number_expected, "value is undefined, napi_get_value_uint32 failed.");
+
+    //env is null
+    status = napi_get_value_uint32(nullptr, uint32Rst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_value_uint32 failed.");
+    //value is null
+    status = napi_get_value_uint32(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_value_uint32 failed.");
+    //result is null
+    status = napi_get_value_uint32(env, uint32Rst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_value_uint32 failed.");
+    //all is null
+    status = napi_get_value_uint32(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_uint32 failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_boolean
+static napi_value NapiGetBooleanTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value result = nullptr;
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //result is undefined
+    status = napi_get_boolean(env, true, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_get_boolean ok.");
+
+    //env is null
+    status = napi_get_boolean(nullptr, true, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_boolean failed.");
+    //result is null
+    status = napi_get_boolean(env, true, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_boolean failed.");
+    //all is null
+    status = napi_get_boolean(nullptr, true, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_boolean failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_global
+static napi_value NapiGetGlobalTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //result is undefined
+    status = napi_get_global(env, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_get_global ok.");
+
+    //env is null
+    status = napi_get_global(nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_global failed.");
+    //result is null
+    status = napi_get_global(env, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_global failed.");
+    //all is null
+    status = napi_get_global(nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_global failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_null
+static napi_value NapiGetNullTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value result = nullptr;
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //result is undefined
+    status = napi_get_null(env, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_get_null ok.");
+
+    //env is null
+    status = napi_get_null(nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_null failed.");
+    //result is null
+    status = napi_get_null(env, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_null failed.");
+    //all is null
+    status = napi_get_null(nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_null failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_undefined
+static napi_value NapiGetUndefinedTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value result = nullptr;
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //result is undefined
+    status = napi_get_undefined(env, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_get_undefined ok.");
+
+    //env is null
+    status = napi_get_undefined(nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_undefined failed.");
+    //result is null
+    status = napi_get_undefined(env, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_undefined failed.");
+    //all is null
+    status = napi_get_undefined(nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_undefined failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_coerce_to_bool
+static napi_value NapiCoerceToBoolTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    int32_t value = 0;
+    napi_value intRst = nullptr;
+    napi_create_int32(env, value, &intRst);
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_coerce_to_bool(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_bool ok.");
+    //result is undefined
+    status = napi_coerce_to_bool(env, intRst, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_bool ok.");
+
+    //env is null
+    status = napi_coerce_to_bool(nullptr, intRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_coerce_to_bool failed.");
+    //value is null
+    status = napi_coerce_to_bool(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_bool failed.");
+    //result is null
+    status = napi_coerce_to_bool(env, intRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_bool failed.");
+    //all is null
+    status = napi_coerce_to_bool(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_coerce_to_bool failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_coerce_to_number
+static napi_value NapiCoerceToNumberTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    int32_t value = 0;
+    napi_value strRst = nullptr;
+    const char *str = "abc";
+    napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &strRst);
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_coerce_to_number(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_number ok.");
+    //result is undefined
+    status = napi_coerce_to_number(env, strRst, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_number ok.");
+
+    //env is null
+    status = napi_coerce_to_number(nullptr, strRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_coerce_to_number failed.");
+    //value is null
+    status = napi_coerce_to_number(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_number failed.");
+    //result is null
+    status = napi_coerce_to_number(env, strRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_number failed.");
+    //all is null
+    status = napi_coerce_to_number(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_coerce_to_number failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_coerce_to_object
+static napi_value NapiCoerceToObjectTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    int32_t value = 0;
+    napi_value strRst = nullptr;
+    const char *str = "abc";
+    napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &strRst);
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_coerce_to_object(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_object ok.");
+    //result is undefined
+    status = napi_coerce_to_object(env, strRst, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_object ok.");
+
+    //env is null
+    status = napi_coerce_to_object(nullptr, strRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_coerce_to_object failed.");
+    //value is null
+    status = napi_coerce_to_object(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_object failed.");
+    //result is null
+    status = napi_coerce_to_object(env, strRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_object failed.");
+    //all is null
+    status = napi_coerce_to_object(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_coerce_to_object failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_coerce_to_string
+static napi_value NapiCoerceToStringTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    int32_t value = 0;
+    napi_value intRst = nullptr;
+    napi_create_int32(env, value, &intRst);
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_coerce_to_string(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_string ok.");
+    //result is undefined
+    status = napi_coerce_to_string(env, intRst, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_coerce_to_string ok.");
+
+    //env is null
+    status = napi_coerce_to_string(nullptr, intRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_coerce_to_string failed.");
+    //value is null
+    status = napi_coerce_to_string(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_string failed.");
+    //result is null
+    status = napi_coerce_to_string(env, intRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_coerce_to_string failed.");
+    //all is null
+    status = napi_coerce_to_string(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_coerce_to_string failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_typeof
+static napi_value NapiTypeOfTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value strRst = nullptr;
+    const char *str = "abc";
+    napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &strRst);
+    napi_valuetype result;
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_typeof(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_typeof ok.");
+
+    //env is null
+    status = napi_typeof(nullptr, strRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_typeof failed.");
+    //value is null
+    status = napi_typeof(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_typeof failed.");
+    //result is null
+    status = napi_typeof(env, strRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_typeof failed.");
+    //all is null
+    status = napi_typeof(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_typeof failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_instanceof
+static napi_value testfun(napi_env env, napi_callback_info info)
+{
+    napi_value rstValue = nullptr;
+    int32_t value = 2;
+    napi_create_int32(env, value, &rstValue);
+    return rstValue;
+}
+static napi_value NapiInstanceOfTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value objRst = nullptr;
+    const char *str = "abc";
+    napi_create_object(env, &objRst);
+    napi_value fn = nullptr;
+    napi_value resultValue = nullptr;
+    napi_create_function(env, str, NAPI_AUTO_LENGTH, testfun, nullptr, &fn);
+    if (fn == nullptr) {
+        napi_throw_error(env, nullptr, "Napitest: napi_create_function fail");
+    }
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_instanceof(env, undefined, fn, &result);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_instanceof failed.");
+    //constructor is undefined
+    status = napi_instanceof(env, objRst, undefined, &result);
+    NAPI_ASSERT(env, status != napi_ok, "constructor is undefined, napi_instanceof failed.");
+
+    //env is null
+    status = napi_instanceof(nullptr, objRst, fn, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_instanceof failed.");
+    //object is null
+    status = napi_instanceof(env, nullptr, fn, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_instanceof failed.");
+    //constructor is null
+    status = napi_instanceof(env, objRst, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "constructor is null, napi_instanceof failed.");
+    //result is null
+    status = napi_instanceof(env, objRst, fn, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_instanceof failed.");
+    //all is null
+    status = napi_instanceof(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_instanceof failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_is_array
+static napi_value NapiIsArrayTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value arrayRst = nullptr;
+    napi_create_array(env, &arrayRst);
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_is_array(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_is_array ok.");
+
+    //env is null
+    status = napi_is_array(nullptr, arrayRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_is_array failed.");
+    //value is null
+    status = napi_is_array(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_is_array failed.");
+    //result is null
+    status = napi_is_array(env, arrayRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_is_array failed.");
+    //all is null
+    status = napi_is_array(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_is_array failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_is_arraybuffer
+static napi_value NapiIsArrayBufferTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 16;
+    status = napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_arraybuffer ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_is_arraybuffer(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_is_arraybuffer ok.");
+
+    //env is null
+    status = napi_is_arraybuffer(nullptr, arrayBuffer, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_is_arraybuffer failed.");
+    //value is null
+    status = napi_is_arraybuffer(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_is_arraybuffer failed.");
+    //result is null
+    status = napi_is_arraybuffer(env, arrayBuffer, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_is_arraybuffer failed.");
+    //all is null
+    status = napi_is_arraybuffer(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_is_arraybuffer failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_is_typedarray
+static napi_value NapiIsTypedArrayTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    size_t length = 3;
+    napi_value arrayBuffer = nullptr;
+    napi_value typedArray = nullptr;
+    void *data;
+    napi_typedarray_type arrayType = napi_int8_array;
+    size_t elementSize = sizeof(int8_t);
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+    napi_create_typedarray(env, arrayType, length, arrayBuffer, 0, &typedArray);
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_is_typedarray(env, undefined, &result);;
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_is_typedarray ok.");
+
+    //env is null
+    status = napi_is_typedarray(nullptr, typedArray, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_is_typedarray failed.");
+    //value is null
+    status = napi_is_typedarray(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_is_typedarray failed.");
+    //result is null
+    status = napi_is_typedarray(env, typedArray, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_is_typedarray failed.");
+    //all is null
+    status = napi_is_typedarray(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_is_typedarray failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_is_dataview
+static napi_value NapiIsDataViewTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 16;
+    status = napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_arraybuffer ok.");
+    napi_value dataView = nullptr;
+    size_t byteLength = 12;
+    size_t byteOffset = 4;
+    status = napi_create_dataview(env, byteLength, arrayBuffer, byteOffset, &dataView);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_dataview ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_is_dataview(env, undefined, &result);;
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_is_dataview ok.");
+
+    //env is null
+    status = napi_is_dataview(nullptr, dataView, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_is_dataview failed.");
+    //value is null
+    status = napi_is_dataview(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_is_dataview failed.");
+    //result is null
+    status = napi_is_dataview(env, dataView, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_is_dataview failed.");
+    //all is null
+    status = napi_is_dataview(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_is_dataview failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_is_date
+static napi_value NapiIsDateTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value date = nullptr;
+    double time = 1;
+    status = napi_create_date(env, time, &date);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_date ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //value is undefined
+    status = napi_is_date(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_is_date ok.");
+
+    //env is null
+    status = napi_is_date(nullptr, date, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_is_date failed.");
+    //value is null
+    status = napi_is_date(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_is_date failed.");
+    //result is null
+    status = napi_is_date(env, date, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_is_date failed.");
+    //all is null
+    status = napi_is_date(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_is_date failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_strict_equals
+static napi_value NapiStrictEqualsTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    uint32_t value1 = 1;
+    napi_value valueRst1 = nullptr;
+    napi_create_uint32(env, value1, &valueRst1);
+    uint32_t value2 = 1;
+    napi_value valueRst2 = nullptr;
+    napi_create_uint32(env, value2, &valueRst2);
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //lhs is undefined
+    status = napi_strict_equals(env, undefined, valueRst2, &result);
+    NAPI_ASSERT(env, status == napi_ok, "lhs is undefined, napi_strict_equals ok.");
+    //rhs is undefined
+    status = napi_strict_equals(env, valueRst1, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "rhs is undefined, napi_strict_equals ok.");
+
+    //env is null
+    status = napi_strict_equals(nullptr, valueRst1, valueRst2, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_strict_equals failed.");
+    //lhs is null
+    status = napi_strict_equals(env, nullptr, valueRst2, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "lhs is null, napi_strict_equals failed.");
+    //rhs is null
+    status = napi_strict_equals(env, valueRst1, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "rhs is null, napi_strict_equals failed.");
+    //result is null
+    status = napi_strict_equals(env, valueRst1, valueRst2, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_strict_equals failed.");
+    //all is null
+    status = napi_strict_equals(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_strict_equals failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_property_names
+static napi_value NapiGetPropertyNamesTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value objRst = nullptr;
+    napi_create_object(env, &objRst);
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_get_property_names(env, undefined, &result);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_get_property_names failed.");
+    //result is undefined
+    status = napi_get_property_names(env, objRst, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "result is undefined, napi_get_property_names ok.");
+
+    //env is null
+    status = napi_get_property_names(nullptr, objRst, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_property_names failed.");
+    //object is null
+    status = napi_get_property_names(env, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_get_property_names failed.");
+    //result is null
+    status = napi_get_property_names(env, objRst, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_property_names failed.");
+    //all is null
+    status = napi_get_property_names(nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_property_names failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_set_property
+static napi_value NapiSetPropertyTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_set_property(env, undefined, key, value);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_set_property failed.");
+    //key is undefined
+    status = napi_set_property(env, obj, undefined, value);
+    NAPI_ASSERT(env, status == napi_ok, "key is undefined, napi_set_property ok.");
+    //value is undefined
+    status = napi_set_property(env, obj, key, undefined);
+    NAPI_ASSERT(env, status == napi_ok, "value is undefined, napi_set_property ok.");
+
+    //env is null
+    status = napi_set_property(nullptr, obj, key, value);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_set_property failed.");
+    //object is null
+    status = napi_set_property(env, nullptr, key, value);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_set_property failed.");
+    //key is null
+    status = napi_set_property(env, obj, nullptr, value);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "key is null, napi_set_property failed.");
+    //value is null
+    status = napi_set_property(env, obj, key, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_set_property failed.");
+    //all is null
+    status = napi_set_property(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_property_names failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_get_property
+static napi_value NapiGetPropertyTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    napi_value result = nullptr;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_get_property(env, undefined, key, &result);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_get_property failed.");
+    //key is undefined
+    status = napi_get_property(env, obj, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "key is undefined, napi_get_property ok.");
+    //result is undefined
+    status = napi_get_property(env, obj, key, &undefined);
+    NAPI_ASSERT(env, status == napi_ok, "result is undefined, napi_get_property ok.");
+
+    //env is null
+    status = napi_get_property(nullptr, obj, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_property failed.");
+    //object is null
+    status = napi_get_property(env, nullptr, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_get_property failed.");
+    //key is null
+    status = napi_get_property(env, obj, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "key is null, napi_get_property failed.");
+    //result is null
+    status = napi_get_property(env, obj, key, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_property failed.");
+    //all is null
+    status = napi_get_property(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_has_property
+static napi_value NapiHasPropertyTest(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_has_property(env, undefined, key, &result);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_has_property failed.");
+    //key is undefined
+    status = napi_has_property(env, obj, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "key is undefined, napi_has_property ok.");
+
+    //env is null
+    status = napi_has_property(nullptr, obj, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_has_property failed.");
+    //object is null
+    status = napi_has_property(env, nullptr, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_has_property failed.");
+    //key is null
+    status = napi_has_property(env, obj, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "key is null, napi_has_property failed.");
+    //result is null
+    status = napi_has_property(env, obj, key, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_has_property failed.");
+    //all is null
+    status = napi_has_property(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_has_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest01(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //object is undefined
+    status = napi_delete_property(env, undefined, key, &result);
+    NAPI_ASSERT(env, status == napi_object_expected, "object is undefined, napi_delete_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest02(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //key is undefined
+    status = napi_delete_property(env, obj, undefined, &result);
+    NAPI_ASSERT(env, status == napi_ok, "key is undefined, napi_delete_property ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest03(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //env is null
+    status = napi_delete_property(nullptr, obj, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_delete_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest04(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //object is null
+    status = napi_delete_property(env, nullptr, key, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "object is null, napi_delete_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest05(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //key is null
+    status = napi_delete_property(env, obj, nullptr, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "key is null, napi_delete_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest06(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //result is null
+    status = napi_delete_property(env, obj, key, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "result is null, napi_delete_property ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+//napi_delete_property
+static napi_value NapiDeletePropertyTest07(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1];
+
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_value key = nullptr;
+    napi_create_string_utf8(env, "myProperty", NAPI_AUTO_LENGTH, &key);
+    napi_value value = nullptr;
+    napi_create_int32(env, 2, &value);
+    status = napi_set_property(env, obj, key, value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_set_property ok.");
+    bool result = false;
+
+    //all is null
+    status = napi_delete_property(nullptr, nullptr, nullptr, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_delete_property failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
 //end for ybw
 
 EXTERN_C_START
@@ -12320,6 +13495,37 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiGetValueExternalTest", NapiGetValueExternalTest),
         DECLARE_NAPI_FUNCTION("NapiGetValueInt32Test", NapiGetValueInt32Test),
         DECLARE_NAPI_FUNCTION("NapiGetValueInt64Test", NapiGetValueInt64Test),
+        DECLARE_NAPI_FUNCTION("NapiGetValueStringLatin1Test", NapiGetValueStringLatin1Test),
+        DECLARE_NAPI_FUNCTION("NapiGetValueStringUtf8Test", NapiGetValueStringUtf8Test),
+        DECLARE_NAPI_FUNCTION("NapiGetValueStringUtf16Test", NapiGetValueStringUtf16Test),
+        DECLARE_NAPI_FUNCTION("NapiGetValueUint32Test", NapiGetValueUint32Test),
+        DECLARE_NAPI_FUNCTION("NapiGetBooleanTest", NapiGetBooleanTest),
+        DECLARE_NAPI_FUNCTION("NapiGetGlobalTest", NapiGetGlobalTest),
+        DECLARE_NAPI_FUNCTION("NapiGetNullTest", NapiGetNullTest),
+        DECLARE_NAPI_FUNCTION("NapiGetUndefinedTest", NapiGetUndefinedTest),
+        DECLARE_NAPI_FUNCTION("NapiCoerceToBoolTest", NapiCoerceToBoolTest),
+        DECLARE_NAPI_FUNCTION("NapiCoerceToNumberTest", NapiCoerceToNumberTest),
+        DECLARE_NAPI_FUNCTION("NapiCoerceToObjectTest", NapiCoerceToObjectTest),
+        DECLARE_NAPI_FUNCTION("NapiCoerceToStringTest", NapiCoerceToStringTest),
+        DECLARE_NAPI_FUNCTION("NapiTypeOfTest", NapiTypeOfTest),
+        DECLARE_NAPI_FUNCTION("NapiInstanceOfTest", NapiInstanceOfTest),
+        DECLARE_NAPI_FUNCTION("NapiIsArrayTest", NapiIsArrayTest),
+        DECLARE_NAPI_FUNCTION("NapiIsArrayBufferTest", NapiIsArrayBufferTest),
+        DECLARE_NAPI_FUNCTION("NapiIsTypedArrayTest", NapiIsTypedArrayTest),
+        DECLARE_NAPI_FUNCTION("NapiIsDataViewTest", NapiIsDataViewTest),
+        DECLARE_NAPI_FUNCTION("NapiIsDateTest", NapiIsDateTest),
+        DECLARE_NAPI_FUNCTION("NapiStrictEqualsTest", NapiStrictEqualsTest),
+        DECLARE_NAPI_FUNCTION("NapiGetPropertyNamesTest", NapiGetPropertyNamesTest),
+        DECLARE_NAPI_FUNCTION("NapiSetPropertyTest", NapiSetPropertyTest),
+        DECLARE_NAPI_FUNCTION("NapiGetPropertyTest", NapiGetPropertyTest),
+        DECLARE_NAPI_FUNCTION("NapiHasPropertyTest", NapiHasPropertyTest),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest01", NapiDeletePropertyTest01),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest02", NapiDeletePropertyTest02),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest03", NapiDeletePropertyTest03),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest04", NapiDeletePropertyTest04),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest05", NapiDeletePropertyTest05),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest06", NapiDeletePropertyTest06),
+        DECLARE_NAPI_FUNCTION("NapiDeletePropertyTest07", NapiDeletePropertyTest07),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
