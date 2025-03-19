@@ -5853,6 +5853,7 @@ export default function workerTest() {
         res = false;
       }
       expect(res).assertTrue();
+      done()
     });
 
     /**
@@ -5876,6 +5877,7 @@ export default function workerTest() {
         res = false;
       }
       expect(res).assertTrue();
+      done()
     });
 
     /**
@@ -5899,6 +5901,7 @@ export default function workerTest() {
         res = false;
       }
       expect(res).assertTrue();
+      done()
     });
 
     /**
