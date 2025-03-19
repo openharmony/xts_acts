@@ -23,7 +23,7 @@ export default function idScrollEvent() {
     beforeEach(async (done: Function) => {
       console.info("idScrollEvent beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/observerTest/idScrollEvent",
+        url: "MainAbility/pages/observer/idScrollEvent",
       }
       try {
         router.clear();
