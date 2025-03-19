@@ -27,7 +27,7 @@ const TAG = '[Swiper]';
 struct stopWhenTouchedSwiper {
   @State name: string = 'Swiper';
   @State StepTips: string = '操作步骤：子组件自动播放，当stopWhenTouched设置为true时，手指在组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
-  @State Vue: boolean = false;
+  @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State isVertical: boolean = false;
   @State duration: number = 400;
@@ -42,8 +42,8 @@ struct stopWhenTouchedSwiper {
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.Vue == false) {
-      Button({ stateEffect: this.Vue }) {
+    if (this.isVue == false) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -53,11 +53,9 @@ struct stopWhenTouchedSwiper {
       .backgroundColor(Color.Grey)
       .opacity(0.4)
       .onClick(() => {
-
       })
-    }
-    else {
-      Button({ stateEffect: this.Vue }) {
+    } else {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -112,7 +110,7 @@ struct stopWhenTouchedSwiper {
   onPageShow() {
     this.intervalNum = setInterval(() => {
       if (this.count > 0) {
-        this.Vue = true
+        this.isVue = true
       }
     }, 500)
   }
@@ -255,7 +253,7 @@ struct stopWhenTouchedSwiper {
       .backgroundColor(Color.White)
 
       Row() {
-        this.PassBtn($r('app.string.string_world'), true);
+        this.PassBtn($r('app.string.btn_fullscreen'), true);
         Button() {
           Image($r('app.media.app_icon'))
             .width('20vp')
@@ -278,7 +276,7 @@ struct stopWhenTouchedSwiper {
           )
         })
 
-        this.FailBtn($r('app.string.string_hello'), true);
+        this.FailBtn($r('app.string.btn_fullscreen'), true);
       }
       .height('10%')
       .width('100%')
