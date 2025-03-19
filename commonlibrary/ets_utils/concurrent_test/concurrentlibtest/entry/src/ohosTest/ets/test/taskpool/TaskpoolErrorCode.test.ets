@@ -1758,5 +1758,59 @@ export default function TaskPoolErrorCodeTest() {
       done();
     });
 
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_TASK_ERROR_CODE_0061
+     * @tc.name      : testTaskErrorCode0061
+     * @tc.desc      : Task transferList no param.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskErrorCode0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      const caseName: string = 'testTaskErrorCode0061';
+      console.info(`${caseName} test start`);
+        let isTerminate1: boolean = false;
+        let buffer: ArrayBuffer = new ArrayBuffer(8);
+        let view: Uint8Array = new Uint8Array(buffer);
+        let buffer1: ArrayBuffer = new ArrayBuffer(16);
+        let view1: Uint8Array = new Uint8Array(buffer1);
+        let task1: taskpool.Task = new taskpool.Task(testTransfer, view, view1);
+        task1.setTransferList();
+        console.info(`buffer   ${buffer}`);
+        taskpool.execute(task1).then((res: Object) => {
+          isTerminate1 = true;
+          expect(res).assertEqual(100);
+          console.info(`buffer   ${buffer}`);
+        });
+        while (!(isTerminate1)) {
+          await promiseCase();
+        }
+      expect(view1.byteLength).assertEqual(16);
+      console.info(`${caseName} test end`);
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_TASK_ERROR_CODE_0062
+     * @tc.name      : testTaskErrorCode0062
+     * @tc.desc      : Task onReceiveData no param
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskErrorCode0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      const caseName: string = 'testTaskErrorCode0062';
+      console.info(`${caseName} test start`);
+      let task: taskpool.Task = new taskpool.Task(sendDataSetTime, 100);
+      task.onReceiveData();
+      await taskpool.execute(task).then(() => {
+        console.info("Taskpool: sendData 10200023 code");
+      }).catch((error: BusinessError) => {
+        console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+      });
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+
   });
 }

@@ -57,6 +57,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0200
@@ -85,6 +86,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0300
@@ -113,6 +115,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0400
@@ -141,6 +144,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0500
@@ -169,6 +173,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0600
@@ -197,6 +202,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0700
@@ -225,6 +231,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0800
@@ -253,6 +260,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0900
@@ -281,6 +289,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_1000
@@ -309,6 +318,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }

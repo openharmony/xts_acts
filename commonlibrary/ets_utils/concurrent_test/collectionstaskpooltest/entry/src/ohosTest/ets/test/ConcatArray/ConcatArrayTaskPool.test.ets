@@ -72,6 +72,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0200
@@ -100,6 +101,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0300
@@ -128,6 +130,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0400
@@ -156,6 +159,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0500
@@ -184,6 +188,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0600
@@ -212,6 +217,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0700
@@ -240,6 +246,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0800
@@ -268,6 +275,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0900
@@ -296,6 +304,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1000
@@ -324,6 +333,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1100
@@ -352,6 +362,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1200
@@ -380,6 +391,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1300
@@ -408,6 +420,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1400
@@ -436,6 +449,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1500
@@ -464,6 +478,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1600
@@ -492,6 +507,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1700
@@ -520,6 +536,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1800
@@ -548,6 +565,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1900
@@ -576,6 +594,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2000
@@ -604,6 +623,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2100
@@ -632,6 +652,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2200
@@ -660,6 +681,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2300
@@ -688,6 +710,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2400
@@ -716,6 +739,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2500
@@ -744,6 +768,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }

@@ -234,6 +234,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0200
@@ -262,6 +263,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0300
@@ -290,6 +292,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
 
 
@@ -320,6 +323,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0500
@@ -348,6 +352,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0600
@@ -376,6 +381,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0700
@@ -404,6 +410,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0800
@@ -432,6 +439,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_0900
@@ -460,6 +468,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1000
@@ -488,6 +497,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1100
@@ -516,6 +526,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1200
@@ -544,6 +555,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1300
@@ -572,6 +584,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1400
@@ -600,6 +613,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1500
@@ -628,6 +642,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1600
@@ -656,6 +671,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1700
@@ -684,6 +700,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1800
@@ -712,6 +729,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_1900
@@ -740,6 +758,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2000
@@ -768,6 +787,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2100
@@ -796,6 +816,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2200
@@ -824,6 +845,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2300
@@ -852,6 +874,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2400
@@ -880,6 +903,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2500
@@ -908,6 +932,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2600
@@ -936,6 +961,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2700
@@ -964,6 +990,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2800
@@ -992,6 +1019,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_2900
@@ -1020,6 +1048,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3000
@@ -1048,6 +1077,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3100
@@ -1076,6 +1106,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3200
@@ -1104,6 +1135,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3300
@@ -1132,6 +1164,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3400
@@ -1160,6 +1193,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3500
@@ -1188,6 +1222,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3600
@@ -1216,6 +1251,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3700
@@ -1244,6 +1280,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3800
@@ -1272,6 +1309,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_3900
@@ -1300,6 +1338,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4000
@@ -1328,6 +1367,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4100
@@ -1356,6 +1396,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4200
@@ -1384,6 +1425,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4300
@@ -1412,6 +1454,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4400
@@ -1440,6 +1483,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4500
@@ -1468,6 +1512,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4600
@@ -1496,6 +1541,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4700
@@ -1524,6 +1570,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4800
@@ -1552,6 +1599,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_4900
@@ -1580,6 +1628,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5000
@@ -1608,6 +1657,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5100
@@ -1636,6 +1686,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5200
@@ -1664,6 +1715,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5300
@@ -1692,6 +1744,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5400
@@ -1720,6 +1773,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5500
@@ -1748,6 +1802,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5600
@@ -1776,6 +1831,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5700
@@ -1804,6 +1860,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5800
@@ -1832,6 +1889,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_5900
@@ -1860,6 +1918,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6000
@@ -1888,6 +1947,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6100
@@ -1916,6 +1976,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6200
@@ -1944,6 +2005,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6300
@@ -1972,6 +2034,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6400
@@ -2000,6 +2063,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6500
@@ -2028,6 +2092,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6600
@@ -2056,6 +2121,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6700
@@ -2084,6 +2150,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6800
@@ -2112,6 +2179,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_6900
@@ -2140,6 +2208,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7000
@@ -2168,6 +2237,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7100
@@ -2196,6 +2266,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7200
@@ -2224,6 +2295,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7300
@@ -2252,6 +2324,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7400
@@ -2280,6 +2353,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7500
@@ -2308,6 +2382,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7600
@@ -2336,6 +2411,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7700
@@ -2364,6 +2440,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7800
@@ -2392,6 +2469,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_7900
@@ -2420,6 +2498,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8000
@@ -2448,6 +2527,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8100
@@ -2476,6 +2556,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8200
@@ -2504,6 +2585,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8300
@@ -2532,6 +2614,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8400
@@ -2560,6 +2643,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8500
@@ -2588,6 +2672,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8600
@@ -2616,6 +2701,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8700
@@ -2644,6 +2730,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8800
@@ -2672,6 +2759,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_8900
@@ -2700,6 +2788,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9000
@@ -2728,6 +2817,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9100
@@ -2756,6 +2846,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9200
@@ -2784,6 +2875,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9300
@@ -2812,6 +2904,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9400
@@ -2840,6 +2933,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9500
@@ -2868,6 +2962,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9600
@@ -2896,6 +2991,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9700
@@ -2924,6 +3020,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9800
@@ -2952,6 +3049,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_9900
@@ -2980,6 +3078,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10000
@@ -3008,6 +3107,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10100
@@ -3036,6 +3136,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10200
@@ -3064,6 +3165,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10300
@@ -3092,6 +3194,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10400
@@ -3120,6 +3223,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10500
@@ -3148,6 +3252,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10600
@@ -3176,6 +3281,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10700
@@ -3204,6 +3310,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10800
@@ -3232,6 +3339,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_10900
@@ -3260,6 +3368,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11000
@@ -3288,6 +3397,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11100
@@ -3316,6 +3426,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11200
@@ -3344,6 +3455,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11300
@@ -3372,6 +3484,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11400
@@ -3400,6 +3513,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11500
@@ -3428,6 +3542,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11600
@@ -3456,6 +3571,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11700
@@ -3484,6 +3600,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11800
@@ -3512,6 +3629,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_11900
@@ -3540,6 +3658,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12000
@@ -3568,6 +3687,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12100
@@ -3596,6 +3716,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12200
@@ -3624,6 +3745,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12300
@@ -3652,6 +3774,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12400
@@ -3680,6 +3803,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12500
@@ -3708,6 +3832,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12600
@@ -3736,6 +3861,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12700
@@ -3764,6 +3890,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12800
@@ -3792,6 +3919,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_12900
@@ -3820,6 +3948,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13000
@@ -3848,6 +3977,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13100
@@ -3876,6 +4006,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13200
@@ -3904,6 +4035,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13300
@@ -3932,6 +4064,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13400
@@ -3960,6 +4093,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13500
@@ -3988,6 +4122,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13600
@@ -4016,6 +4151,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13700
@@ -4044,6 +4180,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13800
@@ -4072,6 +4209,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_13900
@@ -4100,6 +4238,7 @@ export default function float32ArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14000
@@ -4123,6 +4262,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14100
@@ -4146,6 +4286,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14200
@@ -4169,6 +4310,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14300
@@ -4192,6 +4334,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14400
@@ -4215,6 +4358,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14500
@@ -4238,6 +4382,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14600
@@ -4261,6 +4406,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14700
@@ -4284,6 +4430,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14800
@@ -4307,6 +4454,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_14900
@@ -4330,6 +4478,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15000
@@ -4353,6 +4502,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15100
@@ -4376,6 +4526,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15200
@@ -4399,6 +4550,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15300
@@ -4422,6 +4574,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15400
@@ -4445,6 +4598,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15500
@@ -4468,6 +4622,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15600
@@ -4491,6 +4646,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15700
@@ -4514,6 +4670,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15800
@@ -4537,6 +4694,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_15900
@@ -4560,6 +4718,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_16000
@@ -4583,6 +4742,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4607,6 +4767,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4631,6 +4792,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4655,6 +4817,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4679,6 +4842,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4703,6 +4867,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4727,6 +4892,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4751,6 +4917,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4775,6 +4942,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4799,6 +4967,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_17000
@@ -4822,6 +4991,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4846,6 +5016,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4870,6 +5041,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4894,6 +5066,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4918,6 +5091,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4942,6 +5116,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4966,6 +5141,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -4990,6 +5166,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5014,6 +5191,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5038,6 +5216,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT16ARRAY_TASK_POOL_18000
@@ -5061,6 +5240,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5085,6 +5265,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5109,6 +5290,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5133,6 +5315,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5157,6 +5340,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5181,6 +5365,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5205,6 +5390,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     });
 
     /**
@@ -5229,6 +5415,7 @@ export default function float32ArrayTaskPoolTest() {
         await sleep(100);
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }

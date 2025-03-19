@@ -40,6 +40,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0200
@@ -58,6 +59,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0300
@@ -76,6 +78,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0400
@@ -94,6 +97,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0500
@@ -114,6 +118,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0600
@@ -134,6 +139,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0700
@@ -154,6 +160,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0800
@@ -174,6 +181,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0900
@@ -194,6 +202,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1000
@@ -214,6 +223,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1100
@@ -237,6 +247,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1200
@@ -261,6 +272,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1300
@@ -286,6 +298,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1400
@@ -308,6 +321,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1500
@@ -336,6 +350,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1600
@@ -366,6 +381,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1700
@@ -387,6 +403,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1800
@@ -416,6 +433,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1900
@@ -445,6 +463,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2000
@@ -474,6 +493,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2100
@@ -503,6 +523,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2200
@@ -532,6 +553,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2300
@@ -561,6 +583,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2400
@@ -590,6 +613,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2500
@@ -619,6 +643,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2600
@@ -642,6 +667,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2700
@@ -665,6 +691,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2800
@@ -688,6 +715,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2900
@@ -711,6 +739,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3000
@@ -734,6 +763,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3100
@@ -757,6 +787,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3200
@@ -780,6 +811,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3300
@@ -803,6 +835,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3400
@@ -841,6 +874,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3500
@@ -869,6 +903,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3600
@@ -897,6 +932,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3700
@@ -925,6 +961,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3800
@@ -953,6 +990,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3900
@@ -981,6 +1019,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4000
@@ -1013,6 +1052,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4100
@@ -1045,6 +1085,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4200
@@ -1070,6 +1111,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4300
@@ -1095,6 +1137,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4400
@@ -1120,6 +1163,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4500
@@ -1145,6 +1189,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4600
@@ -1167,6 +1212,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"length\" is out of range. It must be >= 0. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4700
@@ -1194,6 +1240,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4800
@@ -1217,6 +1264,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4900
@@ -1243,6 +1291,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5000
@@ -1269,6 +1318,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5100
@@ -1294,6 +1344,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5200
@@ -1319,6 +1370,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5300
@@ -1344,6 +1396,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5400
@@ -1369,6 +1422,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5500
@@ -1395,6 +1449,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5600
@@ -1421,6 +1476,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5700
@@ -1447,6 +1503,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5800
@@ -1473,6 +1530,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5900
@@ -1499,6 +1557,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6000
@@ -1525,6 +1584,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6100
@@ -1551,6 +1611,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6200
@@ -1577,6 +1638,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6300
@@ -1603,6 +1665,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6400
@@ -1629,6 +1692,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6500
@@ -1655,6 +1719,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6600
@@ -1681,6 +1746,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6700
@@ -1707,6 +1773,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6800
@@ -1733,6 +1800,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6900
@@ -1759,6 +1827,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7000
@@ -1785,6 +1854,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7100
@@ -1809,6 +1879,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7200
@@ -1831,6 +1902,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7300
@@ -1853,6 +1925,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7400
@@ -1882,6 +1955,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7500
@@ -1911,6 +1985,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7600
@@ -1936,6 +2011,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7700
@@ -1961,6 +2037,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7800
@@ -1986,6 +2063,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7900
@@ -2011,6 +2089,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8000
@@ -2030,6 +2109,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8100
@@ -2056,6 +2136,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8200
@@ -2085,6 +2166,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
   })
 }
