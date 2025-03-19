@@ -106,10 +106,12 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0100";
+      let ifSetPointerVisibleSyncSuccess = 0;
       try {
         pointer.setPointerVisibleSync(false);
         console.info(`${caseName} Set pointer visible success`);
-        ExpectTrue(true);
+        ifSetPointerVisibleSyncSuccess++;
+        ExpectTrue(ifSetPointerVisibleSyncSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -136,7 +138,7 @@ export default function MultimodalInputPointerTest() {
             done();
           } else {
             console.info(`${caseName} Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-            ExpectTrue(true);
+            ExpectTrue(typeof(visible) == 'boolean');
             done();
           }
         });
@@ -160,7 +162,7 @@ export default function MultimodalInputPointerTest() {
       try {
         pointer.isPointerVisible().then((visible: boolean) => {
           console.info(`${caseName} Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-          ExpectTrue(true);
+          ExpectTrue(typeof(visible) == 'boolean');
           done();
         });
       } catch (error) {
@@ -183,7 +185,7 @@ export default function MultimodalInputPointerTest() {
       try {
         let visible: boolean = pointer.isPointerVisibleSync();
         console.info(`${caseName} Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-        ExpectTrue(true);
+        ExpectTrue(typeof(visible) == 'boolean');
         done();
       } catch (error) {
         console.info(`${caseName} Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -217,7 +219,7 @@ export default function MultimodalInputPointerTest() {
           try {
             pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
               console.info(`${caseName} Get pointer style success, style: ${JSON.stringify(style)}`);
-              ExpectTrue(true);
+              ExpectTrue(style>=0 && style<=44);
               done();
             });
           } catch (error) {
@@ -254,7 +256,7 @@ export default function MultimodalInputPointerTest() {
           try {
             pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
               console.info(`${caseName} Get pointer style success, style: ${JSON.stringify(style)}`);
-              ExpectTrue(true);
+              ExpectTrue(style>=0 && style<=44);
               done();
             });
           } catch (error) {
@@ -279,7 +281,7 @@ export default function MultimodalInputPointerTest() {
       try {
         let style: pointer.PointerStyle = pointer.getPointerStyleSync(-1);
         console.info(`${caseName} Get pointer style success, style: ${JSON.stringify(style)}`);
-        ExpectTrue(true);
+        ExpectTrue(style>=0 && style<=44);
         done();
       } catch (error) {
         console.info(`${caseName} Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -298,6 +300,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyle_0100";
+      let ifSetPointerStyleSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
         let windowId = win.getWindowProperties().id;
         if (error.code) {
@@ -312,7 +315,8 @@ export default function MultimodalInputPointerTest() {
           try {
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS, error => {
               console.info(`${caseName} Set pointer style success`);
-              ExpectTrue(true);
+              ifSetPointerStyleSuccess++;
+              ExpectTrue(ifSetPointerStyleSuccess == 1);
               done();
             });
           } catch (error) {
@@ -334,6 +338,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0200", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyle_0200";
+      let ifSetPointerStyleSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
         let windowId = win.getWindowProperties().id;
         if (error.code) {
@@ -348,7 +353,8 @@ export default function MultimodalInputPointerTest() {
           try {
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
               console.info(`${caseName} Set pointer style success`);
-              ExpectTrue(true);
+              ifSetPointerStyleSuccess++;
+              ExpectTrue(ifSetPointerStyleSuccess == 1);
               done();
             });
           } catch (error) {
@@ -370,6 +376,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setPointerStyleSync_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyleSync_0100";
+      let ifSetPointerStyleSyncSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
         let windowId = win.getWindowProperties().id;
         if (error.code) {
@@ -384,7 +391,8 @@ export default function MultimodalInputPointerTest() {
           try {
             pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
             console.info(`${caseName} Set pointer style success`);
-            ExpectTrue(true);
+            ifSetPointerStyleSyncSuccess++;
+            ExpectTrue(ifSetPointerStyleSyncSuccess == 1);
             done();
           } catch (error) {
             console.info(`${caseName} getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -405,6 +413,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0100";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -415,7 +424,8 @@ export default function MultimodalInputPointerTest() {
             try {
               pointer.setCustomCursor(windowId, pixelMap).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             } catch (error) {
@@ -438,6 +448,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0100";
+      let ifSetCustomCursorSyncSuccess = 0;
       const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -448,7 +459,8 @@ export default function MultimodalInputPointerTest() {
             try {
               pointer.setCustomCursorSync(windowId, pixelMap, 25, 25);
               console.info(`${caseName} setCustomCursorSync success`);
-              ExpectTrue(true);
+              ifSetCustomCursorSyncSuccess++;
+              ExpectTrue(ifSetCustomCursorSyncSuccess == 1);
               done();
             } catch (error) {
               console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -470,6 +482,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0200";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -481,7 +494,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 0, focusY: 0}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -504,6 +518,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0300";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -514,7 +529,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -537,6 +553,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0400";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -547,7 +564,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 0, focusY: 0}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -570,6 +588,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0500";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -580,7 +599,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 0, focusY: 256}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -603,6 +623,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0600";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -613,7 +634,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 256, focusY: 256}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -636,6 +658,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0700";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -646,7 +669,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 100, focusY: 100}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -669,6 +693,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0800";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -679,7 +704,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 0}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -702,6 +728,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0900";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -712,7 +739,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusY: 0}, {followSystem: true}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
@@ -735,6 +763,7 @@ export default function MultimodalInputPointerTest() {
      */
     it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1000";
+      let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
         let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
@@ -745,7 +774,8 @@ export default function MultimodalInputPointerTest() {
             try{
               pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 0, focusY: 0}, {followSystem: false}).then(() => {
                 console.info(`${caseName} setCustomCursor success`);
-                ExpectTrue(true);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
                 done();
               });
             }catch (error){
