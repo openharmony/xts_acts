@@ -12,21 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H
-#define ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H
 
-#include "component.h"
+#ifndef ARKUI_CAPI_DEMO_SWIPER_ONSELECT_TEST_H
+#define ARKUI_CAPI_DEMO_SWIPER_ONSELECT_TEST_H
+#include "../common/common.h"
+#include "../component/text_component.h"
+
 namespace ArkUICapiTest {
 
-class DatePickerComponent : public Component {
+class SwiperOnSelectTest {
 public:
-    explicit DatePickerComponent() : Component(ARKUI_NODE_DATE_PICKER) {}
-    explicit DatePickerComponent(ArkUI_NodeHandle handle) : Component(handle) {}
-    
-    void SetDatePickerMode(int32_t mode);
-    void SetDatePickerSelected(const std::string& selectedTime);
-    void SetDatePickerStart(const std::string& startTime);
-    void SetDatePickerEnd(const std::string& endTime);
+    ~SwiperOnSelectTest();
+    static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
 };
-} // ArkUICapiTest
-#endif //ACE_C_ARKUI_TEST_API18_DATEPICKER_COMPONENT_H
+} // namespace ArkUICApiDemo
+#endif // ARKUI_CAPI_DEMO_SWIPER_ONSELECT_TEST_H

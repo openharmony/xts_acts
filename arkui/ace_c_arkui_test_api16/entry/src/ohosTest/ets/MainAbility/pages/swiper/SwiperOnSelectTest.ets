@@ -13,18 +13,21 @@
  * limitations under the License.
  */
 
-#ifndef ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H
-#define ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-#include "../common/common.h"
+@Entry
+@Component
+struct SwiperOnSelectTest {
+  PAGE_TAG: string = 'SwiperOnSelectTest';
 
-namespace ArkUICapiTest {
-
-class DatePickerTest {
-public:
-    ~DatePickerTest();
-    static napi_value DatePickerModeTest(napi_env env, napi_callback_info info);
-private:
-};
-} // namespace ArkUICapiTest
-#endif // ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.swiperOnSelectTest(this.PAGE_TAG);
+      })
+    }
+  }
+}

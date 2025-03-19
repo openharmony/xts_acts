@@ -18,6 +18,8 @@ export const testPostFrameCallback: (a: string) => void;
 
 export const swiperAutoPlayTest: (a: string) => void;
 
+export const swiperOnSelectTest: (a: string) => void;
+
 export const textAreaLetterSpacing001: (a: string) => void;
 
 export const textInputLetterSpacing002: (a: string) => void;
