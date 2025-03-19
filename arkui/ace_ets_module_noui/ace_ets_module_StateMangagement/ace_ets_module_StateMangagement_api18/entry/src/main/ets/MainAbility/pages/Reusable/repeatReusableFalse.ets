@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
  
 @ObservedV2
 class RepeatreufalseClazz {
-  @Trace message: string ;
+  @Trace public message: string ;
 
   constructor(message: string) {
     this.message = message;
@@ -61,7 +61,7 @@ struct RepeatVirtualScroll {
           .each((obj: RepeatItem<RepeatreufalseClazz>) => {
             ListItem() {
               Text(`[each] index${obj.index}: ${obj.item.message}`)
-                .fontSize(25)
+                .height('5%')
             }
           })
           .key((item: RepeatreufalseClazz, index: number) => {
@@ -72,7 +72,7 @@ struct RepeatVirtualScroll {
           .templateId(() => 'a')
           .template('a', (ri) => {
             Text(`[a] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
+              .height('5%')
           }, { cachedCount: 3 })
       }
       .cachedCount(2)
