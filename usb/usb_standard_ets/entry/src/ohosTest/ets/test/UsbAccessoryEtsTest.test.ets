@@ -19,7 +19,7 @@ import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
-const TAG = '[UsbAccessoryETSTest]';
+const TAG = '[UsbAccessoryEtsTest]';
 
 let accList: Array<usbMgr.USBAccessory>;
 let accessInfo: usbMgr.USBAccessory;
@@ -70,8 +70,8 @@ async function getAccPermission() {
   }
 }
 
-export default function UsbAccessoryETSTest() {
-  describe("UsbAccessoryETSTest", () => {
+export default function UsbAccessoryEtsTest() {
+  describe("UsbAccessoryEtsTest", () => {
 
     beforeAll(() => {
       console.info(TAG, 'beforeAll called');
