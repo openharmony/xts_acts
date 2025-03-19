@@ -12236,5 +12236,676 @@ export default function napiApiTest() {
       done();
     });
 
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICOERCETONATIVEBINDINGOBJECTTEST_0100
+     * @tc.name      : testNapiCoerceToNativeBindingObjectTest0001
+     * @tc.desc      : Testing NapiCoerceToNativeBindingObjectTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCoerceToNativeBindingObjectTest0001', 0, async (done: Function) => {
+      console.info('testNapiCoerceToNativeBindingObjectTest0001 START');
+      try {
+        let value = napitest.NapiCoerceToNativeBindingObjectTest();
+        console.info('NapiCoerceToNativeBindingObjectTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCoerceToNativeBindingObjectTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEOBJECTWITHNAMEPROPERTIESTEST_0100
+     * @tc.name      : testNapiCreateObjectWithNamedPropertiesTest0001
+     * @tc.desc      : Testing NapiCreateObjectWithNamedPropertiesTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateObjectWithNamedPropertiesTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateObjectWithNamedPropertiesTest0001 START');
+      try {
+        let value = napitest.NapiCreateObjectWithNamedPropertiesTest();
+        console.info('NapiCreateObjectWithNamedPropertiesTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateObjectWithNamedPropertiesTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICOERCETONATIVEBINDINGOBJECTTEST_0100
+     * @tc.name      : testNapiCreateObjectWithPropertiesTest0001
+     * @tc.desc      : Testing NapiCreateObjectWithPropertiesTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateObjectWithPropertiesTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateObjectWithPropertiesTest0001 START');
+      try {
+        let value = napitest.NapiCreateObjectWithPropertiesTest();
+        console.info('NapiCreateObjectWithPropertiesTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateObjectWithPropertiesTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPILOADMODULETEST_0100
+     * @tc.name      : testNapiLoadModuleTest0001
+     * @tc.desc      : Testing NapiLoadModuleTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiLoadModuleTest0001', 0, async (done: Function) => {
+      console.info('testNapiLoadModuleTest0001 START');
+      try {
+        let value = napitest.NapiLoadModuleTest();
+        console.info('NapiLoadModuleTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiLoadModuleTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIRUNSCRIPTPATHTEST_0100
+     * @tc.name      : testNapiRunScriptPathTest0001
+     * @tc.desc      : Testing NapiRunScriptPathTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiRunScriptPathTest0001', 0, async (done: Function) => {
+      console.info('testNapiRunScriptPathTest0001 START');
+      try {
+        let value = napitest.NapiRunScriptPathTest();
+        console.info('NapiRunScriptPathTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiRunScriptPathTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIQUEUEASYNCWORKWITHQOSTEST_0100
+     * @tc.name      : testNapiQueueAsyncWorkWithQosTest0001
+     * @tc.desc      : Testing NapiQueueAsyncWorkWithQosTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiQueueAsyncWorkWithQosTest0001', 0, async (done: Function) => {
+      console.info('testNapiQueueAsyncWorkWithQosTest0001 START');
+      try {
+        let value = napitest.NapiQueueAsyncWorkWithQosTest();
+        console.info('NapiQueueAsyncWorkWithQosTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiQueueAsyncWorkWithQosTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIFATALEXCEPTIONTEST_0100
+     * @tc.name      : testNapiFatalExceptionTest0001
+     * @tc.desc      : Testing NapiFatalExceptionTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiFatalExceptionTest0001', 0, async (done: Function) => {
+      console.info('testNapiFatalExceptionTest0001 START');
+      try {
+        let value = napitest.NapiFatalExceptionTest();
+        console.info('NapiFatalExceptionTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiFatalExceptionTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIADDFINALIZERTEST_0100
+     * @tc.name      : testNapiAddFinalizerTest0001
+     * @tc.desc      : Testing NapiAddFinalizerTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiAddFinalizerTest0001', 0, async (done: Function) => {
+      console.info('testNapiAddFinalizerTest0001 START');
+      try {
+        let value = napitest.NapiAddFinalizerTest();
+        console.info('NapiAddFinalizerTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiAddFinalizerTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NODEAPIGETMODULEFILENAMETEST_0100
+     * @tc.name      : testNodeApiGetModuleFileNameTest0001
+     * @tc.desc      : Testing NodeApiGetModuleFileNameTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNodeApiGetModuleFileNameTest0001', 0, async (done: Function) => {
+      console.info('testNodeApiGetModuleFileNameTest0001 START');
+      try {
+        let value = napitest.NodeApiGetModuleFileNameTest();
+        console.info('NodeApiGetModuleFileNameTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NodeApiGetModuleFileNameTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIREMOVEASYNCCLEANUPHOOKTEST_0100
+     * @tc.name      : testNapiRemoveAsyncCleanupHookTest0001
+     * @tc.desc      : Testing NapiRemoveAsyncCleanupHookTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiRemoveAsyncCleanupHookTest0001', 0, async (done: Function) => {
+      console.info('testNapiRemoveAsyncCleanupHookTest0001 START');
+      try {
+        let value = napitest.NapiRemoveAsyncCleanupHookTest();
+        console.info('NapiRemoveAsyncCleanupHookTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiRemoveAsyncCleanupHookTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIADDASYNCCLEANUPHOOKTEST_0100
+     * @tc.name      : testNapiAddAsyncCleanupHookTest0001
+     * @tc.desc      : Testing NapiAddAsyncCleanupHookTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiAddAsyncCleanupHookTest0001', 0, async (done: Function) => {
+      console.info('testNapiAddAsyncCleanupHookTest0001 START');
+      try {
+        let value = napitest.NapiAddAsyncCleanupHookTest();
+        console.info('NapiAddAsyncCleanupHookTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiAddAsyncCleanupHookTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIREMOVEENVCLEANUPHOOKTEST_0100
+     * @tc.name      : testNapiRemoveEnvCleanupHookTest0001
+     * @tc.desc      : Testing NapiRemoveEnvCleanupHookTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiRemoveEnvCleanupHookTest0001', 0, async (done: Function) => {
+      console.info('testNapiRemoveEnvCleanupHookTest0001 START');
+      try {
+        let value = napitest.NapiRemoveEnvCleanupHookTest();
+        console.info('NapiRemoveEnvCleanupHookTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiRemoveEnvCleanupHookTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIADDENVCLEANUPHOOKTEST_0100
+     * @tc.name      : testNapiAddEnvCleanupHookTest0001
+     * @tc.desc      : Testing NapiAddEnvCleanupHookTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiAddEnvCleanupHookTest0001', 0, async (done: Function) => {
+      console.info('testNapiAddEnvCleanupHookTest0001 START');
+      try {
+        let value = napitest.NapiAddEnvCleanupHookTest();
+        console.info('NapiAddEnvCleanupHookTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiAddEnvCleanupHookTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETINSTANCEDATATEST_0100
+     * @tc.name      : testNapiGetInstanceDataTest0001
+     * @tc.desc      : Testing NapiGetInstanceDataTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetInstanceDataTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetInstanceDataTest0001 START');
+      try {
+        let value = napitest.NapiGetInstanceDataTest();
+        console.info('NapiGetInstanceDataTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetInstanceDataTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPISETINSTANCEDATATEST_0100
+     * @tc.name      : testNapiSetInstanceDataTest0001
+     * @tc.desc      : Testing NapiSetInstanceDataTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiSetInstanceDataTest0001', 0, async (done: Function) => {
+      console.info('testNapiSetInstanceDataTest0001 START');
+      try {
+        let value = napitest.NapiSetInstanceDataTest();
+        console.info('NapiSetInstanceDataTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiSetInstanceDataTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIISDETACHEDARRAYBUFFERTEST_0100
+     * @tc.name      : testNapiIsDetachedArrayBufferTest0001
+     * @tc.desc      : Testing NapiIsDetachedArrayBufferTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiIsDetachedArrayBufferTest0001', 0, async (done: Function) => {
+      console.info('testNapiIsDetachedArrayBufferTest0001 START');
+      try {
+        let value = napitest.NapiIsDetachedArrayBufferTest();
+        console.info('NapiIsDetachedArrayBufferTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiIsDetachedArrayBufferTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDETACHEDARRAYBUFFERTEST_0100
+     * @tc.name      : testNapiDetachedArrayBufferTest0001
+     * @tc.desc      : Testing NapiDetachedArrayBufferTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDetachedArrayBufferTest0001', 0, async (done: Function) => {
+      console.info('testNapiDetachedArrayBufferTest0001 START');
+      try {
+        let value = napitest.NapiDetachedArrayBufferTest();
+        console.info('NapiDetachedArrayBufferTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDetachedArrayBufferTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETALLPROPERTYNAMESTEST_0100
+     * @tc.name      : testNapiGetAllPropertyNamesTest0001
+     * @tc.desc      : Testing NapiGetAllPropertyNamesTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetAllPropertyNamesTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetAllPropertyNamesTest0001 START');
+      try {
+        let value = napitest.NapiGetAllPropertyNamesTest();
+        console.info('NapiGetAllPropertyNamesTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetAllPropertyNamesTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIOBJECTSEALTEST_0100
+     * @tc.name      : testNapiObjectSealTest0001
+     * @tc.desc      : Testing NapiObjectSealTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiObjectSealTest0001', 0, async (done: Function) => {
+      console.info('testNapiObjectSealTest0001 START');
+      try {
+        let value = napitest.NapiObjectSealTest();
+        console.info('NapiObjectSealTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiObjectSealTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIOBJECTFREEZETEST_0100
+     * @tc.name      : testNapiObjectFreezeTest0001
+     * @tc.desc      : Testing NapiObjectFreezeTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiObjectFreezeTest0001', 0, async (done: Function) => {
+      console.info('testNapiObjectFreezeTest0001 START');
+      try {
+        let value = napitest.NapiObjectFreezeTest();
+        console.info('NapiObjectFreezeTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiObjectFreezeTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIISBUFFERTEST_0100
+     * @tc.name      : testNapiIsBufferTest0001
+     * @tc.desc      : Testing NapiIsBufferTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiIsBufferTest0001', 0, async (done: Function) => {
+      console.info('testNapiIsBufferTest0001 START');
+      try {
+        let value = napitest.NapiIsBufferTest();
+        console.info('NapiIsBufferTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiIsBufferTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETBUFFERINFOTEST_0100
+     * @tc.name      : testNapiGetBufferInfoTest0001
+     * @tc.desc      : Testing NapiGetBufferInfoTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetBufferInfoTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetBufferInfoTest0001 START');
+      try {
+        let value = napitest.NapiGetBufferInfoTest();
+        console.info('NapiGetBufferInfoTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetBufferInfoTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEEXTERNALBUFFERTEST_0100
+     * @tc.name      : testNapiCreateExternalBufferTest0001
+     * @tc.desc      : Testing NapiCreateExternalBufferTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateExternalBufferTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateExternalBufferTest0001 START');
+      try {
+        let value = napitest.NapiCreateExternalBufferTest();
+        console.info('NapiCreateExternalBufferTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateExternalBufferTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEBUFFERCOPYTEST_0100
+     * @tc.name      : testNapiCreateBufferCopyTest0001
+     * @tc.desc      : Testing NapiCreateBufferCopyTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateBufferCopyTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateBufferCopyTest0001 START');
+      try {
+        let value = napitest.NapiCreateBufferCopyTest();
+        console.info('NapiCreateBufferCopyTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateBufferCopyTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEBUFFERTEST_0100
+     * @tc.name      : testNapiCreateBufferTest0001
+     * @tc.desc      : Testing NapiCreateBufferTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateBufferTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateBufferTest0001 START');
+      try {
+        let value = napitest.NapiCreateBufferTest();
+        console.info('NapiCreateBufferTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateBufferTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEBIGINTWORDSTEST_0100
+     * @tc.name      : testNapiGetValueBigintWordsTest0001
+     * @tc.desc      : Testing NapiGetValueBigintWordsTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueBigintWordsTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueBigintWordsTest0001 START');
+      try {
+        let value = napitest.NapiGetValueBigintWordsTest();
+        console.info('NapiGetValueBigintWordsTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueBigintWordsTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEBIGINTUINT64TEST_0100
+     * @tc.name      : testNapiGetValueBigintUint64Test0001
+     * @tc.desc      : Testing NapiGetValueBigintUint64Test NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueBigintUint64Test0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueBigintUint64Test0001 START');
+      try {
+        let value = napitest.NapiGetValueBigintUint64Test();
+        console.info('NapiGetValueBigintUint64Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueBigintUint64Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEBIGINTINT64TEST_0100
+     * @tc.name      : testNapiGetValueBigintInt64Test0001
+     * @tc.desc      : Testing NapiGetValueBigintInt64Test NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueBigintInt64Test0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueBigintInt64Test0001 START');
+      try {
+        let value = napitest.NapiGetValueBigintInt64Test();
+        console.info('NapiGetValueBigintInt64Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueBigintInt64Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEBIGINTWORDSTEST_0100
+     * @tc.name      : testNapiCreateBigintWordsTest0001
+     * @tc.desc      : Testing NapiCreateBigintWordsTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateBigintWordsTest0001', 0, async (done: Function) => {
+      console.info('testNapiCreateBigintWordsTest0001 START');
+      try {
+        let value = napitest.NapiCreateBigintWordsTest();
+        console.info('NapiCreateBigintWordsTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateBigintWordsTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEBIGINTUINT64TEST_0100
+     * @tc.name      : testNapiCreateBigintUint64Test0001
+     * @tc.desc      : Testing NapiCreateBigintUint64Test NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateBigintUint64Test0001', 0, async (done: Function) => {
+      console.info('testNapiCreateBigintUint64Test0001 START');
+      try {
+        let value = napitest.NapiCreateBigintUint64Test();
+        console.info('NapiCreateBigintUint64Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateBigintUint64Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEBIGINTINT64TEST_0100
+     * @tc.name      : testNapiCreateBigintInt64Test0001
+     * @tc.desc      : Testing NapiCreateBigintInt64Test NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateBigintInt64Test0001', 0, async (done: Function) => {
+      console.info('testNapiCreateBigintInt64Test0001 START');
+      try {
+        let value = napitest.NapiCreateBigintInt64Test();
+        console.info('NapiCreateBigintInt64Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateBigintInt64Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETDATAVALUETEST_0100
+     * @tc.name      : testNapiGetDataValueTest0001
+     * @tc.desc      : Testing NapiGetDataValueTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetDataValueTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetDataValueTest0001 START');
+      try {
+        let value = napitest.NapiGetDataValueTest();
+        console.info('NapiGetDataValueTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetDataValueTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
   })
 }
