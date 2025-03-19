@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third2';
@@ -62,7 +62,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesMultiAbility
         * @tc.desc: Get the information of the background modes from multi-ability application
         */
-        it('getBackgroundModesMultiAbility', 0, async function (done) {
+        it('getBackgroundModesMultiAbility', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -105,7 +105,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.desc: Get all background modes information, and each ability of the application
         *               contains one of the background mode
         */
-        it('getBackgroundModesAllModes', 0, async function (done) {
+        it('getBackgroundModesAllModes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -125,7 +125,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesInvalidModes
         * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
         */
-        it('getBackgroundModesInvalidModes', 0, async function (done) {
+        it('getBackgroundModesInvalidModes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -164,7 +164,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesNotModes
         * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
         */
-        it('getBackgroundModesNotModes', 0, async function (done) {
+        it('getBackgroundModesNotModes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -185,7 +185,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesMultiHap
         * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
         */
-        it('getBackgroundModesMultiHap', 0, async function (done) {
+        it('getBackgroundModesMultiHap', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],

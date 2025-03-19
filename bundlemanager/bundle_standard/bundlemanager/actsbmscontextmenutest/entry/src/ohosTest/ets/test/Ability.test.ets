@@ -54,7 +54,7 @@ export default function abilityTest() {
      * @tc.name: getBundleInfoForSelfSyncFileContextMenu
      * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenuConfig flag.
      */
-    it('getBundleInfoForSelfSyncFileContextMenu', 0, async (done: Function) => {
+    it('getBundleInfoForSelfSyncFileContextMenu', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
       bundle.BundleFlag.GET_BUNDLE_INFO_WITH_MENU);
       console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
@@ -92,7 +92,7 @@ export default function abilityTest() {
      * @tc.name: getBundleInfoOtherUnPermissionApi14
      * @tc.desc: Test getBundleInfo unPermission query other bundle for api14.
      */
-    it('getBundleInfoOtherUnPermissionApi14', 0, async (done: Function) => {
+    it('getBundleInfoOtherUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         await bundle.getBundleInfo(bundleName, bundleFlags, userId).then(data => {
           console.info("getBundleInfoOtherUnPermissionApi14 promise success " + JSON.stringify(data));
@@ -138,7 +138,7 @@ export default function abilityTest() {
      * @tc.name: getBundleInfoSyncOtherUnPermissionApi14
      * @tc.desc: Test getBundleInfoSync unPermission query other bundle for api14.
      */
-    it('getBundleInfoSyncOtherUnPermissionApi14', 0, async (done: Function) => {
+    it('getBundleInfoSyncOtherUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         bundle.getBundleInfoSync(bundleName, bundleFlags, userId)
         expect().assertFail();
@@ -163,7 +163,7 @@ export default function abilityTest() {
      * @tc.name: getBundleNameByUidSyncUnPermissionApi14
      * @tc.desc: Test getBundleNameByUidSync unPermission for api14.
      */
-    it('getBundleNameByUidSyncUnPermissionApi14', 0, async (done: Function) => {
+    it('getBundleNameByUidSyncUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         bundle.getBundleNameByUidSync(uid)
         expect().assertFail();
@@ -180,7 +180,7 @@ export default function abilityTest() {
      * @tc.name: getBundleNameByUidUnPermissionApi14
      * @tc.desc: Test getBundleNameByUid unPermission for api14.
      */
-    it('getBundleNameByUidUnPermissionApi14', 0, async (done: Function) => {
+    it('getBundleNameByUidUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         await bundle.getBundleNameByUid(uid).then(data => {
           console.info("getBundleNameByUidUnPermissionApi14 promise success " + JSON.stringify(data));
@@ -214,7 +214,7 @@ export default function abilityTest() {
      * @tc.name: getAppCloneIdentityUnPermissionApi14
      * @tc.desc: Test getAppCloneIdentity unPermission for api14.
      */
-    it('getAppCloneIdentityUnPermissionApi14', 0, async (done: Function) => {
+    it('getAppCloneIdentityUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         bundle.getAppCloneIdentity(uid).then(data => {
           console.info("getAppCloneIdentityUnPermissionApi14 success " + JSON.stringify(data));
