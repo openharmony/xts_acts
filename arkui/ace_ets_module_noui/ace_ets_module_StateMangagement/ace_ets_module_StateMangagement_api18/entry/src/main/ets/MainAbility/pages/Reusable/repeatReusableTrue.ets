@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
  
 @ObservedV2
 class RepeatreutrueClazz {
-  @Trace message: string ;
+  @Trace public message: string ;
 
   constructor(message: string) {
     this.message = message;
@@ -63,12 +63,12 @@ struct Repeatreutrue  {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text('virtualScroll each()&template() 1t')
-        .fontSize(15)
+        .height('5%')
         .fontColor(Color.Gray)
       Text('Select an index and press the button to update data.')
-        .fontSize(15)
+        .height('5%')
         .fontColor(Color.Gray)
 
       Select(this.selectOptions)
@@ -89,7 +89,7 @@ struct Repeatreutrue  {
           .each((obj: RepeatItem<RepeatreutrueClazz>) => {
             ListItem() {
               Text(`[each] index${obj.index}: ${obj.item.message}`)
-                .fontSize(25)
+                .height('5%')
                 .onClick(() => {
                   this.handleExchange(obj.index);
                 })
@@ -102,7 +102,7 @@ struct Repeatreutrue  {
           .templateId(() => 'a')
           .template('a', (ri) => {
             Text(`[a] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
+              .height('5%')
               .onClick(() => {
                 this.handleExchange(ri.index);
               })
