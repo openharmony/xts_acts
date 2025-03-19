@@ -1196,7 +1196,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100', async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100', 2, async (done: Function) => {
         session.on('setTargetLoopMode', (callback: number) => {
             if (callback === 1) {
                 console.info('TestLog: Set TargetLoopMode command callback registration successful');
