@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import wifi from '@ohos.wifi'
 
@@ -64,7 +64,7 @@ export default function actsWifiCandidateNetWorkTest() {
         * @tc.type Function
         * @tc.level Level 2
         */
-        it('Communication_WiFi_XTS_UntrustedConfig_0001', 0, async function (done) {
+        it('Communication_WiFi_XTS_UntrustedConfig_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_PSK",
                 "bssid": "22:9b:e6:48:1f:5c",
@@ -109,7 +109,7 @@ export default function actsWifiCandidateNetWorkTest() {
         * @tc.type Function
         * @tc.level Level 2
         */
-        it('Communication_WiFi_XTS_UntrustedConfig_0002', 0, async function (done) {
+        it('Communication_WiFi_XTS_UntrustedConfig_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TYPE_PSK1",
                 "bssid": "22:9b:e6:48:1f:5c",
