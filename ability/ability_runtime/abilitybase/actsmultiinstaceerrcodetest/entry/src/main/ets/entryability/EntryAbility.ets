@@ -25,7 +25,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
-    commonEventManager.createSubscriber({events:["terminateSelf_multiinstance_ability"]},(err, data)=>{
+    commonEventManager.createSubscriber({events:['terminateSelf_multiinstance_ability']},(err, data)=>{
       commonEventManager.subscribe(subCribe, (err, publishData)=>{
         this.context.terminateSelf();
       })
