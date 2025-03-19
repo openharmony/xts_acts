@@ -19,7 +19,7 @@ ohos_app_assist_suite("ActsmultiInstancEerrCodeMain") {
   part_name = "ability_runtime"
 }
 
-ohos_app_assist_suite("ActsMultiInstancEerrCodeTest") {
+ohos_js_app_suite("ActsMultiInstancEerrCodeTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
