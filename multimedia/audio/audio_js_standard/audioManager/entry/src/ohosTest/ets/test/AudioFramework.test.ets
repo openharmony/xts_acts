@@ -5260,6 +5260,8 @@ export default function audioFramework() {
       console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
+      expect(audio.DeviceType.DEFAULT).assertEqual(1000);
+      console.info("audio.DeviceType.DEFAULT:" + audio.DeviceType.DEFAULT);
       await sleep(50);
       done();
     })
