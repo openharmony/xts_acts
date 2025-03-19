@@ -16,13 +16,46 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
 import { display } from '@kit.ArkUI';
-
+interface Capability{
+  foldStatus:string;
+  foldDisplayMode:string;
+  rotation:string[];
+  orientation:string[]
+}
+interface CapabilityData{
+  capability:Capability[];
+}
 export default function DisplayNdkTest() {
   describe('ActsDisplayNdkTest', () => {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    let displayClass = display.getDefaultDisplaySync();
+    let foldStatus:string= '';
+    let foldDisplayMode:string= '';
+    let rotation:string[];
+    let orientation:string[];
+    let code:number;
     beforeAll(() => {
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
+      try{
+        let data:string = displayClass.getDisplayCapability();
+        let capabilityData:CapabilityData = JSON.parse(data);
+        console.log('jsUnittest beforeAll deviceMessage =' + JSON.stringify(capabilityData));
+        for(const capability of capabilityData.capability){
+          foldStatus = capability.foldStatus;
+          foldDisplayMode = capability.foldDisplayMode;
+          rotation = capability.rotation;
+          orientation = capability.orientation;
+          console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
+          console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
+          console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
+          console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+        }
+      } catch (err) {
+        console.log('jsUnittest beforeAll getDisplayCapability failed' + err.code+' ' +err.message);
+        if(err.code == 801){
+          code = 801;
+        }else {
+          console.log('jsUnittest getDisplayCapability failed');
+        }
+      }
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -137,14 +170,15 @@ export default function DisplayNdkTest() {
         console.log(caseName + ' :'+ displayOrientation);
         let display1 = display.getDefaultDisplaySync()
         console.log(caseName + 'jsOrientation :'+ display1.orientation);
-        if (displayOrientation == 0) {
-          done();
-        } else if (displayOrientation == 1){
-          done();
-        }else{
-          expect(false).assertTrue();
-          done();
-        }
+        if(code == 801){
+            expect(displayOrientation).assertEqual(0);
+            expect(displayOrientation).assertEqual(0);
+             done();
+          }else {
+            expect(displayOrientation).assertEqual(Number(rotation[0]));
+            expect(displayOrientation).assertEqual(Number(orientation[0]));
+            done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -385,10 +419,8 @@ export default function DisplayNdkTest() {
         let displayMode  = testNapi.getDisplayMode();
         console.log(caseName + ' :'+ displayMode );
         if(displayIsFoldable == true){
-          if(displayMode == 1 || displayMode ==2){
-            done();
-          }
-         
+          expect(displayMode).assertEqual(Number(foldDisplayMode))
+          done();
         }else{
           expect(displayMode).assertEqual(801);
           done();
