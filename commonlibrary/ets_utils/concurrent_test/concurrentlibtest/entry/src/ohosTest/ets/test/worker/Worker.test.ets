@@ -4171,6 +4171,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     }); /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0200
      * @tc.name      : testOnce0002
@@ -4203,6 +4204,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0300
@@ -4236,6 +4238,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0400
@@ -4269,6 +4272,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0500
@@ -4302,6 +4306,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0600
@@ -4368,6 +4373,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0800
@@ -4401,6 +4407,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_0900
@@ -4467,6 +4474,7 @@ export default function workerTest() {
         expect().assertFail();
       }
       ;
+      done()
     });
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_ONCE_1100
