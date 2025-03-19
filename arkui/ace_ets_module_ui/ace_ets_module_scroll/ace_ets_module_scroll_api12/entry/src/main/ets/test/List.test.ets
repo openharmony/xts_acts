@@ -34,6 +34,9 @@ import listItemGroupNone from './ListTest/listItemGroupNone.test'
 import nestedScrollSwiper from './SwiperTest/nestedScrollSwiper.test'; 
 import scrollSourceDrag from './ScrollTest/scrollSourceDrag.test'; 
 import offsetRemain from './ScrollTest/offsetRemain.test';
+import finishTransSwiper from './SwiperTest/finishTransSwiper.test';
+import preloadErrorTabs from './TabsTest/preloadErrorTabs.test'; 
+import symbolTabs from './TabsTest/symbolTabs.test'; 
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
 import scrollXOffsetJsunit from './ScrollTest/scrollXOffsetJsunit.test';
