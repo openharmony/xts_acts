@@ -28,7 +28,6 @@
 #define ANNEXB_INPUT_ONLY 1
 
 const std::string_view MIME_VIDEO_AVC = "video/avc";
-const std::string_view MIME_VIDEO_HEVC = "video/hevc";
 constexpr int32_t BITRATE_10M = 10 * 1024 * 1024;
 constexpr int32_t BITRATE_20M = 20 * 1024 * 1024;
 constexpr int32_t BITRATE_30M = 30 * 1024 * 1024;

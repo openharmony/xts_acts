@@ -53,7 +53,6 @@ using namespace OHOS_CAMERA_SAMPLE;
 static NDKCamera *g_ndkCamera = nullptr;
 
 static OH_AVRecorder_Config *config;
-char *previceId_ = nullptr;
 // 设置状态回调
 void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason,
                    void *userData)
@@ -303,14 +302,14 @@ void SetConfig(OH_AVRecorder_Config &config)
     config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
     const int SAMPLE_RATE_48KHZ = 48000;
     config.profile.audioSampleRate = SAMPLE_RATE_48KHZ;
-    const int g_videoOrientationSize = 2;
-    config.metadata.videoOrientation = (char *)malloc(g_videoOrientationSize);
+    const int gVideoOrientationSize = 2;
+    config.metadata.videoOrientation = (char *)malloc(gVideoOrientationSize);
     if (config.metadata.videoOrientation != nullptr) {
         strcpy(config.metadata.videoOrientation, "0");
     }
-    const int g_videoLocationSize = 27;
-    config.metadata.location.latitude = g_videoLocationSize;
-    config.metadata.location.longitude = g_videoLocationSize;
+    const int gVideoLocationSize = 27;
+    config.metadata.location.latitude = gVideoLocationSize;
+    config.metadata.location.longitude = gVideoLocationSize;
 }
 
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
@@ -378,7 +377,7 @@ static napi_value createPrepareAVRecorder(napi_env env, napi_callback_info info)
     int32_t outputFd = open((g_avrecorderUrl  + "avrecorder001.mp4").c_str(), O_RDWR | O_CREAT, 0777);
     std::string fileUrl = "fd://" + std::to_string(outputFd);
     config1->url = const_cast<char *>(fileUrl.c_str());
-    std::cout << "config1.url is:" << config->url << std::endl;
+    std::cout << "config1.url is:" << config1->url << std::endl;
 
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);

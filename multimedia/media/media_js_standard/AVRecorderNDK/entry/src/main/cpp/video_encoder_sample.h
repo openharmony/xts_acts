@@ -30,6 +30,5 @@ public:
     static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData);
 
     OH_AVMuxer *muxer_ = nullptr;
-    int32_t g_videoTrackId = -1;
 };
 #endif // AVCODEC_SAMPLE_CALLBACK_H
