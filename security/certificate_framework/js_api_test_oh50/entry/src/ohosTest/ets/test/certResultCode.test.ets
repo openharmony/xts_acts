@@ -2206,6 +2206,20 @@ export default function certFrameworkResultCodeTestUnit() {
         console.error(`createCertChainValidator ${error}, error code: ${error.code}`);
         expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
       }
+      let validator = cert.createCertChainValidator("PKIX");
+      let data = {} as cert.CertChainData;
+      try {
+        await validator.validate(data);
+      } catch (error) {
+        console.error(`validator.validate Promise ${error}, error code: ${error.code}`);
+        expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
+      }
+      try {
+        validator.validate(data, (err) => {});
+      } catch (error) {
+        console.error(`validator.validate Callback ${error}, error code: ${error.code}`);
+        expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
+      }
       done();
     });
 
