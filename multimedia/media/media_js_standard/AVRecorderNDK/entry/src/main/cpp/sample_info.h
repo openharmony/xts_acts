@@ -75,9 +75,9 @@ struct CodecBufferInfo {
     OH_AVCodecBufferAttr attr = {0, 0, 0, AVCODEC_BUFFER_FLAGS_NONE};
 
     CodecBufferInfo(uint8_t *addr) : bufferAddr(addr){};
-    CodecBufferInfo(uint8_t *addr, int32_t bufferSize)
+    explicit CodecBufferInfo(uint8_t *addr, int32_t bufferSize)
         : bufferAddr(addr), attr({0, bufferSize, 0, AVCODEC_BUFFER_FLAGS_NONE}){};
-    CodecBufferInfo(uint32_t argBufferIndex, OH_AVMemory *argBuffer, OH_AVCodecBufferAttr argAttr)
+    explicit CodecBufferInfo(uint32_t argBufferIndex, OH_AVMemory *argBuffer, OH_AVCodecBufferAttr argAttr)
         : bufferIndex(argBufferIndex), buffer(reinterpret_cast<uintptr_t *>(argBuffer)), attr(argAttr){};
     CodecBufferInfo(uint32_t argBufferIndex, OH_AVMemory *argBuffer)
         : bufferIndex(argBufferIndex), buffer(reinterpret_cast<uintptr_t *>(argBuffer)){};

@@ -107,7 +107,7 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
         OH_MediaAsset_Release(asset);
         OH_MediaAssetChangeRequest_Release(changeRequest);
     } else {
-        OH_LOG_INFO(LOG_APP, "NDK Received null media asset! ");
+        OH_LOG_INFO(LOG_APP, "media asset is null! ");
     }
     OH_LOG_INFO(LOG_APP, "NDK OnUri completed ! ");
 }
@@ -155,7 +155,7 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
         return false;
     }
     if (arg == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "arg nullptr");
+        OH_LOG_ERROR(LOG_APP, "arg is nullptr");
         return false;
     }
     // Optional parameters, no need check error.
@@ -302,11 +302,6 @@ void SetConfig(OH_AVRecorder_Config &config)
     config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
     const int SAMPLE_RATE_48KHZ = 48000;
     config.profile.audioSampleRate = SAMPLE_RATE_48KHZ;
-    const int gVideoOrientationSize = 2;
-    config.metadata.videoOrientation = (char *)malloc(gVideoOrientationSize);
-    if (config.metadata.videoOrientation != nullptr) {
-        strcpy(config.metadata.videoOrientation, "0");
-    }
     const int gVideoLocationSize = 27;
     config.metadata.location.latitude = gVideoLocationSize;
     config.metadata.location.longitude = gVideoLocationSize;
@@ -315,7 +310,6 @@ void SetConfig(OH_AVRecorder_Config &config)
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
 {
     (void)info;
-    OH_LOG_INFO(LOG_APP, "NDK prepare AVRecorder start");
     OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
     SetConfig(*config);
 
@@ -330,7 +324,6 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[1], fd, typeLen + 1, &typeLen);
     config->url = fd;
 
-    OH_LOG_INFO(LOG_APP, "NDK AVRecorder parseSetConfigOps start ");
     parseSetConfigOps(env, args[0], *config);
 
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
@@ -450,7 +443,15 @@ static napi_value resetAVRecorder(napi_env env, napi_callback_info info)
 static napi_value releaseAVRecorder(napi_env env, napi_callback_info info)
 {
     (void)info;
+    //检查g_avRecorder 是否有效
+    if (g_avRecorder == nullptr) {
+        OH_LOG_INFO(LOG_APP, "AVRecorder g_avRecorder is nullptr");
+        napi_value res;
+        napi_create_int32(env, AV_ERR_INVALID_VAL, &res);
+        return res;
+    }
     int result = OH_AVRecorder_Release(g_avRecorder);
+    g_avRecorder = nullptr;
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Release result :%{public}d", result);
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -476,17 +477,10 @@ static napi_value getAVRecorderConfig(napi_env env, napi_callback_info info)
 static napi_value getAvailableEncoder(napi_env env, napi_callback_info info)
 {
     (void)info;
-
     OH_AVRecorder_EncoderInfo *encoderInfo = nullptr;
-
     int32_t lengthValue = 0;
     int32_t *length = &lengthValue;
-
     int result = OH_AVRecorder_GetAvailableEncoder(g_avRecorder, &encoderInfo, length);
-
-    if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK getAvailableEncorder error");
-    }
     if (encoderInfo != nullptr) {
         OH_LOG_INFO(LOG_APP, "Encorder Info in");
         OH_LOG_INFO(LOG_APP, "Encorder mimeType %{public}d", encoderInfo->mimeType);

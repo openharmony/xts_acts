@@ -466,17 +466,10 @@ Camera_ErrorCode NDKCamera::CreatePhotoOutput(char *photoSurfaceId)
 
 Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
 {
-    DRAWING_LOGD("NDKCamera::CreatePhotoOutput start!");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     if (videoProfile_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "Get VideoProfiles failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
-    OH_LOG_ERROR(LOG_APP, "CreateVideoOutput width:%{public}d", videoProfile_->size.width);
-    OH_LOG_ERROR(LOG_APP, "CreateVideoOutput height:%{public}d", videoProfile_->size.height);
-    OH_LOG_ERROR(LOG_APP, "CreateVideoOutput format:%{public}d", videoProfile_->format);
-    OH_LOG_ERROR(LOG_APP, "CreateVideoOutput range.min:%{public}d", videoProfile_->range.min);
-    OH_LOG_ERROR(LOG_APP, "CreateVideoOutput range.max:%{public}d", videoProfile_->range.max);
     profile_->size.width = g_myParam1 ;
     profile_->size.height = g_myParam2;
     result_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
