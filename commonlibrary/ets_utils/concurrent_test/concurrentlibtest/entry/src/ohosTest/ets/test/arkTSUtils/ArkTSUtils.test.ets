@@ -1810,7 +1810,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0001", 0, () => {
+    it("testParse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0001";
       try {
         type ISendable = lang.ISendable;
@@ -1831,7 +1831,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0002", 0, () => {
+    it("testParse0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0002";
       try {
         type ISendable = lang.ISendable;
@@ -1852,7 +1852,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0003", 0, () => {
+    it("testParse0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0003";
       try {
         type ISendable = lang.ISendable;
@@ -1875,7 +1875,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0004", 0, () => {
+    it("testParse0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0004";
       try {
         type ISendable = lang.ISendable;
@@ -1898,7 +1898,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0005", 0, () => {
+    it("testParse0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0005";
       try {
         type ISendable = lang.ISendable;
@@ -1926,7 +1926,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0006", 0, () => {
+    it("testParse0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0006";
       try {
         type ISendable = lang.ISendable;
@@ -1954,7 +1954,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0007", 0, () => {
+    it("testParse0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0007";
       try {
         type ISendable = lang.ISendable;
@@ -1982,7 +1982,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0001", 0, () => {
+    it("testStringify0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0001";
       try {
         let str = ArkTSUtils.ASON.stringify(null);
@@ -2001,7 +2001,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0002", 0, () => {
+    it("testStringify0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0002";
       try {
         let str = ArkTSUtils.ASON.stringify(undefined);
@@ -2020,7 +2020,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0003", 0, () => {
+    it("testStringify0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0003";
       try {
         let str = ArkTSUtils.ASON.stringify(4);
@@ -2039,7 +2039,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0004", 0, () => {
+    it("testStringify0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0004";
       try {
         let str = ArkTSUtils.ASON.stringify(true);
@@ -2058,7 +2058,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0005", 0, () => {
+    it("testStringify0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0005";
       try {
         let num: bigint = 123456789012345123456789012345n;
@@ -2080,7 +2080,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0006", 0, () => {
+    it("testStringify0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0006";
       try {
         let str = ArkTSUtils.ASON.stringify('testStringify0009');
@@ -2100,7 +2100,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0007", 0, () => {
+    it("testStringify0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0007";
       try {
         type ISendable = lang.ISendable;
@@ -2124,7 +2124,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0008", 0, () => {
+    it("testStringify0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0008";
       try {
         let lock1 = new ArkTSUtils.locks.AsyncLock();
@@ -2145,7 +2145,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0009", 0, () => {
+    it("testStringify0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0009";
       try {
         let value = new collections.BitVector(1);
@@ -2166,7 +2166,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0011", 0, () => {
+    it("testStringify0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0011";
       try {
         let value = new collections.Map<string, string>();
@@ -2187,7 +2187,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0012", 0, () => {
+    it("testStringify0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0012";
       try {
         let value = new collections.Array<number>(1, 2, 3);
@@ -2208,7 +2208,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0013", 0, () => {
+    it("testStringify0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0013";
       try {
         let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);

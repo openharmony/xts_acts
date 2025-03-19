@@ -267,7 +267,7 @@ export default function TaskPoolErrorCodeTest() {
           console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         });
         await Sleep(3000)
-      } catch (err: BusinessError) {
+      } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200023);
       }
@@ -1871,7 +1871,7 @@ export default function TaskPoolErrorCodeTest() {
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
         taskGroup.addTask(task)
         taskpool.cancel(task)
-      } catch (error: BusinessError) {
+      } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200051);
       }
@@ -1895,7 +1895,7 @@ export default function TaskPoolErrorCodeTest() {
         runner.execute(task);
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
         taskGroup.addTask(task)
-      } catch (error: BusinessError) {
+      } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200057);
       }
