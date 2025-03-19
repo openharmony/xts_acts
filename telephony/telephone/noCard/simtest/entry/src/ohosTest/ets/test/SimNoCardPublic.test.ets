@@ -381,5 +381,82 @@ export default function SimNoCardPublic() {
         }
       });
     });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetCardType_0700
+     * @tc.name   : testTelephonySimGetCardType0700
+     * @tc.desc   : SIMCard required Get SIM card account information. Use callback for asynchronous callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it("testTelephonySimGetCardType0700", 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetCardType0700';
+      console.info(`${caseName} test start `);
+      sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
+        if (data === false) {
+          console.info(`${caseName} success has not card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
+            if (err.code === 8300004) {
+              console.info(`${caseName} 	Do not have sim card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+              ExpectTrue(true);
+              console.info(`${caseName} test end `);
+              done();
+            } else {
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            }
+          });
+        } else {
+          ExpectFail();
+          console.info(`${caseName} test end `);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetCardType_0800
+     * @tc.name   : testTelephonySimGetCardType0800
+     * @tc.desc   : SIMCard required Get a list of activated SIM card account information. Use promise for asynchronous callback..
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     *
+     */
+    it("testTelephonySimGetCardType0800", 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetCardType0800';
+      console.info(`${caseName} test start `);
+      sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
+        if (data === false) {
+          console.info(`${caseName} success has not card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          sim.getCardType(0).then((data: sim.CardType) => {
+            console.info(`${caseName} getCardType success, promise: data->${JSON.stringify(data)}`);
+            ExpectFail();
+            console.info(`${caseName} test end `);
+            done();
+          }).catch((err: BusinessError) => {
+            if (err.code === 8300004) {
+              console.info(`${caseName} has not card1  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+              ExpectTrue(true);
+              console.info(`${caseName} test end `);
+              done();
+            } else {
+              console.info(`${caseName} getCardType failed, promise: err->${JSON.stringify(err)}`);
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            }
+          });
+        } else {
+          ExpectFail();
+          console.info(`${caseName} test end `);
+          done();
+        }
+      });
+    });
   });
 }
