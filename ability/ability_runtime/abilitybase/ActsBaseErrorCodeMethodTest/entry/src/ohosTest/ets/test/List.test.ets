@@ -25,5 +25,5 @@ export default function testsuite() {
   StartChildProcessTest();
   UiAbilityContextStartAbility();
   UIAbilityContexttest();
-  // AbilityBase_UIAbilityContext()
+  AbilityBase_UIAbilityContext()
 }
