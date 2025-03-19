@@ -62,9 +62,9 @@ void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVReco
     const char *reasonStr = (reason == AVRECORDER_USER)         ? "USER"
                             : (reason == AVRECORDER_BACKGROUND) ? "BACKGROUND"
                                                                 : "UNKNOWN";
-    OH_LOG_INFO(LOG_APP, "NDK xts OH_AVRecorder_StateChangeReason reason:%{public}d!", reasonStr);
+    OH_LOG_INFO(LOG_APP, "NDK StateChangeReason reason:%{public}d!", reasonStr);
     switch (state) {
-        OH_LOG_INFO(LOG_APP, "NDK xts OH_AVRecorder_State state:%{public}d!", state);
+        OH_LOG_INFO(LOG_APP, "NDK AVRecorder_State state:%{public}d!", state);
         case AVRECORDER_IDLE:
             break;
         case AVRECORDER_PREPARED:
@@ -94,22 +94,22 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
 {
     (void)recorder;
     (void)userDate;
-    OH_LOG_INFO(LOG_APP, "NDK xts OnUri start!");
+    OH_LOG_INFO(LOG_APP, "NDK OnUri start!");
     if (asset != nullptr) {
         auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
         if (changeRequest == nullptr) {
-            OH_LOG_INFO(LOG_APP, "NDK xts changeRequest is null!");
+            OH_LOG_INFO(LOG_APP, "NDK changeRequest is null!");
             return;
         }
         MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG;
         uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-        OH_LOG_INFO(LOG_APP, "NDK xts OH_MediaAssetChangeRequest_SaveCameraPhoto result:%{public}d!", result);
+        OH_LOG_INFO(LOG_APP, "NDK SaveCameraPhoto result:%{public}d!", result);
         OH_MediaAsset_Release(asset);
         OH_MediaAssetChangeRequest_Release(changeRequest);
     } else {
-        OH_LOG_INFO(LOG_APP, "NDK xts Received null media asset! ");
+        OH_LOG_INFO(LOG_APP, "NDK Received null media asset! ");
     }
-    OH_LOG_INFO(LOG_APP, "NDK xts OnUri completed ! ");
+    OH_LOG_INFO(LOG_APP, "NDK OnUri completed ! ");
 }
 static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 {
@@ -315,7 +315,7 @@ void SetConfig(OH_AVRecorder_Config &config)
 static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
 {
     (void)info;
-    OH_LOG_INFO(LOG_APP, "NDK xtsprepare AVRecorder start");
+    OH_LOG_INFO(LOG_APP, "NDK prepare AVRecorder start");
     OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
     SetConfig(*config);
 
@@ -465,9 +465,9 @@ static napi_value getAVRecorderConfig(napi_env env, napi_callback_info info)
     SetConfig(*config);
     int result = OH_AVRecorder_GetAVRecorderConfig(g_avRecorder, &config);
     if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK OH_AVRecorder_GetAVRecorderConfig configuration failed");
+        OH_LOG_INFO(LOG_APP, "NDK GetAVRecorderConfig configuration failed");
     }
-    OH_LOG_INFO(LOG_APP, "NDK xtsgetAVRecorderConfig sucuess", config->profile.audioBitrate);
+    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig sucuess", config->profile.audioBitrate);
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
@@ -485,7 +485,7 @@ static napi_value getAvailableEncoder(napi_env env, napi_callback_info info)
     int result = OH_AVRecorder_GetAvailableEncoder(g_avRecorder, &encoderInfo, length);
 
     if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK xtsgetAvailableEncorder error");
+        OH_LOG_INFO(LOG_APP, "NDK getAvailableEncorder error");
     }
     if (encoderInfo != nullptr) {
         OH_LOG_INFO(LOG_APP, "Encorder Info in");
@@ -571,7 +571,7 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OHNativeWindow *window;
     int resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
     if (resultCode != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK xtsprepare Camera error");
+        OH_LOG_INFO(LOG_APP, "NDK prepare Camera error");
     }
     uint64_t surfaceId;
     OH_NativeWindow_GetSurfaceId(window, &surfaceId);

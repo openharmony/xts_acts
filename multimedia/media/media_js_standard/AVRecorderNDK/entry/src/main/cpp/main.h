@@ -21,5 +21,5 @@
 
 struct OH_AVRecorder *g_avRecorder = {};
 OH_AVRecorder *InitRecorder();
-void StartRecording(OH_AVRecorder *oH_AVRecorder);
+void StartRecording(OH_AVRecorder *ohAvRecorder);
 #endif // AVRECORDER_MAIN_H
