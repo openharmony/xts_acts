@@ -772,5 +772,211 @@ export default function AssetErrorCodeTest() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_401_0100
+     * @tc.name test preQuerySync
+     * @tc.desc 参数异常时使用preQuerySync接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        asset.preQuerySync(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_401_0100 postQuerySync  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuerySync_401_0100 Failed to preQuerySync Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_preQuery_401_0100
+     * @tc.name test preQuery
+     * @tc.desc 参数异常时使用preQuery接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_preQuery_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        await asset.preQuery(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_401_0100 postQuery  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_preQuery_401_0100 Failed to preQuery Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_JS_group_0100
+     * @tc.name test GROUP_ID
+     * @tc.desc 数据库群组字段测试
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_JS_group_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.SECRET, StringToArray('123456789'));
+      attr.set(asset.Tag.ALIAS, StringToArray('demo_alias3'));
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+      attr.set(asset.Tag.DATA_LABEL_NORMAL_1, StringToArray('demo_label3'));
+      attr.set(asset.Tag.GROUP_ID, StringToArray('assetGroup'));
+      try {
+        await asset.add(attr);
+        console.info(`SUB_Security_DataSecurity_Asset_JS_group_0100 added successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_JS_group_0100 Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(24000010);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_querySync_401_0100
+     * @tc.name test querySync
+     * @tc.desc 参数异常时使用querySync接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_querySync_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        asset.querySync(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_querySync_401_0100 querySync  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_querySync_401_0100 Failed to querySync Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_query_401_0100
+     * @tc.name test query
+     * @tc.desc 参数异常时使用query接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_query_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        await asset.query(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_query_401_0100 query  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_query_401_0100 Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_removeSync_401_0100
+     * @tc.name test removeSync
+     * @tc.desc 参数异常时使用removeSync接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_removeSync_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        asset.removeSync(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_removeSync_401_0100 removeSync  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_removeSync_401_0100 Failed to removeSync Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_remove_401_0100
+     * @tc.name test remove
+     * @tc.desc 参数异常时使用remove接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_remove_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.ALIAS, 1);
+      try {
+        await asset.remove(attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_remove_401_0100 remove  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_remove_401_0100 Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_updateSync_401_0100
+     * @tc.name test updateSync
+     * @tc.desc 参数异常时使用updateSync接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_updateSync_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, StringToArray('0000000000'));
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.SECRET, 1);
+      try {
+        asset.updateSync(attr, attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_updateSync_401_0100 updateSync  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_updateSync_401_0100 Failed to updateSync Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_errorCode_update_401_0100
+     * @tc.name test update
+     * @tc.desc 参数异常时使用remove接口查询数据，返回错误码检查
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_errorCode_update_401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, 1);
+      let attr1: asset.AssetMap = new Map();
+      attr1.set(asset.Tag.SECRET, StringToArray('0000000000'));
+      try {
+        await asset.update(attr, attr1);
+        console.info(`SUB_Security_DataSecurity_Asset_errorCode_update_401_0100 update  successfully`);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_errorCode_update_401_0100 Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
   })
 }
