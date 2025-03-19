@@ -47,37 +47,18 @@ export default function builtinsReadonlyArrayKeysTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayKeysTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      let keys = Array.from(array.keys())
-      expect(keys[0]).assertEqual(0)
-      expect(keys[1]).assertEqual(1)
-      expect(keys[2]).assertEqual(2)
-      Done()
+    it('buildinsReadonlyArrayKeysTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        let keys = Array.from(array.keys())
+        expect(keys[0]).assertEqual(0)
+        expect(keys[1]).assertEqual(1)
+        expect(keys[2]).assertEqual(2)
+        Done()
 
-    /**
-     * @tc.number SUB_BUILDINS_READONLY_ARRAY_KEYS_TEST_0200
-     * @tc.name buildinsReadonlyArrayKeysTest1002
-     * @tc.desc test Array
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('buildinsReadonlyArrayKeysTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (number | undefined) [] = [1, , 3]
-      let keys = Array.from(array.keys())
-      expect(keys[0]).assertEqual(0)
-      expect(keys[1]).assertEqual(1)
-      expect(keys[2]).assertEqual(2)
-      Done()
-
-    })
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_KEYS_TEST_0200
@@ -87,13 +68,35 @@ export default function builtinsReadonlyArrayKeysTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayKeysTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly [] = []
-      let keys = Array.from(array.keys())
-      expect(keys.length).assertEqual(0)
-      Done()
-    })
+    it('buildinsReadonlyArrayKeysTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (number | undefined) [] = [1, , 3]
+        let keys = Array.from(array.keys())
+        expect(keys[0]).assertEqual(0)
+        expect(keys[1]).assertEqual(1)
+        expect(keys[2]).assertEqual(2)
+        Done()
+
+      })
+
+    /**
+     * @tc.number SUB_BUILDINS_READONLY_ARRAY_KEYS_TEST_0200
+     * @tc.name buildinsReadonlyArrayKeysTest1002
+     * @tc.desc test Array
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('buildinsReadonlyArrayKeysTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly [] = []
+        let keys = Array.from(array.keys())
+        expect(keys.length).assertEqual(0)
+        Done()
+      })
   })
 }

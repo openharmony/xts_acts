@@ -48,14 +48,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(2)).assertEqual(3)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(2)).assertEqual(3)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_0200
@@ -65,14 +66,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(4)).assertEqual(4)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(4)).assertEqual(4)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_0300
@@ -82,14 +84,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(5)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(5)).assertEqual(-1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_0400
@@ -99,14 +102,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(2, 2)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(2, 2)).assertEqual(1)
+        Done()
+
+      })
 
 
     /**
@@ -117,14 +121,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(2, 3)).assertEqual(3)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(2, 3)).assertEqual(3)
+        Done()
+
+      })
 
 
     /**
@@ -135,14 +140,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3, 2, 4]
-      expect(array.lastIndexOf(2, 4)).assertEqual(3)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3, 2, 4]
+        expect(array.lastIndexOf(2, 4)).assertEqual(3)
+        Done()
+
+      })
 
 
     /**
@@ -153,14 +159,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (undefined | number)[] = [1, , 3]
-      expect(any(array).lastIndexOf(undefined)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (undefined | number)[] = [1, , 3]
+        expect(any(array).lastIndexOf(undefined)).assertEqual(-1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_0800
@@ -170,14 +177,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (undefined | number)[] = [1, , 3]
-      expect(array.lastIndexOf(2)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (undefined | number)[] = [1, , 3]
+        expect(array.lastIndexOf(2)).assertEqual(-1)
+        Done()
+
+      })
 
 
     /**
@@ -188,14 +196,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [NaN]
-      expect(array.lastIndexOf(NaN)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [NaN]
+        expect(array.lastIndexOf(NaN)).assertEqual(-1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1000
@@ -205,14 +214,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [0, -0]
-      expect(array.lastIndexOf(0)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [0, -0]
+        expect(array.lastIndexOf(0)).assertEqual(1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1100
@@ -222,14 +232,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (undefined | number)[] = [undefined]
-      expect(array.lastIndexOf(undefined)).assertEqual(0)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (undefined | number)[] = [undefined]
+        expect(array.lastIndexOf(undefined)).assertEqual(0)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1200
@@ -239,14 +250,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      expect(array.lastIndexOf(2, -1)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        expect(array.lastIndexOf(2, -1)).assertEqual(1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1300
@@ -256,14 +268,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      expect(array.lastIndexOf(3, -1)).assertEqual(2)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        expect(array.lastIndexOf(3, -1)).assertEqual(2)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1400
@@ -273,14 +286,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      expect(array.lastIndexOf(2, 5)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        expect(array.lastIndexOf(2, 5)).assertEqual(1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1500
@@ -290,14 +304,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      expect(array.lastIndexOf(2, -5)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        expect(array.lastIndexOf(2, -5)).assertEqual(-1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1600
@@ -307,14 +322,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (undefined | number)[] = []
-      expect(array.lastIndexOf(undefined)).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (undefined | number)[] = []
+        expect(array.lastIndexOf(undefined)).assertEqual(-1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_1700
@@ -324,16 +340,17 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let obj: readonly number[] = []
-      let array = [obj, [1], [2]]
-      expect(array.lastIndexOf(obj)).assertEqual(0)
-      expect(array.lastIndexOf([1])).assertEqual(-1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let obj: readonly number[] = []
+        let array = [obj, [1], [2]]
+        expect(array.lastIndexOf(obj)).assertEqual(0)
+        expect(array.lastIndexOf([1])).assertEqual(-1)
+        Done()
+
+      })
 
 
     /**
@@ -344,14 +361,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (number | null)[] = [1, null, 3, 4]
-      expect(array.lastIndexOf(null)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (number | null)[] = [1, null, 3, 4]
+        expect(array.lastIndexOf(null)).assertEqual(1)
+        Done()
+
+      })
 
 
     /**
@@ -362,15 +380,16 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (number | ExportObj2)[] = [1, exportObj2, exportObj2, 3, 4]
-      let result = array.lastIndexOf(exportObj2)
-      expect(result).assertEqual(2)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (number | ExportObj2)[] = [1, exportObj2, exportObj2, 3, 4]
+        let result = array.lastIndexOf(exportObj2)
+        expect(result).assertEqual(2)
+        Done()
+
+      })
 
 
     /**
@@ -381,14 +400,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly string[] = ["apple", "banana", "cherry"]
-      expect(array.lastIndexOf("banana")).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly string[] = ["apple", "banana", "cherry"]
+        expect(array.lastIndexOf("banana")).assertEqual(1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_2100
@@ -398,14 +418,15 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly string[] = ["apple", "", "cherry"]
-      expect(array.lastIndexOf("")).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly string[] = ["apple", "", "cherry"]
+        expect(array.lastIndexOf("")).assertEqual(1)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_LAST_INDEX_OF_TEST_2200
@@ -415,15 +436,16 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [Math.floor(1.5), -0]
-      expect(array.lastIndexOf(Math.floor(1.5))).assertEqual(0)
-      expect(array.lastIndexOf(-0)).assertEqual(1)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [Math.floor(1.5), -0]
+        expect(array.lastIndexOf(Math.floor(1.5))).assertEqual(0)
+        expect(array.lastIndexOf(-0)).assertEqual(1)
+        Done()
+
+      })
 
 
     /**
@@ -434,18 +456,19 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = []
-      array.lastIndexOf(Number.EPSILON)
-      array.lastIndexOf(Number.MIN_VALUE)
-      array.lastIndexOf(Number.MAX_VALUE)
-      array.lastIndexOf(-Infinity)
-      array.lastIndexOf(Infinity)
-      Done()
+    it('buildinsReadonlyArrayLastIndexOfTest1023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = []
+        array.lastIndexOf(Number.EPSILON)
+        array.lastIndexOf(Number.MIN_VALUE)
+        array.lastIndexOf(Number.MAX_VALUE)
+        array.lastIndexOf(-Infinity)
+        array.lastIndexOf(Infinity)
+        Done()
+
+      })
 
 
     /**
@@ -456,16 +479,17 @@ export default function builtinsReadonlyArrayLastIndexOfTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayLastIndexOfTest1024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [123.456, 0xcafebabe, 0x0102, 0x01020304, 0x3]
-      expect(array.lastIndexOf(123.456)).assertEqual(0)
-      expect(array.lastIndexOf(0xcafebabe)).assertEqual(1)
-      expect(array.lastIndexOf(0x0102)).assertEqual(2)
-      expect(array.lastIndexOf(0x01020304)).assertEqual(3)
-      expect(array.lastIndexOf(0x3)).assertEqual(4)
-      Done()
-    })
+    it('buildinsReadonlyArrayLastIndexOfTest1024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [123.456, 0xcafebabe, 0x0102, 0x01020304, 0x3]
+        expect(array.lastIndexOf(123.456)).assertEqual(0)
+        expect(array.lastIndexOf(0xcafebabe)).assertEqual(1)
+        expect(array.lastIndexOf(0x0102)).assertEqual(2)
+        expect(array.lastIndexOf(0x01020304)).assertEqual(3)
+        expect(array.lastIndexOf(0x3)).assertEqual(4)
+        Done()
+      })
   })
 }

@@ -54,13 +54,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint8Array(buffer, 0, 8);
-      expect(8).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint8Array(buffer, 0, 8);
+        expect(8).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1002
@@ -70,13 +71,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint8Array(buffer, 8, 4);
-      expect(4).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint8Array(buffer, 8, 4);
+        expect(4).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1003
@@ -86,15 +88,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint8Array(buffer, -8, 4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint8Array(buffer, -8, 4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1004
@@ -104,15 +107,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint8Array(buffer, 8, -4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint8Array(buffer, 8, -4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1005
@@ -122,13 +126,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Int8Array(buffer, 0, 8);
-      expect(8).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Int8Array(buffer, 0, 8);
+        expect(8).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1006
@@ -138,13 +143,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Int8Array(buffer, 8, 4);
-      expect(4).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Int8Array(buffer, 8, 4);
+        expect(4).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1007
@@ -154,15 +160,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Int8Array(buffer, -8, 4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Int8Array(buffer, -8, 4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1008
@@ -172,15 +179,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Int8Array(buffer, 8, -4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Int8Array(buffer, 8, -4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1009
@@ -190,13 +198,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint8ClampedArray(buffer, 0, 8);
-      expect(8).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint8ClampedArray(buffer, 0, 8);
+        expect(8).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1010
@@ -206,13 +215,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint8ClampedArray(buffer, 8, 4);
-      expect(4).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint8ClampedArray(buffer, 8, 4);
+        expect(4).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1011
@@ -222,15 +232,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint8ClampedArray(buffer, -8, 4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint8ClampedArray(buffer, -8, 4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1012
@@ -240,15 +251,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint8ClampedArray(buffer, 8, -4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint8ClampedArray(buffer, 8, -4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1013
@@ -258,13 +270,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Int16Array(buffer, 0, 8);
-      expect(16).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Int16Array(buffer, 0, 8);
+        expect(16).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1014
@@ -274,13 +287,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Int16Array(buffer, 8, 4);
-      expect(8).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Int16Array(buffer, 8, 4);
+        expect(8).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1015
@@ -290,15 +304,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Int16Array(buffer, -8, 4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Int16Array(buffer, -8, 4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1016
@@ -308,15 +323,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Int16Array(buffer, 8, -4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Int16Array(buffer, 8, -4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1017
@@ -326,13 +342,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint16Array(buffer, 0, 8);
-      expect(16).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint16Array(buffer, 0, 8);
+        expect(16).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1018
@@ -342,13 +359,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint16Array(buffer, 8, 4);
-      expect(8).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint16Array(buffer, 8, 4);
+        expect(8).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1019
@@ -358,15 +376,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint16Array(buffer, -8, 4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint16Array(buffer, -8, 4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1020
@@ -376,15 +395,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint16Array(buffer, 8, -4);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint16Array(buffer, 8, -4);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1021
@@ -394,13 +414,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint32Array(buffer, 0, 4);
-      expect(16).assertEqual(uint.byteLength);
-      expect(0).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint32Array(buffer, 0, 4);
+        expect(16).assertEqual(uint.byteLength);
+        expect(0).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1022
@@ -410,13 +431,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let uint=new Uint32Array(buffer, 8, 2);
-      expect(8).assertEqual(uint.byteLength);
-      expect(8).assertEqual(uint.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let uint = new Uint32Array(buffer, 8, 2);
+        expect(8).assertEqual(uint.byteLength);
+        expect(8).assertEqual(uint.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1023
@@ -426,15 +448,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint32Array(buffer, -8, 2);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint32Array(buffer, -8, 2);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1024
@@ -444,15 +467,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let uint=new Uint32Array(buffer, 8, -2);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let uint = new Uint32Array(buffer, 8, -2);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1025
@@ -462,13 +486,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let float=new Float32Array(buffer, 0, 4);
-      expect(16).assertEqual(float.byteLength);
-      expect(0).assertEqual(float.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let float = new Float32Array(buffer, 0, 4);
+        expect(16).assertEqual(float.byteLength);
+        expect(0).assertEqual(float.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1026
@@ -478,13 +503,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let float=new Float32Array(buffer, 8, 2);
-      expect(8).assertEqual(float.byteLength);
-      expect(8).assertEqual(float.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let float = new Float32Array(buffer, 8, 2);
+        expect(8).assertEqual(float.byteLength);
+        expect(8).assertEqual(float.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1027
@@ -494,15 +520,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let float=new Float32Array(buffer, -8, 2);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let float = new Float32Array(buffer, -8, 2);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1028
@@ -512,15 +539,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let float=new Float32Array(buffer, 8, -2);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let float = new Float32Array(buffer, 8, -2);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1029
@@ -530,13 +558,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let float=new Float64Array(buffer, 0, 2);
-      expect(16).assertEqual(float.byteLength);
-      expect(0).assertEqual(float.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let float = new Float64Array(buffer, 0, 2);
+        expect(16).assertEqual(float.byteLength);
+        expect(0).assertEqual(float.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1030
@@ -546,13 +575,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let float=new Float64Array(buffer, 8, 1);
-      expect(8).assertEqual(float.byteLength);
-      expect(8).assertEqual(float.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let float = new Float64Array(buffer, 8, 1);
+        expect(8).assertEqual(float.byteLength);
+        expect(8).assertEqual(float.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1031
@@ -562,15 +592,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let float=new Float64Array(buffer, -8, 1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let float = new Float64Array(buffer, -8, 1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1032
@@ -580,15 +611,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let float=new Float64Array(buffer, 8, -1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let float = new Float64Array(buffer, 8, -1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1033
@@ -598,13 +630,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let big=new BigInt64Array(buffer, 0, 2);
-      expect(16).assertEqual(big.byteLength);
-      expect(0).assertEqual(big.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let big = new BigInt64Array(buffer, 0, 2);
+        expect(16).assertEqual(big.byteLength);
+        expect(0).assertEqual(big.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1034
@@ -614,13 +647,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let big=new BigInt64Array(buffer, 8, 1);
-      expect(8).assertEqual(big.byteLength);
-      expect(8).assertEqual(big.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let big = new BigInt64Array(buffer, 8, 1);
+        expect(8).assertEqual(big.byteLength);
+        expect(8).assertEqual(big.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1035
@@ -630,15 +664,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let big=new BigInt64Array(buffer, -8, 1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let big = new BigInt64Array(buffer, -8, 1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1036
@@ -648,15 +683,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let big=new BigInt64Array(buffer, 8, -1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let big = new BigInt64Array(buffer, 8, -1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1037
@@ -666,13 +702,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let big=new BigUint64Array(buffer, 0, 2);
-      expect(16).assertEqual(big.byteLength);
-      expect(0).assertEqual(big.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let big = new BigUint64Array(buffer, 0, 2);
+        expect(16).assertEqual(big.byteLength);
+        expect(0).assertEqual(big.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1038
@@ -682,13 +719,14 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let buffer = new ArrayBuffer(16);
-      let big=new BigUint64Array(buffer, 8, 1);
-      expect(8).assertEqual(big.byteLength);
-      expect(8).assertEqual(big.byteOffset);
-      Done();
-    })
+    it('buildinsArrayBufferViewTest1038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let buffer = new ArrayBuffer(16);
+        let big = new BigUint64Array(buffer, 8, 1);
+        expect(8).assertEqual(big.byteLength);
+        expect(8).assertEqual(big.byteOffset);
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1039
@@ -698,15 +736,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let big=new BigUint64Array(buffer, -8, 1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let big = new BigUint64Array(buffer, -8, 1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_VIEW_TEST_1040
@@ -716,15 +755,16 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      try {
-        let buffer = new ArrayBuffer(16);
-        let big=new BigUint64Array(buffer, 8, -1);
-      }catch (err){
-        expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
-        Done();
-      }
-    })
+    it('buildinsArrayBufferViewTest1040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        try {
+          let buffer = new ArrayBuffer(16);
+          let big = new BigUint64Array(buffer, 8, -1);
+        } catch (err) {
+          expect('integerIndex < 0 or integerIndex > SAFE_NUMBER').assertEqual(err.message);
+          Done();
+        }
+      })
 
   })
 }

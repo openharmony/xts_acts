@@ -46,13 +46,14 @@ export default function builtinsArrayBufferByteLengthTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferByteLengthTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(8)
-      expect(arrayBuffer.byteLength).assertEqual(8)
-      Done()
+    it('buildinsArrayBufferByteLengthTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(8)
+        expect(arrayBuffer.byteLength).assertEqual(8)
+        Done()
 
-    })
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_BYTE_LENGTH_TEST_0200
@@ -62,11 +63,12 @@ export default function builtinsArrayBufferByteLengthTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferByteLengthTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(0)
-      expect(arrayBuffer.byteLength).assertEqual(0)
-      Done()
-    })
+    it('buildinsArrayBufferByteLengthTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(0)
+        expect(arrayBuffer.byteLength).assertEqual(0)
+        Done()
+      })
   })
 }

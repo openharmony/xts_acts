@@ -48,13 +48,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res:Array<number> = inputArray.slice(1,3);
-      console.log("res:"+JSON.stringify(res));
-      expect(isArrayEqual(res, [2, 3])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res: Array<number> = inputArray.slice(1, 3);
+        console.log("res:" + JSON.stringify(res));
+        expect(isArrayEqual(res, [2, 3])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -65,13 +66,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(2);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [3, 4, 5])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(2);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [3, 4, 5])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -82,13 +84,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(-3, -1);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [3, 4])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(-3, -1);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [3, 4])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -99,13 +102,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly (number|undefined)[] = [1, , 3];
-      const res = inputArray.slice(0, 2);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [1, undefined])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly (number | undefined)[] = [1, , 3];
+        const res = inputArray.slice(0, 2);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [1, undefined])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -116,13 +120,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3];
-      const res = inputArray.slice(5, 10);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3];
+        const res = inputArray.slice(5, 10);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -133,13 +138,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3];
-      const res = inputArray.slice(2, 2);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3];
+        const res = inputArray.slice(2, 2);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -150,13 +156,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(3, 1);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(3, 1);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -167,13 +174,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(undefined);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(undefined);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -184,13 +192,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(1, undefined);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [2, 3, 4, 5])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(1, undefined);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [2, 3, 4, 5])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -201,13 +210,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[] = [1, 2, 3, 4, 5];
-      const res = inputArray.slice(NaN);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[] = [1, 2, 3, 4, 5];
+        const res = inputArray.slice(NaN);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -218,13 +228,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly string[] = ['a', 'b', 'c', 'd'];
-      const res = inputArray.slice(2);
-      console.log("res: " + res);
-      expect(isArrayEqual(res, ['c', 'd'])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly string[] = ['a', 'b', 'c', 'd'];
+        const res = inputArray.slice(2);
+        console.log("res: " + res);
+        expect(isArrayEqual(res, ['c', 'd'])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -235,22 +246,35 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      interface obj {
-        a:number
-      };
-      interface obj1 {
-        b:number
-      };
-      interface obj2 {
-        c:number
-      };
-      const inputArray: readonly (obj|number|obj1|obj2)[] = [{ a: 1 }, { b: 2 }, { c: 3 }];
-      const res = inputArray.slice(0, 2);
-      console.log("res: " + res);
-      expect(isObjectEqual(res, [{ a: 1 }, { b: 2 }])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        interface obj {
+          a: number
+        };
+
+        interface obj1 {
+          b: number
+        };
+
+        interface obj2 {
+          c: number
+        };
+        const inputArray: readonly (obj | number | obj1 | obj2)[] = [{
+          a: 1
+        }, {
+          b: 2
+        }, {
+          c: 3
+        }];
+        const res = inputArray.slice(0, 2);
+        console.log("res: " + res);
+        expect(isObjectEqual(res, [{
+          a: 1
+        }, {
+          b: 2
+        }])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -261,13 +285,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      const inputArray: readonly number[][] = [[1, 2], [3, 4], [5, 6]];
-      const res = inputArray.slice(1,3);
-      console.log("res: " + res);
-      expect(isArrayArrayEqual(res, [ [3, 4], [5, 6]])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const inputArray: readonly number[][] = [[1, 2], [3, 4], [5, 6]];
+        const res = inputArray.slice(1, 3);
+        console.log("res: " + res);
+        expect(isArrayArrayEqual(res, [[3, 4], [5, 6]])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -278,13 +303,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(Math.floor(1.5));
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [2, 3, 4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(Math.floor(1.5));
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [2, 3, 4, 5, 6])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -295,13 +321,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(-0);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(-0);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -312,13 +339,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(Number.EPSILON);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(Number.EPSILON);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -329,13 +357,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(Number.MIN_VALUE);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(Number.MIN_VALUE);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -346,13 +375,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(Number.MAX_VALUE);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(Number.MAX_VALUE);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -363,13 +393,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(-Infinity);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(-Infinity);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [1, 2, 3, 4, 5, 6])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -380,13 +411,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(Infinity);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(Infinity);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -397,13 +429,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(123.456);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(123.456);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -414,13 +447,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(0xcafebabe);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(0xcafebabe);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -431,13 +465,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(0x0102);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(0x0102);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -448,13 +483,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(0x01020304);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(0x01020304);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [])).assertTrue();
+        Done();
+      });
 
 
     /**
@@ -465,13 +501,14 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
-      let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
-      const res = inputArray.slice(0x3);
-      console.log("res:"+res);
-      expect(isArrayEqual(res, [4, 5, 6])).assertTrue();
-      Done();
-    });
+    it('BuiltinsReadonlyArraySliceTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        let inputArray: readonly number[] = [1, 2, 3, 4, 5, 6];
+        const res = inputArray.slice(0x3);
+        console.log("res:" + res);
+        expect(isArrayEqual(res, [4, 5, 6])).assertTrue();
+        Done();
+      });
 
   })
 }

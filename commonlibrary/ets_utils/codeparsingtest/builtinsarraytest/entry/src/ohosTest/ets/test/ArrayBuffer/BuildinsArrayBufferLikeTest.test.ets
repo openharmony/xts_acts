@@ -54,12 +54,13 @@ export default function builtinsArrayBufferLikeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferLikeTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      type ArrayBufferLike = ArrayBuffer | SharedArrayBuffer
-      let bbb:ArrayBufferLike = new ArrayBuffer(12);
-      expect(12).assertEqual(bbb.byteLength)
-      Done();
-    })
+    it('buildinsArrayBufferLikeTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        type ArrayBufferLike = ArrayBuffer | SharedArrayBuffer
+        let bbb: ArrayBufferLike = new ArrayBuffer(12);
+        expect(12).assertEqual(bbb.byteLength)
+        Done();
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_LIKE_TEST_1002
@@ -69,11 +70,12 @@ export default function builtinsArrayBufferLikeTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('buildinsArrayBufferLikeTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      type ArrayBufferLike = ArrayBuffer | SharedArrayBuffer
-      let bbb1:ArrayBufferLike = new SharedArrayBuffer(12)
-      expect(12).assertEqual(bbb1.byteLength)
-      Done();
-    })
+    it('buildinsArrayBufferLikeTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        type ArrayBufferLike = ArrayBuffer | SharedArrayBuffer
+        let bbb1: ArrayBufferLike = new SharedArrayBuffer(12)
+        expect(12).assertEqual(bbb1.byteLength)
+        Done();
+      })
   })
 }

@@ -46,14 +46,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(0)
-      expect(arrayBuffer.byteLength).assertEqual(0)
-      Done()
+    it('buildinsArrayBufferConstructorTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(0)
+        expect(arrayBuffer.byteLength).assertEqual(0)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_0200
@@ -63,14 +64,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(8)
-      expect(arrayBuffer.byteLength).assertEqual(8)
-      Done()
+    it('buildinsArrayBufferConstructorTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(8)
+        expect(arrayBuffer.byteLength).assertEqual(8)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_0300
@@ -80,18 +82,19 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      try {
-        new ArrayBuffer(-1)
-        throw new Error("Not throw Uncaught RangeError")
-      } catch (e) {
-        expect(e.name).assertEqual(RangeError.name)
-      }
-      Done()
+    it('buildinsArrayBufferConstructorTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        try {
+          new ArrayBuffer(-1)
+          throw new Error("Not throw Uncaught RangeError")
+        } catch (e) {
+          expect(e.name).assertEqual(RangeError.name)
+        }
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_0400
@@ -101,13 +104,14 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      new ArrayBuffer(-0)
-      Done()
+    it('buildinsArrayBufferConstructorTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        new ArrayBuffer(-0)
+        Done()
+
+      })
 
 
     /**
@@ -118,14 +122,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(NaN)
-      expect(arrayBuffer.byteLength).assertEqual(0)
-      Done()
+    it('buildinsArrayBufferConstructorTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(NaN)
+        expect(arrayBuffer.byteLength).assertEqual(0)
+        Done()
+
+      })
 
 
     /**
@@ -136,19 +141,20 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      try {
-        new ArrayBuffer(Infinity)
-        throw new Error("Not throw Uncaught RangeError")
-      } catch (e) {
-        expect(e.name).assertEqual(RangeError.name)
-      }
+    it('buildinsArrayBufferConstructorTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-      Done()
+        console.info('testTag', '%{public}s', 'it begin');
+        try {
+          new ArrayBuffer(Infinity)
+          throw new Error("Not throw Uncaught RangeError")
+        } catch (e) {
+          expect(e.name).assertEqual(RangeError.name)
+        }
 
-    })
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_0700
@@ -158,18 +164,19 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      try {
-        new ArrayBuffer(-Infinity)
-        throw new Error("Not throw Uncaught RangeError")
-      } catch (e) {
-        expect(e.name).assertEqual(RangeError.name)
-      }
-      Done()
+    it('buildinsArrayBufferConstructorTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        try {
+          new ArrayBuffer(-Infinity)
+          throw new Error("Not throw Uncaught RangeError")
+        } catch (e) {
+          expect(e.name).assertEqual(RangeError.name)
+        }
+        Done()
+
+      })
 
 
     /**
@@ -180,13 +187,14 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      new ArrayBuffer(Math.floor(1.5))
-      Done()
+    it('buildinsArrayBufferConstructorTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        new ArrayBuffer(Math.floor(1.5))
+        Done()
+
+      })
 
 
     /**
@@ -197,19 +205,20 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      try {
-        new ArrayBuffer(Number.MAX_VALUE)
-        throw new Error("Not throw Uncaught RangeError")
-      } catch (e) {
-        expect(e.name).assertEqual(RangeError.name)
-      }
+    it('buildinsArrayBufferConstructorTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-      Done()
+        console.info('testTag', '%{public}s', 'it begin');
+        try {
+          new ArrayBuffer(Number.MAX_VALUE)
+          throw new Error("Not throw Uncaught RangeError")
+        } catch (e) {
+          expect(e.name).assertEqual(RangeError.name)
+        }
 
-    })
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_1000
@@ -219,14 +228,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(Number.MIN_VALUE)
-      expect(arrayBuffer.byteLength).assertEqual(0)
-      Done()
+    it('buildinsArrayBufferConstructorTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(Number.MIN_VALUE)
+        expect(arrayBuffer.byteLength).assertEqual(0)
+        Done()
+
+      })
 
 
     /**
@@ -237,14 +247,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(Number.EPSILON)
-      expect(arrayBuffer.byteLength).assertEqual(0)
-      Done()
+    it('buildinsArrayBufferConstructorTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(Number.EPSILON)
+        expect(arrayBuffer.byteLength).assertEqual(0)
+        Done()
+
+      })
 
 
     /**
@@ -255,14 +266,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(123.456)
-      expect(arrayBuffer.byteLength).assertEqual(123)
-      Done()
+    it('buildinsArrayBufferConstructorTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(123.456)
+        expect(arrayBuffer.byteLength).assertEqual(123)
+        Done()
+
+      })
 
 
     /**
@@ -273,18 +285,19 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      try {
-        new ArrayBuffer(0xcafebabe)
-        throw new Error("Not throw Uncaught RangeError")
-      } catch (e) {
-        expect(e.name).assertEqual(RangeError.name)
-      }
-      Done()
+    it('buildinsArrayBufferConstructorTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        try {
+          new ArrayBuffer(0xcafebabe)
+          throw new Error("Not throw Uncaught RangeError")
+        } catch (e) {
+          expect(e.name).assertEqual(RangeError.name)
+        }
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_ARRAYBUFFER_CONSTRUCTOR_TEST_1400
@@ -294,14 +307,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(0x0102)
-      expect(arrayBuffer.byteLength).assertEqual(0x0102)
-      Done()
+    it('buildinsArrayBufferConstructorTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(0x0102)
+        expect(arrayBuffer.byteLength).assertEqual(0x0102)
+        Done()
+
+      })
 
 
     /**
@@ -312,14 +326,15 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(0x01020304)
-      expect(arrayBuffer.byteLength).assertEqual(0x01020304)
-      Done()
+    it('buildinsArrayBufferConstructorTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(0x01020304)
+        expect(arrayBuffer.byteLength).assertEqual(0x01020304)
+        Done()
+
+      })
 
 
     /**
@@ -330,12 +345,13 @@ export default function builtinsArrayBufferConstructorTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsArrayBufferConstructorTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let arrayBuffer = new ArrayBuffer(0x3)
-      expect(arrayBuffer.byteLength).assertEqual(0x3)
-      Done()
-    })
+    it('buildinsArrayBufferConstructorTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+
+        console.info('testTag', '%{public}s', 'it begin');
+        let arrayBuffer = new ArrayBuffer(0x3)
+        expect(arrayBuffer.byteLength).assertEqual(0x3)
+        Done()
+      })
   })
 }

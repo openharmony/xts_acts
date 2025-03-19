@@ -48,17 +48,18 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      let result = array.map(element => element * 2)
-      expect(result[0]).assertEqual(2)
-      expect(result[1]).assertEqual(4)
-      expect(result[2]).assertEqual(6)
-      Done()
+    it('buildinsReadonlyArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        let result = array.map(element => element * 2)
+        expect(result[0]).assertEqual(2)
+        expect(result[1]).assertEqual(4)
+        expect(result[2]).assertEqual(6)
+        Done()
+
+      })
 
 
     /**
@@ -69,17 +70,18 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayMapTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[] = [1, 2, 3]
-      let result = array.map((element, index) => element + index)
-      expect(result[0]).assertEqual(1)
-      expect(result[1]).assertEqual(3)
-      expect(result[2]).assertEqual(5)
-      Done()
+    it('buildinsReadonlyArrayMapTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[] = [1, 2, 3]
+        let result = array.map((element, index) => element + index)
+        expect(result[0]).assertEqual(1)
+        expect(result[1]).assertEqual(3)
+        expect(result[2]).assertEqual(5)
+        Done()
+
+      })
 
 
     /**
@@ -90,17 +92,18 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayMapTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly (number | undefined)[] = [1, , 3]
-      let result: (number | undefined)[] = testMapReadonly(array)
-      expect(result[0]).assertEqual(2)
-      expect(result[1]).assertUndefined()
-      expect(result[2]).assertEqual(6)
-      Done()
+    it('buildinsReadonlyArrayMapTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly (number | undefined)[] = [1, , 3]
+        let result: (number | undefined)[] = testMapReadonly(array)
+        expect(result[0]).assertEqual(2)
+        expect(result[1]).assertUndefined()
+        expect(result[2]).assertEqual(6)
+        Done()
+
+      })
 
 
     /**
@@ -111,15 +114,16 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayMapTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly [] = []
-      let result: [] = testMapReadonly(array)
-      expect(result.length).assertEqual(0)
-      Done()
+    it('buildinsReadonlyArrayMapTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
 
-    })
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly [] = []
+        let result: [] = testMapReadonly(array)
+        expect(result.length).assertEqual(0)
+        Done()
+
+      })
 
     /**
      * @tc.number SUB_BUILDINS_READONLY_ARRAY_MAP_TEST_0500
@@ -129,15 +133,16 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('buildinsReadonlyArrayMapTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      
-      console.info('testTag', '%{public}s', 'it begin');
-      let array: readonly number[][] = [[], [1], [2]]
-      let result = array.map(element => element.length)
-      expect(result[0]).assertEqual(0)
-      expect(result[1]).assertEqual(1)
-      expect(result[2]).assertEqual(1)
-      Done()
-    })
+    it('buildinsReadonlyArrayMapTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+
+        console.info('testTag', '%{public}s', 'it begin');
+        let array: readonly number[][] = [[], [1], [2]]
+        let result = array.map(element => element.length)
+        expect(result[0]).assertEqual(0)
+        expect(result[1]).assertEqual(1)
+        expect(result[2]).assertEqual(1)
+        Done()
+      })
   })
 }
