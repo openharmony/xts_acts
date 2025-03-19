@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import usbManager from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 /* usb core functions test */
@@ -127,9 +127,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error devAddress 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice002', 0, async function () {
+  it('testConnectDevice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb SUB_USB_HostManager_JS_Compatibility_0100 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -154,9 +154,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error busNum 2+1000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice003', 0, async function () {
+  it('testConnectDevice003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice003 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -182,9 +182,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error serial 'asdfsd'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice004', 0, async function () {
+  it('testConnectDevice004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice004 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -210,9 +210,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error name 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice005', 0, async function () {
+  it('testConnectDevice005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice005 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -237,9 +237,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error manufacturerName 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice006', 0, async function () {
+  it('testConnectDevice006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice006 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -264,9 +264,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error productName 'sdfsdfe'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice007', 0, async function () {
+  it('testConnectDevice007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice007 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -292,9 +292,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error version 'gwefsdf'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice008', 0, async function () {
+  it('testConnectDevice008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb connect_device_08 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -320,9 +320,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error vendorId 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice009', 0, async function () {
+  it('testConnectDevice009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice009 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -348,9 +348,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error productId 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice010', 0, async function () {
+  it('testConnectDevice010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice010 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -376,9 +376,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error clazz 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice011', 0, async function () {
+  it('testConnectDevice011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb connect_device_11 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -404,9 +404,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error subClass 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice012', 0, async function () {
+  it('testConnectDevice012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb connect_device_12 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -432,9 +432,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, error protocol 2+10000
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice013', 0, async function () {
+  it('testConnectDevice013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice013 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -460,9 +460,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, parameter type error PARAM_INVALID
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice014', 0, async function () {
+  it('testConnectDevice014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice014 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -485,9 +485,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: open device, parameter number exception, necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testConnectDevice015', 0, async function () {
+  it('testConnectDevice015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testConnectDevice015 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -510,9 +510,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: parameters exception, error deviceName add '$#'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testHasRight002', 0, function () {
+  it('testHasRight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testHasRight002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -534,9 +534,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: parameters exception, the device add 'abcdg'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testHasRight003', 0, function () {
+  it('testHasRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testHasRight003 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -558,9 +558,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Permission query, parameter type error
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testHasRight004', 0, function () {
+  it('testHasRight004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testHasRight004 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -583,9 +583,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Permission query, parameter number exception, necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testHasRight005', 0, function () {
+  it('testHasRight005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testHasRight005 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -608,9 +608,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Request permission, error deviceName add '@#'
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRequestRight002', 0, async function () {
+  it('testRequestRight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testRequestRight002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -637,9 +637,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Request permission, the device name is a number
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRequestRight003', 0, async function () {
+  it('testRequestRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     console.info(TAG, 'usb testRequestRight003 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -667,9 +667,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Request permission, parameter type error
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRequestRight004', 0, function () {
+  it('testRequestRight004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testRequestRight004 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -692,9 +692,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Request permission, parameter number exception, necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRequestRight005', 0, function () {
+  it('testRequestRight005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testRequestRight005 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -717,9 +717,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Get device list, parameters exception(parameter transfer without parameter interface)
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testGetDevices002', 0, function () {
+  it('testGetDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testGetDevices002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -741,9 +741,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: close device, parameter type error PARAM_INVALID
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testClosePipe005', 0, function () {
+  it('testClosePipe005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testClosePipe005 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -766,9 +766,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: close device, parameter number exception, necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testClosePipe006', 0, function () {
+  it('testClosePipe006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb SUB_USB_HostManager_JS_ErrCode_2000 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -791,9 +791,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Get the original USB descriptor, parameter type error PARAM_INVALID
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testGetRawDescriptor002', 0, function () {
+  it('testGetRawDescriptor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testGetRawDescriptor002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -817,9 +817,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    *           necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testGetRawDescriptor003', 0, function () {
+  it('testGetRawDescriptor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testGetRawDescriptor003 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -842,9 +842,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Remove Permissions, parameter type error
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRemoveRight002', 0, function () {
+  it('testRemoveRight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testRemoveRight002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -867,9 +867,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.desc     : Negative test: Remove Permissions, parameter number exception, necessary parameters not input
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 2
+   * @tc.level    : Level 3
    */
-  it('testRemoveRight003', 0, function () {
+  it('testRemoveRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
     console.info(TAG, 'usb testRemoveRight003 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();

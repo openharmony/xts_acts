@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import usbManager from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 export default function UsbApiParamErrJsunitTest() {
@@ -27,7 +27,7 @@ describe('UsbApiParamErrJsunitTest', function () {
     const PARAM_UNDEFINED = undefined;
     const PARAM_NULLSTRING = "";
     const PARAM_NUMBERTYPE = 123;
-    const PARAM_ERRCODE = 401;
+    
     let gDeviceList;
     let devices;
     let gPipe = {
@@ -64,7 +64,7 @@ describe('UsbApiParamErrJsunitTest', function () {
                 CheckEmptyUtils.sleep(1000);
             }
 
-            requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), 0, 18);
+            requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
         }
     })
 
@@ -159,7 +159,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetDevicesParamErr001', 0, function () {
+    it('testGetDevicesParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetDevicesParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -171,7 +171,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(gDeviceList === null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testGetDevicesParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -183,7 +183,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetDevicesParamErr002', 0, function () {
+    it('testGetDevicesParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetDevicesParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -195,7 +195,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(gDeviceList === null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testGetDevicesParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -207,7 +207,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetDevicesParamErr003', 0, function () {
+    it('testGetDevicesParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetDevicesParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -219,7 +219,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(gDeviceList === null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testGetDevicesParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -231,7 +231,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testHasRightParamErr001', 0, function () {
+    it('testHasRightParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testHasRightParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -243,7 +243,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(isHasRight === null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testHasRightParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -255,7 +255,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testHasRightParamErr002', 0, function () {
+    it('testHasRightParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testHasRightParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -267,7 +267,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(isHasRight === null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testHasRightParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -281,7 +281,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRequestRightParamErr001', 0, async function () {
+    it('testRequestRightParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRequestRightParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -293,7 +293,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(isHasRight !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testRequestRightParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -305,7 +305,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRequestRightParamErr002', 0, async function () {
+    it('testRequestRightParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRequestRightParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -317,7 +317,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(isHasRight !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testRequestRightParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -329,7 +329,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRequestRightParamErr003', 0, async function () {
+    it('testRequestRightParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRequestRightParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -356,7 +356,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamErr001', 0, function () {
+    it('testRemoveRightParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -368,7 +368,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(remRight !== true).assertTrue();
         } catch (err) {
             console.info(TAG, 'testRemoveRightParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -380,7 +380,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamErr002', 0, function () {
+    it('testRemoveRightParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -392,7 +392,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(remRight !== true).assertTrue();
         } catch (err) {
             console.info(TAG, 'testRemoveRightParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -404,7 +404,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamErr003', 0, async function () {
+    it('testRemoveRightParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRemoveRightParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -435,7 +435,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr001', 0, function () {
+    it('testConnectDeviceParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -447,7 +447,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -459,7 +459,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr002', 0, function () {
+    it('testConnectDeviceParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -471,7 +471,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -483,7 +483,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr003', 0, function () {
+    it('testConnectDeviceParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -495,7 +495,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -507,7 +507,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr004', 0, function () {
+    it('testConnectDeviceParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -532,7 +532,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr005', 0, function () {
+    it('testConnectDeviceParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -545,7 +545,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -557,7 +557,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr006', 0, function () {
+    it('testConnectDeviceParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -570,7 +570,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -582,7 +582,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr007', 0, function () {
+    it('testConnectDeviceParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -595,7 +595,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -607,7 +607,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr008', 0, function () {
+    it('testConnectDeviceParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -620,7 +620,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -632,7 +632,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr009', 0, function () {
+    it('testConnectDeviceParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -645,7 +645,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -657,7 +657,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr010', 0, function () {
+    it('testConnectDeviceParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -670,7 +670,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -682,7 +682,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr011', 0, function () {
+    it('testConnectDeviceParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -695,7 +695,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -707,7 +707,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr012', 0, function () {
+    it('testConnectDeviceParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -720,7 +720,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -732,7 +732,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr013', 0, function () {
+    it('testConnectDeviceParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -745,7 +745,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -757,7 +757,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr014', 0, function () {
+    it('testConnectDeviceParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -770,7 +770,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -782,7 +782,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr015', 0, function () {
+    it('testConnectDeviceParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -795,7 +795,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -807,7 +807,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr016', 0, function () {
+    it('testConnectDeviceParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -820,7 +820,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -832,7 +832,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr017', 0, function () {
+    it('testConnectDeviceParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -845,7 +845,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -857,7 +857,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr018', 0, function () {
+    it('testConnectDeviceParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -870,7 +870,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -882,7 +882,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr019', 0, function () {
+    it('testConnectDeviceParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -895,7 +895,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -907,7 +907,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr020', 0, function () {
+    it('testConnectDeviceParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -920,7 +920,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -932,7 +932,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr021', 0, function () {
+    it('testConnectDeviceParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -945,7 +945,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -957,7 +957,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr022', 0, function () {
+    it('testConnectDeviceParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -970,7 +970,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -982,7 +982,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr023', 0, function () {
+    it('testConnectDeviceParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -995,7 +995,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1007,7 +1007,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr024', 0, function () {
+    it('testConnectDeviceParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1020,7 +1020,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1032,7 +1032,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr025', 0, function () {
+    it('testConnectDeviceParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1045,7 +1045,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1057,7 +1057,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr026', 0, function () {
+    it('testConnectDeviceParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1070,7 +1070,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1082,7 +1082,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr027', 0, function () {
+    it('testConnectDeviceParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1095,7 +1095,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1107,7 +1107,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr028', 0, function () {
+    it('testConnectDeviceParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1120,7 +1120,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1132,7 +1132,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr029', 0, function () {
+    it('testConnectDeviceParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1145,7 +1145,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1157,7 +1157,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr030', 0, function () {
+    it('testConnectDeviceParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1170,7 +1170,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1182,7 +1182,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr031', 0, function () {
+    it('testConnectDeviceParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1195,7 +1195,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1207,7 +1207,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr032', 0, function () {
+    it('testConnectDeviceParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1220,7 +1220,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1232,7 +1232,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr033', 0, function () {
+    it('testConnectDeviceParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1245,7 +1245,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1257,7 +1257,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr034', 0, function () {
+    it('testConnectDeviceParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1270,7 +1270,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1282,7 +1282,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr035', 0, function () {
+    it('testConnectDeviceParamErr035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr035 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1295,7 +1295,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr035 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1307,7 +1307,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr036', 0, function () {
+    it('testConnectDeviceParamErr036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr036 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1320,7 +1320,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr036 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1332,7 +1332,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr037', 0, function () {
+    it('testConnectDeviceParamErr037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr037 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1345,7 +1345,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr037 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1357,7 +1357,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr038', 0, function () {
+    it('testConnectDeviceParamErr038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr038 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1370,7 +1370,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr038 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1382,7 +1382,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr039', 0, function () {
+    it('testConnectDeviceParamErr039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr039 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1395,7 +1395,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr039 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1407,7 +1407,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr040', 0, function () {
+    it('testConnectDeviceParamErr040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr040 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1420,7 +1420,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr040 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1432,7 +1432,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr041', 0, function () {
+    it('testConnectDeviceParamErr041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr041 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1445,7 +1445,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr041 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1457,7 +1457,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr042', 0, function () {
+    it('testConnectDeviceParamErr042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr042 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1470,7 +1470,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr042 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1482,7 +1482,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamErr043', 0, function () {
+    it('testConnectDeviceParamErr043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamErr043 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1495,7 +1495,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testConnectDeviceParamErr043 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1507,7 +1507,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr001', 0, function () {
+    it('testClosePipeParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1532,7 +1532,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr002', 0, function () {
+    it('testClosePipeParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1545,7 +1545,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1557,7 +1557,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr003', 0, function () {
+    it('testClosePipeParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1570,7 +1570,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1582,7 +1582,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr004', 0, function () {
+    it('testClosePipeParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1595,7 +1595,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1607,7 +1607,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr005', 0, function () {
+    it('testClosePipeParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1620,7 +1620,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1632,7 +1632,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr006', 0, function () {
+    it('testClosePipeParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1645,7 +1645,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1657,7 +1657,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr007', 0, function () {
+    it('testClosePipeParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1670,7 +1670,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1682,7 +1682,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr008', 0, function () {
+    it('testClosePipeParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1694,7 +1694,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1706,7 +1706,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr009', 0, function () {
+    it('testClosePipeParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1718,7 +1718,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1730,7 +1730,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamErr010', 0, function () {
+    it('testClosePipeParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1742,7 +1742,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1754,7 +1754,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr001', 0, function () {
+    it('testGetRawDescriptorParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1780,7 +1780,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr002', 0, function () {
+    it('testGetRawDescriptorParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1792,7 +1792,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1804,7 +1804,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr003', 0, function () {
+    it('testGetRawDescriptorParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1816,7 +1816,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1828,7 +1828,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr004', 0, function () {
+    it('testGetRawDescriptorParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1840,7 +1840,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1852,7 +1852,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr005', 0, function () {
+    it('testGetRawDescriptorParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1865,7 +1865,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1877,7 +1877,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr006', 0, function () {
+    it('testGetRawDescriptorParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1890,7 +1890,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1902,7 +1902,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr007', 0, function () {
+    it('testGetRawDescriptorParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1915,7 +1915,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1927,7 +1927,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr008', 0, function () {
+    it('testGetRawDescriptorParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1940,7 +1940,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1952,7 +1952,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr009', 0, function () {
+    it('testGetRawDescriptorParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1965,7 +1965,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -1977,7 +1977,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamErr010', 0, function () {
+    it('testGetRawDescriptorParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1990,7 +1990,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetRawDescriptorParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2002,7 +2002,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr001', 0, function () {
+    it('testGetFileDescriptorParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2029,7 +2029,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr002', 0, function () {
+    it('testGetFileDescriptorParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2042,7 +2042,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr002 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2054,7 +2054,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr003', 0, function () {
+    it('testGetFileDescriptorParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2067,7 +2067,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr003 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2079,7 +2079,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr004', 0, function () {
+    it('testGetFileDescriptorParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2092,7 +2092,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr004 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2104,7 +2104,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr005', 0, function () {
+    it('testGetFileDescriptorParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2118,7 +2118,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr005 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2130,7 +2130,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr006', 0, function () {
+    it('testGetFileDescriptorParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2144,7 +2144,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr006 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2156,7 +2156,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr007', 0, function () {
+    it('testGetFileDescriptorParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2170,7 +2170,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr007 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2182,7 +2182,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr008', 0, function () {
+    it('testGetFileDescriptorParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2195,7 +2195,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2207,7 +2207,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr009', 0, function () {
+    it('testGetFileDescriptorParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2221,7 +2221,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr009 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2233,7 +2233,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamErr010', 0, function () {
+    it('testGetFileDescriptorParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2247,7 +2247,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         } catch (err) {
             console.info(TAG, 'testGetFileDescriptorParamErr010 catch err code: ',
                 err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2259,7 +2259,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr001', 0, function () {
+    it('testClaimInterfaceParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2271,7 +2271,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2283,7 +2283,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr002', 0, function () {
+    it('testClaimInterfaceParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2295,7 +2295,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2307,7 +2307,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr003', 0, function () {
+    it('testClaimInterfaceParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2319,7 +2319,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2331,7 +2331,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr004', 0, function () {
+    it('testClaimInterfaceParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2345,7 +2345,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2357,7 +2357,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr005', 0, function () {
+    it('testClaimInterfaceParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2371,7 +2371,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2383,7 +2383,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr006', 0, function () {
+    it('testClaimInterfaceParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2397,7 +2397,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2409,7 +2409,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr007', 0, function () {
+    it('testClaimInterfaceParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2423,7 +2423,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2435,7 +2435,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr008', 0, function () {
+    it('testClaimInterfaceParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2449,7 +2449,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2461,7 +2461,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr009', 0, function () {
+    it('testClaimInterfaceParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2475,7 +2475,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2487,7 +2487,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr010', 0, function () {
+    it('testClaimInterfaceParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2503,7 +2503,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2515,7 +2515,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr011', 0, function () {
+    it('testClaimInterfaceParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2531,7 +2531,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2543,7 +2543,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr012', 0, function () {
+    it('testClaimInterfaceParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2559,7 +2559,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2571,7 +2571,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr013', 0, function () {
+    it('testClaimInterfaceParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2587,7 +2587,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2599,7 +2599,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr014', 0, function () {
+    it('testClaimInterfaceParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2615,7 +2615,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2627,7 +2627,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr015', 0, function () {
+    it('testClaimInterfaceParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2643,7 +2643,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2655,7 +2655,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr016', 0, function () {
+    it('testClaimInterfaceParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2671,7 +2671,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2683,7 +2683,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr017', 0, function () {
+    it('testClaimInterfaceParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2699,7 +2699,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2711,7 +2711,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr018', 0, function () {
+    it('testClaimInterfaceParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2727,7 +2727,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2739,7 +2739,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr019', 0, function () {
+    it('testClaimInterfaceParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2755,7 +2755,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2767,7 +2767,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr020', 0, function () {
+    it('testClaimInterfaceParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2783,7 +2783,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2795,7 +2795,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr021', 0, function () {
+    it('testClaimInterfaceParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2811,7 +2811,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2823,7 +2823,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr022', 0, function () {
+    it('testClaimInterfaceParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2839,7 +2839,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2851,7 +2851,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr023', 0, function () {
+    it('testClaimInterfaceParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2867,7 +2867,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2879,7 +2879,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr024', 0, function () {
+    it('testClaimInterfaceParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2895,7 +2895,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2907,7 +2907,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr025', 0, function () {
+    it('testClaimInterfaceParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2923,7 +2923,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2935,7 +2935,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr026', 0, function () {
+    it('testClaimInterfaceParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2951,7 +2951,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2963,7 +2963,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr027', 0, function () {
+    it('testClaimInterfaceParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2979,7 +2979,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -2991,7 +2991,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr028', 0, function () {
+    it('testClaimInterfaceParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3007,7 +3007,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3019,7 +3019,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr029', 0, function () {
+    it('testClaimInterfaceParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3035,7 +3035,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3047,7 +3047,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr030', 0, function () {
+    it('testClaimInterfaceParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3063,7 +3063,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3075,7 +3075,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr031', 0, function () {
+    it('testClaimInterfaceParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3103,7 +3103,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr032', 0, function () {
+    it('testClaimInterfaceParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3117,7 +3117,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3129,7 +3129,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr033', 0, function () {
+    it('testClaimInterfaceParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3143,7 +3143,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3155,7 +3155,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr034', 0, function () {
+    it('testClaimInterfaceParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3169,7 +3169,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3181,7 +3181,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr035', 0, function () {
+    it('testClaimInterfaceParamErr035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr035 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3194,7 +3194,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr035 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3206,7 +3206,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr036', 0, function () {
+    it('testClaimInterfaceParamErr036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr036 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3219,7 +3219,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr036 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3231,7 +3231,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamErr037', 0, function () {
+    it('testClaimInterfaceParamErr037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr037 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3244,7 +3244,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testClaimInterfaceParamErr037 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3256,7 +3256,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-     it('testClaimInterfaceParamErr038', 0, function () {
+     it('testClaimInterfaceParamErr038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamErr038 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3284,7 +3284,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr001', 0, function () {
+    it('testSetConfigurationParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3313,7 +3313,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr002', 0, function () {
+    it('testSetConfigurationParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3325,7 +3325,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3337,7 +3337,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr003', 0, function () {
+    it('testSetConfigurationParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3349,7 +3349,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3361,7 +3361,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr004', 0, function () {
+    it('testSetConfigurationParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3373,7 +3373,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3385,7 +3385,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr005', 0, function () {
+    it('testSetConfigurationParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3398,7 +3398,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3410,7 +3410,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr006', 0, function () {
+    it('testSetConfigurationParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3423,7 +3423,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3435,7 +3435,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr007', 0, function () {
+    it('testSetConfigurationParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3448,7 +3448,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3460,7 +3460,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr008', 0, function () {
+    it('testSetConfigurationParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3474,7 +3474,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3486,7 +3486,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr009', 0, function () {
+    it('testSetConfigurationParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3500,7 +3500,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3512,7 +3512,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr010', 0, function () {
+    it('testSetConfigurationParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3526,7 +3526,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3538,7 +3538,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr011', 0, function () {
+    it('testSetConfigurationParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3554,7 +3554,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3566,7 +3566,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr012', 0, function () {
+    it('testSetConfigurationParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3582,7 +3582,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3594,7 +3594,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr013', 0, function () {
+    it('testSetConfigurationParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3610,7 +3610,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3622,7 +3622,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr014', 0, function () {
+    it('testSetConfigurationParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3638,7 +3638,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3650,7 +3650,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr015', 0, function () {
+    it('testSetConfigurationParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3666,7 +3666,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3678,7 +3678,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr016', 0, function () {
+    it('testSetConfigurationParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3694,7 +3694,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3706,7 +3706,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr017', 0, function () {
+    it('testSetConfigurationParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3722,7 +3722,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3734,7 +3734,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr018', 0, function () {
+    it('testSetConfigurationParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3750,7 +3750,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3762,7 +3762,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr019', 0, function () {
+    it('testSetConfigurationParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3778,7 +3778,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3790,7 +3790,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr020', 0, function () {
+    it('testSetConfigurationParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3806,7 +3806,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3818,7 +3818,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr021', 0, function () {
+    it('testSetConfigurationParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3834,7 +3834,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3846,7 +3846,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr022', 0, function () {
+    it('testSetConfigurationParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3862,7 +3862,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3874,7 +3874,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr023', 0, function () {
+    it('testSetConfigurationParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3890,7 +3890,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3902,7 +3902,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr024', 0, function () {
+    it('testSetConfigurationParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3918,7 +3918,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3930,7 +3930,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr025', 0, function () {
+    it('testSetConfigurationParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3946,7 +3946,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3958,7 +3958,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr026', 0, function () {
+    it('testSetConfigurationParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3974,7 +3974,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -3986,7 +3986,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr027', 0, function () {
+    it('testSetConfigurationParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4002,7 +4002,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4014,7 +4014,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr028', 0, function () {
+    it('testSetConfigurationParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4030,7 +4030,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4042,7 +4042,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr029', 0, function () {
+    it('testSetConfigurationParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4058,7 +4058,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4070,7 +4070,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr030', 0, function () {
+    it('testSetConfigurationParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4086,7 +4086,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4098,7 +4098,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr031', 0, function () {
+    it('testSetConfigurationParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4114,7 +4114,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4126,7 +4126,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr032', 0, function () {
+    it('testSetConfigurationParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4142,7 +4142,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4154,7 +4154,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr033', 0, function () {
+    it('testSetConfigurationParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4170,7 +4170,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4182,7 +4182,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamErr034', 0, function () {
+    it('testSetConfigurationParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4198,7 +4198,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetConfigurationParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4210,7 +4210,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr001', 0, function () {
+    it('testSetInterfaceParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4240,7 +4240,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr002', 0, function () {
+    it('testSetInterfaceParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4252,7 +4252,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4264,7 +4264,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr003', 0, function () {
+    it('testSetInterfaceParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4276,7 +4276,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4288,7 +4288,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr004', 0, function () {
+    it('testSetInterfaceParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4300,7 +4300,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4312,7 +4312,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr005', 0, function () {
+    it('testSetInterfaceParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4325,7 +4325,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4337,7 +4337,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr006', 0, function () {
+    it('testSetInterfaceParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4350,7 +4350,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4362,7 +4362,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr007', 0, function () {
+    it('testSetInterfaceParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4375,7 +4375,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4387,7 +4387,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr008', 0, function () {
+    it('testSetInterfaceParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4401,7 +4401,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4413,7 +4413,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr009', 0, function () {
+    it('testSetInterfaceParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4427,7 +4427,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4439,7 +4439,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr010', 0, function () {
+    it('testSetInterfaceParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4453,7 +4453,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4465,7 +4465,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr011', 0, function () {
+    it('testSetInterfaceParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4480,7 +4480,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4492,7 +4492,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr012', 0, function () {
+    it('testSetInterfaceParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4507,7 +4507,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4519,7 +4519,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr013', 0, function () {
+    it('testSetInterfaceParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4534,7 +4534,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4546,7 +4546,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr014', 0, function () {
+    it('testSetInterfaceParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4561,7 +4561,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4573,7 +4573,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr015', 0, function () {
+    it('testSetInterfaceParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4588,7 +4588,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4600,7 +4600,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr016', 0, function () {
+    it('testSetInterfaceParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4615,7 +4615,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4627,7 +4627,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr017', 0, function () {
+    it('testSetInterfaceParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4641,7 +4641,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4653,7 +4653,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr018', 0, function () {
+    it('testSetInterfaceParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4667,7 +4667,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4679,7 +4679,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr019', 0, function () {
+    it('testSetInterfaceParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4693,7 +4693,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4705,7 +4705,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr020', 0, function () {
+    it('testSetInterfaceParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4719,7 +4719,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4731,7 +4731,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr021', 0, function () {
+    it('testSetInterfaceParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4745,7 +4745,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4757,7 +4757,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr022', 0, function () {
+    it('testSetInterfaceParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4771,7 +4771,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4783,7 +4783,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr023', 0, function () {
+    it('testSetInterfaceParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4797,7 +4797,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4809,7 +4809,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr024', 0, function () {
+    it('testSetInterfaceParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4823,7 +4823,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4835,7 +4835,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr025', 0, function () {
+    it('testSetInterfaceParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4849,7 +4849,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4861,7 +4861,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr026', 0, function () {
+    it('testSetInterfaceParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4875,7 +4875,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4887,7 +4887,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr027', 0, function () {
+    it('testSetInterfaceParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4901,7 +4901,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4913,7 +4913,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr028', 0, function () {
+    it('testSetInterfaceParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4927,7 +4927,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4939,7 +4939,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr029', 0, function () {
+    it('testSetInterfaceParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4953,7 +4953,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4965,7 +4965,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr030', 0, function () {
+    it('testSetInterfaceParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -4979,7 +4979,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -4991,7 +4991,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr031', 0, function () {
+    it('testSetInterfaceParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5005,7 +5005,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5017,7 +5017,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr032', 0, function () {
+    it('testSetInterfaceParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5031,7 +5031,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5043,7 +5043,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr033', 0, function () {
+    it('testSetInterfaceParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5057,7 +5057,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5069,7 +5069,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr034', 0, function () {
+    it('testSetInterfaceParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5083,7 +5083,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5095,7 +5095,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr035', 0, function () {
+    it('testSetInterfaceParamErr035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr035 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5109,7 +5109,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr035 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5121,7 +5121,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr036', 0, function () {
+    it('testSetInterfaceParamErr036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr036 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5135,7 +5135,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr036 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5147,7 +5147,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamErr037', 0, function () {
+    it('testSetInterfaceParamErr037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamErr037 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5161,7 +5161,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testSetInterfaceParamErr037 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5173,7 +5173,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr001', 0, function () {
+    it('testReleaseInterfaceParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5202,7 +5202,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr002', 0, function () {
+    it('testReleaseInterfaceParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5214,7 +5214,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5226,7 +5226,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr003', 0, function () {
+    it('testReleaseInterfaceParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5238,7 +5238,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5250,7 +5250,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr004', 0, function () {
+    it('testReleaseInterfaceParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5262,7 +5262,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5274,7 +5274,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr005', 0, function () {
+    it('testReleaseInterfaceParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5287,7 +5287,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5299,7 +5299,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr006', 0, function () {
+    it('testReleaseInterfaceParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5312,7 +5312,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5324,7 +5324,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr007', 0, function () {
+    it('testReleaseInterfaceParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5337,7 +5337,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5349,7 +5349,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr008', 0, function () {
+    it('testReleaseInterfaceParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5363,7 +5363,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5375,7 +5375,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr009', 0, function () {
+    it('testReleaseInterfaceParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5389,7 +5389,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5401,7 +5401,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr010', 0, function () {
+    it('testReleaseInterfaceParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5415,7 +5415,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5427,7 +5427,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr011', 0, function () {
+    it('testReleaseInterfaceParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5442,7 +5442,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5454,7 +5454,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr012', 0, function () {
+    it('testReleaseInterfaceParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5469,7 +5469,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5481,7 +5481,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr013', 0, function () {
+    it('testReleaseInterfaceParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5496,7 +5496,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5508,7 +5508,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr014', 0, function () {
+    it('testReleaseInterfaceParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5523,7 +5523,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5535,7 +5535,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr015', 0, function () {
+    it('testReleaseInterfaceParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5550,7 +5550,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5562,7 +5562,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr016', 0, function () {
+    it('testReleaseInterfaceParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5577,7 +5577,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5589,7 +5589,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr017', 0, function () {
+    it('testReleaseInterfaceParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5605,7 +5605,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5617,7 +5617,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr018', 0, function () {
+    it('testReleaseInterfaceParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5633,7 +5633,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5645,7 +5645,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr019', 0, function () {
+    it('testReleaseInterfaceParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5661,7 +5661,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5673,7 +5673,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr020', 0, function () {
+    it('testReleaseInterfaceParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5689,7 +5689,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5701,7 +5701,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr021', 0, function () {
+    it('testReleaseInterfaceParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5717,7 +5717,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5729,7 +5729,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr022', 0, function () {
+    it('testReleaseInterfaceParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5745,7 +5745,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5757,7 +5757,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr023', 0, function () {
+    it('testReleaseInterfaceParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5773,7 +5773,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5785,7 +5785,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr024', 0, function () {
+    it('testReleaseInterfaceParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5801,7 +5801,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5813,7 +5813,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr025', 0, function () {
+    it('testReleaseInterfaceParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5829,7 +5829,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5841,7 +5841,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr026', 0, function () {
+    it('testReleaseInterfaceParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5857,7 +5857,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5869,7 +5869,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr027', 0, function () {
+    it('testReleaseInterfaceParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5885,7 +5885,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5897,7 +5897,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr028', 0, function () {
+    it('testReleaseInterfaceParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5913,7 +5913,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5925,7 +5925,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr029', 0, function () {
+    it('testReleaseInterfaceParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5941,7 +5941,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5953,7 +5953,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr030', 0, function () {
+    it('testReleaseInterfaceParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5969,7 +5969,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -5981,7 +5981,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr031', 0, function () {
+    it('testReleaseInterfaceParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -5997,7 +5997,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6009,7 +6009,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr032', 0, function () {
+    it('testReleaseInterfaceParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6025,7 +6025,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6037,7 +6037,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr033', 0, function () {
+    it('testReleaseInterfaceParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6053,7 +6053,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6065,7 +6065,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr034', 0, function () {
+    it('testReleaseInterfaceParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6081,7 +6081,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6093,7 +6093,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr035', 0, function () {
+    it('testReleaseInterfaceParamErr035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr035 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6109,7 +6109,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr035 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6121,7 +6121,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr036', 0, function () {
+    it('testReleaseInterfaceParamErr036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr036 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6137,7 +6137,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr036 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6149,7 +6149,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamErr037', 0, function () {
+    it('testReleaseInterfaceParamErr037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamErr037 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6165,7 +6165,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testReleaseInterfaceParamErr037 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6177,7 +6177,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr001', 0, function () {
+    it('testBulkTransferParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6189,7 +6189,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6201,7 +6201,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr002', 0, function () {
+    it('testBulkTransferParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6213,7 +6213,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6225,7 +6225,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr003', 0, function () {
+    it('testBulkTransferParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6237,7 +6237,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6249,7 +6249,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr004', 0, function () {
+    it('testBulkTransferParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6263,7 +6263,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6275,7 +6275,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr005', 0, function () {
+    it('testBulkTransferParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6289,7 +6289,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6301,7 +6301,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr006', 0, function () {
+    it('testBulkTransferParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6315,7 +6315,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6327,7 +6327,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr007', 0, function () {
+    it('testBulkTransferParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6342,7 +6342,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6354,7 +6354,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr008', 0, function () {
+    it('testBulkTransferParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6369,7 +6369,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6381,7 +6381,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr009', 0, function () {
+    it('testBulkTransferParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6396,7 +6396,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6408,7 +6408,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr010', 0, function () {
+    it('testBulkTransferParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6423,7 +6423,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6435,7 +6435,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr011', 0, function () {
+    it('testBulkTransferParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6450,7 +6450,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6462,7 +6462,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr012', 0, function () {
+    it('testBulkTransferParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6477,7 +6477,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6489,7 +6489,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr013', 0, function () {
+    it('testBulkTransferParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6505,7 +6505,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6517,7 +6517,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr014', 0, function () {
+    it('testBulkTransferParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6533,7 +6533,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6545,7 +6545,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr015', 0, function () {
+    it('testBulkTransferParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6561,7 +6561,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6573,7 +6573,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr016', 0, function () {
+    it('testBulkTransferParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6589,7 +6589,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6601,7 +6601,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr017', 0, function () {
+    it('testBulkTransferParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6617,7 +6617,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6629,7 +6629,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr018', 0, function () {
+    it('testBulkTransferParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6645,7 +6645,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6657,7 +6657,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr019', 0, function () {
+    it('testBulkTransferParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6674,7 +6674,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6686,7 +6686,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr020', 0, function () {
+    it('testBulkTransferParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6703,7 +6703,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6715,7 +6715,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr021', 0, function () {
+    it('testBulkTransferParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6732,7 +6732,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6744,7 +6744,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr022', 0, function () {
+    it('testBulkTransferParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6761,7 +6761,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6773,7 +6773,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr023', 0, function () {
+    it('testBulkTransferParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6790,7 +6790,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6802,7 +6802,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr024', 0, function () {
+    it('testBulkTransferParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6819,7 +6819,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6831,7 +6831,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr025', 0, function () {
+    it('testBulkTransferParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6846,7 +6846,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6858,7 +6858,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr026', 0, function () {
+    it('testBulkTransferParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6875,7 +6875,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6887,7 +6887,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr027', 0, function () {
+    it('testBulkTransferParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6904,7 +6904,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6916,7 +6916,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr028', 0, function () {
+    it('testBulkTransferParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6933,7 +6933,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6945,7 +6945,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr029', 0, function () {
+    it('testBulkTransferParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6962,7 +6962,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -6974,7 +6974,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr030', 0, function () {
+    it('testBulkTransferParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -6991,7 +6991,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7003,7 +7003,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr031', 0, function () {
+    it('testBulkTransferParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7020,7 +7020,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7032,7 +7032,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr032', 0, function () {
+    it('testBulkTransferParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7049,7 +7049,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7061,7 +7061,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr033', 0, function () {
+    it('testBulkTransferParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7078,7 +7078,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7090,7 +7090,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr034', 0, function () {
+    it('testBulkTransferParamErr034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr034 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7107,7 +7107,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr034 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7119,7 +7119,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr035', 0, function () {
+    it('testBulkTransferParamErr035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr035 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7136,7 +7136,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr035 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7148,7 +7148,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr036', 0, function () {
+    it('testBulkTransferParamErr036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr036 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7165,7 +7165,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr036 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7177,7 +7177,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr037', 0, function () {
+    it('testBulkTransferParamErr037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr037 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7194,7 +7194,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr037 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7206,7 +7206,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr038', 0, function () {
+    it('testBulkTransferParamErr038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr038 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7223,7 +7223,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr038 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7235,7 +7235,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr039', 0, function () {
+    it('testBulkTransferParamErr039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr039 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7252,7 +7252,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr039 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7264,7 +7264,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr040', 0, function () {
+    it('testBulkTransferParamErr040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr040 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7281,7 +7281,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr040 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7293,7 +7293,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr041', 0, function () {
+    it('testBulkTransferParamErr041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr041 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7310,7 +7310,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr041 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7322,7 +7322,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferParamErr042', 0, function () {
+    it('testBulkTransferParamErr042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testBulkTransferParamErr042 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7339,7 +7339,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testBulkTransferParamErr042 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7351,7 +7351,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr001', 0, function () {
+    it('testUsbControlTransferParamErr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7363,7 +7363,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr001 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7375,7 +7375,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr002', 0, function () {
+    it('testUsbControlTransferParamErr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7387,7 +7387,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr002 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7399,7 +7399,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr003', 0, function () {
+    it('testUsbControlTransferParamErr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7411,7 +7411,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr003 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7423,7 +7423,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr004', 0, function () {
+    it('testUsbControlTransferParamErr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7436,7 +7436,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr004 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7448,7 +7448,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr005', 0, function () {
+    it('testUsbControlTransferParamErr005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7461,7 +7461,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr005 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7473,7 +7473,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr006', 0, function () {
+    it('testUsbControlTransferParamErr006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7486,7 +7486,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr006 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7498,7 +7498,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr007', 0, function () {
+    it('testUsbControlTransferParamErr007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7513,7 +7513,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr007 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7525,7 +7525,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr008', 0, function () {
+    it('testUsbControlTransferParamErr008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7540,7 +7540,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr008 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7552,7 +7552,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr009', 0, function () {
+    it('testUsbControlTransferParamErr009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7567,7 +7567,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr009 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7579,7 +7579,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr010', 0, function () {
+    it('testUsbControlTransferParamErr010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7594,7 +7594,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr010 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7606,7 +7606,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr011', 0, function () {
+    it('testUsbControlTransferParamErr011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7621,7 +7621,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr011 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7633,7 +7633,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr012', 0, function () {
+    it('testUsbControlTransferParamErr012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7648,7 +7648,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr012 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7660,7 +7660,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr013', 0, function () {
+    it('testUsbControlTransferParamErr013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7675,7 +7675,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr013 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7687,7 +7687,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr014', 0, function () {
+    it('testUsbControlTransferParamErr014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7702,7 +7702,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr014 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7714,7 +7714,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr015', 0, function () {
+    it('testUsbControlTransferParamErr015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7729,7 +7729,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr015 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7741,7 +7741,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr016', 0, function () {
+    it('testUsbControlTransferParamErr016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7750,7 +7750,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_NULL, 0x06, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULL, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7758,7 +7758,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr016 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7770,7 +7770,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr017', 0, function () {
+    it('testUsbControlTransferParamErr017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7779,7 +7779,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_UNDEFINED, 0x06, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_UNDEFINED, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7787,7 +7787,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr017 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7799,7 +7799,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr018', 0, function () {
+    it('testUsbControlTransferParamErr018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7808,7 +7808,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_NULLSTRING, 0x06, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULLSTRING, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7816,7 +7816,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr018 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7828,7 +7828,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr019', 0, function () {
+    it('testUsbControlTransferParamErr019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7837,7 +7837,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULL, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULL, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7845,7 +7845,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr019 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7857,7 +7857,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr020', 0, function () {
+    it('testUsbControlTransferParamErr020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7866,7 +7866,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_UNDEFINED, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_UNDEFINED, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7874,7 +7874,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr020 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7886,7 +7886,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr021', 0, function () {
+    it('testUsbControlTransferParamErr021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7895,7 +7895,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULLSTRING, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULLSTRING, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7903,7 +7903,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr021 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7915,7 +7915,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr022', 0, function () {
+    it('testUsbControlTransferParamErr022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7924,7 +7924,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULL, 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULL, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7932,7 +7932,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr022 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7944,7 +7944,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr023', 0, function () {
+    it('testUsbControlTransferParamErr023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7953,7 +7953,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_UNDEFINED, 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_UNDEFINED, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7961,7 +7961,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr023 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -7973,7 +7973,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr024', 0, function () {
+    it('testUsbControlTransferParamErr024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -7982,7 +7982,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULLSTRING, 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULLSTRING, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7990,7 +7990,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr024 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8002,7 +8002,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr025', 0, function () {
+    it('testUsbControlTransferParamErr025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8019,7 +8019,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr025 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8031,7 +8031,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr026', 0, function () {
+    it('testUsbControlTransferParamErr026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8048,7 +8048,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr026 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8060,7 +8060,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr027', 0, function () {
+    it('testUsbControlTransferParamErr027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8077,7 +8077,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr027 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8089,7 +8089,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr028', 0, function () {
+    it('testUsbControlTransferParamErr028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8098,7 +8098,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULL);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_NULL);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8106,7 +8106,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr028 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8118,7 +8118,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr029', 0, function () {
+    it('testUsbControlTransferParamErr029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8127,7 +8127,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_UNDEFINED);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_UNDEFINED);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8135,7 +8135,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr029 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8147,7 +8147,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr030', 0, function () {
+    it('testUsbControlTransferParamErr030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8156,7 +8156,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULLSTRING);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_NULLSTRING);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8164,7 +8164,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr030 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8176,7 +8176,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr031', 0, function () {
+    it('testUsbControlTransferParamErr031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8185,7 +8185,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_NULL;
@@ -8194,7 +8194,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr031 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8206,7 +8206,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr032', 0, function () {
+    it('testUsbControlTransferParamErr032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8215,7 +8215,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_UNDEFINED;
@@ -8224,7 +8224,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr032 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 
@@ -8236,7 +8236,7 @@ describe('UsbApiParamErrJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbControlTransferParamErr033', 0, function () {
+    it('testUsbControlTransferParamErr033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testUsbControlTransferParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -8245,7 +8245,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_NULLSTRING;
@@ -8254,7 +8254,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             expect(ret !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testUsbControlTransferParamErr033 catch err code: ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
     })
 

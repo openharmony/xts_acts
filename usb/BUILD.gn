@@ -17,7 +17,7 @@ group("usb") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "usb_normal:ActsUsbNormalAPPJSApiTest",
+      "usb_standard_ets:ActsUsbETSApiTest",
       "usb_standard:ActsUsbJSApiTest",
     ]
   }
