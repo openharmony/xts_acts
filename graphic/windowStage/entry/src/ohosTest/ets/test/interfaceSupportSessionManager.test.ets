@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -40,7 +40,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SubWindow_True', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindow_True', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testKeepKeyboardOnFocus_SubWindow_True';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -75,7 +75,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SubWindow_False', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindow_False', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testKeepKeyboardOnFocus_SubWindow_False';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -110,7 +110,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_MainWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testKeepKeyboardOnFocus_MainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -138,7 +138,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_MinLimits', 0, async () => {
+    it('testResize_MinLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_MinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -190,7 +190,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_MaxLimits', 0, async () => {
+    it('testResize_MaxLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -242,7 +242,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_MaxAndMinLimits', 0, async () => {
+    it('testResize_MaxAndMinLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_MaxAndMinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -294,7 +294,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_Over_MaxLimits', 0, async () => {
+    it('testResize_Over_MaxLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_Over_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -357,7 +357,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_setAndGet_MinLimits', 0, async () => {
+    it('testResize_setAndGet_MinLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_setAndGet_MinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -428,7 +428,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_setAndGet_MaxLimits', 0, async () => {
+    it('testResize_setAndGet_MaxLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_setAndGet_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -498,7 +498,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_setAndGet_MaxAndMinLimits', 0, async () => {
+    it('testResize_setAndGet_MaxAndMinLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_setAndGet_MaxAndMinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -568,7 +568,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_setAndGet_Over_MaxLimits', 0, async () => {
+    it('testResize_setAndGet_Over_MaxLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_setAndGet_Over_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -649,7 +649,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_SubWindow_LimitMin_Callback', 0, async (done: Function) => {
+    it('testResize_SubWindow_LimitMin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_SubWindow_LimitMin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -722,7 +722,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_SubWindow_LimitMax_Callback', 0, async (done: Function) => {
+    it('testResize_SubWindow_LimitMax_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_SubWindow_LimitMax_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -795,7 +795,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_SubWindow_Over_MaxLimits', 0, async ()=> {
+    it('testResize_SubWindow_Over_MaxLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testResize_SubWindow_Over_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -858,7 +858,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_SubWindow_LessThan_MinLimits', 0, async ()=> {
+    it('testResize_SubWindow_LessThan_MinLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testResize_SubWindow_LessThan_MinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -920,7 +920,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetAndSetWindowLimits', 0, async ()=> {
+    it('testGetAndSetWindowLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testGetAndSetWindowLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

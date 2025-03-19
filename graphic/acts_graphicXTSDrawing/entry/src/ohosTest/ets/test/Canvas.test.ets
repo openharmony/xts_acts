@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
@@ -56,7 +56,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasConstructorNormal', DEFAULT, () => {
+    it('testCanvasConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasConstructorNormal';
       try {
         new drawing.Canvas(pixel);
@@ -75,7 +75,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasConstructorMultipleCalls', DEFAULT, () => {
+    it('testCanvasConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasConstructorMultipleCalls';
       try {
         for (let index = 0; index < 20; index++) {
@@ -97,7 +97,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawRectNormal', DEFAULT, () => {
+    it('testCanvasDrawRectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawRectNormal';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -147,7 +147,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawRectNull', DEFAULT, () => {
+    it('testCanvasDrawRectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawRectNull';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -316,7 +316,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawRectMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawRectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawRectMultipleCalls';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -347,7 +347,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawCircleNormal', DEFAULT, () => {
+    it('testCanvasDrawCircleNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawCircleNormal';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -375,7 +375,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawCircleNull', DEFAULT, () => {
+    it('testCanvasDrawCircleNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawCircleNull';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -473,7 +473,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawCircleMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawCircleMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawCircleMultipleCalls';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -503,7 +503,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawImageNormal', DEFAULT, () => {
+    it('testCanvasDrawImageNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawImageNormal';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -527,7 +527,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawImageNull', DEFAULT, () => {
+    it('testCanvasDrawImageNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawImageNull';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -596,7 +596,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawImageMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawImageMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawImageMultipleCalls';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -618,7 +618,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawColorNormal', DEFAULT, () => {
+    it('testCanvasDrawColorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawColorNormal';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -669,7 +669,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawColorNull', DEFAULT, () => {
+    it('testCanvasDrawColorNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawColorNull';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -703,7 +703,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawColorMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawColorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawColorMultipleCalls';
       try {
         let canvas = new drawing.Canvas(pixel);
@@ -727,7 +727,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawColorBoundaryValue', DEFAULT, () => {
+    it('testCanvasDrawColorBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawColorBoundaryValue';
       let canvas = new drawing.Canvas(pixel);
       try {
@@ -797,7 +797,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawPixelMapMeshNormal', DEFAULT, () => {
+    it('testCanvasDrawPixelMapMeshNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawPixelMapMeshNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -825,7 +825,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPixelMapMeshNull', DEFAULT, () => {
+    it('testCanvasDrawPixelMapMeshNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPixelMapMeshNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -978,7 +978,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPixelMapMeshMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawPixelMapMeshMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPixelMapMeshMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1003,7 +1003,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawPointNormal', DEFAULT, () => {
+    it('testCanvasDrawPointNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawPointNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1030,7 +1030,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPointNull', DEFAULT, () => {
+    it('testCanvasDrawPointNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPointNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -1091,7 +1091,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPointMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawPointMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPointMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1119,7 +1119,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawPathNormal', DEFAULT, () => {
+    it('testCanvasDrawPathNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawPathNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1148,7 +1148,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPathNull', DEFAULT, () => {
+    it('testCanvasDrawPathNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPathNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -1185,7 +1185,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawPathMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawPathMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawPathMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1217,7 +1217,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawLineNormal', DEFAULT, () => {
+    it('testCanvasDrawLineNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawLineNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -1245,7 +1245,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawLineNull', DEFAULT, () => {
+    it('testCanvasDrawLineNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawLineNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -1354,7 +1354,7 @@ export default function drawingTsCanvasTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawLineMultipleCalls', DEFAULT, () => {
+    it('testCanvasDrawLineMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawLineMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { BusinessError, Callback } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -69,7 +69,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_SubWindow_Promise', 0, async () => {
+    it('testGetLastWindow_SubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -118,7 +118,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_SubWindow_Callback', 0, async (done: Function) => {
+    it('testGetLastWindow_SubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetLastWindow_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -179,7 +179,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_TwoSubWindow_Promise', 0, async () => {
+    it('testGetLastWindow_TwoSubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_TwoSubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -253,7 +253,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_TwoSubWindow_Callback', 0, async (done: Function) => {
+    it('testGetLastWindow_TwoSubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetLastWindow_TwoSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -344,7 +344,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_DialogWindow_Promise', 0, async () => {
+    it('testGetLastWindow_DialogWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -398,7 +398,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_DialogWindow_Callback', 0, async (done: Function) => {
+    it('testGetLastWindow_DialogWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetLastWindow_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

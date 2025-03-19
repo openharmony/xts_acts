@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount, getRandomNumber } from './utils';
 
@@ -48,7 +48,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRoundRectConstructorNormal', DEFAULT, () => {
+    it('testRoundRectConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRoundRectConstructorNormal';
 
       try {
@@ -140,7 +140,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectConstructorNull', DEFAULT, () => {
+    it('testRoundRectConstructorNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRoundRectConstructorNull';
     });
 
@@ -152,7 +152,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectConstructorMultipleCalls', DEFAULT, () => {
+    it('testRoundRectConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRoundRectConstructorMultipleCalls';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
@@ -177,7 +177,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRoundRectSetAndGetCornerNormal', DEFAULT, () => {
+    it('testRoundRectSetAndGetCornerNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRoundRectSetAndGetCornerNormal';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -312,7 +312,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectSetAndGetCornerNull', DEFAULT, () => {
+    it('testRoundRectSetAndGetCornerNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRoundRectSetAndGetCornerNull';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -391,7 +391,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectSetAndGetCornerMultipleCalls', DEFAULT, () => {
+    it('testRoundRectSetAndGetCornerMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRoundRectSetAndGetCornerMultipleCalls';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -440,7 +440,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectSetAndGetCornerAbnormal', DEFAULT, () => {
+    it('testRoundRectSetAndGetCornerAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRoundRectSetAndGetCornerAbnormal';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -472,7 +472,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRoundRectOffsetNormal', DEFAULT, () => {
+    it('testRoundRectOffsetNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRoundRectOffsetNormal';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -519,7 +519,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectOffsetNull', DEFAULT, () => {
+    it('testRoundRectOffsetNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRoundRectOffsetNull';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0
@@ -566,7 +566,7 @@ export default function roundRectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectOffsetMultipleCalls', DEFAULT, () => {
+    it('testRoundRectOffsetMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRoundRectOffsetMultipleCalls';
       const roundRect_ = new drawing.RoundRect({
         left : 0, top : 0, right : 0, bottom : 0

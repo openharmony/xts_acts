@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll , afterEach , beforeAll , beforeEach , describe , expect , it } from '@ohos/hypium';
+import { afterAll , afterEach , beforeAll , beforeEach , describe , expect , it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 import FaultLogger from '@ohos.faultLogger';
@@ -50,7 +50,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontTextToGlyphsNormal' , DEFAULT , () => {
+    it('testFontTextToGlyphsNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testFontTextToGlyphsNormal';
       let font = new drawing.Font();
 
@@ -89,7 +89,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontTextToGlyphsNull' , DEFAULT , () => {
+    it('testFontTextToGlyphsNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testFontTextToGlyphsNull';
       let font = new drawing.Font();
 
@@ -134,7 +134,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontTextToGlyphsMultipleCalls' , DEFAULT , () => {
+    it('testFontTextToGlyphsMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontTextToGlyphsMultipleCalls';
       let font = new drawing.Font();
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -163,7 +163,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontTextToGlyphsAbnormal' , DEFAULT , () => {
+    it('testFontTextToGlyphsAbnormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontTextToGlyphsAbnormal';
       let font = new drawing.Font();
 
@@ -200,7 +200,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontGetWidthsNormal' , DEFAULT , () => {
+    it('testFontGetWidthsNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testFontGetWidthsNormal';
       let font = new drawing.Font();
 
@@ -232,7 +232,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontGetWidthsNull' , DEFAULT , () => {
+    it('testFontGetWidthsNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontGetWidthsNull';
       let font = new drawing.Font();
 
@@ -261,7 +261,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontGetWidthsMultipleCalls' , DEFAULT , () => {
+    it('testFontGetWidthsMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontGetWidthsMultipleCalls';
       let font = new drawing.Font();
 
@@ -284,7 +284,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontGetBoundsNormal' , DEFAULT , () => {
+    it('testFontGetBoundsNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testFontGetWidthsNormal';
       let font = new drawing.Font();
 
@@ -331,7 +331,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontGetBoundsNull' , DEFAULT , () => {
+    it('testFontGetBoundsNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontGetBoundsNull';
       let font = new drawing.Font();
 
@@ -362,7 +362,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontGetBoundsMultipleCalls' , DEFAULT , () => {
+    it('testFontGetBoundsMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontGetBoundsMultipleCalls';
       let font = new drawing.Font();
 
@@ -386,7 +386,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontCreatePathForGlyphNormal' , DEFAULT , () => {
+    it('testFontCreatePathForGlyphNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testFontCreatePathForGlyphNormal';
       let font = new drawing.Font();
 
@@ -444,7 +444,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontCreatePathForGlyphNull' , DEFAULT , () => {
+    it('testFontCreatePathForGlyphNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontCreatePathForGlyphNull';
       let font = new drawing.Font();
 
@@ -475,7 +475,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontCreatePathForGlyphMultipleCalls' , DEFAULT , () => {
+    it('testFontCreatePathForGlyphMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontCreatePathForGlyphMultipleCalls';
       let font = new drawing.Font();
 
@@ -498,7 +498,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontSetAndIsThemeFontFollowedMultipleCalls' , DEFAULT , () => {
+    it('testFontSetAndIsThemeFontFollowedMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontSetAndIsThemeFontFollowedMultipleCalls';
       let font = new drawing.Font();
       let followed: boolean = false;
@@ -518,7 +518,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontSetAndIsThemeFontFollowedNormal' , DEFAULT , () => {
+    it('testFontSetAndIsThemeFontFollowedNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontSetAndIsThemeFontFollowedNormal';
       let font = new drawing.Font();
       let initialFollowed: boolean = font.isThemeFontFollowed()
@@ -541,7 +541,7 @@ export default function fontPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontSetAndIsThemeFontFollowedNull' , DEFAULT , () => {
+    it('testFontSetAndIsThemeFontFollowedNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testFontSetAndIsThemeFontFollowedNull';
       let font = new drawing.Font();
       try {
