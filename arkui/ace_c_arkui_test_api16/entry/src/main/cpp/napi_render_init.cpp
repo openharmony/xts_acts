@@ -16,6 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "postFrame/post_frame_callback_test.h"
+#include "swiper/swiper_onselect_test.h"
 #include "swiper/swiper_test.h"
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
@@ -38,6 +39,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testPostFrameCallback", nullptr, PostFrameCallbackTest::testPostFrameCallback001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"swiperOnSelectTest", nullptr, SwiperOnSelectTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
          nullptr, nullptr, nullptr, napi_default, nullptr},

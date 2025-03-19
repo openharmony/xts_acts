@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
+import swiperOnSelectTest from "./swiper/SwiperOnSelectTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
@@ -26,6 +27,7 @@ import NodeUtilMoveTest from "./move/NodeUtilMoveTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
+  swiperOnSelectTest();
   swiperTest();
   textImmutablfFontWeight();
   TextAreaLetterSpacing();
