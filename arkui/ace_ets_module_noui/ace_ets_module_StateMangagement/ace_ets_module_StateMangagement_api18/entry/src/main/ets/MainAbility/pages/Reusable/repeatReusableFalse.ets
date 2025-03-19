@@ -56,7 +56,7 @@ struct RepeatVirtualScroll {
         .onClick(() => {
           this.scroller.scrollToIndex(this.simpleList.length - 1); // Slide to the specified index
         })
-      List({ space: 10,scroller: this.scroller  }) {
+      List({ scroller: this.scroller  }) {
         Repeat<RepeatreufalseClazz>(this.simpleList)
           .each((obj: RepeatItem<RepeatreufalseClazz>) => {
             ListItem() {
