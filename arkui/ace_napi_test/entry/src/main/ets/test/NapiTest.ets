@@ -11827,7 +11827,7 @@ export default function napiApiTest() {
     it('testNapiRemoveWrapSendableTest0001', 0, async (done: Function) => {
       console.info('testNapiRemoveWrapSendableTest0001 START');
       try {
-        let value = napitest.NapiRemoveWrapSendableTest();
+        let value = napitest.NapiRemoveWrapSendableTest1();
         console.info('NapiRemoveWrapSendable value is: ' + value);
         expect(value).assertEqual(true);
       } catch (err) {
@@ -11869,11 +11869,11 @@ export default function napiApiTest() {
     it('testNapiWrapSendableWithSizeTest0001', 0, async (done: Function) => {
       console.info('testNapiWrapSendableWithSizeTest0001 START');
       try {
-        let value = napitest.NapiWrapSendableWithSizeTest();
-        console.info('NapiWrapSendableWithSizeTest value is: ' + value);
+        let value = napitest.NapiWrapSendableWithSizeTest1();
+        console.info('NapiWrapSendableWithSizeTest1 value is: ' + value);
         expect(value).assertEqual(true);
       } catch (err) {
-        console.error('NapiWrapSendableWithSizeTest err msg' + err.message);
+        console.error('NapiWrapSendableWithSizeTest1 err msg' + err.message);
         expect().assertFail();
       }
       done();
@@ -11890,11 +11890,11 @@ export default function napiApiTest() {
     it('testNapiWrapSendableTest0001', 0, async (done: Function) => {
       console.info('testNapiWrapSendableTest0001 START');
       try {
-        let value = napitest.NapiWrapSendableTest();
-        console.info('NapiWrapSendableTest value is: ' + value);
+        let value = napitest.NapiWrapSendableTest1();
+        console.info('NapiWrapSendableTest1 value is: ' + value);
         expect(value).assertEqual(true);
       } catch (err) {
-        console.error('NapiWrapSendableTest err msg' + err.message);
+        console.error('NapiWrapSendableTest1 err msg' + err.message);
         expect().assertFail();
       }
       done();

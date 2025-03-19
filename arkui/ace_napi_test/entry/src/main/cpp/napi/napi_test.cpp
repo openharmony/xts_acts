@@ -13432,7 +13432,7 @@ static napi_value NapiTypeTagObjectTest(napi_env env, napi_callback_info info)
 }
 
 //napi_remove_wrap_sendable
-static napi_value NapiRemoveWrapSendableTest(napi_env env, napi_callback_info info)
+static napi_value NapiRemoveWrapSendableTest1(napi_env env, napi_callback_info info)
 {
     napi_status status;
     napi_value args[1];
@@ -13504,7 +13504,7 @@ static napi_value NapiUwrapSendableTest(napi_env env, napi_callback_info info)
     return rst;
 }
 //napi_wrap_sendable_with_size
-static napi_value NapiWrapSendableWithSizeTest(napi_env env, napi_callback_info info)
+static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info info)
 {
     napi_status status;
     napi_value args[1];
@@ -13581,7 +13581,7 @@ static napi_value NapiWrapSendableWithSizeTest(napi_env env, napi_callback_info 
 }
 
 //napi_wrap_sendable
-static napi_value NapiWrapSendableTest(napi_env env, napi_callback_info info)
+static napi_value NapiWrapSendableTest1(napi_env env, napi_callback_info info)
 {
     napi_status status;
     napi_value args[1];
@@ -17639,10 +17639,10 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiDeleteElementTest05", NapiDeleteElementTest05),
         DECLARE_NAPI_FUNCTION("NapiDefinePropertiesTest", NapiDefinePropertiesTest),
         DECLARE_NAPI_FUNCTION("NapiTypeTagObjectTest", NapiTypeTagObjectTest),
-        DECLARE_NAPI_FUNCTION("NapiRemoveWrapSendableTest", NapiRemoveWrapSendableTest),
+        DECLARE_NAPI_FUNCTION("NapiRemoveWrapSendableTest1", NapiRemoveWrapSendableTest1),
         DECLARE_NAPI_FUNCTION("NapiUwrapSendableTest", NapiUwrapSendableTest),
-        DECLARE_NAPI_FUNCTION("NapiWrapSendableWithSizeTest", NapiWrapSendableWithSizeTest),
-        DECLARE_NAPI_FUNCTION("NapiWrapSendableTest", NapiWrapSendableTest),
+        DECLARE_NAPI_FUNCTION("NapiWrapSendableWithSizeTest1", NapiWrapSendableWithSizeTest1),
+        DECLARE_NAPI_FUNCTION("NapiWrapSendableTest1", NapiWrapSendableTest1),
         DECLARE_NAPI_FUNCTION("NapiCreateSendableTypeArrayTest", NapiCreateSendableTypeArrayTest),
         DECLARE_NAPI_FUNCTION("NapiCreateSendableArrayBufferTest", NapiCreateSendableArrayBufferTest),
         DECLARE_NAPI_FUNCTION("NapiCreateSendableArrayWithLengthTest", NapiCreateSendableArrayWithLengthTest),
