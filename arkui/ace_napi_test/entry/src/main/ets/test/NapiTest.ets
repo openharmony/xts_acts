@@ -10676,5 +10676,265 @@ export default function napiApiTest() {
       }
       done();
     });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATESTRINGLATIN1TEST_0100
+     * @tc.name      : testNapiCreateStringLatin1Test0001
+     * @tc.desc      : Testing NapiCreateStringLatin1 NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateStringLatin1Test0001', 0, async (done: Function) => {
+      console.info('testNapiCreateStringLatin1Test0001 START');
+      try {
+        let value = napitest.NapiCreateStringLatin1Test();
+        console.info('NapiCreateStringLatin1Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateStringLatin1Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATESTRINGUTF8TEST_0100
+     * @tc.name      : testNapiCreateStringUtf8Test0001
+     * @tc.desc      : Testing NapiCreateStringUtf8 NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateStringUtf8Test0001', 0, async (done: Function) => {
+      console.info('testNapiCreateStringUtf8Test0001 START');
+      try {
+        let value = napitest.NapiCreateStringUtf8Test();
+        console.info('NapiCreateStringUtf8Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateStringUtf8Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATESTRINGUTF16TEST_0100
+     * @tc.name      : testNapiCreateStringUtf16Test0001
+     * @tc.desc      : Testing NapiCreateStringUtf16 NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateStringUtf16Test0001', 0, async (done: Function) => {
+      console.info('testNapiCreateStringUtf16Test0001 START');
+      try {
+        let value = napitest.NapiCreateStringUtf16Test();
+        console.info('NapiCreateStringUtf16Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateStringUtf16Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETARRAYLENGTHTEST_0100
+     * @tc.name      : testNapiGetArrayLengthTest0001
+     * @tc.desc      : Testing NapiGetArrayLength NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetArrayLengthTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetArrayLengthTest0001 START');
+      try {
+        let value = napitest.NapiGetArrayLengthTest();
+        console.info('NapiGetArrayLengthTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetArrayLengthTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETARRAYBUFFERINFOTEST_0100
+     * @tc.name      : testNapiGetArrayBufferInfoTest0001
+     * @tc.desc      : Testing NapiGetArrayBufferInfo NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetArrayBufferInfoTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetArrayBufferInfoTest0001 START');
+      try {
+        let value = napitest.NapiGetArrayBufferInfoTest();
+        console.info('NapiGetArrayBufferInfoTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetArrayBufferInfoTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETPROTOTYPETEST_0100
+     * @tc.name      : testNapiGetPrototypeTest0001
+     * @tc.desc      : Testing NapiGetPrototype NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetPrototypeTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetPrototypeTest0001 START');
+      try {
+        let value = napitest.NapiGetPrototypeTest();
+        console.info('NapiGetPrototypeTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetPrototypeTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETYPEDARRAYTEST_0100
+     * @tc.name      : testNapiGetTypedArrayTest0001
+     * @tc.desc      : Testing NapiGetTypedArray NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetTypedArrayTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetTypedArrayTest0001 START');
+      try {
+        let value = napitest.NapiGetTypedArrayTest();
+        console.info('NapiGetTypedArrayTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetTypedArrayTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETDATAVIEWINFOTEST_0100
+     * @tc.name      : testNapiGetDataViewInfoTest0001
+     * @tc.desc      : Testing NapiGetDataViewInfo NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetDataViewInfoTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetDataViewInfoTest0001 START');
+      try {
+        let value = napitest.NapiGetDataViewInfoTest();
+        console.info('NapiGetDataViewInfoTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetDataViewInfoTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEBOOLTEST_0100
+     * @tc.name      : testNapiGetValueBoolTest0001
+     * @tc.desc      : Testing NapiGetValueBool NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueBoolTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueBoolTest0001 START');
+      try {
+        let value = napitest.NapiGetValueBoolTest();
+        console.info('NapiGetValueBoolTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueBoolTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEDOUBLETEST_0100
+     * @tc.name      : testNapiGetValueDoubleTest0001
+     * @tc.desc      : Testing NapiGetValueDouble NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueDoubleTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueDoubleTest0001 START');
+      try {
+        let value = napitest.NapiGetValueDoubleTest();
+        console.info('NapiGetValueDoubleTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueDoubleTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEEXTERNALTEST_0100
+     * @tc.name      : testNapiGetValueExternalTest0001
+     * @tc.desc      : Testing NapiGetValueExternal NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueExternalTest0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueExternalTest0001 START');
+      try {
+        let value = napitest.NapiGetValueExternalTest();
+        console.info('NapiGetValueExternalTest value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueExternalTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEINT32TEST_0100
+     * @tc.name      : testNapiGetValueInt32Test0001
+     * @tc.desc      : Testing NapiGetValueInt32 NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueInt32Test0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueInt32Test0001 START');
+      try {
+        let value = napitest.NapiGetValueInt32Test();
+        console.info('NapiGetValueInt32Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueInt32Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEINT64TEST_0100
+     * @tc.name      : testNapiGetValueInt64Test0001
+     * @tc.desc      : Testing NapiGetValueInt64 NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiGetValueInt64Test0001', 0, async (done: Function) => {
+      console.info('testNapiGetValueInt64Test0001 START');
+      try {
+        let value = napitest.NapiGetValueInt64Test();
+        console.info('NapiGetValueInt64Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueInt64Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
   })
 }

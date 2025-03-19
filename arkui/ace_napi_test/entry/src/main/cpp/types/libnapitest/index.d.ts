@@ -579,5 +579,18 @@ export const NapiCreateInt32Test: () => boolean;
 export const NapiCreateUint32Test: () => boolean;
 export const NapiCreateInt64Test: () => boolean;
 export const NapiCreateDoubleTest: () => boolean;
+export const NapiCreateStringLatin1Test: () => boolean;
+export const NapiCreateStringUtf8Test: () => boolean;
+export const NapiCreateStringUtf16Test: () => boolean;
+export const NapiGetArrayLengthTest: () => boolean;
+export const NapiGetArrayBufferInfoTest: () => boolean;
+export const NapiGetPrototypeTest: () => boolean;
+export const NapiGetTypedArrayTest: () => boolean;
+export const NapiGetDataViewInfoTest: () => boolean;
+export const NapiGetValueBoolTest: () => boolean;
+export const NapiGetValueDoubleTest: () => boolean;
+export const NapiGetValueExternalTest: () => boolean;
+export const NapiGetValueInt32Test: () => boolean;
+export const NapiGetValueInt64Test: () => boolean;
 
 
