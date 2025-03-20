@@ -115,6 +115,7 @@ export default function VectorStoreTest() {
                 } catch(err){
                     console.info(TAGTEST + "fail getRdbStore, code=" + err.code + err.message);
                     expect().assertFail();
+                    done();
                 }
             }
             console.info(TAGTEST + " ************* End*************");
