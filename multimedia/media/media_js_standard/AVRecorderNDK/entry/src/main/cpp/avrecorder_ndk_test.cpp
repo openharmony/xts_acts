@@ -289,7 +289,7 @@ static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVR
             break;
     }
     
-    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig profile.audioBitrate :%{public}d:", config->profile.audioBitrate);
+    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig profile.audioBitrate :%{public}d:", config.profile.audioBitrate);
     return true;
 }
 
