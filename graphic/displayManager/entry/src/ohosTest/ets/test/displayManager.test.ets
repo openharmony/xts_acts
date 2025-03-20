@@ -950,14 +950,14 @@ export default function displayTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_CREATE_VIRTUALSCREEN_ERRORCODE_0100
-     * @tc.name      : test_CreateVirtualScreen_ErrorCode01
-     * @tc.desc      : test_CreateVirtualScreen_ErrorCode01
+     * @tc.name      : test_CreateVirtualScreen_ErrorCode1400001
+     * @tc.desc      : test_CreateVirtualScreen_ErrorCode1400001 when got invalid size
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_CreateVirtualScreen_ErrorCode01', 0, async (done: Function) => {
-      let caseName: string = 'test_CreateVirtualScreen_ErrorCode01 ';
+    it('test_CreateVirtualScreen_ErrorCode1400001', 0, async (done: Function) => {
+      let caseName: string = 'test_CreateVirtualScreen_ErrorCode1400001 ';
       class VirtualScreenOptions {
         name: string = '';
         width: number = 0;
@@ -992,14 +992,14 @@ export default function displayTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_CREATE_VIRTUALSCREEN_ERRORCODE_0200
-     * @tc.name      : test_CreateVirtualScreen_ErrorCode02
-     * @tc.desc      : test_CreateVirtualScreen_ErrorCode02
+     * @tc.name      : test_CreateVirtualScreen_ErrorCode401
+     * @tc.desc      : test_CreateVirtualScreen_ErrorCode_401 when got arguments with null
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_CreateVirtualScreen_ErrorCode02', 0, async (done: Function) => {
-      let caseName: string = 'test_CreateVirtualScreen_ErrorCode02 ';
+    it('test_CreateVirtualScreen_ErrorCode401', 0, async (done: Function) => {
+      let caseName: string = 'test_CreateVirtualScreen_ErrorCode401 ';
       try {
         display.createVirtualScreen(null).then((screenId: number) => {
           console.info(caseName + 'succeeded in create virtual screen, data : ' + JSON.stringify(screenId));
@@ -1021,7 +1021,7 @@ export default function displayTest() {
     /**
      * @tc.number    : SUB_BASIC_WMS_CREATE_VIRTUALSCREEN_0100
      * @tc.name      : test_CreateVirtualScreen01
-     * @tc.desc      : test_CreateVirtualScreen01
+     * @tc.desc      : test_CreateVirtualScreen01 
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1056,22 +1056,20 @@ export default function displayTest() {
         })
       } catch (err) {
         console.log(caseName + 'error in createVirtualScreen, err : ' + JSON.stringify(err));
-        if (err.code != 801) {
-          expect().assertFail();
-        }
+        expect(err.code == 801).assertTrue();
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_DESTROY_VIRTUALSCREEN_ERRORCODE_0100
-     * @tc.name      : test_DestroyVirtualScreenErrorcode_01
-     * @tc.desc      : test_DestroyVirtualScreenErrorcode_01
+     * @tc.name      : test_DestroyVirtualScreenErrorcode401
+     * @tc.desc      : test_DestroyVirtualScreenErrorcode_401 when got invalid screendId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_DestroyVirtualScreenErrorcode_01', 0, async (done: Function) => {
-      let caseName: string = 'test_DestroyVirtualScreenErrorcode_01 ';
+    it('test_DestroyVirtualScreenErrorcode401', 0, async (done: Function) => {
+      let caseName: string = 'test_DestroyVirtualScreenErrorcode401 ';
       try {
         await display.destroyVirtualScreen(-1).then(() => {
           console.info(caseName + 'succeeded in destroy virtual screen, data : ');
@@ -1080,22 +1078,20 @@ export default function displayTest() {
         })
       } catch (err) {
         console.log(caseName + 'error in destroyVirtualScreen, err : ' + JSON.stringify(err));
-        if (err.code != 801 && err.code != 401) {
-          expect().assertFail();
-        }
+        expect(err.code == 801 || err.code == 401).assertTrue();
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_DESTROY_VIRTUALSCREEN_ERRORCODE_0200
-     * @tc.name      : test_DestroyVirtualScreenErrorcode_02
-     * @tc.desc      : test_DestroyVirtualScreenErrorcode_02
+     * @tc.name      : test_DestroyVirtualScreenErrorcode401_02
+     * @tc.desc      : test_DestroyVirtualScreenErrorcode_401 when destroy a screen that has already been destroyed
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_DestroyVirtualScreenErrorcode_02', 0, async (done: Function) => {
-      let caseName: string = 'test_DestroyVirtualScreenErrorcode_02 ';
+    it('test_DestroyVirtualScreenErrorcode401_02', 0, async (done: Function) => {
+      let caseName: string = 'test_DestroyVirtualScreenErrorcode401_02 ';
       class VirtualScreenOptions {
         name: string = '';
         width: number = 0;
@@ -1118,36 +1114,34 @@ export default function displayTest() {
           }).catch((err: BusinessError) => {
             console.info(caseName + 'Failed in destroyVirtualScreen1');
             expect().assertFail();
+            done();
           })
           await display.destroyVirtualScreen(screenId).then(() => {
             console.info(caseName + 'Succeeded in destroyVirtualScreen2');
             expect().assertFail();
+            done();
           }).catch((err: BusinessError) => {
             console.info(caseName + 'Failed in destroyVirtualScreen2');
-            if (err.code != 401) {
-              expect().assertFail();
-            }
+            expect(err.code == 401);
             done();
           })
         })
       } catch (err) {
         console.log(caseName + 'error in destroyVirtualScreen, err : ' + JSON.stringify(err));
-        if (err.code != 801) {
-          expect().assertFail();
-        }
+        expect(err.code == 801);
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_MAKEUNIQUE_ERRORCODE_0100
-     * @tc.name      : test_MakeUniqueErrorcode_01
-     * @tc.desc      : test_MakeUniqueErrorcode_01
+     * @tc.name      : test_MakeUniqueErrorcode_401
+     * @tc.desc      : test_MakeUniqueErrorcode_401 when got invalid screenId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_MakeUniqueErrorcode_01', 0, async (done: Function) => {
-      let caseName: string = 'test_MakeUniqueErrorcode_01 ';
+    it('test_MakeUniqueErrorcode_401', 0, async (done: Function) => {
+      let caseName: string = 'test_MakeUniqueErrorcode_401 ';
       try {
         await display.makeUnique(-1).then(()=>{
           console.log(caseName + 'Succeeded in makeUnique');
@@ -1156,25 +1150,24 @@ export default function displayTest() {
         }).catch((err: BusinessError) => {
           console.log(caseName + 'Error in makeUnique, err: ' + JSON.stringify(err));
           expect().assertFail();
+          done();
         })
       } catch (err) {
         console.log(caseName + 'error in destroyVirtualScreen, err : ' + JSON.stringify(err));
-        if (err.code != 801 && err.code != 401) {
-          expect().assertFail();
-        }
+        expect(err.code == 401 || err.code == 801).assertFail()
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_MAKEUNIQUE_ERRORCODE_0200
-     * @tc.name      : test_MakeUniqueErrorcode_02
-     * @tc.desc      : test_MakeUniqueErrorcode_02
+     * @tc.name      : test_MakeUniqueErrorcode_1400001
+     * @tc.desc      : test_MakeUniqueErrorcode_1400001 when makeUnique a virtual screen that has already been destroyed
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_MakeUniqueErrorcode_02', 0, async (done: Function) => {
-      let caseName: string = 'test_MakeUniqueErrorcode_02 ';
+    it('test_MakeUniqueErrorcode_1400001', 0, async (done: Function) => {
+      let caseName: string = 'test_MakeUniqueErrorcode_1400001 ';
       class VirtualScreenOptions {
         name: string = '';
         width: number = 0;
@@ -1198,23 +1191,22 @@ export default function displayTest() {
         display.makeUnique(vid).then(() => {
           console.log(caseName + 'Success in make unique screen');
           expect().assertFail();
+          done();
         }).catch((err: BusinessError) => {
           console.log(caseName + 'Failed to makeUnique, err: ' + JSON.stringify(err));
-          expect(err.code == 1400001);
+          
           done();
         })
       } catch (err) {
         console.log(caseName + 'error in destroyVirtualScreen, err : ' + JSON.stringify(err));
-        if (err.code != 801) {
-          expect().assertFail();
-        }
+        expect(err.code == 801);
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_MAKEUNIQUE_0100
      * @tc.name      : test_MakeUnique_01
-     * @tc.desc      : test_MakeUniqueErrorcode_01
+     * @tc.desc      : test_MakeUnique_01
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1261,14 +1253,14 @@ export default function displayTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_VIRTUALSCREEN_SURFACE_ERRORCODE_0100
-     * @tc.name      : test_setVirtualScreenSurface_ErrorCode01
-     * @tc.desc      : test_setVirtualScreenSurface_ErrorCode01
+     * @tc.name      : test_setVirtualScreenSurface_ErrorCode401
+     * @tc.desc      : test_setVirtualScreenSurface_ErrorCode401 when got a invalid screenId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_setVirtualScreenSurface_ErrorCode01', 0, async (done: Function) => {
-      let caseName: string = 'test_setVirtualScreenSurface_ErrorCode01 ';
+    it('test_setVirtualScreenSurface_ErrorCode401', 0, async (done: Function) => {
+      let caseName: string = 'test_setVirtualScreenSurface_ErrorCode401 ';
       try {
         await display.setVirtualScreenSurface(-1, '').then(() => {
           console.log(caseName + 'success in setVirtualScreenSurface');
@@ -1277,22 +1269,20 @@ export default function displayTest() {
         })
       } catch (err) {
         console.log(caseName + 'error in setVirtualScreenSurface, err : ' + JSON.stringify(err));
-        if (err.code != 801 && err.code != 401) {
-          expect().assertFail();
-        }
+        expect(err.code == 401 || err.code == 801).assertTrue();
         done();
       }
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_VIRTUALSCREEN_SURFACE_ERRORCODE_0200
-     * @tc.name      : test_setVirtualScreenSurface_ErrorCode02
-     * @tc.desc      : test_setVirtualScreenSurface_ErrorCode02
+     * @tc.name      : test_setVirtualScreenSurface_ErrorCode401_02
+     * @tc.desc      : test_setVirtualScreenSurface_ErrorCode401 when got non existent surfaceId like ''
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_setVirtualScreenSurface_ErrorCode02', 0, async (done: Function) => {
-      let caseName: string = 'test_setVirtualScreenSurface_ErrorCode02 ';
+    it('test_setVirtualScreenSurface_ErrorCode401_02', 0, async (done: Function) => {
+      let caseName: string = 'test_setVirtualScreenSurface_ErrorCode401_02 ';
       class VirtualScreenOptions {
         name: string = '';
         width: number = 0;
@@ -1317,9 +1307,7 @@ export default function displayTest() {
         })
       } catch (err) {
         console.log(caseName + 'error in setVirtualScreenSurface, err : ' + JSON.stringify(err));
-        if (err.code != 801 && err.code != 401) {
-          expect().assertFail();
-        }
+        expect(err.code == 401 || err.code == 801).assertTrue();
         done();
       }
     });
