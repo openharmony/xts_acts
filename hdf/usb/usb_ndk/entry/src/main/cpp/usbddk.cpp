@@ -27,6 +27,7 @@
 #include "hilog/log.h"
 #include "usb_serial/usb_serial_api.h"
 #include <vector>
+#include <string>
 
 #define ENDPOINT 0
 #define SLEEP 2
@@ -75,10 +76,12 @@ constexpr uint8_t NINE_BYTE = 9;
 constexpr uint16_t MAX_MEM_LEN = 256;
 constexpr uint32_t TIMEOUT = 5000;
 constexpr uint32_t TIMEOUT2 = 20000;
+constexpr uint32_t TIMEOUT3 = -10;
 constexpr uint8_t CDB_LENGTH_TEN = 10;
 constexpr uint8_t TEMP_BUFFER_SIZE = 20;
 constexpr uint8_t BASE_10 = 10;
 constexpr uint8_t STATUS_MSG_LEN = 100;
+constexpr uint8_t INTERFACE_INDEX2 = 5;
 
 struct UsbSerial_Device {
     int32_t fd = -1;
@@ -136,15 +139,6 @@ static uint64_t GetDeviceId(napi_env env, napi_callback_info info)
     napi_get_value_int64(env, args[PARAM_0], &tmpDeviceId);
     uint64_t deviceId = ConvertDeviceId(tmpDeviceId);
     return deviceId;
-}
-
-size_t strlen(const char *s)
-{
-	const char *sc;
-
-	for (sc = s; *sc != '\0'; ++sc)
-    ;
-	return sc - s;
 }
 
 static void AppendIntToString(char *buffer, int32_t ret)
@@ -3901,7 +3895,7 @@ static napi_value UsbSerialOpenFive(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, returnValue == USB_SERIAL_DDK_SUCCESS, "OH_UsbSerial_Init failed");
 
     UsbSerial_Device *deviceHandle = nullptr;
-    interfaceIndex = 5;
+    interfaceIndex = INTERFACE_INDEX2;
     returnValue = OH_UsbSerial_Open(deviceId, interfaceIndex, &deviceHandle);
     OH_UsbSerial_Release();
     NAPI_ASSERT(env, returnValue == USB_SERIAL_DDK_DEVICE_NOT_FOUND, "OH_UsbSerial_Open failed");
@@ -4315,7 +4309,6 @@ static napi_value UsbSerialSetTimeoutThree(napi_env env, napi_callback_info info
     NAPI_ASSERT(env, returnValue == USB_SERIAL_DDK_SUCCESS, "OH_UsbSerial_Init failed");
 
     UsbSerial_Device *deviceHandle = NewSerialDeviceHandle();
-    int32_t timeout = 1000;
     returnValue = OH_UsbSerial_SetTimeout(deviceHandle, timeout);
     DeleteUsbSerialDeviceHandle(&deviceHandle);
     OH_UsbSerial_Release();
@@ -4356,7 +4349,7 @@ static napi_value UsbSerialSetTimeoutFive(napi_env env, napi_callback_info info)
     returnValue = OpenUsbSerial(deviceId, &deviceHandle);
     NAPI_ASSERT(env, returnValue == USB_SERIAL_DDK_SUCCESS, "OH_UsbSerial_Open failed");
 
-    timeout = -10;
+    timeout = TIMEOUT3;
     returnValue = OH_UsbSerial_SetTimeout(deviceHandle, timeout);
     NAPI_ASSERT(env, returnValue == USB_SERIAL_DDK_INVALID_PARAMETER, "OH_UsbSerial_SetTimeout failed");
     OH_UsbSerial_Close(&deviceHandle);
@@ -4942,8 +4935,6 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr},
         {"usbSerialFlushOutputFour", nullptr, UsbSerialFlushOutputFour, nullptr, nullptr, nullptr,
             napi_default, nullptr},
-        
-            
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

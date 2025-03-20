@@ -64,11 +64,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0100
      * @tc.name       : testUsbInit001
      * @tc.desc       : OH_Usb_Init Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbInit001', 0, async (done: Function) => {
+    it('testUsbInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = usbDdk.usbInit();
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(USB_DDK_SUCCESS);
@@ -79,11 +76,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0200
      * @tc.name       : testUsbRelease001
      * @tc.desc       : OH_Usb_Release Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbRelease001', 0, async (done: Function) => {
+    it('testUsbRelease001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = usbDdk.usbRelease();
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(1);
@@ -94,11 +88,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3800
      * @tc.name       : testUsbReleaseResource001
      * @tc.desc       : OH_Usb_ReleaseResource Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbReleaseResource001', 0, async (done: Function) => {
+    it('testUsbReleaseResource001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = usbDdk.usbReleaseResource();
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(USB_DDK_SUCCESS);
@@ -109,11 +100,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0300
      * @tc.name       : testUsbGetDeviceDescriptor001
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbGetDeviceDescriptor001', 0, async (done: Function) => {
+    it('testUsbGetDeviceDescriptor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("Test USB dev = " + dev);
       if (dev < 0) {
         console.info("Test USB device not connected");
@@ -131,11 +119,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0400
      * @tc.name       : testUsbGetDeviceDescriptor002
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbGetDeviceDescriptor002', 0, async (done: Function) => {
+    it('testUsbGetDeviceDescriptor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -152,11 +137,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0500
      * @tc.name       : testUsbGetConfigDescriptor001
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbGetConfigDescriptor001', 0, async (done: Function) => {
+    it('testUsbGetConfigDescriptor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -173,11 +155,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0600
      * @tc.name       : testUsbGetConfigDescriptor002
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbGetConfigDescriptor002', 0, async (done: Function) => {
+    it('testUsbGetConfigDescriptor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -194,11 +173,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0700
      * @tc.name       : testUsbGetConfigDescriptor003
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbGetConfigDescriptor003', 0, async (done: Function) => {
+    it('testUsbGetConfigDescriptor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -215,11 +191,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0800
      * @tc.name       : testUsbFreeConfigDescriptor001
      * @tc.desc       : OH_Usb_FreeConfigDescriptor Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbFreeConfigDescriptor001', 0, async (done: Function) => {
+    it('testUsbFreeConfigDescriptor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -236,11 +209,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_0900
      * @tc.name       : testUsbClaimInterface001
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbClaimInterface001', 0, async (done: Function) => {
+    it('testUsbClaimInterface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -257,11 +227,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1000
      * @tc.name       : testUsbClaimInterface002
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbClaimInterface002', 0, async (done: Function) => {
+    it('testUsbClaimInterface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -278,11 +245,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1100
      * @tc.name       : testUsbClaimInterface003
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbClaimInterface003', 0, async (done: Function) => {
+    it('testUsbClaimInterface003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -299,11 +263,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1200
      * @tc.name       : testUsbReleaseInterface001
      * @tc.desc       : OH_Usb_ReleaseInterface Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbReleaseInterface001', 0, async (done: Function) => {
+    it('testUsbReleaseInterface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -320,11 +281,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1300
      * @tc.name       : testUsbSelectInterfaceSetting001
      * @tc.desc       : OH_Usb_SelectInterfaceSetting Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSelectInterfaceSetting001', 0, async (done: Function) => {
+    it('testUsbSelectInterfaceSetting001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -341,11 +299,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1400
      * @tc.name       : testUsbSelectInterfaceSetting002
      * @tc.desc       : OH_Usb_SelectInterfaceSetting Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSelectInterfaceSetting002', 0, async (done: Function) => {
+    it('testUsbSelectInterfaceSetting002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -362,11 +317,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1500
      * @tc.name       : testUsbGetCurrentInterfaceSetting001
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbGetCurrentInterfaceSetting001', 0, async (done: Function) => {
+    it('testUsbGetCurrentInterfaceSetting001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -383,11 +335,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1600
      * @tc.name       : testUsbGetCurrentInterfaceSetting002
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbGetCurrentInterfaceSetting002', 0, async (done: Function) => {
+    it('testUsbGetCurrentInterfaceSetting002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -404,11 +353,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1700
      * @tc.name       : testUsbGetCurrentInterfaceSetting003
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbGetCurrentInterfaceSetting003', 0, async (done: Function) => {
+    it('testUsbGetCurrentInterfaceSetting003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -425,11 +371,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1800
      * @tc.name       : testUsbSendControlReadRequest001
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendControlReadRequest001', 0, async (done: Function) => {
+    it('testUsbSendControlReadRequest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -446,11 +389,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_1900
      * @tc.name       : testUsbSendControlReadRequest002
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlReadRequest002', 0, async (done: Function) => {
+    it('testUsbSendControlReadRequest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -467,11 +407,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2000
      * @tc.name       : testUsbSendControlReadRequest003
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlReadRequest003', 0, async (done: Function) => {
+    it('testUsbSendControlReadRequest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -488,11 +425,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2100
      * @tc.name       : testUsbSendControlReadRequest004
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlReadRequest004', 0, async (done: Function) => {
+    it('testUsbSendControlReadRequest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -509,11 +443,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2200
      * @tc.name       : testUsbSendControlReadRequest005
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlReadRequest005', 0, async (done: Function) => {
+    it('testUsbSendControlReadRequest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -530,11 +461,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2300
      * @tc.name       : testUsbSendControlWriteRequest001
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendControlWriteRequest001', 0, async (done: Function) => {
+    it('testUsbSendControlWriteRequest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -551,11 +479,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2400
      * @tc.name       : testUsbSendControlWriteRequest002
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlWriteRequest002', 0, async (done: Function) => {
+    it('testUsbSendControlWriteRequest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -572,11 +497,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2500
      * @tc.name       : testUsbSendControlWriteRequest003
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
      */
-    it('testUsbSendControlWriteRequest003', 0, async (done: Function) => {
+    it('testUsbSendControlWriteRequest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -593,11 +515,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2600
      * @tc.name       : testUsbSendControlWriteRequest004
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendControlWriteRequest004', 0, async (done: Function) => {
+    it('testUsbSendControlWriteRequest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -614,11 +533,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3900
      * @tc.name       : testUsbSendControlWriteRequest005
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendControlWriteRequest005', 0, async (done: Function) => {
+    it('testUsbSendControlWriteRequest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -635,11 +551,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2700
      * @tc.name       : testUsbSendPipeRequest001
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequest001', 0, async (done: Function) => {
+    it('testUsbSendPipeRequest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -656,11 +569,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2800
      * @tc.name       : testUsbSendPipeRequest002
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequest002', 0, async (done: Function) => {
+    it('testUsbSendPipeRequest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -677,11 +587,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_2900
      * @tc.name       : testUsbSendPipeRequest003
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequest003', 0, async (done: Function) => {
+    it('testUsbSendPipeRequest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -698,11 +605,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3000
      * @tc.name       : testUsbSendPipeRequest004
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequest004', 0, async (done: Function) => {
+    it('testUsbSendPipeRequest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -719,11 +623,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3100
      * @tc.name       : testUsbCreateDeviceMemMap001
      * @tc.desc       : OH_Usb_CreateDeviceMemMap Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbCreateDeviceMemMap001', 0, async (done: Function) => {
+    it('testUsbCreateDeviceMemMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -740,11 +641,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3200
      * @tc.name       : testUsbCreateDeviceMemMap002
      * @tc.desc       : OH_Usb_CreateDeviceMemMap Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbCreateDeviceMemMap002', 0, async (done: Function) => {
+    it('testUsbCreateDeviceMemMap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -761,11 +659,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3300
      * @tc.name       : testUsbDestroyDeviceMemMap001
      * @tc.desc       : OH_Usb_DestroyDeviceMemMap Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbDestroyDeviceMemMap001', 0, async (done: Function) => {
+    it('testUsbDestroyDeviceMemMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (dev < 0) {
         console.info("Test USB device not connected");
         expect(dev).assertEqual(USB_DDK_FAILED);
@@ -782,11 +677,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3400
      * @tc.name       : testUsbSendPipeRequestWithAshmem001
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequestWithAshmem001', 0, async (done: Function) => {
+    it('testUsbSendPipeRequestWithAshmem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbSendPipeRequestWithAshmem001---------------------------');
       try {
         if (dev < 0) {
@@ -811,11 +703,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3500
      * @tc.name       : testUsbSendPipeRequestWithAshmem002
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequestWithAshmem002', 0, async (done: Function) => {
+    it('testUsbSendPipeRequestWithAshmem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbSendPipeRequestWithAshmem002---------------------------');
       try {
         if (dev < 0) {
@@ -840,11 +729,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3600
      * @tc.name       : testUsbSendPipeRequestWithAshmem003
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequestWithAshmem003', 0, async (done: Function) => {
+    it('testUsbSendPipeRequestWithAshmem003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbSendPipeRequestWithAshmem003---------------------------');
       try {
         if (dev < 0) {
@@ -869,11 +755,8 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDKETS_3700
      * @tc.name       : testUsbSendPipeRequestWithAshmem004
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
-    it('testUsbSendPipeRequestWithAshmem004', 0, async (done: Function) => {
+    it('testUsbSendPipeRequestWithAshmem004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbSendPipeRequestWithAshmem004---------------------------');
       try {
         if (dev < 0) {
@@ -898,9 +781,6 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDK_0600
      * @tc.name       : testUsbGetDevices001
      * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_SUCCESS
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
     it('testUsbGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices001---------------------------');
@@ -926,9 +806,6 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDK_0700
      * @tc.name       : testUsbGetDevices002
      * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_INVALID_OPERATION
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
     it('testUsbGetDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices002---------------------------');
@@ -954,9 +831,6 @@ export default function usbDdkTest() {
      * @tc.number     : SUB_Driver_Ext_DDK_0800
      * @tc.name       : testUsbGetDevices003
      * @tc.desc       : OH_Usb_GetDevices Interface testing,return USB_DDK_INVALID_PARAMETER
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
      */
     it('testUsbGetDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testUsbGetDevices003---------------------------');
