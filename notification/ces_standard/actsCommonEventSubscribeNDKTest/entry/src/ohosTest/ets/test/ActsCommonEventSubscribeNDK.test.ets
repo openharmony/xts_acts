@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import testNapi from 'libsubscribe.so';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
@@ -25,7 +25,7 @@ export default function ActsCommonEventSubscribeNDKTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 2
      */
-    it('Sub_Notification_Ces_Subscriber_NDK_0003', 0,async (done: Function) => {
+    it('Sub_Notification_Ces_Subscriber_NDK_0003', Level.LEVEL2,async (done: Function) => {
       try {
         let result =testNapi.create_subscribe_info(null);
         hilog.info(0x0000, 'testTag', 'create subscribe info : %{public}d', result);
@@ -51,7 +51,7 @@ export default function ActsCommonEventSubscribeNDKTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 0
      */
-    it('Sub_Notification_Ces_Subscriber_NDK_0001', 0,async (done:Function) => {
+    it('Sub_Notification_Ces_Subscriber_NDK_0001', Level.LEVEL0,async (done:Function) => {
       const arrayStr = ["123"];
       try {
         testNapi.create_subscribe_info(arrayStr);
@@ -114,7 +114,7 @@ export default function ActsCommonEventSubscribeNDKTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 2
      */
-    it('Sub_Notification_Ces_Subscriber_NDK_0006', 0,async (done:Function) => {
+    it('Sub_Notification_Ces_Subscriber_NDK_0006', Level.LEVEL2,async (done:Function) => {
       try {
         let result = testNapi.common_event_unsubscribe();
         expect(result).assertEqual(401)
@@ -135,7 +135,7 @@ export default function ActsCommonEventSubscribeNDKTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 2
      */
-    it('Sub_Notification_Ces_Subscriber_NDK_0005', 0,async (done:Function) => {
+    it('Sub_Notification_Ces_Subscriber_NDK_0005', Level.LEVEL2,async (done:Function) => {
       try {
         let result = testNapi.common_event_subscribe();
         expect(result).assertEqual(401)
