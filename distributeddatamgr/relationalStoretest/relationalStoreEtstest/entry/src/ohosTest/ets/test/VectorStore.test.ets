@@ -108,7 +108,7 @@ export default function VectorStoreTest() {
                     }).catch((err: BusinessError) => {
                           (rdbStore as data_Rdb.RdbStore as data_Rdb.RdbStore).rollback(txId1)
                           console.log(`execute sql failed, code is ${err.code},message is ${err.message}`);
-                          expect(resultSet.rowCount).assertEqual(1)
+                          expect().assertFail();
                           done();
                    });
                  });
