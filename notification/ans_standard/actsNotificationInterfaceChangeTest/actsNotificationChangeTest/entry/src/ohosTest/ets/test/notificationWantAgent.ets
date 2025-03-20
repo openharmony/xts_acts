@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import wantAgent, {WantAgent} from '@ohos.app.ability.wantAgent';
 import ohosWantAgent from '@ohos.wantAgent';
 
@@ -27,7 +27,7 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.ONE_TIME_FLAG].
      */
-    it('Acts_WantAgentInfo_0100', 0, async  (done:Function)=> {
+    it('Acts_WantAgentInfo_0100', Level.LEVEL2, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0100 ==>';
       console.info('Acts_WantAgentInfo_0100 START')
 
@@ -81,7 +81,7 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.NO_BUILD_FLAG].
      */
-    it('Acts_WantAgentInfo_0200', 0, async  (done:Function)=> {
+    it('Acts_WantAgentInfo_0200', Level.LEVEL2, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0200 ==>';
       console.info('Acts_WantAgentInfo_0200 START')
 
@@ -135,7 +135,7 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITIES and [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG].
      */
-    it('Acts_WantAgentInfo_0300', 0, async  (done:Function)=> {
+    it('Acts_WantAgentInfo_0300', Level.LEVEL2, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0300 ==>';
       console.info('Acts_WantAgentInfo_0300 START')
 
@@ -189,7 +189,7 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_SERVICE and [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG].
      */
-    it('Acts_WantAgentInfo_0400', 0, async  (done:Function)=> {
+    it('Acts_WantAgentInfo_0400', Level.LEVEL2, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0400 ==>';
       console.info('Acts_WantAgentInfo_0400 START')
 
@@ -243,7 +243,7 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.SEND_COMMON_EVENT and [wantAgent.WantAgentFlags.CONSTANT_FLAG].
      */
-    it('Acts_WantAgentInfo_0500', 0, async  (done:Function)=> {
+    it('Acts_WantAgentInfo_0500', Level.LEVEL2, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0500 ==>';
       console.info('Acts_WantAgentInfo_0500 START')
 

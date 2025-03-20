@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 import notificationManager from '@ohos.notificationManager';
 import hilog from '@ohos.hilog';
@@ -50,7 +50,7 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT.
      */
-    it('Acts_NotificationContent_0100', 0, async (done: Function) => {
+    it('Acts_NotificationContent_0100', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0100';
 
 
@@ -95,7 +95,7 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT.
      */
-    it('Acts_NotificationContent_0200', 0, async (done: Function) => {
+    it('Acts_NotificationContent_0200', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0200';
 
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -134,7 +134,7 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE.
      */
-    it('Acts_NotificationContent_0300', 0, async (done: Function) => {
+    it('Acts_NotificationContent_0300', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0300';
 
       const color = new ArrayBuffer(60000);
@@ -197,7 +197,7 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE.
      */
-    it(" Acts_NotificationContent_0400", 0, async (done: Function) => {
+    it(" Acts_NotificationContent_0400", Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0400';
 
       let notificationRequest: notificationManager.NotificationRequest = {

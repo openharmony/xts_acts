@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager'
 
 export default function ActsCommonEventManagerSubscribeTest() {
@@ -25,7 +25,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
      * @tc.name: isStickyCommonEvent isOrderedCommonEvent abortCommonEvent getAbortCommonEvent clearAbortCommonEvent
      * @tc.desc: verify the callback function
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_1900', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_1900', Level.LEVEL3, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1900 START`)
 
       let subscriber
@@ -128,7 +128,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
      * @tc.name: isStickyCommonEvent isOrderedCommonEvent abortCommonEvent getAbortCommonEvent clearAbortCommonEvent
      * @tc.desc: verify the promise function
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_2000', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_2000', Level.LEVEL3, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2000 START`)
 
       let subscriber
@@ -209,7 +209,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2000 END`)
     })
 
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1100', 0, async function (done) {
+    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1100', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1100 START`)
 
       let options = {
@@ -297,7 +297,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       }
     })
 
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1200', 0, async function (done) {
+    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1200', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1200 START`)
 
       let options = {
