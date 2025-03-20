@@ -19,6 +19,7 @@ group("ability_runtime") {
     deps = [
       "aacommand:aacommand",
       "abilitybase:abilitybase",
+      "abilitybaseerrorcode:abilitybaseerrorcode",
       "abilitycapitest:abilitycapitest",
       "abilitygetstartparameterstest:abilitygetstartparameterstest",
       "abilitymanager:actsabilitymanagertest",
@@ -35,7 +36,6 @@ group("ability_runtime") {
       "actsabilityrecoverytest:actsabilityrecoverytest",
       "actsabilitytooltest:actsabilitytooltest",
       "actsabilityusertest:ActsAbilityuserTest",
-      "abilitybaseerrorcode:abilitybaseerrorcode",
       "actsactionextensionability:actsactionextensionability",
       "actsamstest:actsamstest",
       "actsautofilltest:actsautofilltest",
