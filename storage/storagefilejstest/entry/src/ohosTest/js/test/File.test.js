@@ -19,7 +19,8 @@ import document from '@ohos.document';
 import {
   describe,
   it,
-  expect
+  expect,
+  Level
 }
 from '@ohos/hypium'
 import {
@@ -3885,6 +3886,31 @@ describe('fileTest', function () {
     } 
     catch (e) {
       console.info('File_Document_Choose_003 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Document_Choose_0400
+   * @tc.name Document_Choose_004
+   * @tc.desc Function of API, choose file.The test file is exist.
+   * Test choose.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('File_Document_Choose_001', Level.LEVEL0, async function (done) {
+    try {
+      let code = await document.choose();
+      let str = 'Error';
+      console.info("getFileUri===>" + code);
+      expect(str).assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Choose_001 has failed for ' + e.message);
       expect(e.message == "error").assertTrue();
       done();
     }
