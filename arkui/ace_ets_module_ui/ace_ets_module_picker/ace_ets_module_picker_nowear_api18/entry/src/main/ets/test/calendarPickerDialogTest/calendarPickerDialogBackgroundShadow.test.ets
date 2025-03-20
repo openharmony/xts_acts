@@ -57,7 +57,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow.color;
       expect(shadow).assertEqual('#FFFF0000');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -78,7 +79,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let shadow: string = column.$attrs.shadow;
       console.info("[CalendarPickerDialogBackgroundShadowTest_002] obj is: " + column.$attrs.shadow);
       expect(shadow).assertEqual('ShadowStyle.OuterDefaultXS');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -98,7 +100,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow;
       expect(shadow).assertEqual('ShadowStyle.OuterDefaultSM');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -118,7 +121,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow;
       expect(shadow).assertEqual('ShadowStyle.OuterDefaultMD');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -138,7 +142,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow;
       expect(shadow).assertEqual('ShadowStyle.OuterDefaultLG');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -158,7 +163,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow;
       expect(shadow).assertEqual('ShadowStyle.OuterFloatingSM');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -178,7 +184,8 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
       let column: ESObject = dialog.$children[0];
       let shadow: string = column.$attrs.shadow;
       expect(shadow).assertEqual('ShadowStyle.OuterFloatingMD');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })

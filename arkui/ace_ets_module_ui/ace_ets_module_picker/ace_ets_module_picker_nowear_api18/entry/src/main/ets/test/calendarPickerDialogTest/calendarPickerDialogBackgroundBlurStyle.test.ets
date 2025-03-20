@@ -57,7 +57,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.Thin');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -77,7 +78,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.Regular');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -97,7 +99,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.Thick');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -117,7 +120,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THIN');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -137,7 +141,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_REGULAR');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -157,7 +162,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -178,7 +184,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       console.info("[CalendarPickerDialogBackgroundBlurStyleTest_007] obj is: " + backgroundBlurStyle);
       expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -198,7 +205,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -218,7 +226,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THIN');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -238,7 +247,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THIN');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -258,7 +268,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_REGULAR');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -278,7 +289,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -298,7 +310,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -318,7 +331,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -338,7 +352,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -358,7 +373,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
@@ -378,7 +394,8 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
-      await driver.pressBack();
+      let btn1 = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       done();
     })
