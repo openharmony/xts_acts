@@ -28,8 +28,8 @@ const STORE_CONFIG : relationalStore.StoreConfig= {
 }
 let rdbStore:relationalStore.RdbStore;
 
-export default function relationalStoreTest() {
-  describe('relationalStoreTest', ()=> {
+export default function relationalStoreInterfaceTest() {
+  describe('relationalStoreInterfaceTest', ()=> {
     beforeAll(async ()=> {
       console.info(TAG + "*************Unit Test Begin*************");
       console.info(TAG + 'beforeAll');
