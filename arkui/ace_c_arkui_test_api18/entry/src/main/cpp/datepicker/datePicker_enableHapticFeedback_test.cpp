@@ -18,6 +18,8 @@
 #include "common/common.h"
 #include <string>
 #include <arkui/native_type.h>
+#define HEIGHT_PERCENT_1 0.3
+#define WIDTH_PERCENT_1 0.5
 
 namespace ArkUICapiTest {
 
@@ -44,17 +46,17 @@ napi_value DatePickerEnableTest::DatePickerEnableHapticFeedback(napi_env env, na
     auto datePicker2 = nodeAPI->createNode(ARKUI_NODE_DATE_PICKER);
     auto datePicker3 = nodeAPI->createNode(ARKUI_NODE_DATE_PICKER);
 
-    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_200}};
-    ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(datePicker1, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(datePicker2, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(datePicker3, NODE_WIDTH, &width_item);
+    ArkUI_NumberValue width_value[] = { { .f32 = WIDTH_PERCENT_1 } };
+    ArkUI_AttributeItem width_item = { width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(datePicker1, NODE_WIDTH_PERCENT, &width_item);
+    nodeAPI->setAttribute(datePicker2, NODE_WIDTH_PERCENT, &width_item);
+    nodeAPI->setAttribute(datePicker3, NODE_WIDTH_PERCENT, &width_item);
 
-    ArkUI_NumberValue height_value[] = {{.f32 = SIZE_150}};
-    ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(datePicker1, NODE_HEIGHT, &height_item);
-    nodeAPI->setAttribute(datePicker2, NODE_HEIGHT, &height_item);
-    nodeAPI->setAttribute(datePicker3, NODE_HEIGHT, &height_item);
+    ArkUI_NumberValue height_value[] = { { .f32 = HEIGHT_PERCENT_1 } };
+    ArkUI_AttributeItem height_item = { height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(datePicker1, NODE_HEIGHT_PERCENT, &height_item);
+    nodeAPI->setAttribute(datePicker2, NODE_HEIGHT_PERCENT, &height_item);
+    nodeAPI->setAttribute(datePicker3, NODE_HEIGHT_PERCENT, &height_item);
 
     nodeAPI->addChild(column, datePicker1);
     nodeAPI->addChild(column, datePicker2);
