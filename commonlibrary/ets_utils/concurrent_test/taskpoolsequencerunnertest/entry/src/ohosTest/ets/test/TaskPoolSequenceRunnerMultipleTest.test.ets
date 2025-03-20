@@ -61,7 +61,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
 
       const caseName = 'taskPoolSequenceRunnerMultipleTest0100'
@@ -113,7 +113,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -124,7 +124,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
 
       const caseName = 'taskPoolSequenceRunnerMultipleTest0200'
@@ -176,7 +176,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -187,7 +187,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
 
       const caseName = 'taskPoolSequenceRunnerMultipleTest0300'
@@ -239,7 +239,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -250,7 +250,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
 
       const caseName = 'taskPoolSequenceRunnerMultipleTest0400'
@@ -301,7 +301,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -312,7 +312,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolSequenceRunnerMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const caseName = 'taskPoolSequenceRunnerMultipleTest0500'
       console.info(`${caseName} test start`)
@@ -363,7 +363,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

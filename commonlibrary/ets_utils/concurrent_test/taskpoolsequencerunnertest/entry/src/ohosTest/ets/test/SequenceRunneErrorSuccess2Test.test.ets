@@ -58,7 +58,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       let count1: number = 0
@@ -98,7 +98,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
       await sleep(500)
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -110,7 +110,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -154,7 +154,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
       await sleep(500)
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -166,7 +166,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -203,7 +203,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -215,7 +215,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -252,7 +252,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(0).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -264,7 +264,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -301,7 +301,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -313,7 +313,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SequenceRunnerErrorSuccess0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('SequenceRunnerErrorSuccess0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -350,7 +350,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
   })
 }
