@@ -21,30 +21,30 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 export default function BarStylePage() {
   describe('BarStylePage', () => {
     beforeEach(async (done: Function) => {
-      console.info("BarStylePage beforeEach start");
+      console.info('BarStylePage beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/BarStylePage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get BarStylePage state pages:" + JSON.stringify(pages));
-        if (!("BarStylePage" == pages.name)) {
-          console.info("get BarStylePage pages.name:" + JSON.stringify(pages.name));
+        console.info('get BarStylePage state pages:' + JSON.stringify(pages));
+        if (!('BarStylePage' == pages.name)) {
+          console.info('get BarStylePage pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push BarStylePage page result:" + JSON.stringify(result));
+          console.info('push BarStylePage page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push BarStylePage page error:" + err);
+        console.error('push BarStylePage page error:' + err);
       }
-      console.info("BarStylePage beforeEach end");
+      console.info('BarStylePage beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("BarStylePage after each called");
+      console.info('BarStylePage after each called');
     });
 
 
