@@ -21,17 +21,18 @@
 static int g_myParam1  = 1920;
 static int g_myParam2 = 1080;
 static int g_focusMode = 2;
+static int g_sceneMode = 2;
 static int g_cameraDeviceIndex = 0;
 static char *g_photoId = nullptr;
 static char *g_videoId = nullptr;
 
 namespace OHOS_CAMERA_SAMPLE {
-NDKCamera *NDKCamera::g_ndkCamera = nullptr;
+NDKCamera *NDKCamera::g_ndkCamera_ = nullptr;
 std::mutex NDKCamera::mtx_;
 const std::unordered_map<uint32_t, Camera_SceneMode> g_int32ToCameraSceneMode = {
     {1, Camera_SceneMode::NORMAL_PHOTO}, {2, Camera_SceneMode::NORMAL_VIDEO}, {12, Camera_SceneMode::SECURE_PHOTO}};
 
-NDKCamera::NDKCamera(char *previewId, char *photoId, int param1, int param2)
+NDKCamera::NDKCamera(char *previewId, int param1, int param2)
     : focusMode_(g_focusMode), cameraDeviceIndex_(g_cameraDeviceIndex), previewSurfaceId_(previewId),
       photoSurfaceId_(g_photoId), videoSurfaceId_(g_videoId), cameras_(nullptr), profile_(nullptr),
       cameraOutputCapability_(nullptr), captureSession_(nullptr), cameraInput_(nullptr), previewOutput_(nullptr),
@@ -64,7 +65,7 @@ NDKCamera::NDKCamera(char *previewId, char *photoId, int param1, int param2)
     OH_LOG_ERROR(LOG_APP, "=====testZj3====.");
 
     // look up sceneMode
-    auto itr1 = g_int32ToCameraSceneMode.find(sceneMode);
+    auto itr1 = g_int32ToCameraSceneMode.find(g_sceneMode);
     if (itr1 != g_int32ToCameraSceneMode.end()) {
         sceneMode_ = itr1->second;
     }
@@ -459,7 +460,6 @@ Camera_ErrorCode NDKCamera::CreatePhotoOutput(char *photoSurfaceId)
     profile_->size.height = g_myParam2;
     result_ = OH_CameraManager_CreatePhotoOutput(cameraManager_, profile_, photoSurfaceId, &photoOutput_);
     if (photoSurfaceId == nullptr || photoOutput_ == nullptr || result_ != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "CreatePhotoOutput failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
     // register photo output callback
@@ -477,7 +477,6 @@ Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
     profile_->size.height = g_myParam2;
     result_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
     if (videoId == nullptr || videoOutput_ == nullptr || result_ != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "CreatePhotoOutput failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
     // register photo output callback

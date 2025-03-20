@@ -46,9 +46,9 @@ public:
 
     static void Destroy()
     {
-        if (g_ndkCamera != nullptr) {
-            delete g_ndkCamera;
-            g_ndkCamera = nullptr;
+        if (g_ndkCamera_ != nullptr) {
+            delete g_ndkCamera_;
+            g_ndkCamera_ = nullptr;
         }
     }
 
@@ -153,7 +153,7 @@ private:
     float step_;
     uint32_t focusMode_;
 
-    static NDKCamera *g_ndkCamera;
+    static NDKCamera *g_ndkCamera_;
     static std::mutex mtx_;
     volatile bool valid_;
 

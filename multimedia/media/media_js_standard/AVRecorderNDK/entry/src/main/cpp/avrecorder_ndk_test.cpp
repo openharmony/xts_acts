@@ -50,7 +50,7 @@
 
 using namespace std;
 using namespace OHOS_CAMERA_SAMPLE;
-static NDKCamera *g_ndkCamera = nullptr;
+static NDKCamera *g_ndkCamera_ = nullptr;
 
 static OH_AVRecorder_Config *config;
 // 设置状态回调
@@ -62,9 +62,7 @@ void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVReco
     const char *reasonStr = (reason == AVRECORDER_USER)         ? "USER"
                             : (reason == AVRECORDER_BACKGROUND) ? "BACKGROUND"
                                                                 : "UNKNOWN";
-    OH_LOG_INFO(LOG_APP, "NDK StateChangeReason reason:%{public}d!", reasonStr);
     switch (state) {
-        OH_LOG_INFO(LOG_APP, "NDK AVRecorder_State state:%{public}d!", state);
         case AVRECORDER_IDLE:
             break;
         case AVRECORDER_PREPARED:
@@ -94,22 +92,16 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
 {
     (void)recorder;
     (void)userDate;
-    OH_LOG_INFO(LOG_APP, "NDK OnUri start!");
     if (asset != nullptr) {
         auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
         if (changeRequest == nullptr) {
-            OH_LOG_INFO(LOG_APP, "NDK changeRequest is null!");
             return;
         }
         MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG;
         uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-        OH_LOG_INFO(LOG_APP, "NDK SaveCameraPhoto result:%{public}d!", result);
         OH_MediaAsset_Release(asset);
         OH_MediaAssetChangeRequest_Release(changeRequest);
-    } else {
-        OH_LOG_INFO(LOG_APP, "media asset is null! ");
     }
-    OH_LOG_INFO(LOG_APP, "NDK OnUri completed ! ");
 }
 static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 {
@@ -456,10 +448,6 @@ static napi_value getAVRecorderConfig(napi_env env, napi_callback_info info)
     OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
     SetConfig(*config);
     int result = OH_AVRecorder_GetAVRecorderConfig(g_avRecorder, &config);
-    if (result != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK GetAVRecorderConfig configuration failed");
-    }
-    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig sucuess", config->profile.audioBitrate);
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
@@ -555,9 +543,6 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     // 获取surfaceId
     OHNativeWindow *window;
     int resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
-    if (resultCode != AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "NDK prepare Camera error");
-    }
     uint64_t surfaceId;
     OH_NativeWindow_GetSurfaceId(window, &surfaceId);
     char videoId[30];
@@ -571,7 +556,7 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameWidth : %{public}d", videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameHeight : %{public}d", videoFrameHeight);
 
-    g_ndkCamera = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
+    g_ndkCamera_ = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
     int result = 6;
     napi_value res;
     napi_create_int32(env, result, &res);
