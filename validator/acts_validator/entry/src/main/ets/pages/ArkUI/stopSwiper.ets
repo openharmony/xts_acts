@@ -25,7 +25,7 @@ const TAG = '[stopSwiper]';
 @Component
 struct stopWhenTouchedSwiper {
   @State name: string = 'stopSwiper';
-  @State stepTips: string = '操作步骤：子组件自动播放，当stopWhenTouched设置为true时，手指在组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
+  @State stepTips: string = '操作步骤：在子组件自动播放情况下，当stopWhenTouched的属性值不为false时，手指在Swiper组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State isVertical: boolean = false;
@@ -168,12 +168,21 @@ struct stopWhenTouchedSwiper {
 
         Swiper(this.controller) {
           ForEach(this.data, (item: number, index) => {
-            Text(item.toString())
-              .width('90%')
-              .height(160)
-              .backgroundColor(0xAFEEEE)
-              .textAlign(TextAlign.Center)
-              .fontSize(30)
+            if ((this.isAutoPlay === true) && this.isStopWhenTouched !== false) {
+              Text(item.toString())
+                .width('90%')
+                .height(160)
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+                .backgroundColor('#E6A23C')
+            } else {
+              Text(item.toString())
+                .width('90%')
+                .height(160)
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+                .backgroundColor('#f1f3f5')
+            }
           }, (item: string) => item)
         }
         .autoPlay(this.isAutoPlay, { stopWhenTouched: this.isStopWhenTouched })
@@ -204,27 +213,34 @@ struct stopWhenTouchedSwiper {
           arrowSize: 18,
           arrowColor: Color.Blue
         }, false)
+        .gesture(
+          TapGesture({ count: 1 })
+            .onAction((event: GestureEvent) => {
+              if (event) {
+                this.count++
+              }
+            })
+        )
 
         Column({ space: 5 }) {
           Button('导航点指示器样式切换')
             .width('47%')
-            .height(28)
+            .height(30)
             .margin({ top: 5 })
             .fontSize(12)
             .onClick(() => {
               this.isDigIndicator = !this.isDigIndicator
             })
 
+          Text('LongPress:' + this.count)
           Row(){
             Button('autoPlay:' + this.isAutoPlay)
-              .height(30)
               .onClick((event: ClickEvent) => {
                 this.isAutoPlay = !this.isAutoPlay
               }).margin({ bottom: 2 }).fontWeight(FontWeight.Bold).fontColor(Color.Red)
           }
           Row(){
             Button('stopWhenTouched:' + this.isStopWhenTouched)
-              .height(30)
               .onClick((event: ClickEvent) => {
                 this.isStopWhenTouched = !this.isStopWhenTouched
                 console.log('此时的autoPlay值为：' + this.isAutoPlay,
@@ -233,13 +249,13 @@ struct stopWhenTouchedSwiper {
 
           }
           Button('stopWhenTouched:null')
-            .height(28)
+            .height(30)
             .onClick((event: ClickEvent) => {
               this.isStopWhenTouched = null
               console.log('此时的autoPlay值为：' + this.isAutoPlay, '此时的stopWhenTouched值为：null')
             }).margin({ bottom: 2 })
           Button('stopWhenTouched:undefined')
-            .height(28)
+            .height(30)
             .onClick((event: ClickEvent) => {
               this.isStopWhenTouched = undefined
               console.log('此时的autoPlay值为：' + this.isAutoPlay, '此时的stopWhenTouched值为：undefined')
