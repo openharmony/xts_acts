@@ -242,14 +242,19 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             break;
     }
 
-    parseSetConfigAudioSourceType(env, args[0], *config);
-    parseSetConfigAudioCodec(env, args[0], *config);
-    
     return true;
 }
 
 static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
 {
+    if (env == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "env is nullptr");
+        return false;
+    }
+    if (arg == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "arg is nullptr");
+        return false;
+    }
     int32_t audioSourceType = 0;
     GetInt32Property(env, arg, "audioSourceType", &audioSourceType);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioSourceType :%{public}d", audioSourceType);
@@ -280,6 +285,14 @@ static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct O
 
 static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
 {
+    if (env == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "env is nullptr");
+        return false;
+    }
+    if (arg == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "arg is nullptr");
+        return false;
+    }
     int32_t audioCodec = 3;
     GetInt32Property(env, arg, "audioCodec", &audioCodec);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioCodec :%{public}d", audioCodec);
@@ -335,6 +348,8 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     config->url = fd;
 
     parseSetConfigOps(env, args[0], *config);
+    parseSetConfigAudioSourceType(env, args[0], *config);
+    parseSetConfigAudioCodec(env, args[0], *config);
 
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoFrameWidth = fd: %{public}d", config->profile.videoFrameWidth);
@@ -374,13 +389,6 @@ static napi_value createPrepareAVRecorder(napi_env env, napi_callback_info info)
     }
     OH_AVRecorder_Config *config1 = new OH_AVRecorder_Config();
     SetConfig(*config1);
-
-    // 1.1 设置url
-    const std::string g_avrecorderUrl  = "/data/storage/el2/base/files/";
-    int32_t outputFd = open((g_avrecorderUrl  + "avrecorder001.mp4").c_str(), O_RDWR | O_CREAT, 0777);
-    std::string fileUrl = "fd://" + std::to_string(outputFd);
-    config1->url = const_cast<char *>(fileUrl.c_str());
-    std::cout << "config1.url is:" << config1->url << std::endl;
 
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
