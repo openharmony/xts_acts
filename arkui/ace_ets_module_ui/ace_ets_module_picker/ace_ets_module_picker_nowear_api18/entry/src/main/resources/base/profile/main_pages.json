@@ -11,6 +11,8 @@
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",
     "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest"
+    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest",
+    "MainAbility/pages/textPickerDialog/textPickerDialogDefaultTextStyle",
+    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation"
   ]
 }

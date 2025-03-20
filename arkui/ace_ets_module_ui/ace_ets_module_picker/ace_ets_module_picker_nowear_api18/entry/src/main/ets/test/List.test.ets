@@ -23,6 +23,8 @@ import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableH
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
 import SliderEnableHapticFeedbackTest from './slider/SliderEnableHapticFeedbackTest.test'
+import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
+import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
     calendarPickerStartEndTest()
@@ -35,4 +37,6 @@ export default function testsuite() {
     timePickerDialogSelectedAreaTest();
     textPickerDialogEnableHapticFeedback();
     SliderEnableHapticFeedbackTest();
+    textPickerDialogDefaultTextStyleTest();
+    textPickerDialogDisableTextStyleAnimationTest();
 }
