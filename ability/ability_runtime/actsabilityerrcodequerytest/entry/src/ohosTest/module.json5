@@ -49,7 +49,7 @@
       {
         "name": "applicationContext01",
         "srcEntry": "./ets/test/applicationContext/applicationContext01.ts",
-        "description": "$string:SecondAbility_desc",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:SecondAbility_label",
         "startWindowIcon": "$media:icon",
@@ -77,7 +77,7 @@
       {
         "name": "applicationContext02",
         "srcEntry": "./ets/test/applicationContext/applicationContext02.ts",
-        "description": "$string:SecondAbility_desc",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:SecondAbility_label",
         "startWindowIcon": "$media:icon",
@@ -105,7 +105,7 @@
       {
         "name": "applicationContext03",
         "srcEntry": "./ets/test/applicationContext/applicationContext03.ts",
-        "description": "$string:SecondAbility_desc",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:SecondAbility_label",
         "startWindowIcon": "$media:icon",
@@ -133,7 +133,7 @@
       {
         "name": "applicationContext04",
         "srcEntry": "./ets/test/applicationContext/applicationContext04.ts",
-        "description": "$string:SecondAbility_desc",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:SecondAbility_label",
         "startWindowIcon": "$media:icon",
@@ -162,7 +162,7 @@
       {
         "name": "applicationContext05",
         "srcEntry": "./ets/test/applicationContext/applicationContext05.ts",
-        "description": "$string:SecondAbility_desc",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:SecondAbility_label",
         "startWindowIcon": "$media:icon",
