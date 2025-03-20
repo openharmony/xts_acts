@@ -87,7 +87,8 @@ void NativeDrawingCanvasLargeValueTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawPath005, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawPath005,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -122,7 +123,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Dr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawBitmap021, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawBitmap021,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -141,7 +143,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Dr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawBitmapRect022, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawBitmapRect022,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(bitmap, nullptr);
@@ -172,7 +175,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Dr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawImageRect025, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_DrawImageRect025,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(rect, nullptr);
@@ -207,7 +211,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Dr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_ReadPixels027, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_ReadPixels027,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
@@ -230,7 +235,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Re
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_IsClipEmpty042, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_IsClipEmpty042,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -259,7 +265,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Is
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_GetImageInfo043, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_GetImageInfo043,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -284,7 +291,8 @@ HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_Ge
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_ClipRegion044, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasLargeValueTest, NativeDrawingCanvasLargeValueTest_ClipRegion044,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
