@@ -5,7 +5,7 @@ struct ImageAnimatorAutoPauseTest {
   @State state: AnimationStatus = AnimationStatus.Running
   @State reverse: boolean = false
   @State iterations: number = 100
-  @State preCallBack: string = 'Null'
+  @State preCallBack: string = "Null"
   @State monitorInvisibleArea: boolean | undefined | null = true
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -36,11 +36,11 @@ struct ImageAnimatorAutoPauseTest {
             .fillMode(FillMode.Forwards).iterations(this.iterations).width('90%').height('40%')
             .margin({ top: 20 })
             .onStart(() => {
-              this.preCallBack = 'Start'
+              this.preCallBack = "Start"
               console.info('ImageAnimator Start')
             })
             .onPause(() => {
-              this.preCallBack = 'Pause'
+              this.preCallBack = "Pause"
               console.info('ImageAnimator Pause')
             })
             .onRepeat(() => {
@@ -64,6 +64,7 @@ struct ImageAnimatorAutoPauseTest {
           }, (item: string) => item)
         }.width('100%')
       }
+      .height('100%')
       .id('scrollFlag')
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
       .scrollBar(BarState.On) // 滚动条常驻显示
@@ -81,20 +82,20 @@ struct ImageAnimatorAutoPauseTest {
         console.info('Scroll Stop')
       })
       Row({space: 5}){
-        Button('TRUE').id('trueFlag').fontSize(10).onClick(() => {
+        Text(this.preCallBack).id('textFlag').fontColor(Color.Green)
+        Button('TRUE').id('trueFlag').padding({ left: 0, right: 0, top: 2, bottom: 2 }).width('20%').fontSize(8).onClick(() => {
           this.monitorInvisibleArea = true
         })
-        Button('FALSE').id('falseFlag').fontSize(10).onClick(() => {
+        Button('FALSE').id('falseFlag').padding({ left: 0, right: 0, top: 2, bottom: 2 }).width('20%').fontSize(8).onClick(() => {
           this.monitorInvisibleArea = false
         })
-        Button('UNDEFINED').id('undefinedFlag').fontSize(10).onClick(() => {
+        Button('UNDEFINED').id('undefinedFlag').padding({ left: 0, right: 0, top: 2, bottom: 2 }).width('20%').fontSize(8).onClick(() => {
           this.monitorInvisibleArea = undefined
         })
-        Button('NULL').id('nullFlag').fontSize(10).onClick(() => {
+        Button('NULL').id('nullFlag').padding({ left: 0, right: 0, top: 2, bottom: 2 }).width('20%').fontSize(8).onClick(() => {
           this.monitorInvisibleArea = null
         })
-      }.margin({bottom: '5%'})
-      Text(this.preCallBack).id('textFlag').height('5%').width('90%').offset({ x:20,y:50 })
+      }.backgroundColor(Color.Pink)
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }
 }

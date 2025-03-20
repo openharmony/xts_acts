@@ -67,9 +67,9 @@ export default function monitorInvisibleAreaTest() {
       let height = bottom - top;
       let width = right - left;
       await driver.swipe(
-        Math.round(left + width * 0.2),
+        Math.round(left + width * 0.5),
         Math.round(top + height * 0.75),
-        Math.round(left + width * 0.2),
+        Math.round(left + width * 0.5),
         Math.round(top + height * 0.25)
       );
       await CommonFunc.sleep(6000);
