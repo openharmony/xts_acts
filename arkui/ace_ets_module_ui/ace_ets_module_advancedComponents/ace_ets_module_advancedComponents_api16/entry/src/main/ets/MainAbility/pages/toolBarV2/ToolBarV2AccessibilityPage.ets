@@ -61,7 +61,9 @@ struct ToolBarV2AccessibilityPage {
   aboutToAppear() {
     this.toolBarList.push(new ToolBarV2Item(
       {
-        content: new ToolBarV2ItemText(this.toolbarItemText),
+        content: new ToolBarV2ItemText({
+          text: 'Copy',
+        }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_copy'),
         }),
