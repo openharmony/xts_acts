@@ -16,6 +16,7 @@
 import { describe, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
+let activeUrl: string = 'wss://ws.welive.hu'+'awei.com/';
 
 const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
@@ -838,7 +839,7 @@ export default function WebSocketTest() {
             }
           })
         });
-        ws.connect('wss://ws.welive.huawei.com/', (err: BusinessError, value: boolean) => {
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
           if (err) {
             console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
             ExpectTrue(false);
@@ -849,6 +850,50 @@ export default function WebSocketTest() {
         })
       } catch (err) {
         console.info(`${caseName} catch err is ${JSON.stringify(err)}`);
+        ExpectTrue(false)
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /*
+      * @tc.number: SUB_NetworkMgr_WebSocket_Connect_0100
+      * @tc.name  : testNetworkMgrWebSocketConnect0100
+      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(connect twice)
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 3
+      */
+    it('testNetworkMgrWebSocketConnect0100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketConnect0100';
+      console.info(`${caseName} test start`);
+      try {
+        const ws : webSocket.WebSocket = webSocket.createWebSocket();
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect1 fail ${JSON.stringify(err)}`);
+            ExpectTrue(false)
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect1 success and value is ${value}`);
+            ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+              if (err) {
+                console.info(`${caseName} test connect2 fail ${JSON.stringify(err)}`);
+                ExpectTrue(err.code == 2302003);
+                done();
+                console.info(`${caseName} test end`);
+              } else {
+                console.info(`${caseName} test connect2 success and value is ${value}`);
+                ExpectTrue(false)
+                done();
+                console.info(`${caseName} test end`);
+              }
+            })
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
         ExpectTrue(false)
         done();
         console.info(`${caseName} test end`);
