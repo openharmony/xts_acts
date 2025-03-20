@@ -19,7 +19,9 @@ import {
   ToolBarV2ItemImage,
   ToolBarV2ItemState,
   ToolBarV2ItemText,
-  ToolBarV2Modifier
+  ToolBarV2Modifier,
+  ToolBarV2ItemOptions,
+  ToolBarV2ItemTextOptions,
 } from '@ohos.arkui.advanced.ToolBarV2';
 import { ColorMetrics, LengthMetrics } from '@ohos.arkui.node';
 import { DividerModifier } from '@ohos.arkui.modifier';
@@ -32,13 +34,34 @@ struct ToolBarV2AccessibilityPage {
     new ToolBarV2Modifier().height(LengthMetrics.vp(52)).backgroundColor(ColorMetrics.resourceColor(Color.Transparent));
   @Local dividerModifier: DividerModifier = new DividerModifier().height(0);
   @Local activatedIndex: number = 0;
+  @Local toolbarItem: ToolBarV2ItemOptions =   {
+    content: new ToolBarV2ItemText({
+      text: 'Share',
+      color: ColorMetrics.resourceColor(Color.Black),
+      activatedColor: ColorMetrics.resourceColor('#ffec5d5d'),
+    }),
+    icon: new ToolBarV2ItemImage({
+      src: $r('sys.media.ohos_ic_public_share'),
+      color: ColorMetrics.resourceColor('#ff18cb53'),
+      activatedColor: ColorMetrics.resourceColor('#ffec5d5d'),
+    }),
+    action: (index: number) => {
+    },
+    state: ToolBarV2ItemState.ENABLE,
+    accessibilityText: '分享',
+    accessibilityDescription: '单指双击即可分享',
+    accessibilityLevel: 'yes',
+  }
+  @Local toolbarItemText: ToolBarV2ItemTextOptions = {
+    text: 'copy',
+    color: ColorMetrics.resourceColor(Color.Black),
+    activatedColor: ColorMetrics.resourceColor('#ffec5d5d'),
+  }
 
   aboutToAppear() {
     this.toolBarList.push(new ToolBarV2Item(
       {
-        content: new ToolBarV2ItemText({
-          text: 'Copy',
-        }),
+        content: new ToolBarV2ItemText(this.toolbarItemText),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_copy'),
         }),

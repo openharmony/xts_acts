@@ -55,9 +55,9 @@ export default function toolBarV2AccessibilityTest() {
      * @tc.desc   Test ToolBarV2AccessibilityPage
      * @tc.size   MediumTest
      * @tc.type   Function
-     * @tc.level  0
+     * @tc.level  Level.LEVEL0
      */
-    it('ToolBarV2AccessibilityPageTest_0100', 0, async (done: Function) => {
+    it('ToolBarV2AccessibilityPageTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[ToolBarV2AccessibilityPageTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

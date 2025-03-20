@@ -55,9 +55,9 @@ export default function toolBarItemState() {
      * @tc.desc   Test toolBarItemState
      * @tc.size   MediumTest
      * @tc.type   Function
-     * @tc.level  0
+     * @tc.level  Level.LEVEL0
      */
-    it('toolBarItemState_0100', 0, async (done: Function) => {
+    it('toolBarItemState_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[toolBarItemState_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
