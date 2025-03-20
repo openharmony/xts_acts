@@ -34,8 +34,8 @@ struct stopWhenTouchedSwiper {
   @State count: number = 0;
   private controller: SwiperController = new SwiperController();
   private data: number[] = [];
-  @State isAutoPlay: boolean | null | undefined = false
-  @State isStopWhenTouched: boolean | null | undefined = false
+  @State isAutoPlay: boolean | null | undefined = true
+  @State isStopWhenTouched: boolean | null | undefined = true
   @State intervalArg: number = 1000
   @State isDigIndicator: boolean = false;
 
