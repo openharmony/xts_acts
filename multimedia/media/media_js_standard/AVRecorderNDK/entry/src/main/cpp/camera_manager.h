@@ -130,7 +130,7 @@ private:
     Camera_OutputCapability *cameraOutputCapability_;
     Camera_Profile *profile_;
 
-    Camera_VideoProfile *videoProfile_ = nullptr;
+    Camera_VideoProfile *cameraVideoProfile_ = nullptr;
     Camera_PreviewOutput *previewOutput_ = nullptr;
     Camera_PhotoOutput *photoOutput_ = nullptr;
     Camera_VideoOutput *videoOutput_ = nullptr;

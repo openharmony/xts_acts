@@ -469,13 +469,13 @@ Camera_ErrorCode NDKCamera::CreatePhotoOutput(char *photoSurfaceId)
 
 Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
 {
-    videoProfile_ = cameraOutputCapability_->videoProfiles[0];
-    if (videoProfile_ == nullptr) {
+    cameraVideoProfile_ = cameraOutputCapability_->videoProfiles[0];
+    if (cameraVideoProfile_ == nullptr) {
         return CAMERA_INVALID_ARGUMENT;
     }
     profile_->size.width = g_myParam1 ;
     profile_->size.height = g_myParam2;
-    result_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
+    result_ = OH_CameraManager_CreateVideoOutput(cameraManager_, cameraVideoProfile_, videoId, &videoOutput_);
     if (videoId == nullptr || videoOutput_ == nullptr || result_ != CAMERA_OK) {
         return CAMERA_INVALID_ARGUMENT;
     }

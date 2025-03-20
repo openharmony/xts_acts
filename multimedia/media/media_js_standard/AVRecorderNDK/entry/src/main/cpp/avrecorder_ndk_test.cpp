@@ -329,7 +329,7 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     parseSetConfigAudioSourceType(env, args[0], *config);
     parseSetConfigAudioCodec(env, args[0], *config);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
-    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig profile.audioBitratesucuess", config->profile.audioBitrate);
+    OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.audioBitratesucuess", config->profile.audioBitrate);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoFrameWidth = fd: %{public}d", config->profile.videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url.profile.videoFrameHeight = fd: %{public}d",
                 config->profile.videoFrameHeight);
