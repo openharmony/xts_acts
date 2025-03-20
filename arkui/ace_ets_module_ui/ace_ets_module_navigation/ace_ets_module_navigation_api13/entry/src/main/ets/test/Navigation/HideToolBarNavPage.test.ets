@@ -21,30 +21,30 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 export default function HideToolBarNavPage() {
   describe('HideToolBarNavPage', () => {
     beforeEach(async (done: Function) => {
-      console.info("HideToolBarNavPage beforeEach start");
+      console.info('HideToolBarNavPage beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/HideToolBarNavPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get HideToolBarNavPage state pages:" + JSON.stringify(pages));
-        if (!("HideToolBarNavPage" == pages.name)) {
-          console.info("get HideToolBarNavPage pages.name:" + JSON.stringify(pages.name));
+        console.info('get HideToolBarNavPage state pages:' + JSON.stringify(pages));
+        if (!('HideToolBarNavPage' == pages.name)) {
+          console.info('get HideToolBarNavPage pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push HideToolBarNavPage page result:" + JSON.stringify(result));
+          console.info('push HideToolBarNavPage page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push HideToolBarNavPage page error:" + err);
+        console.error('push HideToolBarNavPage page error:' + err);
       }
-      console.info("HideToolBarNavPage beforeEach end");
+      console.info('HideToolBarNavPage beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("HideToolBarNavPage after each called");
+      console.info('HideToolBarNavPage after each called');
     });
 
 
