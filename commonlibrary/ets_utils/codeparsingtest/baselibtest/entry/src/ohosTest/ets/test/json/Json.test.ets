@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { JSON } from '@kit.ArkTS';
 
 const nullChars = [0, 1];
@@ -54,7 +54,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0001', 0, () => {
+    it('testParse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0001";
       try {
         let numberText = '{"largeNumber":112233445566778899}';
@@ -75,7 +75,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0003', 0, () => {
+    it('testParse0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0003";
       try {
         let numberObj = JSON.parse(null) as Object;
@@ -95,7 +95,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0004', 0, () => {
+    it('testParse0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0004";
       try {
         let numberObj = JSON.parse('true') as Object;
@@ -115,7 +115,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0005', 0, () => {
+    it('testParse0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0005";
       try {
         let numberObj = JSON.parse('false') as Object;
@@ -135,7 +135,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0006', 0, () => {
+    it('testParse0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0006";
       try {
         let numberObj = JSON.parse('12\t\r\n 34') as Object;
@@ -155,7 +155,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0007', 0, () => {
+    it('testParse0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0007";
       try {
         let numberObj = JSON.parse('\u2028\u20291234') as Object;
@@ -175,7 +175,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0008', 0, () => {
+    it('testParse0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0008";
       let jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
       try {
@@ -201,7 +201,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0009', 0, () => {
+    it('testParse0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0009";
       try {
         let numberObj = JSON.parse('12 34') as Object;
@@ -221,7 +221,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0010', 0, () => {
+    it('testParse0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0010";
       try {
         let numberText = '\"abc\"';
@@ -242,7 +242,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0011', 0, () => {
+    it('testParse0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0011";
       try {
         let numberText = '';
@@ -263,7 +263,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0012', 0, () => {
+    it('testParse0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0012";
       try {
         let numberObj = JSON.parse("\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007");
@@ -283,7 +283,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0013', 0, () => {
+    it('testParse0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0013";
       try {
         let numberText = "\"\\u0058\"";
@@ -304,7 +304,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0014', 0, () => {
+    it('testParse0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0014";
       try {
         let numberText = '\"\\\\\"';
@@ -325,7 +325,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0015', 0, () => {
+    it('testParse0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0015";
       try {
         let numberObj = JSON.parse('{ "name" : ' + nullChars[0] + '"John" : ' + nullChars[0] + ' }');
@@ -345,7 +345,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0016', 0, () => {
+    it('testParse0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0016";
       try {
         let jsonText = '{"large":112233445566778899}';
@@ -368,7 +368,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0017', 0, () => {
+    it('testParse0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0017";
       try {
         let jsonText = '{"small":123}';
@@ -391,7 +391,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0018', 0, () => {
+    it('testParse0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0018";
       try {
         let jsonText = '{"deci":1234567890.0123456}';
@@ -414,7 +414,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0019', 0, () => {
+    it('testParse0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0019";
       try {
         let jsonText = '{"normal":511428}';
@@ -437,7 +437,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0020', 0, () => {
+    it('testParse0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0020";
       try {
         let jsonText = '{"shortExp":1.79e+308}';
@@ -460,7 +460,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0021', 0, () => {
+    it('testParse0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0021";
       try {
         let jsonText = '{"long":9007199254740900}';
@@ -483,7 +483,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0022', 0, () => {
+    it('testParse0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0022";
       try {
         let jsonText = '{"number":1122}';
@@ -506,7 +506,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0023', 0, () => {
+    it('testParse0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0023";
       try {
         let jsonText = '{"big":112233445566778898}';
@@ -529,7 +529,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0024', 0, () => {
+    it('testParse0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0024";
       try {
         let numberObj = JSON.parse('undefined') as Object;
@@ -548,7 +548,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0025', 0, () => {
+    it('testParse0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0025";
       try {
         let numberObj = JSON.parse(null) as Object;
@@ -567,7 +567,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0026', 0, () => {
+    it('testParse0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0026";
       try {
         let numberObj = JSON.parse(undefined) as Object;
@@ -586,7 +586,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0027', 0, () => {
+    it('testParse0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0027";
       try {
         let numberObj = JSON.parse(' ') as Object;
@@ -605,7 +605,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0028', 0, () => {
+    it('testParse0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0028";
       try {
         let json = '!!\"\"##$$%%\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~'
@@ -625,7 +625,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0029', 0, () => {
+    it('testParse0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0029";
       try {
         let json = '{"!!""##$$%%\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~": "special", "age": 30}'
@@ -645,7 +645,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0030', 0, () => {
+    it('testParse0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0030";
       try {
         let json = '{"special": "!!""##$$%%\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~", "age": 30}'
@@ -665,7 +665,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0031', 0, () => {
+    it('testParse0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0031";
       try {
         let numberObj = JSON.parse('{"name": "", "age": 30}') as Object;
@@ -684,7 +684,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0032', 0, () => {
+    it('testParse0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0032";
       try {
         let numberObj = JSON.parse('{"name": null, "age": 30}') as Object;
@@ -703,7 +703,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0033', 0, () => {
+    it('testParse0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0033";
       try {
         let numberObj = JSON.parse('{"name": true, "age": 30}') as Object;
@@ -722,7 +722,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0034', 0, () => {
+    it('testParse0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0034";
       try {
         let numberObj = JSON.parse('{"name": {"name": "John", "age": 30}, "age": 30}') as Object;
@@ -741,7 +741,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0035', 0, () => {
+    it('testParse0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0035";
       try {
         let numberObj = JSON.parse('{"name": [true,false], "age": 30}') as Object;
@@ -760,7 +760,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParse0036', 0, () => {
+    it('testParse0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParse0036";
       try {
         let numberObj = JSON.parse('{null: "John", "age": 30}') as Object;
@@ -779,7 +779,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0001', 0, () => {
+    it('testStringify0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0001";
       try {
         let str1 = JSON.stringify({}, undefined, '');
@@ -798,7 +798,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0002', 0, () => {
+    it('testStringify0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0002";
       try {
         let str1 = JSON.stringify({
@@ -819,7 +819,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0003', 0, () => {
+    it('testStringify0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0003";
       try {
         let str1 = JSON.stringify({
@@ -840,7 +840,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0004', 0, () => {
+    it('testStringify0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0004";
       try {
         let str1 = JSON.stringify({
@@ -861,7 +861,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0005', 0, () => {
+    it('testStringify0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0005";
       try {
         let str1 = JSON.stringify({
@@ -882,7 +882,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0006', 0, () => {
+    it('testStringify0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0006";
       try {
         let str1 = JSON.stringify({
@@ -903,7 +903,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0007', 0, () => {
+    it('testStringify0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0007";
       try {
         let str1 = JSON.stringify({
@@ -924,7 +924,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0008', 0, () => {
+    it('testStringify0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0008";
       try {
         let str1 = JSON.stringify(undefined);
@@ -943,7 +943,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0009', 0, () => {
+    it('testStringify0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0009";
       try {
         let str1 = JSON.stringify(null);
@@ -963,7 +963,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0010', 0, () => {
+    it('testStringify0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0010";
       try {
         let str1 = JSON.stringify("");
@@ -983,7 +983,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0011', 0, () => {
+    it('testStringify0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0011";
       try {
         let str1 = JSON.stringify('!!""##$$%%\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~');
@@ -1003,7 +1003,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0012', 0, () => {
+    it('testStringify0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0012";
       try {
         let str1 = JSON.stringify({
@@ -1025,7 +1025,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0013', 0, () => {
+    it('testStringify0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0013";
       try {
         let str1 = JSON.stringify({
@@ -1047,7 +1047,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0014', 0, () => {
+    it('testStringify0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0014";
       try {
         let str1 = JSON.stringify({
@@ -1070,7 +1070,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0015', 0, () => {
+    it('testStringify0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0015";
       try {
         let str1 = JSON.stringify({
@@ -1092,7 +1092,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0016', 0, () => {
+    it('testStringify0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0016";
       try {
         let str1 = JSON.stringify({
@@ -1114,7 +1114,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0017', 0, () => {
+    it('testStringify0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0017";
       try {
         let str1 = JSON.stringify({
@@ -1138,7 +1138,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0018', 0, () => {
+    it('testStringify0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0018";
       try {
         let str1 = JSON.stringify({
@@ -1160,7 +1160,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0019', 0, () => {
+    it('testStringify0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0019";
       try {
         let str1 = JSON.stringify({
@@ -1182,7 +1182,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0020', 0, () => {
+    it('testStringify0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0020";
       try {
         let str1 = JSON.stringify({
@@ -1204,7 +1204,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0021', 0, () => {
+    it('testStringify0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0021";
       try {
         let str1 = JSON.stringify({
@@ -1226,7 +1226,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringify0022', 0, () => {
+    it('testStringify0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringify0022";
       try {
         let str1 = JSON.stringify({
@@ -1252,7 +1252,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    // it('testStringify0023', 0, () => {
+    // it('testStringify0023',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
     //   const TAG = "testStringify0023";
     //   try {
     //     let options: JSON.ParseOptions = {
@@ -1275,7 +1275,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0001', 0, () => {
+    it('testHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0001";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1296,7 +1296,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0002', 0, () => {
+    it('testHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0002";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1317,7 +1317,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0003', 0, () => {
+    it('testHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0003";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1338,7 +1338,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0004', 0, () => {
+    it('testHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0004";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1359,7 +1359,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0005', 0, () => {
+    it('testHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0005";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1380,7 +1380,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0006', 0, () => {
+    it('testHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0006";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1401,7 +1401,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0007', 0, () => {
+    it('testHas0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0007";
       try {
         let jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1422,7 +1422,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0008', 0, () => {
+    it('testHas0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0008";
       try {
         let jsonText = '{"name":""}';
@@ -1443,7 +1443,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0009', 0, () => {
+    it('testHas0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0009";
       try {
         let jsonText = '{"name":true}';
@@ -1464,7 +1464,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0010', 0, () => {
+    it('testHas0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0010";
       try {
         let jsonText = '{"name":null}';
@@ -1485,7 +1485,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0011', 0, () => {
+    it('testHas0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0011";
       try {
         let jsonText = '{"":"null"}';
@@ -1506,7 +1506,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0012', 0, () => {
+    it('testHas0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0012";
       try {
         let jsonText =
@@ -1528,7 +1528,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0013', 0, () => {
+    it('testHas0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0013";
       try {
         let jsonText =
@@ -1550,7 +1550,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0001', 0, () => {
+    it('testRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0001";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1572,7 +1572,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0002', 0, () => {
+    it('testRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0002";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1594,7 +1594,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0003', 0, () => {
+    it('testRemove0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0003";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1616,7 +1616,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0004', 0, () => {
+    it('testRemove0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0004";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1638,7 +1638,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0005', 0, () => {
+    it('testRemove0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0005";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1660,7 +1660,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0006', 0, () => {
+    it('testRemove0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0006";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1682,7 +1682,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0007', 0, () => {
+    it('testRemove0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0007";
       try {
         const jsonText = '{"name": "John", "age": 30, "city": "New York"}';
@@ -1703,7 +1703,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0008', 0, () => {
+    it('testRemove0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0008";
       try {
         const jsonText = '{"name": ""}';
@@ -1724,7 +1724,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0009', 0, () => {
+    it('testRemove0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0009";
       try {
         const jsonText = '{"name": true}';
@@ -1745,7 +1745,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0010', 0, () => {
+    it('testRemove0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0010";
       try {
         const jsonText = '{"name": null}';
@@ -1766,7 +1766,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0011', 0, () => {
+    it('testRemove0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0011";
       try {
         const jsonText = '{"": null}';
@@ -1788,7 +1788,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0012', 0, () => {
+    it('testRemove0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0012";
       try {
         const jsonText =
@@ -1811,7 +1811,7 @@ export default function JsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0013', 0, () => {
+    it('testRemove0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0013";
       try {
         const jsonText =

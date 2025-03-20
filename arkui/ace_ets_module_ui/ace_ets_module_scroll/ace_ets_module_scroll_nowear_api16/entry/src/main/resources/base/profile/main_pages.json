@@ -2,7 +2,6 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/WaterFlow/WaterFlowEffectEdge",
-        "MainAbility/pages/WaterFlow/WaterComponentContent",
-        "MainAbility/pages/WaterFlow/WaterFlowBackToTop"
+        "MainAbility/pages/WaterFlow/WaterComponentContent"
     ]
 }

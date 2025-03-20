@@ -68,6 +68,11 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         let appAccountMgr = account_appAccount.createAppAccountManager();
         let newAccountName = "createNewAccountName"
         appAccountMgr.createAccount(newAccountName, (err) => {
+            console.log(TAG + "createAccount err: " + JSON.stringify(err));
+            if (err !== null && err.code === 12300004) {
+                callback.onResult(12300007);
+                return;
+            }
             let authResult = {
                 account: {
                     name: newAccountName,
@@ -80,6 +85,10 @@ class MyAuthenticator extends account_appAccount.Authenticator {
 
     auth(name, authType, options, callback) {
         console.log(TAG + "name: " + name + "authType: " + authType + ", options: " + JSON.stringify(options))
+        if (name === 'notExistAccount') {
+            callback.onResult(12300003);
+            return;
+        }
         let authResult = {
             account: {
                 name: name,
@@ -87,7 +96,11 @@ class MyAuthenticator extends account_appAccount.Authenticator {
             },
             tokenInfo: {
                 authType: "getSocialData",
-                token: "xxxxxxxxx"
+                token: "xxxxxxxxx",
+                account: {
+                    name: name,
+                    owner: "com.acts.accountauthenticator"
+                }
             }
         }
         callback.onResult(0, authResult);
@@ -95,6 +108,10 @@ class MyAuthenticator extends account_appAccount.Authenticator {
 
     verifyCredential(name, options, callback) {
         console.log(TAG + "name: " + name + ", options: " + JSON.stringify(options))
+        if (name === 'notExistAccount') {
+            callback.onResult(12300003);
+            return;
+        }
         if (name == "xiaoming") {
             callback.onRequestContinued()
             return
@@ -132,6 +149,10 @@ class MyAuthenticator extends account_appAccount.Authenticator {
 
     checkAccountLabels(name, labels, callback) {
         console.log(TAG + "name: " + name + ", labels: " + JSON.stringify(labels) + ", callback: " + callback)
+        if (name === 'notExistAccount') {
+            callback.onResult(12300003);
+            return;
+        }
         if (labels.length == 0) {
             callback.onResult(0, {"booleanResult": true})
             return
@@ -156,9 +177,22 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         callback.onResult(0, {"booleanResult": true})
     }
 
-    setProperties(options, callback) {
-        console.log(TAG + "options: " + JSON.stringify(options))
-        callback.onResult(10016, {})
+    async setProperties(options: account_appAccount.SetPropertiesOptions,
+        callback: account_appAccount.AuthCallback): Promise<void> {
+        console.log(TAG + 'options: ' + JSON.stringify(options));
+        if (options.properties.prop1 === 'remove') {
+            let appAccountMgr = account_appAccount.createAppAccountManager();
+            console.info('====>start remove ' + JSON.stringify(options.properties.prop2));
+            let accountName = String(options.properties.prop2);
+            try {
+                await appAccountMgr.removeAccount(accountName);
+                callback.onResult(0);
+                return;
+            } catch (err) {
+                console.info('====>removeAccount err:' + JSON.stringify(err));
+            }
+        }
+        callback.onResult(10016, {});
     }
 
     checkAccountRemovable(name, callback) {

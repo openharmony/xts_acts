@@ -325,8 +325,6 @@ export const textAreaOnFocusTest: (a: string) => void;
 
 export const textAreaOnBlurTest: (a: string) => void;
 
-export const textAreaOnPasteTest: (a: string) => void;
-
 export const textAreaKeyTest: (a: string) => void;
 
 export const textInputKeyTest: (a: string) => void;
@@ -340,10 +338,6 @@ export const textInputOnBlurTest: (a: string) => void;
 export const textInputOnFocusTest: (a: string) => void;
 
 export const textInputOnSubmitTest: (a: string) => void;
-
-export const textInputOnCutTest: (a: string) => void;
-
-export const textInputOnPasteTest: (a: string) => void;
 
 export const gestureTest: (a: string) => void;
 export const longPressGestureTest: (a: string) => void;

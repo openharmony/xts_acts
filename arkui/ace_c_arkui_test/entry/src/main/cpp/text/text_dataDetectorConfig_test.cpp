@@ -40,7 +40,7 @@ static napi_value TestTextDataDetectorConfig002(napi_env env, napi_callback_info
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG)->value[PARAM_0].i32,
-        PARAM_0);
+        ARKUI_TEXT_DATA_DETECTOR_TYPE_URL);
 
     NAPI_END;
 }
@@ -121,7 +121,7 @@ static napi_value TestTextDataDetectorConfig008(napi_env env, napi_callback_info
     ASSERT_EQ(ret1, SUCCESS);
 
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG)->value[PARAM_0].i32,
-        PARAM_4);
+        ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER);
 
     NAPI_END;
 }

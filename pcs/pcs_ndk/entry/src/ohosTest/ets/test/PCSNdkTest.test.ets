@@ -83,6 +83,77 @@ export default function pcsNdkTest() {
     });
 
     /*
+     * @tc.number: C-S|STD-SOFTWARE-0700
+     * @tc.name: testAudioEncoderFlac
+     * @tc.desc: 【C-S|STD-SOFTWARE-0700】必须支持PCM/WAV、FLAC、OGG格式的音频编码,
+     *            编码采样频率必须支持8K,16K,44.1k,48K。
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioEncoderFlac', 0, async (done: Function) => {
+      expect(pcsAudioTest.OH_AudioEncoderFlac()).assertEqual(SuccessResult1);
+      done();
+    });
+
+    /*
+     * @tc.number: C-S|STD-SOFTWARE-0701
+     * @tc.name: testAudioEncoderAAc
+     * @tc.desc: 【C-S|STD-SOFTWARE-0701】必须支持MMEG-2 AAC Main/MPEG-2 AAC LC(Low  Complexity)，
+     *            格式的音频编码,编码采样频率支持16K, 44.1K, 48K, 可选支持11.025K, 22.05K, 48K, 176.4k, 192K。
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioEncoderAAc', 0, async (done: Function) => {
+      expect(pcsAudioTest.OH_AudioEncoderAAc()).assertEqual(SuccessResult1);
+      done();
+    });
+
+    /*
+     * @tc.number: C-STD-SOFTWARE-0702
+     * @tc.name: testAudioDecoderAAc
+     * @tc.desc: 【C-STD-SOFTWARE-0702】必须支持MPEG-4 AAC Profile(AAC LC)格式解码,支持单/双声道,支持
+     *            8/16/24/bit位深,建议支持32bit位深,支持MPEG-4(.mp4,.mp4a)容器格式。
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioDecoderAAc', 0, async (done: Function) => {
+      expect(pcsAudioTest.OH_AudioDecoderAAc()).assertEqual(SuccessResult1);
+      done();
+    });
+
+    /*
+     * @tc.number: C-STD-SOFTWARE-0703
+     * @tc.name: testAudioEncoderH264
+     * @tc.desc: 【C-STD-SOFTWARE-0703】必须支持H.264格式Baseline Profile Level3 编码格式, 必须支持SD(尺寸小于720x480)，
+     *            编码规格,应该支持HD(尺寸大于1280x720)编码规格。
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioEncoderH264', 0, async (done: Function) => {
+      expect(pcsAudioTest.OH_AudioEncoderH264()).assertEqual(SuccessResult1);
+      done();
+    });
+
+    /*
+     * @tc.number: C-STD-SOFTWARE-0704
+     * @tc.name: testAudioDecoderH264
+     * @tc.desc: 【C-STD-SOFTWARE-0704】必须支持H.264格式Baseline Profile/Main Profile/High Profile 解码，
+     *            MPEG-4(.mp4)容器格式。
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioDecoderH264', 0, async (done: Function) => {
+      expect(pcsAudioTest.OH_AudioDecoderH264()).assertEqual(SuccessResult1);
+      done();
+    });
+
+
+    /*
      * @tc.number: C-ALL-HARDWARE-0201
      * @tc.name: testHardwareAcceleration0100
      * @tc.desc: 【C-ALL-HARDWARE-0201】如果支持图形显示，并且支持图形的 2D 或 3D 硬件加速：默认情况下必须启用硬件加速。

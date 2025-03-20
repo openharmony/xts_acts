@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_rdb from '@ohos.data.rdb'
 import ability_featureAbility from '@ohos.ability.featureAbility'
 
@@ -104,7 +104,7 @@ describe('rdbEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest_0010', 0, async function (done) {
+        it('RdbEncryptTest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0010 start *************")
             context = ability_featureAbility.getContext()
             data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT, 1).then((store) => {
@@ -124,7 +124,7 @@ describe('rdbEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest_0020', 0, async function (done) {
+        it('RdbEncryptTest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0020 start *************")
             context = ability_featureAbility.getContext()
             let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT, 1);
@@ -147,7 +147,7 @@ describe('rdbEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest_0030', 0, async function (done) {
+        it('RdbEncryptTest_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0030 start *************")
             context = ability_featureAbility.getContext()
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
@@ -180,7 +180,7 @@ describe('rdbEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-         it('RdbEncryptTest_0040', 0, async function (done) {
+         it('RdbEncryptTest_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0040 start *************")
             context = ability_featureAbility.getContext()
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
@@ -204,7 +204,7 @@ describe('rdbEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest_0050', 0, async function (done) {
+        it('RdbEncryptTest_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0050 start *************")
             context = ability_featureAbility.getContext()
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)

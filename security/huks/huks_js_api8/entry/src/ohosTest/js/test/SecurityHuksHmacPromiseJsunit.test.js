@@ -41,6 +41,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
     .getKeyProperties(srcKeyAlies, HuksOptions)
     .then(async (data) => {
       console.log(`test finish data ${JSON.stringify(data)}`);
+      expect(data.properties != null).assertTrue();
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {

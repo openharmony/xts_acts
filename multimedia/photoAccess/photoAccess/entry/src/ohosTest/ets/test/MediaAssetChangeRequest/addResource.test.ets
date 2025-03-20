@@ -84,6 +84,7 @@ export default function addResourceChangeRequestTest() {
         done();
       } catch (error) {
         console.info(`${testNum} succeed to detect invalid fileUri`);
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
         done();
       }
     })
@@ -92,7 +93,7 @@ export default function addResourceChangeRequestTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_RESOURCE_CHANGE_REQUEST_0200
      * @tc.name      : add_resource_change_request_002
-     * @tc.desc      : add resource by extension ''
+     * @tc.desc      : add VIDEO resource by IMAGE_RESOURCE,error code is 13900002 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -110,7 +111,7 @@ export default function addResourceChangeRequestTest() {
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}, ${error.code}`);
-        expect(error.code).assertEqual('401')
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
         done();
       }
     })

@@ -84,6 +84,6 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
     defines += [ "SKIA_ENABLE" ]
   }
 
-  part_name = "av_codec"
+  part_name = "video_processing_engine"
   subsystem_name = "multimedia"
 }

@@ -56,6 +56,8 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[2].preloads[1].moduleName).assertEqual("shared");
         expect(data.hapModulesInfo[2].dependencies.length).assertEqual(1);
         expect(data.hapModulesInfo[2].dependencies[0].moduleName).assertEqual("feature");
+        expect(data.hapModulesInfo[2].dependencies[0].bundleName).assertEqual("");
+        expect(data.hapModulesInfo[2].dependencies[0].versionCode).assertEqual(0);
         done();
       }).catch(err => {
         console.info("getBundleInfoForSelf fail" + JSON.stringify(err));

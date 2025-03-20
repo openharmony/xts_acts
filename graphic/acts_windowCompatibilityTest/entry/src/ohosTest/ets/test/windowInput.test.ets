@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 import window from '@ohos.window';
 import { UiDriver, BY, ON, PointerMatrix, UiComponent } from '@ohos.UiTest'
 import { BusinessError, Callback } from '@ohos.base';
@@ -189,6 +189,372 @@ export default function windowInputTest(context: common.UIAbilityContext, window
           }
         });
     })
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5680
+     * @tc.name      : testWindow_on_off_keyboardDidShow_normal
+     * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testWindow_on_off_keyboardDidShow_normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'testWindow_on_off_keyboardDidShow_normal';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindow_on_off_keyboardDidShow_normal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).loadContent('testability/pages/second/pageTwo')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
+        });
+      let current_display_Class = display.getDefaultDisplaySync();
+      await (tempWnd as window.Window).resize(800, current_display_Class.height).catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      await (tempWnd as window.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      await (tempWnd as window.Window).showWindow().catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      let keyboard_info: window.KeyboardInfo;
+      try {
+        (tempWnd as window.Window).on('keyboardDidShow', (keyboardInfo: window.KeyboardInfo) => {
+          console.info(msgStr + "first listener trigger");
+          console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
+          keyboard_info = keyboardInfo;
+          expect(keyboard_info.rect.height != null).assertTrue();
+          expect(keyboard_info.rect.width != null).assertTrue();
+          expect(keyboard_info.rect.top != null).assertTrue();
+          expect(keyboard_info.rect.left != null).assertTrue();
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      try {
+        (tempWnd as window.Window).on('keyboardDidShow', () => {
+          console.info(msgStr + "second listener trigger");
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidShow');
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      await (tempWnd as window.Window).destroyWindow();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5690
+     * @tc.name      : testWindowOffKeyboardDidShow_UnregisteredOff
+     * @tc.desc      : Disable listening for the height change of the soft keyboard in the fixed state input method window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffKeyboardDidShow_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+      let caseName = 'testWindowOffKeyboardDidShow_UnregisteredOff';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffKeyboardDidShow_UnregisteredOff').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      try {
+        (tempWnd as window.Window).off('keyboardDidShow');
+        await (tempWnd as window.Window).destroyWindow();
+      } catch (exception) {
+        await (tempWnd as window.Window).destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5700
+     * @tc.name      : testWindowOffKeyboardDidShow_RepeatOff
+     * @tc.desc      : test testWindowOffKeyboardDidShow_RepeatOff
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffKeyboardDidShow_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+      let caseName = 'testWindowOffKeyboardDidShow_RepeatOff';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffKeyboardDidShow_RepeatOff').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      try {
+        (tempWnd as window.Window).on('keyboardDidShow', (keyboardInfo: window.KeyboardInfo) => {
+          console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          await (tempWnd as window.Window).destroyWindow();
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidShow');
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          await (tempWnd as window.Window).destroyWindow();
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidShow');
+        await (tempWnd as window.Window).destroyWindow();
+      } catch (exception) {
+        await (tempWnd as window.Window).destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5710
+     * @tc.name      : testWindow_on_off_keyboardDidHide_normal
+     * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testWindow_on_off_keyboardDidHide_normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'testWindow_on_off_keyboardDidHide_normal';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindow_on_off_keyboardDidHide_normal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).loadContent('testability/pages/second/pageTwo')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
+        });
+      let current_display_Class = display.getDefaultDisplaySync();
+      await (tempWnd as window.Window).resize(800, current_display_Class.height).catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      await (tempWnd as window.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      await (tempWnd as window.Window).showWindow().catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      try {
+        (tempWnd as window.Window).on('keyboardDidHide', () => {
+          console.info(msgStr + "first listener trigger");
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      try {
+        (tempWnd as window.Window).on('keyboardDidHide', () => {
+          console.info(msgStr + "second listener trigger");
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidHide');
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
+      }
+      await (tempWnd as window.Window).destroyWindow();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5720
+     * @tc.name      : testWindowOffKeyboardDidHide_UnregisteredOff
+     * @tc.desc      : test testWindowOffKeyboardDidHide_UnregisteredOff
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffKeyboardDidHide_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+      let caseName = 'testWindowOffKeyboardDidHide_UnregisteredOff';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffKeyboardDidHide_UnregisteredOff').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      try {
+        (tempWnd as window.Window).off('keyboardDidHide');
+        await (tempWnd as window.Window).destroyWindow();
+      } catch (exception) {
+        await (tempWnd as window.Window).destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5730
+     * @tc.name      : testWindowOffKeyboardDidHide_RepeatOff
+     * @tc.desc      : test testWindowOffKeyboardDidHide_RepeatOff
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffKeyboardDidHide_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+      let caseName = 'testWindowOffKeyboardDidHide_RepeatOff';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffKeyboardDidHide_RepeatOff').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      try {
+        (tempWnd as window.Window).on('keyboardDidHide', (keyboardInfo: window.KeyboardInfo) => {
+          console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          await (tempWnd as window.Window).destroyWindow();
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidHide');
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          await (tempWnd as window.Window).destroyWindow();
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+      try {
+        (tempWnd as window.Window).off('keyboardDidHide');
+        await (tempWnd as window.Window).destroyWindow();
+      } catch (exception) {
+        await (tempWnd as window.Window).destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the unregister for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
   })
 }

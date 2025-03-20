@@ -626,7 +626,6 @@ export default function ApiCoverTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["AbilityStage_StartAbility"]
       }
-
       commonEvent.createSubscriber(subscribeInfo, (err, data) => {
         console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
         subscriber = data

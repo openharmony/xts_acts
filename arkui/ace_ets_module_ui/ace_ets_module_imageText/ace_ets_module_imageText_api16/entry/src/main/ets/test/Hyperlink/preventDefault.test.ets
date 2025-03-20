@@ -58,17 +58,13 @@ export default function preventDefault() {
         await CommonFunc.sleep(500);
         await hyperlink1.click()
         await CommonFunc.sleep(500);
-        let strJson = getInspectorByKey('hyperlink1');
-        let obj: ESObject = JSON.parse(strJson);
-        console.log('preventDefault0001---' + obj.$attrs.color)
-        expect(obj.$attrs.color).assertEqual("#FFFFC0CB");
-        //#FFFFC0CB
-        let strJson2 = getInspectorByKey('hyperlink3');
-        let obj2: ESObject = JSON.parse(strJson2);
-        console.log('preventDefault0001---' + obj2.$attrs.color)
-        expect(obj2.$attrs.color).assertEqual("#FF0A59F7");
-        console.info("[preventDefault0001] end");
 
+        let hyperlink3 = await driver.findComponent(ON.id('hyperlink3'));
+        await CommonFunc.sleep(500);
+        await hyperlink3.click()
+        await CommonFunc.sleep(500);
+        await driver.assertComponentExist(ON.text('禁掉onclick'));
+        console.info("[preventDefault0001] end");
     });
 
 

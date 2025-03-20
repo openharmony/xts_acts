@@ -15,13 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 module_output_path = "acts/nnrt"
 
 config("nncore_config") {
-  include_dirs = [
-    "../common",
-    "../../../../../../foundation/ai/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
-    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
-  ]
+  include_dirs = [ "../common" ]
   cflags = [ "-Wno-error" ]
   cflags_cc = [ "-fexceptions" ]
 }
@@ -36,18 +30,16 @@ ohos_moduletest_suite("ActsNnrtE2ETest") {
 
   configs = [ ":nncore_config" ]
 
-  deps = [
-    "//third_party/googletest:gmock",
-    "//third_party/googletest:gtest",
-  ]
-
   external_deps = [
     "c_utils:utils",
     "drivers_interface_nnrt:libnnrt_proxy_2.0",
+    "googletest:gmock_main",
+    "googletest:gtest_main",
     "hilog:libhilog",
     "ipc:ipc_single",
-    "mindspore:mindir",
-    "neural_network_runtime:nnrt_target",
+    "mindspore:mindir_lib",
+    "neural_network_runtime:libneural_network_core",
+    "neural_network_runtime:libneural_network_runtime",
   ]
 
   subsystem_name = "ai"

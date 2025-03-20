@@ -3626,6 +3626,40 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400
+         * @tc.name      : setAVMetadata - promise - set singleLyricText
+         * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400', 2, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                singleLyricText: 'dream it possible'
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set singleLyricText successfully');
+            }).catch((err) => {
+                console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVMetadata().then((data) => {
+                if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100
          * @tc.name      : get session outputDevice - callback
          * @tc.desc      : Testing call getOutputDevice(supportedDrmCapabilities)

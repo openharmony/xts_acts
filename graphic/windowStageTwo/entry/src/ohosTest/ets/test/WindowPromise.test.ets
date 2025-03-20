@@ -248,6 +248,7 @@ export default function windowPromiseTest() {
           minHeight = Number(subWindowClass.getWindowLimits().minHeight);
           console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
           await subWindowClass.resize(minWidth+200, minHeight+200);
+          await subWindowClass.moveWindowToAsync(100, 100);
           await subWindowClass.setUIContent('testability/pages/First/index2');
           await subWindowClass.showWindow();
           try {
@@ -336,6 +337,7 @@ export default function windowPromiseTest() {
           minHeight = Number(subWindowClass.getWindowLimits().minHeight);
           console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
           await subWindowClass.resize(minWidth+200, minHeight+200);
+          await subWindowClass.moveWindowToAsync(100, 100);
           await subWindowClass.setUIContent('testability/pages/First/index2');
           await subWindowClass.showWindow();
           try {
@@ -1936,7 +1938,7 @@ export default function windowPromiseTest() {
             expect(time).assertLess(3000);
             expect(time).assertLarger(1500);
             subWindowClass.off('noInteractionDetected');
-            subWindowClass.hide();
+            subWindowClass.destroyWindow();
             done();
           });
           time1 = new Date().getTime();

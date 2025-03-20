@@ -1487,5 +1487,251 @@ export default function requestConfigSavesTest() {
       });
     });
 
+    /*
+     * @tc.number: SUB_Request_Agent_PauseError_callback_0100
+     * @tc.name: SUB_Request_Agent_PauseError_callback_0100
+     * @tc.desc: pause errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_PauseError_callback_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_PauseError_callback_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_PauseError_callback_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_PauseError_callback_0100 create success");
+        task.pause(async (err: BusinessError) => {
+          try{
+            if (err) {
+              console.info("====>SUB_Request_Agent_PauseError_callback_0100 download pause err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+            } else {
+              console.info('====>SUB_Request_Agent_PauseError_callback_0100 failed');
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info("====>SUB_Request_Agent_PauseError_callback_0100 catch err: " + JSON.stringify(err));
+          }
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_PauseError_callback_0100 removeTask");
+          done();
+        })
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_PauseError_callback_0100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_PauseError_promise_0100
+     * @tc.name: SUB_Request_Agent_PauseError_promise_0100
+     * @tc.desc: pause errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_PauseError_promise_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_PauseError_promise_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_PauseError_promise_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_PauseError_promise_0100 create success");
+        await task.pause();
+        console.info("====>SUB_Request_Agent_PauseError_promise_0100 pause success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_PauseError_promise_0100 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900007);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_PauseError_promise_0100 removeTask");
+        }
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_ResumeError_callback_0100
+     * @tc.name: SUB_Request_Agent_ResumeError_callback_0100
+     * @tc.desc: resume errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_ResumeError_callback_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_ResumeError_callback_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ResumeError_callback_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_ResumeError_callback_0100 create success");
+        task.resume(async (err: BusinessError) => {
+          try{
+            if(err){
+              console.info("====>SUB_Request_Agent_ResumeError_callback_0100 download pause err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+            } else {
+              console.info('====>SUB_Request_Agent_ResumeError_callback_0100 failed');
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info("====>SUB_Request_Agent_ResumeError_callback_0100 catch err: " + JSON.stringify(err));
+          }
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_ResumeError_callback_0100 removeTask");
+          done();
+        })
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_ResumeError_callback_0100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_ResumeError_promise_0100
+     * @tc.name: SUB_Request_Agent_ResumeError_promise_0100
+     * @tc.desc: resume errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_ResumeError_promise_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_ResumeError_promise_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ResumeError_promise_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_ResumeError_promise_0100 create success");
+        await task.resume();
+        console.info("====>SUB_Request_Agent_ResumeError_promise_0100 pause success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_ResumeError_promise_0100 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900007);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_ResumeError_promise_0100 removeTask");
+        }
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_StopError_callback_0100
+     * @tc.name: SUB_Request_Agent_StopError_callback_0100
+     * @tc.desc: stop errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_StopError_callback_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_StopError_callback_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_StopError_callback_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_StopError_callback_0100 create success");
+        task.stop(async (err: BusinessError) => {
+          try{
+            if(err){
+              console.info("====>SUB_Request_Agent_StopError_callback_0100 download pause err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+            } else {
+              console.info('====>SUB_Request_Agent_StopError_callback_0100 failed');
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info("====>SUB_Request_Agent_StopError_callback_0100 catch err: " + JSON.stringify(err));
+          }
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_StopError_callback_0100 removeTask");
+          done();
+        })
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_StopError_callback_0100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_StopError_promise_0100
+     * @tc.name: SUB_Request_Agent_StopError_promise_0100
+     * @tc.desc: stop errcode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_StopError_promise_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_StopError_promise_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ResumeError_promise_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_StopError_promise_0100 create success");
+        await task.stop();
+        console.info("====>SUB_Request_Agent_StopError_promise_0100 pause success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_StopError_promise_0100 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900007);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Agent_StopError_promise_0100 removeTask");
+        }
+        done();
+      }
+    });
+
   });
 };

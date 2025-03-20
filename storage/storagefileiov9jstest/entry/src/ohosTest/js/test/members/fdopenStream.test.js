@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOFdOpenStream() {
 describe('fileIO_fs_FdOpenStream', async function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_000', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -60,7 +61,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_001', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 
     try {
       fileIO.fdopenStreamSync(-1, 'r');
@@ -81,7 +82,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_002', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -110,7 +111,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_003', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 
     try {
       fileIO.fdopenStreamSync(-1, 'r+');
@@ -131,7 +132,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_004', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -158,7 +159,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_005', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -185,7 +186,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_006', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -215,7 +216,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_007', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -248,7 +249,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_008', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -277,7 +278,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_009', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -310,7 +311,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_010', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -340,7 +341,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_sync_011', 0, async function () {
+  it('fileIO_test_fdopenstream_sync_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_sync_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -360,6 +361,33 @@ describe('fileIO_fs_FdOpenStream', async function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_SYNC_1200
+   * @tc.name fileIO_test_fdopenstream_sync_012
+   * @tc.desc Test fdopenStreamSync() interface.
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_fdopenstream_sync_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let fpath = await nextFileName('fileIO_test_fdopenstream_sync_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.closeSync(file.fd);
+      fileIO.fdopenStreamSync(file.fd, 'r');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_fdopenstream_sync_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_ASYNC_0000
    * @tc.name fileIO_test_fdopenstream_async_000
    * @tc.desc Test fdopenStream() interface. Promise.
@@ -369,7 +397,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_000', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -400,7 +428,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_001', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -444,7 +472,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_002', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.fdopenStream(-1, 'r');
@@ -466,7 +494,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_003', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fdopenStream(-1, 'r', (err) => {
@@ -489,7 +517,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_004', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -519,7 +547,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_005', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -554,7 +582,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_006', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -581,7 +609,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_007', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -608,7 +636,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_008', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -639,7 +667,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_009', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -683,7 +711,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_010', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -716,7 +744,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_011', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -746,7 +774,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_012', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -781,7 +809,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_013', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -814,7 +842,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_014', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -845,7 +873,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_015', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -889,7 +917,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_016', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -919,7 +947,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdopenstream_async_017', 0, async function (done) {
+  it('fileIO_test_fdopenstream_async_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -940,6 +968,65 @@ describe('fileIO_fs_FdOpenStream', async function () {
       });
     } catch (e) {
       console.log('fileIO_test_fdopenstream_async_017 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_ASYNC_1800
+   * @tc.name fileIO_test_fdopenstream_async_018
+   * @tc.desc Test fdopenStream() interface. Promise.
+   * Invalid mode.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_fdopenstream_async_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_fdopenstream_async_018');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.closeSync(file.fd);
+      await fileIO.fdopenStream(file.fd, 'r');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_fdopenstream_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      done();
+    }
+  });
+
+   /**
+   * @tc.number SUB_DF_FILEIO_FDOPENSTREAM_ASYNC_1900
+   * @tc.name fileIO_test_fdopenstream_async_019
+   * @tc.desc Test fdopenStream() interface. Callback.
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+   it('fileIO_test_fdopenstream_async_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_fdopenstream_async_019');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+    expect(isIntNum(file.fd)).assertTrue();
+    
+    try {
+      fileIO.closeSync(file.fd);
+      fileIO.fdopenStream(file.fd, 'a', (err) => {
+        if (err) {
+          console.log('fileIO_test_fdopenstream_async_019 error package: ' + + err.message + ', code: ' + err.code);
+          expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_fdopenstream_async_019 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

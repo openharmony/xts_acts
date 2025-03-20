@@ -34,6 +34,7 @@ struct offsetListExample {
           }
         }, (item: string) => item)
       }
+      .id('offset_list')
       .listDirection(Axis.Vertical) // 排列方向
       .scrollBar(BarState.Off)
       .friction(0.6)

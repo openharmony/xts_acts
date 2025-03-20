@@ -372,9 +372,9 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
         await huks.deleteKeyItem(CEArr[i], CEOption);
         await huks.deleteKeyItem(ECEArr[i], ECEOption);
       }
+      DEArr.push("alias2048");
+      await huks.generateKeyItem(DEArr[2048], DEOption);
       try {
-        DEArr.push("alias2048");
-        await huks.generateKeyItem(DEArr[2048], DEOption);
         await huks.listAliases(DEOption);
       } catch (err) {
         console.log(testNumber + `: catch error: ${JSON.stringify(err)}`);

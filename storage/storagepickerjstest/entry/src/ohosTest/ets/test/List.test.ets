@@ -21,14 +21,19 @@ import audioPickerCallback from './audioPickerCallback.test.ets'
 import audioPickerPromise from './audioPickerPromise.test.ets'
 import globalContext from '../test/GlobalContext'
 import common from '@ohos.app.ability.common'
+import EmptyTest from './Empty.test.ets'
 
 export default function testsuite() {
-  photoPickerCallback(globalContext.getContext().getAbility())
-  photoPickerPromise(globalContext.getContext().getAbility())
-  documentPickerCallback(globalContext.getContext().getAbility())
-  documentPickerPromise(globalContext.getContext().getAbility())
-  audioPickerCallback(globalContext.getContext().getAbility())
-  audioPickerPromise(globalContext.getContext().getAbility())
+  if (canIUse("SystemCapability.FileManagement.UserFileService")){
+    photoPickerCallback(globalContext.getContext().getAbility())
+    photoPickerPromise(globalContext.getContext().getAbility())
+    documentPickerCallback(globalContext.getContext().getAbility())
+    documentPickerPromise(globalContext.getContext().getAbility())
+    audioPickerCallback(globalContext.getContext().getAbility())
+    audioPickerPromise(globalContext.getContext().getAbility())
+  }else{
+      EmptyTest()
+  }
   /*
   globalContext.getContext().setObject("ui", a.UIAbilityContext)
   globalContext.getContext().setObject("ui", common.UIAbilityContext)

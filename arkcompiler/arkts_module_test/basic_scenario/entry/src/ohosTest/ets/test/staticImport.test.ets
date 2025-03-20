@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { add } from 'library';
 import { add as harAdd } from 'har';
 import { add as testAdd } from './test'
@@ -33,7 +33,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSharedLibraryRes', 0, () => {
+    it('testSharedLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let shareLibraryRes: String = '';
       let a = add(2, 3);
       if (a == 5) {
@@ -51,7 +51,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLibraryRes', 0, () => {
+    it('testStaticLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let staticLibraryRes: String = '';
       let a = harAdd(2, 3);
       if (a == 5) {
@@ -87,7 +87,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testOhosRes', 0, () => {
+    it('testOhosRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let ohosRes: String = '';
       if (typeof hilog.info != undefined) {
         ohosRes = "success";
@@ -104,7 +104,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSystemRes', 0, () => {
+    it('testSystemRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let systemRes: String = '';
       if (systemApp.getInfo != undefined) {
         systemRes = 'success';
@@ -121,7 +121,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNapiRes', 0, () => {
+    it('testNapiRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let napiRes: String = '';
       let a = napiAdd(2, 3);
       if (a == 5) {
@@ -139,7 +139,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testOhpmImportOhpm', 0, () => {
+    it('testOhpmImportOhpm', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let ohpmImportOhpm: String = '';
       if (BigNumber) {
         ohpmImportOhpm = 'success';
@@ -156,7 +156,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImportJson', 0, () => {
+    it('testImportJson', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let importJson: String = '';
       if (myJson.name == "importJson") {
         importJson = 'success';

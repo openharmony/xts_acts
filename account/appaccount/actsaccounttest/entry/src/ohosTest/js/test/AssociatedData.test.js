@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
@@ -25,7 +25,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
         *                 are correct, and then getAssociatedData is called for the value(callback)
         */
-        it('ActsAccountAssociatedData_0100', 0, async function (done) {
+        it('ActsAccountAssociatedData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -57,7 +57,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : The setAssociatedData setting value is called when the forwarding parameters
         *                 are correct, and then getAssociatedData is called for the value(promise)
         */
-        it('ActsAccountAssociatedData_0200', 0, async function (done) {
+        it('ActsAccountAssociatedData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -108,7 +108,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : Get it directly without setting value
         * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(callback)
         */
-        it('ActsAccountAssociatedData_0300', 0, async function (done) {
+        it('ActsAccountAssociatedData_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -135,7 +135,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : Get it directly without setting value
         * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(promise)
         */
-        it('ActsAccountAssociatedData_0400', 0, async function (done) {
+        it('ActsAccountAssociatedData_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -177,7 +177,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : After calling setAssociatedData setting value correctly,
         *                 call the getAssociatedData of the pass error to check if you get the value(callback)
         */
-        it('ActsAccountAssociatedData_0500', 0, async function (done) {
+        it('ActsAccountAssociatedData_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -208,7 +208,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : After calling setAssociatedData setting value correctly,
         *                 call the getAssociatedData of the pass error to check if you get the value(promise)
         */
-        it('ActsAccountAssociatedData_0600', 0, async function (done) {
+        it('ActsAccountAssociatedData_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -249,7 +249,7 @@ export default function ActsAccountAssociatedData() {
         *                 is called,the setting of the value is different if the call getAssociatedData
         *                 can get the second value(callback)
         */
-        it('ActsAccountAssociatedData_0700', 0, async function (done) {
+        it('ActsAccountAssociatedData_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -286,7 +286,7 @@ export default function ActsAccountAssociatedData() {
         *                 is called,the setting of the value is different if the call getAssociatedData
         *                 can get the second value(promise)
         */
-        it('ActsAccountAssociatedData_0800', 0, async function (done) {
+        it('ActsAccountAssociatedData_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -336,7 +336,7 @@ export default function ActsAccountAssociatedData() {
         *                 is called,the setting of the value is same if the call getAssociatedData
         *                 can get the second value(callback)
         */
-        it('ActsAccountAssociatedData_0900', 0, async function (done) {
+        it('ActsAccountAssociatedData_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -373,7 +373,7 @@ export default function ActsAccountAssociatedData() {
         *                 is called,the setting of the value is same if the call getAssociatedData
         *                 can get the second value(promise)
         */
-        it('ActsAccountAssociatedData_1000', 0, async function (done) {
+        it('ActsAccountAssociatedData_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -424,7 +424,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value again after calling setAssociatedData setting
         *                 different value, and then call getAssociatedData twice to get the set value(callback)
         */
-        it('ActsAccountAssociatedData_1100', 0, async function (done) {
+        it('ActsAccountAssociatedData_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -465,7 +465,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value again after calling setAssociatedData setting
         *                 different value, and then call getAssociatedData twice to get the set value(promise)
         */
-        it('ActsAccountAssociatedData_1200', 0, async function (done) {
+        it('ActsAccountAssociatedData_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -518,7 +518,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter KEY is wrong(callback)
         */
-        it('ActsAccountAssociatedData_1300', 0, async function (done) {
+        it('ActsAccountAssociatedData_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -543,7 +543,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter KEY is wrong(promise)
         */
-        it('ActsAccountAssociatedData_1400', 0, async function (done) {
+        it('ActsAccountAssociatedData_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -581,7 +581,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting key is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting key when the incoming parameter KEY is wrong(callback)
         */
-        it('ActsAccountAssociatedData_1500', 0, async function (done) {
+        it('ActsAccountAssociatedData_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_1500 start====");
             var keyOverSize = "K"
             for(var i = 0;i < 256;i++)
@@ -611,7 +611,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting key is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting key when the incoming parameter KEY is wrong(promise)
         */
-        it('ActsAccountAssociatedData_1600', 0, async function (done) {
+        it('ActsAccountAssociatedData_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1600 start====");
             var keyOverSize = "K"
             for(var i=0;i<256;i++)
@@ -653,7 +653,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(callback)
         */
-        it('ActsAccountAssociatedData_1700', 0, async function (done) {
+        it('ActsAccountAssociatedData_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_1700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -684,7 +684,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(promise)
         */
-        it('ActsAccountAssociatedData_1800', 0, async function (done) {
+        it('ActsAccountAssociatedData_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -726,7 +726,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(callback)
         */
-        it('ActsAccountAssociatedData_1900', 0, async function (done) {
+        it('ActsAccountAssociatedData_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_1900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -757,7 +757,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(promise)
         */
-        it('ActsAccountAssociatedData_2000', 0, async function (done) {
+        it('ActsAccountAssociatedData_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -806,7 +806,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter value is wrong(callback)
         */
-        it('ActsAccountAssociatedData_2100', 0, async function (done) {
+        it('ActsAccountAssociatedData_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountAssociatedData_2100 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
@@ -835,7 +835,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting value is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter value is wrong(promise)
         */
-        it('ActsAccountAssociatedData_2200', 0, async function (done) {
+        it('ActsAccountAssociatedData_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountAssociatedData_2200 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
@@ -876,7 +876,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(callback)
         */
-        it('ActsAccountAssociatedData_2300', 0, async function (done) {
+        it('ActsAccountAssociatedData_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -907,7 +907,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(promise)
         */
-        it('ActsAccountAssociatedData_2400', 0, async function (done) {
+        it('ActsAccountAssociatedData_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -949,7 +949,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(callback)
         */
-        it('ActsAccountAssociatedData_2500', 0, async function (done) {
+        it('ActsAccountAssociatedData_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -974,7 +974,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(promise)
         */
-        it('ActsAccountAssociatedData_2600', 0, async function (done) {
+        it('ActsAccountAssociatedData_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -1012,7 +1012,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting name is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting name when the incoming parameter name is wrong(callback)
         */
-        it('ActsAccountAssociatedData_2700', 0, async function (done) {
+        it('ActsAccountAssociatedData_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountAssociatedData_2700 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
@@ -1041,7 +1041,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData setting name is called when the argument is wrong
         * @tc.desc      : Call setAssociatedData setting name when the incoming parameter name is wrong(promise)
         */
-        it('ActsAccountAssociatedData_2800', 0, async function (done) {
+        it('ActsAccountAssociatedData_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             console.info("====>ActsAccountAssociatedData_2800 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
@@ -1083,7 +1083,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(callback)
         */
-        it('ActsAccountAssociatedData_2900', 0, async function (done) {
+        it('ActsAccountAssociatedData_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_2900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -1109,7 +1109,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(promise)
         */
-        it('ActsAccountAssociatedData_3000', 0, async function (done) {
+        it('ActsAccountAssociatedData_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_3000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -1145,7 +1145,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
         *                 are correct, and then getAssociatedData is called for the value(callback)
         */
-        it('ActsAccountAssociatedData_3100', 0, async function (done) {
+        it('ActsAccountAssociatedData_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountAssociatedData_3100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

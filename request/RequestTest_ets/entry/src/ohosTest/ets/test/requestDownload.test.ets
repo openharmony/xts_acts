@@ -436,8 +436,9 @@ export default function requestDownloadJSUnit() {
         console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0004 downloadTask: " + downloadTask);
         try{
           expect(downloadTask != undefined).assertEqual(true);
-          downloadTask.on('remove', () => {});
-          downloadTask.off('remove');
+          let removeProgress = () => {};
+          downloadTask.on('remove', removeProgress);
+          downloadTask.off('remove', removeProgress);
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();
@@ -466,8 +467,11 @@ export default function requestDownloadJSUnit() {
         console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 downloadTask: " + downloadTask);
         try{
           expect(downloadTask != undefined).assertEqual(true);
-          downloadTask.on('fail', (data) => {});
-          downloadTask.off('fail');
+          let failProgress = (err: number) => {
+            console.error(`====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 fail: ${err}`);
+          };
+          downloadTask.on('fail', failProgress);
+          downloadTask.off('fail', failProgress);
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();

@@ -59,6 +59,10 @@ export default class MainAbility2 extends Ability {
         AppStorage.setOrCreate<boolean>("validRequestCallback", true);
         let resultCode = {
           result: dialogRequest.ResultCode.RESULT_CANCEL,
+          want:{
+            'bundleName': 'com.acts.example.requestdialog',
+            'abilityname': 'MainAbility2'
+          }
         };
         let resultCode2 = {
           result: dialogRequest.ResultCode.RESULT_OK,

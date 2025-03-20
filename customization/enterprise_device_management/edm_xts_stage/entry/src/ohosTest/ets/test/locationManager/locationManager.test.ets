@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, Level } from '@ohos/hypium';
-import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE } from '../commom.ets';
+import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom.ets';
 
 import locationManager from '@ohos.enterprise.locationManager';
 import adminManager from '@ohos.enterprise.adminManager';
@@ -147,6 +147,24 @@ function testGetLocationPolicy() {
       expect(error.code == 9200002).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_LOCATION_POLICY_JS_0003
+   * @tc.name      : test_get_location_policy_0003
+   * @tc.desc      : test locationManager getLocationPolicy with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_location_policy_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      locationManager.getLocationPolicy(INVALID_WANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     }
     done();
   });

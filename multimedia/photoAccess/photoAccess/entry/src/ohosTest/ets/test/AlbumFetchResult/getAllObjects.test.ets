@@ -161,6 +161,47 @@ export default function albumGetAllObjectTest () {
       }
     });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_GET_ALL_OBJECTS_0300
+     * @tc.name      : album_getAllObjects_callback_003
+     * @tc.desc      : get all system album object,albumSubtype=albumSubtype.IMAGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('album_getAllObjects_callback_003', 0, async (done: Function) => {
+      const testNum = 'album_getAllObjects_callback_003';
+      try {
+        const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
+          albumSubtype.IMAGE,
+        ];
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album>;
+        let passCount = 0;
+        fetchResult = await helper.getAlbums(albumType.SYSTEM, subTypes[0]);
+        expect(fetchResult.getCount()).assertEqual(1);
+        fetchResult.getAllObjects((err, allObj) => {
+          try {
+            if (err !== undefined) {
+              console.info(`${testNum} getAllObjects failed; err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              expect(allObj.length).assertEqual(1);
+              passCount++;
+            }
+            done();
+          } catch (error) {
+            console.info(`${testNum} getAllObjects failed; error: ${error}`);
+            expect(false).assertTrue();
+            done();
+          }
+        })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ALBUM_GET_ALL_OBJECTS_0000

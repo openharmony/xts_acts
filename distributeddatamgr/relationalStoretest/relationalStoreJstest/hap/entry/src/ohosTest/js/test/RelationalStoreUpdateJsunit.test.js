@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 var context = ability_featureAbility.getContext();
@@ -52,8 +52,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0100
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0001', 0, async function (done) {
+        it('testRdbStoreUpdate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             //插入
@@ -121,8 +124,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0200
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0002', 0, async function () {
+        it('testRdbStoreUpdate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.info(TAG + "************* testRdbStoreUpdate0002 start *************");
             //更新
             {
@@ -172,8 +178,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0300
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0003', 0, async function (done) {
+        it('testRdbStoreUpdate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0003 start *************");
             //更新
             {
@@ -216,8 +225,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0400
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdate0004', 0, async function (done) {
+        it('testRdbStoreUpdate0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreUpdate0004 start *************");
             //更新
             {
@@ -260,8 +272,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0500
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0001', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0001 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -356,8 +371,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0600
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0002', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0002 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -451,8 +469,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0700
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0003', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0003 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -546,8 +567,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0800
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0004', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0004 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -641,8 +665,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0900
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0005', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0005 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -736,8 +763,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1000
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0006', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0006 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -814,8 +844,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1100
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0007', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0007 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -910,8 +943,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1200
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0008', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0008 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -987,8 +1023,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1300
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0009', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0009 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -1083,8 +1122,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1400
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0010', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0010 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -1160,8 +1202,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1500
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0011', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0011 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -1256,8 +1301,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1600
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0012', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0012 start *************");
             {
                 var u8 = new Uint8Array([1, 2, 3])
@@ -1335,8 +1383,11 @@ export default function relationalStoreUpdateTest() {
          * @tc.name resultSet Update test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1700
          * @tc.desc resultSet Update test
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbStoreUpdateWithConflictResolution0013', 0, async function (done) {
+        it('testRdbStoreUpdateWithConflictResolution0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0013 start *************");
             try {
                 const valueBucket = {

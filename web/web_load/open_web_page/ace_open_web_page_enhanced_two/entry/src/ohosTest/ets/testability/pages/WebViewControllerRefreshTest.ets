@@ -75,10 +75,10 @@ struct WebViewControllerRefreshTest {
             case "testRefresh003": {
               try {
                 this.controller.loadUrl('https://gitee.com/organizations/openharmony/projects');
-                await Utils.sleep(6000);
+                await Utils.sleep(12000);
                 this.titleReceive = ''
                 this.controller.refresh();
-                await Utils.sleep(12000);
+                await Utils.sleep(20000);
                 if (this.titleReceive == 'OpenHarmony - Open_Harmony - Gitee.com' || this.titleReceive == 'OpenHarmony - Gitee.com') {
                   Utils.emitEvent(true, 76702)
                 } else {

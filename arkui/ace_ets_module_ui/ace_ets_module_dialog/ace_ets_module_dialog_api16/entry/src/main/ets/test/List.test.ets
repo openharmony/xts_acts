@@ -13,26 +13,36 @@
  * limitations under the License.
  */
 import maxWidth from './PopupTest/Maxwidth.test'
+import openMenu from './promptActionTest/openMenu.test.ets'
 import openPopup from './promptActionTest/openPopup.test'
+import updateMenu from './promptActionTest/updateMenu.test.ets'
 import updatePopup from './promptActionTest/updatePopup.test'
+import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
-import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
-import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
-import disableDateRangeAndMarkTodayTest from './calendarPickerDialog/disableDateRangeAndMarkToday.test'
-import calendarPickerStartEndTest from './calendarPickerDialog/startEndTest.test';
+import subwindowDialog from './promptActionTest/subwindowDialog.test'
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
 import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
+import blurStyleOptions from './MenuTest/blurStyleOptions.test'
+import effectOptions from './MenuTest/effectOptions.test'
+import ActionSheetLifeTest from './dialogLifeTest/ActionSheetLife.test'
+import AlertDialogLifeTest from './dialogLifeTest/AlertDialogLife.test'
+import CustomDialogLifeTest from './dialogLifeTest/CustomDialogLife.test'
 export default function testsuite() {
+    blurStyleOptions();
+    effectOptions();
     maxWidth();
+    openMenu();
     openPopup();
+    updateMenu();
     updatePopup();
+    closeMenu();
     closePopup();
-    timePickerDialogEnableHapticFeedback();
-    datePickerDialogMode();
-    disableDateRangeAndMarkTodayTest();
-    calendarPickerStartEndTest();
+    subwindowDialog();
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();
+    ActionSheetLifeTest();
+    AlertDialogLifeTest();
+    CustomDialogLifeTest();
 }

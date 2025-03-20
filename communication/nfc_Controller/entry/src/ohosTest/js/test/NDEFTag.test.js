@@ -16,7 +16,7 @@
 
 import tag from '@ohos.nfc.tag';
 import cardEmulation from '@ohos.nfc.cardEmulation';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -779,6 +779,40 @@ export default function nfcNDEFTagTest() {
             }else{
                 console.info("[NFC_test]NdefTag23 = null & = undefined: ");
                 expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcNDEF_js_2400
+         * @tc.name Test makeApplicationRecord NDEF
+         * @tc.desc Obtains all records of ndef makeApplicationRecord 
+         * @ since 18
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_NFC_nfcNDEF_js_2400', Level.LEVEL0, function () {
+            if (NdefTag != null && NdefTag != undefined) {
+                let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
+                console.info("makeApplicationRecord is object7" );
+                let bundleName = "com.test.cardemulation"
+                try{
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
+                    console.info("[NFC_test]ndef24 createNdefMessage result: " + JSON.stringify(ndefMessage));
+                    let makeERecords = tag.ndef.makeApplicationRecord(bundleName);
+                    if (makeERecords != undefined){
+                        console.info("[NFC_test]ndef24 makeApplicationRecord rtdType: " + makeERecords.rtdType);
+                        console.info("[NFC_test]ndef24 makeApplicationRecord payload: " + makeERecords.payload);
+                    }else{
+                        console.info("[NFC_test]ndef24 makeApplicationRecord ndefRecord: " + makeERecords);
+                        expect().assertFail();
+                    }             
+                }catch(error){
+                    console.info("[NFC_test]ndef24 makeApplicationRecord error: " + error);
+                    expect().assertFail();
+                }
+            } else {
+                console.info("[NFC_test]NdefTag24 = null & = undefined: ");
+                expect(true).assertFalse();
             }
         })
 

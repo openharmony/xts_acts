@@ -28,7 +28,7 @@
 
 #include "securec.h"
 #include "refbase.h"
-#include "common/log.h"
+#include "log.h"
 #include "ashmem.h"
 
 #include <v2_1/nnrt_types.h>

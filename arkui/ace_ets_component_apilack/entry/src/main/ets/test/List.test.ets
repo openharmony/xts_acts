@@ -44,7 +44,6 @@ import promptShowDialogJsunit from './prompt.test.ets';
 import rectNeJsunit from './rect.test.ets';
 import scrollOnScrollBeginJsunit from './scroll.test.ets';
 import searchOnCutJsunit from './search.test.ets'
-import selectOnSelectJsunit from './select.test.ets';
 import stackAlignContentJsunit from './stack.test.ets';
 import swiperCurveJsunit from './swiper.test.ets';
 import tabsBarPositionJsunit from './tabs.test.ets';
@@ -84,7 +83,6 @@ export default function testsuite() {
   rectNeJsunit()
   scrollOnScrollBeginJsunit()
   searchOnCutJsunit()
-  selectOnSelectJsunit()
   stackAlignContentJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()

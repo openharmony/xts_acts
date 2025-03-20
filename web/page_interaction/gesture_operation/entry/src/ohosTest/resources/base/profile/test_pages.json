@@ -2,6 +2,7 @@
   "src": [
     "testability/pages/webOnBeforeUnload",
     "testability/pages/HitTest",
-    "testability/pages/WebZoomAccessTest"
+    "testability/pages/WebZoomAccessTest",
+	"testability/pages/getLastHitTest"
   ]
 }

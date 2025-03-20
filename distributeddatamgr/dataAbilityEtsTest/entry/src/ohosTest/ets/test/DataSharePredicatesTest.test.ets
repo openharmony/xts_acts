@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore';
 import data_dataSharePredicates from '@ohos.data.dataSharePredicates';
 import common from "@ohos.app.ability.common";
@@ -73,7 +73,7 @@ describe('dataSharePredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrderByAsc0001', 0, async () => {
+    it('testOrderByAsc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let u8 = new Uint8Array([4, 5, 6]);
         let valueBucket: ValuesBucket = {
             "name": "zhangSan",
@@ -105,7 +105,7 @@ describe('dataSharePredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrderByDesc0001', 0, async () => {
+    it('testOrderByDesc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let u8 = new Uint8Array([4, 5, 6]);
         let valueBucket: ValuesBucket = {
             "name": "zhangSan",
@@ -138,7 +138,7 @@ describe('dataSharePredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnd0001', 0, async () => {
+    it('testAnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let u8 = new Uint8Array([4, 5, 6]);
         let valueBucket: ValuesBucket = {
             "name": "zhangSan",
@@ -171,7 +171,7 @@ describe('dataSharePredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIn0001', 0, async () => {
+    it('testIn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let u8 = new Uint8Array([4, 5, 6]);
         let valueBucket: ValuesBucket = {
             "name": "zhangSan",
@@ -203,7 +203,7 @@ describe('dataSharePredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0001', 0, async () => {
+    it('testLimit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let u8 = new Uint8Array([4, 5, 6]);
         let valueBucket: ValuesBucket = {
             "name": "zhangSan",

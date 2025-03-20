@@ -15,7 +15,7 @@
 
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import osAccount from '@ohos.account.osAccount';
 import intelligence from '@ohos.data.intelligence'
@@ -72,7 +72,7 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-    it("intelligenceApiTest0100", 0, async (done: Function) => {
+    it("intelligenceApiTest0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0100 start")
       let text =
         "日常生活中，我们对接触到的事物，会产生一个不假思索地看法，或者说直觉性的认知.百科全书里这样解释道“ 认知包括感觉、知觉、记忆、思维、想象和语言等。";
@@ -115,7 +115,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0200", 0, async (done: Function) => {
+    it("intelligenceApiTest0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0200 start");
       if (currentDeviceIsPc) {
         intelligence.getTextEmbeddingModel(textConfig)
@@ -154,7 +154,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0300", 0, async (done: Function) => {
+    it("intelligenceApiTest0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0300 start");
       if (currentDeviceIsPc) {
         intelligence.getImageEmbeddingModel(imageConfig)
@@ -193,7 +193,7 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-    it("intelligenceApiTest0400", 0, async (done: Function) => {
+    it("intelligenceApiTest0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0400 start");
 
       if (currentDeviceIsPc) {
@@ -231,7 +231,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0500", 0, async (done: Function) => {
+    it("intelligenceApiTest0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0500 start");
       if (currentDeviceIsPc) {
         intelligence.getTextEmbeddingModel(textConfig)
@@ -241,7 +241,12 @@ export default function intelligenceTest() {
             .then((loadData) => {
               console.info(TAG + "loadModel result:" + loadData);
               expect(loadData).assertEqual(true);
-          })
+            })
+            data.releaseModel()
+                .then(() => {
+                  console.info(TAG + "releaseModel result 0500:");
+                  done();
+                })
           })
           done();
       } else {
@@ -270,7 +275,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0600", 0, async (done: Function) => {
+    it("intelligenceApiTest0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0600 start");
 
       if (currentDeviceIsPc) {
@@ -280,6 +285,12 @@ export default function intelligenceTest() {
               data.releaseModel()
                 .then(() => {
                   console.info(TAG + "releaseModel result 0600:");
+                  expect().assertFail();
+                  done();
+                })
+                .catch((err:BusinessError) => {
+                  console.info(TAG + "getEmbedding result" + err.code);
+                  expect(err.code).assertEqual(31300000);
                   done();
                 })
               })
@@ -309,7 +320,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0700", 0, async (done: Function) => {
+    it("intelligenceApiTest0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0700 start");
 
       if (currentDeviceIsPc) {
@@ -356,7 +367,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0800", 0, async (done: Function) => {
+    it("intelligenceApiTest0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0800 start");
 
       if (currentDeviceIsPc) {
@@ -402,7 +413,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest0900", 0, async (done: Function) => {
+    it("intelligenceApiTest0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0900 start");
 
       if (currentDeviceIsPc) {
@@ -446,7 +457,7 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-    it("intelligenceApiTest1000", 0, async (done:Function) => {
+    it("intelligenceApiTest1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.info(TAG + "intelligenceApiTest1000 start");
 
       if (currentDeviceIsPc) {
@@ -456,6 +467,11 @@ export default function intelligenceTest() {
             data.loadModel()
             .then(() => {
               console.info(TAG + "loadModel result 1000 :");
+              done();
+            })
+            data.releaseModel()
+            .then(() => {
+              console.info(TAG + "releaseModel result 1100 :");
               done();
             })
           })
@@ -485,7 +501,7 @@ export default function intelligenceTest() {
      */
 
 
-    it("intelligenceApiTest1100", 0, async (done:Function) => {
+    it("intelligenceApiTest1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.info(TAG + "intelligenceApiTest1100 start");
 
       if (currentDeviceIsPc) {
@@ -495,6 +511,12 @@ export default function intelligenceTest() {
             data.releaseModel()
             .then(() => {
               console.info(TAG + "releaseModel result 1100 :");
+              expect().assertFail();
+              done();
+            })
+            .catch((err:BusinessError) => {
+              console.info(TAG + "getEmbedding result" + err.code);
+              expect(err.code).assertEqual(31300000);
               done();
             })
           })
@@ -525,7 +547,7 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-    it("intelligenceApiTest1200", 0, async (done:Function) => {
+    it("intelligenceApiTest1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.info(TAG + "intelligenceApiTest1200 start");
 
       if (currentDeviceIsPc) {

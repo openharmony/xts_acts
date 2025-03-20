@@ -14,7 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const LENGTHLIMIT = 1024;
 export default function ActsGetAllAccounts() {
@@ -25,7 +25,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('ActsGetAllAccounts_0100', 0, async function (done) {
+        it('ActsGetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info("====>ActsGetAllAccounts_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -61,7 +61,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('ActsGetAllAccounts_0200', 0, async function (done) {
+        it('ActsGetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info("====>ActsGetAllAccounts_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -110,7 +110,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : No account has been added to this application and it is not authorized by other applications to
         *                 obtain account information for this application
         */
-        it('ActsGetAllAccounts_0300', 0, async function (done) {
+        it('ActsGetAllAccounts_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -131,7 +131,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : No account has been added to this application and it is not authorized by other applications to
         *                 obtain account information for this application
         */
-        it('ActsGetAllAccounts_0400', 0, async function (done) {
+        it('ActsGetAllAccounts_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -162,7 +162,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : The parameter owner is an empty string
         */
-        it('ActsGetAllAccounts_0500', 0, async function (done) {
+        it('ActsGetAllAccounts_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -180,7 +180,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : The parameter owner is an empty string
         */
-        it('ActsGetAllAccounts_0600', 0, async function (done) {
+        it('ActsGetAllAccounts_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -200,7 +200,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : The parameter owner is a string that exceeds the length limit
         */
-        it('ActsGetAllAccounts_0700', 0, async function (done) {
+        it('ActsGetAllAccounts_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -221,7 +221,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : The parameter owner is a string that exceeds the length limit
         */
-        it('ActsGetAllAccounts_0800', 0, async function (done) {
+        it('ActsGetAllAccounts_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -245,7 +245,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : This application adds an account, and after other applications authorize an account to this
         *                 application, this application obtains the information of its own application
         */
-        it('ActsGetAllAccounts_0900', 0, async function (done) {
+        it('ActsGetAllAccounts_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -293,7 +293,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : This application adds an account, and after other applications authorize an account to this
         *                 application, this application obtains the information of its own application
         */
-        it('ActsGetAllAccounts_1000', 0, async function (done) {
+        it('ActsGetAllAccounts_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1000 start====");
             let appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -339,7 +339,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : The parameter owner is not a exist owner
         */
-        it('ActsGetAllAccounts_1100', 0, async function (done) {
+        it('ActsGetAllAccounts_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>createAppAccountManager finish====");
@@ -359,7 +359,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : The parameter owner is not a exist owner
         */
-        it('ActsGetAllAccounts_1200', 0, async function (done) {
+        it('ActsGetAllAccounts_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -380,7 +380,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : The parameter owner is a bundlename that does not exist
         */
-        it('ActsGetAllAccounts_1300', 0, async function (done) {
+        it('ActsGetAllAccounts_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -398,7 +398,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : The parameter owner is a bundlename that does not exist
         */
-        it('ActsGetAllAccounts_1400', 0, async function (done) {
+        it('ActsGetAllAccounts_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -420,7 +420,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : Get account information after adding and deleting account
         */
-        it('ActsGetAllAccounts_1500', 0, async function (done) {
+        it('ActsGetAllAccounts_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -455,7 +455,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : Get account information after adding and deleting account
         */
-        it('ActsGetAllAccounts_1600', 0, async function (done) {
+        it('ActsGetAllAccounts_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -507,7 +507,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : Get account information after adding an account with additional information and deleting an
         *                 account
         */
-        it('ActsGetAllAccounts_1700', 0, async function (done) {
+        it('ActsGetAllAccounts_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -543,7 +543,7 @@ export default function ActsGetAllAccounts() {
         * @tc.desc      : Get account information after adding an account with additional information and deleting an
         *                 account
         */
-        it('ActsGetAllAccounts_1800', 0, async function (done) {
+        it('ActsGetAllAccounts_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsGetAllAccounts_1800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

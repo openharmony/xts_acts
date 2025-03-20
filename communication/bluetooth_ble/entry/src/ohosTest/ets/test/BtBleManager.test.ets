@@ -166,7 +166,10 @@ function readDesc(code : BusinessError, BLEDescriptor : bluetoothBle.BLEDescript
   if (code.code != 0) {
     return;
   }
-  console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+  console.log('bluetooth BLEDescriptor serviceUuid: ' + BLEDescriptor.serviceUuid);
+  console.log('bluetooth BLEDescriptor characteristicUuid: ' + BLEDescriptor.characteristicUuid);
+  console.log('bluetooth BLEDescriptor descriptorUuid: ' + BLEDescriptor.descriptorUuid);
+  console.log('bluetooth BLEDescriptor descriptorValue: ' + BLEDescriptor.descriptorValue);
   let value = new Uint8Array(BLEDescriptor.descriptorValue);
   console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
@@ -291,7 +294,8 @@ function wrDescriptorVal() {
   function CharacteristicChange(CharacteristicChangeReq : bluetoothBle.BLECharacteristic) { 
     let serviceUuid : string = CharacteristicChangeReq.serviceUuid;
     let characteristicUuid : string = CharacteristicChangeReq.characteristicUuid;
-    let value : Uint8Array= new Uint8Array(CharacteristicChangeReq.characteristicValue);
+    let value : Uint8Array = new Uint8Array(CharacteristicChangeReq.characteristicValue);
+    let characteristicValueHandle = CharacteristicChangeReq.characteristicValueHandle;
     expect(true).assertEqual(CharacteristicChangeReq != null);
   }
   function setCCN() {
@@ -304,8 +308,15 @@ function wrDescriptorVal() {
         descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
         descriptors[0] = descriptor;
         let arrayBufferC = new ArrayBuffer(8);
+        let gattProperties: bluetoothBle.GattProperties = {
+          write: false,
+          writeNoResponse: false,
+          read: false,
+          notify: false,
+          indicate: false
+        };
         let characteristic: bluetoothBle.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors, properties: gattProperties};
     return new Promise<void>((resolve, reject) => {
       gattC.setCharacteristicChangeNotification(characteristic, false, (err: BusinessError, data: void) => {
         if (err) {

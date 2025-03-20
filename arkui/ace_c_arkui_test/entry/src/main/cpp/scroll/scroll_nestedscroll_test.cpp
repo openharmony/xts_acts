@@ -224,11 +224,11 @@ napi_value ScrollNestedScrollTest::CreateNativeNode(napi_env env, napi_callback_
     SetAttributes(nodeAPI, clearDataButton, SIZE_50, SIZE_50, COLOR_PURPLE);
 
     // set scroller size&backgroundColor
-    SetAttributes(nodeAPI, parentScroll, SIZE_400, SIZE_300, COLOR_PURPLE);
-    SetAttributes(nodeAPI, topColumn, SIZE_300, SIZE_50, COLOR_GREEN);
-    SetAttributes(nodeAPI, childScroll, SIZE_300, SIZE_250, COLOR_GRAY);
-    SetAttributes(nodeAPI, childInnerColumn, SIZE_250, SIZE_300, COLOR_YELLOW);
-    SetAttributes(nodeAPI, bottomColumn, SIZE_300, SIZE_50, COLOR_GREEN);
+    SetAttributes(nodeAPI, parentScroll, SIZE_300, SIZE_200, COLOR_PURPLE);
+    SetAttributes(nodeAPI, topColumn, SIZE_200, SIZE_50, COLOR_GREEN);
+    SetAttributes(nodeAPI, childScroll, SIZE_200, SIZE_150, COLOR_GRAY);
+    SetAttributes(nodeAPI, childInnerColumn, SIZE_150, SIZE_200, COLOR_YELLOW);
+    SetAttributes(nodeAPI, bottomColumn, SIZE_200, SIZE_50, COLOR_GREEN);
 
     // add to node
     nodeAPI->addChild(nestedScrollRoot, row);

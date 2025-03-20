@@ -46,7 +46,6 @@ interface packOpts {
 export default function imagePackToFileGif() {
     describe("imagePackToFileGif", () => {
         let isSupportGifEncode: boolean;
-        let isSupportHdr: boolean;
         let filesDir: string|undefined;
         let cacheDir: string|undefined;
         const ERROR_CODE = 62980115;
@@ -57,8 +56,6 @@ export default function imagePackToFileGif() {
             filesDir = AppStorage.get('pathDir')
             cacheDir = AppStorage.get('cacheDir')
             isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
-            isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-                display.getDefaultDisplaySync().hdrFormats.length != 0
         });
 
         beforeEach(() => {
@@ -116,6 +113,26 @@ export default function imagePackToFileGif() {
                 console.info("image getWriteFd " + error);
             }
             return writeFd;
+        }
+
+        const isSupportImageFormat = async (fileName: string, format: string) => {
+          let filePath = ""
+          let isSupportFormat = false;
+          let globalImagesource: image.ImageSource;
+          try {
+              filePath = filesDir + "/" + fileName;
+              globalImagesource = image.createImageSource(filePath);
+              if (globalImagesource != undefined) {
+                isSupportFormat = globalImagesource.supportedFormats.includes(format);
+                console.info('isSupportFormat is ' + isSupportFormat);
+                globalImagesource.release();
+              }
+              return isSupportFormat;
+          } catch (error) {
+              console.info("getRawFileContent case" + error);
+              return isSupportFormat;
+          }
+          return isSupportFormat;
         }
 
         const createPixelMapList = async (done: Function, picName: string) => {
@@ -211,7 +228,7 @@ export default function imagePackToFileGif() {
                 expect(false).assertTrue();
                 done();
             }
-            await globalPacker.packToFile(pixelMapList, writeFd, packingOptions).then(async () => {
+            await globalPacker.packToFileFromPixelmapSequence(pixelMapList, writeFd, packingOptions).then(async () => {
                 try {
                     fileio.closeSync(writeFd)
                     console.log(`${testNum} testPackToFileForSequence success`);
@@ -254,13 +271,13 @@ export default function imagePackToFileGif() {
                 expect(false).assertTrue();
                 done();
             }
-            await globalPacker.packToFile(pixelMapList, writeFd, packingOptions).then(async () => {
-                console.log(`${testNum} packToFile success`);
+            await globalPacker.packToFileFromPixelmapSequence(pixelMapList, writeFd, packingOptions).then(async () => {
+                console.log(`${testNum} packToFileFromPixelmapSequence success`);
                 expect(false).assertTrue();
                 done();
             }).catch((error: BusinessError) => {
-                console.log(`${testNum} packToFile error: ` + JSON.stringify(error));
-                console.log(`${testNum} packToFile error.code: ` + error.code);
+                console.log(`${testNum} packToFileFromPixelmapSequence error: ` + JSON.stringify(error));
+                console.log(`${testNum} packToFileFromPixelmapSequence error.code: ` + error.code);
                 expect(error.code == ERROR_CODE1).assertTrue();
                 done();
             });
@@ -932,8 +949,9 @@ export default function imagePackToFileGif() {
                 expect(true).assertTrue();
                 done();
             } else {
-                if (!isSupportHdr) {
-                    console.info("device is not support hdr");
+                let isSupportFormat = await isSupportImageFormat("HDRVividSingleLayer.heic", "image/heic");
+                if (!isSupportFormat) {
+                    console.info("device is not support imageformat heic");
                     expect(true).assertTrue();
                     done();
                 } else {

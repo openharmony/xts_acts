@@ -52,10 +52,12 @@ export default function MultimodalInputConsumerTest() {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
           console.info(`${caseName} hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
         }
+        let ifInputConsumerOnSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
           console.info(`${caseName} success`);
-          ExpectTrue(true);
+          ifInputConsumerOnSuccess++;
+          ExpectTrue(ifInputConsumerOnSuccess == 1);
           inputConsumer.off("hotkeyChange", hotkeyOptions, hotkeyCallback);
           done();
         } catch (error) {
@@ -387,10 +389,12 @@ export default function MultimodalInputConsumerTest() {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
           console.info(`${caseName} hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
         }
+        let ifInputConsumerOnSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
           console.info(`${caseName} success`);
-          ExpectTrue(true);
+          ifInputConsumerOnSuccess++;
+          ExpectTrue(ifInputConsumerOnSuccess == 1);
           inputConsumer.off("hotkeyChange", hotkeyOptions, hotkeyCallback);
           done();
         } catch (error) {
@@ -461,11 +465,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2042,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -498,11 +504,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2042,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -535,11 +543,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2042,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -572,11 +582,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2042,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -609,11 +621,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2042,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -646,11 +660,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2019,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -683,11 +699,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2009,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -720,11 +738,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2012,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -757,11 +777,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2014,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -794,11 +816,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2090,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -831,11 +855,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2081,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -868,11 +894,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2054,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -905,10 +933,12 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2032,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -941,11 +971,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2075,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -978,11 +1010,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 2049,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1052,11 +1086,13 @@ export default function MultimodalInputConsumerTest() {
           finalKey: 99999,
           isRepeat: true
         };
+        let ifInputConsumerOffSuccess = 0;
         try {
           inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
           inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
           console.info(`${caseName} unsubscribe success`);
-          ExpectTrue(true);
+          ifInputConsumerOffSuccess++;
+          ExpectTrue(ifInputConsumerOffSuccess == 1);
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

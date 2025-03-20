@@ -17,7 +17,7 @@ import { describe, it } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyRSA } from './utils/param/signverify/publicSignverifyParam';
 import { stringToUint8Array } from './utils/param/publicFunc';
-import { publicSignVerifyFunc } from './utils/param/signverify/publicSignverifyPromise.js';
+import { publicSignVerifyFunc } from './utils/param/signverify/publicSignverifyCallback.js';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 let srcData65 = Data.Data65b;

@@ -391,7 +391,7 @@ export default function BitVectorTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1800
      * @tc.name       : testBitVectorHas0001
-     * @tc.desc       : Testing the has of bitVector, element=0 fromIndex=0 toIndex=9, return true.
+     * @tc.desc       : Testing the has of bitVector, element=0 fromIndex=0 toIndex=10, return true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -410,7 +410,7 @@ export default function BitVectorTest() {
         bitVectorList.push(1);
         bitVectorList.push(1);
         bitVectorList.push(1);
-        let rst = bitVectorList.has(0, 0, 9);
+        let rst = bitVectorList.has(0, 0, 10);
         expect(rst).assertEqual(true);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -478,7 +478,7 @@ export default function BitVectorTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2100
      * @tc.name       : testBitVectorHas0004
-     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=0 toIndex=9, return true.
+     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=0 toIndex=10, return true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -497,7 +497,7 @@ export default function BitVectorTest() {
         bitVectorList.push(1);
         bitVectorList.push(1);
         bitVectorList.push(1);
-        let rst = bitVectorList.has(1, 0, 9);
+        let rst = bitVectorList.has(1, 0, 10);
         expect(rst).assertEqual(true);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -507,7 +507,7 @@ export default function BitVectorTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2200
      * @tc.name       : testBitVectorHas0005
-     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=-1 toIndex=9, return error.
+     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=-1 toIndex=10, return error.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -526,7 +526,7 @@ export default function BitVectorTest() {
         bitVectorList.push(1);
         bitVectorList.push(1);
         bitVectorList.push(1);
-        let rst = bitVectorList.has(1, -1, 9);
+        let rst = bitVectorList.has(1, -1, 10);
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -559,7 +559,7 @@ export default function BitVectorTest() {
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && < 10. Received value is: 11");
+        expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
     });
     /**
@@ -588,13 +588,13 @@ export default function BitVectorTest() {
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2500
      * @tc.name       : testBitVectorHas0008
-     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=6 toIndex=5, return error.
+     * @tc.desc       : Testing the has of bitVector, element=1 fromIndex=5 toIndex=5, return error.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -613,17 +613,17 @@ export default function BitVectorTest() {
         bitVectorList.push(1);
         bitVectorList.push(1);
         bitVectorList.push(1);
-        let rst = bitVectorList.has(1, 6, 5);
+        let rst = bitVectorList.has(1, 5, 5);
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 5. Received value is: 6");
+        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2600
      * @tc.name       : testBitVectorSetBitsByRange0001
-     * @tc.desc       : Testing the setBitsByRange of bitVector, element=0 fromIndex=0 toIndex=9, return true.
+     * @tc.desc       : Testing the setBitsByRange of bitVector, element=0 fromIndex=0 toIndex=10, return true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -636,7 +636,7 @@ export default function BitVectorTest() {
           bitVectorList.push(0);
         }
         bitVectorList.setBitsByRange(1, 5, 10);
-        let rst = bitVectorList.has(0, 0, 9);
+        let rst = bitVectorList.has(0, 0, 10);
         expect(rst).assertEqual(true);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -692,7 +692,7 @@ export default function BitVectorTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2900
      * @tc.name       : testBitVectorSetBitsByRange0004
-     * @tc.desc       : Testing the setBitsByRange of bitVector, element=1 fromIndex=0 toIndex=9, return true.
+     * @tc.desc       : Testing the setBitsByRange of bitVector, element=1 fromIndex=0 toIndex=10, return true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -705,7 +705,7 @@ export default function BitVectorTest() {
           bitVectorList.push(0);
         }
         bitVectorList.setBitsByRange(1, 5, 10);
-        let rst = bitVectorList.has(1, 0, 9);
+        let rst = bitVectorList.has(1, 0, 10);
         expect(rst).assertEqual(true);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -715,7 +715,7 @@ export default function BitVectorTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3000
      * @tc.name       : testBitVectorSetBitsByRange0005
-     * @tc.desc       : Testing the setBitsByRange of bitVector, element=1 fromIndex=-1 toIndex=9, return error.
+     * @tc.desc       : Testing the setBitsByRange of bitVector, element=1 fromIndex=-1 toIndex=10, return error.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -728,7 +728,7 @@ export default function BitVectorTest() {
           bitVectorList.push(0);
         }
         bitVectorList.setBitsByRange(1, 5, 10);
-        let rst = bitVectorList.has(1, -1, 9);
+        let rst = bitVectorList.has(1, -1, 10);
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -755,7 +755,7 @@ export default function BitVectorTest() {
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && < 10. Received value is: 11");
+        expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
     });
     /**
@@ -778,7 +778,7 @@ export default function BitVectorTest() {
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
     });
     /**
@@ -797,11 +797,11 @@ export default function BitVectorTest() {
           bitVectorList.push(0);
         }
         bitVectorList.setBitsByRange(1, 5, 10);
-        let rst = bitVectorList.has(1, 6, 5);
+        let rst = bitVectorList.has(1, 5, 5);
         expect(rst).assertEqual(false);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 5. Received value is: 6");
+        expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
     });
     /**

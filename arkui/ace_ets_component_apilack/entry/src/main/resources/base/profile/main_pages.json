@@ -41,7 +41,6 @@
           "MainAbility/pages/router",
           "MainAbility/pages/scroll",
           "MainAbility/pages/search",
-          "MainAbility/pages/select",
           "MainAbility/pages/shape",
           "MainAbility/pages/stack",
           "MainAbility/pages/swiper",

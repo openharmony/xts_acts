@@ -15,3 +15,8 @@
 
 export const OH_AudioCodec_Flush_First: () => number;
 export const OH_AudioCodec_Flush_Second: () => number;
+export const OH_AudioEncoderAAc: () => number;
+export const OH_AudioEncoderFlac: () => number;
+export const OH_AudioEncoderH264: () => number;
+export const OH_AudioDecoderH264: () => number;
+export const OH_AudioDecoderAAc: () => number;

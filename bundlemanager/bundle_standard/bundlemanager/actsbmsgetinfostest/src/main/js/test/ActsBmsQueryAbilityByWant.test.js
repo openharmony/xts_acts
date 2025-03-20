@@ -158,7 +158,7 @@ export default function ActsBmsQueryAbilityByWant() {
             expect(data.isVisible).assertEqual(false);
             expect(data.permissions.length).assertEqual(0);
             expect(data.deviceCapabilities.length).assertEqual(0);
-            expect(data.deviceTypes[0]).assertEqual('default');
+            expect(data.deviceTypes.length).assertEqual(0);
             expect(data.process).assertEqual(SYSTEM_NAME);
             expect(data.uri).assertEqual('');
             expect(data.bundleName).assertEqual(SYSTEM_NAME);

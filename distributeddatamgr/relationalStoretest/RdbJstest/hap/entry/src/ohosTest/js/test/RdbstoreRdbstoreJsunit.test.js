@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
@@ -55,8 +55,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store getRdbStore test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0900
      * @tc.desc rdb store getRdbStore test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0001', 0, async function (done) {
+    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0001 start *************");
         await dataRdb.getRdbStore(STORE_CONFIG, 1).then(async (store) => {
             try {
@@ -75,8 +78,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store getRdbStore and create table
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1000
      * @tc.desc rdb store getRdbStore and create table
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0002', 0, async function (done) {
+    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 2);
         storePromise.then(async (store) => {
@@ -99,8 +105,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb storegetRdbStore with wrong path
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1100
      * @tc.desc rdb store getRdbStore with wrong path
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0003', 0, async function (done) {
+    it('testRdbStore0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0003 start *************");
 
         let storeConfig = {
@@ -126,8 +135,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store deleteRdbStore
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1200
      * @tc.desc rdb store deleteRdbStore
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0004', 0, async function (done) {
+    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0004 start *************");
         try{
             let store =  await dataRdb.getRdbStore(STORE_CONFIG, 1)
@@ -144,8 +156,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store deleteRdbStore
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1300
      * @tc.desc rdb store deleteRdbStore
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0005', 0, async function (done) {
+    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0005 start *************");
         try {
             let store = await dataRdb.getRdbStore(STORE_CONFIG, 2);
@@ -163,8 +178,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store getRdbStore test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1400
      * @tc.desc rdb store getRdbStore test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-     it('testRdbStore0006', 0, async function (done) {
+     it('testRdbStore0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0006 start *************");
         let rdbstore = null;
         try{
@@ -188,8 +206,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store getRdbStore test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1500
      * @tc.desc rdb store getRdbStore test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0007', 0, async function (done) {
+    it('testRdbStore0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0007 start *************");
         let rdbstore = null;
         try{
@@ -213,8 +234,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store deleteRdbStore test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1600
      * @tc.desc rdb store deleteRdbStore test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0008', 0, async function (done) {
+    it('testRdbStore0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStore0008 start *************");
         dataRdb.getRdbStore(context,STORE_CONFIG, 1, async (err,data) => {
             console.info(TAG + "getRdbStore finish")
@@ -231,8 +255,11 @@ describe('rdbStoreTest', function () {
      * @tc.name rdb store deleteRdbStore test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1700
      * @tc.desc rdb store deleteRdbStore test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStore0009', 0, async function(done){
+    it('testRdbStore0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done){
         console.info(TAG + "************* testRdbStore0009 start *************");
         dataRdb.getRdbStore(contextApplication,STORE_CONFIG, 1, async (err,data) => {
             console.info(TAG + "getRdbStore finish")

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const USER_TABLE = "CREATE TABLE IF NOT EXISTS user "
@@ -116,8 +116,11 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.name: testRdbJoin001
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0100
      * @tc.desc: sql query inner join test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbJoin001', 0, async function (done) {
+    it('testRdbJoin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "testRdbJoin001 begin.");
         let resultSet = await rdbStore.querySql(
             "SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'sanguo'")
@@ -139,8 +142,11 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.name: testRdbJoin002
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0200
      * @tc.desc: sql query cross join test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbJoin002', 0, async function (done) {
+    it('testRdbJoin002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "testRdbJoin002 begin.");
         let resultSet = await rdbStore.querySql("" +
             "SELECT * FROM user  CROSS JOIN Book USING(userId) WHERE Book.name = 'sanguo'");
@@ -164,8 +170,11 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.name: testRdbJoin003
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0300
      * @tc.desc: sql query left outer join test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbJoin003', 0, async function (done) {
+    it('testRdbJoin003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "testRdbJoin003 begin.");
         let resultSet = await rdbStore.querySql("" +
             "SELECT * FROM user LEFT OUTER JOIN Book USING(userId) WHERE Book.name = 'sanguo'");

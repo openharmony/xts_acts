@@ -1553,6 +1553,7 @@ export default function cameraSessionFocusTest() {
           await sleep(1000);
           done();
         })
+        mCameraSession.off('focusStateChange')
       }
       await sleep(1000);
       done();
@@ -1586,6 +1587,7 @@ export default function cameraSessionFocusTest() {
           await sleep(1000);
           done();
         })
+        mCameraSession.off('error')
       }
       await sleep(1000);
       done();

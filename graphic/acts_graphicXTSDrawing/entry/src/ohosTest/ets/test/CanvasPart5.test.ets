@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level} from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
@@ -1293,6 +1293,78 @@ export default function drawingTsCanvasPart5Test() {
       }
     })
 
-
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4500
+     * @tc.name      : testCanvasDrawShadowNormal
+     * @tc.desc      : testCanvasDrawShadowNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasDrawShadowNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testCanvasDrawShadowNormal';
+      const canvas = new drawing.Canvas(pixel);
+      const path = new drawing.Path();
+      try {
+        canvas.drawShadow(path, {
+          x: -100, y: -80, z: 80
+        }, {
+          x: 200, y: 10, z: -40
+        }, 100, {
+          alpha: 0xFF, red: 0, green: 0, blue: 0xFF
+        }, {
+          alpha: 0xFF, red: 0xFF, green: 0, blue: 0
+        }, drawing.ShadowFlag.ALL);
+        console.info(msg + 'test ALL successes');
+      } catch (e) {
+        console.info(msg + `test ALL errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        canvas.drawShadow(path, {
+          x: 100.1, y: 80.1, z: 80.1
+        }, {
+          x: 200.1, y: 10.1, z: 40.1
+        }, 30.1, {
+          alpha: 0x00, red: 0, green: 0, blue: 0x00
+        }, {
+          alpha: 0xFF, red: 0xFF, green: 0xFF, blue: 0xFF
+        }, drawing.ShadowFlag.NONE);
+        console.info(msg + 'test NONE successes');
+      } catch (e) {
+        console.info(msg + `test NONE errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        canvas.drawShadow(path, {
+          x: 100, y: 80, z: 80
+        }, {
+          x: 200, y: 10, z: 40
+        }, -1, {
+          alpha: 0xFF, red: 0, green: 0, blue: 0xFF
+        }, {
+          alpha: 0xFF, red: 0xFF, green: 0, blue: 0
+        }, drawing.ShadowFlag.TRANSPARENT_OCCLUDER);
+        console.info(msg + 'test TRANSPARENT_OCCLUDER successes');
+      } catch (e) {
+        console.info(msg + `test TRANSPARENT_OCCLUDER errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        canvas.drawShadow(path, {
+          x: 100, y: 80, z: 80
+        }, {
+          x: 200, y: 10, z: 40
+        }, 0, {
+          alpha: 0xFF, red: 0, green: 0, blue: 0xFF
+        }, {
+          alpha: 0xFF, red: 0xFF, green: 0, blue: 0
+        }, drawing.ShadowFlag.GEOMETRIC_ONLY);
+        console.info(msg + 'test GEOMETRIC_ONLY successes');
+      } catch (e) {
+        console.info(msg + `test GEOMETRIC_ONLY errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
   })
 }

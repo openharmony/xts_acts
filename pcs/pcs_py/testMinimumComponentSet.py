@@ -18,9 +18,10 @@ from devicetest.core.test_case import TestCase, Step
 from sysCapUtils import sysCapUtils
 import json
 
-# @tc.number: M-SOFTWARE-0102
+# @tc.number: STD-SOFTWARE-0102
 # @tc.name: testMinimumComponentSet
-# @tc.desc: 【M-SOFTWARE-0102】禁止删减 productdefine/common/base/mini_system.json 定义的最小系统部件集配置。
+# @tc.desc: 【STD-SOFTWARE-0102】禁止删减 productdefine/common/base/standard_system.json 定义的最小系统部件集配置。
+#           【G-SOFTWARE-0700】禁止修改OpenHarmony系统定义的SystemCapability名称。
 class testMinimumComponentSet(TestCase):
 
     def __init__(self, controllers):

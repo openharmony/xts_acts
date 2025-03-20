@@ -103,25 +103,37 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    // it('ActsZlibInterfaceTest02', 0, async (done: Function) => {
-    //     console.info("==================ACTS_ZlibInterfaceTest_02 start==================");
-    //     try {
-    //         zlib.getOriginalSize(123).then((data: number) => {
-    //             console.info(`getOriginalSize success. getOriginalSize: ${data}`);
-    //             expect(data).assertLarger(0);
-    //             done();
-    //         }).catch((errData: BusinessError) => {
-    //             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    //             expect(errData.code).assertFail();
-    //             done();
-    //         })
-    //     } catch(errData) {
-    //         console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    //         expect(errData.code).assertEqual(401);
-    //         done();
-    //     }
-    //     console.info("==================ACTS_ZlibInterfaceTest_02 end==================");
-    // })
+     it('ActsZlibInterfaceTest02', 0, async (done: Function) => {
+         console.info("==================ACTS_ZlibInterfaceTest_02 start==================");
+         try {
+             zlib.getOriginalSize(null).then((data: number) => {
+                 console.info(`getOriginalSize success. getOriginalSize: ${data}`);
+                 expect().assertFail();
+             }).catch((errData: BusinessError) => {
+                 console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                 expect().assertFail();
+             })
+         } catch(errData) {
+             console.error(`ActsZlibInterfaceTest02 is errCode:${errData.code}  message:${errData.message}`);
+             expect(errData.code).assertEqual(401);
+         }
+        try {
+             zlib.getOriginalSize(undefined).then((data: number) => {
+                 console.info(`getOriginalSize success. getOriginalSize: ${data}`);
+                 expect().assertFail();
+                 done();
+             }).catch((errData: BusinessError) => {
+                 console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                 expect().assertFail();
+                 done();
+             })
+         } catch(errData) {
+             console.error(`ActsZlibInterfaceTest02 is errCode:${errData.code}  message:${errData.message}`);
+             expect(errData.code).assertEqual(401);
+             done();
+         }
+         console.info("==================ACTS_ZlibInterfaceTest_02 end==================");
+     })
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_03

@@ -2299,6 +2299,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       try {
         pipController = await pipWindow.create(config);
         console.log('data PiPSizeChange_Function_Callback_0 begin');
+        if (!pipController.isPiPSupported()) {
+          console.info('PiPSizeChange_Function_Callback_0 pip is not supported');
+          expect().assertTrue();
+          done();
+        }
         pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
           res1 = true;
@@ -2372,6 +2377,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       try {
         pipController = await pipWindow.create(config);
         console.log('data PiPSizeChange_Function_Callback_1 begin');
+        if (!pipController.isPiPSupported()) {
+          console.info('PiPSizeChange_Function_Callback_0 pip is not supported');
+          expect().assertTrue();
+          done();
+        }
         let callback1 = (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
           res1 = true;
@@ -2448,6 +2458,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       try {
         pipController = await pipWindow.create(config);
         console.log('data PiPSizeChange_Function_Callback_2 begin');
+        if (!pipController.isPiPSupported()) {
+          console.info('PiPSizeChange_Function_Callback_0 pip is not supported');
+          expect().assertTrue();
+          done();
+        }
         let callback1 = (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
           res1 = true;

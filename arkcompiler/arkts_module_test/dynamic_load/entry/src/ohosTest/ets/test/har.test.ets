@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import { BusinessError } from "@kit.BasicServicesKit";
 
 export default function dynamicLoadHar() {
@@ -26,7 +26,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHar01', 0, () => {
+    it('testConstantExpressionsHar01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsHar01";
       import('har').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -44,7 +44,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHar02', 0, () => {
+    it('testConstantExpressionsHar02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsHar02";
       import('har/src/main/ets/testAdd').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -62,7 +62,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHar03', 0, () => {
+    it('testConstantExpressionsHar03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsHar03";
       import('@test/loadHar').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -80,7 +80,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHar04', 0, () => {
+    it('testConstantExpressionsHar04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsHar04";
       import('@test/loadHar/src/main/ets/getHarNameTest').then(m => {
         expect(m.getHarName()).assertEqual('loadHar');
@@ -98,7 +98,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testConstantExpressionsOhpm01", 0, () => {
+    it("testConstantExpressionsOhpm01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsOhpm02";
       const str = "12345678901234567890";
       const assertNum: number = -1420514932;
@@ -119,7 +119,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testConstantExpressionsOhpm03", 0, () => {
+    it("testConstantExpressionsOhpm03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsOhpm03";
       import('@ohos/hypium').then(m => {
         m.expect(true).assertTrue();
@@ -137,7 +137,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testConstantExpressionsOhpm04", 0, () => {
+    it("testConstantExpressionsOhpm04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testConstantExpressionsOhpm04";
       import('@ohos/hypium/src/main/Constant').then((m: ESObject) => {
         expect(m.TAG).assertEqual('[Hypium]');
@@ -155,7 +155,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHar01', 0, () => {
+    it('testVariableExpressionsHar01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsHar01";
       let libname = 'har';
       import(libname).then((m: ESObject) => {
@@ -174,7 +174,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHar02', 0, () => {
+    it('testVariableExpressionsHar02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsHar02";
       let libname = 'har/src/main/ets/testAdd';
       import(libname).then((m: ESObject) => {
@@ -193,7 +193,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHar03', 0, () => {
+    it('testVariableExpressionsHar03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsHar03";
       let libname = '@test/loadHar';
       import(libname).then((m: ESObject) => {
@@ -212,7 +212,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHar04', 0, () => {
+    it('testVariableExpressionsHar04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsHar04";
       let libname = '@test/loadHar/src/main/ets/getHarNameTest';
       import(libname).then((m: ESObject) => {
@@ -231,7 +231,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testVariableExpressionsOhpm01", 0, () => {
+    it("testVariableExpressionsOhpm01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsOhpm01";
       let libname = '@ohos/hypium';
       import(libname).then((m: ESObject) => {
@@ -250,7 +250,7 @@ export default function dynamicLoadHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testVariableExpressionsOhpm02", 0, () => {
+    it("testVariableExpressionsOhpm02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testVariableExpressionsOhpm02";
       let libname = '@ohos/hypium/src/main/Constant';
       import(libname).then((m: ESObject) => {

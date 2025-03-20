@@ -20,7 +20,7 @@ let emitKey = "emitpageDown";
 export default function webViewControllerJsunit() {
   describe('ActsAceWebDevWebViewControllerTest',  () => {
     beforeEach(async  (done: Function) =>{
-      await Utils.sleep(2000);
+      await Utils.sleep(6000);
       console.info("web beforeEach start");
       done();
     })

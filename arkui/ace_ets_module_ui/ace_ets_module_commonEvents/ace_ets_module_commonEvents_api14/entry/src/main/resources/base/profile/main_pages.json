@@ -4,11 +4,6 @@
         "MainAbility/pages/onKeyEvent/unicode",
 		"MainAbility/pages/FocusView/defaultFocus",
         "MainAbility/pages/tabStopApiTest/tabStopApiTest",
-        "MainAbility/pages/UIContext/FocusController/activeTest",
-        "MainAbility/pages/UIContext/FocusController/activeTest_true_true",
-        "MainAbility/pages/UIContext/FocusController/activeTest_false",
-        "MainAbility/pages/UIContext/FocusController/activeTest_false_true",
-        "MainAbility/pages/UIContext/FocusController/activeTest_false_false",
 		"MainAbility/pages/GestureAllowedTypes/LongPressGestureAllowedTypes",
         "MainAbility/pages/GestureAllowedTypes/PanGestureAllowedTypes",
         "MainAbility/pages/GestureAllowedTypes/PinchGestureAllowedTypes",
@@ -16,10 +11,7 @@
         "MainAbility/pages/GestureAllowedTypes/SwipeGestureAllowedTypes",
         "MainAbility/pages/GestureAllowedTypes/TapGestureAllowedTypes",
         "MainAbility/pages/GestureHandlerAllowedTypes/LongPressGestureHandlerAllowedTypes",
-        "MainAbility/pages/GestureHandlerAllowedTypes/PanGestureHandlerAllowedTypes",
         "MainAbility/pages/GestureHandlerAllowedTypes/PinchGestureHandlerAllowedTypes",
-        "MainAbility/pages/GestureHandlerAllowedTypes/RotationGestureHandlerAllowedTypes",
-        "MainAbility/pages/GestureHandlerAllowedTypes/SwipeGestureHandlerAllowedTypes",
         "MainAbility/pages/GestureHandlerAllowedTypes/TapGestureHandlerAllowedTypes"
     ]
 }

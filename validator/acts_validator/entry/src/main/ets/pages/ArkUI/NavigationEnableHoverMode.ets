@@ -21,8 +21,9 @@ import promptAction from '@ohos.promptAction';
 @Component
 struct NavigationEnableHoverMode {
   @State name: string = 'NavigationEnableHoverMode';
-  @State stepTips: string = '操作步骤：1、使用折叠屏手机运行测试\n2、手动折叠手机屏幕(上下折叠)' +
-    '\n' + '预期结果：MainTitle悬浮在下屏的上方位置';
+  @State stepTips: string = '单屏折叠设备测试时\n操作步骤：\n1、设备处于展开态，打开demo \n2、手动折叠设备屏幕（折叠呈90°）' +
+    '\n' + '预期结果：\n1、展开态打开demo，MainTitle悬浮在上屏的上方\n2、折叠后，MainTitle悬浮在下屏的上方位置' +
+    '\n3、非单屏折叠设备，直接按照失败处理走豁免';
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
 
@@ -133,7 +134,7 @@ struct NavigationEnableHoverMode {
       .height('10%')
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
-
+      Text('适用单屏折叠形态设备进行该测试').fontColor(Color.Green).fontSize('16fp')
       Column() {
         Navigation() {
           Column().height('80%')

@@ -56,10 +56,7 @@ export default function stateStylesTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -70,10 +67,8 @@ export default function stateStylesTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridRow',
     'Grid',
@@ -86,9 +81,7 @@ export default function stateStylesTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -100,8 +93,7 @@ export default function stateStylesTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
 
   let pageConfig: PageConfig = {

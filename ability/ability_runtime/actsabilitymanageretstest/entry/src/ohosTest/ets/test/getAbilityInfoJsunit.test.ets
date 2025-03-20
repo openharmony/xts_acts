@@ -110,7 +110,7 @@ function checkAbilityInfo(msg: string, data: ESObject) {
   expect(data.type).assertEqual(1);
   expect(data.orientation).assertEqual(0);
   expect(data.launchMode).assertEqual(1);
-  expect(data.deviceTypes[0]).assertEqual("default");
+  expect(data.deviceTypes.length).assertEqual(0);
   expect(data.readPermission).assertEqual("");
   expect(data.writePermission).assertEqual("");
   checkApplicationInfo(msg, data.applicationInfo);

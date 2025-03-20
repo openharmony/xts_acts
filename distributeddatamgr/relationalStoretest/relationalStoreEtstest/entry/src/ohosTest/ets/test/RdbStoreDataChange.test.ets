@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -92,7 +92,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0100', 0, async function (done) {
+        it('testRdbStoreDataChange0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0100 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -153,7 +153,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0200', 0, async function (done) {
+        it('testRdbStoreDataChange0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0200 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -214,7 +214,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0300', 0, async function (done) {
+        it('testRdbStoreDataChange0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0300 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -270,7 +270,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0400', 0, async function (done) {
+        it('testRdbStoreDataChange0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0400 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -338,7 +338,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0500', 0, async function (done) {
+        it('testRdbStoreDataChange0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0500 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -401,7 +401,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0600', 0, async function (done) {
+        it('testRdbStoreDataChange0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0600 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "testRdbStoreDataChange0600 ChangeInfos.length=" + ChangeInfos.length);
@@ -448,7 +448,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0700', 0, async function (done) {
+        it('testRdbStoreDataChange0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0700 start *************");
             try {
                 rdbStore.on('', relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, (ChangeInfos) => {})
@@ -470,7 +470,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0800', 0, async function (done) {
+        it('testRdbStoreDataChange0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0800 start *************");
             try {
                 // SubscribeType -2 is a invalid argument
@@ -493,7 +493,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange0900', 0, async function (done) {
+        it('testRdbStoreDataChange0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange0900 start *************");
             try {
                 rdbStore.on('dataChange', null, (ChangeInfos) => {})
@@ -515,7 +515,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1000', 0, async function (done) {
+        it('testRdbStoreDataChange1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1000 start *************");
             try {
                 rdbStore.on('dataChange', undefined, (ChangeInfos) => {})
@@ -537,7 +537,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1100', 0, async function (done) {
+        it('testRdbStoreDataChange1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1100 start *************");
             try {
                 rdbStore.off('', relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, (ChangeInfos) => {})
@@ -559,7 +559,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1200', 0, async function (done) {
+        it('testRdbStoreDataChange1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1200 start *************");
             try {
                 // SubscribeType -2 is a invalid argument
@@ -582,7 +582,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1300', 0, async function (done) {
+        it('testRdbStoreDataChange1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1300 start *************");
             try {
                 rdbStore.off('dataChange', null, (ChangeInfos) => {})
@@ -604,7 +604,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1400', 0, async function (done) {
+        it('testRdbStoreDataChange1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1400 start *************");
             try {
                 rdbStore.off('dataChange', undefined, (ChangeInfos) => {})
@@ -628,7 +628,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1500', 0, async function (done) {
+        it('testRdbStoreDataChange1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1500 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");
@@ -699,7 +699,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1600', 0, async function (done) {
+        it('testRdbStoreDataChange1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1600 start *************");
             function observer1(ChangeInfos) {
                 for (let i = 0; i < ChangeInfos.length; i++) {
@@ -768,7 +768,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1700', 0, async function (done) {
+        it('testRdbStoreDataChange1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1700 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");
@@ -831,7 +831,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1800', 0, async function (done) {
+        it('testRdbStoreDataChange1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1800 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");
@@ -892,7 +892,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange1900', 0, async function (done) {
+        it('testRdbStoreDataChange1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange1800 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");
@@ -951,7 +951,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange2000', 0, async function (done) {
+        it('testRdbStoreDataChange2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange2000 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");
@@ -1007,7 +1007,7 @@ export default function RdbStoreDataChangeTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreDataChange2100', 0, async function (done) {
+        it('testRdbStoreDataChange2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreDataChange2100 start *************");
             function observer1(ChangeInfos) {
                 console.info(TAG + "observer1");

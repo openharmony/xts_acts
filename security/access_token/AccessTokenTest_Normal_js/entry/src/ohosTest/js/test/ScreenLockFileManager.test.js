@@ -62,9 +62,13 @@ export default function ScreenLockFileManagerJsTest() {
                 expect(true).assertTrue();
                 done();
             } catch (err) {
-                console.info('AcquireAccessJsTest001 err.code is: ' + err.code)
-                expect(err.code).assertEqual(29300003);
-                done();
+                if (err.code == 801) {
+                    done();
+                } else {
+                    console.info('AcquireAccessJsTest001 err.code is: ' + err.code)
+                    expect(err.code).assertEqual(29300003);
+                    done();
+                }
             }
         })
 
@@ -104,9 +108,13 @@ export default function ScreenLockFileManagerJsTest() {
                 expect(true).assertTrue();
                 done();
             } catch (err) {
-                console.info('ReleaseAccessJsTest001 err.code is: ' + err.code)
-                expect(err.code).assertEqual(29300003);
-                done();
+                if (err.code == 801) {
+                    done();
+                } else {
+                    console.info('ReleaseAccessJsTest001 err.code is: ' + err.code)
+                    expect(err.code).assertEqual(29300003);
+                    done();
+                }
             }
         })
 
@@ -175,7 +183,10 @@ export default function ScreenLockFileManagerJsTest() {
                 expect(keyStatus).assertEqual(-2);
                 done();
             } catch (err) {
-                console.error('SUB_Security_EL5_QueryAppKeyState_0100 err.code is: ' + err.code)
+                if (err.code == 801) {
+                    done();
+                }
+                console.error('SUB_Security_EL5_QueryAppKeyState_0100 err.code is: ' + err.code);
             }
         })
 

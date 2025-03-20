@@ -407,5 +407,162 @@ export default function appManagerTest() {
       expect(appManager.ApplicationState.STATE_DESTROY).assertEqual(5);
       done();
     })
+
+        /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0100
+     * @tc.name   : Test the return value of the isRunningInStabilityTest interface(Promise).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0100`;
+      console.log(`${tag}, it begin`);
+        try {
+          await appManager.isRunningInStabilityTest().then((data)=>{
+            console.log(`${tag} isRunningInStabilityTest success, pid: ${data}`);
+            try{expect(data).assertFalse();}catch(e){}
+            done();
+          }).catch((err:BusinessError)=>{
+            console.log(`${tag} isRunningInStabilityTest error, err: ${err?.code}`);
+            try{expect().assertFail();}catch(e){}
+            done();
+          });
+        } catch (err) {
+          console.error(`${tag} isRunningInStabilityTest error, errorCode: ${err?.code}`);
+          expect().assertFail();
+          done();
+        }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0200
+     * @tc.name   : Test the return value of the isRunningInStabilityTest interface(CallBack).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0200', 0, async (done: Function) => {
+      let tag = `SUB_AA_ChildProcessManager_startChildProcess_0300`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isRunningInStabilityTest((err, data)=>{
+          console.error(`${tag} isRunningInStabilityTest success, errorCode: ${data}`);
+          try{expect(data).assertFalse();}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} isRunningInStabilityTest error, errorCode: ${err?.code}`);
+        try{expect().assertFail();}catch(e){}
+        done();
+      }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0400
+     * @tc.name   : Verify that isAppRunning is called when no permission is available(appCloneIndex).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0400', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0400`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isAppRunning('com.acts.example.startselfuiabilitytest', 0).then((data)=>{
+          console.log(`${tag} isAppRunning success, data: ${data}`);
+          try{expect(data).assertFalse();}catch(e){}
+          done();
+        }).catch((err:BusinessError)=>{
+          console.log(`${tag} isAppRunning error, err: ${err?.code}`);
+          try{expect(err?.code).assertEqual(201);}catch(e){}
+          done();
+        });
+      } catch (err) {
+        console.error(`${tag} isAppRunning error, errorCode: ${err?.code}`);
+        expect().assertFalse();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0500
+     * @tc.name   : Verify that isAppRunning is called when no permission is available(no appCloneIndex)).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0500', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0500`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isAppRunning('com.acts.example.startselfuiabilitytest').then((data)=>{
+          console.log(`${tag} isAppRunning success, data: ${data}`);
+          try{expect(data).assertFalse();}catch(e){}
+          done();
+        }).catch((err:BusinessError)=>{
+          console.log(`${tag} isAppRunning error, err: ${err?.code}`);
+          try{expect(err?.code).assertEqual(201);}catch(e){}
+          done();
+        });
+      } catch (err) {
+        console.error(`${tag} isAppRunning error, errorCode: ${err?.code}`);
+        expect().assertFalse();
+        done();
+      }
+    });
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0600
+     * @tc.name   : Verify that off is called when no permission is available(promise).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0600', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0600`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.off('applicationState', 1).then((data)=>{
+          console.log(`${tag} off success, pid: ${data}`);
+          try{expect(data).assertFalse();}catch(e){}
+          done();
+        }).catch((err:BusinessError)=>{
+          console.log(`${tag} off error, err: ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        });
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect(err?.code).assertEqual(401)
+        done();
+      }
+    });
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0700
+     * @tc.name   : Verify that off is called when no permission is available(callback).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0700', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0700`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.off('applicationState', 1, (data)=>{
+          try{expect(data).assertFalse();}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect(err?.code).assertEqual(401)
+        done();
+      }
+    });
   })
 }

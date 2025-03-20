@@ -14,7 +14,7 @@
  */
 
 import testndk from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 
 let TAG = '[testLog-ets]';
 export default function rdbConfigV2NdkTest() {
@@ -28,7 +28,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CreateConfig_0100', 0, async (done: Function) => {
+    it('OH_Rdb_CreateConfig_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_CreateConfig_0100();
       console.info(TAG + "OH_Rdb_CreateConfig_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -43,7 +43,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CreateConfig_0200', 0, async (done: Function) => {
+    it('OH_Rdb_CreateConfig_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_CreateConfig_0200();
       console.info(TAG + "OH_Rdb_CreateConfig_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -58,7 +58,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_0100();
       console.info(TAG + "OH_Rdb_SetDbType_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -73,7 +73,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_0300();
       console.info(TAG + "OH_Rdb_SetDbType_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -88,7 +88,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_GetSupportedDbType_0100', 0, async (done: Function) => {
+    it('OH_Rdb_GetSupportedDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_GetSupportedDbType_0100();
       console.info(TAG + "OH_Rdb_GetSupportedDbType_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -103,7 +103,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_SQLITE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_0100();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -118,7 +118,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_SQLITE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_0200();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -133,7 +133,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_SQLITE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_0300();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -148,7 +148,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_Id_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_SQLITE_Id_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_Id_0100();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Id_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -163,7 +163,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_Id_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_SQLITE_Id_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_Id_0200();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Id_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -179,7 +179,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0100();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -194,7 +194,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0200();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -209,7 +209,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0300();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -224,7 +224,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0400', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0400();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0400 res=" + res );
       expect(res).assertEqual(0);
@@ -239,7 +239,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0500', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0500();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0500 res=" + res );
       expect(res).assertEqual(0);
@@ -254,7 +254,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0600', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0600();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0600 res=" + res );
       expect(res).assertEqual(0);
@@ -269,7 +269,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0700', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0700();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0700 res=" + res );
       expect(res).assertEqual(0);
@@ -284,7 +284,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0800', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0800();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0800 res=" + res );
       expect(res).assertEqual(0);
@@ -299,7 +299,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_0900', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_0900();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0900 res=" + res );
       expect(res).assertEqual(0);
@@ -314,7 +314,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDatabaseDir_Param_1000', 0, async (done: Function) => {
+    it('OH_Rdb_SetDatabaseDir_Param_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDatabaseDir_Param_1000();
       console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_1000 res=" + res );
       expect(res).assertEqual(0);
@@ -329,7 +329,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0100();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -344,7 +344,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0200();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -359,7 +359,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0300();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -375,7 +375,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0400', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0400();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0400 res=" + res );
       expect(res).assertEqual(0);
@@ -390,7 +390,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0500', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0500();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0500 res=" + res );
       expect(res).assertEqual(0);
@@ -405,7 +405,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0600', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0600();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0600 res=" + res );
       expect(res).assertEqual(0);
@@ -420,7 +420,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0700', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0700();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0700 res=" + res );
       expect(res).assertEqual(0);
@@ -435,7 +435,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0800', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0800();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0800 res=" + res );
       expect(res).assertEqual(0);
@@ -450,7 +450,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_0900', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_0900();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_0900 res=" + res );
       expect(res).assertEqual(0);
@@ -465,7 +465,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetStoreName_Param_1000', 0, async (done: Function) => {
+    it('OH_Rdb_SetStoreName_Param_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetStoreName_Param_1000();
       console.info(TAG + "OH_Rdb_SetStoreName_Param_1000 res=" + res );
       expect(res).assertEqual(0);
@@ -480,7 +480,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0100();
       console.info(TAG + "OH_Rdb_SetBundleName_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -495,7 +495,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0200();
       console.info(TAG + "OH_Rdb_SetBundleName_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -510,7 +510,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0300();
       console.info(TAG + "OH_Rdb_SetBundleName_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -525,7 +525,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0400', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0400();
       console.info(TAG + "OH_Rdb_SetBundleName_0400 res=" + res );
       expect(res).assertEqual(0);
@@ -540,7 +540,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0500', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0500();
       console.info(TAG + "OH_Rdb_SetBundleName_0500 res=" + res );
       expect(res).assertEqual(0);
@@ -555,7 +555,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0600', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0600();
       console.info(TAG + "OH_Rdb_SetBundleName_0600 res=" + res );
       expect(res).assertEqual(0);
@@ -570,7 +570,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0700', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0700();
       console.info(TAG + "OH_Rdb_SetBundleName_0700 res=" + res );
       expect(res).assertEqual(0);
@@ -585,7 +585,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0800', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0800();
       console.info(TAG + "OH_Rdb_SetBundleName_0800 res=" + res );
       expect(res).assertEqual(0);
@@ -600,7 +600,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_0900', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_0900();
       console.info(TAG + "OH_Rdb_SetBundleName_0900 res=" + res );
       expect(res).assertEqual(0);
@@ -615,7 +615,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetBundleName_1000', 0, async (done: Function) => {
+    it('OH_Rdb_SetBundleName_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetBundleName_1000();
       console.info(TAG + "OH_Rdb_SetBundleName_1000 res=" + res );
       expect(res).assertEqual(0);
@@ -631,7 +631,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0100();
       console.info(TAG + "OH_Rdb_SetModuleName_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -646,7 +646,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0200();
       console.info(TAG + "OH_Rdb_SetModuleName_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -661,7 +661,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0300();
       console.info(TAG + "OH_Rdb_SetModuleName_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -676,7 +676,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0400', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0400();
       console.info(TAG + "OH_Rdb_SetModuleName_0400 res=" + res );
       expect(res).assertEqual(0);
@@ -691,7 +691,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0500', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0500();
       console.info(TAG + "OH_Rdb_SetModuleName_0500 res=" + res );
       expect(res).assertEqual(0);
@@ -706,7 +706,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0600', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0600();
       console.info(TAG + "OH_Rdb_SetModuleName_0600 res=" + res );
       expect(res).assertEqual(0);
@@ -721,7 +721,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0700', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0700();
       console.info(TAG + "OH_Rdb_SetModuleName_0700 res=" + res );
       expect(res).assertEqual(0);
@@ -736,7 +736,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0800', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0800();
       console.info(TAG + "OH_Rdb_SetModuleName_0800 res=" + res );
       expect(res).assertEqual(0);
@@ -751,7 +751,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_0900', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_0900();
       console.info(TAG + "OH_Rdb_SetModuleName_0900 res=" + res );
       expect(res).assertEqual(0);
@@ -766,7 +766,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetModuleName_1000', 0, async (done: Function) => {
+    it('OH_Rdb_SetModuleName_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetModuleName_1000();
       console.info(TAG + "OH_Rdb_SetModuleName_1000 res=" + res );
       expect(res).assertEqual(0);
@@ -783,7 +783,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetEncrypted_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetEncrypted_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetEncrypted_0100();
       console.info(TAG + "OH_Rdb_SetEncrypted_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -798,7 +798,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetEncrypted_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetEncrypted_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetEncrypted_0200();
       console.info(TAG + "OH_Rdb_SetEncrypted_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -813,7 +813,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetEncrypted_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetEncrypted_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetEncrypted_0300();
       console.info(TAG + "OH_Rdb_SetEncrypted_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -828,7 +828,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetSecurityLevel_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetSecurityLevel_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetSecurityLevel_0100();
       console.info(TAG + "OH_Rdb_SetSecurityLevel_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -843,7 +843,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetSecurityLevel_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetSecurityLevel_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetSecurityLevel_0200();
       console.info(TAG + "OH_Rdb_SetSecurityLevel_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -858,7 +858,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetSecurityLevel_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetSecurityLevel_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetSecurityLevel_0300();
       console.info(TAG + "OH_Rdb_SetSecurityLevel_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -873,7 +873,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_0100();
       console.info(TAG + "OH_Rdb_SetArea_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -888,7 +888,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_0200();
       console.info(TAG + "OH_Rdb_SetArea_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -903,7 +903,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_0300();
       console.info(TAG + "OH_Rdb_SetArea_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -918,7 +918,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_0400', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_0400();
       console.info(TAG + "OH_Rdb_SetArea_0400 res=" + res );
       expect(res).assertEqual(0);
@@ -933,7 +933,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_0500', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_0500();
       console.info(TAG + "OH_Rdb_SetArea_0500 res=" + res );
       expect(res).assertEqual(0);
@@ -948,7 +948,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_Param_0100();
       console.info(TAG + "OH_Rdb_SetArea_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -963,7 +963,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_Param_0200();
       console.info(TAG + "OH_Rdb_SetArea_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -978,7 +978,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetArea_Param_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetArea_Param_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetArea_Param_0300();
       console.info(TAG + "OH_Rdb_SetArea_Param_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -993,7 +993,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_Param_0100();
       console.info(TAG + "OH_Rdb_SetDbType_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1008,7 +1008,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_Param_0200();
       console.info(TAG + "OH_Rdb_SetDbType_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -1023,7 +1023,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_Param_0300', 0, async (done: Function) => {
+    it('OH_Rdb_SetDbType_Param_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_Param_0300();
       console.info(TAG + "OH_Rdb_SetDbType_Param_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -1038,7 +1038,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_GetSupportedDbType_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_GetSupportedDbType_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_GetSupportedDbType_Param_0100();
       console.info(TAG + "OH_Rdb_GetSupportedDbType_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1053,7 +1053,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_DestroyConfig_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_DestroyConfig_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_DestroyConfig_Param_0100();
       console.info(TAG + "OH_Rdb_DestroyConfig_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1068,7 +1068,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CreateOrOpen_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_CreateOrOpen_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_CreateOrOpen_Param_0100();
       console.info(TAG + "OH_Rdb_CreateOrOpen_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1083,7 +1083,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_DeleteStoreV2_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_DeleteStoreV2_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_DeleteStoreV2_Param_0100();
       console.info(TAG + "OH_Rdb_DeleteStoreV2_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1098,7 +1098,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_ExecuteByTrxId_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_ExecuteByTrxId_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0100();
       console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1113,7 +1113,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_ExecuteByTrxId_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_ExecuteByTrxId_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0200();
       console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -1128,7 +1128,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_ExecuteByTrxId_Param_0300', 0, async (done: Function) => {
+    it('OH_Rdb_ExecuteByTrxId_Param_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0300();
       console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0300 res=" + res );
       expect(res).assertEqual(0);
@@ -1143,7 +1143,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_BeginTransWithTrxId_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_BeginTransWithTrxId_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_BeginTransWithTrxId_Param_0100();
       console.info(TAG + "OH_Rdb_BeginTransWithTrxId_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1158,7 +1158,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_BeginTransWithTrxId_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_BeginTransWithTrxId_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_BeginTransWithTrxId_Param_0200();
       console.info(TAG + "OH_Rdb_BeginTransWithTrxId_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -1173,7 +1173,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CommitByTrxId_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_CommitByTrxId_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_CommitByTrxId_Param_0100();
       console.info(TAG + "OH_Rdb_CommitByTrxId_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1188,7 +1188,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CommitByTrxId_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_CommitByTrxId_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_CommitByTrxId_Param_0200();
       console.info(TAG + "OH_Rdb_CommitByTrxId_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -1203,7 +1203,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_RollBackByTrxId_Param_0100', 0, async (done: Function) => {
+    it('OH_Rdb_RollBackByTrxId_Param_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_RollBackByTrxId_Param_0100();
       console.info(TAG + "OH_Rdb_RollBackByTrxId_Param_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -1218,7 +1218,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_RollBackByTrxId_Param_0200', 0, async (done: Function) => {
+    it('OH_Rdb_RollBackByTrxId_Param_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_RollBackByTrxId_Param_0200();
       console.info(TAG + "OH_Rdb_RollBackByTrxId_Param_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -1233,7 +1233,7 @@ export default function rdbConfigV2NdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_DBType_Enum_0100', 0, async (done: Function) => {
+    it('OH_Rdb_DBType_Enum_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Rdb_DBType_Enum_0100();
       console.info(TAG + "OH_Rdb_DBType_Enum_0100 res=" + res );
       expect(res).assertEqual(0);

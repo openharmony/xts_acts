@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { TreeSet } from '@kit.ArkTS';
 
 export default function TreeSetTest() {
@@ -47,7 +47,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0001', 0, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0001";
       try {
         const treeSet: TreeSet<number> = new TreeSet();
@@ -68,7 +68,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0002', 0, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -93,7 +93,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0003', 0, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0003";
       try {
         class TestEntry {
@@ -127,7 +127,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0004', 0, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0004";
       try {
         class TestEntry {
@@ -160,7 +160,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsEmpty0001', 0, () => {
+    it('testIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsEmpty0001";
       try {
         const treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -180,7 +180,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsEmpty0002', 0, () => {
+    it('testIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsEmpty0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -201,7 +201,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsEmpty0003', 0, () => {
+    it('testIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsEmpty0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -223,7 +223,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0001', 0, () => {
+    it('testHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0001";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -243,7 +243,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0002', 0, () => {
+    it('testHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0002";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -265,7 +265,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0003', 0, () => {
+    it('testHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0003";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -285,7 +285,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0004', 0, () => {
+    it('testHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0004";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -306,7 +306,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0005', 0, () => {
+    it('testHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0005";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -326,7 +326,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0006', 0, () => {
+    it('testHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0006";
       setTimeout(() => {
         try {
@@ -349,7 +349,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0007', 0, () => {
+    it('testHas0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0007";
       try {
         let treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -369,7 +369,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0008', 0, () => {
+    it('testHas0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0008";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -390,7 +390,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0009', 0, () => {
+    it('testHas0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0009";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -411,7 +411,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0010', 0, () => {
+    it('testHas0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0010";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -448,7 +448,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFirstValue0001', 0, () => {
+    it('testGetFirstValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFirstValue0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -468,7 +468,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFirstValue0002', 0, () => {
+    it('testGetFirstValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFirstValue0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -488,7 +488,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFirstValue0003', 0, () => {
+    it('testGetFirstValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFirstValue0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -510,7 +510,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetFirstValue0004', 0, () => {
+    it('testGetFirstValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFirstValue0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -536,7 +536,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLastValue0001', 0, () => {
+    it('testGetLastValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLastValue0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -556,7 +556,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLastValue0002', 0, () => {
+    it('testGetLastValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLastValue0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -577,7 +577,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLastValue0003', 0, () => {
+    it('testGetLastValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLastValue0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -599,7 +599,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLastValue0004', 0, () => {
+    it('testGetLastValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLastValue0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -625,7 +625,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0001', 0, () => {
+    it('testAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -647,7 +647,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0002', 0, () => {
+    it('testAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -669,7 +669,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0003', 0, () => {
+    it('testAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -691,7 +691,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0004', 0, () => {
+    it('testAdd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -712,7 +712,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0005', 0, () => {
+    it('testAdd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0005";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -733,7 +733,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0006', 0, () => {
+    it('testAdd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -755,7 +755,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAdd0007', 0, () => {
+    it('testAdd0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAdd0007";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -777,7 +777,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0001', 0, () => {
+    it('testRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -796,7 +796,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0002', 0, () => {
+    it('testRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -816,7 +816,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0003', 0, () => {
+    it('testRemove0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -835,7 +835,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0004', 0, () => {
+    it('testRemove0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -855,7 +855,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0005', 0, () => {
+    it('testRemove0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0005";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -874,7 +874,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0006', 0, () => {
+    it('testRemove0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -894,7 +894,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0007', 0, () => {
+    it('testRemove0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0007";
       try {
         let treeSet: TreeSet<number> = new TreeSet();
@@ -913,7 +913,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0008', 0, () => {
+    it('testRemove0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0008";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -933,7 +933,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemove0009', 0, () => {
+    it('testRemove0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRemove0009";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -953,7 +953,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0001', 0, () => {
+    it('testGetLowerValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -972,7 +972,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0002', 0, () => {
+    it('testGetLowerValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -991,7 +991,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0003', 0, () => {
+    it('testGetLowerValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1010,7 +1010,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0004', 0, () => {
+    it('testGetLowerValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0004";
       try {
         let treeSet: TreeSet<number> = new TreeSet();
@@ -1029,7 +1029,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0005', 0, () => {
+    it('testGetLowerValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0005";
       try {
         let treeSet: TreeSet<number> = new TreeSet();
@@ -1048,7 +1048,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0006', 0, () => {
+    it('testGetLowerValue0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1069,7 +1069,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetLowerValue0007', 0, () => {
+    it('testGetLowerValue0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetLowerValue0007";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1094,7 +1094,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0001', 0, () => {
+    it('testGetHigherValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1113,7 +1113,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0002', 0, () => {
+    it('testGetHigherValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1132,7 +1132,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0003', 0, () => {
+    it('testGetHigherValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1151,7 +1151,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0004', 0, () => {
+    it('testGetHigherValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0004";
       try {
         let treeSet: TreeSet<number> = new TreeSet();
@@ -1170,7 +1170,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0005', 0, () => {
+    it('testGetHigherValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0005";
       try {
         let treeSet: TreeSet<number> = new TreeSet();
@@ -1189,7 +1189,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0006', 0, () => {
+    it('testGetHigherValue0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1210,7 +1210,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetHigherValue0007', 0, () => {
+    it('testGetHigherValue0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHigherValue0007";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1235,7 +1235,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0001', 0, () => {
+    it('testPopFirst0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1254,7 +1254,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0002', 0, () => {
+    it('testPopFirst0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1276,7 +1276,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0003', 0, () => {
+    it('testPopFirst0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1302,7 +1302,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0004', 0, () => {
+    it('testPopFirst0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1323,7 +1323,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0005', 0, () => {
+    it('testPopFirst0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0005";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1345,7 +1345,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopFirst0006', 0, () => {
+    it('testPopFirst0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopFirst0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1371,7 +1371,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0001', 0, () => {
+    it('testPopLast0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1390,7 +1390,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0002', 0, () => {
+    it('testPopLast0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1412,7 +1412,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0003', 0, () => {
+    it('testPopLast0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1438,7 +1438,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0004', 0, () => {
+    it('testPopLast0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1459,7 +1459,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0005', 0, () => {
+    it('testPopLast0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0005";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1481,7 +1481,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPopLast0006', 0, () => {
+    it('testPopLast0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPopLast0006";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1507,7 +1507,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testClear0001', 0, () => {
+    it('testClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testClear0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1528,7 +1528,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testClear0002', 0, () => {
+    it('testClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testClear0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1553,7 +1553,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testClear0003', 0, () => {
+    it('testClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testClear0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1586,7 +1586,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testValues0001', 0, () => {
+    it('testValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValues0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1606,7 +1606,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testValues0002', 0, () => {
+    it('testValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValues0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1633,7 +1633,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testValues0003', 0, () => {
+    it('testValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValues0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1662,7 +1662,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetForEach0001', 0, () => {
+    it('testTreeSetForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetForEach0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1684,7 +1684,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetForEach0002', 0, () => {
+    it('testTreeSetForEach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetForEach0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1713,7 +1713,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetForEach0003', 0, () => {
+    it('testTreeSetForEach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetForEach0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1746,7 +1746,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetForEach0004', 0, () => {
+    it('testTreeSetForEach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetForEach0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1777,7 +1777,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetForEach0005', 0, () => {
+    it('testTreeSetForEach0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetForEach0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1804,7 +1804,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetEntries0001', 0, () => {
+    it('testTreeSetEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetEntries0001";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1825,7 +1825,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetEntries0002', 0, () => {
+    it('testTreeSetEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetEntries0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1855,7 +1855,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetEntries0003', 0, () => {
+    it('testTreeSetEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetEntries0003";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -1865,14 +1865,14 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
+        treeSet.entries();
         let res = treeSet.values();
         expect(res.next().value).assertEqual('DDD');
         expect(res.next().value).assertEqual('CCC');
         expect(res.next().value).assertEqual('BBB');
         expect(res.next().value).assertEqual('AAA');
         let length = treeSet.length;
-        expect(length).assertEqual(4)
+        expect(length).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1887,7 +1887,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetEntries0004', 0, () => {
+    it('testTreeSetEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetEntries0004";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1895,14 +1895,14 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
+        treeSet.entries();
         let res = treeSet.values();
-        treeSet.remove("CCC")
+        treeSet.remove("CCC");
         expect(res.next().value).assertEqual('AAA');
         expect(res.next().value).assertEqual('BBB');
         expect(res.next().value).assertEqual('DDD');
         let length = treeSet.length;
-        expect(length).assertEqual(3)
+        expect(length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1917,7 +1917,7 @@ export default function TreeSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTreeSetEntries0005', 0, () => {
+    it('testTreeSetEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTreeSetEntries0005";
       try {
         let treeSet: TreeSet<string> = new TreeSet();
@@ -1925,8 +1925,35 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
-        treeSet.clear()
+        treeSet.entries();
+        treeSet.clear();
+        let length = treeSet.length;
+        expect(length).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TREESET_8400
+     * @tc.name       : testTreeSetForEach0006
+     * @tc.desc       : Test the function of the interface forEach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTreeSetForEach0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testTreeSetForEach0006";
+      try {
+        let treeSet: TreeSet<string> = new TreeSet();
+        treeSet.add('AAA');
+        treeSet.add('BBB');
+        treeSet.add('CCC');
+        treeSet.add('DDD');
+        treeSet.forEach((): void => {
+        });
+        treeSet.clear();
         let length = treeSet.length;
         expect(length).assertEqual(0)
       } catch (err) {
@@ -1934,5 +1961,88 @@ export default function TreeSetTest() {
         expect().assertFail();
       }
     });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TREESET_8500
+     * @tc.name       : testTreeSetForEach0007
+     * @tc.desc       : Test the function of the interface forEach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTreeSetForEach0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testTreeSetForEach0007";
+      try {
+        let treeSet: TreeSet<string> = new TreeSet();
+        treeSet.add('AAA');
+        treeSet.add('BBB');
+        treeSet.add('CCC');
+        treeSet.add('DDD');
+        treeSet.forEach((value): void => {
+          expect(treeSet.has(value)).assertTrue();
+        });
+        treeSet.clear();
+        let length = treeSet.length;
+        expect(length).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TREESET_8600
+     * @tc.name       : testTreeSetForEach0008
+     * @tc.desc       : Test the function of the interface forEach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTreeSetForEach0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testTreeSetForEach0008";
+      try {
+        let treeSet: TreeSet<string> = new TreeSet();
+        treeSet.add('AAA');
+        treeSet.add('BBB');
+        treeSet.add('CCC');
+        treeSet.add('DDD');
+        treeSet.forEach((value, index, treeSet: TreeSet<string>): void => {
+          expect(treeSet.has(value)).assertTrue()
+        });
+        treeSet.clear();
+        let length = treeSet.length;
+        expect(length).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TREESET_8700
+     * @tc.name       : testTreeSetForEach0009
+     * @tc.desc       : Test the function of the interface forEach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTreeSetForEach0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testTreeSetForEach0009";
+      try {
+        let treeSet: TreeSet<string> = new TreeSet();
+        treeSet.add('AAA');
+        treeSet.add('BBB');
+        treeSet.add('CCC');
+        treeSet.add('DDD');
+        treeSet.forEach((value, index, treeSet: TreeSet<string>): void => {
+          expect(treeSet.has(value)).assertTrue();
+        }, treeSet);
+        expect(treeSet.getFirstValue()).assertEqual('AAA');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
   })
 }

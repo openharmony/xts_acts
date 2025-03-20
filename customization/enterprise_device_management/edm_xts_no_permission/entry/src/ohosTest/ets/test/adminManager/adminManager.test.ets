@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want'
 import { ENTINFO1, SELFWANT, SELFHAPNAME, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
   BUNDLENAME1, INVALID_WANT, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS, INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND
@@ -125,6 +125,27 @@ export default function adminManagerTest() {
         expect(error.code == 201).assertTrue();
       } finally {
         await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_001
+     * @tc.name      : test_startadminprovision_001
+     * @tc.desc      : test startadminprovision method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startadminprovision_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+          AppStorage.get("context"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.log('test_startadminprovision_001 ' + error.code);
+        console.log('test_startadminprovision_001 ' + error.message);
+        expect(error.code == 201).assertTrue();
       }
       done();
     })

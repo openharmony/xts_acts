@@ -22,6 +22,7 @@ let dir = "";
 let infos = "";
 let SRC_FILE_INVALID = 900001;
 let OUTPUT_FILE_INVALID = 900002;
+let INPUT_FILE_NOT_ZIP = 900003;
 let PARAM_ERROR = 401;
 
 export default function ActsZlibTest() {
@@ -1902,6 +1903,107 @@ export default function ActsZlibTest() {
                 done();
             }
             console.info("==================decompressFileOutFileNull end==================");
+        })
+
+        /*
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0610
+        * @tc.name: decompressFileInputNotZipPro
+        * @tc.desc: test decompressFile when input file is not zip (promise).
+        */
+        it('decompressFileInputNotZipPro', Level.LEVEL3, async function (done) {
+            console.info("==================decompressFileInputNotZipPro start==================");
+            let path = dir + "/decompressFileInputNotZipPro.txt";
+            let zipDest1 = dir + "/decompressFileInputNotZipPro.zip";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInputNotZipPro write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInputNotZipPro write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            let unzipdir = dir + "/decompressFileInputNotZipPro";
+            await fileio.mkdir(unzipdir).then(function () {
+                console.info("fileio mkdir successfully");
+            }).catch(function (error) {
+                console.info("fileio mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            try {
+                await zlib.decompressFile(path, unzipdir, {
+                    parallel:zlib.ParallelStrategy.PARALLEL_STRATEGY_SEQUENTIAL
+                }).then(data => {
+                    console.info("decompressFileInputNotZipPro data1: " + data);
+                    expect().assertFail();
+                }).catch(err => {
+                    console.info("decompressFileInputNotZipPro fail1: " + JSON.stringify(err));
+                    expect(err.code).assertEqual(INPUT_FILE_NOT_ZIP);
+                })
+            } catch (err) {
+                console.info("decompressFileInputNotZipPro catch1 : " + JSON.stringify(err));
+                expect().assertFail();
+            }
+            try {
+                await zlib.decompressFile(path, unzipdir).then(data => {
+                    console.info("decompressFileInputNotZipPro data2: " + data);
+                    expect().assertFail();
+                    done();
+                }).catch(err => {
+                    console.info("decompressFileInputNotZipPro fail2: " + JSON.stringify(err));
+                    expect(err.code).assertEqual(INPUT_FILE_NOT_ZIP);
+                    done();
+                })
+            } catch (err) {
+                console.info("decompressFileInputNotZipPro catch2: " + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+            console.info("==================decompressFileInputNotZipPro end==================");
+        })
+
+        /*
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0620
+        * @tc.name: decompressFileInputNotZipCal
+        * @tc.desc: test decompressFile when input file is not zip (callback).
+        */
+        it('decompressFileInputNotZipCal', Level.LEVEL3, async function (done) {
+            console.info("==================decompressFileInputNotZipCal start==================");
+            let path = dir + "/decompressFileInputNotZipCal.txt";
+            let zipDest1 = dir + "/decompressFileInputNotZipCal.zip";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInputNotZipCal write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInputNotZipCal write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            let unzipdir = dir + "/decompressFileInputNotZipCal";
+            await fileio.mkdir(unzipdir).then(function () {
+                console.info("fileio mkdir successfully");
+            }).catch(function (error) {
+                console.info("fileio mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            try {
+                zlib.decompressFile(path, unzipdir, {
+                    parallel:zlib.ParallelStrategy.PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION
+                }, (err, data) => {
+                    expect(err.code).assertEqual(INPUT_FILE_NOT_ZIP);
+                })
+            } catch (err) {
+                console.info("decompressFileInputNotZipCal fail: " + JSON.stringify(err));
+                expect().assertFail();
+            }
+            try {
+                zlib.decompressFile(path, unzipdir, (err, data) => {
+                    expect(err.code).assertEqual(INPUT_FILE_NOT_ZIP);
+                    done();
+                })
+            } catch (err) {
+                console.info("decompressFileInputNotZipCal fail: " + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+            console.info("==================decompressFileInputNotZipCal end==================");
         })
 
         /*

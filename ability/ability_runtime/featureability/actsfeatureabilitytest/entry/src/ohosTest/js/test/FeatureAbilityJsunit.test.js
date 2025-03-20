@@ -1158,7 +1158,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.launchMode).assertEqual(0);
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
-        expect(data.deviceTypes[0]).assertEqual("default");
+        expect(data.deviceTypes.length).assertEqual(0);
         expect(data.deviceCapabilities[0]).assertEqual("SystemCapability.Ability.AbilityBase");
 
         expect(data.readPermission).assertEqual("");
@@ -1239,7 +1239,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
-        expect(data.deviceTypes[0]).assertEqual("default");
+        expect(data.deviceTypes.length).assertEqual(0);
         expect(data.moduleName).assertEqual("entry_test")
         expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.TestAbility");
         expect(data.installationFree).assertEqual(false);

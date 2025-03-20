@@ -14,8 +14,10 @@
  */
 import select from './Select'
 import selectmenuTest from './SelectMenu'
+import selectOnSelectJsunit from './select.test.ets';
 
 export default function testsuite() {
   select()
   selectmenuTest()
+  selectOnSelectJsunit()
 }

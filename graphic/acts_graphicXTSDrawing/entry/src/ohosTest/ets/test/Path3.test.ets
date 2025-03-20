@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level} from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
@@ -677,6 +677,66 @@ export default function drawingTsPath3Test() {
       }
 
     })
-
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3301
+     * @tc.name      : testPathGetSegmentNormal
+     * @tc.desc      : testPathGetSegmentNormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testPathGetSegmentNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPathGetSegmentNormal';
+      let path = new drawing.Path();
+      try {
+        path.moveTo(0, 0);
+        path.lineTo(0, 700);
+        path.lineTo(700, 0);
+        console.info(msg + 'lineTo successes');
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect().assertFail();
+      }
+      let dstPath: drawing.Path = new drawing.Path();
+      try {
+        let result: boolean;
+        result = path.getSegment(true, 10.0, 20.0, true, dstPath)
+        console.info(msg + " getSegment-----result:  "+ path.getSegment(true, 10.0, 20.0, true, dstPath));
+        expect(result).assertEqual(true);
+      } catch (e) {
+        console.info(msg + `test getSegment . errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3302
+     * @tc.name      : testPathGetSegmentAbnormal
+     * @tc.desc      : testPathGetSegmentAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testPathGetSegmentAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPathGetSegmentAbnormal';
+      let path = new drawing.Path();
+      try {
+        path.moveTo(0, 0);
+        path.lineTo(0, 700);
+        path.lineTo(700, 0);
+        console.info(msg + 'lineTo successes');
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect().assertFail();
+      }
+      let dstPath: drawing.Path = new drawing.Path();
+      try {
+        path.getSegment(true, 10.0, 20.0, true, undefined)
+        console.info(msg + `test getSegment error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test getSegment . errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+    })
   })
 }

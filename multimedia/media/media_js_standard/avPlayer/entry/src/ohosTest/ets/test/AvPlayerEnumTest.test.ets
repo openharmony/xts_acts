@@ -182,6 +182,22 @@ export default function AvPlayerEnumTest() {
       expect(media.AVErrorCode.AVERR_IO_SSL_CONNECTION_FAILED).assertEqual(5411009);
       expect(media.AVErrorCode.AVERR_IO_SSL_SERVER_CERT_UNTRUSTED).assertEqual(5411010);
       expect(media.AVErrorCode.AVERR_IO_UNSUPPORTED_REQUEST).assertEqual(5411011);
+      expect(media.AVErrorCode.AVERR_SUPER_RESOLUTION_UNSUPPORTED).assertEqual(5410003);
+      expect(media.AVErrorCode.AVERR_SUPER_RESOLUTION_NOT_ENABLED).assertEqual(5410004);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911
+     * @tc.name      : AVPlayer
+     * @tc.desc      : AVPlayer Enumeration test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911', 0, async (done: Function) => {
+      expect(media.SeekMode.SEEK_CONTINUOUS).assertEqual(3);
+      expect(media.AVErrorCode.AVERR_SEEK_CONTINUOUS_UNSUPPORTED).assertEqual(5410002);
       done();
     });
 

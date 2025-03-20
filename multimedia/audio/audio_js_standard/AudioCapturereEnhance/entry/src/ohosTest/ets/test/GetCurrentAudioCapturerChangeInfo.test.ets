@@ -341,7 +341,7 @@ export default function audioCapturerEnhanceTest() {
       try {
         const isPlaybackCaptureAvailable = canIUse('SystemCapability.Multimedia.Audio.PlaybackCapture');
         console.info(`isPlaybackCaptureAvailable: ${isPlaybackCaptureAvailable}`)
-        if (!isPlaybackCaptureAvailable) {
+        if (isPlaybackCaptureAvailable) {
           await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
           }).catch((err: BusinessError) => {

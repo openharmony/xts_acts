@@ -14,10 +14,10 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { intl } from '@kit.LocalizationKit';
 import { LengthMetrics } from '@kit.ArkUI';
-import { i18n } from '@kit.LocalizationKit';
+import i18n from '@ohos.i18n'
 
 export default function FivePointOne_i18nStageTest() {
   describe("FivePointOne_i18nStageTest", () => {
@@ -383,7 +383,8 @@ export default function FivePointOne_i18nStageTest() {
         testList.push(arr.styledValue["fontFamily"])
         testList.push(arr.styledValue["fontWeight"])
         testList.push(arr.styledValue["fontStyle"])
-      };
+      }
+      ;
       console.log('testscw', testList.toString());
       expect(testList.toString() == resultList.toString()).assertTrue();
     })
@@ -450,7 +451,8 @@ export default function FivePointOne_i18nStageTest() {
     it('SUB_GLOBAL_refinedFormat_0020', 0, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
       let date: Date = new Date(2024, 11, 13, 6, 30, 25);
-      let formatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatByPattern("'time('y'/'M'/'d' 'h':'m':'s')'", locale);
+      let formatter: i18n.SimpleDateTimeFormat =
+        i18n.getSimpleDateTimeFormatByPattern("'time('y'/'M'/'d' 'h':'m':'s')'", locale);
       let dateFormatted: string = formatter.format(date);
       expect(dateFormatted == "time(2024/12/13 6:30:25)").assertTrue();
     })
@@ -465,7 +467,8 @@ export default function FivePointOne_i18nStageTest() {
      */
     it('SUB_GLOBAL_refinedFormat_0790', 0, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
-      let skeletonFormat: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always", locale);
+      let skeletonFormat: i18n.SimpleNumberFormat =
+        i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always", locale);
       let numberFormatted: string = skeletonFormat.format(1230000);
       expect(numberFormatted == "1.23E+6").assertTrue();
     })
@@ -485,6 +488,22 @@ export default function FivePointOne_i18nStageTest() {
       let numfmt: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN", numOptions);
       let numberFormatted: string = numfmt.format(123.456);
       expect(numberFormatted == "123.46").assertTrue();
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_refinedFormat_008
+     * @tc.name     : SUB_GLOBAL_refinedFormat_008
+     * @tc.desc     : local is CN
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_refinedFormat_008', Level.LEVEL2, () => {
+      let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+      let date: Date = new Date(2024, 11, 13, 6, 30, 25);
+      let skeletonFormatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton("yMdhms", locale);
+      let dateFormatted: string = skeletonFormatter.format(date);
+      expect(dateFormatted == "2024/12/13 上午6:30:25").assertTrue();
     })
 
     console.log('*************end FivePointOne_i18nStageTest*************');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import curves from "@ohos.curves";
 import { BusinessError } from '@ohos.base';
@@ -69,7 +69,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStore001", 0, async (done: Function) => {
+    it("testGetRdbStore001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testGetRdbStore001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -107,7 +107,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS2001", 0, async (done: Function) => {
+    it("testGetRdbStoreS2001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS2001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -145,7 +145,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS3001", 0, async (done: Function) => {
+    it("testGetRdbStoreS3001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS3001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -183,7 +183,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS4001", 0, async (done: Function) => {
+    it("testGetRdbStoreS4001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS4001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -221,7 +221,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStore002", 0, async (done: Function) => {
+    it("testGetRdbStore002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testGetRdbStore002 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -257,7 +257,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError001", 0, async (done: Function) => {
+    it("testGetRdbStoreError001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -286,7 +286,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError002", 0, async (done: Function) => {
+    it("testGetRdbStoreError002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError002 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -315,7 +315,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError003", 0, async (done: Function) => {
+    it("testGetRdbStoreError003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError003 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -342,7 +342,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError004", 0, async (done: Function) => {
+    it("testGetRdbStoreError004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError004 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -368,7 +368,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError005", 0, async (done: Function) => {
+    it("testGetRdbStoreError005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError005 start *************");
       try {
         relationalStore.getRdbStore(undefined, undefined);
@@ -389,7 +389,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore001", 0, async (done: Function) => {
+    it("testDeleteRdbStore001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -423,7 +423,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore002", 0, async (done: Function) => {
+    it("testDeleteRdbStore002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore002 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -457,7 +457,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore003", 0, async (done: Function) => {
+    it("testDeleteRdbStore003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore003 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -496,7 +496,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore004", 0, async (done: Function) => {
+    it("testDeleteRdbStore004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore004 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -534,7 +534,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError001", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError001 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -565,7 +565,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError002", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError002 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -595,7 +595,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError003", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError003 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -623,7 +623,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError004", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError004 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -650,7 +650,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError005", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStoreError005 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -684,7 +684,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError006", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStoreError006 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -718,7 +718,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError007", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError007 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -748,7 +748,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError008", 0, async (done: Function) => {
+    it("testDeleteRdbStoreError008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError008 start *************");
       let config: relationalStore.StoreConfig = {
         name: "secure.db",
@@ -775,7 +775,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution001", 0, async (done: Function) => {
+    it("testConflictResolution001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution001 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
 
@@ -818,7 +818,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution002", 0, async (done: Function) => {
+    it("testConflictResolution002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution002 start *************");
       let u81 = new Uint8Array([1, 2, 3]);
       const valueBucket1: ValuesBucket = {
@@ -912,7 +912,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution003", 0, async (done: Function) => {
+    it("testConflictResolution003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution003 start *************");
 
       let u81 = new Uint8Array([1, 2, 3]);
@@ -1009,7 +1009,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution004", 0, async (done: Function) => {
+    it("testConflictResolution004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution004 start *************");
 
       let u81 = new Uint8Array([1, 2, 3]);
@@ -1106,7 +1106,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution005", 0, async (done: Function) => {
+    it("testConflictResolution005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution005 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
 
@@ -1155,7 +1155,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution006", 0, async (done: Function) => {
+    it("testConflictResolution006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution006 start *************");
 
       let u8 = new Uint8Array([1, 2, 3]);
@@ -1216,7 +1216,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution007", 0, async (done: Function) => {
+    it("testConflictResolution007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution007 start *************");
 
       let u8 = new Uint8Array([1, 2, 3]);
@@ -1279,7 +1279,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution008", 0, async (done: Function) => {
+    it("testConflictResolution008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution008 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
 
@@ -1332,7 +1332,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution009", 0, async (done: Function) => {
+    it("testConflictResolution009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution009 start *************");
 
       let u81 = new Uint8Array([1, 2, 3]);
@@ -1425,7 +1425,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution010", 0, async (done: Function) => {
+    it("testConflictResolution010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution010 start *************");
 
       let u81 = new Uint8Array([1, 2, 3]);
@@ -1515,7 +1515,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution011", 0, async (done: Function) => {
+    it("testConflictResolution011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution011 start *************");
       let u81 = new Uint8Array([1, 2, 3]);
       const valueBucket1: ValuesBucket = {
@@ -1605,7 +1605,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution012", 0, async (done: Function) => {
+    it("testConflictResolution012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       console.log(TAG + "************* testConflictResolution012 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
 

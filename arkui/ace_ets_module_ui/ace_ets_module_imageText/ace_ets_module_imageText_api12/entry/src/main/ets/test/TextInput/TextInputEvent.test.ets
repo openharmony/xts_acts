@@ -59,6 +59,8 @@ export default function TextInputEvent() {
       let text = await driver.findComponent(ON.id('TextInputEvent'));
       await text.inputText('9');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText')
       let strJson2 = getInspectorByKey('TextInputEventText2');
       await CommonFunc.sleep(200);
@@ -91,6 +93,8 @@ export default function TextInputEvent() {
       let text = await driver.findComponent(ON.id('TextInputEvent2'));
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '9');
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText')
       let strJson2 = getInspectorByKey('TextInputEventText2');
@@ -125,6 +129,8 @@ export default function TextInputEvent() {
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '123');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText')
       let strJson2 = getInspectorByKey('TextInputEventText2');
       await CommonFunc.sleep(200);
@@ -158,6 +164,8 @@ export default function TextInputEvent() {
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '3');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText')
       let strJson2 = getInspectorByKey('TextInputEventText2');
       await CommonFunc.sleep(200);
@@ -189,6 +197,8 @@ export default function TextInputEvent() {
       let driver = Driver.create();
       let text = await driver.findComponent(ON.id('TextInputEvent'));
       await text.inputText('123');
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText3')
       let strJson2 = getInspectorByKey('TextInputEventText4');
@@ -222,7 +232,11 @@ export default function TextInputEvent() {
       let text = await driver.findComponent(ON.id('TextInputEvent'));
       await text.inputText('123');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await text.clearText();
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText5')
       let strJson2 = getInspectorByKey('TextInputEventText6');
@@ -256,7 +270,11 @@ export default function TextInputEvent() {
       let text = await driver.findComponent(ON.id('TextInputEvent3'));
       await text.inputText('123');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await text.clearText();
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEventText5')
       let strJson2 = getInspectorByKey('TextInputEventText6');

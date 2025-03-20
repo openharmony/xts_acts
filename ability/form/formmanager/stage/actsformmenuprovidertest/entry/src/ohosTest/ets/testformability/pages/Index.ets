@@ -46,10 +46,8 @@ struct Index {
                hilog.info(0xF811, "JSAPP", "AddFormMenuItemSuccessAndFormId " +formId +"FormID  " +code +"ReturnCode");
              },
            style: {
-             options: {
-               startIcon: $r("app.media.icon"), 
-               content: "添加到桌面",
-               endIcon: $r("app.media.icon")
+             options: { 
+               content: "添加到桌面"
              }
            }
          }
@@ -63,22 +61,24 @@ struct Index {
         Text(this.message)
           .align(Alignment.Center)
           .fontSize(20)
-          .margin({ top: 50, left: 10, right: 10, bottom: 50 })
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 50, left: 10, right: 10, bottom: 5 })
         Text(this.message2)
           .align(Alignment.Center)
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
+          .margin({ top:5, left: 10, right: 10, bottom: 5 })
         Button('组件A')
           .align(Alignment.Center)
           .fontSize(20)
           .fontColor('red')
           .id(this.compId)
           .bindMenu(this.MenuBuilder())
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
+          .margin({ top: 5, left: 10, right: 10, bottom: 5 })
       }
-      .width('40%')
-      .height('50%')
+      .backgroundColor('gray')
+      .width('100%')
+      .height('100%')
     }
   }
 }

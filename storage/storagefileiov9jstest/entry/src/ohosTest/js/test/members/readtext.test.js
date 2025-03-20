@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOReadtext() {
 describe('fileIO_fs_readtext', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_readtext_sync_000', 0, async function () {
+  it('fileIO_test_readtext_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -55,7 +56,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_sync_001', 0, async function () {
+  it('fileIO_test_readtext_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -79,7 +80,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_sync_002', 0, async function () {
+  it('fileIO_test_readtext_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -106,7 +107,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_sync_003', 0, async function () {
+  it('fileIO_test_readtext_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -134,7 +135,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_sync_004', 0, async function () {
+  it('fileIO_test_readtext_sync_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
 
     try {
       fileIO.readTextSync();
@@ -155,7 +156,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_005', 0, async function () {
+  it('fileIO_test_readtext_sync_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_005');
 
     try {
@@ -177,7 +178,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_006', 0, async function () {
+  it('fileIO_test_readtext_sync_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -202,7 +203,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_007', 0, async function () {
+  it('fileIO_test_readtext_sync_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -227,7 +228,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_008', 0, async function () {
+  it('fileIO_test_readtext_sync_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -295,6 +296,29 @@ describe('fileIO_fs_readtext', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_1100
+   * @tc.name fileIO_test_readtext_sync_011
+   * @tc.desc Test readtextSync() interfaces.
+   * Is a directory.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_readtext_sync_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let fpath = await nextFileName('fileIO_test_readtext_sync_011');
+    fileIO.mkdirSync(fpath);
+
+    try {
+      let str = fileIO.readTextSync(fpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_readtext_sync_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0000
    * @tc.name fileIO_test_readtext_async_000
    * @tc.desc Test readtext() interfaces. Promise.
@@ -304,7 +328,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_readtext_async_000', 0, async function (done) {
+  it('fileIO_test_readtext_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -329,7 +353,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_readtext_async_001', 0, async function (done) {
+  it('fileIO_test_readtext_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -360,7 +384,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_002', 0, async function (done) {
+  it('fileIO_test_readtext_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -385,7 +409,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_003', 0, async function (done) {
+  it('fileIO_test_readtext_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -415,7 +439,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_004', 0, async function (done) {
+  it('fileIO_test_readtext_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -443,7 +467,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_005', 0, async function (done) {
+  it('fileIO_test_readtext_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -477,7 +501,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_006', 0, async function (done) {
+  it('fileIO_test_readtext_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -506,7 +530,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_007', 0, async function (done) {
+  it('fileIO_test_readtext_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -539,7 +563,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_008', 0, async function (done) {
+  it('fileIO_test_readtext_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -574,7 +598,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_009', 0, async function (done) {
+  it('fileIO_test_readtext_async_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -599,7 +623,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_010', 0, async function (done) {
+  it('fileIO_test_readtext_async_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -629,7 +653,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_011', 0, async function (done) {
+  it('fileIO_test_readtext_async_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_011');
 
     try {
@@ -652,7 +676,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_012', 0, async function (done) {
+  it('fileIO_test_readtext_async_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_012');
 
     try {
@@ -679,7 +703,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_013', 0, async function (done) {
+  it('fileIO_test_readtext_async_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -705,7 +729,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_014', 0, async function (done) {
+  it('fileIO_test_readtext_async_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -731,7 +755,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_015', 0, async function (done) {
+  it('fileIO_test_readtext_async_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -861,6 +885,58 @@ describe('fileIO_fs_readtext', function () {
       });
     } catch (e) {
       console.log('fileIO_test_readtext_async_019 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_2000
+   * @tc.name fileIO_test_readtext_async_020
+   * @tc.desc Test readtext() interfaces. Promise.
+   * Is a directory.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_020');
+    fileIO.mkdirSync(fpath);
+    
+    try {
+      let str = await fileIO.readText(fpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_020 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_2100
+   * @tc.name fileIO_test_readtext_async_021
+   * @tc.desc Test readtext() interfaces. Callback.
+   * Is a directory.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_021');
+    fileIO.mkdirSync(fpath);
+    
+    try {
+      fileIO.readText(fpath, (err) => {
+        if (err) {
+          console.log('fileIO_test_readtext_async_021 error package: ' + err.message + ', code: ' + err.code);
+          expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_021 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

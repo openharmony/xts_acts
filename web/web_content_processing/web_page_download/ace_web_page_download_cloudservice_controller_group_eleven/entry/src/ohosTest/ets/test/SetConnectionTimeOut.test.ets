@@ -29,7 +29,7 @@ export default function SetConnectionTimeOut() {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       webview.WebviewController.initializeWebEngine()
-      webview.WebviewController.setConnectionTimeout(5)
+      webview.WebviewController.setConnectionTimeout(60)
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
@@ -169,9 +169,9 @@ export default function SetConnectionTimeOut() {
       router.pushUrl({
         url: "testability/pages/SetConnectionTimeOut4"
       })
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('002', 10, '')
       await driver.delayMs(10000)
       expect(flg).assertTrue()

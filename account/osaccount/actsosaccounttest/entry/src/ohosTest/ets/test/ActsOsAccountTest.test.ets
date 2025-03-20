@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,13 +14,15 @@
  */
 import osAccount from '@ohos.account.osAccount'
 import commonEventManager from '@ohos.commonEventManager'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 import Want from '@ohos.app.ability.Want';
 import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest'
+import parameter from '@ohos.systemParameterEnhance'
 
 let driver = Driver.create();
+let nameLimit = -1
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -28,6 +30,16 @@ function sleep(time: number) {
       resolve("ok");
     }, time)
   });
+}
+
+let getNameLimit = async () => {
+  try {
+    let login_max_max: string = parameter.getSync("persist.account.login_name_max");
+    nameLimit = Number(login_max_max);
+    console.info("====>parameter.getSync login_name_max: " + JSON.stringify(nameLimit));
+  } catch (err) {
+    console.info("====>parameter.getSync catch err: " + JSON.stringify(err));
+  }
 }
 
 let deviceType = deviceInfo.deviceType;
@@ -44,7 +56,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetForegroundOsAccountLocalId_0100', 0, async (done: Function) => {
+    it('ActsOsAccountGetForegroundOsAccountLocalId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetForegroundOsAccountLocalId_0100 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -69,7 +82,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0100', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0100 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -94,7 +108,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0200', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0200 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -120,7 +135,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0300', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0300 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -145,7 +161,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0400', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0400 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -170,7 +187,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0500', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0500 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -195,7 +213,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0600', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0600 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -220,7 +239,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0700', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 start====");
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["os_account_permission1"]
@@ -274,7 +294,8 @@ export default function ActsOsAccountTest() {
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0800', 0, async (done: Function) => {
+    it('ActsOsAccountGetOsAccountDomainInfo_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 start====");
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["os_account_permission2"]
@@ -317,6 +338,1051 @@ export default function ActsOsAccountTest() {
         }
       } catch (err) {
         console.info("====>click button err:" + JSON.stringify(err));
+      }
+    });
+    
+    /*
+    * @tc.number    : OsAccountParamCheck_0100
+    * @tc.name      : test interface updateAccountInfo callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0100 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(null, undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0200
+    * @tc.name      : test interface updateAccountInfo promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0200 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(undefined, null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0300
+    * @tc.name      : test interface addServerConfig callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0300 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0400
+    * @tc.name      : test interface addServerConfig promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0400 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0500
+    * @tc.name      : test interface removeServerConfig callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0500 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start removeServerConfig");
+        await osAccount.DomainServerConfigManager.removeServerConfig(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: removeServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0600
+    * @tc.name      : test interface removeServerConfig promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0600 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start removeServerConfig");
+        await osAccount.DomainServerConfigManager.removeServerConfig(undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: removeServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0700
+    * @tc.name      : test interface updateServerConfig callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0700 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start updateServerConfig");
+        await osAccount.DomainServerConfigManager.updateServerConfig(null, undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0800
+    * @tc.name      : test interface updateServerConfig promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0800 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start updateServerConfig");
+        await osAccount.DomainServerConfigManager.updateServerConfig(undefined, null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_0900
+    * @tc.name      : test interface getServerConfig callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_0900 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start getServerConfig");
+        await osAccount.DomainServerConfigManager.getServerConfig(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1000
+    * @tc.name      : test interface getServerConfig promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1000 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start getServerConfig");
+        await osAccount.DomainServerConfigManager.getServerConfig(undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1100
+    * @tc.name      : test interface getAccountServerConfig callback
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1100 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1200
+    * @tc.name      : test interface getAccountServerConfig promise
+    * @tc.desc      : 401 param check
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1200 ";
+      console.info(tag + "start====");
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(401);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1300
+    * @tc.name      : test interface updateAccountInfo callback
+    * @tc.desc      : check 12300003 The old account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1300 ";
+      console.info(tag + "start====");
+      let key = '';
+      let oldDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: key
+      };
+      let newDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: 'newTestAccountName'
+      };
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1400
+    * @tc.name      : test interface updateAccountInfo promise
+    * @tc.desc      : check 12300002 Invalid server config parameters
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1400 ";
+      await getNameLimit();
+      console.info(tag + "start====");
+      let key = '';
+      for (let i = 0; i < nameLimit + 1; i++) {
+        key += 'i';
+      }
+      let oldDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: key
+      };
+      let newDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: 'newTestAccountName'
+      };
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1500
+    * @tc.name      : test interface updateAccountInfo callback
+    * @tc.desc      : check 12300003 The old account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1500 ";
+      console.info(tag + "start====");
+      let key = '';
+      let oldDomainInfo: osAccount.DomainAccountInfo = {
+        domain: key,
+        accountName: 'testAccount'
+      };
+      let newDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: 'newTestAccountName'
+      };
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1600
+    * @tc.name      : test interface updateAccountInfo promise
+    * @tc.desc      : check 12300002 Invalid server config parameters
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1600 ";
+      console.info(tag + "start====");
+      let key = '';
+      for (let i = 0; i < 129; i++) {
+        key += 'i';
+      }
+      let oldDomainInfo: osAccount.DomainAccountInfo = {
+        domain: key,
+        accountName: 'testAccount'
+      };
+      let newDomainInfo: osAccount.DomainAccountInfo = {
+        domain: 'testDomain',
+        accountName: 'newTestAccountName'
+      };
+      try {
+        console.info(tag + "start updateAccountInfo");
+        await osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateAccountInfo");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1700
+    * @tc.name      : test interface addServerConfig callback
+    * @tc.desc      : check 12300002 Invalid server config parameters
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1700 ";
+      console.info(tag + "start====");
+      let configParams: Record<string, Object> = {
+        'uri': 'test.example.com',
+        'port': 100
+      };
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300002);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1800
+    * @tc.name      : test interface addServerConfig promise
+    * @tc.desc      : check 12300211 Server unreachable
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1800 ";
+      console.info(tag + "start====");
+      interface AdConfig {
+        adDomain: string
+      }
+      interface ParamJson {
+        adConfig: AdConfig
+      }
+      let adConfigData: AdConfig = {
+        adDomain: 'test.example.com'
+      }
+      let pJson: ParamJson = {
+        adConfig: adConfigData
+      }
+      let configParams: Record<string, Object> = {
+        'accountName': '123456',
+        'authServerName': 'CHINA',
+        'parameters': pJson
+      };
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300211);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_1900
+    * @tc.name      : test interface addServerConfig promise
+    * @tc.desc      : check 12300211 Server unreachable
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_1900 ";
+      console.info(tag + "start====");
+      interface LDAPConfig {
+        authServerAddress: string,
+        authenProtocol: string,
+        kdcAddress: string,
+        accountIdAttributeName: string,
+        accountNameAttributeName: string,
+        ldapPort: string,
+        baseDN: string
+      }
+      interface ParamJson {
+        ldapConfig: LDAPConfig
+      }
+      let ldapConfigData: LDAPConfig = {
+        authServerAddress: 'test.example.com',
+        authenProtocol: 'GSSAPI/Kerberos',
+        kdcAddress: 'test.example.com',
+        accountIdAttributeName: 'fakeId',
+        accountNameAttributeName: 'fakeAccountName',
+        ldapPort: '389',
+        baseDN: ''
+      }
+      let pJson: ParamJson = {
+        ldapConfig: ldapConfigData
+      }
+      let configParams: Record<string, Object> = {
+        'accountName': '123456',
+        'authServerName': 'CHINA',
+        'parameters': pJson
+      };
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300211);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2000
+    * @tc.name      : test interface addServerConfig promise
+    * @tc.desc      : check 12300211 Server unreachable
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2000 ";
+      console.info(tag + "start====");
+      interface OauthConfig {
+        userAuthenRequestUri: string,
+        authorizationRequestUri: string,
+        tokenRequestUri: string,
+        userInfoRequestUri: string,
+        clientId: string,
+        clientSecret: string,
+        scope: string,
+        accountIdAttributeName: string,
+        accountNameAttributeName: string
+      }
+      interface IDaasConfig {
+        authProtocol: string,
+        oauthConfig: OauthConfig,
+      }
+      let oauthConfig: OauthConfig = {
+        userAuthenRequestUri: 'https://www.test.com/login',
+        authorizationRequestUri: 'https://www.test.com/login',
+        tokenRequestUri: 'https://www.test.com/fortest',
+        userInfoRequestUri: 'https://www.test.com/fortest',
+        clientId: 'www.test.com.iamclient',
+        clientSecret: '123',
+        scope: 'base.profile',
+        accountIdAttributeName: 'fakeId',
+        accountNameAttributeName: 'fakeAccountName'
+      }
+      let iDaasConfig: IDaasConfig = {
+        authProtocol: 'OAuth 2.0',
+        oauthConfig: oauthConfig,
+      }
+      let map: Record<string, Object> = {
+        'serverType': 'IDass',
+        'idaasConfig': iDaasConfig
+      }
+      let configParams: Record<string, Object> = {
+        'accountName': '123456',
+        'authServerName': 'CHINA',
+        'parameters': map
+      };
+      try {
+        console.info(tag + "start addServerConfig");
+        await osAccount.DomainServerConfigManager.addServerConfig(configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: addServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300211);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2100
+    * @tc.name      : test interface removeServerConfig callback
+    * @tc.desc      : check 12300212 Server config not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2100 ";
+      console.info(tag + "start====");
+      let configId = '';
+      for (let i = 0; i < 513; i++) {
+        configId += 'i';
+      }
+      try {
+        console.info(tag + "start removeServerConfig");
+        await osAccount.DomainServerConfigManager.removeServerConfig(configId);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: removeServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300212);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2200
+    * @tc.name      : test interface updateServerConfig callback
+    * @tc.desc      : check 12300212 Server config not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2200 ";
+      console.info(tag + "start====");
+      let serverConfigId = '';
+      for (let i = 0; i < 512; i++) {
+        serverConfigId += 'i';
+      }
+      let configParams: Record<string, Object> = {
+        'uri': 'test.example.com',
+        'port': 100
+      };
+      try {
+        console.info(tag + "start updateServerConfig");
+        await osAccount.DomainServerConfigManager.updateServerConfig(serverConfigId, configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300212);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2300
+    * @tc.name      : test interface updateServerConfig promise
+    * @tc.desc      : check 12300212 Invalid server config parameters
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2300 ";
+      console.info(tag + "start====");
+      let serverConfigId = '';
+      for (let i = 0; i < 513; i++) {
+        serverConfigId += 'i';
+      }
+      let configParams: Record<string, Object> = {
+        'uri': 'test.example.com',
+        'port': 100
+      };
+      try {
+        console.info(tag + "start updateServerConfig");
+        await osAccount.DomainServerConfigManager.updateServerConfig(serverConfigId, configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300212);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2400
+    * @tc.name      : test interface updateServerConfig promise
+    * @tc.desc      : check 12300212 Invalid server config parameters
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2400 ";
+      console.info(tag + "start====");
+      let serverConfigId = '';
+      let configParams: Record<string, Object> = {
+        'uri': 'test.example.com',
+        'port': 100
+      };
+      try {
+        console.info(tag + "start updateServerConfig");
+        await osAccount.DomainServerConfigManager.updateServerConfig(serverConfigId, configParams);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: updateServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300212);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2500
+    * @tc.name      : test interface getServerConfig callback
+    * @tc.desc      : check 12300212 Server config not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2500 ";
+      console.info(tag + "start====");
+      let configId = '';
+      for (let i = 0; i < 513; i++) {
+        configId += 'i';
+      }
+      try {
+        console.info(tag + "start getServerConfig");
+        await osAccount.DomainServerConfigManager.getServerConfig(configId);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300212);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2600
+    * @tc.name      : test interface getAccountServerConfig callback
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2600 ";
+      await getNameLimit();
+      console.info(tag + "start====");
+      let key = '';
+      for (let i = 0; i < nameLimit + 1; i++) {
+        key += 'i';
+      }
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: key,
+        domain: 'demoDomain',
+        serverConfigId: 'testServerConfigId'
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2700
+    * @tc.name      : test interface getAccountServerConfig callback
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2700 ";
+      await getNameLimit();
+      console.info(tag + "start====");
+      let key = '****';
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: key,
+        domain: 'demoDomain',
+        serverConfigId: 'testServerConfigId'
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2800
+    * @tc.name      : test interface getAccountServerConfig promise
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2800 ";
+      console.info(tag + "start====");
+      let key = '';
+      for (let i = 0; i < 128 + 1; i++) {
+        key += 'i';
+      }
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: "demoName",
+        domain: key,
+        serverConfigId: 'testServerConfigId'
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_2900
+    * @tc.name      : test interface getAccountServerConfig promise
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_2900 ";
+      console.info(tag + "start====");
+      let key = '###### ';
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: "demoName",
+        domain: key,
+        serverConfigId: 'testServerConfigId'
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_3000
+    * @tc.name      : test interface getAccountServerConfig promise
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_3000 ";
+      console.info(tag + "start====");
+      let key = '';
+      for (let i = 0; i < 512 + 1; i++) {
+        key += 'i';
+      }
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: "demoName",
+        domain: 'demoDomain',
+        serverConfigId: key
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
+      }
+    });
+
+    /*
+    * @tc.number    : OsAccountParamCheck_3100
+    * @tc.name      : test interface getAccountServerConfig promise
+    * @tc.desc      : check 12300003 Domain account not found
+    * @tc.level     : Level3
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    */
+    it('OsAccountParamCheck_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let tag = "====>OsAccountParamCheck_3100 ";
+      console.info(tag + "start====");
+      let key = '';
+      let accountInfo: osAccount.DomainAccountInfo = {
+        accountName: "demoName",
+        domain: 'demoDomain',
+        serverConfigId: key
+      };
+      try {
+        console.info(tag + "start getAccountServerConfig");
+        await osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info(tag + "catch err: " + JSON.stringify(err));
+        if (err.code == 801) {
+          console.info(tag + "Current device not support API: getAccountServerConfig");
+        } else {
+          expect(err.code).assertEqual(12300003);
+        }
+        done();
       }
     });
   });

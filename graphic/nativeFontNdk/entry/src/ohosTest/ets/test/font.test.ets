@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeFontNdk from 'libnativeFontNdk.so';
 
 export default function fontTest() {
@@ -24,9 +24,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_MatchFontDescriptors_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingMatchFontDescriptors001', 0, async (done: Function) => {
+    it('testOHDrawingMatchFontDescriptors001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingMatchFontDescriptors001();
       expect(result).assertEqual(0);
       done();
@@ -38,9 +39,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_MatchFontDescriptors_002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingMatchFontDescriptors002', 0, async (done: Function) => {
+    it('testOHDrawingMatchFontDescriptors002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingMatchFontDescriptors002();
       expect(result).assertEqual(0);
       done();
@@ -52,9 +54,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_MatchFontDescriptors_003
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingMatchFontDescriptors003', 0, async (done: Function) => {
+    it('testOHDrawingMatchFontDescriptors003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingMatchFontDescriptors003();
       expect(result).assertEqual(0);
       done();
@@ -66,9 +69,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_MatchFontDescriptors_004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingMatchFontDescriptors004', 0, async (done: Function) => {
+    it('testOHDrawingMatchFontDescriptors004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingMatchFontDescriptors004();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -81,9 +85,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_MatchFontDescriptors_005
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingMatchFontDescriptors005', 0, async (done: Function) => {
+    it('testOHDrawingMatchFontDescriptors005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingMatchFontDescriptors005();
       expect(result).assertEqual(0);
       done();
@@ -95,9 +100,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetFontDescriptorByFullName001', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetFontDescriptorByFullName001();
       expect(result).assertEqual(0);
       done();
@@ -109,9 +115,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetFontDescriptorByFullName002', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetFontDescriptorByFullName002();
       expect(result).assertEqual(0);
       done();
@@ -123,9 +130,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_003
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetFontDescriptorByFullName003', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName003();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -140,9 +148,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetFontDescriptorByFullName004', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName004();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -157,9 +166,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetSystemFontFullNamesByType001', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNamesByType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType001();
       expect(result).assertEqual(0);
       done();
@@ -171,9 +181,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetSystemFontFullNamesByType002', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNamesByType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType002();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -188,9 +199,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_003
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetSystemFontFullNamesByType003', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNamesByType003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType003();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -203,9 +215,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetSystemFontFullNamesByType004', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNamesByType004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType004();
       expect(result).assertEqual(0);
       done();
@@ -217,9 +230,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNameByIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetSystemFontFullNameByIndex001', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNameByIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNameByIndex001();
       expect(result).assertEqual(0);
       done();
@@ -231,9 +245,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_CreateLineTypography_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingCreateLineTypography001', 0, async (done: Function) => {
+    it('testOHDrawingCreateLineTypography001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingCreateLineTypography001();
       expect(result).assertEqual(0);
       done();
@@ -245,9 +260,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_CreateLineTypography_002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingCreateLineTypography002', 0, async (done: Function) => {
+    it('testOHDrawingCreateLineTypography002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingCreateLineTypography002();
       expect(result).assertEqual(0);
       done();
@@ -259,9 +275,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingLineTypographyGetLineBreak001', 0, async (done: Function) => {
+    it('testOHDrawingLineTypographyGetLineBreak001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingLineTypographyGetLineBreak001();
       expect(result).assertEqual(0);
       done();
@@ -273,9 +290,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingLineTypographyCreateLine001', 0, async (done: Function) => {
+    it('testOHDrawingLineTypographyCreateLine001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingLineTypographyCreateLine001();
       expect(result).assertEqual(0);
       done();
@@ -287,11 +305,14 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_FontGetBounds_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingFontGetBounds001', 0, async (done: Function) => {
-      let result: number = nativeFontNdk.oHDrawingFontGetBounds001();
-      expect(result).assertEqual(0);
+    it('testOHDrawingFontGetBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetBounds001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
 
@@ -301,9 +322,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_RectDestroyArray_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingRectDestroyArray001', 0, async (done: Function) => {
+    it('testOHDrawingRectDestroyArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingRectDestroyArray001();
       expect(result).assertEqual(0);
       done();
@@ -315,11 +337,30 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_FontGetPathForGlyph_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingFontGetPathForGlyph001', 0, async (done: Function) => {
-      let result: number = nativeFontNdk.oHDrawingFontGetPathForGlyph001();
-      expect(result).assertEqual(0);
+    it('testOHDrawingFontGetPathForGlyph001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetPathForGlyph001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetPathForGlyph_002
+     * @tc.name       : testOHDrawingFontGetPathForGlyph002
+     * @tc.desc       : test OH_Drawing_FontGetPathForGlyph_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingFontGetPathForGlyph002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetPathForGlyph002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
 
@@ -329,9 +370,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_RectGetArraySize_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingRectGetArraySize001', 0, async (done: Function) => {
+    it('testOHDrawingRectGetArraySize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingRectGetArraySize001();
       expect(result).assertEqual(0);
       done();
@@ -343,9 +385,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_RectGetArrayElement_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingRectGetArrayElement001', 0, async (done: Function) => {
+    it('testOHDrawingRectGetArrayElement001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingRectGetArrayElement001();
       expect(result).assertEqual(0);
       done();
@@ -357,9 +400,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_CreateTextTab_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingCreateTextTab001', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextTab001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingCreateTextTab001();
       expect(result).assertEqual(0);
       done();
@@ -371,9 +415,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetTextTabAlignment_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetTextTabAlignment001', 0, async (done: Function) => {
+    it('testOHDrawingGetTextTabAlignment001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetTextTabAlignment001();
       expect(result).assertEqual(0);
       done();
@@ -385,9 +430,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetTextTabLocation_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetTextTabLocation001', 0, async (done: Function) => {
+    it('testOHDrawingGetTextTabLocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetTextTabLocation001();
       expect(result).assertEqual(0);
       done();
@@ -399,9 +445,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_FontGetTextPath_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingFontGetTextPath001', 0, async (done: Function) => {
+    it('testOHDrawingFontGetTextPath001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingFontGetTextPath001();
       expect(result).assertEqual(0);
       done();
@@ -413,9 +460,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetDrawingArraySize_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetDrawingArraySize001', 0, async (done: Function) => {
+    it('testOHDrawingGetDrawingArraySize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetDrawingArraySize001();
       expect(result).assertEqual(0);
       done();
@@ -427,9 +475,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TypographyGetTextLines_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTypographyGetTextLines001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetTextLines001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTypographyGetTextLines001();
       expect(result).assertEqual(0);
       done();
@@ -441,9 +490,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TypographyGetTextLines_002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTypographyGetTextLines002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetTextLines002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTypographyGetTextLines002();
       expect(result).assertEqual(0);
       done();
@@ -455,9 +505,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_DestroyTextLine_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingDestroyTextLine001', 0, async (done: Function) => {
+    it('testOHDrawingDestroyTextLine001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingDestroyTextLine001();
       expect(result).assertEqual(0);
       done();
@@ -469,9 +520,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetTextLineByIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetTextLineByIndex001', 0, async (done: Function) => {
+    it('testOHDrawingGetTextLineByIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetTextLineByIndex001();
       expect(result).assertEqual(0);
       done();
@@ -483,9 +535,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetTextRange_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetTextRange001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetTextRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetTextRange001();
       expect(result).assertEqual(0);
       done();
@@ -497,9 +550,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetGlyphRuns_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetGlyphRuns001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetGlyphRuns001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetGlyphRuns001();
       expect(result).assertEqual(0);
       done();
@@ -511,9 +565,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_DestroyRuns_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingDestroyRuns001', 0, async (done: Function) => {
+    it('testOHDrawingDestroyRuns001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingDestroyRuns001();
       expect(result).assertEqual(0);
       done();
@@ -525,9 +580,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunByIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunByIndex001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunByIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunByIndex001();
       expect(result).assertEqual(0);
       done();
@@ -539,9 +595,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLinePaint_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLinePaint001', 0, async (done: Function) => {
+    it('testOHDrawingTextLinePaint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLinePaint001();
       expect(result).assertEqual(0);
       done();
@@ -553,9 +610,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineCreateTruncatedLine_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineCreateTruncatedLine001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineCreateTruncatedLine001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineCreateTruncatedLine001();
       expect(result).assertEqual(0);
       done();
@@ -567,9 +625,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetTypographicBounds_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetTypographicBounds001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetTypographicBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetTypographicBounds001();
       expect(result).assertEqual(0);
       done();
@@ -581,9 +640,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetImageBounds_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetImageBounds001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetImageBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetImageBounds001();
       expect(result).assertEqual(0);
       done();
@@ -595,9 +655,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetTrailingSpaceWidth_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetTrailingSpaceWidth001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetTrailingSpaceWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetTrailingSpaceWidth001();
       expect(result).assertEqual(0);
       done();
@@ -609,9 +670,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetStringIndexForPosition_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetStringIndexForPosition001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetStringIndexForPosition001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetStringIndexForPosition001();
       expect(result).assertEqual(0);
       done();
@@ -623,9 +685,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetOffsetForStringIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetOffsetForStringIndex001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetOffsetForStringIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetOffsetForStringIndex001();
       expect(result).assertEqual(0);
       done();
@@ -637,9 +700,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_TextLineGetAlignmentOffset_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingTextLineGetAlignmentOffset001', 0, async (done: Function) => {
+    it('testOHDrawingTextLineGetAlignmentOffset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingTextLineGetAlignmentOffset001();
       expect(result).assertEqual(0);
       done();
@@ -651,9 +715,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunGlyphCount_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunGlyphCount001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunGlyphCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunGlyphCount001();
       expect(result).assertEqual(0);
       done();
@@ -665,9 +730,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunStringRange_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunStringRange001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunStringRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunStringRange001();
       expect(result).assertEqual(0);
       done();
@@ -679,9 +745,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunTypographicBounds_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunTypographicBounds001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunTypographicBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunTypographicBounds001();
       expect(result).assertEqual(0);
       done();
@@ -693,9 +760,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunStringIndicesByIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunStringIndicesByIndex001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunStringIndicesByIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunStringIndicesByIndex001();
       expect(result).assertEqual(0);
       done();
@@ -707,9 +775,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunImageBounds_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunImageBounds001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunImageBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunImageBounds001();
       expect(result).assertEqual(0);
       done();
@@ -721,9 +790,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunGlyphsByIndex_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunGlyphsByIndex001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunGlyphsByIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunGlyphsByIndex001();
       expect(result).assertEqual(0);
       done();
@@ -735,9 +805,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetRunPositions_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetRunPositions001', 0, async (done: Function) => {
+    it('testOHDrawingGetRunPositions001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetRunPositions001();
       expect(result).assertEqual(0);
       done();
@@ -749,9 +820,10 @@ export default function fontTest() {
      * @tc.desc       : test OH_Drawing_GetFontCollectionGlobalInstance_001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDrawingGetFontCollectionGlobalInstance001', 0, async (done: Function) => {
+    it('testOHDrawingGetFontCollectionGlobalInstance001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetFontCollectionGlobalInstance001();
       expect(result).assertEqual(0);
       done();

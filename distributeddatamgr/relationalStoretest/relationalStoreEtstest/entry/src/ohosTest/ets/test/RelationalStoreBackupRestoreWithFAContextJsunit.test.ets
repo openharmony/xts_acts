@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore'
 import fileio from '@ohos.file.fs'
 import common from '@ohos.app.ability.common';
@@ -137,7 +137,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0010', 0, async function (done) {
+    it('RdbBackupRestoreTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0010 start *************")
 
       // RDB backup function test
@@ -205,7 +205,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0020', 0, async function () {
+    it('RdbBackupRestoreTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
       console.info(TAG + "************* RdbBackupRestoreTest_0020 start *************")
       // RelationalStore backup function test, backup file name empty
       BackupTest("")
@@ -224,7 +224,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0030', 0, async function () {
+    it('RdbBackupRestoreTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
       console.info(TAG + "************* RdbBackupRestoreTest_0030 start *************")
       let backupName = "BackupTest003.db"
       try {
@@ -250,7 +250,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0040', 0, async function (done) {
+    it('RdbBackupRestoreTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0040 start *************")
       let dbName = "notExistName.db"
 
@@ -275,7 +275,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0050', 0, async function () {
+    it('RdbBackupRestoreTest0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
       console.info(TAG + "************* RdbBackupRestoreTest_0050 start *************")
 
       try {
@@ -313,7 +313,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0060', 0, async function (done) {
+    it('RdbBackupRestoreTest0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0060 start *************")
       // Backup file is specified to database name
       RdbStore.backup(STORE_CONFIG.name).then(() => {
@@ -333,7 +333,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0070', 0, async function (done) {
+    it('RdbBackupRestoreTest0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0070 start *************")
       await RdbStore.backup(DATABASE_BACKUP_NAME)
       await data_Rdb.deleteRdbStore(context, DATABASE_BACKUP_NAME)
@@ -358,7 +358,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0090', 0, async function (done) {
+    it('RdbBackupRestoreTest0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0090 start *************")
       BackupTest([DATABASE_BACKUP_NAME])
       done();
@@ -373,7 +373,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0100', 0, async function (done) {
+    it('RdbBackupRestoreTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0100 start *************")
       try {
         await RdbStore.backup(DATABASE_BACKUP_NAME)
@@ -393,7 +393,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0120', 0, async function (done) {
+    it('RdbBackupRestoreTest0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info(TAG + "************* RdbBackupRestoreTest_0120 start *************")
       await RdbStore.backup(DATABASE_BACKUP_NAME)
       await RdbStore.backup(DATABASE_BACKUP_NAME).then(() => {
@@ -424,7 +424,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('RdbBackupRestoreTest0130', 0, async function () {
+    it('RdbBackupRestoreTest0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
       console.info(TAG + "************* RdbBackupRestoreTest_0130 start *************")
       try {
         await RdbStore.backup(DATABASE_BACKUP_NAME)

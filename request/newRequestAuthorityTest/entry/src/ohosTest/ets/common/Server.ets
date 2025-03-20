@@ -80,7 +80,16 @@ let on_message_callback = (value: SocketInfo) => {
     console.info(TAG + `====>contentInfo_Length: ${contentInfo.length}`)
     console.info(TAG + `====>contentInfo: ${contentInfo}`)
     if(contentLength === contentInfo.length){
-      messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\n\r\nupload successful!'
+      if(contentInfo.includes('Content-Type: SUB_REQUEST_Agent_contentType_0100')){
+        console.info(TAG + `====>contentInfo: ${1}`)
+        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\nsuccess:contentTypeTest0100\r\n\r\nupload successful!'
+      } else if (contentInfo.includes('SUB_REQUEST_Agent_contentType_0200') && contentInfo.includes('Content-Type: txt')) {
+        console.info(TAG + `====>contentInfo: ${2}`)
+        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\nsuccess:contentTypeTest0200\r\n\r\nupload successful!'
+      } else {
+        console.info(TAG + `====>contentInfo: ${3}`)
+        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\n\r\nupload successful!'
+      }
     }else{
       messageView = 'HTTP/1.1 200 OK\r\ncontent-length:14\r\n\r\nupload failed!'
     }

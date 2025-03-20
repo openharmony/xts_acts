@@ -28,6 +28,31 @@ let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let context: common.UIAbilityContext;
 const driver: Driver = Driver.create();
 const abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+let isAppSelectorExist = true;
+let selectorName = "wei.hmsapp.appgallery";
+
+async function checkAppSelectorExist() {
+  try {
+    let cmd = 'bm dump -n com.hua' + selectorName;
+    await abilityDelegator.executeShellCommand(cmd)
+      .then((data) => {
+        console.info('executeShellCommand success ' + JSON.stringify(data));
+        if (!data.stdResult.includes(selectorName)) {
+          console.info('app selector name do not exist');
+          return;
+        }
+        if (data.stdResult.includes("AppSelectorExtensionAbility")) {
+          console.info("AppSelectorExtensionAbility exists");
+        } else {
+          console.info("AppSelectorExtensionAbility do not exists");
+          isAppSelectorExist = false;
+        }
+      })
+  } catch (error) {
+    console.info("executeShellCommand failed ");
+  }
+}
+
 const judgeDialog = async (done: Function) => {
   await abilityDelegator.executeShellCommand('aa dump -a').then((data) => {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
@@ -69,9 +94,12 @@ const judgeDialog = async (done: Function) => {
 
 export default function flagstartwithouttipstest() {
   describe('FlagsSartWithoutTipsTest', () => {
-    beforeAll(async () => {
+    beforeAll(async (done: Function) => {
       context = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
       console.log('ishave ishave driver', !!driver);
+      await checkAppSelectorExist();
+      console.info("isAppSelectorExist " + isAppSelectorExist);
+      done();
     })
 
     afterEach(async () => {
@@ -98,12 +126,23 @@ export default function flagstartwithouttipstest() {
         action: 'action.want.notability.notability'
       };
       try {
-        await context.startAbility(wantInfo);
+        await context.startAbility(wantInfo)
+          .then(() => {
+            hilog.info(0x0000, TAG, 'startAbility success');
+          })
+          .catch((error: BusinessError) => {
+            hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
+            expect(error.code == 16000019).assertTrue();
+          })
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
     })
 
@@ -157,6 +196,10 @@ export default function flagstartwithouttipstest() {
       }
       // Wait for the popup to open
       await driver.delayMs(3000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
     })
 
@@ -185,6 +228,10 @@ export default function flagstartwithouttipstest() {
       }
       // Wait for the popup to open
       await driver.delayMs(3000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
     })
 

@@ -87,8 +87,6 @@
         "MainAbility/pages/router/getState/getState1",
         "MainAbility/pages/router/getState/getState01",
         "MainAbility/pages/router/getStateByIndex/getStateByIndex1",
-        "MainAbility/pages/router/focus/focus1",
-        "MainAbility/pages/router/focus/focus01",
 
         "MainAbility/pages/router/pushUrl/pushUrl2",
         "MainAbility/pages/router/pushUrl/pushUrl3",

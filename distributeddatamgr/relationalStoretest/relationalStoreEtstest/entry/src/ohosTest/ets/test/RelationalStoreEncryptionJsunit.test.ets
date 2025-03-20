@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_rdb from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -105,7 +105,7 @@ export default function relationalStoreEncryptTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0010', 0, async (done:Function) => {
+        it('RdbEncryptTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0010 start *************")
             data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT).then((store) => {
                 done()
@@ -124,7 +124,7 @@ export default function relationalStoreEncryptTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0020', 0, async (done:Function) => {
+        it('RdbEncryptTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0020 start *************")
             let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT);
             storePromise.then((store) => {
@@ -146,7 +146,7 @@ export default function relationalStoreEncryptTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0030', 0, async (done:Function) => {
+        it('RdbEncryptTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0030 start *************")
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             let predicates = new data_rdb.RdbPredicates("test")
@@ -178,7 +178,7 @@ export default function relationalStoreEncryptTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0040', 0, async (done:Function) =>{
+        it('RdbEncryptTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) =>{
             console.info(TAG + "************* RdbEncryptTest_0040 start *************")
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             rdbStore = null
@@ -201,7 +201,7 @@ export default function relationalStoreEncryptTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0050', 0, async (done:Function) => {
+        it('RdbEncryptTest0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest0050 start *************")
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
             rdbStore = null

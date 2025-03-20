@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_preferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 
@@ -44,7 +44,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesCallbackWithError001", 0, (done: Function) => {
+    it("testPreferencesCallbackWithError001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testPreferencesCallbackWithError001 begin.");
       try {
         mPreference.clear((err, val) => {
@@ -92,7 +92,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0003", 0, (done: Function) => {
+    it("testMpreferencesGet0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesGet0003 begin.");
       try {
         mPreference.get(123, (err, val) => {
@@ -116,7 +116,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0001", 0, (done: Function) => {
+    it("testMpreferencesGet0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesGet0001 begin.");
       try {
         mPreference.get(-1, 123, (err, val) => {
@@ -145,7 +145,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0002", 0, async (done: Function) => {
+    it("testMpreferencesGet0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGet0002 begin.");
       try {
         await mPreference.put(KEY_TEST_INT_ELEMENT, 3);
@@ -174,7 +174,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetALL001", 0, (done: Function) => {
+    it("testMpreferencesGetALL001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesGetALL001 begin.");
       try {
         mPreference.getAll((err, val) => {
@@ -200,7 +200,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHas0001", 0, (done: Function) => {
+    it("testMpreferencesHas0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesHas0001 begin.");
       try {
         mPreference.has(123, (err, val) => {
@@ -225,7 +225,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHas0002", 0, (done: Function) => {
+    it("testMpreferencesHas0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesHas0002 begin.");
       try {
         mPreference.has(KEY_TEST_STRING_ELEMENT, (err, val) => {
@@ -252,7 +252,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0001", 0, (done: Function) => {
+    it("testMpreferencesPut0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesPut0001 begin.");
       try {
         mPreference.put(123, (err) => {
@@ -277,7 +277,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0002", 0, (done: Function) => {
+    it("testMpreferencesPut0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesPut0002 begin.");
       try {
         mPreference.put(KEY_TEST_STRING_ELEMENT, "", async (err) => {
@@ -307,7 +307,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0003", 0, (done: Function) => {
+    it("testMpreferencesPut0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesPut0003 begin.");
       try {
         mPreference.put(KEY_TEST_STRING_ELEMENT, " ", async (err) => {
@@ -336,7 +336,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0004", 0, (done: Function) => {
+    it("testMpreferencesPut0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesPut0004 begin.");
       try {
         mPreference.put(-1, 123, (err) => {
@@ -366,7 +366,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0005", 0, (done: Function) => {
+    it("testMpreferencesPut0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesPut0005 begin.");
       try {
         mPreference.put(KEY_TEST_STRING_ELEMENT, null, (err) => {
@@ -396,7 +396,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDelete0001", 0, (done: Function) => {
+    it("testMpreferencesDelete0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesDelete0001 begin.");
       try {
         mPreference.delete(1233, (err) => {
@@ -421,7 +421,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDelete0002", 0, (done: Function) => {
+    it("testMpreferencesDelete0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesDelete0002 begin.");
       try {
         mPreference.delete(KEY_TEST_STRING_ELEMENT, (err) => {
@@ -449,7 +449,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesClear0001", 0, (done: Function) => {
+    it("testMpreferencesClear0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesClear0001 begin.");
       try {
         mPreference.clear((err) => {
@@ -476,7 +476,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesFlush0001", 0, (done: Function) => {
+    it("testMpreferencesFlush0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log("testMpreferencesFlush0001 begin.");
       try {
         mPreference.flush((err) => {

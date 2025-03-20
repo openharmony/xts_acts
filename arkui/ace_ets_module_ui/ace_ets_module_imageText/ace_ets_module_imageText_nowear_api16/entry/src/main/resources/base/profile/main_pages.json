@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/Text/textAreaInputTest",
-    "MainAbility/pages/RichEditor/TextMenuItemId"
+    "MainAbility/pages/RichEditor/TextMenuItemId",
+    "MainAbility/pages/Text/editMenuOptions",
+    "MainAbility/pages/Text/setMenuOptions"
   ]
 }

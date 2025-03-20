@@ -151,6 +151,14 @@
     {
       "name": "test_stringTwentyFive",
       "value": "%d %s %f"
+    },
+    {
+      "name": "test_stringLoopA",
+      "value": "$string:test_stringLoopB"
+    },
+    {
+      "name": "test_stringLoopB",
+      "value": "$string:test_stringLoopA"
     }
   ]
 }

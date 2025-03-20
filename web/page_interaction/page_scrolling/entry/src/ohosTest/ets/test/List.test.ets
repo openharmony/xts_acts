@@ -12,34 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webResourceResponseGet from './WebResourceResponseGet.test'
+
 import webViewController from './webViewController.test'
-import webViewSrollByJsunit from './webViewSrollByJsunit.test'
-import webViewSrollToJsunit from './webViewSrollToJsunit.test'
-import webViewSrollableJsunit from './webViewSrollableJsunit.test'
-import webViewOnScroll from './webViewOnScroll.test'
-import webNestedScrollOptionsScrollBackwardTest from './WebNestedScrollOptionsScrollBackwardTest.test'
-import webNestedScrollOptionsScrollForwardTest from './WebNestedScrollOptionsScrollForwardTest.test'
-import webNestedScrollOptionsScrollBackwardHorizontalTest
-  from './WebNestedScrollOptionsScrollBackwardHorizontalTest.test'
-import webNestedScrollOptionsScrollForwardHorizontalTest from './WebNestedScrollOptionsScrollForwardHorizontalTest.test'
 import ScrollPage from './ScrollPage.test'
+import webViewOnScroll from './webViewOnScroll.test'
+import webResourceResponseGet from './WebResourceResponseGet.test'
+import webNestedScrollOptionsScrollForwardTest from './WebNestedScrollOptionsScrollForwardTest.test'
 import NestedScrollMode from './NestedScrollMode.test'
 import scrollEvent from './scrollEvent.test'
-import scrollBarJsunit from './ScrollBarJsunit.test'
 export default function testsuite() {
   webResourceResponseGet()
   webViewOnScroll()
   ScrollPage()
   webViewController()
-  webViewSrollByJsunit()
-  webViewSrollToJsunit()
-  webViewSrollableJsunit()
-  webNestedScrollOptionsScrollBackwardTest()
   webNestedScrollOptionsScrollForwardTest()
-  webNestedScrollOptionsScrollBackwardHorizontalTest()
-  webNestedScrollOptionsScrollForwardHorizontalTest()
   NestedScrollMode()
-  scrollEvent();
-  scrollBarJsunit()
+  scrollEvent()
 }

@@ -180,7 +180,7 @@ export default function sceneTest() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0080
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0500
      * @tc.name      : testSceneRenderFrame
      * @tc.desc      : Used to see if the scene is single-frame
      * @tc.size      : MediumTest
@@ -202,7 +202,7 @@ export default function sceneTest() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0090
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0510
      * @tc.name      : testSceneRenderParameters
      * @tc.desc      : Used to set if the scene is single-frame
      * @tc.size      : MediumTest
@@ -222,6 +222,155 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene3d.RenderParameters " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0520
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to set the properties of the sphere
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSphereGeometry', 0, async (done:Function)=> {
+      let msg = "============================testSphereGeometry";
+      console.info(msg + ' begin ');
+      try {
+        let sphereGeom = new scene3d.SphereGeometry();
+        expect(sphereGeom != null).assertTrue();
+        expect(sphereGeom.geometryType).assertEqual(scene3d.GeometryType.SPHERE);
+        console.info(msg + " Succeed in scene3d.SphereGeometry() ");
+        sphereGeom.radius = 1;
+        expect(sphereGeom.radius).assertEqual(1);
+        console.info(msg + " Succeed in sphereGeom.radius ");
+        sphereGeom.segmentCount = Math.floor(26);
+        expect(sphereGeom.segmentCount).assertEqual(26);
+        console.info(msg + " Succeed in sphereGeom.segmentCount ");
+        let meshRes3 = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
+        expect(meshRes3 != null).assertTrue();
+        console.info(msg + " Succeed in createMesh ");
+        let geometry3 = await rf.createGeometry({name: "balluro"}, meshRes3);
+        expect(geometry3 != null).assertTrue();
+        console.info(msg + " Succeed in createGeometry ");
+        scene?.root?.children.append(geometry3);
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testSphereGeometry " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0530
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to set the properties of the custom
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTRIANGLE_LIST', 0, (done:Function)=> {
+      let msg = "============================testTRIANGLE_LIST";
+      console.info(msg + ' begin ');
+      try {
+        let customGeom = new scene3d.CustomGeometry();
+        expect(customGeom != null).assertTrue();
+        console.info(msg + " Succeed in scene3d.CustomGeometry() ");
+        expect(customGeom.geometryType).assertEqual(scene3d.GeometryType.CUSTOM);
+        customGeom.topology = 0;
+        expect(customGeom.topology).assertEqual(scene3d.PrimitiveTopology.TRIANGLE_LIST);
+        console.info(msg + " Succeed in customGeom.topology set TRIANGLE_LIST ");
+        customGeom.indices = [0, 1, 3, 3, 1, 2];
+        expect(customGeom.indices[2]).assertEqual(3);
+        console.info(msg + " Succeed in customGeom.indices of TRIANGLE_LIST ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testTRIANGLE_LIST " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0540
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to set the properties of the custom
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTRIANGLE_STRIP', 0, (done:Function)=> {
+      let msg = "============================testTRIANGLE_STRIP";
+      console.info(msg + ' begin ');
+      try {
+        let customGeom = new scene3d.CustomGeometry();
+        expect(customGeom != null).assertTrue();
+        console.info(msg + " Succeed in scene3d.CustomGeometry() ");
+        expect(customGeom.geometryType).assertEqual(scene3d.GeometryType.CUSTOM);
+        customGeom.topology = 1;
+        expect(customGeom.topology).assertEqual(scene3d.PrimitiveTopology.TRIANGLE_STRIP);
+        console.info(msg + " Succeed in customGeom.topology set TRIANGLE_STRIP ");
+        customGeom.indices = [0, 1, 3, 2];
+        expect(customGeom.indices[2]).assertEqual(3);
+        console.info(msg + " Succeed in customGeom.indices of TRIANGLE_STRIP ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testTRIANGLE_STRIP " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0550
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to set the properties of the custom
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCustomGeometry', 0, (done:Function)=> {
+      let msg = "============================testCustomGeometry";
+      console.info(msg + ' begin ');
+      try {
+        let customGeom = new scene3d.CustomGeometry();
+        expect(customGeom != null).assertTrue();
+        console.info(msg + " Succeed in scene3d.CustomGeometry() ");
+        customGeom.topology = 0;
+        expect(customGeom.topology).assertEqual(scene3d.PrimitiveTopology.TRIANGLE_LIST);
+        console.info(msg + " Succeed in customGeom.topology set TRIANGLE_LIST ");
+        customGeom.vertices = [{x: 0, y: 1, z: 0}, {x: 0.5, y: 0, z: 0.3}, {x: 0, y: -1, z: 0}, {x: -0.5, y: 0, z: 0.3}];
+        expect(customGeom.vertices[1].x).assertEqual(0.5);
+        console.info(msg + " Succeed in customGeom.vertices ");
+        customGeom.uvs = [{x: 0.5, y: 1}, {x: 1, y: 0.5}, {x: 0.5, y: 0}, {x: 0, y: 0.5}];
+        expect(customGeom.uvs[0].x).assertEqual(0.5);
+        console.info(msg + " Succeed in customGeom.uvs ");
+        customGeom.normals = [{x: -1, y: 1, z: 0}, {x: 1, y: -1, z: 0}, {x: 1, y: 1, z: 0}, {x: 1, y: 1, z: 1}];
+        expect(customGeom.normals[0].x).assertEqual(-1);
+        console.info(msg + " Succeed in customGeom.normals ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCustomGeometry " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0560
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to create a scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateScene', 0, async (done:Function)=> {
+      let msg = "============================testCreateScene";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await rf.createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        expect(scene != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCreateScene " + JSON.stringify(err));
         expect().assertFail();
         done();
       }

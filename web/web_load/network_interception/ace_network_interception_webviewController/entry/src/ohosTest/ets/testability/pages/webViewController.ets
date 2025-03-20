@@ -120,6 +120,7 @@ struct Index {
                   this.controller.loadUrl($rawfile('indexCopyTwoTablet.html'))
                   await Utils.sleep(3000)
                 }
+                await Utils.sleep(18000)
                 this.controller.runJavaScript("checkVisible()", (error, result) => {
                   this.checkEleResult = JSON.parse(result)
                   console.log(`The checkVisible() return value is: ${result}`);
@@ -156,7 +157,7 @@ struct Index {
               try {
                 this.controller.loadUrl($rawfile('indexCopy.html'))
                 this.controller.setNetworkAvailable(false);
-                await Utils.sleep(3000)
+                await Utils.sleep(18000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -178,7 +179,7 @@ struct Index {
               try {
                 this.controller.loadUrl($rawfile('indexCopy.html'))
                 this.controller.setNetworkAvailable(true);
-                await Utils.sleep(7000)
+                await Utils.sleep(18000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }

@@ -753,5 +753,102 @@ export default function requestUploadConfigTest() {
       }
     });
 
+    /*
+     * @tc.number: SUB_REQUEST_Agent_contentType_0100
+     * @tc.name: SUB_REQUEST_Agent_contentType_0100
+     * @tc.desc: contentType is test name.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_REQUEST_Agent_contentType_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_contentType_0100 is starting-----------------------");
+      let config = uploadConfig;
+      config.data = [{
+        name: 'uploadTest',
+        value: {
+          path: './test/MultiLevel.txt',
+          filename: 'MultiLevel.txt',
+          mimeType: 'application/octet-stream',
+          contentType: "SUB_REQUEST_Agent_contentType_0100"
+        }
+      }]
+      console.info("====>SUB_REQUEST_Agent_contentType_0100 config: " + JSON.stringify(config));
+      try {
+        let on_responseCallback = async (pro: request.agent.HttpResponse) => {
+          task.off('response', on_responseCallback);
+          try {
+            let arr:Array<string> = [];
+            for( let v of pro['headers'].values()){
+              console.info("====>SUB_REQUEST_Agent_contentType_0100 headers value is: " + v[0]);
+              arr.push(v[0]);
+            }
+            console.info("====>SUB_REQUEST_Agent_contentType_0100 arr: " + JSON.stringify(arr));
+            expect(arr.includes('contentTypeTest0100')).assertTrue();
+            done();
+          } catch (err) {
+            console.info("====>SUB_REQUEST_Agent_contentType_0100 response err: " + JSON.stringify(err));
+            done();
+          }
+        }
+
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        task.on('response', on_responseCallback);
+        await task.start();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_contentType_0100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_REQUEST_Agent_contentType_0200
+     * @tc.name: SUB_REQUEST_Agent_contentType_0200
+     * @tc.desc: contentType is default.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_REQUEST_Agent_contentType_0200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_contentType_0200 is starting-----------------------");
+      let config = uploadConfig;
+      config.data = [{
+        name: 'SUB_REQUEST_Agent_contentType_0200',
+        value: {
+          path: './test/MultiLevel.txt',
+          filename: 'MultiLevel.txt',
+          mimeType: 'application/octet-stream',
+        }
+      }]
+      console.info("====>SUB_REQUEST_Agent_contentType_0200 config: " + JSON.stringify(config));
+      try {
+        let on_responseCallback = async (pro: request.agent.HttpResponse) => {
+          task.off('response', on_responseCallback);
+          try {
+            let arr:Array<string> = [];
+            for( let v of pro['headers'].values()){
+              console.info("====>SUB_REQUEST_Agent_contentType_0200 headers value is: " + v[0]);
+              arr.push(v[0]);
+            }
+            console.info("====>SUB_REQUEST_Agent_contentType_0200 arr: " + JSON.stringify(arr));
+            expect(arr.includes('contentTypeTest0200')).assertTrue();
+            done();
+          } catch (err) {
+            console.info("====>SUB_REQUEST_Agent_contentType_0200 response err: " + JSON.stringify(err));
+            done();
+          }
+        }
+
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        task.on('response', on_responseCallback);
+        await task.start();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_contentType_0200 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 };

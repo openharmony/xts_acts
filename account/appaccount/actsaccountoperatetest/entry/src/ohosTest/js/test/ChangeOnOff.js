@@ -15,7 +15,7 @@
 import account from '@ohos.account.appAccount'
 import commonevent from '@ohos.commonEventManager'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsAccountOnOff() {
     describe('ActsAccountOnOff', async function () {
@@ -51,7 +51,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the credential
         */
-        it('ActsAccountOnOff_0300', 0, async function (done) {
+        it('ActsAccountOnOff_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0300 start====");
@@ -120,7 +120,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to delete
         *                 authorized account
         */
-        it('ActsAccountOnOff_0400', 0, async function (done) {
+        it('ActsAccountOnOff_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0400 start====");
@@ -193,7 +193,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to delete
         *                 the only authorized account
         */
-        it('ActsAccountOnOff_0500', 0, async function (done) {
+        it('ActsAccountOnOff_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0500 start====");
@@ -257,7 +257,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to cancel
         *                 authorized account   
         */
-        it('ActsAccountOnOff_0600', 0, async function (done) {
+        it('ActsAccountOnOff_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0600 start====");

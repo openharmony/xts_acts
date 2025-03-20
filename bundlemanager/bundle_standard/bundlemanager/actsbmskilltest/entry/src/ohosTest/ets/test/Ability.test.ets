@@ -39,6 +39,8 @@ export default function abilityTest() {
       expect(data.hapModulesInfo[0].abilitiesInfo[0].skills.length).assertEqual(1);
       expect(skill.actions[0])
         .assertEqual('action.system.home');
+      expect(skill.entities[0])
+        .assertEqual('entity.system.home');
       expect(skill.domainVerify).assertEqual(false);
       expect(skillUrl.scheme).assertEqual('scheme');
       expect(skillUrl.host).assertEqual('host');

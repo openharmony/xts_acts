@@ -14,12 +14,14 @@
  */
 
 import overlay from '@ohos.bundle.overlay';
+import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect ,TestType ,Size ,Level } from "@ohos/hypium"
 
 const MODULE_NAME = "entry_test";
 const MODULE_NAME1 = "test1";
 const MODULE_NAME2 = "stage1";
+const MODULE_NAME3 = "entry";
 const ERROR_INCOMING_MODULE_NAME_NOT_INSTALL = 17700002;
 const ERROR_BUNDLE_IS_NOT_OVERLAY = 17700032;
 const ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY = 17700033;
@@ -56,61 +58,63 @@ export default function getOverlayModuleInfo() {
     })
 
     /*
-     * @tc.number: Sub_Bms_Framework_Overlay_Query_0300
-     * @tc.name: GetOverlayModuleInfoModuleNameNotInstall
-     * @tc.desc: The query fails when the incoming moduleName is not installed
+     * @tc.number: Sub_Bms_Framework_Overlay_Query_0410
+     * @tc.name: GetOverlayModuleInfoModuleNameNotExisted
+     * @tc.desc: The query fails when the incoming moduleName is not existed
      */
-    it('GetOverlayModuleInfoModuleNameNotInstall', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameNotExisted', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
-          console.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
+          console.info("GetOverlayModuleInfoModuleNameNotExisted result" + JSON.stringify(data));
           expect().assertFail();
-        })
+        }).catch((err: BusinessError) => {
+        console.info("GetOverlayModuleInfoModuleNameNotExisted fail" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+      });
       }catch (e) {
-        console.info("GetOverlayModuleInfoModuleNameNotInstall  catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+        console.info("GetOverlayModuleInfoModuleNameNotExisted  catch" + JSON.stringify(e));
+        expect().assertFail();
       }
-
       try {
         overlay.getOverlayModuleInfo(MODULE_NAME1, (err, data) => {
-          console.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
-          console.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
-          expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+          console.info("GetOverlayModuleInfoModuleNameNotExisted result" + JSON.stringify(data));
+          console.info("GetOverlayModuleInfoModuleNameNotExisted fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
         });
       }catch (e) {
-        console.info("GetOverlayModuleInfoModuleNameNotInstall callback catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
-      }
-
+        console.info("GetOverlayModuleInfoModuleNameNotExisted callback catch" + JSON.stringify(e));
+        expect().assertFail();      
+        }
     })
 
     /*
-     * @tc.number: Sub_Bms_Framework_Overlay_Query_0400
-     * @tc.name: GetOverlayModuleInfoModuleNameNotOverlay
-     * @tc.desc: Failed to set when the incoming moduleName is not overlay
+     * @tc.number: Sub_Bms_Framework_Overlay_Query_0420
+     * @tc.name: GetOverlayModuleInfoModuleNotOverlay
+     * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetOverlayModuleInfoModuleNameNotOverlay', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
       try {
-        await overlay.getOverlayModuleInfo(MODULE_NAME).then(data => {
-          console.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
+        await overlay.getOverlayModuleInfo(MODULE_NAME3).then(data => {
+          console.info("GetOverlayModuleInfoModuleNotOverlay result" + JSON.stringify(data));
           expect().assertFail();
-        })
+        }).catch((err: BusinessError) => {
+          console.info("GetOverlayModuleInfoModuleNotOverlay fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+      });
       }catch (e) {
-        console.info("GetOverlayModuleInfoModuleNameNotOverlay  catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+        console.info("GetOverlayModuleInfoModuleNotOverlay  catch" + JSON.stringify(e));
+        expect().assertFail();
       }
-
       try {
-        overlay.getOverlayModuleInfo(MODULE_NAME, (err, data) => {
-          console.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
-          console.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
-          expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+        overlay.getOverlayModuleInfo(MODULE_NAME3, (err, data) => {
+          console.info("GetOverlayModuleInfoModuleNotOverlay result" + JSON.stringify(data));
+          console.info("GetOverlayModuleInfoModuleNotOverlay fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
         });
       }catch (e) {
-        console.info("GetOverlayModuleInfoModuleNameNotOverlay callback catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+        console.info("GetOverlayModuleInfoModuleNotOverlay callback catch" + JSON.stringify(e));
+        expect().assertFail();
       }
-
     })
 
     /*

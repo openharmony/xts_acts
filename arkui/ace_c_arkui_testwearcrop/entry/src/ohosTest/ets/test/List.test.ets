@@ -18,6 +18,9 @@ import calendarPickerTextStyleTest from './calendarpicker/CalendarPickerTextStyl
 import calendarPickerWidthTest from './calendarpicker/CalendarPickerWidthTest.test'
 import calendarPickerEnabledTest from './calendarpicker/CalendarPickerEnabledTest.test'
 import calendarPickerHintRadiusTest from './calendarpicker/CalendarPickerHintRadiusTest.test'
+import textAreaOnPasteTest from './textarea/TextAreaOnPasteTest.test'
+import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
+import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import calendarPickerSelectedDateTest from './calendarpicker/CalendarPickerSelectedDateTest.test'
 
 export default function testsuite() {
@@ -28,4 +31,7 @@ export default function testsuite() {
    calendarPickerEnabledTest()
    calendarPickerHintRadiusTest()
    calendarPickerSelectedDateTest()
+  textAreaOnPasteTest()
+  textInputOnCutTest()
+  textInputOnPasteTest()
 }

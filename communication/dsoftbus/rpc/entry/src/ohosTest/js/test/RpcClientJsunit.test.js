@@ -3891,8 +3891,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -5459,8 +5458,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -11708,8 +11706,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -14606,6 +14603,115 @@ export default function ActsRpcClientJsTest() {
                 expect(error.message != null).assertTrue();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_1800---------------------------");
+        });
+
+        /*
+        * @tc.number  : SUB_DSoftbus_IPC_API_RemoteProxy_1900
+        * @tc.name    : test Querylocalinterface searches for objects based on descriptors
+        * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level   : 3
+        * @tc.type    : Compatibility
+        * @tc.size    : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_RemoteProxy_1900", 0, async function () {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_RemoteProxy_1900---------------------------");
+            try {
+                let res = gIRemoteObject.queryLocalInterface("testRpc");
+                expect(res == null).assertTrue();
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_RemoteProxy error is:" + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_1900---------------------------");
+        });
+
+        /*
+        * @tc.number  : SUB_DSoftbus_IPC_API_RemoteProxy_2000
+        * @tc.name    : test getLocalInterface searches for objects based on descriptors
+        * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level   : 3
+        * @tc.type    : Compatibility
+        * @tc.size    : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_RemoteProxy_2000", 0, async function () {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_RemoteProxy_2000---------------------------");
+            try {
+                let res = gIRemoteObject.getLocalInterface("testRpc");
+                expect(res == null).assertTrue();
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_RemoteProxy error is:" + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_2000---------------------------");
+        });
+
+        /*
+        * @tc.number  : SUB_DSoftbus_IPC_API_RemoteProxy_2100
+        * @tc.name    : test Getinterfacedescriptor to get the object interface description
+        * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level   : 0
+        * @tc.type    : Compatibility
+        * @tc.size    : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_RemoteProxy_2100", 0, async function () {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_RemoteProxy_2100---------------------------");
+            try {
+                let result = gIRemoteObject.getInterfaceDescriptor();
+                expect(result).assertEqual("rpcTestAbility");
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_RemoteProxy error is:" + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_2100---------------------------");
+        });
+
+        /*
+        * @tc.number  : SUB_DSoftbus_IPC_API_RemoteProxy_2200
+        * @tc.name    : test getDescriptor to get the object interface description
+        * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level   : 0
+        * @tc.type    : Compatibility
+        * @tc.size    : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_RemoteProxy_2200", 0, async function () {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_RemoteProxy_2200---------------------------");
+            try {
+                let result = gIRemoteObject.getDescriptor();
+                expect(result).assertEqual("rpcTestAbility");
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_RemoteProxy error is:" + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_2200---------------------------");
+        });
+
+        /*
+        * @tc.number  : SUB_DSoftbus_IPC_API_RemoteProxy_2300
+        * @tc.name    : test sendRequest to get the object interface description
+        * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level   : 0
+        * @tc.type    : Compatibility
+        * @tc.size    : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_RemoteProxy_2300", 0, async function () {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_RemoteProxy_2300---------------------------");
+            try {
+                var data = rpc.MessageParcel.create();
+                var reply = rpc.MessageParcel.create();
+                let option = new rpc.MessageOption();
+                let result = data.writeString('sendRequest');
+                expect(result == true).assertTrue();
+                expect(gIRemoteObject != undefined).assertTrue();
+                let resultSendRequest = gIRemoteObject.sendRequest(CODE_WRITE_STRING, data, reply, option);
+                expect(resultSendRequest != null).assertTrue();
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_RemoteProxy error is:" + error);
+                expect(error == null).assertTrue();
+            } finally{
+                data.reclaim();
+                reply.reclaim();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_RemoteProxy_2300---------------------------");
         });
 
         /*

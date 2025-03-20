@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { LightWeightSet } from '@kit.ArkTS';
 
 export default function LightWeightSetTest() {
@@ -54,7 +54,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0001', 0, () => {
+    it('testLightWeightSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0001";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -74,7 +74,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0002', 0, () => {
+    it('testLightWeightSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0002";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -97,7 +97,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0003', 0, () => {
+    it('testLightWeightSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0003";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -119,7 +119,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0004', 0, () => {
+    it('testLightWeightSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0004";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -143,7 +143,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0005', 0, () => {
+    it('testLightWeightSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0005";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -164,7 +164,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0006', 0, () => {
+    it('testLightWeightSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0006";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -184,7 +184,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0007', 0, () => {
+    it('testLightWeightSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0007";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -207,7 +207,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0008', 0, () => {
+    it('testLightWeightSet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0008";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -231,7 +231,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0009', 0, () => {
+    it('testLightWeightSet0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0009";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -254,7 +254,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0010', 0, () => {
+    it('testLightWeightSet0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0010";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -275,7 +275,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0011', 0, () => {
+    it('testLightWeightSet0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0011";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -296,7 +296,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0012', 0, () => {
+    it('testLightWeightSet0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0012";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -321,7 +321,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0013', 0, () => {
+    it('testLightWeightSet0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0013";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -344,7 +344,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0014', 0, () => {
+    it('testLightWeightSet0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0014";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -366,7 +366,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0015', 0, () => {
+    it('testLightWeightSet0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0015";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -388,7 +388,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0016', 0, () => {
+    it('testLightWeightSet0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0016";
       try {
         let lightWeightSet: LightWeightSet<string | number> = new LightWeightSet();
@@ -411,7 +411,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0017', 0, () => {
+    it('testLightWeightSet0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0017";
       try {
         let lightWeightSet: LightWeightSet<string | number> = new LightWeightSet();
@@ -434,7 +434,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0018', 0, () => {
+    it('testLightWeightSet0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0018";
       try {
         let lightWeightSet: LightWeightSet<string | number> = new LightWeightSet();
@@ -457,7 +457,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0019', 0, () => {
+    it('testLightWeightSet0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0019";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -479,7 +479,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0020', 0, () => {
+    it('testLightWeightSet0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0020";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -498,7 +498,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0021', 0, () => {
+    it('testLightWeightSet0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0021";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -520,7 +520,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0022', 0, () => {
+    it('testLightWeightSet0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0022";
       try {
         let lightWeightSet: LightWeightSet<object> = new LightWeightSet();
@@ -544,7 +544,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0023', 0, () => {
+    it('testLightWeightSet0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0023";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -566,7 +566,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0024', 0, () => {
+    it('testLightWeightSet0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0024";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -587,7 +587,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0025', 0, () => {
+    it('testLightWeightSet0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0025";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -608,7 +608,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0026', 0, () => {
+    it('testLightWeightSet0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0026";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -633,7 +633,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0027', 0, () => {
+    it('testLightWeightSet0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0027";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -655,7 +655,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0028', 0, () => {
+    it('testLightWeightSet0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0028";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -676,7 +676,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0029', 0, () => {
+    it('testLightWeightSet0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0029";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -697,7 +697,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0030', 0, () => {
+    it('testLightWeightSet0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0030";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -717,7 +717,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0032', 0, () => {
+    it('testLightWeightSet0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0032";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -739,7 +739,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0033', 0, () => {
+    it('testLightWeightSet0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0033";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -761,7 +761,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0034', 0, () => {
+    it('testLightWeightSet0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0034";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -783,7 +783,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0035', 0, () => {
+    it('testLightWeightSet0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0035";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -805,7 +805,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0036', 0, () => {
+    it('testLightWeightSet0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0036";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -827,7 +827,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0037', 0, () => {
+    it('testLightWeightSet0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0037";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -849,7 +849,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0038', 0, () => {
+    it('testLightWeightSet0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0038";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -873,7 +873,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0039', 0, () => {
+    it('testLightWeightSet0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0039";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -896,7 +896,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0040', 0, () => {
+    it('testLightWeightSet0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0040";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -919,7 +919,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0041', 0, () => {
+    it('testLightWeightSet0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0041";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -941,7 +941,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0042', 0, () => {
+    it('testLightWeightSet0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0042";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -964,7 +964,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0043', 0, () => {
+    it('testLightWeightSet0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0043";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -984,7 +984,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0044', 0, () => {
+    it('testLightWeightSet0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0044";
       try {
         let lightWeightSet = "null";
@@ -1004,7 +1004,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0045', 0, () => {
+    it('testLightWeightSet0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0045";
       try {
         let lightWeightSet = "undefined";
@@ -1024,7 +1024,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0046', 0, () => {
+    it('testLightWeightSet0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0046";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1046,7 +1046,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0047', 0, () => {
+    it('testLightWeightSet0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0047";
       try {
         let lightWeightSet: LightWeightSet<object> = new LightWeightSet();
@@ -1071,7 +1071,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0048', 0, () => {
+    it('testLightWeightSet0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0048";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -1094,7 +1094,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0049', 0, () => {
+    it('testLightWeightSet0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0049";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1116,7 +1116,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0050', 0, () => {
+    it('testLightWeightSet0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0050";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1136,7 +1136,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0051', 0, () => {
+    it('testLightWeightSet0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0051";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1158,7 +1158,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0052', 0, () => {
+    it('testLightWeightSet0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0052";
       try {
         let lightWeightSet: LightWeightSet<object> = new LightWeightSet();
@@ -1183,7 +1183,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0053', 0, () => {
+    it('testLightWeightSet0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0053";
       try {
         let element = 0
@@ -1208,7 +1208,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0054', 0, () => {
+    it('testLightWeightSet0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0054";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1234,7 +1234,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0055', 0, () => {
+    it('testLightWeightSet0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0055";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1254,7 +1254,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0056', 0, () => {
+    it('testLightWeightSet0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0056";
       try {
         let element = ''
@@ -1284,7 +1284,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0057', 0, () => {
+    it('testLightWeightSet0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0057";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -1312,7 +1312,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0058', 0, () => {
+    it('testLightWeightSet0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0058";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1336,7 +1336,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0059', 0, () => {
+    it('testLightWeightSet0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0059";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1360,7 +1360,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0060', 0, () => {
+    it('testLightWeightSet0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0060";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1382,7 +1382,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0061', 0, () => {
+    it('testLightWeightSet0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0061";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1408,7 +1408,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0062', 0, () => {
+    it('testLightWeightSet0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0062";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1434,7 +1434,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0063', 0, () => {
+    it('testLightWeightSet0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0063";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1459,7 +1459,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0064', 0, () => {
+    it('testLightWeightSet0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0064";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1485,7 +1485,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0065', 0, () => {
+    it('testLightWeightSet0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0065";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1513,7 +1513,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0066', 0, () => {
+    it('testLightWeightSet0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0062";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1539,7 +1539,7 @@ export default function LightWeightSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLightWeightSet0067', 0, () => {
+    it('testLightWeightSet0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLightWeightSet0067";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -1549,6 +1549,128 @@ export default function LightWeightSetTest() {
           console.log(JSON.stringify(iter.value), 'iter.next====');
           index++;
         }
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTSET_6800
+     * @tc.name       : testLightWeightSet0068
+     * @tc.desc       : Test the function foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testLightWeightSet0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testLightWeightSet0068";
+      try {
+        let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
+        for (let i = 0; i < 10; i++) {
+          lightWeightSet.add(i);
+        }
+        lightWeightSet.forEach(() => {
+          expect(lightWeightSet.length).assertEqual(10);
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTSET_6900
+     * @tc.name       : testLightWeightSet0069
+     * @tc.desc       : Test the function foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testLightWeightSet0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testLightWeightSet0069";
+      try {
+        let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
+        for (let i = 0; i < 10; i++) {
+          lightWeightSet.add(i);
+        }
+        lightWeightSet.forEach((value) => {
+          expect(lightWeightSet.has(value)).assertTrue();
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTSET_7000
+     * @tc.name       : testLightWeightSet0070
+     * @tc.desc       : Test the function foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testLightWeightSet0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testLightWeightSet0070";
+      try {
+        let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
+        for (let i = 0; i < 10; i++) {
+          lightWeightSet.add(i);
+        }
+        lightWeightSet.forEach((value, index: number) => {
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTSET_7100
+     * @tc.name       : testLightWeightSet0071
+     * @tc.desc       : Test the function foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testLightWeightSet0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testLightWeightSet0071";
+      try {
+        let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
+        for (let i = 0; i < 10; i++) {
+          lightWeightSet.add(i);
+        }
+        lightWeightSet.forEach((value, index: number, lightWeightSet: LightWeightSet<number>) => {
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTSET_7200
+     * @tc.name       : testLightWeightSet0072
+     * @tc.desc       : Test the function foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testLightWeightSet0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testLightWeightSet0072";
+      try {
+        let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
+        let str: string = "0";
+        for (let i = 0; i < 10; i++) {
+          lightWeightSet.add(i);
+        }
+        lightWeightSet.forEach((value, index: number, lightWeightSet: LightWeightSet<number>) => {
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
+        }, str);
+        expect(str).assertEqual("0");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

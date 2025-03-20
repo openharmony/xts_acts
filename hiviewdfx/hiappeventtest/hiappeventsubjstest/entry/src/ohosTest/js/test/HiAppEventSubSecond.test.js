@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import HiAppEventV9 from '@ohos.hiviewdfx.hiAppEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import Constant from 'deccjsunit/src/Constant'
 
 export default function HiAppEventSubSecondTest() {
@@ -1269,6 +1269,29 @@ describe('HiAppEventSubSecondTest', function () {
             console.error(`HiAppEventSub66 delay > error code: ${err.code}, error msg: ${err.message}`)
             expect(err.code == 11104001).assertTrue()
             console.info('HiAppEventSub66 end')
+            done()
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_6700
+     * @tc.name HiAppEventSub67
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub67', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub67 start')
+        try{
+            let holder = HiAppEventV9.addWatcher({
+                name: "watcher",
+            });
+            holder.setSize(null);
+        } catch (err) {
+            console.error(`HiAppEventSub67 delay > error code: ${err.code}, error msg: ${err.message}`)
+            expect(err.code == 401).assertTrue()
+            console.info('HiAppEventSub67 end')
             done()
         }
     })

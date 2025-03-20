@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 const TAG = "[RELATIONAL_STORE_ASYNCDOWNLOADASSET_TEST]";
@@ -98,8 +98,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
      * @tc.name test DistributedConfig.asyncDownloadAsset
      * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0100
      * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is true
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-     it('testRdbAsyncDownloadAsset001', 0, async function (done) {
+     it('testRdbAsyncDownloadAsset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testRdbAsyncDownloadAsset001 start *************");
       try {
           let config = {
@@ -131,8 +134,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
      * @tc.name test DistributedConfig.asyncDownloadAsset is false
      * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0200
      * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is false
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-     it('testRdbAsyncDownloadAsset002', 0, async function (done) {
+     it('testRdbAsyncDownloadAsset002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testRdbAsyncDownloadAsset002 start *************");
       try {
           let config = {
@@ -164,8 +170,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
    * @tc.name set distributeded table cloud with promise
    * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0300
    * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is 20
-  */
-  it('testRdbAsyncDownloadAsset003', 0, async function (done) {
+  * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+  it('testRdbAsyncDownloadAsset003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.log(TAG + "************* testRdbAsyncDownloadAsset003 start *************");
     try {
         let config = {
@@ -194,8 +203,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
    * @tc.name set distributeded table cloud with promise
    * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0400
    * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is 0
-  */
-   it('testRdbAsyncDownloadAsset004', 0, async function (done) {
+  * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+   it('testRdbAsyncDownloadAsset004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.log(TAG + "************* testRdbAsyncDownloadAsset004 start *************");
     try {
         let config = {
@@ -224,8 +236,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
    * @tc.name set distributeded table cloud with promise
    * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0500
    * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is 1
-  */
-   it('testRdbAsyncDownloadAsset005', 0, async function (done) {
+  * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+   it('testRdbAsyncDownloadAsset005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.log(TAG + "************* testRdbAsyncDownloadAsset005 start *************");
     try {
         let config = {
@@ -254,8 +269,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
    * @tc.name set distributeded table cloud with promise
    * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0600
    * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is -1
-  */
-   it('testRdbAsyncDownloadAsset006', 0, async function (done) {
+  * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+   it('testRdbAsyncDownloadAsset006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.log(TAG + "************* testRdbAsyncDownloadAsset006 start *************");
     try {
         let config = {
@@ -285,8 +303,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
    * @tc.name set distributeded table cloud with promise
    * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0700
    * @tc.desc set distributed table cloud with 'autoSync' is true 'asyncDownloadAsset' is true
-  */
-   it('testRdbAsyncDownloadAsset007', 0, async function (done) {
+  * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+   it('testRdbAsyncDownloadAsset007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.log(TAG + "************* testRdbAsyncDownloadAsset007 start *************");
     try {
         let config = {
@@ -318,8 +339,11 @@ export default function relationalStoreAsyncDownloadAssetTest() {
      * @tc.name set distributeded table cloud with promise
      * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0800
      * @tc.desc set distributed table cloud with 'autoSync' is true 'asyncDownloadAsset' is false
-    */
-    it('testRdbAsyncDownloadAsset008', 0, async function (done) {
+    * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('testRdbAsyncDownloadAsset008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testRdbAsyncDownloadAsset008 start *************");
       try {
           let config = {

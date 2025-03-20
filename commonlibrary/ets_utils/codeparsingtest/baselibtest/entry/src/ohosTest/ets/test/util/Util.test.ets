@@ -12,8 +12,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import util from '@ohos.util'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import util from '@ohos.util';
+import { ArrayList, JSON } from '@kit.ArkTS';
+
+let falg = 0;
+
 function sleep(ms: number) {
   return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
 }
@@ -77,7 +81,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilFormat001', 0, () => {
+    it('testUtilFormat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilFormat001';
       try {
         let value1 = null;
@@ -97,7 +101,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilFormat002', 0, () => {
+    it('testUtilFormat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilFormat002';
       try {
         let value1 = undefined;
@@ -117,7 +121,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilFormat003', 0, () => {
+    it('testUtilFormat003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilFormat003';
       try {
         let value1 = 'testPara1';
@@ -138,7 +142,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString001', 0, () => {
+    it('testUtilErrnoToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString001';
       try {
         let value = null;
@@ -158,7 +162,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString002', 0, () => {
+    it('testUtilErrnoToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString002';
       try {
         let value = undefined;
@@ -178,7 +182,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString006', 0, () => {
+    it('testUtilErrnoToString006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString006';
       try {
         let value = -401;
@@ -197,7 +201,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString007', 0, () => {
+    it('testUtilErrnoToString007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString007';
       try {
         let value = -1;
@@ -217,7 +221,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString008', 0, () => {
+    it('testUtilErrnoToString008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString008';
       try {
         let value = 401;
@@ -237,7 +241,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString009', 0, () => {
+    it('testUtilErrnoToString009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString009';
       try {
         let value = 0;
@@ -257,7 +261,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString010', 0, () => {
+    it('testUtilErrnoToString010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString010';
       try {
         let value = 401.6895487;
@@ -277,7 +281,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString011', 0, () => {
+    it('testUtilErrnoToString011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString011';
       try {
         let value = Number.MAX_SAFE_INTEGER;
@@ -297,7 +301,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString012', 0, () => {
+    it('testUtilErrnoToString012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString012';
       try {
         let value = Number.MIN_SAFE_INTEGER;
@@ -317,7 +321,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString013', 0, () => {
+    it('testUtilErrnoToString013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString013';
       try {
         let value = Number.MAX_VALUE;
@@ -337,7 +341,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilErrnoToString014', 0, () => {
+    it('testUtilErrnoToString014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilErrnoToString014';
       try {
         let value = Number.MIN_VALUE;
@@ -356,7 +360,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilCallbackWrapper001', 0, () => {
+    it('testUtilCallbackWrapper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilCallbackWrapper001';
       try {
         util.callbackWrapper(null);
@@ -375,7 +379,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilCallbackWrapper002', 0, () => {
+    it('testUtilCallbackWrapper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilCallbackWrapper002';
       try {
         util.callbackWrapper(undefined);
@@ -394,7 +398,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilPromisify001', 0, () => {
+    it('testUtilPromisify001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilPromisify001';
       try {
         let result = util.promisify(null);
@@ -413,7 +417,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilPromisify002', 0, () => {
+    it('testUtilPromisify002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilPromisify002';
       try {
         let result = util.promisify(undefined);
@@ -432,7 +436,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID001', 0, () => {
+    it('testUtilGenerateRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID001';
       try {
         let value = null;
@@ -452,7 +456,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID002', 0, () => {
+    it('testUtilGenerateRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID002';
       try {
         let value = undefined;
@@ -472,7 +476,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID005', 0, () => {
+    it('testUtilGenerateRandomUUID005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID005';
       try {
         let result = util.generateRandomUUID();
@@ -491,7 +495,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID006', 0, () => {
+    it('testUtilGenerateRandomUUID006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID006';
       try {
         let value = false;
@@ -511,7 +515,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID007', 0, () => {
+    it('testUtilGenerateRandomUUID007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID007';
       try {
         let value = true;
@@ -531,7 +535,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomUUID008', 0, () => {
+    it('testUtilGenerateRandomUUID008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomUUID008';
       try {
         for (let i = 0; i < 50; i++) {
@@ -553,7 +557,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomBinaryUUID001', 0, () => {
+    it('testUtilGenerateRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomBinaryUUID001';
       try {
         let value = null;
@@ -573,7 +577,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomBinaryUUID002', 0, () => {
+    it('testUtilGenerateRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomBinaryUUID002';
       try {
         let value = undefined;
@@ -593,7 +597,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomBinaryUUID005', 0, () => {
+    it('testUtilGenerateRandomBinaryUUID005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomBinaryUUID005';
       try {
         let result = util.generateRandomBinaryUUID();
@@ -612,7 +616,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomBinaryUUID006', 0, () => {
+    it('testUtilGenerateRandomBinaryUUID006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomBinaryUUID006';
       try {
         let value = false;
@@ -632,7 +636,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGenerateRandomBinaryUUID007', 0, () => {
+    it('testUtilGenerateRandomBinaryUUID007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGenerateRandomBinaryUUID007';
       try {
         let value = true;
@@ -652,7 +656,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID001', 0, () => {
+    it('testUtilParseUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID001';
       try {
         let value = null;
@@ -672,7 +676,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID002', 0, () => {
+    it('testUtilParseUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID002';
       try {
         let value = undefined;
@@ -692,7 +696,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID006', 0, () => {
+    it('testUtilParseUUID006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID006';
       try {
         let value = '84df796-66cc-4655-9b89-d6218d100f9c';
@@ -712,7 +716,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID007', 0, () => {
+    it('testUtilParseUUID007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID007';
       try {
         let value = '84Wdf796-66cc-4655-9b89-d6218d100f9c';
@@ -732,7 +736,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID008', 0, () => {
+    it('testUtilParseUUID008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID008';
       try {
         let value = '84bdf796-66cc-4655-9b89-d6218d100f9c';
@@ -752,7 +756,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID009', 0, () => {
+    it('testUtilParseUUID009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID009';
       try {
         let value = 'Nil UUID 00000000-0000-0000-0000-000000000000';
@@ -772,7 +776,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID010', 0, () => {
+    it('testUtilParseUUID010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID010';
       try {
         let value = 'Namespace UUID 6ba7b810-9dad-11d1-80b4-00c04fd430c8';
@@ -792,7 +796,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID011', 0, () => {
+    it('testUtilParseUUID011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID011';
       try {
         let value = 'URL UUID 6ba7b810-9dad-11d1-80b4-00c04fd430c8';
@@ -812,7 +816,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID012', 0, () => {
+    it('testUtilParseUUID012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID012';
       try {
         let value = 'OID UUID 6ba7b812-9dad-11d1-80b4-00c04fd430c8';
@@ -832,7 +836,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID013', 0, () => {
+    it('testUtilParseUUID013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID013';
       try {
         let value = 'X.500 UUID 6ba7b814-9dad-11d1-80b4-00c04fd430c8';
@@ -852,7 +856,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilParseUUID014', 0, () => {
+    it('testUtilParseUUID014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilParseUUID014';
       try {
         let value = 'UUID FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF';
@@ -872,7 +876,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash001', 0, () => {
+    it('testUtilGetHash001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash001';
       try {
         let value = null;
@@ -892,7 +896,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash002', 0, () => {
+    it('testUtilGetHash002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash002';
       try {
         let value = undefined;
@@ -912,7 +916,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash007', 0, () => {
+    it('testUtilGetHash007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash007';
       try {
         let person: GeneratedObjectLiteralInterface_1 = {
@@ -936,7 +940,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash008', 0, () => {
+    it('testUtilGetHash008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash008';
       try {
         let numbers = [1, 2, 3, 4, 5];
@@ -957,7 +961,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash009', 0, () => {
+    it('testUtilGetHash009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash009';
       try {
         class Car {
@@ -988,7 +992,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash010', 0, () => {
+    it('testUtilGetHash010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash010';
       try {
         let time = new Date();
@@ -1010,7 +1014,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash011', 0, () => {
+    it('testUtilGetHash011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash011';
       try {
         let value = RegExp('^(\\-)?\\d+(\\.\\d{1,2})?$')
@@ -1031,7 +1035,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash012', 0, () => {
+    it('testUtilGetHash012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash012';
       try {
         let mathObject = Math;
@@ -1052,7 +1056,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash013', 0, () => {
+    it('testUtilGetHash013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash013';
       try {
         let person: GeneratedObjectLiteralInterface_3 = {
@@ -1080,7 +1084,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash014', 0, () => {
+    it('testUtilGetHash014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash014';
       try {
         let value: GeneratedObjectLiteralInterface_5 = {};
@@ -1101,7 +1105,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash015', 0, () => {
+    it('testUtilGetHash015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash015';
       try {
         let value = [];
@@ -1122,7 +1126,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilGetHash016', 0, () => {
+    it('testUtilGetHash016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testUtilGetHash016';
       try {
         let value: GeneratedObjectLiteralInterface_6 = {
@@ -1147,7 +1151,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate001', 0, () => {
+    it('testTextDecoderCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate001';
       try {
         let result = new util.TextDecoder();
@@ -1167,7 +1171,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate002', 0, () => {
+    it('testTextDecoderCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate002';
       try {
         let value = util.TextDecoder.create('utf-8', {
@@ -1189,7 +1193,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate003', 0, () => {
+    it('testTextDecoderCreate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate003';
       try {
         let value = util.TextDecoder.create()
@@ -1209,7 +1213,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate004', 0, () => {
+    it('testTextDecoderCreate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate004';
       try {
         let value = util.TextDecoder.create('utf-7', {
@@ -1231,7 +1235,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate005', 0, () => {
+    it('testTextDecoderCreate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate005';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {}
@@ -1252,7 +1256,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate006', 0, () => {
+    it('testTextDecoderCreate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate006';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1275,7 +1279,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate007', 0, () => {
+    it('testTextDecoderCreate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate007';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1298,7 +1302,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate008', 0, () => {
+    it('testTextDecoderCreate008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate008';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1321,7 +1325,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate009', 0, () => {
+    it('testTextDecoderCreate009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate009';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1344,7 +1348,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate010', 0, () => {
+    it('testTextDecoderCreate010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate010';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {}
@@ -1365,7 +1369,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate011', 0, () => {
+    it('testTextDecoderCreate011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate011';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1388,7 +1392,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate012', 0, () => {
+    it('testTextDecoderCreate012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate012';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1411,7 +1415,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate013', 0, () => {
+    it('testTextDecoderCreate013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate013';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1434,7 +1438,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate014', 0, () => {
+    it('testTextDecoderCreate014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate014';
       try {
         let textDecoderOptions: util.TextDecoderOptions = {
@@ -1457,7 +1461,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate015', 0, () => {
+    it('testTextDecoderCreate015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate015';
       try {
         let value = util.TextDecoder.create('iso-8859-15', {
@@ -1479,7 +1483,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate016', 0, () => {
+    it('testTextDecoderCreate016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate016';
       try {
         let value = util.TextDecoder.create('UTF-16', {
@@ -1501,7 +1505,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate017', 0, () => {
+    it('testTextDecoderCreate017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate017';
       try {
         let value = util.TextDecoder.create('UTF-32', {
@@ -1523,7 +1527,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate018', 0, () => {
+    it('testTextDecoderCreate018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate018';
       try {
         let value = util.TextDecoder.create('UTF-8', {})
@@ -1543,7 +1547,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate019', 0, () => {
+    it('testTextDecoderCreate019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate019';
       try {
         let value = util.TextDecoder.create('UTF-8', undefined)
@@ -1563,7 +1567,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate020', 0, () => {
+    it('testTextDecoderCreate020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate020';
       try {
         let value = util.TextDecoder.create('UTF-8', {
@@ -1585,7 +1589,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate021', 0, () => {
+    it('testTextDecoderCreate021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate021';
       try {
         let value = util.TextDecoder.create('UTF-8', {
@@ -1607,7 +1611,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate022', 0, () => {
+    it('testTextDecoderCreate022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate022';
       try {
         let value = util.TextDecoder.create('UTF-8', {
@@ -1629,7 +1633,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoderCreate023', 0, () => {
+    it('testTextDecoderCreate023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextDecoderCreate023';
       try {
         let value = util.TextDecoder.create('UTF-8', {
@@ -1651,7 +1655,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream001', 0, () => {
+    it('testDecodeWithStream001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream001';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1675,7 +1679,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream002', 0, () => {
+    it('testDecodeWithStream002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream002';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1699,7 +1703,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream003', 0, () => {
+    it('testDecodeWithStream003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream003';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1723,7 +1727,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream004', 0, () => {
+    it('testDecodeWithStream004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream004';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1747,7 +1751,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream005', 0, () => {
+    it('testDecodeWithStream005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream005';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1771,7 +1775,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream006', 0, () => {
+    it('testDecodeWithStream006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream006';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1795,7 +1799,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream007', 0, () => {
+    it('testDecodeWithStream007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream007';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1819,7 +1823,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream008', 0, () => {
+    it('testDecodeWithStream008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream008';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1843,7 +1847,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream009', 0, () => {
+    it('testDecodeWithStream009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream009';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1867,7 +1871,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream010', 0, () => {
+    it('testDecodeWithStream010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream010';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1891,7 +1895,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream011', 0, () => {
+    it('testDecodeWithStream011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream011';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1915,7 +1919,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeWithStream012', 0, () => {
+    it('testDecodeWithStream012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeWithStream012';
       try {
         let decodeWithStreamOptions: util.DecodeWithStreamOptions = {
@@ -1939,7 +1943,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoder001', 0, () => {
+    it('testTextEncoder001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoder001';
       try {
         let result = new util.TextEncoder();
@@ -1959,7 +1963,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoder002', 0, () => {
+    it('testTextEncoder002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoder002';
       try {
         let result = new util.TextEncoder('iso-8859-14');
@@ -1979,7 +1983,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoder003', 0, () => {
+    it('testTextEncoder003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoder003';
       try {
         let result = new util.TextEncoder('utf-9');
@@ -1999,7 +2003,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoder004', 0, () => {
+    it('testTextEncoder004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoder004';
       try {
         let result = new util.TextEncoder(undefined);
@@ -2019,7 +2023,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate001', 0, () => {
+    it('testTextEncoderCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate001';
       try {
         let result = util.TextEncoder.create('iso-8859-14')
@@ -2039,7 +2043,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate002', 0, () => {
+    it('testTextEncoderCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate002';
       try {
         let result = util.TextDecoder.create()
@@ -2059,7 +2063,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate003', 0, () => {
+    it('testTextEncoderCreate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate003';
       try {
         let result = util.TextEncoder.create(undefined)
@@ -2079,7 +2083,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate004', 0, () => {
+    it('testTextEncoderCreate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate004';
       try {
         let result = util.TextEncoder.create(null)
@@ -2099,7 +2103,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate005', 0, () => {
+    it('testTextEncoderCreate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate005';
       try {
         let result = util.TextEncoder.create('windows-1250')
@@ -2119,7 +2123,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate006', 0, () => {
+    it('testTextEncoderCreate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate006';
       try {
         let result = util.TextEncoder.create('utf-16')
@@ -2139,7 +2143,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderCreate007', 0, () => {
+    it('testTextEncoderCreate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderCreate007';
       try {
         let result = util.TextEncoder.create('utf-32')
@@ -2159,7 +2163,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderInfo001', 0, () => {
+    it('testTextEncoderInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderInfo001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2179,7 +2183,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEncoderInfo002', 0, () => {
+    it('testTextEncoderInfo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testTextEncoderInfo002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2199,7 +2203,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEncodeIntoUint8Array001', 0, () => {
+    it('testEncodeIntoUint8Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncodeIntoUint8Array001';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2221,7 +2225,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEncodeIntoUint8Array002', 0, () => {
+    it('testEncodeIntoUint8Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncodeIntoUint8Array002';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2243,7 +2247,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEncodeIntoUint8Array003', 0, () => {
+    it('testEncodeIntoUint8Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncodeIntoUint8Array003';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2264,7 +2268,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEncodeIntoUint8Array004', 0, () => {
+    it('testEncodeIntoUint8Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncodeIntoUint8Array004';
       try {
         let textEncoder = new util.TextEncoder();
@@ -2285,7 +2289,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString001', 0, () => {
+    it('testDecodeToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString001';
       try {
         let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2308,7 +2312,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString002', 0, () => {
+    it('testDecodeToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString002';
       try {
         let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2329,7 +2333,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString003', 0, () => {
+    it('testDecodeToString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const that = util.TextDecoder.create('utf-8');
       const uint8arr = new Uint8Array([999999999.999999999, -0.999999999, 0]);
       let retStr = that.decodeToString(uint8arr);
@@ -2345,7 +2349,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString004', 0, () => {
+    it('testDecodeToString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let decodeToStringOptions: util.DecodeToStringOptions = {
         stream: false
       }
@@ -2364,7 +2368,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString005', 0, () => {
+    it('testDecodeToString005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString005';
       const that = util.TextDecoder.create('utf-8');
       const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
@@ -2382,7 +2386,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString006', 0, () => {
+    it('testDecodeToString006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString006';
       const that = util.TextDecoder.create('utf-8');
       const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
@@ -2399,7 +2403,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString007', 0, () => {
+    it('testDecodeToString007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString007';
 
       let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2420,7 +2424,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString008', 0, () => {
+    it('testDecodeToString008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString008';
 
       let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2441,7 +2445,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString009', 0, () => {
+    it('testDecodeToString009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString009';
 
       let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2463,7 +2467,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString010', 0, () => {
+    it('testDecodeToString010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString010';
       let decodeToStringOptions: util.DecodeToStringOptions = {
         stream: true
@@ -2484,7 +2488,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString011', 0, () => {
+    it('testDecodeToString011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString011';
 
       let decodeToStringOptions: util.DecodeToStringOptions = {
@@ -2506,7 +2510,7 @@ export default function utilTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDecodeToString012', 0, () => {
+    it('testDecodeToString012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDecodeToString012';
       let decodeToStringOptions: util.DecodeToStringOptions = {
         stream: true
@@ -2518,5 +2522,148 @@ export default function utilTest() {
       expect(str).assertEqual('2A01%00%00%00%00%00');
 
     });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0100
+     * @tc.name       : testEncode001
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode001';
+      let textEncoder = new util.TextEncoder();
+      let result = textEncoder.encode("\uD800¥¥");
+      expect(JSON.stringify(result)).assertEqual('{"0":237,"1":160,"2":128,"3":194,"4":165,"5":194,"6":165}');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0200
+     * @tc.name       : testEncode002
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode002';
+      let textEncoder = new util.TextEncoder();
+      let result = textEncoder.encode();
+      expect(JSON.stringify(result)).assertEqual(undefined);
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0300
+     * @tc.name       : testEncode002
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode003';
+      class ChildLruBuffer<K, V> extends util.LruBuffer<K, V> {
+        constructor(capacity?: number) {
+          super(capacity);
+        }
+        afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void {
+          if (isEvict === true) {
+          }
+        }
+      }
+      let lru: ChildLruBuffer<number, number> = new ChildLruBuffer(2);
+      lru.put(11, 1);
+      lru.put(22, 2);
+      lru.put(33, 3);
+      expect(JSON.stringify(lru))
+        .assertEqual('{"maxSize":2,"maxNumber":2147483647,"putCount":3,"createCount":0,"evictionCount":' +
+          '1,"hitCount":0,"missCount":0,"length":2,"cache":{}}');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0400
+     * @tc.name       : testEncode004
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode004';
+      let pro: util.LruBuffer<number, number> = new util.LruBuffer();
+      pro.put(2, 10);
+      let result = pro[Symbol.iterator]();
+      expect(JSON.stringify(result)).assertEqual("{}");
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0500
+     * @tc.name       : testEncode005
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode005';
+      class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
+        constructor(capacity?: number) {
+          super(capacity);
+        }
+
+        afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void {
+        }
+      }
+      let lru = new ChildLRUCache<number, number>(2);
+      lru.put(1, 1);
+      lru.put(2, 2);
+      lru.put(3, 3);
+      expect(JSON.stringify(lru)).assertEqual('{"maxSize":2,"maxNumber":2147483647,"putCount":3,"createCount":0,' +
+        '"evictionCount":1,"hitCount":0,"missCount":0,"length":2,"cache":{}}');
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0600
+     * @tc.name       : testEncode006
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode006';
+      let result = new ArrayList<string>()
+      let pro = new util.LRUCache<number, number>();
+      pro.put(2, 10);
+      pro.put(3, 15);
+      let pair: Iterable<Object[]> = pro[Symbol.iterator]();
+      let arrayValue = Array.from(pair);
+      for (let value of arrayValue) {
+        result.add(JSON.stringify(value[0]));
+        result.add(JSON.stringify(value[1]));
+      }
+      expect(JSON.stringify(result)).assertEqual('{"0":"2","1":"10","2":"3","3":"15"}')
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ENCODE_0700
+     * @tc.name       : testEncode007
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testEncode007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEncode007';
+      let decoder = new util.StringDecoder('utf-8');
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const writeString = decoder.write(input.slice(0, 5));
+      expect(writeString).assertEqual("你");
+      try {
+        const endString = decoder.end();
+      } catch (e) {
+        expect(e.code).assertEqual("401");
+        expect(e.message).assertContain("decoder error, U_BUFFER_OVERFLOW_ERROR");
+      }
+    });
+
   })
 }

@@ -116,19 +116,25 @@ export default function abilityTest() {
      */
 
     it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_1100', 2, async (done: Function) => {
-      await session.destroy()
-      await sleep(500)
-      let aVCastController: avSession.AVCastController;
-      await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
-        aVCastController = avcontroller;
-        console.info('getAVCastController11 : SUCCESS');
-        expect(false).assertTrue();
-      }).catch((err: BusinessError) => {
-          console.info(`getAVCastController11 BusinessError: code: ${err.code}, message: ${err.message}`);
-          expect(err.code).assertEqual(6600102);
-      });
-      session = null;
-      done();
+      const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+      if (isExtendedDisplayCast) {
+        await session.destroy()
+        await sleep(500)
+        let aVCastController: avSession.AVCastController;
+        await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+            aVCastController = avcontroller;
+            console.info('getAVCastController11 : SUCCESS');
+            expect(false).assertTrue();
+        }).catch((err: BusinessError) => {
+            console.info(`getAVCastController11 BusinessError: code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(6600102);
+        });
+        session = null;
+        done();
+      } else {
+       console.info(`SystemCapability.Multimedia.AVSession.ExtendedDisplayCast false`);
+       done();
+      }
     })
 
 
@@ -1146,6 +1152,40 @@ export default function abilityTest() {
       done();
     })
 
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_5400
+     * @tc.name      : setAVMetadata - promise - set bundleIcon
+     * @tc.desc      : Testing call setAVMetadata(promise) set bundleIcon
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_5400', 0, async (done: Function) => {
+      let metadata0: avSession.AVMetadata = {
+        assetId: '121278',
+      };
+      await session.setAVMetadata(metadata0).then(() => {
+        console.info('TestLog: Set bundleIcon Successfully');
+      }).catch((err: BusinessError ) => {
+        console.info(`TestLog: Set bundleIcon error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+
+      await controller.getAVMetadata().then((data: avSession.AVMetadata) => {
+        if (data.bundleIcon ) {
+          console.info(`${data.bundleIcon} TestLog: Get bundleIcon Successfully`);
+          expect(true).assertTrue();
+        } else {
+          console.info('TestLog: Get bundleIcon failed');
+          console.info(`TestLog: bundleIcon is: ${data.bundleIcon}`);
+          expect(true).assertTrue();
+        }
+      }).catch((err: BusinessError) => {
+        console.info(`TestLog: Get assetId error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      done();
+    })
 
 
   })

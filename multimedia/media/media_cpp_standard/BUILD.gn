@@ -80,6 +80,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "hilog:libhilog",
   ]
 
-  part_name = "av_codec"
+  part_name = "player_framework"
   subsystem_name = "multimedia"
 }

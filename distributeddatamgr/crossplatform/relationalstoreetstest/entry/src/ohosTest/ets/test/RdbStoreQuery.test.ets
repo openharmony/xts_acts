@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import { BusinessError } from '@ohos.base';
@@ -104,7 +104,7 @@ export default function rdbStoreQueryTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuery001", 0, async (done: Function) => {
+    it("testRdbStoreQuery001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreQuery001 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       rdbStore.query(predicates, async (err, resultSet) => {
@@ -128,7 +128,7 @@ export default function rdbStoreQueryTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuery002", 0, async (done: Function) => {
+    it("testRdbStoreQuery002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreQuery002 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
@@ -155,7 +155,7 @@ export default function rdbStoreQueryTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuery003", 0, async (done: Function) => {
+    it("testRdbStoreQuery003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreQuery003 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       let promise = rdbStore.query(predicates);
@@ -176,7 +176,7 @@ export default function rdbStoreQueryTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuery004", 0, async (done: Function) => {
+    it("testRdbStoreQuery004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreQuery004 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
@@ -200,7 +200,7 @@ export default function rdbStoreQueryTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuery005", 0, async (done: Function) => {
+    it("testRdbStoreQuery005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreQuery005 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       try {

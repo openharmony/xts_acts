@@ -15,8 +15,18 @@
 
 import selectApi1 from './select/selectApi1.test'
 import triggerSelect from './select/triggerSelect.test'
+import selectJsunit from './select/SelectJsunit.test'
+import timepickerJsunit from './TimePicker/TimePickerJsunit.test';
+import textpickerJsunit from './TextPicker/TextPickerJsunit.test';
+import calendarPickerJsunit from './CalendarPicker/CalendarPicker.test';
+import datePickerJsunit from './DatePicker/DatePicker.test';
 
 export default function testsuite() {
     selectApi1();
     triggerSelect()
+    selectJsunit()
+    timepickerJsunit()
+    textpickerJsunit()
+    calendarPickerJsunit()
+    datePickerJsunit()
 }

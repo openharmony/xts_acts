@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { HashMap } from '@kit.ArkTS';
 
 function sleep(ms: number) {
@@ -49,7 +49,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapLength0001', 0, () => {
+    it('testHashMapLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapLength0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -68,7 +68,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapLength0002', 0, () => {
+    it('testHashMapLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapLength0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -88,7 +88,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapLength0003', 0, () => {
+    it('testHashMapLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapLength0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -110,7 +110,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapConstructor0001', 0, () => {
+    it('testHashMapConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapConstructor0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -130,7 +130,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapConstructor0002', 0, () => {
+    it('testHashMapConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetConstructor0002';
       try {
         class Tmp {
@@ -158,7 +158,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapIsEmpty0001', 0, () => {
+    it('testHashMapIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapIsEmpty0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -177,7 +177,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapIsEmpty0002', 0, () => {
+    it('testHashMapIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapIsEmpty0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -197,7 +197,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapIsEmpty0003', 0, () => {
+    it('testHashMapIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapIsEmpty0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -218,7 +218,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapIsEmpty0004', 0, () => {
+    it('testHashMapIsEmpty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapIsEmpty0004';
       try {
         const hashMap = new HashMap<string, number>();
@@ -239,7 +239,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0001', 0, () => {
+    it('testHashMapHasKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -258,7 +258,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0002', 0, () => {
+    it('testHashMapHasKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -277,7 +277,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0003', 0, () => {
+    it('testHashMapHasKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -296,7 +296,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0004', 0, () => {
+    it('testHashMapHasKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0004';
       try {
         const hashMap = new HashMap<string, number>();
@@ -315,7 +315,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0005', 0, () => {
+    it('testHashMapHasKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0005';
       try {
         const hashMap = new HashMap<string, number>();
@@ -335,7 +335,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0006', 0, () => {
+    it('testHashMapHasKey0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0006';
       try {
         const hashMap = new HashMap<string, number>();
@@ -355,7 +355,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0007', 0, () => {
+    it('testHashMapHasKey0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0007';
       try {
         const hashMap = new HashMap<string, string>();
@@ -375,7 +375,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasKey0008', 0, () => {
+    it('testHashMapHasKey0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasKey0008';
       try {
         const hashMap = new HashMap<string, string>();
@@ -397,7 +397,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0001', 0, () => {
+    it('testHashMapHasValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0001';
       try {
         const hashMap = new HashMap<string, string>();
@@ -416,7 +416,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0002', 0, () => {
+    it('testHashMapHasValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -435,7 +435,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0003', 0, () => {
+    it('testHashMapHasValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -454,7 +454,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0004', 0, () => {
+    it('testHashMapHasValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0004';
       try {
         const hashMap = new HashMap<string, string>();
@@ -473,7 +473,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0005', 0, () => {
+    it('testHashMapHasValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0005';
       try {
         const hashMap = new HashMap<string, string>();
@@ -493,7 +493,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0006', 0, () => {
+    it('testHashMapHasValue0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0006';
       try {
         const hashMap = new HashMap<string, string>();
@@ -513,7 +513,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapHasValue0007', 0, () => {
+    it('testHashMapHasValue0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapHasValue0007';
       try {
         const hashMap = new HashMap<string, string>();
@@ -535,7 +535,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0001', 0, () => {
+    it('testHashMapGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0001';
       try {
         const hashMap = new HashMap<string, string>();
@@ -554,7 +554,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0002', 0, () => {
+    it('testHashMapGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -573,7 +573,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0003', 0, () => {
+    it('testHashMapGet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -592,7 +592,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0004', 0, () => {
+    it('testHashMapGet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0004';
       try {
         const hashMap = new HashMap<string, string>();
@@ -611,7 +611,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0005', 0, () => {
+    it('testHashMapGet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0005';
       try {
         const hashMap = new HashMap<string, string>();
@@ -631,7 +631,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0006', 0, () => {
+    it('testHashMapGet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0006';
       try {
         const hashMap = new HashMap<string, string>();
@@ -651,7 +651,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapGet0007', 0, () => {
+    it('testHashMapGet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapGet0007';
       try {
         const hashMap = new HashMap<string, string>();
@@ -673,7 +673,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0001', 0, () => {
+    it('testHashMapSetAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0001';
       try {
         const hashMap = new HashMap<string, string>();
@@ -692,7 +692,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0002', 0, () => {
+    it('testHashMapSetAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0002';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -716,7 +716,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0003', 0, () => {
+    it('testHashMapSetAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0003';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -740,7 +740,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0004', 0, () => {
+    it('testHashMapSetAll0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0004';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -764,7 +764,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0005', 0, () => {
+    it('testHashMapSetAll0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0005';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -787,7 +787,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSetAll0006', 0, () => {
+    it('testHashMapSetAll0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSetAll0006';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -810,7 +810,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0001', 0, () => {
+    it('testHashMapSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0001';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -831,7 +831,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0002', 0, () => {
+    it('testHashMapSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0002';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -852,7 +852,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0003', 0, () => {
+    it('testHashMapSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0003';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -873,7 +873,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0004', 0, () => {
+    it('testHashMapSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0004';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -893,7 +893,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0005', 0, () => {
+    it('testHashMapSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0005';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -915,7 +915,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0006', 0, () => {
+    it('testHashMapSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0006';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -936,7 +936,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0007', 0, () => {
+    it('testHashMapSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0007';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -957,7 +957,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0008', 0, () => {
+    it('testHashMapSet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0008';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -978,7 +978,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0009', 0, () => {
+    it('testHashMapSet0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0009';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -1003,7 +1003,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSet0010', 0, () => {
+    it('testHashMapSet0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSet0010';
       try {
         const hashMap: HashMap<string, number> = new HashMap();
@@ -1026,7 +1026,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0001', 0, () => {
+    it('testHashMapRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0001';
       try {
         const hashMap = new HashMap<string, string>();
@@ -1045,7 +1045,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0002', 0, () => {
+    it('testHashMapRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1064,7 +1064,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0003', 0, () => {
+    it('testHashMapRemove0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1083,7 +1083,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0004', 0, () => {
+    it('testHashMapRemove0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0004';
       try {
         const hashMap = new HashMap<string, string>();
@@ -1102,7 +1102,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0005', 0, () => {
+    it('testHashMapRemove0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0005';
       try {
         const hashMap = new HashMap<string, string>();
@@ -1122,7 +1122,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0006', 0, () => {
+    it('testHashMapRemove0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0006';
       try {
         const hashMap = new HashMap<string, string>();
@@ -1142,7 +1142,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapRemove0007', 0, () => {
+    it('testHashMapRemove0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapRemove0007';
       try {
         const hashMap = new HashMap<string, string>();
@@ -1164,7 +1164,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapClear0001', 0, () => {
+    it('testHashMapClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapClear0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1186,7 +1186,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapClear0002', 0, () => {
+    it('testHashMapClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapClear0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1209,7 +1209,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapClear0003', 0, () => {
+    it('testHashMapClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapClear0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1231,7 +1231,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapKeys0001', 0, () => {
+    it('testHashMapKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapKeys0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1251,7 +1251,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapKeys0002', 0, () => {
+    it('testHashMapKeys0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapKeys0002';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1282,7 +1282,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapValues0001', 0, () => {
+    it('testHashMapValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapValues0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1302,7 +1302,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapValues0002', 0, () => {
+    it('testHashMapValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapValues0002';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1333,7 +1333,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0001', 0, () => {
+    it('testHashMapReplace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0001';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1352,7 +1352,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0002', 0, () => {
+    it('testHashMapReplace0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0002';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1371,7 +1371,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0003', 0, () => {
+    it('testHashMapReplace0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0003';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1390,7 +1390,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0004', 0, () => {
+    it('testHashMapReplace0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0004';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1409,7 +1409,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0005', 0, () => {
+    it('testHashMapReplace0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0005';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1429,7 +1429,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0006', 0, () => {
+    it('testHashMapReplace0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0006';
       try {
         const hashMap = new HashMap<string, number>();
@@ -1449,7 +1449,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapReplace0007', 0, () => {
+    it('testHashMapReplace0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapReplace0007';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1469,13 +1469,13 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapForeach0001', 0, () => {
+    it('testHashMapForeach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapForeach0001';
       try {
         const hashMap = new HashMap<number, number>();
         hashMap.forEach((value?: number, key?: number) => {
           expect(hashMap.length).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1490,7 +1490,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapForeach0002', 0, () => {
+    it('testHashMapForeach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapForeach0002';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1502,7 +1502,7 @@ export default function HashMapTest() {
           expect(key).assertEqual(index);
           expect(value).assertEqual(index);
           index++;
-        })
+        });
         expect(hashMap.length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1518,7 +1518,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapForeach0003', 0, () => {
+    it('testHashMapForeach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapForeach0003';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1526,8 +1526,8 @@ export default function HashMapTest() {
         hashMap.set(1, 1);
         hashMap.set(2, 2);
         hashMap.forEach((value?: number, key?: number) => {
-          expect(hashMap.remove(key)).assertEqual(value)
-        })
+          expect(hashMap.remove(key)).assertEqual(value);
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1542,7 +1542,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapForeach0004', 0, () => {
+    it('testHashMapForeach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapForeach0004';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1550,8 +1550,8 @@ export default function HashMapTest() {
         hashMap.set(1, 1);
         hashMap.set(2, 2);
         hashMap.forEach((value?: number, key?: number) => {
-          expect(hashMap.replace(key, value ? value + 1 : 0)).assertEqual(true)
-        })
+          expect(hashMap.replace(key, value ? value + 1 : 0)).assertEqual(true);
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1566,7 +1566,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapForeach0005', 0, () => {
+    it('testHashMapForeach0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapForeach0005';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1575,8 +1575,105 @@ export default function HashMapTest() {
         hashMap.set(2, 2);
         hashMap.forEach((value?: number, key?: number) => {
           hashMap.clear();
-          expect(hashMap.length).assertEqual(0)
-        })
+          expect(hashMap.length).assertEqual(0);
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHMAP_FOREACH_0600
+     * @tc.name      : testHashMapForeach0006
+     * @tc.desc      : Testing HashMap has foreach if no params check length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashMapForeach0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashMapForeach0006';
+      try {
+        const hashMap = new HashMap<number, number>();
+        hashMap.set(0, 0);
+        hashMap.set(1, 1);
+        hashMap.set(2, 2);
+        hashMap.forEach(() => {
+          expect(hashMap.length).assertEqual(3);
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHMAP_FOREACH_0700
+     * @tc.name      : testHashMapForeach0007
+     * @tc.desc      : Testing HashMap has foreach if one param check length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashMapForeach0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashMapForeach0007';
+      try {
+        const hashMap = new HashMap<number, number>();
+        hashMap.set(0, 0);
+        hashMap.forEach((value) => {
+          expect(hashMap.length).assertEqual(1);
+          expect(value?.toString()).assertEqual("0");
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHMAP_FOREACH_0800
+     * @tc.name      : testHashMapForeach0008
+     * @tc.desc      : Testing HashMap has foreach ArgThis
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashMapForeach0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashMapForeach0008';
+      try {
+        const hashMap = new HashMap<number, number>();
+        const hashMapNew = new HashMap<number, number>();
+        hashMap.set(0, 0);
+        hashMapNew.set(0, 0);
+        hashMap.forEach((value) => {
+          expect(hashMap.length).assertEqual(1);
+          expect(value?.toString()).assertEqual("0");
+        }, hashMapNew);
+        expect(hashMapNew.length).assertEqual(1);
+        expect(hashMapNew.get(0).toString()).assertEqual("0");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHMAP_FOREACH_0900
+     * @tc.name      : testHashMapForeach0009
+     * @tc.desc      : Testing HashMap has foreach ArgThis
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashMapForeach0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashMapForeach0009';
+      try {
+        const hashMap = new HashMap<number, number>();
+        hashMap.set(0, 0);
+        hashMap.forEach((value, index, hashMap: HashMap<number, number>) => {
+          expect(hashMap.length).assertEqual(1);
+          expect(value?.toString()).assertEqual("0");
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1591,7 +1688,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapEntries0001', 0, () => {
+    it('testHashMapEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapEntries0001';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1615,7 +1712,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapEntries0002', 0, () => {
+    it('testHashMapEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapEntries0002';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1648,7 +1745,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapEntries0003', 0, () => {
+    it('testHashMapEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapEntries0003';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1677,7 +1774,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapEntries0004', 0, () => {
+    it('testHashMapEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapEntries0004';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1708,7 +1805,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapEntries0005', 0, () => {
+    it('testHashMapEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapEntries0005';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1738,7 +1835,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSymbolIterator0001', 0, () => {
+    it('testHashMapSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSymbolIterator0001';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1762,7 +1859,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapSymbolIterator0002', 0, () => {
+    it('testHashMapSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapSymbolIterator0002';
       try {
         const hashMap = new HashMap<number, number>();
@@ -1795,7 +1892,7 @@ export default function HashMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashMapCustom0001', 0, () => {
+    it('testHashMapCustom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashMapCustom0001';
       try {
         class Temp {

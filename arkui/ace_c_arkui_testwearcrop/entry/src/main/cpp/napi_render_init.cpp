@@ -19,6 +19,9 @@
 #include "manager/plugin_manager.h"
 #include "calendarpicker/calendarpicker_onchange_test.h"
 #include "calendarpicker/calendarpicker_enabled_test.h"
+#include "textarea/textarea_onpaste_test.h"
+#include "textinput/textinput_oncut_test.h"
+#include "textinput/textinput_onpaste_test.h"
 
 
 namespace ArkUICapiTest {
@@ -36,6 +39,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"calendarPickerOnChangeTest", nullptr, CalendarPickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},   
         {"calendarPickerEnabledTest", nullptr, CalendarPickerEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnPasteTest", nullptr, TextAreaOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textInputOnCutTest", nullptr, TextInputOnCutTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputOnPasteTest", nullptr, TextInputOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

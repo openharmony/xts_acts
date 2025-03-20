@@ -14,7 +14,7 @@
  */
 import HiAppEventV9 from '@ohos.hiviewdfx.hiAppEvent'
 import HiAppEvent from '@ohos.hiAppEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import Constant from 'deccjsunit/src/Constant'
 
 function createError(code, message) {
@@ -600,13 +600,80 @@ describe('HiAppEventApiTest', function () {
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2500
      * @tc.name testHiAppEventApi25
+     * @tc.desc Error code 401 is returned when the value param item value is invalid.
+     */
+    it('testHiAppEventApi25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info('testHiAppEventApi25 start')
+        try {
+            HiAppEventV9.configure(null);
+        } catch (error) {
+            console.error(`testHiAppEventApi25  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+        }
+        console.info('testHiAppEventApi25 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2600
+     * @tc.name testHiAppEventApi26
+     * @tc.desc Error code 401 is returned when the value param item value is invalid.
+     */
+    it('testHiAppEventApi26', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info('testHiAppEventApi26 start')
+        try {
+            HiAppEventV9.configure({ disable: 123 });
+        } catch (error) {
+            console.error(`testHiAppEventApi26  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+        }
+        console.info('testHiAppEventApi26 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2700
+     * @tc.name testHiAppEventApi27
+     * @tc.desc Error code 401 is returned when the value param item value is invalid.
+     */
+    it('testHiAppEventApi27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info('testHiAppEventApi27 start')
+        try {
+            HiAppEventV9.configure({ maxStorage: null });
+        } catch (error) {
+            console.error(`testHiAppEventApi27  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+        }
+        console.info('testHiAppEventApi27 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2800
+     * @tc.name testHiAppEventApi28
+     * @tc.desc Error code 11103001 is returned when the maxStorage param item value is invalid.
+     */
+    it('testHiAppEventApi28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info('testHiAppEventApi28 start')
+        try {
+            HiAppEventV9.configure({ maxStorage: "**22" });
+        } catch (error) {
+            console.error(`testHiAppEventApi28  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 11103001).assertTrue()
+        }
+        console.info('testHiAppEventApi28 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2900
+     * @tc.name testHiAppEventApi29
      * @tc.desc HiAppEvent with predefined event and param.
      */
-    it('testHiAppEventApi25', 3, async function (done) {
-    console.info('testHiAppEventApi25 start')
+    it('testHiAppEventApi29', 3, async function (done) {
+    console.info('testHiAppEventApi29 start')
     HiAppEvent.write(HiAppEvent.Event.USER_LOGIN, HiAppEvent.EventType.BEHAVIOR,
-        {[HiAppEvent.Param.USER_ID]: 'userlogin', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
-        [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        HiAppEvent.Param = {
+            USER_ID: 'userlogin',
+            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
+            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+        },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
             if (err) {
@@ -621,8 +688,11 @@ describe('HiAppEventApiTest', function () {
         });
 
     HiAppEvent.write(HiAppEvent.Event.USER_LOGOUT, HiAppEvent.EventType.BEHAVIOR,
-        {[HiAppEvent.Param.USER_ID]: 'userlogout', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
-        [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        HiAppEvent.Param = {
+            USER_ID: 'userlogout',
+            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
+            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+        },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
             if (err) {
@@ -637,8 +707,11 @@ describe('HiAppEventApiTest', function () {
         });
 
     HiAppEvent.write(HiAppEvent.Event.DISTRIBUTED_SERVICE_START, HiAppEvent.EventType.BEHAVIOR,
-        {[HiAppEvent.Param.USER_ID]: 'serviceStart', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
-        [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        HiAppEvent.Param = {
+            USER_ID: 'serviceStart',
+            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
+            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+        },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
             if (err) {
@@ -651,16 +724,16 @@ describe('HiAppEventApiTest', function () {
                 done();
             }
         });
-    console.info('testHiAppEventApi25 end')
+    console.info('testHiAppEventApi29 end')
     })
 
     /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2600
-     * @tc.name testHiAppEventApi26
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3000
+     * @tc.name testHiAppEventApi30
      * @tc.desc HiAppEvent write by Promise.
      */
-    it('testHiAppEventApi26', 2, async function (done) {
-        console.info('testHiAppEventApi26 start')
+    it('testHiAppEventApi30', 2, async function (done) {
+        console.info('testHiAppEventApi30 start')
         HiAppEventV9.write({
             domain: "test_domain",
             name: "write",
@@ -679,16 +752,16 @@ describe('HiAppEventApiTest', function () {
             console.error(`failed to write event because ${err.code}`);
             expect().assertFail()
         });
-        console.info('testHiAppEventApi26 end')
+        console.info('testHiAppEventApi30 end')
     })
 
     /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2700
-     * @tc.name testHiAppEventApi27
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3100
+     * @tc.name testHiAppEventApi31
      * @tc.desc HiAppEvent write by  callback.
      */
-    it('testHiAppEventApi27', 2, async function (done) {
-        console.info('testHiAppEventApi27 start')
+    it('testHiAppEventApi31', 2, async function (done) {
+        console.info('testHiAppEventApi31 start')
         HiAppEventV9.write({
             domain: "test_domain",
             name: "test_event",
@@ -709,130 +782,22 @@ describe('HiAppEventApiTest', function () {
             expect(value == 0).assertTrue()
             done();
         });
-        console.info('testHiAppEventApi27 end')
-    })
-
-    /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2800
-     * @tc.name testHiAppEventApi28
-     * @tc.desc 验证Write(API9)接口传入参数为特殊number，中文字符，可调用成功，无返回错误码.
-     */
-    it('testHiAppEventApi28', 2, async function (done) {
-        console.info('testHiAppEventApi28 start')
-        HiAppEventV9.write({
-            domain: "test_domain",
-            name: "test_event",
-            eventType: HiAppEventV9.EventType.FAULT,
-            params: {
-                "key_max": Number.MAX_VALUE, "key_min": Number.MIN_VALUE, "key_chinese": "中文"
-            }
-        }, (err, value) => {
-            if (err) {
-                console.error(`testHiAppEventApi28 failed to write event because ${err.code}`);
-                expect().assertFail();
-                done();
-            }
-            console.log(`testHiAppEventApi28 success to write event: ${value}`)
-            expect(value == 0).assertTrue()
-            done();
-        });
-        console.info('testHiAppEventApi28 end')
-    })
-
-    /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2900
-     * @tc.name testHiAppEventApi29
-     * @tc.desc 验证Write(API9)接口成功，传入参数名称可以符合规格.
-     */
-    it('testHiAppEventApi29', 2, async function (done) {
-        console.info('testHiAppEventApi29 start')
-        HiAppEventV9.write({
-            domain: "test_domain",
-            name: "test_event",
-            eventType: HiAppEventV9.EventType.FAULT,
-            params: {
-                "kEy9_int": 100, "KEy99_strinG_KEY": "demo", "$kEy9_bool9":true
-            }
-        }, (err, value) => {
-            if (err) {
-                console.error(`testHiAppEventApi29 failed to write event because ${err.code}`);
-                expect().assertFail();
-                done();
-            }
-            console.log(`testHiAppEventApi29 success to write event: ${value}`)
-            expect(value == 0).assertTrue()
-            done();
-        });
-        console.info('testHiAppEventApi29 end')
-    })
-
-    /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3000
-     * @tc.name testHiAppEventApi30
-     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，大写字母为开头和结尾.
-     */
-    it('testHiAppEventApi30', 2, async function (done) {
-        console.info('testHiAppEventApi30 start')
-        HiAppEventV9.write({
-            domain: "test_domain",
-            name: "TEst9_evenT",
-            eventType: HiAppEventV9.EventType.FAULT,
-            params: {
-                "key_int": 100, "key_string": "demo"
-            }
-        }, (err, value) => {
-            if (err) {
-                console.error(`testHiAppEventApi30 failed to write event because ${err.code}`);
-                expect().assertFail();
-                done();
-            }
-            console.log(`testHiAppEventApi30 success to write event: ${value}`)
-            expect(value == 0).assertTrue()
-            done();
-        });
-        console.info('testHiAppEventApi30 end')
-    })
-
-    /**
-     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3100
-     * @tc.name testHiAppEventApi31
-     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，小写字母为开头和结尾.
-     */
-    it('testHiAppEventApi31', 2, async function (done) {
-        console.info('testHiAppEventApi31 start')
-        HiAppEventV9.write({
-            domain: "test_domain",
-            name: "tEst9_event",
-            eventType: HiAppEventV9.EventType.FAULT,
-            params: {
-                "key_int": 100, "key_string": "demo"
-            }
-        }, (err, value) => {
-            if (err) {
-                console.error(`testHiAppEventApi31 failed to write event because ${err.code}`);
-                expect().assertFail();
-                done();
-            }
-            console.log(`testHiAppEventApi31 success to write event: ${value}`)
-            expect(value == 0).assertTrue()
-            done();
-        });
         console.info('testHiAppEventApi31 end')
     })
 
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3200
      * @tc.name testHiAppEventApi32
-     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，$开头,以数字结尾，长度48字符.
+     * @tc.desc 验证Write(API9)接口传入参数为特殊number，中文字符，可调用成功，无返回错误码.
      */
     it('testHiAppEventApi32', 2, async function (done) {
         console.info('testHiAppEventApi32 start')
         HiAppEventV9.write({
             domain: "test_domain",
-            name: "$tEst9_event9_tEst9_event9_tEst9_event9_tEst9_e9",
+            name: "test_event",
             eventType: HiAppEventV9.EventType.FAULT,
             params: {
-                "key_int": 100, "key_string": "demo"
+                "key_max": Number.MAX_VALUE, "key_min": Number.MIN_VALUE, "key_chinese": "中文"
             }
         }, (err, value) => {
             if (err) {
@@ -850,10 +815,118 @@ describe('HiAppEventApiTest', function () {
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3300
      * @tc.name testHiAppEventApi33
+     * @tc.desc 验证Write(API9)接口成功，传入参数名称可以符合规格.
+     */
+    it('testHiAppEventApi33', 2, async function (done) {
+        console.info('testHiAppEventApi33 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "test_event",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "kEy9_int": 100, "KEy99_strinG_KEY": "demo", "$kEy9_bool9":true
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi33 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi33 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi33 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3400
+     * @tc.name testHiAppEventApi34
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，大写字母为开头和结尾.
+     */
+    it('testHiAppEventApi34', 2, async function (done) {
+        console.info('testHiAppEventApi34 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "TEst9_evenT",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi34 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi34 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi34 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3500
+     * @tc.name testHiAppEventApi35
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，小写字母为开头和结尾.
+     */
+    it('testHiAppEventApi35', 2, async function (done) {
+        console.info('testHiAppEventApi35 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "tEst9_event",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi35 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi35 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi35 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3600
+     * @tc.name testHiAppEventApi36
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，$开头,以数字结尾，长度48字符.
+     */
+    it('testHiAppEventApi36', 2, async function (done) {
+        console.info('testHiAppEventApi36 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "$tEst9_event9_tEst9_event9_tEst9_event9_tEst9_e9",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi36 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi36 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi36 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3700
+     * @tc.name testHiAppEventApi37
      * @tc.desc HiAppEvent configure interface with disable option set false.
      */
-    it('testHiAppEventApi33', 3, async function (done) {
-        console.info('testHiAppEventApi33 start')
+    it('testHiAppEventApi37', 3, async function (done) {
+        console.info('testHiAppEventApi37 start')
         try {
             HiAppEventV9.configure({disable: true});
             HiAppEventV9.configure({});
@@ -863,21 +936,21 @@ describe('HiAppEventApiTest', function () {
             })
             expect(true).assertTrue()
         } catch (err) {
-            console.info(`testHiAppEventApi33 err ,err code is ${err.code}, err message is ${err.message}`)
+            console.info(`testHiAppEventApi37 err ,err code is ${err.code}, err message is ${err.message}`)
             expect().assertFail();
         }
-        console.info('testHiAppEventApi33 end')
+        console.info('testHiAppEventApi37 end')
         done()
     })
     
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0100
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0100
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3800
+     * @tc.name: testHiAppEventApi38
      * @tc.desc: Test the SetEventConfig interface.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0100', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0100 start');
+    it('testHiAppEventApi38', 0, async function (done) {
+        console.info('testHiAppEventApi38 start');
         let configInfo1 = {  // default, collect stack and trace
             "log_type": "0",
         };
@@ -894,17 +967,17 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo1, null, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo2, null, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo3, null, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0100 end');
+        console.info('testHiAppEventApi38 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0200
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0200
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3900
+     * @tc.name: testHiAppEventApi39
      * @tc.desc: Test the SetEventConfig interface with invalid name.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0200', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0200 start');
+    it('testHiAppEventApi39', 0, async function (done) {
+        console.info('testHiAppEventApi39 start');
         let configInfo = {
             "log_type": "0",
         };
@@ -916,33 +989,33 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("", configInfo, expectErr2, done);
         setEventConfigV9Test(null, configInfo, expectErr2, done);
         setEventConfigV9Test("INVALID_NAME", configInfo, expectErr2, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0200 end');
+        console.info('testHiAppEventApi39 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0300
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0300
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4000
+     * @tc.name: testHiAppEventApi40
      * @tc.desc: Test the SetEventConfig interface with invalid config type.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0300', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0300 start');
+    it('testHiAppEventApi40', 0, async function (done) {
+        console.info('testHiAppEventApi40 start');
         let expectErr = createError2("value", "object");
         setEventConfigV9TestCatch("MAIN_THREAD_JANK", 0, expectErr, done);
         setEventConfigV9TestCatch("MAIN_THREAD_JANK", "", expectErr, done);
         setEventConfigV9TestCatch("MAIN_THREAD_JANK", true, expectErr, done);
         setEventConfigV9TestCatch("MAIN_THREAD_JANK", null, expectErr, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0300 end');
+        console.info('testHiAppEventApi40 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0400
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0400
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4100
+     * @tc.name: testHiAppEventApi41
      * @tc.desc: Test the SetEventConfig interface when the config is empty.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0400', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0400 start');
+    it('testHiAppEventApi41', 0, async function (done) {
+        console.info('testHiAppEventApi41 start');
         let configInfo = {};
         try {
             setEventConfigV9Test("MAIN_THREAD_JANK", configInfo, null, done);
@@ -950,17 +1023,17 @@ describe('HiAppEventApiTest', function () {
             expect(err.message == "Cannot read property then of undefined").assertTrue();
             done();
         }
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0400 end');
+        console.info('testHiAppEventApi41 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0500
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0500
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4200
+     * @tc.name: testHiAppEventApi42
      * @tc.desc: Error code 401 is returned when the config log_type is invalid.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0500', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0500 start');
+    it('testHiAppEventApi42', 0, async function (done) {
+        console.info('testHiAppEventApi42 start');
         let configInfo1 = {
             "log_type": "-1",
         };
@@ -978,17 +1051,17 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo2, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo3, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo4, expectErr, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0500 end');
+        console.info('testHiAppEventApi42 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0600
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0600
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4300
+     * @tc.name: testHiAppEventApi43
      * @tc.desc: Error code 401 is returned when the config log_type=1, but item number is not 5.
      * @tc.type: FUNC
      */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0600', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0600 start');
+    it('testHiAppEventApi43', 0, async function (done) {
+        console.info('testHiAppEventApi43 start');
         let configInfo = {
             "log_type": "1",
             "sample_interval": "100",
@@ -996,17 +1069,17 @@ describe('HiAppEventApiTest', function () {
         };
         let expectErr = createError(401, "Invalid param value for event config.");
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo, expectErr, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0600 end');
+        console.info('testHiAppEventApi43 end');
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Setconfig_0700
-     * @tc.name: SUB_DFX_DFT_HiAppEvent_Setconfig_0700
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4400
+     * @tc.name: testHiAppEventApi44
      * @tc.desc: Error code 401 is returned when the value param item value is invalid.
      * @tc.type: FUNC
     */
-    it('SUB_DFX_DFT_HiAppEvent_Setconfig_0700', 0, async function (done) {
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0700 start');
+    it('testHiAppEventApi44', 0, async function (done) {
+        console.info('testHiAppEventApi44 start');
         let configInfo1 = {
             "log_type": "1",
             "ignore_startup_time": "10",
@@ -1048,7 +1121,7 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo3, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo4, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo5, expectErr, done);
-        console.info('SUB_DFX_DFT_HiAppEvent_Setconfig_0700 end');
+        console.info('testHiAppEventApi44 end');
     });
 })
 }

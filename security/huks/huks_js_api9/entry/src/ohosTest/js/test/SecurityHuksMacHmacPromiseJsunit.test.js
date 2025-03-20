@@ -45,6 +45,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
         huks.getKeyItemProperties(srcKeyAlies, HuksOptions)
             .then((data) => {
                 console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+                expect(data.properties != null).assertTrue();
             })
             .catch(error => {
                 console.error(`promise: getKeyItemProperties failed, code: ${error.code}, msg: ${error.message}`);

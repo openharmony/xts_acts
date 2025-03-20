@@ -15,7 +15,6 @@
           "MainAbility/pages/components/ForEachPage",
           "MainAbility/pages/components/LazyForEachPage",
           "MainAbility/pages/components/LoadingProgressPage",
-          "MainAbility/pages/components/ProgressPage",
           "MainAbility/pages/components/MenuPage",
           "MainAbility/pages/components/PatternLockPage",
           "MainAbility/pages/components/QRCodePage",

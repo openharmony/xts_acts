@@ -90,6 +90,6 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
     include_dirs += [ "$histreamer_root_dir/video_processing_engine/framework/algorithm/detail_enhancer/skia/include" ]
   }
 
-  part_name = "av_codec"
+  part_name = "video_processing_engine"
   subsystem_name = "multimedia"
 }

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { Deque } from '@kit.ArkTS';
 
 export default function DequeTest() {
@@ -50,7 +50,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertFront0001', 0, () => {
+    it('testInsertFront0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertFront0001";
       try {
         let deque: Deque<string> = new Deque();
@@ -73,7 +73,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertFront0002', 0, () => {
+    it('testInsertFront0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertFront0002";
       try {
         let deque: Deque<number> = new Deque();
@@ -96,7 +96,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertFront0003', 0, () => {
+    it('testInsertFront0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertFront0003";
       try {
         let deque: Deque<object> = new Deque();
@@ -128,7 +128,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertFront0004', 0, () => {
+    it('testInsertFront0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertFront0004";
       try {
         let deque: Deque<number | string | object> = new Deque();
@@ -155,7 +155,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertEnd0005', 0, () => {
+    it('testInsertEnd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertEnd0005";
       try {
         let deque: Deque<string> = new Deque();
@@ -178,7 +178,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertEnd0006', 0, () => {
+    it('testInsertEnd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertEnd0006";
       try {
         let deque: Deque<number> = new Deque();
@@ -201,7 +201,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertEnd0007', 0, () => {
+    it('testInsertEnd0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertEnd0007";
       try {
         let deque: Deque<object> = new Deque();
@@ -233,7 +233,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInsertEnd0008', 0, () => {
+    it('testInsertEnd0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInsertEnd0008";
       try {
         let deque: Deque<number | string | object> = new Deque();
@@ -261,7 +261,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0009', 0, () => {
+    it('testHas0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0009";
       try {
         let deque: Deque<string> = new Deque();
@@ -282,7 +282,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0010', 0, () => {
+    it('testHas0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0010";
       try {
         let deque: Deque<number> = new Deque();
@@ -303,7 +303,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0011', 0, () => {
+    it('testHas0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0011";
       try {
         let deque: Deque<object> = new Deque();
@@ -327,7 +327,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesPopFirst0012', 0, () => {
+    it('tesPopFirst0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesPopFirst0012";
       try {
         let deque: Deque<number> = new Deque();
@@ -352,7 +352,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesPopFirst0013', 0, () => {
+    it('tesPopFirst0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesPopFirst0013";
       try {
         let deque: Deque<number> = new Deque();
@@ -373,15 +373,15 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesPopLast0014', 0, () => {
+    it('tesPopLast0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesPopLast0014";
       try {
         let deque: Deque<number> = new Deque();
         deque.insertFront(1);
-        deque.insertFront(2)
+        deque.insertFront(2);
         deque.insertEnd(4);
-        deque.insertFront(3)
-        deque.popLast()
+        deque.insertFront(3);
+        deque.popLast();
         let result = deque.getLast();
         expect(result).assertEqual(1);
       } catch (err) {
@@ -398,11 +398,11 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesGetFirst0015', 0, () => {
+    it('tesGetFirst0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesGetFirst0015";
       try {
         let deque: Deque<number> = new Deque();
-        deque.popLast()
+        deque.popLast();
         let result = deque.getFirst();
         expect(result).assertEqual(undefined);
       } catch (err) {
@@ -419,14 +419,14 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesGetLast0016', 0, () => {
+    it('tesGetLast0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesGetLast0016";
       try {
         let deque: Deque<number> = new Deque();
         deque.insertFront(1);
-        deque.insertFront(2)
+        deque.insertFront(2);
         deque.insertEnd(4);
-        deque.insertFront(3)
+        deque.insertFront(3);
         let result = deque.getLast();
         expect(result).assertEqual(4);
       } catch (err) {
@@ -443,7 +443,7 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesGetLast0017', 0, () => {
+    it('tesGetLast0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesGetLast0017";
       try {
         let deque: Deque<number> = new Deque();
@@ -463,24 +463,59 @@ export default function DequeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('tesGetLast0018', 0, () => {
+    it('tesGetLast0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "tesGetLast0018";
       try {
         let deque: Deque<number | string | object> = new Deque();
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        deque.insertEnd(a)
-        deque.insertEnd(b)
-        deque.insertEnd(c)
+        let b = 'a';
+        let c = 1;
+        deque.insertEnd(a);
+        deque.insertEnd(b);
+        deque.insertEnd(c);
         deque.forEach((item, index) => {
-          let result = item
-          let itemIndex = index
+          let result = item;
+          let itemIndex = index;
           expect(result).assertEqual(item);
           expect(itemIndex).assertEqual(itemIndex);
         })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_DEQUE_1800
+     * @tc.name       : tesGetLast0018
+     * @tc.desc       : Test the function of the interface isEmpty.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('tesForeach0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "tesGetLast0019";
+      try {
+        let deque: Deque<number | string | object> = new Deque();
+        let res: Deque<number | string | object> = new Deque();
+        let a: C1 = {
+          name: "Dylon", age: "13"
+        };
+        let b = 'a'
+        let c = 1
+        deque.insertEnd(a);
+        deque.insertEnd(b);
+        deque.insertEnd(c);
+        deque.forEach((item, index) => {
+          let result = item;
+          let itemIndex = index;
+          expect(result).assertEqual(item);
+          expect(itemIndex).assertEqual(itemIndex);
+        },res)
+        expect(JSON.stringify(deque)).assertEqual('{"0":{"name":"Dylon","age":"13"},"1":"a","2":1}')
+        expect(JSON.stringify(res)).assertEqual("{}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

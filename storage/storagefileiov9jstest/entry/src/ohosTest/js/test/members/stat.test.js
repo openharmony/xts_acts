@@ -17,6 +17,7 @@ import {
     fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBigInt,
     describe, it, expect,
   } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 const LocationType = {
   'LOCAl': 1,
@@ -36,7 +37,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_stat_sync_000', 0, async function () {
+  it('fileIO_stat_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -65,7 +66,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_001', 0, async function () {
+  it('fileIO_stat_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_001');
 
     try {
@@ -86,7 +87,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_stat_sync_002', 0, async function () {
+   it('fileIO_stat_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 
     try {
       fileIO.statSync();
@@ -98,6 +99,32 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_0300
+   * @tc.name fileIO_stat_sync_003
+   * @tc.desc Test statSync() interfaces.
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_stat_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let fpath = await nextFileName('fileIO_stat_sync_003');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      fileIO.closeSync(file.fd);
+      fileIO.statSync(file.fd);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_stat_sync_003 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+    }
+  });
+
+
+  /**
    * @tc.number SUB_DF_FILEIO_STAT_SYNC_INO_0000
    * @tc.name fileIO_stat_sync_ino_000
    * @tc.desc Test the ino member of class Stat.
@@ -107,7 +134,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_ino_000', 0, async function () {
+  it('fileIO_stat_sync_ino_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -136,7 +163,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_mode_000', 0, async function () {
+  it('fileIO_stat_sync_mode_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_mode_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -165,7 +192,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_uid_000', 0, async function () {
+  it('fileIO_stat_sync_uid_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_uid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -194,7 +221,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_gid_000', 0, async function () {
+  it('fileIO_stat_sync_gid_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_gid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -223,7 +250,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_size_000', 0, async function () {
+  it('fileIO_stat_sync_size_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_size_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -252,7 +279,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_atime_000', 0, async function () {
+  it('fileIO_stat_sync_atime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_atime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -281,7 +308,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_mtime_000', 0, async function () {
+  it('fileIO_stat_sync_mtime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_mtime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -310,7 +337,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_ctime_000', 0, async function () {
+  it('fileIO_stat_sync_ctime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_ctime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -339,7 +366,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_block_device_000', 0, async function () {
+  it('fileIO_stat_sync_is_block_device_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_block_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -368,7 +395,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_block_device_001', 0, async function () {
+  it('fileIO_stat_sync_is_block_device_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_block_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -392,7 +419,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_block_device_002', 0, async function () {
+  it('fileIO_stat_sync_is_block_device_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_block_device_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath);
@@ -419,7 +446,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_character_device_000', 0, async function () {
+  it('fileIO_stat_sync_is_character_device_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_character_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -448,7 +475,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_character_device_001', 0, async function () {
+  it('fileIO_stat_sync_is_character_device_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_character_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -472,7 +499,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_character_device_002', 0, async function () {
+  it('fileIO_stat_sync_is_character_device_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_character_device_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath);
@@ -498,7 +525,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_directory_000', 0, async function () {
+  it('fileIO_stat_sync_is_directory_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_directory_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -527,7 +554,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_directory_001', 0, async function () {
+  it('fileIO_stat_sync_is_directory_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_directory_001');
 
     try {
@@ -556,7 +583,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_directory_002', 0, async function () {
+  it('fileIO_stat_sync_is_directory_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_directory_002') + 'd';
 
     try {
@@ -580,7 +607,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_directory_003', 0, async function () {
+  it('fileIO_stat_sync_is_directory_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_directory_003') + 'd';
     fileIO.mkdirSync(dpath);
     let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
@@ -606,7 +633,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_fifo_000', 0, async function () {
+  it('fileIO_stat_sync_is_fifo_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_fifo_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -635,7 +662,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_fifo_001', 0, async function () {
+  it('fileIO_stat_sync_is_fifo_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_fifo_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -659,7 +686,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_fifo_002', 0, async function () {
+  it('fileIO_stat_sync_is_fifo_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_fifo_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath);
@@ -684,7 +711,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_file_000', 0, async function () {
+  it('fileIO_stat_sync_is_file_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_file_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -713,7 +740,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_file_001', 0, async function () {
+  it('fileIO_stat_sync_is_file_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_file_001');
 
     try {
@@ -742,7 +769,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_file_002', 0, async function () {
+  it('fileIO_stat_sync_is_file_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_file_002');
 
     try {
@@ -766,7 +793,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_file_003', 0, async function () {
+  it('fileIO_stat_sync_is_file_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_stat_sync_is_file_003');
     fileIO.mkdirSync(dpath);
     let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
@@ -792,7 +819,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_socket_000', 0, async function () {
+  it('fileIO_stat_sync_is_socket_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_socket_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -821,7 +848,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_socket_001', 0, async function () {
+  it('fileIO_stat_sync_is_socket_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_socket_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -845,7 +872,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_socket_002', 0, async function () {
+  it('fileIO_stat_sync_is_socket_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_socket_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath);
@@ -870,7 +897,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_symbolic_link_000', 0, async function () {
+  it('fileIO_stat_sync_is_symbolic_link_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_symbolic_link_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -899,7 +926,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_symbolic_link_001', 0, async function () {
+  it('fileIO_stat_sync_is_symbolic_link_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_symbolic_link_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -923,7 +950,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_is_symbolic_link_002', 0, async function () {
+  it('fileIO_stat_sync_is_symbolic_link_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_is_symbolic_link_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath);
@@ -949,7 +976,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_stat_async_000', 0, async function (done) {
+  it('fileIO_stat_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -978,7 +1005,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_stat_async_001', 0, async function (done) {
+  it('fileIO_stat_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1008,7 +1035,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_002', 0, async function (done) {
+  it('fileIO_stat_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1048,7 +1075,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_003', 0, async function (done) {
+  it('fileIO_stat_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_003');
 
     try {
@@ -1071,7 +1098,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_stat_async_004', 0, async function (done) {
+   it('fileIO_stat_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_004');
 
     try {
@@ -1098,7 +1125,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_005', 0, async function (done) {
+  it('fileIO_stat_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.stat(-1)
@@ -1119,7 +1146,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_006', 0, async function (done) {
+  it('fileIO_stat_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       fileIO.stat(-1, (err) => {
@@ -1133,6 +1160,64 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0700
+   * @tc.name fileIO_stat_async_007
+   * @tc.desc Test stat() interface. Promise.then().catch()
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_stat_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_007');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      fileIO.closeSync(file.fd);
+      let stat = await fileIO.stat(file.fd);
+      console.log('fileIO_stat_async_007 stat.size ' + stat.size);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_stat_async_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      fileIO.unlinkSync(fpath);
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0800
+   * @tc.name fileIO_stat_async_008
+   * @tc.desc Test stat() interface. Callback.
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      fileIO.closeSync(file.fd);
+      fileIO.stat(file.fd, (err) => {
+        if (err) {
+          console.log('fileIO_stat_async_008 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_stat_async_008 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_STAT_ASYNC_INO_0000
    * @tc.name fileIO_stat_async_ino_000
    * @tc.desc Test the ino member of class Stat. Promise.
@@ -1142,7 +1227,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ino_000', 0, async function (done) {
+  it('fileIO_stat_async_ino_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1172,7 +1257,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ino_001', 0, async function (done) {
+  it('fileIO_stat_async_ino_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ino_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1212,7 +1297,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mode_000', 0, async function (done) {
+  it('fileIO_stat_async_mode_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mode_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1242,7 +1327,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mode_001', 0, async function (done) {
+  it('fileIO_stat_async_mode_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mode_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1282,7 +1367,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_uid_000', 0, async function (done) {
+  it('fileIO_stat_async_uid_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_uid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1312,7 +1397,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_uid_001', 0, async function (done) {
+  it('fileIO_stat_async_uid_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_uid_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1353,7 +1438,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_gid_000', 0, async function (done) {
+  it('fileIO_stat_async_gid_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_gid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1383,7 +1468,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_gid_001', 0, async function (done) {
+  it('fileIO_stat_async_gid_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_gid_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1423,7 +1508,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_size_000', 0, async function (done) {
+  it('fileIO_stat_async_size_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_size_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1453,7 +1538,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_size_001', 0, async function (done) {
+  it('fileIO_stat_async_size_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_size_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1493,7 +1578,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_atime_000', 0, async function (done) {
+  it('fileIO_stat_async_atime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_atime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1523,7 +1608,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_atime_001', 0, async function (done) {
+  it('fileIO_stat_async_atime_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_atime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1563,7 +1648,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mtime_000', 0, async function (done) {
+  it('fileIO_stat_async_mtime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mtime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1593,7 +1678,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mtime_001', 0, async function (done) {
+  it('fileIO_stat_async_mtime_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mtime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1633,7 +1718,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ctime_000', 0, async function (done) {
+  it('fileIO_stat_async_ctime_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ctime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1663,7 +1748,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ctime_001', 0, async function (done) {
+  it('fileIO_stat_async_ctime_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ctime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1703,7 +1788,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_block_device_000', 0, async function (done) {
+  it('fileIO_stat_async_is_block_device_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_block_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1733,7 +1818,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_block_device_001', 0, async function (done) {
+  it('fileIO_stat_async_is_block_device_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_block_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1773,7 +1858,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_character_device_000', 0, async function (done) {
+  it('fileIO_stat_async_is_character_device_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_character_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1803,7 +1888,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_character_device_001', 0, async function (done) {
+  it('fileIO_stat_async_is_character_device_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_character_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1843,7 +1928,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_directory_000', 0, async function (done) {
+  it('fileIO_stat_async_is_directory_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_directory_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1873,7 +1958,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_directory_001', 0, async function (done) {
+  it('fileIO_stat_async_is_directory_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_stat_async_is_directory_001') + 'd';
 
     try {
@@ -1903,7 +1988,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_directory_002', 0, async function (done) {
+  it('fileIO_stat_async_is_directory_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_stat_async_is_directory_002') + 'd';
 
     try {
@@ -1943,7 +2028,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_fifo_000', 0, async function (done) {
+  it('fileIO_stat_async_is_fifo_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_fifo_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1973,7 +2058,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_fifo_001', 0, async function (done) {
+  it('fileIO_stat_async_is_fifo_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_fifo_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2013,7 +2098,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_file_000', 0, async function (done) {
+  it('fileIO_stat_async_is_file_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_file_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2043,7 +2128,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_file_001', 0, async function (done) {
+  it('fileIO_stat_async_is_file_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_file_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2083,7 +2168,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_file_002', 0, async function (done) {
+  it('fileIO_stat_async_is_file_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_stat_async_is_file_002');
 
     try {
@@ -2113,7 +2198,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_socket_000', 0, async function (done) {
+  it('fileIO_stat_async_is_socket_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_socket_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2142,7 +2227,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_socket_001', 0, async function (done) {
+  it('fileIO_stat_async_is_socket_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_socket_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2182,7 +2267,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_symbolic_link_000', 0, async function (done) {
+  it('fileIO_stat_async_is_symbolic_link_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_symbolic_link_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2212,7 +2297,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_is_symbolic_link_001', 0, async function (done) {
+  it('fileIO_stat_async_is_symbolic_link_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_is_symbolic_link_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2252,7 +2337,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_append_file_sync_000', 0, async function (done) {
+  it('fileIO_test_append_file_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_append_file_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2285,7 +2370,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_append_file_sync_001', 0, async function (done) {
+  it('fileIO_test_append_file_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_append_file_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2319,7 +2404,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_location_000', 0, async function (done) {
+  it('fileIO_stat_async_location_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_location_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2349,7 +2434,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_location_001', 0, async function (done) {
+  it('fileIO_stat_async_location_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_location_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2389,7 +2474,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_location_002', 0, async function (done) {
+  it('fileIO_stat_async_location_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_location_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2417,7 +2502,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_atimeNs_001', 0, async function () {
+  it('fileIO_stat_sync_atimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_atimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2446,7 +2531,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_atimeNs_001', 0, async function (done) {
+  it('fileIO_stat_async_atimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_atimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2476,7 +2561,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_atimeNs_002', 0, async function (done) {
+  it('fileIO_stat_async_atimeNs_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_atimeNs_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2516,7 +2601,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_mtimeNs_001', 0, async function () {
+  it('fileIO_stat_sync_mtimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_mtimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2545,7 +2630,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mtimeNs_001', 0, async function (done) {
+  it('fileIO_stat_async_mtimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mtimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2575,7 +2660,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_mtimeNs_002', 0, async function (done) {
+  it('fileIO_stat_async_mtimeNs_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_mtimeNs_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2615,7 +2700,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_sync_ctimeNs_001', 0, async function () {
+  it('fileIO_stat_sync_ctimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_stat_sync_ctimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2644,7 +2729,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ctimeNs_001', 0, async function (done) {
+  it('fileIO_stat_async_ctimeNs_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ctimeNs_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -2674,7 +2759,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_stat_async_ctimeNs_002', 0, async function (done) {
+  it('fileIO_stat_async_ctimeNs_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_stat_async_ctimeNs_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

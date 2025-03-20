@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { url } from '@kit.ArkTS';
 
 export default function Escape_Url() {
@@ -26,7 +26,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0001', 0, () => {
+    it('testUrlAppend9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -47,7 +47,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0002', 0, () => {
+    it('testUrlAppend9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -68,7 +68,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0003', 0, () => {
+    it('testUrlAppend9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -89,7 +89,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0004', 0, () => {
+    it('testUrlAppend9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -110,7 +110,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0005', 0, () => {
+    it('testUrlAppend9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -131,7 +131,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0006', 0, () => {
+    it('testUrlAppend9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -152,7 +152,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0007', 0, () => {
+    it('testUrlAppend9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -173,7 +173,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0008', 0, () => {
+    it('testUrlAppend9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -194,7 +194,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0009', 0, () => {
+    it('testUrlAppend9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -215,7 +215,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0010', 0, () => {
+    it('testUrlAppend9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -236,7 +236,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlAppend9Escape0011', 0, () => {
+    it('testUrlAppend9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlAppend9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -257,7 +257,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDelete9Escape0001', 0, () => {
+    it('testUrlDelete9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDelete9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\b=1&bar=2');
@@ -278,7 +278,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0002', 0, () => {
+    it('testUrlDeleteEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\f=1&bar=2');
@@ -299,7 +299,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0003', 0, () => {
+    it('testUrlDeleteEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\n=1&bar=2');
@@ -320,7 +320,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0004', 0, () => {
+    it('testUrlDeleteEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\r=1&bar=2');
@@ -341,7 +341,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0005', 0, () => {
+    it('testUrlDeleteEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\t=1&bar=2');
@@ -362,7 +362,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0006', 0, () => {
+    it('testUrlDeleteEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\v=1&bar=2');
@@ -383,7 +383,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0007', 0, () => {
+    it('testUrlDeleteEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\x24=1&bar=2');
@@ -404,7 +404,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0008', 0, () => {
+    it('testUrlDeleteEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\u5f00=1&bar=2');
@@ -425,7 +425,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0009', 0, () => {
+    it('testUrlDeleteEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\😊=1&bar=2');
@@ -446,7 +446,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0010', 0, () => {
+    it('testUrlDeleteEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\0=1&bar=2');
@@ -467,7 +467,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlDeleteEscape0011', 0, () => {
+    it('testUrlDeleteEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlDeleteEscape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\b=1&bar=2');
@@ -488,7 +488,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0001', 0, () => {
+    it('testUrlGetAll9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\b=1&bard=2');
@@ -509,7 +509,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0002', 0, () => {
+    it('testUrlGetAll9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\f=1&bard=2');
@@ -530,7 +530,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0003', 0, () => {
+    it('testUrlGetAll9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\n=1&bard=2');
@@ -551,7 +551,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0004', 0, () => {
+    it('testUrlGetAll9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\r=1&bard=2');
@@ -572,7 +572,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0005', 0, () => {
+    it('testUrlGetAll9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\t=1&bard=2');
@@ -593,7 +593,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0006', 0, () => {
+    it('testUrlGetAll9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\v=1&bard=2');
@@ -614,7 +614,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0007', 0, () => {
+    it('testUrlGetAll9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\x24=1&bard=2');
@@ -635,7 +635,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0008', 0, () => {
+    it('testUrlGetAll9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\u5f00=1&bard=2');
@@ -656,7 +656,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0009', 0, () => {
+    it('testUrlGetAll9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\u1F60A=1&bard=2');
@@ -677,7 +677,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0010', 0, () => {
+    it('testUrlGetAll9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\0=1&bard=2');
@@ -698,7 +698,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlGetAll9Escape0011', 0, () => {
+    it('testUrlGetAll9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlGetAll9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\b=1&bard=2');
@@ -719,7 +719,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0001', 0, () => {
+    it('testUrlParams9Entries9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0001";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\b&keyName2=valueName2");
@@ -742,7 +742,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0002', 0, () => {
+    it('testUrlParams9Entries9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0002";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\f&keyName2=valueName2");
@@ -765,7 +765,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0003', 0, () => {
+    it('testUrlParams9Entries9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0003";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\n&keyName2=valueName2");
@@ -788,7 +788,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0004', 0, () => {
+    it('testUrlParams9Entries9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0004";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\r&keyName2=valueName2");
@@ -811,7 +811,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0005', 0, () => {
+    it('testUrlParams9Entries9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0005";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\t&keyName2=valueName2");
@@ -834,7 +834,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0006', 0, () => {
+    it('testUrlParams9Entries9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0006";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\v&keyName2=valueName2");
@@ -857,7 +857,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0007', 0, () => {
+    it('testUrlParams9Entries9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0007";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\x24&keyName2=valueName2");
@@ -880,7 +880,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0008', 0, () => {
+    it('testUrlParams9Entries9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0008";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\\开&keyName2=valueName2");
@@ -903,7 +903,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0009', 0, () => {
+    it('testUrlParams9Entries9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0009";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\\😊&keyName2=valueName2");
@@ -926,7 +926,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0010', 0, () => {
+    it('testUrlParams9Entries9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0010";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\0&keyName2=valueName2");
@@ -949,7 +949,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Entries9Escape0011', 0, () => {
+    it('testUrlParams9Entries9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Entries9Escape0011";
       try {
         let searchParamsObject = new url.URLParams("keyName1=\\b&keyName2=valueName2");
@@ -972,7 +972,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0001', 0, () => {
+    it('testUrlParams9ForEach9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0001";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\b&anotherParam=xyz');
@@ -999,7 +999,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0002', 0, () => {
+    it('testUrlParams9ForEach9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0002";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\f&anotherParam=xyz');
@@ -1026,7 +1026,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0003', 0, () => {
+    it('testUrlParams9ForEach9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0003";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\n&anotherParam=xyz');
@@ -1053,7 +1053,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0004', 0, () => {
+    it('testUrlParams9ForEach9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0004";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\r&anotherParam=xyz');
@@ -1080,7 +1080,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0005', 0, () => {
+    it('testUrlParams9ForEach9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0005";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\t&anotherParam=xyz');
@@ -1107,7 +1107,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0006', 0, () => {
+    it('testUrlParams9ForEach9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0006";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\v&anotherParam=xyz');
@@ -1134,7 +1134,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0007', 0, () => {
+    it('testUrlParams9ForEach9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0007";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\x24&anotherParam=xyz');
@@ -1161,7 +1161,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0008', 0, () => {
+    it('testUrlParams9ForEach9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0008";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\\开&anotherParam=xyz');
@@ -1188,7 +1188,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0009', 0, () => {
+    it('testUrlParams9ForEach9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0009";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\\😊&anotherParam=xyz');
@@ -1215,7 +1215,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0010', 0, () => {
+    it('testUrlParams9ForEach9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0010";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\\0&anotherParam=xyz');
@@ -1242,7 +1242,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9ForEach9Escape0011', 0, () => {
+    it('testUrlParams9ForEach9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9ForEach9Escape0011";
       try {
         const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?text=abc\\b&anotherParam=xyz');
@@ -1270,7 +1270,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0001', 0, () => {
+    it('testUrlParams9Get9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0001";
       try {
         let paramsObject = new url.URLParams('escape=hello\b');
@@ -1289,7 +1289,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0002', 0, () => {
+    it('testUrlParams9Get9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0002";
       try {
         let paramsObject = new url.URLParams('escape=hello\f');
@@ -1308,7 +1308,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0003', 0, () => {
+    it('testUrlParams9Get9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0003";
       try {
         let paramsObject = new url.URLParams('escape=hello\nworld');
@@ -1327,7 +1327,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0004', 0, () => {
+    it('testUrlParams9Get9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0004";
       try {
         let paramsObject = new url.URLParams('escape=hello\rworld');
@@ -1346,7 +1346,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0005', 0, () => {
+    it('testUrlParams9Get9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0005";
       try {
         let paramsObject = new url.URLParams('escape=hello\tworld');
@@ -1365,7 +1365,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0006', 0, () => {
+    it('testUrlParams9Get9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0006";
       try {
         let paramsObject = new url.URLParams('escape=hello\vworld');
@@ -1384,7 +1384,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0007', 0, () => {
+    it('testUrlParams9Get9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0007";
       try {
         let paramsObject = new url.URLParams('escape=hello\x24world');
@@ -1403,7 +1403,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0008', 0, () => {
+    it('testUrlParams9Get9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0008";
       try {
         let paramsObject = new url.URLParams('escape=hello\\开world');
@@ -1422,7 +1422,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0009', 0, () => {
+    it('testUrlParams9Get9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0009";
       try {
         let paramsObject = new url.URLParams('escape=hello\\😊world');
@@ -1441,7 +1441,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0010', 0, () => {
+    it('testUrlParams9Get9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0010";
       try {
         let paramsObject = new url.URLParams('escape=hello\\0world');
@@ -1460,7 +1460,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Get9Escape0011', 0, () => {
+    it('testUrlParams9Get9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Get9Escape0011";
       try {
         let paramsObject = new url.URLParams('escape=hello\\bworld');
@@ -1479,7 +1479,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0001', 0, () => {
+    it('testUrlParams9Has9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\b=1&bard=2');
@@ -1502,7 +1502,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0002', 0, () => {
+    it('testUrlParams9Has9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\f=1&bard=2');
@@ -1525,7 +1525,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0003', 0, () => {
+    it('testUrlParams9Has9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\n=1&bard=2');
@@ -1548,7 +1548,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0004', 0, () => {
+    it('testUrlParams9Has9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\r=1&bard=2');
@@ -1571,7 +1571,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0005', 0, () => {
+    it('testUrlParams9Has9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\t=1&bard=2');
@@ -1594,7 +1594,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0006', 0, () => {
+    it('testUrlParams9Has9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\v=1&bard=2');
@@ -1617,7 +1617,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0007', 0, () => {
+    it('testUrlParams9Has9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\x24=1&bard=2');
@@ -1640,7 +1640,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0008', 0, () => {
+    it('testUrlParams9Has9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\开=1&bard=2');
@@ -1663,7 +1663,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0009', 0, () => {
+    it('testUrlParams9Has9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\😊=1&bard=2');
@@ -1686,7 +1686,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0010', 0, () => {
+    it('testUrlParams9Has9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\0=1&bard=2');
@@ -1709,7 +1709,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Has9Escape0011', 0, () => {
+    it('testUrlParams9Has9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Has9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\\\\b=1&bard=2');
@@ -1733,7 +1733,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0001', 0, () => {
+    it('testUrlParams9Set9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1754,7 +1754,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0002', 0, () => {
+    it('testUrlParams9Set9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1775,7 +1775,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0003', 0, () => {
+    it('testUrlParams9Set9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1796,7 +1796,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0004', 0, () => {
+    it('testUrlParams9Set9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1817,7 +1817,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0005', 0, () => {
+    it('testUrlParams9Set9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1838,7 +1838,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0006', 0, () => {
+    it('testUrlParams9Set9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1859,7 +1859,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0007', 0, () => {
+    it('testUrlParams9Set9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1880,7 +1880,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0008', 0, () => {
+    it('testUrlParams9Set9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1901,7 +1901,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0009', 0, () => {
+    it('testUrlParams9Set9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1922,7 +1922,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0010', 0, () => {
+    it('testUrlParams9Set9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1943,7 +1943,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Set9Escape0011', 0, () => {
+    it('testUrlParams9Set9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Set9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -1965,7 +1965,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0001', 0, () => {
+    it('testUrlParams9Keys9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0001";
       try {
         let searchParamsObject = new url.URLParams("\b=backspace&key1=value1");
@@ -1985,7 +1985,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0002', 0, () => {
+    it('testUrlParams9Keys9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0002";
       try {
         let searchParamsObject = new url.URLParams("\f=formFeed&key2=value2");
@@ -2005,7 +2005,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0003', 0, () => {
+    it('testUrlParams9Keys9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0003";
       try {
         let searchParamsObject = new url.URLParams("\n=newline&key3=value3");
@@ -2025,7 +2025,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0004', 0, () => {
+    it('testUrlParams9Keys9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0004";
       try {
         let searchParamsObject = new url.URLParams("\r=carriageReturn&key4=value4");
@@ -2045,7 +2045,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0005', 0, () => {
+    it('testUrlParams9Keys9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0005";
       try {
         let searchParamsObject = new url.URLParams("\t=tab&key5=value5");
@@ -2065,7 +2065,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0006', 0, () => {
+    it('testUrlParams9Keys9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0006";
       try {
         let searchParamsObject = new url.URLParams("\v=verticalTab&key6=value6");
@@ -2085,7 +2085,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0007', 0, () => {
+    it('testUrlParams9Keys9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0007";
       try {
         let searchParamsObject = new url.URLParams("\x24=dollarSign&key7=value7");
@@ -2105,7 +2105,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0008', 0, () => {
+    it('testUrlParams9Keys9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0008";
       try {
         let searchParamsObject = new url.URLParams("\开=escapeOpen&key8=value8");
@@ -2125,7 +2125,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0009', 0, () => {
+    it('testUrlParams9Keys9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0009";
       try {
         let searchParamsObject = new url.URLParams("\😊=emoji&key9=value9");
@@ -2145,7 +2145,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0010', 0, () => {
+    it('testUrlParams9Keys9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0010";
       try {
         let searchParamsObject = new url.URLParams("\0=nullChar&key10=value10");
@@ -2165,7 +2165,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParams9Keys9Escape0011', 0, () => {
+    it('testUrlParams9Keys9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParams9Keys9Escape0011";
       try {
         let searchParamsObject = new url.URLParams("\\b=backslashB&key11=value11");
@@ -2185,7 +2185,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0001', 0, () => {
+    it('testUrlValues9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0001";
       try {
         let searchParams = new url.URLParams("key1=\b&key2=value2");
@@ -2205,7 +2205,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0002', 0, () => {
+    it('testUrlValues9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0002";
       try {
         let searchParams = new url.URLParams("key1=\f&key2=value2");
@@ -2225,7 +2225,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0003', 0, () => {
+    it('testUrlValues9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0003";
       try {
         let searchParams = new url.URLParams("key1=\n&key2=value2");
@@ -2245,7 +2245,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0004', 0, () => {
+    it('testUrlValues9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0004";
       try {
         let searchParams = new url.URLParams("key1=\r&key2=value2");
@@ -2265,7 +2265,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0005', 0, () => {
+    it('testUrlValues9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0005";
       try {
         let searchParams = new url.URLParams("key1=\t&key2=value2");
@@ -2285,7 +2285,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0006', 0, () => {
+    it('testUrlValues9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0006";
       try {
         let searchParams = new url.URLParams("key1=\v&key2=value2");
@@ -2305,7 +2305,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0007', 0, () => {
+    it('testUrlValues9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0007";
       try {
         let searchParams = new url.URLParams("key1=\x24&key2=value2");
@@ -2325,7 +2325,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0008', 0, () => {
+    it('testUrlValues9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0008";
       try {
         let searchParams = new url.URLParams("key1=\开&key2=value2");
@@ -2345,7 +2345,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0009', 0, () => {
+    it('testUrlValues9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0009";
       try {
         let searchParams = new url.URLParams("key1=\😊&key2=value2");
@@ -2364,7 +2364,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0010', 0, () => {
+    it('testUrlValues9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0010";
       try {
         let searchParams = new url.URLParams("key1=\0&key2=value2");
@@ -2384,7 +2384,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlValues9Escape0011', 0, () => {
+    it('testUrlValues9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlValues9Escape0011";
       try {
         let searchParams = new url.URLParams("key1=\\b&key2=value2");
@@ -2404,7 +2404,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0001', 0, () => {
+    it('testUrlToString9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2425,7 +2425,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0002', 0, () => {
+    it('testUrlToString9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2446,7 +2446,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0003', 0, () => {
+    it('testUrlToString9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2467,7 +2467,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0004', 0, () => {
+    it('testUrlToString9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2488,7 +2488,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0005', 0, () => {
+    it('testUrlToString9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2509,7 +2509,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0006', 0, () => {
+    it('testUrlToString9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2530,7 +2530,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0007', 0, () => {
+    it('testUrlToString9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2551,7 +2551,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0008', 0, () => {
+    it('testUrlToString9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2572,7 +2572,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0009', 0, () => {
+    it('testUrlToString9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2593,7 +2593,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0010', 0, () => {
+    it('testUrlToString9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2614,7 +2614,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToString9Escape0011', 0, () => {
+    it('testUrlToString9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToString9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -2635,7 +2635,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0001', 0, () => {
+    it('testUrlParseUrl9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0001";
       try {
         let urlString1 = '\b/path2';
@@ -2660,7 +2660,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0002', 0, () => {
+    it('testUrlParseUrl9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0002";
       try {
         let url3 = url.URL.parseURL('/\b/path2', '');
@@ -2679,7 +2679,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0003', 0, () => {
+    it('testUrlParseUrl9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0003";
       try {
         let urlString1 = '\f/path2';
@@ -2705,7 +2705,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0004', 0, () => {
+    it('testUrlParseUrl9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0004";
       try {
         let url3 = url.URL.parseURL('/\f/path2', '');
@@ -2724,7 +2724,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0005', 0, () => {
+    it('testUrlParseUrl9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0005";
       try {
         let urlString1 = '\n/path2';
@@ -2750,7 +2750,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0006', 0, () => {
+    it('testUrlParseUrl9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0006";
       try {
         let url3 = url.URL.parseURL('/\n/path2', '');
@@ -2769,7 +2769,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0007', 0, () => {
+    it('testUrlParseUrl9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0007";
       try {
         let urlString1 = '\r/path2';
@@ -2795,7 +2795,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0008', 0, () => {
+    it('testUrlParseUrl9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0008";
       try {
         let url3 = url.URL.parseURL('/\r/path2', '');
@@ -2814,7 +2814,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0009', 0, () => {
+    it('testUrlParseUrl9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0009";
       try {
         let urlString1 = '\t/path2';
@@ -2840,7 +2840,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0010', 0, () => {
+    it('testUrlParseUrl9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0010";
       try {
         let url3 = url.URL.parseURL('/\t/path2', '');
@@ -2859,7 +2859,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0011', 0, () => {
+    it('testUrlParseUrl9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0011";
       try {
         let urlString1 = '\v/path2';
@@ -2884,7 +2884,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0012', 0, () => {
+    it('testUrlParseUrl9Escape0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0012";
       try {
         let url3 = url.URL.parseURL('/\v/path2', '');
@@ -2903,7 +2903,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0013', 0, () => {
+    it('testUrlParseUrl9Escape0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0013";
       try {
         let urlString1 = '\x24/path2';
@@ -2929,7 +2929,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0014', 0, () => {
+    it('testUrlParseUrl9Escape0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0014";
       try {
         let url3 = url.URL.parseURL('/\x24/path2', '');
@@ -2948,7 +2948,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0015', 0, () => {
+    it('testUrlParseUrl9Escape0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0015";
       try {
         let urlString1 = '\开/path2';
@@ -2974,7 +2974,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0016', 0, () => {
+    it('testUrlParseUrl9Escape0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0016";
       try {
         let url3 = url.URL.parseURL('/\开/path2', '');
@@ -2993,7 +2993,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0017', 0, () => {
+    it('testUrlParseUrl9Escape0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0017";
       try {
         let urlString1 = '\😊/path2';
@@ -3019,7 +3019,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0018', 0, () => {
+    it('testUrlParseUrl9Escape0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0018";
       try {
         let url3 = url.URL.parseURL('/\😊/path2', '');
@@ -3038,7 +3038,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0019', 0, () => {
+    it('testUrlParseUrl9Escape0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0019";
       try {
         let urlString1 = '\0/path2';
@@ -3064,7 +3064,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0020', 0, () => {
+    it('testUrlParseUrl9Escape0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0020";
       try {
         let url3 = url.URL.parseURL('/\0/path2', '');
@@ -3083,7 +3083,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0021', 0, () => {
+    it('testUrlParseUrl9Escape0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0021";
       try {
         let urlString1 = '\\b/path2';
@@ -3109,7 +3109,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlParseUrl9Escape0022', 0, () => {
+    it('testUrlParseUrl9Escape0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlParseUrl9Escape0022";
       try {
         let url3 = url.URL.parseURL('/\\b/path2', '');
@@ -3128,7 +3128,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0001', 0, () => {
+    it('testUrlToStringEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0001";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\b');
@@ -3148,7 +3148,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0002', 0, () => {
+    it('testUrlToStringEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0002";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\f');
@@ -3168,7 +3168,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0003', 0, () => {
+    it('testUrlToStringEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0003";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\n');
@@ -3188,7 +3188,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0004', 0, () => {
+    it('testUrlToStringEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0004";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\r');
@@ -3208,7 +3208,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0005', 0, () => {
+    it('testUrlToStringEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0005";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\t');
@@ -3228,7 +3228,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0006', 0, () => {
+    it('testUrlToStringEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0006";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\v');
@@ -3248,7 +3248,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0007', 0, () => {
+    it('testUrlToStringEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0007";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\x24');
@@ -3268,7 +3268,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0008', 0, () => {
+    it('testUrlToStringEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0008";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\开');
@@ -3288,7 +3288,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0009', 0, () => {
+    it('testUrlToStringEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0009";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\😊');
@@ -3308,7 +3308,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0010', 0, () => {
+    it('testUrlToStringEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0010";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\0');
@@ -3327,7 +3327,7 @@ export default function Escape_Url() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUrlToStringEscape0011', 0, () => {
+    it('testUrlToStringEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUrlToStringEscape0011";
       try {
         const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/\\b');

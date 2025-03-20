@@ -103,6 +103,7 @@ struct Index {
           console.info("key==>" + this.str);
           switch (this.str) {
             case "emitUserAgent": {
+              await Utils.sleep(18000);
               this.controller.runJavaScript({
                 script: "getUserAgent()", callback: (res) => {
                   Utils.emitEvent(res, 100)
@@ -119,6 +120,7 @@ struct Index {
             }
             case "emitLoadUrl": {
               this.controller.loadUrl({ url: "resource://rawfile/index.html" });
+              await Utils.sleep(18000);
               setTimeout(() => {
                 this.controller.runJavaScript({
                   script: "getTitle()", callback: (res) => {

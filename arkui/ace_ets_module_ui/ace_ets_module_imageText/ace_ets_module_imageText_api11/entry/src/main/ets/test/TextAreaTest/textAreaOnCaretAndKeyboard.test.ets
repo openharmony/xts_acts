@@ -59,7 +59,8 @@ export default function textAreaOnCaretAndKeyboardTest() {
       let textAreaComponent = await driver.findComponent(ON.id('textAreaOnCaretAndKeyboard'));
       await textAreaComponent?.click();
       await CommonFunc.sleep(500);
-
+	  await driver.triggerKey(2070);
+	  await CommonFunc.sleep(1000);
       let buttonComponent = await driver.findComponent(ON.id('button'));
       await buttonComponent?.click();
       await CommonFunc.sleep(500);
@@ -73,6 +74,8 @@ export default function textAreaOnCaretAndKeyboardTest() {
       await textAreaComponent.inputText('hello world');
 	  await driver.triggerKey(2047)
       await CommonFunc.sleep(500);
+	  await driver.triggerKey(2070);
+	  await CommonFunc.sleep(1000);
       await buttonComponent.click();
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('textAreaOnCaretAndKeyboard');
@@ -97,7 +100,8 @@ export default function textAreaOnCaretAndKeyboardTest() {
       let textAreaComponent = await driver.findComponent(ON.id('textAreaOnCaretAndKeyboard'));
       await textAreaComponent?.click();
       await CommonFunc.sleep(500);
-
+	  await driver.triggerKey(2070);
+	  await CommonFunc.sleep(1000);
       let buttonComponent = await driver.findComponent(ON.id('button_1'));
       await buttonComponent.click();
       await CommonFunc.sleep(500);

@@ -95,21 +95,19 @@ struct IndexPage {
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' },
     { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
     { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' },
-	{ title: 'Clickhand', uri: 'pages/ArkUI/Clickhand' },
-    { title: 'Groupgesturrehand', uri: 'pages/ArkUI/Groupgesturrehand' },
-    { title: 'Longhand', uri: 'pages/ArkUI/Longhand' },
-    { title: 'Panhand', uri: 'pages/ArkUI/Panhand' },
-    { title: 'Pinchhand', uri: 'pages/ArkUI/Pinchhand' },
-    { title: 'Rotate1hand', uri: 'pages/ArkUI/Rotate1hand' },
-    { title: 'Swipehand', uri: 'pages/ArkUI/Swipehand' },
-    { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
     { title: 'AccessibilityThirdFramework00', uri: 'pages/ArkUI/AccessibilityThirdFramework00' },
     { title: 'AccessibilityThirdFramework01', uri: 'pages/ArkUI/AccessibilityThirdFramework01' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
     { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
     { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' },
-    { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' }
+    { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' },
+    { title: 'Clickhand', uri: 'pages/ArkUI/Clickhand' },
+    { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
+    { title: 'Touchhand', uri: 'pages/ArkUI/Touchhand' },
+    { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
+    
+    
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];

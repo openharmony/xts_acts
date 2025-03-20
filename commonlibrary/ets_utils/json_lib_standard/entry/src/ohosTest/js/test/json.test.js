@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import JSON from "@ohos.util.json";
 
 const BigIntMode = {  
@@ -34,7 +34,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0001", 0, function () {
+  it("testparse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const jsonText = '{"name": "John", "age": 30}';
     let obj = JSON.parse(jsonText);
     expect( obj.hasOwnProperty('name')).assertEqual(true);
@@ -48,7 +48,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0002", 0, function () {
+  it("testparse0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     function reviverFunc(key, value) {
       if (key === "age") {
         return value + 1;
@@ -68,7 +68,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0003", 0, function () {
+  it("testparse0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.parse("null");
     expect(obj).assertEqual(null);
   });
@@ -81,7 +81,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0004", 0, function () {
+  it("testparse0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.parse("true");
     expect(obj).assertEqual(true);
   });
@@ -94,7 +94,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0005", 0, function () {
+  it("testparse0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.parse("false");
     expect(obj).assertEqual(false);
   });
@@ -107,7 +107,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0006", 0, function () {
+  it("teststringify0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify({});
     expect(obj).assertEqual("{}");
   });
@@ -120,7 +120,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0007", 0, function () {
+  it("teststringify0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify({name: "joy", age: 30});
     expect(obj).assertEqual('{"name":"joy","age":30}');
   });
@@ -133,7 +133,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0008", 0, function () {
+  it("teststringify0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr);
@@ -148,7 +148,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0009", 0, function () {
+  it("teststringify0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr, 1);
@@ -163,7 +163,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0010", 0, function () {
+  it("teststringify0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr, "www");
@@ -178,7 +178,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0011", 0, function () {
+  it("teststringify0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr, "  ");
@@ -193,7 +193,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0012", 0, function () {
+  it("teststringify0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr);
@@ -208,7 +208,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0013", 0, function () {
+  it("teststringify0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
       if (typeof value === "string") {
         return value.toUpperCase();
@@ -229,7 +229,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0014", 0, function () {
+  it("teststringify0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
       if (typeof value === "string") {
         return value.toUpperCase();
@@ -250,7 +250,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0015", 0, function () {
+  it("teststringify0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
       if (typeof value === "string") {
         return value.toUpperCase();
@@ -271,7 +271,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testhas0016", 0, function () {
+  it("testhas0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     let rst = JSON.has(obj, 'name');
     expect(rst).assertEqual(true);
@@ -285,7 +285,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testhas0017", 0, function () {
+  it("testhas0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     let rst = JSON.has(obj, 'sex');
     expect(rst).assertEqual(false);
@@ -299,7 +299,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("tesremove0018", 0, function () {
+  it("tesremove0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     JSON.remove(obj, "name");
     let rst = JSON.has(obj, "name");
@@ -314,7 +314,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("tesremove0019", 0, function () {
+  it("tesremove0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     JSON.remove(obj, "sex");
     let rst = JSON.has(obj, "name");
@@ -329,7 +329,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-    it("testparse0020", 0, function () {
+    it("testparse0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let rst = JSON.parse('12\t\r\n 34')
       } catch (e) {
@@ -346,7 +346,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0021", 0, function () {
+  it("testparse0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let rst = JSON.parse('\u2028\u20291234');
     } catch (e) {
@@ -363,7 +363,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0022", 0, function () {
+  it("testparse0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('\t\r \n{\t\r \n' +
       '"property"\t\r \n:\t\r \n{\t\r \n}\t\r \n,\t\r \n' +
       '"prop2"\t\r \n:\t\r \n' +
@@ -381,7 +381,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0023", 0, function () {
+  it("testparse0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let rst = JSON.parse('12 34');
     } catch (e) {
@@ -398,7 +398,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0024", 0, function () {
+  it("testparse0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"abc"');
     expect(rst).assertEqual(rst);
   });
@@ -411,7 +411,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0025", 0, function () {
+  it("testparse0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let rst = JSON.parse('""');
       let rst1 = JSON.stringify(rst);
@@ -429,7 +429,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0026", 0, function () {
+  it("testparse0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let rst = JSON.parse('"\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007"');
     } catch (e) {
@@ -446,7 +446,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0027", 0, function () {
+  it("testparse0027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"\\u0058"');
     expect(rst).assertEqual('X');
   });
@@ -459,7 +459,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0028", 0, function () {
+  it("testparse0028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"\\\\"');
     expect(rst).assertEqual('\\');
   });
@@ -472,7 +472,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0029", 0, function () {
+  it("testparse0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     var nullChars = new Array();
     nullChars[0] = '\"\u0000\"';
     try {
@@ -491,7 +491,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0030", 0, function () {
+  it("testparse0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -508,7 +508,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0031", 0, function () {
+  it("testparse0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.ALWAYS_PARSE_AS_BIGINT,
     }
@@ -525,7 +525,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0032", 0, function () {
+  it("testparse0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -542,7 +542,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0033", 0, function () {
+  it("testparse0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.DEFAULT,
     }
@@ -559,7 +559,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0034", 0, function () {
+  it("testparse0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -576,7 +576,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0035", 0, function () {
+  it("testparse0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -593,7 +593,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0036", 0, function () {
+  it("testparse0036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.ALWAYS_PARSE_AS_BIGINT,
     }
@@ -616,7 +616,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testparse0037", 0, function () {
+  it("testparse0037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -639,7 +639,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0038", 0, function () {
+  it("teststringify0038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
       bigIntMode: BigIntMode.PARSE_AS_BIGINT,
     }
@@ -663,7 +663,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0039", 0, function () {
+  it("teststringify0039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(null);
     expect(obj).assertEqual('null');
   });
@@ -676,7 +676,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0040", 0, function () {
+  it("teststringify0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(undefined);
     expect(obj).assertEqual(undefined);
   });
@@ -689,7 +689,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0041", 0, function () {
+  it("teststringify0041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(123);
     expect(obj).assertEqual('123');
   });
@@ -702,7 +702,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0042", 0, function () {
+  it("teststringify0042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(-123);
     expect(obj).assertEqual('-123');
   });
@@ -715,7 +715,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0043", 0, function () {
+  it("teststringify0043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = " ";
     let obj = JSON.stringify(rst);
     expect(obj).assertEqual('" "');

@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 import continuationManagerNopTest from './ContinuationManagerNopJsunit.test';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  continuationManagerNopTest();
+  if (canIUse("SystemCapability.Ability.DistributedAbilityManager")) {
+        continuationManagerNopTest()
+    } else {
+        EmptyTest()
+    }
 }

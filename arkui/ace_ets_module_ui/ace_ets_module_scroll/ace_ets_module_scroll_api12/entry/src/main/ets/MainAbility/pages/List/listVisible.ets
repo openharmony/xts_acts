@@ -36,7 +36,7 @@ struct ListVisibleExample {
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width("100%")
-      .height(100)
+      .height(vp2px(50))
       .padding(10)
   }
 
@@ -46,7 +46,7 @@ struct ListVisibleExample {
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width("100%")
-      .height(120)
+      .height(vp2px(80))
       .padding(10)
   }
 
@@ -54,17 +54,16 @@ struct ListVisibleExample {
     Column() {
       Text(this.message).id('listVisible_mess')
       Text(this.message1).id('itemVisible_mess')
-      Button('scroll 150').id('listVisible_1')
-        .height('5%')
-        .onClick(() => { // 点击后下滑指定距离150.0vp
-          this.scroller.scrollBy(0, 150)
-        })
-        .margin(30)
-
-      Button('scroll 300').id('listVisible_2')
+      Button('scroll vp2px(100)').id('listVisible_1')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollBy(0, 300)
+          this.scroller.scrollBy(0, vp2px(100))
+        })
+
+      Button('scroll vp2px(150)').id('listVisible_2')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollBy(0, vp2px(150))
         })
 
       List({ space: 20, initialIndex: 0, scroller: this.scroller }) {
@@ -74,7 +73,7 @@ struct ListVisibleExample {
               ListItem() {
                 Text(project)
                   .width("100%")
-                  .height(100)
+                  .height(vp2px(50))
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(0xFFFFFF)

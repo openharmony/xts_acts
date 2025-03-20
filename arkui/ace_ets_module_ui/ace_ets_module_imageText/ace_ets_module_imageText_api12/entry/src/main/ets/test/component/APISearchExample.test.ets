@@ -61,8 +61,12 @@ export default function APISearchExample() {
       let textComponent = await driver.findComponent(ON.id('APISearchExample_Search'));
       await textComponent.click()
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await textComponent.inputText("DFE")
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APISearchExample_Text01');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APISearchExample_0100] component obj is: " + JSON.stringify(obj), obj.$attrs.content);
@@ -84,8 +88,12 @@ export default function APISearchExample() {
       let textComponent = await driver.findComponent(ON.id('APISearchExample_Search'));
       await textComponent.inputText("1")
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await textComponent.clearText();
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APISearchExample_Text02');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APISearchExample_0200] component obj is: " + JSON.stringify(obj), obj.$attrs.content);
@@ -107,8 +115,12 @@ export default function APISearchExample() {
       let textComponent = await driver.findComponent(ON.id('APISearchExample_Search'));
       await textComponent.click()
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await textComponent.inputText("123");
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APISearchExample_Text03');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APISearchExample_0300] component obj is: " + JSON.stringify(obj), obj.$attrs.content);
@@ -131,8 +143,12 @@ export default function APISearchExample() {
       let textComponent = await driver.findComponent(ON.id('APISearchExample_Search'));
       await textComponent.click()
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await textComponent.inputText("2")
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APISearchExample_Text04');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APISearchExample_0200] component obj is: " + JSON.stringify(obj), obj.$attrs.content);

@@ -14,7 +14,7 @@
  */
 import HiAppEventV9 from '@ohos.hiviewdfx.hiAppEvent'
 import HiAppEvent from '@ohos.hiAppEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import Constant from 'deccjsunit/src/Constant'
 
 export default function HiAppEventSubTest() {
@@ -2373,17 +2373,158 @@ describe('HiAppEventSubTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_2700
+     * @tc.name 验证调用removeWatcher失败返回值401
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub27 start')
+        try {
+            HiAppEventV9.removeWatcher(null);
+        } catch (error) {
+            console.error(`testHiAppEventSub27  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub27 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_2700
+     * @tc.name 验证调用removeWatcher失败返回值401
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub28 start')
+        try {
+            HiAppEventV9.removeWatcher(true);
+        } catch (error) {
+            console.error(`testHiAppEventSub28  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub28 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_2900
+     * @tc.name 验证调用removeWatcher失败返回值401
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub29', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub29 start')
+        try {
+            HiAppEventV9.removeWatcher(123);
+        } catch (error) {
+            console.error(`testHiAppEventSub29  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 401).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub29 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3000
+     * @tc.name 验证调用removeWatcher失败返回值11102001
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub30 start')
+        const MAX_LEN_OF_WATCHER = 32;
+        try {
+            HiAppEventV9.removeWatcher({name:"a".repeat(MAX_LEN_OF_WATCHER - 1) + "_"});
+        } catch (error) {
+            console.error(`testHiAppEventSub30  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 11102001).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub30 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3100
+     * @tc.name 验证调用removeWatcher失败返回值11102001
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub31 start')
+        try {
+            HiAppEventV9.removeWatcher({name: "_watcher_test"});
+        } catch (error) {
+            console.error(`testHiAppEventSub31  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 11102001).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub31 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3200
+     * @tc.name 验证调用removeWatcher失败返回值11102001
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub32 start')
+        try {
+            HiAppEventV9.removeWatcher({name: "123watcher"});
+        } catch (error) {
+            console.error(`testHiAppEventSub32  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 11102001).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub32 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3300
+     * @tc.name 验证调用removeWatcher失败返回值11102001
+     * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventSub33 start')
+        try {
+            HiAppEventV9.removeWatcher({name: ""});
+        } catch (error) {
+            console.error(`testHiAppEventSub33  > error code: ${error.code}, error msg: ${error.message}`)
+            expect(error.code == 11102001).assertTrue()
+            done();
+        }
+        console.info('HiAppEventSub33 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3400
      * @tc.name 验证清理接口功能
      * @tc.desc HiAppEvent write interface test.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub27', 3, function () {
-        console.info('testHiAppEventSub27 start')
+    it('HiAppEventSub34', 3, function () {
+        console.info('testHiAppEventSub34 start')
         HiAppEventV9.clearData()
         expect(true).assertTrue()
-        console.info('HiAppEventSub27 end')
+        console.info('HiAppEventSub34 end')
     })
 })
 }

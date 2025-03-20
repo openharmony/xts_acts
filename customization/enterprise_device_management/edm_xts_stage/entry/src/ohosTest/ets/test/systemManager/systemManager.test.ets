@@ -586,6 +586,33 @@ function testNotifyUpdatePackages() {
     });
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_NOTIFY_UPDATE_PACKAGES_JS_0002
+   * @tc.name      : test_notify_update_packages_0002
+   * @tc.desc      : test systemManager notifyUpdatePackages without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_notify_update_packages_0004", Level.LEVEL2, async (done: Function) => {
+    let updatePaskageInfo: Array<systemManager.Package> = [{
+      "type": systemManager.PackageType.FIRMWARE,
+      "path": "path"
+    }]
+    let updatePackageInfo: systemManager.UpdatePackageInfo = {
+      "version" : UPDATE_VERSION,
+      "packages" : updatePaskageInfo,
+    };
+    try {
+      await systemManager.notifyUpdatePackages(INVALID_WANT, updatePackageInfo).then(()=>{
+        expect(false).assertTrue();
+      })
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
 }
 
 function testGetUpdateResult() {
@@ -649,6 +676,25 @@ function testGetUpdateResult() {
     }).finally(async () => {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     });
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0002
+   * @tc.name      : test_get_update_result_0002
+   * @tc.desc      : test systemManager getOtaUpdatePolicy without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_result_0004", Level.LEVEL2, async (done: Function) => {
+    try {
+      await systemManager.getUpdateResult(INVALID_WANT, UPDATE_VERSION).then((data: systemManager.UpdateResult) => {
+        expect(false).assertTrue();
+      })
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
     done();
   });
 }

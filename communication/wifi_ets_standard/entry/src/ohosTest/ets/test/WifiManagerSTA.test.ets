@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import wifiMg from '@ohos.wifiManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 function sleep(delay:number): Promise<void> {
   return new Promise((resolve) => {
@@ -72,11 +72,11 @@ export default function wifiSta() {
          * @tc.number SUB_Communication_WiFi_XTS_Sta_0036
          * @tc.name testEnableWifi
          * @tc.desc Test enableWifi Sync API functionality.
-         * @tc.size:MediumTest
+         * @tc.size:LargeTest
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0036', 0, async (done:Function) =>{
+        it('SUB_Communication_WiFi_XTS_Sta_0036', TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done:Function) =>{
             try {
 		        let status = wifiMg.isWifiActive();
                 console.info("isWifiActive result:" + status);
@@ -99,12 +99,13 @@ export default function wifiSta() {
 
         /**
          * @tc.number SUB_Communication_WiFi_XTS_Sta_0034
-         * @tc.name testgetScanResultsSync
-         * @tc.desc Test getScanResults Sync API functionality.
+         * @tc.name testIsMeteredHotspot
+         * @tc.desc Test isMeteredHotspot Sync API functionality.
          * @tc.type Function
-         * @tc.level Level 0
+         * @tc.size:MediumTest
+         * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async (done:Function) =>{
+        it('SUB_Communication_WiFi_XTS_Sta_0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
             try {
 		        let isMeteredHotspot = wifiMg.isMeteredHotspot();
 		        console.info("isMeteredHotspot:" + isMeteredHotspot);
@@ -120,9 +121,9 @@ export default function wifiSta() {
          * @tc.desc Test isHotspotActive Sync API functionality.
          * @tc.type Function
          * @tc.size:MediumTest
-         * @tc.level Level 0
+         * @tc.level Level 1
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0035', 0, async (done:Function) =>{
+        it('SUB_Communication_WiFi_XTS_Sta_0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) =>{
             try {
 		        let isHotspotActive = wifiMg.isHotspotActive();
 		        console.info("isHotspotActive:" + isHotspotActive);
@@ -141,7 +142,7 @@ export default function wifiSta() {
          * @tc.size:MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0037', 0, async (done:Function) =>{
+        it('SUB_Communication_WiFi_XTS_Sta_0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
             try {
 		        let wifiDeviceConfig:wifiMg.WifiDeviceConfig = {
                 "ssid": "publicTest",
@@ -199,13 +200,99 @@ export default function wifiSta() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0038', 0, async (done:Function) =>{
+        it('SUB_Communication_WiFi_XTS_Sta_0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) =>{
             try {
 		        let address = wifiMg.getDeviceMacAddress();
                 console.info("getDeviceMacAddress result:" + JSON.stringify(address));
                 expect(true).assertEqual(address != null);
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
+                expect().assertFail();
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0039
+         * @tc.name testGetMultiLinkedInfo
+         * @tc.desc Test getMultiLinkedInfo Sync API functionality.
+         * @tc.size:MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+           try {
+		        let mLInfo = wifiMg.getMultiLinkedInfo();
+                console.info("getMultiLinkedInfo result:" + JSON.stringify(mLInfo));
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                if (Number(error.code) == 801) {
+                    console.info("getMultiLinkedInfo is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect(Number(error.code)).assertEqual(2501000);
+                }
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0040
+         * @tc.name testGetLinkedInfoSync
+         * @tc.desc Test getLinkedInfoSync Sync API functionality.
+         * @tc.size:MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+           try {
+		        let wifiLinkedInfo: wifiMg.WifiLinkedInfo = wifiMg.getLinkedInfoSync();
+                console.info("[wifi_test]getLinkedInfoSync result : " + JSON.stringify(wifiLinkedInfo));
+                console.info("[wifi_test]getLinkedInfoSync result wifiLinkType : " + JSON.stringify(wifiLinkedInfo.wifiLinkType));
+                expect(true).assertEqual(wifiLinkedInfo != null);
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                if (Number(error.code) == 801) {
+                    console.info("getLinkedInfoSync is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect().assertFail();
+                }
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0041
+         * @tc.name testWifiLinkType
+         * @tc.desc Test WifiLinkType Sync API functionality.
+         * @tc.size:MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+           try {
+		        let DEFAULT_LINK = wifiMg.WifiLinkType.DEFAULT_LINK;
+                console.info("[wifi_test]WifiLinkType DEFAULT_LINK result : " + JSON.stringify(DEFAULT_LINK));
+                expect(DEFAULT_LINK).assertEqual(0);
+
+                let WIFI7_SINGLE_LINK = wifiMg.WifiLinkType.WIFI7_SINGLE_LINK;
+                console.info("[wifi_test]WifiLinkType WIFI7_SINGLE_LINK result : " + JSON.stringify(WIFI7_SINGLE_LINK));
+                expect(WIFI7_SINGLE_LINK).assertEqual(1);
+
+                let WIFI7_MLSR = wifiMg.WifiLinkType.WIFI7_MLSR;
+                console.info("[wifi_test]WifiLinkType WIFI7_MLSR result : " + JSON.stringify(WIFI7_MLSR));
+                expect(WIFI7_MLSR).assertEqual(2);
+
+                let WIFI7_EMLSR = wifiMg.WifiLinkType.WIFI7_EMLSR;
+                console.info("[wifi_test]WifiLinkType WIFI7_EMLSR result : " + JSON.stringify(WIFI7_EMLSR));
+                expect(WIFI7_EMLSR).assertEqual(3);
+
+                let WIFI7_STR = wifiMg.WifiLinkType.WIFI7_STR;
+                console.info("[wifi_test]WifiLinkType WIFI7_STR result : " + JSON.stringify(WIFI7_STR));
+                expect(WIFI7_STR).assertEqual(4);
+	        }catch(error){
+		        console.error("WifiLinkType failed:" + JSON.stringify(error));
                 expect().assertFail();
 	        }
 	        done();

@@ -16,7 +16,7 @@
 
 import tag from '@ohos.nfc.tag';
 import cardEmulation from '@ohos.nfc.cardEmulation';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -722,6 +722,38 @@ export default function nfcNDEFErrorTest() {
                 }
             } else {
                 console.info("[NFC_test]NdefTag20 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcNDEF_js_2100
+         * @tc.name Test makeApplicationRecord NDEF
+         * @tc.desc Test makeApplicationRecord api. The error code is 401
+         * @tc.size MEDIUM
+         * @ since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcNDEF_js_2100', Level.LEVEL2, function () {
+            if (NdefTag != null && NdefTag != undefined) {
+                try{
+                    let ndefMessage = tag.ndef.createNdefMessage('test');
+                    console.info("[NFC_test]ndef21 createNdefMessage result: " + JSON.stringify(ndefMessage));
+                }catch(error){
+                    console.info("[NFC_test]ndef21 createNdefMessage errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+                try{
+                    let makeERecords = tag.ndef.makeApplicationRecord('test');
+                    console.info("[NFC_test]ndef21 makeApplicationRecord result: " + JSON.stringify(makeERecords));
+                    expect(makeERecords instanceof Object).assertTrue()
+                }catch(error){
+                    console.info("[NFC_test]ndef21 makeApplicationRecord errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+            } else {
+                console.info("[NFC_test]NdefTag21 = null & = undefined: ");
                 expect(true).assertFalse();
             }
         })

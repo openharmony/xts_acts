@@ -1,4 +1,18 @@
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+/*
+ * Copyright (C) 2024-2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
 
@@ -58,7 +72,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0100', 0, async (done: Function) => {
+    it('rdbDecryptTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0100 start *************");
       let default_config : data_relationalStore.StoreConfig = {
         name: "default.db",
@@ -96,7 +110,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0200', 0, async (done: Function) => {
+    it('rdbDecryptTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0200 start *************");
       let default_config : data_relationalStore.StoreConfig = {
         name: "default.db",
@@ -155,7 +169,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0300', 0, async (done: Function) => {
+    it('rdbDecryptTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0300 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -206,7 +220,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0400', 0, async (done: Function) => {
+    it('rdbDecryptTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0400 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -253,7 +267,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0500', 0, async (done: Function) => {
+    it('rdbDecryptTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0500 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -300,7 +314,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0600', 0, async (done: Function) => {
+    it('rdbDecryptTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0600 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -347,7 +361,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0700', 0, async (done: Function) => {
+    it('rdbDecryptTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0700 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -396,7 +410,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0800', 0, async (done: Function) => {
+    it('rdbDecryptTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0800 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -443,7 +457,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest0900', 0, async (done: Function) => {
+    it('rdbDecryptTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest0900 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -491,7 +505,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1000', 0, async (done: Function) => {
+    it('rdbDecryptTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1000 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -535,7 +549,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1100', 0, async (done: Function) => {
+    it('rdbDecryptTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1100 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -580,7 +594,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest1200', 0, async (done: Function) => {
+    it('rdbDecryptTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1200 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -632,7 +646,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest1300', 0, async (done: Function) => {
+    it('rdbDecryptTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1300 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -682,7 +696,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest1400', 0, async (done: Function) => {
+    it('rdbDecryptTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1400 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -735,7 +749,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest1500', 0, async (done: Function) => {
+    it('rdbDecryptTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1500 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "nodefault.db",
@@ -789,7 +803,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1600', 0, async (done: Function) => {
+    it('rdbDecryptTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1600 start *************");
       const STORE_CONFIG_INVALID_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invalid.db",
@@ -825,7 +839,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1700', 0, async (done: Function) => {
+    it('rdbDecryptTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1700 start *************");
       const STORE_CONFIG_INVALID_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -859,7 +873,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1800', 0, async (done: Function) => {
+    it('rdbDecryptTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1800 start *************");
       const STORE_CONFIG_INVALID_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -894,7 +908,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest1900', 0, async (done: Function) => {
+    it('rdbDecryptTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest1900 start *************");
       const STORE_CONFIG_INVALID_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -928,7 +942,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2000', 0, async (done: Function) => {
+    it('rdbDecryptTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2000 start *************");
       const STORE_CONFIG_INVALID_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -963,7 +977,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2100', 0, async (done: Function) => {
+    it('rdbDecryptTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2100 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -997,7 +1011,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2200', 0, async (done: Function) => {
+    it('rdbDecryptTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2200 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -1032,7 +1046,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2300', 0, async (done: Function) => {
+    it('rdbDecryptTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2300 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -1068,7 +1082,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2400', 0, async (done: Function) => {
+    it('rdbDecryptTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2400 start *************");
       const STORE_CONFIG_NO_DEFAULT  : data_relationalStore.StoreConfig= {
         name: "invaild.db",
@@ -1106,7 +1120,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest2500', 0, async (done: Function) => {
+    it('rdbDecryptTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2500 start *************");
       let default_config1 : data_relationalStore.StoreConfig = {
         name: "rdbstore1.db",
@@ -1158,7 +1172,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest2600', 0, async (done: Function) => {
+    it('rdbDecryptTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2600 start *************");
       let default_config1 : data_relationalStore.StoreConfig = {
         name: "rdbstore1.db",
@@ -1214,7 +1228,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('rdbDecryptTest2700', 0, async (done: Function) => {
+    it('rdbDecryptTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2700 start *************");
       let default_config1 : data_relationalStore.StoreConfig = {
         name: "rdbstore1.db",
@@ -1280,7 +1294,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest2800', 0, async (done: Function) => {
+    it('rdbDecryptTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2800 start *************");
       let default_config1 : data_relationalStore.StoreConfig = {
         name: "rdbstore1.db",
@@ -1346,7 +1360,7 @@ export default function rdbDecryptTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('rdbDecryptTest2900', 0, async (done: Function) => {
+    it('rdbDecryptTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2900 start *************");
       let default_config1 : data_relationalStore.StoreConfig = {
         name: "rdbstore1.db",

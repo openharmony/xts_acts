@@ -106,9 +106,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.EXIST
-
-);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.EXIST);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -137,9 +135,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.WRITE
-
-);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.WRITE);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();

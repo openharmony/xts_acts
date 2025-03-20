@@ -13,6 +13,10 @@
     "MainAbility/pages/composeTitleBar/composeTitleBarAccessibilityPage",
     "MainAbility/pages/selectTitleBar/selectTitleBarAccessibilityPage",
     "MainAbility/pages/tabTitleBar/tabTitleBarAccessibilityPage",
-    "MainAbility/pages/toolBarV2/ToolBarV2AccessibilityPage"
+    "MainAbility/pages/toolBarV2/ToolBarV2AccessibilityPage",
+    "MainAbility/pages/dialogV2/selectDialogV2TestPage",
+    "MainAbility/pages/dialogV2/loadingDialogV2TestPage",
+    "MainAbility/pages/dialogV2/confirmDialogV2TestPage",
+    "MainAbility/pages/dialogV2/tipsDialogV2TestPage"
   ]
 }
