@@ -50,7 +50,7 @@
 
 using namespace std;
 using namespace OHOS_CAMERA_SAMPLE;
-static NDKCamera *gndkCamera= nullptr;
+static NDKCamera *gndkCamera = nullptr;
 
 static OH_AVRecorder_Config *config;
 // 设置状态回调
@@ -288,8 +288,6 @@ static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVR
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
     }
-    
-    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig profile.audioBitrate :%{public}d:", config.profile.audioBitrate);
     return true;
 }
 
@@ -556,7 +554,7 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameWidth : %{public}d", videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameHeight : %{public}d", videoFrameHeight);
 
-    gndkCamera= new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
+    gndkCamera = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
     int result = 6;
     napi_value res;
     napi_create_int32(env, result, &res);

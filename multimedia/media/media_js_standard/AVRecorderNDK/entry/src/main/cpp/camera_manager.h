@@ -43,15 +43,13 @@ class NDKCamera {
 public:
     ~NDKCamera();
     NDKCamera(char *previewId, int param1, int param2);
-
     static void Destroy()
     {
-        if (gndkCamera!= nullptr) {
+        if (gndkCamera != nullptr) {
             delete g_ndkCamera_;
-            gndkCamera= nullptr;
+            gndkCamera = nullptr;
         }
     }
-
     Camera_ErrorCode CreateCameraInput(void);
     Camera_ErrorCode CameraInputOpen(void);
     Camera_ErrorCode CameraInputClose(void);
@@ -153,7 +151,7 @@ private:
     float step_;
     uint32_t focusMode_;
 
-    static NDKCamera *g_ndkCamera_;
+    static NDKCamera *gndkCamera;
     static std::mutex mtx_;
     volatile bool valid_;
 
