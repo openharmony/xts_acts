@@ -43,11 +43,6 @@
           }
         ]
       }
-    ],
-	"requestPermissions":[
-	{
-		"name":"ohos.permission.DISTRIBUTED_DATASYNC",
-	}
-	]
+    ]
   }
 }

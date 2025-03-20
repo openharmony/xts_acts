@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ObjectStoreJsunitV9Ets from './ObjectStoreJsunitV9Ets.test.ets'
-import DataObjectErrTest from './DataObjectErrTest.test';
+import DataObjectPermissionTest from './DataObjectPermissionTest.test';
 
 export default function testsuite() {
-    ObjectStoreJsunitV9Ets(globalThis.abilityContext);
-	DataObjectErrTest();
+  DataObjectPermissionTest();
 }
