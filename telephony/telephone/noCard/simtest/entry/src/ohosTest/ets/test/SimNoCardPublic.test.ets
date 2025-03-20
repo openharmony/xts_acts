@@ -15,7 +15,7 @@
 
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, TestType, Size } from '@ohos/hypium';
 
 const ExpectFail: () => void = () => {
   try {
@@ -390,7 +390,7 @@ export default function SimNoCardPublic() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("testTelephonySimGetCardType0700", 0, async (done: Function) => {
+    it("testTelephonySimGetCardType0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonySimGetCardType0700';
       console.info(`${caseName} test start `);
       sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
@@ -426,7 +426,7 @@ export default function SimNoCardPublic() {
      * @tc.level  : Level 3
      *
      */
-    it("testTelephonySimGetCardType0800", 0, async (done: Function) => {
+    it("testTelephonySimGetCardType0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonySimGetCardType0800';
       console.info(`${caseName} test start `);
       sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
