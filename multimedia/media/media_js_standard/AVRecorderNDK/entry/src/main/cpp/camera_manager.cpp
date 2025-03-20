@@ -27,7 +27,7 @@ static char *g_photoId = nullptr;
 static char *g_videoId = nullptr;
 
 namespace OHOS_CAMERA_SAMPLE {
-NDKCamera *NDKCamera::g_ndkCamera_ = nullptr;
+NDKCamera *NDKCamera::gndkCamera= nullptr;
 std::mutex NDKCamera::mtx_;
 const std::unordered_map<uint32_t, Camera_SceneMode> g_int32ToCameraSceneMode = {
     {1, Camera_SceneMode::NORMAL_PHOTO}, {2, Camera_SceneMode::NORMAL_VIDEO}, {12, Camera_SceneMode::SECURE_PHOTO}};

@@ -46,9 +46,9 @@ public:
 
     static void Destroy()
     {
-        if (g_ndkCamera_ != nullptr) {
+        if (gndkCamera!= nullptr) {
             delete g_ndkCamera_;
-            g_ndkCamera_ = nullptr;
+            gndkCamera= nullptr;
         }
     }
 
