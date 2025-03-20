@@ -71,7 +71,7 @@ class DrawingNativeBrushTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCreateNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_BrushCreate to create a brush object
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -88,7 +88,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushCreateNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushCopyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object 1 by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
     // add assert
@@ -122,7 +122,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushCopyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushCopyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -144,7 +144,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushCopyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushCopyInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyInputDestroyed, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_BrushCreate to create a brush object 1
     OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
     // add assert
@@ -174,7 +174,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushCopyInputDestroyed, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushCopyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyMultipleCalls, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -198,7 +198,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushCopyMultipleCalls, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_BrushCreate to create a brush object
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -215,7 +215,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -234,7 +234,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_BrushCreate to create a brush object
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -258,7 +258,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -279,7 +279,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_BrushCreate to create a brush object
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -303,7 +303,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -324,7 +324,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -348,7 +348,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -369,7 +369,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -393,7 +393,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -419,7 +419,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetColorAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorAbnormal, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -442,7 +442,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColorAbnormal, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetColorMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorMaximum, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -465,7 +465,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColorMaximum, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -487,7 +487,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -508,7 +508,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -530,7 +530,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -553,7 +553,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaAbnormal, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -575,7 +575,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaAbnormal, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaMaximum, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -598,7 +598,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaMaximum, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -631,7 +631,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNormal, TestSize.Level0
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -665,7 +665,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNull, TestSize.Level3) 
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -692,7 +692,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNormal, TestSize.Level0)
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -718,7 +718,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -744,7 +744,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -771,7 +771,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -805,7 +805,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -835,7 +835,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -869,7 +869,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -890,7 +890,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNull, TestSize.Level3) {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushResetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBrushTest, testBrushResetNormal, Function | SmallTest | Level0) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert
@@ -920,7 +920,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushResetNormal, TestSize.Level0) {
  * @tc.type: Function
  * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, testBrushResetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBrushTest, testBrushResetNull, Function | SmallTest | Level3) {
     // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     // add assert

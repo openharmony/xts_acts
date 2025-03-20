@@ -51,7 +51,7 @@ class DrawingNativeSamplingOptionsTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_FilterMode filterModes[] = {
         FILTER_MODE_NEAREST,
         FILTER_MODE_LINEAR,
@@ -82,7 +82,7 @@ HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestr
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_SamplingOptionsDestroy with empty parameter
     OH_Drawing_SamplingOptionsDestroy(nullptr);
     // add assert
@@ -97,7 +97,7 @@ HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestr
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_SamplingOptionsCreate 10 times with random enum values
     std::random_device rd;
     std::mt19937 gen(rd());
