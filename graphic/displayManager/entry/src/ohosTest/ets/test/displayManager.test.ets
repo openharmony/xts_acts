@@ -948,5 +948,236 @@ export default function displayTest() {
 
     });
 
+
+    /**
+     * @tc.number    : testGetDisplayByIdSyncErrCode401_0100
+     * @tc.name      : getDisplayByIdSync
+     * @tc.desc      : getDisplayByIdSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('getDisplayByIdSync', 0, async (done:Function) => {
+      let caseName = "getDisplayByIdSync";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        display.getDisplayByIdSync(null);
+        console.error(msgStr + 'Succeeded in calling getDisplayByIdSync.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call getDisplayByIdSync. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOnFoldAngleChangeErrCode401_0100
+     * @tc.name      : on_foldAngleChange
+     * @tc.desc      : on_foldAngleChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('on_foldAngleChange', 0, async (done:Function) => {
+      let caseName = "on_foldAngleChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        const callback = (res: Array<number>) => {}
+        display.on(null, callback);
+        console.error(msgStr + 'Succeeded in calling on_foldAngleChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on_foldAngleChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOffFoldAngleChangeErrCode401_0100
+     * @tc.name      : off_foldAngleChange
+     * @tc.desc      : off_foldAngleChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('off_foldAngleChange', 0, async (done:Function) => {
+      let caseName = "off_foldAngleChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        const callback = (res: Array<number>) => {}
+        display.off(null, callback);
+        console.error(msgStr + 'Succeeded in calling off_foldAngleChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off_foldAngleChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOnCaptureStatusChangeErrCode401_0100
+     * @tc.name      : on_captureStatusChange
+     * @tc.desc      : on_captureStatusChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('on_captureStatusChange', 0, async (done:Function) => {
+      let caseName = "on_captureStatusChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        const callback = (res: boolean) => {}
+        display.on(null, callback);
+        console.error(msgStr + 'Succeeded in calling on_captureStatusChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on_captureStatusChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOffCaptureStatusChangeErrCode401_0100
+     * @tc.name      : off_captureStatusChange
+     * @tc.desc      : off_captureStatusChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('off_captureStatusChange', 0, async (done:Function) => {
+      let caseName = "off_captureStatusChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        const callback = (res: boolean) => {}
+        display.off(null, callback);
+        console.error(msgStr + 'Succeeded in calling off_captureStatusChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off_captureStatusChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOnAvailableAreaChangeErrCode401_0100
+     * @tc.name      : on_availableAreaChange
+     * @tc.desc      : on_availableAreaChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('on_availableAreaChange', 0, async (done:Function) => {
+      let caseName = "on_availableAreaChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let displayClass: display.Display | null = null;
+        displayClass = display.getDefaultDisplaySync();
+        const callback = (res: display.Rect) => {}
+        displayClass.on(null, callback);
+        console.error(msgStr + 'Succeeded in calling on_availableAreaChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on_availableAreaChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : testOffAvailableAreaChangeErrCode401_0100
+     * @tc.name      : off_availableAreaChange
+     * @tc.desc      : off_availableAreaChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('off_availableAreaChange', 0, async (done:Function) => {
+      let caseName = "off_availableAreaChange";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let displayClass: display.Display | null = null;
+        displayClass = display.getDefaultDisplaySync();
+        const callback = (res: display.Rect) => {}
+        displayClass.off(null, callback);
+        console.error(msgStr + 'Succeeded in calling off_availableAreaChange.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off_availableAreaChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    });
+
+
+    /**
+     * @tc.number : SUB_BASIC_WMS_GET_CUTOUT_INFO_0100
+     * @tc.name   : test_GetCutoutInfo
+     * @tc.desc   : test_GetCutoutInfo
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('test_GetCutoutInfo', 0, async (done: Function) => {
+      let caseName = 'test_GetCutoutInfo';
+      console.info(`jsunittets ${caseName} begin`);
+      try {
+        let displayClass: display.Display | null = null;
+        displayClass = display.getDefaultDisplaySync();
+        let info = await displayClass.getCutoutInfo();
+        console.info(`${caseName} CutoutInfo.boundingRects: ${info.boundingRects}`);
+        console.info(`${caseName} CutoutInfo.waterfallDisplayAreaRects.left: ${info.waterfallDisplayAreaRects.left}`);
+        console.info(`${caseName} CutoutInfo.waterfallDisplayAreaRects.top: ${info.waterfallDisplayAreaRects.top}`);
+        console.info(`${caseName} CutoutInfo.waterfallDisplayAreaRects.right: ${info.waterfallDisplayAreaRects.right}`);
+        console.info(`${caseName} CutoutInfo.waterfallDisplayAreaRects.bottom: ${info.waterfallDisplayAreaRects.bottom}`);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`jsunittets ${caseName} fail to get display available info :` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ScreenShape_0100
+     * @tc.name       : test_ScreenShape_0100
+     * @tc.desc       : 显示设备的屏幕形状枚举
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('test_ScreenShape_0100', 0, async (done: Function) => {
+      let caseName = "test_ScreenShape_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        expect(display.ScreenShape.RECTANGLE).assertEqual(0)
+        expect(display.ScreenShape.ROUND).assertEqual(1)
+        done();
+      } catch (error) {
+        console.error(`jsunittets ${caseName} fail to test_ScreenShape, cause:` + error);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
