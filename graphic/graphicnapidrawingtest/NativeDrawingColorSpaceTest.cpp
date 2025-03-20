@@ -42,7 +42,7 @@ void NativeDrawingColorSpaceTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingColorSpaceTest, NativeDrawingColorSpaceTest_ColorSpace001, TestSize.Level1)
+HWTEST_F(NativeDrawingColorSpaceTest, NativeDrawingColorSpaceTest_ColorSpace001, Function | MediumTest | Level1)
 {
     OH_Drawing_ColorSpace* colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
     EXPECT_NE(colorSpace, nullptr);
@@ -56,7 +56,7 @@ HWTEST_F(NativeDrawingColorSpaceTest, NativeDrawingColorSpaceTest_ColorSpace001,
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingColorSpaceTest, NativeDrawingColorSpaceTest_ColorSpace002, TestSize.Level1)
+HWTEST_F(NativeDrawingColorSpaceTest, NativeDrawingColorSpaceTest_ColorSpace002, Function | MediumTest | Level1)
 {
     OH_Drawing_ColorSpace* colorSpace = OH_Drawing_ColorSpaceCreateSrgbLinear();
     EXPECT_NE(colorSpace, nullptr);
