@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 
 import napitest from 'libentry.so'
 
@@ -48,7 +48,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest001
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest001', 0, async (done:Function) => {
+    it('JsvmTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest001 START');
       napitest.Add()
       console.info('JsvmTest001 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -59,7 +59,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest002
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest002', 0, async (done:Function) => {
+    it('JsvmTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest002 START');
       value = napitest.testEngineAndContext()
       console.info('JsvmTest002 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -71,7 +71,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest003
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest003', 0, async (done:Function) => {
+    it('JsvmTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest003 START');
       value = napitest.testError()
       console.info('JsvmTest003 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -83,7 +83,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest004
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest004', 0, async (done:Function) => {
+    it('JsvmTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest004 START');
       value = napitest.testTypeError()
       console.info('JsvmTest004 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -95,7 +95,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest005
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest005', 0, async (done:Function) => {
+    it('JsvmTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest005 START');
       value = napitest.testRangeError()
       console.info('JsvmTest005 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -107,7 +107,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest005
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest006', 0, async (done:Function) => {
+    it('JsvmTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest006 START');
       value = napitest.testSyntaxError()
       console.info('JsvmTest006 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -119,7 +119,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest007
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest007', 0, async (done:Function) => {
+    it('JsvmTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest007 START');
       value = napitest.testClearError()
       console.info('JsvmTest007 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -131,7 +131,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest008
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest008', 0, async (done:Function) => {
+    it('JsvmTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest008 START');
       value = napitest.testLifeCycle()
       console.info('JsvmTest008 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -143,7 +143,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest009
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest009', 0, async (done:Function) => {
+    it('JsvmTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmgTest009 START');
       value = napitest.testCreateData1()
       console.info('Jsvm009 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -155,7 +155,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest010
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest010', 0, async (done:Function) => {
+    it('JsvmTest010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest010 START');
       value = napitest.testCreateData2()
       console.info('JsvmTest010 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -167,7 +167,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest011
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest011', 0, async (done:Function) => {
+    it('JsvmTest011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest011 START');
       value = napitest.testCreateData3()
       console.info('JsvmTest011 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -179,7 +179,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest012
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest012', 0, async (done:Function) => {
+    it('JsvmTest012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest012 START');
       value = napitest.testCreateData4()
       console.info('JsvmTest012 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -191,7 +191,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest013
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest013', 0, async (done:Function) => {
+    it('JsvmTest013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest013 START');
       value = napitest.testCreateData5()
       console.info('JsvmTest013 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -203,7 +203,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest014
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest014', 0, async (done:Function) => {
+    it('JsvmTest014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest014 START');
       value = napitest.testGetData1()
       console.info('JsvmTest014 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -215,7 +215,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest015
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest015', 0, async (done:Function) => {
+    it('JsvmTest015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest015 START');
       value = napitest.testGetData2()
       console.info('JsvmTest015 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -227,7 +227,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest016
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest016', 0, async (done:Function) => {
+    it('JsvmTest016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest016 START');
       value = napitest.testValueOperation()
       console.info('JsvmgTest016 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -239,7 +239,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest017
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest017', 0, async (done:Function) => {
+    it('JsvmTest017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest017 START');
       value = napitest.testValueOperation2()
       console.info('JsvmTest017 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -251,7 +251,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest018
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest018', 0, async (done:Function) => {
+    it('JsvmTest018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest018 START');
       value = napitest.testGetPropertyNames()
       console.info('JsvmTest018 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -263,7 +263,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest019
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest019', 0, async (done:Function) => {
+    it('JsvmTest019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest019 START');
       value = napitest.testGetAllPropertyNames()
       console.info('JsvmTest019 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -275,7 +275,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest020
      * @tc.desc      JsvmTest
      */
-    it('JSvmTest020', 0, async (done:Function) => {
+    it('JSvmTest020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest020 START');
       value = napitest.testProperty()
       console.info('JsvmTest020 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -287,7 +287,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest021
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest021', 0, async (done:Function) => {
+    it('JsvmTest021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest021 START');
       value = napitest.testDefineProperties()
       console.info('JsvmTest021 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -299,7 +299,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest022
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest022', 0, async (done:Function) => {
+    it('JsvmTest022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest022 START');
       value = napitest.testWrap()
       console.info('JsvmTest022 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -311,7 +311,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest023
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest023', 0, async (done:Function) => {
+    it('JsvmTest023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest023 START');
       value = napitest.testOthers()
       console.info('JsvmTest023 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -323,7 +323,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest024
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest024', 0, async (done:Function) => {
+    it('JsvmTest024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest024 START');
       value = napitest.Add1()
       console.info('JsvmTest024 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -335,7 +335,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest025
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest025', 0, async (done:Function) => {
+    it('JsvmTest025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest025 START');
       value = napitest.testSecondOperations()
       console.info('JsvmTest025 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -347,7 +347,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest026
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest026', 0, async (done:Function) => {
+    it('JsvmTest026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest026 START');
       value = napitest.testDefinePropertyHandle(0)
       console.info('JsvmTest026 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -359,7 +359,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest027
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest027', 0, async (done:Function) => {
+    it('JsvmTest027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest027 START');
       value = napitest.testDefinePropertyHandle(1)
       console.info('JsvmTest027 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -371,7 +371,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest028
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest028', 0, async (done:Function) => {
+    it('JsvmTest028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest028 START');
       value = napitest.testDefinePropertyHandle(2)
       console.info('JsvmTest028 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -383,7 +383,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest029
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest029', 0, async (done:Function) => {
+    it('JsvmTest029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest029 START');
       value = napitest.testDefinePropertyHandle(3)
       console.info('JsvmTest029 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -395,7 +395,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest030
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest030', 0, async (done:Function) => {
+    it('JsvmTest030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest030 START');
       value = napitest.testDefinePropertyHandle(4)
       console.info('JsvmTest030 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -407,7 +407,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest031
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest031', 0, async (done:Function) => {
+    it('JsvmTest031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest031 START');
       value = napitest.testDefinePropertyHandle(5)
       console.info('JsvmTest031 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -419,7 +419,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest032
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest032', 0, async (done:Function) => {
+    it('JsvmTest032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest032 START');
       value = napitest.testDefinePropertyHandle(6)
       console.info('JsvmTest032 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -431,7 +431,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest033
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest033', 0, async (done:Function) => {
+    it('JsvmTest033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest033 START');
       value = napitest.testDefinePropertyHandle(7)
       console.info('JsvmTest033 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -443,7 +443,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest034
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest034', 0, async (done:Function) => {
+    it('JsvmTest034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest034 START');
       value = napitest.testDefinePropertyHandle(8)
       console.info('JsvmTest034 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -455,7 +455,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest035
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest035', 0, async (done:Function) => {
+    it('JsvmTest035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest035 START');
       value = napitest.testDefinePropertyHandle(9)
       console.info('JsvmTest035 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -467,7 +467,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest036
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest036', 0, async (done:Function) => {
+    it('JsvmTest036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest036 START');
       value = napitest.testDefinePropertyHandle(10)
       console.info('JsvmTest036 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -479,7 +479,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest037
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest037', 0, async (done:Function) => {
+    it('JsvmTest037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest037 START');
       value = napitest.testDefinePropertyHandle(11)
       console.info('JsvmTest037 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -491,7 +491,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest038
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest038', 0, async (done:Function) => {
+    it('JsvmTest038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest038 START');
       value = napitest.testDefinePropertyHandle(12)
       console.info('JsvmTest038 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -503,7 +503,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest039
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest039', 0, async (done:Function) => {
+    it('JsvmTest039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest039 START');
       value = napitest.testDefinePropertyHandle(13)
       console.info('JsvmTest039 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -515,7 +515,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest040
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest040', 0, async (done:Function) => {
+    it('JsvmTest040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest040 START');
       value = napitest.testDefinePropertyHandle(14)
       console.info('JsvmTest040 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -527,7 +527,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest041
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest041', 0, async (done:Function) => {
+    it('JsvmTest041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest041 START');
       value = napitest.testDefinePropertyHandle(15)
       console.info('JsvmTest041 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -539,7 +539,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest042
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest042', 0, async (done:Function) => {
+    it('JsvmTest042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest042 START');
       value = napitest.testDefinePropertyHandle(16)
       console.info('JsvmTest042 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -551,7 +551,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest043
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest043', 0, async (done:Function) => {
+    it('JsvmTest043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest043 START');
       value = napitest.testDefinePropertyHandle(17)
       console.info('JsvmTest043 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -563,7 +563,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest044
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest044', 0, async (done:Function) => {
+    it('JsvmTest044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest044 START');
       value = napitest.testDefinePropertyHandle(18)
       console.info('JsvmTest044 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -575,7 +575,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest045
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest045', 0, async (done:Function) => {
+    it('JsvmTest045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest045 START');
       value = napitest.testDefinePropertyHandle(19)
       console.info('JsvmTest045 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -587,7 +587,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest046
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest046', 0, async (done:Function) => {
+    it('JsvmTest046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest046 START');
       value = napitest.testDefinePropertyHandle(20)
       console.info('JsvmTest046 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -599,7 +599,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest047
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest047', 0, async (done:Function) => {
+    it('JsvmTest047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest047 START');
       value = napitest.testDefinePropertyHandle(21)
       console.info('JsvmTest047 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -611,7 +611,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest048
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest048', 0, async (done:Function) => {
+    it('JsvmTest048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest048 START');
       value = napitest.testValueOperation3()
       console.info('JsvmTest048 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -623,7 +623,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest049
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest049', 0, async (done:Function) => {
+    it('JsvmTest049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest049 START');
       value = napitest.testValueOperation4()
       console.info('JsvmTest049 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -635,7 +635,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest050
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest050', 0, async (done:Function) => {
+    it('JsvmTest050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('JsvmTest050 START');
       value = napitest.testLifeCycle2()
       console.info('JsvmTest050 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -647,7 +647,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest051
      * @tc.desc JsvmTest
      */
-    it('JsvmTest051', 0, () => {
+    it('JsvmTest051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"aaBC"`;
       let script: string = `
         getValueStringUtf8(${ data })
@@ -659,7 +659,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest052
      * @tc.desc JsvmTest
      */
-    it('JsvmTest052', 0, () => {
+    it('JsvmTest052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"--&% #$"`;
       let script: string = `
         getValueStringUtf8(${ data })
@@ -671,7 +671,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest053
      * @tc.desc JsvmTest
      */
-    it('JsvmTest053', 0, () => {
+    it('JsvmTest053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"中国"`;
       let script: string = `
         getValueStringUtf8(${ data })
@@ -683,7 +683,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest054
      * @tc.desc JsvmTest
      */
-    it('JsvmTest054', 0, () => {
+    it('JsvmTest054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"123"`;
       let script: string = `
         getValueStringUtf8(${ data })
@@ -695,7 +695,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest055
      * @tc.desc JsvmTest
      */
-    it('JsvmTest055', 0, () => {
+    it('JsvmTest055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"abc"`;
       let script: string = `
         getValueStringUtf8(${ data })
@@ -707,7 +707,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest056
      * @tc.desc JsvmTest
      */
-    it('JsvmTest056', 0, () => {
+    it('JsvmTest056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringUtf16()
       `;
@@ -718,7 +718,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest057
      * @tc.desc JsvmTest
      */
-    it('JsvmTest057', 0, () => {
+    it('JsvmTest057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringUtf16()
        `;
@@ -729,7 +729,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest058
      * @tc.desc JsvmTest
      */
-    it('JsvmTest058', 0, () => {
+    it('JsvmTest058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"ahello。"`;
       let script: string = `
         getValueStringUtf16(${ data })
@@ -741,7 +741,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest059
      * @tc.desc JsvmTest
      */
-    it('JsvmTest059', 0, () => {
+    it('JsvmTest059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"@#$%^&*()"`;
       let script: string = `
         getValueStringUtf16(${ data })
@@ -753,7 +753,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest060
      * @tc.desc JsvmTest
      */
-    it('JsvmTest060', 0, () => {
+    it('JsvmTest060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"中国"`;
       let script: string = `
         getValueStringUtf16(${ data })
@@ -765,7 +765,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest061
      * @tc.desc JsvmTest
      */
-    it('JsvmTest061', 0, () => {
+    it('JsvmTest061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"11"`;
       let script: string = `
         getValueStringUtf16(${ data })
@@ -777,7 +777,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest062
      * @tc.desc JsvmTest
      */
-    it('JsvmTest062', 0, () => {
+    it('JsvmTest062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"abc"`;
       let script: string = `
         getValueStringUtf16(${ data })
@@ -789,7 +789,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest063
      * @tc.desc JsvmTest
      */
-    it('JsvmTest063', 0, () => {
+    it('JsvmTest063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringLatin1()
       `;
@@ -800,7 +800,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest064
      * @tc.desc JsvmTest
      */
-    it('JsvmTest064', 0, () => {
+    it('JsvmTest064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringLatin1()
       `;
@@ -811,7 +811,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest065
      * @tc.desc JsvmTest
      */
-    it('JsvmTest065', 0, () => {
+    it('JsvmTest065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"中文"`;
       let script: string = `
         getValueStringLatin1(${ data })
@@ -823,7 +823,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest066
      * @tc.desc JsvmTest
      */
-    it('JsvmTest066', 0, () => {
+    it('JsvmTest066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"111"`;
       let script: string = `
         getValueStringLatin1(${ data })
@@ -835,7 +835,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest067
      * @tc.desc JsvmTest
      */
-    it('JsvmTest067', 0, () => {
+    it('JsvmTest067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"ab"`;
       let script: string = `
         getValueStringLatin1(${ data })
@@ -847,7 +847,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest068
      * @tc.desc JsvmTest
      */
-    it('JsvmTest068', 0, () => {
+    it('JsvmTest068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"~!@#$%^&*"`;
       let script: string = `
         getValueStringLatin1(${ data })
@@ -859,7 +859,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest069
      * @tc.desc JsvmTest
      */
-    it('JsvmTest069', 0, () => {
+    it('JsvmTest069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `"©"`;
       let script: string = `
         getValueStringLatin1(${ data })
@@ -871,7 +871,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest070
      * @tc.desc JsvmTest
      */
-    it('JsvmTest070', 0, () => {
+    it('JsvmTest070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createDate()
       `;
@@ -882,7 +882,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest071
      * @tc.desc JsvmTest
      */
-    it('JsvmTest071', 0, () => {
+    it('JsvmTest071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createDate()
       `;
@@ -893,7 +893,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest072
      * @tc.desc JsvmTest
      */
-    it('JsvmTest072', 0, () => {
+    it('JsvmTest072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createObject()
       `;
@@ -904,7 +904,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest073
      * @tc.desc JsvmTest
      */
-    it('JsvmTest073', 0, () => {
+    it('JsvmTest073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createObject()
       `;
@@ -915,7 +915,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest074
      * @tc.desc JsvmTest
      */
-    it('JsvmTest074', 0, () => {
+    it('JsvmTest074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createObject()
       `;
@@ -926,7 +926,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest075
      * @tc.desc JsvmTest
      */
-    it('JsvmTest075', 0, () => {
+    it('JsvmTest075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintInt64()
       `;
@@ -937,7 +937,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest076
      * @tc.desc JsvmTest
      */
-    it('JsvmTest076', 0, () => {
+    it('JsvmTest076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintInt64()
       `;
@@ -948,7 +948,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest077
      * @tc.desc JsvmTest
      */
-    it('JsvmTest077', 0, () => {
+    it('JsvmTest077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createExternal()
       `;
@@ -959,7 +959,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest078
      * @tc.desc JsvmTest
      */
-    it('JsvmTest078', 0, () => {
+    it('JsvmTest078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createExternal()
       `;
@@ -970,7 +970,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest079
      * @tc.desc JsvmTest
      */
-    it('JsvmTest079', 0, () => {
+    it('JsvmTest079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueExternal()
       `;
@@ -981,7 +981,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest080
      * @tc.desc JsvmTest
      */
-    it('JsvmTest080', 0, () => {
+    it('JsvmTest080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         function testCreateArray() {
           return createArray();
@@ -995,7 +995,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest081
      * @tc.desc JsvmTest
      */
-    it('JsvmTest081', 0, () => {
+    it('JsvmTest081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         function testCreateArray() {
           return createArray();
@@ -1009,7 +1009,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest082
      * @tc.desc JsvmTest
      */
-    it('JsvmTest082', 0, () => {
+    it('JsvmTest082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         function testCreateArray() {
           return createArray();
@@ -1023,7 +1023,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest083
      * @tc.desc JsvmTest
      */
-    it('JsvmTest083', 0, () => {
+    it('JsvmTest083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         function testCreateArray() {
           return createArray();
@@ -1037,7 +1037,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest084
      * @tc.desc JsvmTest
      */
-    it('JsvmTest084', 0, () => {
+    it('JsvmTest084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -1;
       let script: string = `
       function testCreateArrayWithLength(num) {
@@ -1052,7 +1052,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest085
      * @tc.desc JsvmTest
      */
-    it('JsvmTest085', 0, () => {
+    it('JsvmTest085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 0;
       let script: string = `
       function testCreateArrayWithLength(num) {
@@ -1067,7 +1067,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest086
      * @tc.desc JsvmTest
      */
-    it('JsvmTest086', 0, () => {
+    it('JsvmTest086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 5;
       let script: string = `
       function testCreateArrayWithLength(num) {
@@ -1082,7 +1082,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest087
      * @tc.desc JsvmTest
      */
-    it('JsvmTest087', 0, () => {
+    it('JsvmTest087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 5;
       let script: string = `
       function testCreateArrayWithLength(num) {
@@ -1097,7 +1097,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest088
      * @tc.desc JsvmTest
      */
-    it('JsvmTest088', 0, () => {
+    it('JsvmTest088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 5;
       let script: string = `
       function testCreateArrayWithLength(num) {
@@ -1112,7 +1112,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest089
      * @tc.desc JsvmTest
      */
-    it('JsvmTest089', 0, () => {
+    it('JsvmTest089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateArraybuffer() {
          return createArraybuffer(6);
@@ -1126,7 +1126,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest090
      * @tc.desc JsvmTest
      */
-    it('JsvmTest090', 0, () => {
+    it('JsvmTest090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateArraybuffer() {
          return createArraybuffer(0);
@@ -1140,7 +1140,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest091
      * @tc.desc JsvmTest
      */
-    it('JsvmTest091', 0, () => {
+    it('JsvmTest091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateArraybuffer() {
          return createArraybuffer(3);
@@ -1154,7 +1154,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest092
      * @tc.desc JsvmTest
      */
-    it('JsvmTest092', 0, () => {
+    it('JsvmTest092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateArraybuffer() {
          return createArraybuffer(3);
@@ -1168,7 +1168,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest093
      * @tc.desc JsvmTest
      */
-    it('JsvmTest093', 0, () => {
+    it('JsvmTest093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateInt32() {
          return createInt32();
@@ -1182,7 +1182,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest094
      * @tc.desc JsvmTest
      */
-    it('JsvmTest094', 0, () => {
+    it('JsvmTest094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateInt32() {
          return createInt32();
@@ -1196,7 +1196,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest095
      * @tc.desc JsvmTest
      */
-    it('JsvmTest095', 0, () => {
+    it('JsvmTest095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 0;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1211,7 +1211,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest096
      * @tc.desc JsvmTest
      */
-    it('JsvmTest096', 0, () => {
+    it('JsvmTest096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 2147483647;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1226,7 +1226,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest097
      * @tc.desc JsvmTest
      */
-    it('JsvmTest097', 0, () => {
+    it('JsvmTest097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 2147483649;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1241,7 +1241,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest098
      * @tc.desc JsvmTest
      */
-    it('JsvmTest098', 0, () => {
+    it('JsvmTest098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -2147483648;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1256,7 +1256,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest099
      * @tc.desc JsvmTest
      */
-    it('JsvmTest099', 0, () => {
+    it('JsvmTest099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -2147483650;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1271,7 +1271,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest100
      * @tc.desc JsvmTest
      */
-    it('JsvmTest100', 0, () => {
+    it('JsvmTest100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 1;
       let script: string = `
       function testGetValueInt32(num) {
@@ -1286,7 +1286,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest101
      * @tc.desc JsvmTest
      */
-    it('JsvmTest101', 0, () => {
+    it('JsvmTest101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateUInt32() {
          return createUInt32();
@@ -1300,7 +1300,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest102
      * @tc.desc JsvmTest
      */
-    it('JsvmTest102', 0, () => {
+    it('JsvmTest102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateUInt32() {
          return createUInt32();
@@ -1314,7 +1314,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest103
      * @tc.desc JsvmTest
      */
-    it('JsvmTest103', 0, () => {
+    it('JsvmTest103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 1;
       let script: string = `
       function testGetValueUint32(num) {
@@ -1329,7 +1329,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest104
      * @tc.desc JsvmTest
      */
-    it('JsvmTest104', 0, () => {
+    it('JsvmTest104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -1;
       let script: string = `
       function testGetValueUint32(num) {
@@ -1344,7 +1344,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest105
      * @tc.desc JsvmTest
      */
-    it('JsvmTest105', 0, () => {
+    it('JsvmTest105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 4294967295;
       let script: string = `
       function testGetValueUint32(num) {
@@ -1359,7 +1359,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest106
      * @tc.desc JsvmTest
      */
-    it('JsvmTest106', 0, () => {
+    it('JsvmTest106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 4294967296;
       let script: string = `
       function testGetValueUint32(num) {
@@ -1374,7 +1374,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest107
      * @tc.desc JsvmTest
      */
-    it('JsvmTest107', 0, () => {
+    it('JsvmTest107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 3;
       let script: string = `
       function testGetValueUint32(num) {
@@ -1389,7 +1389,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest108
      * @tc.desc JsvmTest
      */
-    it('JsvmTest108', 0, () => {
+    it('JsvmTest108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateInt64() {
          return createInt64();
@@ -1403,7 +1403,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest109
      * @tc.desc JsvmTest
      */
-    it('JsvmTest109', 0, () => {
+    it('JsvmTest109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateInt64() {
          return createInt64();
@@ -1417,7 +1417,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest110
      * @tc.desc JsvmTest
      */
-    it('JsvmTest110', 0, () => {
+    it('JsvmTest110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -1;
       let script: string = `
       function testGetValueInt64(num) {
@@ -1432,7 +1432,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest111
      * @tc.desc JsvmTest
      */
-    it('JsvmTest111', 0, () => {
+    it('JsvmTest111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -9223372036854775808;
       let script: string = `
       function testGetValueInt64(num) {
@@ -1447,7 +1447,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest112
      * @tc.desc JsvmTest
      */
-    it('JsvmTest112', 0, () => {
+    it('JsvmTest112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 9223372036854775807;
       let script: string = `
       function testGetValueInt64(num) {
@@ -1462,7 +1462,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest113
      * @tc.desc JsvmTest
      */
-    it('JsvmTest113', 0, () => {
+    it('JsvmTest113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 888;
       let script: string = `
       function testGetValueInt64(num) {
@@ -1477,7 +1477,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest114
      * @tc.desc JsvmTest
      */
-    it('JsvmTest114', 0, () => {
+    it('JsvmTest114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 11;
       let script: string = `
       function testGetValueInt64(num) {
@@ -1492,7 +1492,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest115
      * @tc.desc JsvmTest
      */
-    it('JsvmTest115', 0, () => {
+    it('JsvmTest115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateDouble() {
          return createDouble();
@@ -1506,7 +1506,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest116
      * @tc.desc JsvmTest
      */
-    it('JsvmTest116', 0, () => {
+    it('JsvmTest116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateDouble() {
          return createDouble();
@@ -1520,7 +1520,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest117
      * @tc.desc JsvmTest
      */
-    it('JsvmTest117', 0, () => {
+    it('JsvmTest117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function testCreateDouble() {
          return createDouble();
@@ -1534,7 +1534,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest118
      * @tc.desc JsvmTest
      */
-    it('JsvmTest118', 0, () => {
+    it('JsvmTest118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = -110.0456;
       let script: string = `
       function testGetDouble(num) {
@@ -1549,7 +1549,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest119
      * @tc.desc JsvmTest
      */
-    it('JsvmTest119', 0, () => {
+    it('JsvmTest119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 1.456;
       let script: string = `
       function testGetDouble(num) {
@@ -1564,7 +1564,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest120
      * @tc.desc JsvmTest
      */
-    it('JsvmTest120', 0, () => {
+    it('JsvmTest120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 0.0000001;
       let script: string = `
       function testGetDouble(num) {
@@ -1579,7 +1579,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest121
      * @tc.desc JsvmTest
      */
-    it('JsvmTest121', 0, () => {
+    it('JsvmTest121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let num = 1.5;
       let script: string = `
       function testGetDouble(num) {
@@ -1594,7 +1594,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest122
      * @tc.desc JsvmTest
      */
-    it('JsvmTest122', 0, () => {
+    it('JsvmTest122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 1;
       let value = 2;
       let script: string = `
@@ -1610,7 +1610,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest123
      * @tc.desc JsvmTest
      */
-    it('JsvmTest123', 0, () => {
+    it('JsvmTest123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 1;
       let value = 1;
       let script: string = `
@@ -1626,7 +1626,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest124
      * @tc.desc JsvmTest
      */
-    it('JsvmTest124', 0, () => {
+    it('JsvmTest124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '2';
       let value = '2';
       let script: string = `
@@ -1642,7 +1642,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest125
      * @tc.desc JsvmTest
      */
-    it('JsvmTest125', 0, () => {
+    it('JsvmTest125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '2';
       let value = '3';
       let script: string = `
@@ -1658,7 +1658,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest126
      * @tc.desc JsvmTest
      */
-    it('JsvmTest126', 0, () => {
+    it('JsvmTest126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'a'`;
       let value = `'a'`;
       let script: string = `
@@ -1671,7 +1671,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest127
      * @tc.desc JsvmTest
      */
-    it('JsvmTest127', 0, () => {
+    it('JsvmTest127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = true;
       let script: string = `
       function testGetValueBool(data) {
@@ -1686,7 +1686,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest128
      * @tc.desc JsvmTest
      */
-    it('JsvmTest128', 0, () => {
+    it('JsvmTest128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 'true';
       let script: string = `
       function testGetValueBool(data) {
@@ -1701,7 +1701,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest129
      * @tc.desc JsvmTest
      */
-    it('JsvmTest129', 0, () => {
+    it('JsvmTest129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 11;
       let script: string = `
       function testGetValueBool(data) {
@@ -1716,7 +1716,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest130
      * @tc.desc JsvmTest
      */
-    it('JsvmTest130', 0, () => {
+    it('JsvmTest130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 'false';
       let script: string = `
       function testGetValueBool(data) {
@@ -1731,7 +1731,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest131
      * @tc.desc JsvmTest
      */
-    it('JsvmTest131', 0, () => {
+    it('JsvmTest131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = false;
       let script: string = `
       function testGetValueBool(data) {
@@ -1746,7 +1746,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest132
      * @tc.desc JsvmTest
      */
-    it('JsvmTest132', 0, () => {
+    it('JsvmTest132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintUint64()
     `;
@@ -1757,7 +1757,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest133
      * @tc.desc JsvmTest
      */
-    it('JsvmTest133', 0, () => {
+    it('JsvmTest133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintUint64()
     `;
@@ -1768,7 +1768,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest134
      * @tc.desc JsvmTest
      */
-    it('JsvmTest134', 0, () => {
+    it('JsvmTest134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintUint64(BigInt(5555555555555555))
     `;
@@ -1779,7 +1779,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest135
      * @tc.desc JsvmTest
      */
-    it('JsvmTest135', 0, () => {
+    it('JsvmTest135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintUint64(BigInt(0))
     `;
@@ -1790,7 +1790,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest136
      * @tc.desc JsvmTest
      */
-    it('JsvmTest136', 0, () => {
+    it('JsvmTest136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintUint64(BigInt(1))
     `;
@@ -1801,7 +1801,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest137
      * @tc.desc JsvmTest
      */
-    it('JsvmTest137', 0, () => {
+    it('JsvmTest137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintInt64()
     `;
@@ -1812,7 +1812,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest138
      * @tc.desc JsvmTest
      */
-    it('JsvmTest138', 0, () => {
+    it('JsvmTest138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintInt64()
     `;
@@ -1823,7 +1823,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest139
      * @tc.desc JsvmTest
      */
-    it('JsvmTest139', 0, () => {
+    it('JsvmTest139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getBigintInt64(BigInt(-5555555555555555))
     `;
@@ -1834,7 +1834,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest140
      * @tc.desc JsvmTest
      */
-    it('JsvmTest140', 0, () => {
+    it('JsvmTest140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getBigintInt64(BigInt(0))
     `;
@@ -1845,7 +1845,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest141
      * @tc.desc JsvmTest
      */
-    it('JsvmTest141', 0, () => {
+    it('JsvmTest141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getBigintInt64(BigInt(5555555555555555))
     `;
@@ -1856,7 +1856,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest142
      * @tc.desc JsvmTest
      */
-    it('JsvmTest142', 0, () => {
+    it('JsvmTest142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getBigintInt64(BigInt(123))
     `;
@@ -1867,7 +1867,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest143
      * @tc.desc JsvmTest
      */
-    it('JsvmTest143', 0, () => {
+    it('JsvmTest143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintWords()
     `;
@@ -1878,7 +1878,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest144
      * @tc.desc JsvmTest
      */
-    it('JsvmTest144', 0, () => {
+    it('JsvmTest144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createBigintWords()
     `;
@@ -1889,7 +1889,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest145
      * @tc.desc JsvmTest
      */
-    it('JsvmTest145', 0, () => {
+    it('JsvmTest145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords(BigInt(5555555555555555))
     `;
@@ -1901,7 +1901,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest146
      * @tc.desc JsvmTest
      */
-    it('JsvmTest146', 0, () => {
+    it('JsvmTest146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords(BigInt(-5555555555555555))
     `;
@@ -1913,7 +1913,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest147
      * @tc.desc JsvmTest
      */
-    it('JsvmTest147', 0, () => {
+    it('JsvmTest147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords(11)
     `;
@@ -1924,7 +1924,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest148
      * @tc.desc JsvmTest
      */
-    it('JsvmTest148', 0, () => {
+    it('JsvmTest148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords('ab')
     `;
@@ -1935,7 +1935,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest149
      * @tc.desc JsvmTest
      */
-    it('JsvmTest149', 0, () => {
+    it('JsvmTest149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords('中')
     `;
@@ -1946,7 +1946,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest150
      * @tc.desc JsvmTest
      */
-    it('JsvmTest150', 0, () => {
+    it('JsvmTest150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getValueBigintWords('@#￥%&*（$^(')
     `;
@@ -1957,7 +1957,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest151
      * @tc.desc JsvmTest
      */
-    it('JsvmTest151', 0, () => {
+    it('JsvmTest151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getNull()
     `;
@@ -1968,7 +1968,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest152
      * @tc.desc JsvmTest
      */
-    it('JsvmTest152', 0, () => {
+    it('JsvmTest152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getUndefined()
     `;
@@ -1979,7 +1979,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest153
      * @tc.desc JsvmTest
      */
-    it('JsvmTest153', 0, () => {
+    it('JsvmTest153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getGlobal()
     `;
@@ -1990,7 +1990,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest154
      * @tc.desc JsvmTest
      */
-    it('JsvmTest154', 0, () => {
+    it('JsvmTest154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getGlobal()
     `;
@@ -2001,7 +2001,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest155
      * @tc.desc JsvmTest
      */
-    it('JsvmTest155', 0, () => {
+    it('JsvmTest155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createSymbol()
     `;
@@ -2012,7 +2012,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest156
      * @tc.desc JsvmTest
      */
-    it('JsvmTest156', 0, () => {
+    it('JsvmTest156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createSymbol()
     `;
@@ -2023,7 +2023,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest157
      * @tc.desc JsvmTest
      */
-    it('JsvmTest157', 0, () => {
+    it('JsvmTest157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         symbolFor()
     `;
@@ -2034,7 +2034,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest158
      * @tc.desc JsvmTest
      */
-    it('JsvmTest158', 0, () => {
+    it('JsvmTest158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         symbolFor()
     `;
@@ -2045,7 +2045,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest159
      * @tc.desc JsvmTest
      */
-    it('JsvmTest159', 0, () => {
+    it('JsvmTest159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getDateValue(new Date(Date.now()))
     `;
@@ -2056,7 +2056,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest1160
      * @tc.desc JsvmTest
      */
-    it('JsvmTest160', 0, () => {
+    it('JsvmTest160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getDateValue(new Date(Date.now()))
     `;
@@ -2067,7 +2067,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest161
      * @tc.desc JsvmTest
      */
-    it('JsvmTest161', 0, () => {
+    it('JsvmTest161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let ARRAY_BUFFER = 1;
       let script: string = `
         getArraybufferInfo(new ArrayBuffer(10), ${ ARRAY_BUFFER })
@@ -2079,7 +2079,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest162
      * @tc.desc JsvmTest
      */
-    it('JsvmTest162', 0, () => {
+    it('JsvmTest162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let ARRAY_LENGTH = 0;
       let script: string = `
         getArraybufferInfo(new ArrayBuffer(10), ${ ARRAY_LENGTH })
@@ -2091,7 +2091,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest163
      * @tc.desc JsvmTest
      */
-    it('JsvmTest163', 0, () => {
+    it('JsvmTest163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let ARRAY_BUFFER = 1;
       let script: string = `
         getArraybufferInfo(new ArrayBuffer(10), ${ ARRAY_BUFFER })
@@ -2103,7 +2103,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest164
      * @tc.desc JsvmTest
      */
-    it('JsvmTest164', 0, () => {
+    it('JsvmTest164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['INT8_ARRAY'] })
     `;
@@ -2114,7 +2114,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest165
      * @tc.desc JsvmTest
      */
-    it('JsvmTest165', 0, () => {
+    it('JsvmTest165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['UINT8_ARRAY'] })
     `;
@@ -2125,7 +2125,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest166
      * @tc.desc JsvmTest
      */
-    it('JsvmTest166', 0, () => {
+    it('JsvmTest166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['UINT8_CLAMPED_ARRAY'] })
     `;
@@ -2136,7 +2136,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest167
      * @tc.desc JsvmTest
      */
-    it('JsvmTest167', 0, () => {
+    it('JsvmTest167', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['INT16_ARRAY'] })
     `;
@@ -2147,7 +2147,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest168
      * @tc.desc JsvmTest
      */
-    it('JsvmTest168', 0, () => {
+    it('JsvmTest168', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['UINT16_ARRAY'] })
     `;
@@ -2158,7 +2158,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest169
      * @tc.desc JsvmTest
      */
-    it('JsvmTest169', 0, () => {
+    it('JsvmTest169', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['INT32_ARRAY'] })
     `;
@@ -2169,7 +2169,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest170
      * @tc.desc JsvmTest
      */
-    it('JsvmTest170', 0, () => {
+    it('JsvmTest170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['UINT32_ARRAY'] })
     `;
@@ -2180,7 +2180,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest171
      * @tc.desc JsvmTest
      */
-    it('JsvmTest171', 0, () => {
+    it('JsvmTest171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['FLOAT32_ARRAY'] })
     `;
@@ -2191,7 +2191,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest172
      * @tc.desc JsvmTest
      */
-    it('JsvmTest172', 0, () => {
+    it('JsvmTest172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['FLOAT64_ARRAY'] })
     `;
@@ -2202,7 +2202,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest173
      * @tc.desc JsvmTest
      */
-    it('JsvmTest173', 0, () => {
+    it('JsvmTest173', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['BIGINT64_ARRAY'] })
     `;
@@ -2213,7 +2213,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest174
      * @tc.desc JsvmTest
      */
-    it('JsvmTest174', 0, () => {
+    it('JsvmTest174', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createTypedArray(${ napitest.TypedArrayTypes['BIGUINT64_ARRAY'] })
     `;
@@ -2224,7 +2224,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest175
      * @tc.desc JsvmTest
      */
-    it('JsvmTest175', 0, () => {
+    it('JsvmTest175', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       //  超出范围，默认是INT8_ARRAY
       let script: string = `
         createTypedArray(22)
@@ -2236,7 +2236,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest176
      * @tc.desc JsvmTest
      */
-    it('JsvmTest176', 0, () => {
+    it('JsvmTest176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_JSVM_INT8_ARRAY = 0;
       let script: string = `
         getTypedArrayInfo(new Int8Array(3), ${ IS_JSVM_INT8_ARRAY })
@@ -2248,7 +2248,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest177
      * @tc.desc JsvmTest
      */
-    it('JsvmTest177', 0, () => {
+    it('JsvmTest177', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_JSVM_INT8_ARRAY = 0;
       let script: string = `
         getTypedArrayInfo(new Int16Array(3), ${ IS_JSVM_INT8_ARRAY })
@@ -2260,7 +2260,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest178
      * @tc.desc JsvmTest
      */
-    it('JsvmTest178', 0, () => {
+    it('JsvmTest178', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_JSVM_INT8_ARRAY = 0;
       let script: string = `
         getTypedArrayInfo(new Int32Array(3), ${ IS_JSVM_INT8_ARRAY })
@@ -2272,7 +2272,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest179
      * @tc.desc JsvmTest
      */
-    it('JsvmTest179', 0, () => {
+    it('JsvmTest179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_JSVM_INT8_ARRAY = 0;
       let script: string = `
         getTypedArrayInfo(new Float64Array(3), ${ IS_JSVM_INT8_ARRAY })
@@ -2284,7 +2284,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest180
      * @tc.desc JsvmTest
      */
-    it('JsvmTest180', 0, () => {
+    it('JsvmTest180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_JSVM_INT8_ARRAY = 0;
       let script: string = `
         getTypedArrayInfo(new BigInt64Array(3), ${ IS_JSVM_INT8_ARRAY })
@@ -2296,7 +2296,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest181
      * @tc.desc JsvmTest
      */
-    it('JsvmTest181', 0, () => {
+    it('JsvmTest181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let LENGTH = 1;
       let script: string = `
         getTypedArrayInfo(new Int8Array(5), ${ LENGTH })
@@ -2308,7 +2308,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest182
      * @tc.desc JsvmTest
      */
-    it('JsvmTest182', 0, () => {
+    it('JsvmTest182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_BUFFER = 2;
       let script: string = `
         getTypedArrayInfo(new Int8Array(5), ${ IS_BUFFER })
@@ -2320,7 +2320,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest183
      * @tc.desc JsvmTest
      */
-    it('JsvmTest183', 0, () => {
+    it('JsvmTest183', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_BUFFER = 2;
       let script: string = `
         getTypedArrayInfo(1, ${ IS_BUFFER })
@@ -2332,7 +2332,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest184
      * @tc.desc JsvmTest
      */
-    it('JsvmTest184', 0, () => {
+    it('JsvmTest184', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_BUFFER = 2;
       let script: string = `
         getTypedArrayInfo(\'a\', ${ IS_BUFFER })
@@ -2344,7 +2344,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest185
      * @tc.desc JsvmTest
      */
-    it('JsvmTest185', 0, () => {
+    it('JsvmTest185', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_BUFFER = 2;
       let script: string = `
         getTypedArrayInfo({}, ${ IS_BUFFER })
@@ -2356,7 +2356,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest186
      * @tc.desc JsvmTest
      */
-    it('JsvmTest186', 0, () => {
+    it('JsvmTest186', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_BUFFER = 2;
       let script: string = `
         getTypedArrayInfo(\'中\', ${ IS_BUFFER })
@@ -2368,7 +2368,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest187
      * @tc.desc JsvmTest
      */
-    it('JsvmTest187', 0, () => {
+    it('JsvmTest187', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let BYTE_OFFSET = 3;
       let script: string = `
         getTypedArrayInfo(new Int8Array(1), ${ BYTE_OFFSET })
@@ -2380,7 +2380,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest188
      * @tc.desc JsvmTest
      */
-    it('JsvmTest188', 0, () => {
+    it('JsvmTest188', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let BYTE_LENGTGH = 0;
       let script: string = `
         createDataView(new ArrayBuffer(16), ${ BYTE_LENGTGH })
@@ -2392,7 +2392,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest189
      * @tc.desc JsvmTest
      */
-    it('JsvmTest189', 0, () => {
+    it('JsvmTest189', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_ARRAYBUFFER = 1;
       let script: string = `
         createDataView(new ArrayBuffer(16), ${ IS_ARRAYBUFFER })
@@ -2404,7 +2404,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest190
      * @tc.desc JsvmTest
      */
-    it('JsvmTest190', 0, () => {
+    it('JsvmTest190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let IS_ARRAYBUFFER = 1;
       let script: string = `
         createDataView(new ArrayBuffer(16), ${ IS_ARRAYBUFFER })
@@ -2416,7 +2416,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest191
      * @tc.desc JsvmTest
      */
-    it('JsvmTest191', 0, () => {
+    it('JsvmTest191', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let BYTE_OFFSET = '2';
       let script: string = `
         createDataView(new ArrayBuffer(16), ${ BYTE_OFFSET })
@@ -2428,7 +2428,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest192
      * @tc.desc JsvmTest
      */
-    it('JsvmTest192', 0, () => {
+    it('JsvmTest192', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let BYTE_LENGTGH = 0;
       let script: string = `
         getDataViewInfo(new DataView(new Int8Array([2,5]).buffer), ${ BYTE_LENGTGH })
@@ -2440,7 +2440,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest193
      * @tc.desc JsvmTest
      */
-    it('JsvmTest193', 0, () => {
+    it('JsvmTest193', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let BYTE_LENGTGH = 0;
       let script: string = `
         getDataViewInfo(new DataView(new Int8Array([2,5,3]).buffer), ${ BYTE_LENGTGH })
@@ -2452,7 +2452,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest194
      * @tc.desc JsvmTest
      */
-    it('JsvmTest194', 0, () => {
+    it('JsvmTest194', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 'new DataView(new Int8Array([2,5,3]).buffer)';
       let IS_ARRAYBUFFER = '1';
       let script: string = `
@@ -2465,7 +2465,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest195
      * @tc.desc JsvmTest
      */
-    it('JsvmTest195', 0, () => {
+    it('JsvmTest195', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'a'`;
       let IS_ARRAYBUFFER = '1';
       let script: string = `
@@ -2478,7 +2478,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest196
      * @tc.desc JsvmTest
      */
-    it('JsvmTest196', 0, () => {
+    it('JsvmTest196', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'中'`;
       let IS_ARRAYBUFFER = '1';
       let script: string = `
@@ -2491,7 +2491,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest197
      * @tc.desc JsvmTest
      */
-    it('JsvmTest197', 0, () => {
+    it('JsvmTest197', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = 'new DataView(new Int8Array([2,5,3]).buffer)';
       let BYTE_OFFSET = '2';
       let script: string = `
@@ -2504,7 +2504,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest198
      * @tc.desc JsvmTest
      */
-    it('JsvmTest198', 0, () => {
+    it('JsvmTest198', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getPrototype()
     `;
@@ -2515,7 +2515,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest199
      * @tc.desc JsvmTest
      */
-    it('JsvmTest199', 0, () => {
+    it('JsvmTest199', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getPrototype()
     `;
@@ -2526,7 +2526,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest200
      * @tc.desc JsvmTest
      */
-    it('JsvmTest200', 0, () => {
+    it('JsvmTest200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `createReference();`;
       expect(JSON.stringify(napitest.runJsVm(script))).assertEqual('{"name":"CreateReference"}');
     });
@@ -2535,7 +2535,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest201
      * @tc.desc JsvmTest
      */
-    it('JsvmTest201', 0, () => {
+    it('JsvmTest201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `createReference();`;
       expect(napitest.runJsVm(script).name).assertEqual('CreateReference');
     });
@@ -2544,7 +2544,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest202
      * @tc.desc JsvmTest
      */
-    it('JsvmTest202', 0, () => {
+    it('JsvmTest202', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `createReference();`;
       expect(typeof napitest.runJsVm(script)).assertEqual('object');
     });
@@ -2553,7 +2553,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest203
      * @tc.desc JsvmTest
      */
-    it('JsvmTest203', 0, () => {
+    it('JsvmTest203', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `useReference()`;
       expect(typeof napitest.runJsVm(script)).assertEqual('object');
     });
@@ -2562,7 +2562,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest204
      * @tc.desc JsvmTest
      */
-    it('JsvmTest204', 0, () => {
+    it('JsvmTest204', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `useReference()`;
       expect(napitest.runJsVm(script).name).assertEqual('UseReference');
     });
@@ -2571,7 +2571,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest205
      * @tc.desc JsvmTest
      */
-    it('JsvmTest205', 0, () => {
+    it('JsvmTest205', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `useReference()`;
       expect(JSON.stringify(napitest.runJsVm(script))).assertEqual('{"name":"UseReference"}');
     });
@@ -2580,7 +2580,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest206
      * @tc.desc JsvmTest
      */
-    it('JsvmTest206', 0, () => {
+    it('JsvmTest206', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `deleteReference()`;
       expect(napitest.runJsVm(script)).assertEqual('OH_JSVM_DeleteReference success');
     });
@@ -2589,7 +2589,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest207
      * @tc.desc JsvmTest
      */
-    it('JsvmTest207', 0, () => {
+    it('JsvmTest207', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `deleteReference()`;
       expect(typeof napitest.runJsVm(script)).assertEqual('string');
     });
@@ -2598,7 +2598,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest208
      * @tc.desc JsvmTest
      */
-    it('JsvmTest208', 0, () => {
+    it('JsvmTest208', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `escapableHandleScopeTest()`;
       expect(typeof napitest.runJsVm(script)).assertEqual('object');
     });
@@ -2607,7 +2607,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest209
      * @tc.desc JsvmTest
      */
-    it('JsvmTest209', 0, () => {
+    it('JsvmTest209', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `escapableHandleScopeTest()`;
       expect(JSON.stringify(napitest.runJsVm(script))).assertEqual('{"name":"Test jsvm_escapable_handle_scope","id":"001"}');
     });
@@ -2616,7 +2616,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest210
      * @tc.desc JsvmTest
      */
-    it('JsvmTest210', 0, () => {
+    it('JsvmTest210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `escapableHandleScopeTest()`;
       expect(napitest.runJsVm(script).name).assertEqual('Test jsvm_escapable_handle_scope');
     });
@@ -2625,7 +2625,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest211
      * @tc.desc JsvmTest
      */
-    it('JsvmTest211', 0, () => {
+    it('JsvmTest211', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `escapableHandleScopeTest()`;
       expect(napitest.runJsVm(script).id).assertEqual('001');
     });
@@ -2634,7 +2634,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest212
      * @tc.desc JsvmTest
      */
-    it('JsvmTest212', 0, () => {
+    it('JsvmTest212', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `handleScopeTest()`;
       expect(JSON.stringify(napitest.runJsVm(script))).assertEqual('{"name":"test handleScope"}');
     });
@@ -2643,7 +2643,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest213
      * @tc.desc JsvmTest
      */
-    it('JsvmTest213', 0, () => {
+    it('JsvmTest213', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `handleScopeTest()`;
       expect(napitest.runJsVm(script).name).assertEqual('test handleScope');
     });
@@ -2652,7 +2652,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest214
      * @tc.desc JsvmTest
      */
-    it('JsvmTest214', 0, () => {
+    it('JsvmTest214', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `handleScopeTest()`;
       expect(typeof napitest.runJsVm(script)).assertEqual('object');
     });
@@ -2661,7 +2661,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest215
      * @tc.desc JsvmTest
      */
-    it('JsvmTest215', 0, () => {
+    it('JsvmTest215', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `handleScope()`;
       expect(typeof napitest.runJsVm(script)).assertEqual('object');
     });
@@ -2670,7 +2670,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest216
      * @tc.desc JsvmTest
      */
-    it('JsvmTest216', 0, () => {
+    it('JsvmTest216', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let obj = '{ data: 0, message: "hello world"}';
       let script: string = `
         getPropertyNames(${ obj })
@@ -2682,7 +2682,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest217
      * @tc.desc JsvmTest
      */
-    it('JsvmTest217', 0, () => {
+    it('JsvmTest217', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let arr = '["one", "two", "three", "four", "five"]';
       let script: string = `
         getPropertyNames(${ arr })
@@ -2694,7 +2694,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest218
      * @tc.desc JsvmTest
      */
-    it('JsvmTest218', 0, () => {
+    it('JsvmTest218', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let obj = '{ data: 0, message: "hello world", 50: 1}';
       let script: string = `
         getAllPropertyNames(${ obj })
@@ -2741,7 +2741,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest219
      * @tc.desc JsvmTest
      */
-    it('JsvmTest219', 0, () => {
+    it('JsvmTest219', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptGlobal + `\n` + `
         const testObject = createNewObject();
         getEnumerableNames(testObject)
@@ -2753,7 +2753,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest220
      * @tc.desc JsvmTest
      */
-    it('JsvmTest220', 0, () => {
+    it('JsvmTest220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptGlobal + `\n` + `
         const testObject = createNewObject();
         getOwnWritableNames(testObject)
@@ -2765,7 +2765,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest221
      * @tc.desc JsvmTest
      */
-    it('JsvmTest221', 0, () => {
+    it('JsvmTest221', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptGlobal + `\n` + `
         const testObject = createNewObject();
         getEnumerableConfigurableNames(testObject)
@@ -2777,7 +2777,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest222
      * @tc.desc JsvmTest
      */
-    it('JsvmTest222', 0, () => {
+    it('JsvmTest222', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptGlobal + `\n` + `
         const testObject = createNewObject();
         getOwnConfigurableNames(testObject)
@@ -2789,7 +2789,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest223
      * @tc.desc JsvmTest
      */
-    it('JsvmTest223', 0, () => {
+    it('JsvmTest223', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = { data: 0, message: "hello world", 50: 1};
        jsvmSetProperty(obj, "code", "hi")
@@ -2801,7 +2801,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest224
      * @tc.desc JsvmTest
      */
-    it('JsvmTest224', 0, () => {
+    it('JsvmTest224', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = { data: 0, message: "hello world", 50: 1};
        jsvmSetProperty(obj, 50, 12)
@@ -2813,7 +2813,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest225
      * @tc.desc JsvmTest
      */
-    it('JsvmTest225', 0, () => {
+    it('JsvmTest225', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = { data: 0, message: "hello world", 50: 1};
        jsvmSetProperty(obj, "true", false)
@@ -2825,7 +2825,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest226
      * @tc.desc JsvmTest
      */
-    it('JsvmTest226', 0, () => {
+    it('JsvmTest226', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = { data: 0, message: "hello world", 50: 1};
        let objTest = {};
@@ -2838,7 +2838,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest227
      * @tc.desc JsvmTest
      */
-    it('JsvmTest227', 0, () => {
+    it('JsvmTest227', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           setPropertyFailed()
       `;
@@ -2854,7 +2854,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest228
      * @tc.desc JsvmTest
      */
-    it('JsvmTest228', 0, () => {
+    it('JsvmTest228', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: 1};
      getProperty(obj, "message")
@@ -2866,7 +2866,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest229
      * @tc.desc JsvmTest
      */
-    it('JsvmTest229', 0, () => {
+    it('JsvmTest229', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: 1};
      getProperty(obj, "data")
@@ -2878,7 +2878,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest230
      * @tc.desc JsvmTest
      */
-    it('JsvmTest230', 0, () => {
+    it('JsvmTest230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: true};
      getProperty(obj, 50)
@@ -2890,7 +2890,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest231
      * @tc.desc JsvmTest
      */
-    it('JsvmTest231', 0, () => {
+    it('JsvmTest231', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let objTest = {};
      let obj = { data: 0, message: "hello world", 50: true, Object: objTest};
@@ -2903,7 +2903,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest232
      * @tc.desc JsvmTest
      */
-    it('JsvmTest232', 0, () => {
+    it('JsvmTest232', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      getPropertyFailed()
    `;
@@ -2933,7 +2933,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest233
      * @tc.desc JsvmTest
      */
-    it('JsvmTest233', 0, () => {
+    it('JsvmTest233', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasProperty(testObject, "normal")
@@ -2945,7 +2945,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest234
      * @tc.desc JsvmTest
      */
-    it('JsvmTest234', 0, () => {
+    it('JsvmTest234', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasProperty(testObject, 5)
@@ -2957,7 +2957,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest235
      * @tc.desc JsvmTest
      */
-    it('JsvmTest235', 0, () => {
+    it('JsvmTest235', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasProperty(testObject, fooSymbol)
@@ -2969,7 +2969,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest236
      * @tc.desc JsvmTest
      */
-    it('JsvmTest236', 0, () => {
+    it('JsvmTest236', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasProperty(testObject, "inherited")
@@ -2981,7 +2981,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest237
      * @tc.desc JsvmTest
      */
-    it('JsvmTest237', 0, () => {
+    it('JsvmTest237', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptFalse: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasProperty(testObject, "otherProperty")
@@ -2993,7 +2993,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest238
      * @tc.desc JsvmTest
      */
-    it('JsvmTest238', 0, () => {
+    it('JsvmTest238', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      hasPropertyFailed()
    `;
@@ -3010,7 +3010,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest239
      * @tc.desc JsvmTest
      */
-    it('JsvmTest239', 0, () => {
+    it('JsvmTest239', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      deleteProperty(testObject, "normal")
@@ -3022,7 +3022,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest240
      * @tc.desc JsvmTest
      */
-    it('JsvmTest240', 0, () => {
+    it('JsvmTest240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      deleteProperty(testObject, 5)
@@ -3034,7 +3034,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest241
      * @tc.desc JsvmTest
      */
-    it('JsvmTest241', 0, () => {
+    it('JsvmTest241', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptFalse: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      Object.defineProperty(testObject, "unconfigurable", {
@@ -3049,7 +3049,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest242
      * @tc.desc JsvmTest
      */
-    it('JsvmTest242', 0, () => {
+    it('JsvmTest242', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptFalse: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      Object.freeze(testObject);
@@ -3062,7 +3062,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest243
      * @tc.desc JsvmTest
      */
-    it('JsvmTest243', 0, () => {
+    it('JsvmTest243', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      deleteProperty(testObject, "inherited");
@@ -3075,7 +3075,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest245
      * @tc.desc JsvmTest
      */
-    it('JsvmTest245', 0, () => {
+    it('JsvmTest245', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      deletePropertyFailed()
    `;
@@ -3091,7 +3091,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest246
      * @tc.desc JsvmTest
      */
-    it('JsvmTest246', 0, () => {
+    it('JsvmTest246', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasOwnProperty(testObject, "normal")
@@ -3103,7 +3103,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest247
      * @tc.desc JsvmTest
      */
-    it('JsvmTest247', 0, () => {
+    it('JsvmTest247', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasOwnProperty(testObject, "inherited")
@@ -3115,7 +3115,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest248
      * @tc.desc JsvmTest
      */
-    it('JsvmTest248', 0, () => {
+    it('JsvmTest248', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasOwnProperty(testObject, fooSymbol)
@@ -3127,7 +3127,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest249
      * @tc.desc JsvmTest
      */
-    it('JsvmTest249', 0, () => {
+    it('JsvmTest249', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasOwnProperty(testObject, 5)
@@ -3139,7 +3139,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest250
      * @tc.desc JsvmTest
      */
-    it('JsvmTest250', 0, () => {
+    it('JsvmTest250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = scriptProperty + `\n` + `
      const testObject = createNewObject();
      hasOwnProperty(testObject, '5')
@@ -3151,7 +3151,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest251
      * @tc.desc JsvmTest
      */
-    it('JsvmTest251', 0, () => {
+    it('JsvmTest251', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      hasOwnPropertyFailed()
    `;
@@ -3168,7 +3168,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest252
      * @tc.desc JsvmTest
      */
-    it('JsvmTest252', 0, () => {
+    it('JsvmTest252', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        setNamedPropertyCreateObject("message")
    `;
@@ -3179,7 +3179,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest253
      * @tc.desc JsvmTest
      */
-    it('JsvmTest253', 0, () => {
+    it('JsvmTest253', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = {};
        setNamedProperty(obj, "name", "strValue");
@@ -3191,7 +3191,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0254
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0254', 0, () => {
+    it('JsvmTest0254', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = {data: 0, message: "hello world"};
        setNamedProperty(obj, "message", "strValue");
@@ -3203,7 +3203,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0255
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0255', 0, () => {
+    it('JsvmTest0255', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        let obj = {data: 0, message: "hello world"};
        Object.freeze(obj);
@@ -3216,7 +3216,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0256
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0256', 0, () => {
+    it('JsvmTest0256', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      setNamedPropertyFailed()
    `;
@@ -3233,7 +3233,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0257
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0257', 0, () => {
+    it('JsvmTest0257', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: 1};
      getNamedProperty(obj, "message")
@@ -3245,7 +3245,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0258
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0258', 0, () => {
+    it('JsvmTest0258', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: 1};
      getNamedProperty(obj, "data")
@@ -3257,7 +3257,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0259
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0259', 0, () => {
+    it('JsvmTest0259', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: false};
      getNamedProperty(obj, "50")
@@ -3269,7 +3269,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0260
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0260', 0, () => {
+    it('JsvmTest0260', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 0, message: "hello world", 50: false,
                  newObj: NewObj = {first: 12, second: "two"}};
@@ -3282,7 +3282,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0261
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0261', 0, () => {
+    it('JsvmTest0261', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      getNamedPropertyFailed()
    `;
@@ -3299,7 +3299,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0262
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0262', 0, () => {
+    it('JsvmTest0262', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { str: "bar", num: 42, bol: true,
                  newObj: NewObj = {first: 12, second: "two"}};
@@ -3312,7 +3312,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0263
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0263', 0, () => {
+    it('JsvmTest0263', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { str: "bar", num: 42, bol: true,
                  newObj: NewObj = {first: 12, second: "two"}};
@@ -3325,7 +3325,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0264
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0264', 0, () => {
+    it('JsvmTest0264', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { str: "bar", num: 42, bol: true,
                  newObj: NewObj = {first: 12, second: "two"}};
@@ -3338,7 +3338,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0265
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0265', 0, () => {
+    it('JsvmTest0265', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      hasNamedPropertyFailed()
    `;
@@ -3355,7 +3355,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0266
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0266', 0, () => {
+    it('JsvmTest0266', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        setElementWithLength(3)
    `;
@@ -3366,7 +3366,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest267
      * @tc.desc JsvmTest
      */
-    it('JsvmTest267', 0, () => {
+    it('JsvmTest267', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [];
      setElement(arr, 1, "Hello world!")
@@ -3378,7 +3378,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest268
      * @tc.desc JsvmTest
      */
-    it('JsvmTest268', 0, () => {
+    it('JsvmTest268', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = ["Hello world!", 10, true];
      setElement(arr, 1, "Hello world!")
@@ -3390,7 +3390,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest269
      * @tc.desc JsvmTest
      */
-    it('JsvmTest269', 0, () => {
+    it('JsvmTest269', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      setElementFailed()
    `;
@@ -3406,7 +3406,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest270
      * @tc.desc JsvmTest
      */
-    it('JsvmTest270', 0, () => {
+    it('JsvmTest270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      getElement(arr, 0)
@@ -3418,7 +3418,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest271
      * @tc.desc JsvmTest
      */
-    it('JsvmTest271', 0, () => {
+    it('JsvmTest271', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      getElement(arr, 1)
@@ -3430,7 +3430,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest272
      * @tc.desc JsvmTest
      */
-    it('JsvmTest272', 0, () => {
+    it('JsvmTest272', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      getElement(arr, 2)
@@ -3442,7 +3442,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest273
      * @tc.desc JsvmTest
      */
-    it('JsvmTest273', 0, () => {
+    it('JsvmTest273', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      getElement(arr, 3)
@@ -3454,7 +3454,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest274
      * @tc.desc JsvmTest
      */
-    it('JsvmTest274', 0, () => {
+    it('JsvmTest274', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      getElementFailed()
    `;
@@ -3470,7 +3470,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest275
      * @tc.desc JsvmTest
      */
-    it('JsvmTest275', 0, () => {
+    it('JsvmTest275', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptTrue: string = `
      let arr = [10, 'hello', null, true];
      hasElement(arr, 0)
@@ -3482,7 +3482,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest276
      * @tc.desc JsvmTest
      */
-    it('JsvmTest276', 0, () => {
+    it('JsvmTest276', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptFalse: string = `
      let arr = [10, 'hello', null, true];
      hasElement(arr, 4)
@@ -3494,7 +3494,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest277
      * @tc.desc JsvmTest
      */
-    it('JsvmTest277', 0, () => {
+    it('JsvmTest277', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptFalse: string = `
      let arr = [10, 'hello', , true];
      hasElement(arr, 2)
@@ -3506,7 +3506,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest278
      * @tc.desc JsvmTest
      */
-    it('JsvmTest278', 0, () => {
+    it('JsvmTest278', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      hasElementFailed()
    `;
@@ -3522,7 +3522,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest279
      * @tc.desc JsvmTest
      */
-    it('JsvmTest279', 0, () => {
+    it('JsvmTest279', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      deleteElement(arr, 0)
@@ -3534,7 +3534,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest280
      * @tc.desc JsvmTest
      */
-    it('JsvmTest280', 0, () => {
+    it('JsvmTest280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', null, true];
      deleteElement(arr, 4)
@@ -3546,7 +3546,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest281
      * @tc.desc JsvmTest
      */
-    it('JsvmTest281', 0, () => {
+    it('JsvmTest281', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello',  , true];
      deleteElement(arr, 2)
@@ -3558,7 +3558,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest282
      * @tc.desc JsvmTest
      */
-    it('JsvmTest282', 0, () => {
+    it('JsvmTest282', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [10, 'hello', 'world', true];
      deleteElementAndCheck(arr, 1)
@@ -3570,7 +3570,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest283
      * @tc.desc JsvmTest
      */
-    it('JsvmTest283', 0, () => {
+    it('JsvmTest283', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      deleteElementFailed()
    `;
@@ -3585,7 +3585,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest284
      * @tc.desc JsvmTest
      */
-    it('JsvmTest284', 0, () => {
+    it('JsvmTest284', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptMethod: string = `
        let obj = {};
        defineMethodProperties(obj)
@@ -3597,7 +3597,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest285
      * @tc.desc JsvmTest
      */
-    it('JsvmTest285', 0, () => {
+    it('JsvmTest285', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptString: string = `
        let obj = {};
        defineStringProperties(obj)
@@ -3609,7 +3609,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest286
      * @tc.desc JsvmTest
      */
-    it('JsvmTest286', 0, () => {
+    it('JsvmTest286', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let scriptGetter: string = `
        let obj = {};
        defineGetterProperties(obj)
@@ -3621,7 +3621,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest287
      * @tc.desc JsvmTest
      */
-    it('JsvmTest287', 0, () => {
+    it('JsvmTest287', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      definePropertiesFailed()
    `;
@@ -3638,7 +3638,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest288
      * @tc.desc JsvmTest
      */
-    it('JsvmTest288', 0, () => {
+    it('JsvmTest288', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 55, message: "hello world"};
      objectFreeze(obj)
@@ -3655,7 +3655,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest289
      * @tc.desc JsvmTest
      */
-    it('JsvmTest289', 0, () => {
+    it('JsvmTest289', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = { data: 55, message: "hello world"};
      objectSeal(obj)
@@ -3672,7 +3672,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest290
      * @tc.desc JsvmTest
      */
-    it('JsvmTest290', 0, () => {
+    it('JsvmTest290', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      getVersion()
    `;
@@ -3683,7 +3683,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest291
      * @tc.desc JsvmTest
      */
-    it('JsvmTest291', 0, () => {
+    it('JsvmTest291', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        getVersionFailed()
    `;
@@ -3698,7 +3698,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest292
      * @tc.desc JsvmTest
      */
-    it('JsvmTest292', 0, () => {
+    it('JsvmTest292', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        getVMInfo()
    `;
@@ -3709,7 +3709,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest293
      * @tc.desc JsvmTest
      */
-    it('JsvmTest293', 0, () => {
+    it('JsvmTest293', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        jsonParseNumber()
    `;
@@ -3720,7 +3720,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest294
      * @tc.desc JsvmTest
      */
-    it('JsvmTest294', 0, () => {
+    it('JsvmTest294', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        jsonParseObject()
    `;
@@ -3735,7 +3735,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest295
      * @tc.desc JsvmTest
      */
-    it('JsvmTest295', 0, () => {
+    it('JsvmTest295', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let strTrue = "true";
      jsonParse(strTrue)
@@ -3747,7 +3747,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest296
      * @tc.desc JsvmTest
      */
-    it('JsvmTest296', 0, () => {
+    it('JsvmTest296', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let strNull = "null"
      jsonParse(strNull)
@@ -3759,7 +3759,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest297
      * @tc.desc JsvmTest
      */
-    it('JsvmTest297', 0, () => {
+    it('JsvmTest297', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        jsonParseFailed()
    `;
@@ -3774,7 +3774,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest298
      * @tc.desc JsvmTest
      */
-    it('JsvmTest298', 0, () => {
+    it('JsvmTest298', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let arr = [1, 2, 3, 4, 5];
      jsonStringify(arr)
@@ -3786,7 +3786,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest299
      * @tc.desc JsvmTest
      */
-    it('JsvmTest299', 0, () => {
+    it('JsvmTest299', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = {data: 0, message: "hello world"};
      jsonStringify(obj)
@@ -3798,7 +3798,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest300
      * @tc.desc JsvmTest
      */
-    it('JsvmTest300', 0, () => {
+    it('JsvmTest300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = {data: 0, message: "hello world",
                 innerObj: InnerObj = {info: 123}};
@@ -3811,7 +3811,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest301
      * @tc.desc JsvmTest
      */
-    it('JsvmTest301', 0, () => {
+    it('JsvmTest301', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let num = 12.003;
      jsonStringify(num)
@@ -3823,7 +3823,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest302
      * @tc.desc JsvmTest
      */
-    it('JsvmTest302', 0, () => {
+    it('JsvmTest302', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        jsonStringifyFailed()
    `;
@@ -3838,7 +3838,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest303
      * @tc.desc JsvmTest
      */
-    it('JsvmTest303', 0, () => {
+    it('JsvmTest303', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        function returnNumber(){
            return 10;
@@ -3852,7 +3852,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest304
      * @tc.desc JsvmTest
      */
-    it('JsvmTest304', 0, () => {
+    it('JsvmTest304', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        function concatStr(a, b){
            return a + b;
@@ -3866,7 +3866,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest305
      * @tc.desc JsvmTest
      */
-    it('JsvmTest305', 0, () => {
+    it('JsvmTest305', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
      let obj = {myMethod: function(arg1, arg2) {
          return arg1 + arg2;
@@ -3880,7 +3880,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest306
      * @tc.desc JsvmTest
      */
-    it('JsvmTest306', 0, () => {
+    it('JsvmTest306', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        function returnNumber(){
            return 10;
@@ -3900,7 +3900,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest307
      * @tc.desc JsvmTest
      */
-    it('JsvmTest307', 0, () => {
+    it('JsvmTest307', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createFunction()
    `;
@@ -3911,7 +3911,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest308
      * @tc.desc JsvmTest
      */
-    it('JsvmTest308', 0, () => {
+    it('JsvmTest308', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createFunctionFailed()
    `;
@@ -3927,7 +3927,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest309
      * @tc.desc JsvmTest
      */
-    it('JsvmTest309', 0, () => {
+    it('JsvmTest309', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getHeapStatistics()
    `;
@@ -3938,7 +3938,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest310
      * @tc.desc JsvmTest
      */
-    it('JsvmTest310', 0, () => {
+    it('JsvmTest310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
        getVM()
    `;
@@ -3949,7 +3949,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest311
      * @tc.desc JsvmTest
      */
-    it('JsvmTest311', 0, () => {
+    it('JsvmTest311', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getTypeof(1111);
      `;
@@ -3960,7 +3960,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest312
      * @tc.desc JsvmTest
      */
-    it('JsvmTest312', 0, () => {
+    it('JsvmTest312', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getTypeof("1111");
      `;
@@ -3971,7 +3971,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest313
      * @tc.desc JsvmTest
      */
-    it('JsvmTest313', 0, () => {
+    it('JsvmTest313', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getTypeof(true);
      `;
@@ -3982,7 +3982,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest314
      * @tc.desc JsvmTest
      */
-    it('JsvmTest314', 0, () => {
+    it('JsvmTest314', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let obj = {
           data: 1
@@ -3996,7 +3996,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest315
      * @tc.desc JsvmTest
      */
-    it('JsvmTest315', 0, () => {
+    it('JsvmTest315', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         getTypeof(null);
      `;
@@ -4008,7 +4008,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest316
      * @tc.desc JsvmTest
      */
-    it('JsvmTest316', 0, () => {
+    it('JsvmTest316', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         class Person {
           name;
@@ -4028,7 +4028,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest317
      * @tc.desc JsvmTest
      */
-    it('JsvmTest317', 0, () => {
+    it('JsvmTest317', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         class Person {
           name;
@@ -4049,7 +4049,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest318
      * @tc.desc JsvmTest
      */
-    it('JsvmTest318', 0, () => {
+    it('JsvmTest318', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         class Person {
           name;
@@ -4074,7 +4074,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest319
      * @tc.desc JsvmTest
      */
-    it('JsvmTest319', 0, () => {
+    it('JsvmTest319', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         class Person {
           name;
@@ -4094,7 +4094,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest320
      * @tc.desc JsvmTest
      */
-    it('JsvmTest320', 0, () => {
+    it('JsvmTest320', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         class Person {
           name;
@@ -4122,7 +4122,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest321
      * @tc.desc JsvmTest
      */
-    it('JsvmTest321', 0, () => {
+    it('JsvmTest321', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '[1, 2, 3, 4, 5]';
       let script: string = `
          isArray(${ data })
@@ -4134,7 +4134,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest322
      * @tc.desc JsvmTest
      */
-    it('JsvmTest322', 0, () => {
+    it('JsvmTest322', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '2,3,4,5';
       let script: string = `
          isArray(${ data })
@@ -4146,7 +4146,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest323
      * @tc.desc JsvmTest
      */
-    it('JsvmTest323', 0, () => {
+    it('JsvmTest323', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let data = [{
              data: 1
@@ -4160,7 +4160,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest324
      * @tc.desc JsvmTest
      */
-    it('JsvmTest324', 0, () => {
+    it('JsvmTest324', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let data = []
            isArray(data)
@@ -4172,7 +4172,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest325
      * @tc.desc JsvmTest
      */
-    it('JsvmTest325', 0, () => {
+    it('JsvmTest325', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let data = 'Hello';
           isArray(data);
@@ -4184,7 +4184,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest326
      * @tc.desc JsvmTest
      */
-    it('JsvmTest326', 0, () => {
+    it('JsvmTest326', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          isArrayBuffer(new ArrayBuffer(8))
        `;
@@ -4195,7 +4195,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest327
      * @tc.desc JsvmTest
      */
-    it('JsvmTest327', 0, () => {
+    it('JsvmTest327', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       isArrayBuffer('hello')
       `;
@@ -4206,7 +4206,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest328
      * @tc.desc JsvmTest
      */
-    it('JsvmTest328', 0, () => {
+    it('JsvmTest328', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       isArrayBuffer(new Uint8Array([1, 2, 3]).buffer)
        `;
@@ -4217,7 +4217,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest329
      * @tc.desc JsvmTest
      */
-    it('JsvmTest329', 0, () => {
+    it('JsvmTest329', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       isArrayBuffer(null)
       `;
@@ -4228,7 +4228,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest330
      * @tc.desc JsvmTest
      */
-    it('JsvmTest330', 0, () => {
+    it('JsvmTest330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       isArrayBuffer({})
       `;
@@ -4239,7 +4239,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest331
      * @tc.desc JsvmTest
      */
-    it('JsvmTest331', 0, () => {
+    it('JsvmTest331', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          isTypedarray(new Uint16Array([1, 2, 3, 4]))
        `;
@@ -4250,7 +4250,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest332
      * @tc.desc JsvmTest
      */
-    it('JsvmTest332', 0, () => {
+    it('JsvmTest332', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          isTypedarray('hello')
       `;
@@ -4261,7 +4261,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest333
      * @tc.desc JsvmTest
      */
-    it('JsvmTest333', 0, () => {
+    it('JsvmTest333', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          isTypedarray(new Uint8Array([1, 2, 3]))
       `;
@@ -4272,7 +4272,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest334
      * @tc.desc JsvmTest
      */
-    it('JsvmTest334', 0, () => {
+    it('JsvmTest334', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          isTypedarray(null)
        `;
@@ -4283,7 +4283,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest335
      * @tc.desc JsvmTest
      */
-    it('JsvmTest335', 0, () => {
+    it('JsvmTest335', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         isTypedarray({})
        `;
@@ -4294,7 +4294,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest336
      * @tc.desc JsvmTest
      */
-    it('JsvmTest336', 0, () => {
+    it('JsvmTest336', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let buffer = new ArrayBuffer(16);
       let dataView = new DataView(buffer);
@@ -4307,7 +4307,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest337
      * @tc.desc JsvmTest
      */
-    it('JsvmTest337', 0, () => {
+    it('JsvmTest337', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
     isDataView('hello')
   `;
@@ -4318,7 +4318,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest338
      * @tc.desc JsvmTest
      */
-    it('JsvmTest338', 0, () => {
+    it('JsvmTest338', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
     let buffer = new ArrayBuffer(32);
     let dataView = new DataView(buffer, 8, 16);
@@ -4331,7 +4331,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest339
      * @tc.desc JsvmTest
      */
-    it('JsvmTest339', 0, () => {
+    it('JsvmTest339', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
     isDataView(null)
   `;
@@ -4342,7 +4342,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest340
      * @tc.desc JsvmTest
      */
-    it('JsvmTest340', 0, () => {
+    it('JsvmTest340', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
     isDataView({})
   `;
@@ -4353,7 +4353,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest341
      * @tc.desc JsvmTest
      */
-    it('JsvmTest341', 0, () => {
+    it('JsvmTest341', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let str = '123';
         let num = 123;
@@ -4366,7 +4366,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest342
      * @tc.desc JsvmTest
      */
-    it('JsvmTest342', 0, () => {
+    it('JsvmTest342', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let str = 'hello';
         let testStr = 'hello';
@@ -4379,7 +4379,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest343
      * @tc.desc JsvmTest
      */
-    it('JsvmTest343', 0, () => {
+    it('JsvmTest343', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let str = 'hello';
         let testStr = 'hell';
@@ -4392,7 +4392,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest344
      * @tc.desc JsvmTest
      */
-    it('JsvmTest344', 0, () => {
+    it('JsvmTest344', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let testNum = 123;
         let num = 123;
@@ -4405,7 +4405,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest345
      * @tc.desc JsvmTest
      */
-    it('JsvmTest345', 0, () => {
+    it('JsvmTest345', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let obj = {
             data: 1
@@ -4420,7 +4420,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest346
      * @tc.desc JsvmTest
      */
-    it('JsvmTest346', 0, () => {
+    it('JsvmTest346', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let arrayBuffer = new ArrayBuffer(10);
         isDetachedArraybuffer(arrayBuffer);
@@ -4432,7 +4432,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest347
      * @tc.desc JsvmTest
      */
-    it('JsvmTest347', 0, () => {
+    it('JsvmTest347', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let arrayBuffer = new ArrayBuffer(10);
         isDetachedArraybuffer(isDetachedArraybuffer(arrayBuffer));
@@ -4444,7 +4444,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest348
      * @tc.desc JsvmTest
      */
-    it('JsvmTest348', 0, () => {
+    it('JsvmTest348', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         coerceToNumber(true)
       `;
@@ -4455,7 +4455,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest349
      * @tc.desc JsvmTest
      */
-    it('JsvmTest349', 0, () => {
+    it('JsvmTest349', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToNumber(false)
        `;
@@ -4466,7 +4466,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest350
      * @tc.desc JsvmTest
      */
-    it('JsvmTest350', 0, () => {
+    it('JsvmTest350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '123';
       let script: string = `
            coerceToNumber(${ data })
@@ -4478,7 +4478,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest351
      * @tc.desc JsvmTest
      */
-    it('JsvmTest351', 0, () => {
+    it('JsvmTest351', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let obj = `{ data : 1}`;
       let script: string = `
            coerceToNumber(${ obj })
@@ -4490,7 +4490,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest352
      * @tc.desc JsvmTest
      */
-    it('JsvmTest352', 0, () => {
+    it('JsvmTest352', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToNumber('sss')
        `;
@@ -4501,7 +4501,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest353
      * @tc.desc JsvmTest
      */
-    it('JsvmTest353', 0, () => {
+    it('JsvmTest353', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToObject("dad")
        `;
@@ -4512,7 +4512,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest354
      * @tc.desc JsvmTest
      */
-    it('JsvmTest354', 0, () => {
+    it('JsvmTest354', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToObject(11111111)
        `;
@@ -4523,7 +4523,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest355
      * @tc.desc JsvmTest
      */
-    it('JsvmTest355', 0, () => {
+    it('JsvmTest355', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToObject(true)
        `;
@@ -4534,7 +4534,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest356
      * @tc.desc JsvmTest
      */
-    it('JsvmTest356', 0, () => {
+    it('JsvmTest356', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToString(22222)
        `;
@@ -4545,7 +4545,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest357
      * @tc.desc JsvmTest
      */
-    it('JsvmTest357', 0, () => {
+    it('JsvmTest357', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToString(true)
        `;
@@ -4556,7 +4556,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest358
      * @tc.desc JsvmTest
      */
-    it('JsvmTest358', 0, () => {
+    it('JsvmTest358', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let obj = {
              data: 1
@@ -4570,7 +4570,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest359
      * @tc.desc JsvmTest
      */
-    it('JsvmTest359', 0, () => {
+    it('JsvmTest359', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         coerceToString(undefined)
        `;
@@ -4581,7 +4581,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest360
      * @tc.desc JsvmTest
      */
-    it('JsvmTest360', 0, () => {
+    it('JsvmTest360', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         coerceToString(null)
        `;
@@ -4592,7 +4592,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest361
      * @tc.desc JsvmTest
      */
-    it('JsvmTest361', 0, () => {
+    it('JsvmTest361', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToBool("123")
        `;
@@ -4603,7 +4603,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest362
      * @tc.desc JsvmTest
      */
-    it('JsvmTest362', 0, () => {
+    it('JsvmTest362', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToBool(0)
        `;
@@ -4614,7 +4614,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest363
      * @tc.desc JsvmTest
      */
-    it('JsvmTest363', 0, () => {
+    it('JsvmTest363', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToBool("true")
        `;
@@ -4625,7 +4625,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest364
      * @tc.desc JsvmTest
      */
-    it('JsvmTest364', 0, () => {
+    it('JsvmTest364', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            coerceToBool("")
        `;
@@ -4636,7 +4636,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest365
      * @tc.desc JsvmTest
      */
-    it('JsvmTest365', 0, () => {
+    it('JsvmTest365', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
            let obj = { value:1 }
            coerceToBool(obj)
@@ -4648,7 +4648,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest366
      * @tc.desc JsvmTest
      */
-    it('JsvmTest366', 0, () => {
+    it('JsvmTest366', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let value = Promise.resolve();
           isPromise(value);
@@ -4660,7 +4660,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest367
      * @tc.desc JsvmTest
      */
-    it('JsvmTest367', 0, () => {
+    it('JsvmTest367', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let value = Promise.resolve();
           isPromise(value);
@@ -4672,7 +4672,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest368
      * @tc.desc JsvmTest
      */
-    it('JsvmTest368', 0, () => {
+    it('JsvmTest368', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let value = 111;
           isPromise(value);
@@ -4684,7 +4684,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest369
      * @tc.desc JsvmTest
      */
-    it('JsvmTest369', 0, () => {
+    it('JsvmTest369', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let value = 111;
           isPromise(value);
@@ -4696,7 +4696,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest370
      * @tc.desc JsvmTest
      */
-    it('JsvmTest370', 0, () => {
+    it('JsvmTest370', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           let value = Promise.reject();
           isPromise(value);
@@ -4708,7 +4708,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest371
      * @tc.desc JsvmTest
      */
-    it('JsvmTest371', 0, () => {
+    it('JsvmTest371', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           createPromise();
         `;
@@ -4719,7 +4719,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest372
      * @tc.desc JsvmTest
      */
-    it('JsvmTest372', 0, () => {
+    it('JsvmTest372', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           createPromise();
         `;
@@ -4730,7 +4730,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest373
      * @tc.desc JsvmTest
      */
-    it('JsvmTest373', 0, () => {
+    it('JsvmTest373', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          resolveRejectDeferred('success','fail', true)
         `;
@@ -4741,7 +4741,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest374
      * @tc.desc JsvmTest
      */
-    it('JsvmTest374', 0, () => {
+    it('JsvmTest374', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          resolveRejectDeferred('success','fail', true)
         `;
@@ -4752,7 +4752,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest375
      * @tc.desc JsvmTest
      */
-    it('JsvmTest375', 0, () => {
+    it('JsvmTest375', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          const str = 'message';
          getCbArgs(str);
@@ -4764,7 +4764,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest376
      * @tc.desc JsvmTest
      */
-    it('JsvmTest376', 0, () => {
+    it('JsvmTest376', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          const str = 'message';
          getCbArgs(str);
@@ -4776,7 +4776,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest377
      * @tc.desc JsvmTest
      */
-    it('JsvmTest377', 0, () => {
+    it('JsvmTest377', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          function Fruit(name) {
              this.name = name;
@@ -4790,7 +4790,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest378
      * @tc.desc JsvmTest
      */
-    it('JsvmTest378', 0, () => {
+    it('JsvmTest378', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          function Fruit(name) {
              this.name = name;
@@ -4804,7 +4804,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest379
      * @tc.desc JsvmTest
      */
-    it('JsvmTest379', 0, () => {
+    it('JsvmTest379', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          class Obj {
            data;
@@ -4820,7 +4820,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest380
      * @tc.desc JsvmTest
      */
-    it('JsvmTest380', 0, () => {
+    it('JsvmTest380', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          class Obj {
            data;
@@ -4836,7 +4836,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest381
      * @tc.desc JsvmTest
      */
-    it('JsvmTest381', 0, () => {
+    it('JsvmTest381', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          class Obj {
            data;
@@ -4853,7 +4853,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest382
      * @tc.desc JsvmTest
      */
-    it('JsvmTest382', 0, () => {
+    it('JsvmTest382', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          class Obj {
            data;
@@ -4870,7 +4870,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest383
      * @tc.desc JsvmTest
      */
-    it('JsvmTest383', 0, () => {
+    it('JsvmTest383', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          adjustExternalMemory()
         `;
@@ -4881,7 +4881,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest384
      * @tc.desc JsvmTest
      */
-    it('JsvmTest384', 0, () => {
+    it('JsvmTest384', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          adjustExternalMemory()
         `;
@@ -4892,7 +4892,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest385
      * @tc.desc JsvmTest
      */
-    it('JsvmTest385', 0, () => {
+    it('JsvmTest385', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          memoryPressureNotification();
         `;
@@ -4903,7 +4903,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest386
      * @tc.desc JsvmTest
      */
-    it('JsvmTest386', 0, () => {
+    it('JsvmTest386', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
          memoryPressureNotification();
         `;
@@ -4914,7 +4914,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest387
      * @tc.desc JsvmTest
      */
-    it('JsvmTest387', 0, () => {
+    it('JsvmTest387', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       class Obj {
       }
 
@@ -4929,7 +4929,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest388
      * @tc.desc JsvmTest
      */
-    it('JsvmTest388', 0, () => {
+    it('JsvmTest388', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       class Obj {
       }
 
@@ -4944,7 +4944,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest389
      * @tc.desc JsvmTest
      */
-    it('JsvmTest389', 0, () => {
+    it('JsvmTest389', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       class Obj {
       }
 
@@ -4959,7 +4959,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest390
      * @tc.desc JsvmTest
      */
-    it('JsvmTest390', 0, () => {
+    it('JsvmTest390', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       class Obj {
       }
 
@@ -4974,7 +4974,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest391
      * @tc.desc JsvmTest
      */
-    it('JsvmTest391', 0, () => {
+    it('JsvmTest391', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `handleScopeFor()`;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -4983,7 +4983,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest392
      * @tc.desc JsvmTest
      */
-    it('JsvmTest392', 0, () => {
+    it('JsvmTest392', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(JSON.parse(napitest.runJsVm('defineClass')).name).assertEqual('lilei');
     });
     /**
@@ -4991,7 +4991,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest393
      * @tc.desc JsvmTest
      */
-    it('JsvmTest393', 0, () => {
+    it('JsvmTest393', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(typeof napitest.runJsVm('defineClass')).assertEqual('string');
     });
     /**
@@ -4999,7 +4999,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest394
      * @tc.desc JsvmTest
      */
-    it('JsvmTest394', 0, () => {
+    it('JsvmTest394', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           createSnapshotFailed()
       `;
@@ -5010,7 +5010,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest395
      * @tc.desc JsvmTest
      */
-    it('JsvmTest395', 0, () => {
+    it('JsvmTest395', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           createSnapshotFailed()
       `;
@@ -5021,7 +5021,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest396
      * @tc.desc JsvmTest
      */
-    it('JsvmTest396', 0, () => {
+    it('JsvmTest396', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           debugCodeUsingCpuProfiler()
       `;
@@ -5032,7 +5032,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest397
      * @tc.desc JsvmTest
      */
-    it('JsvmTest397', 0, () => {
+    it('JsvmTest397', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           takeHeapSnapshot()
       `;
@@ -5043,7 +5043,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest398
      * @tc.desc JsvmTest
      */
-    it('JsvmTest398', 0, () => {
+    it('JsvmTest398', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           debugCodeUsingInspector()
       `;
@@ -5054,7 +5054,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest399
      * @tc.desc JsvmTest
      */
-    it('JsvmTest399', 0, () => {
+    it('JsvmTest399', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           waitForDebuggerFailed()
       `;
@@ -5069,7 +5069,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest400
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0400', 0, () => {
+    it('JsvmTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       try {
         let script: string = `
             jsVmThrow();
@@ -5085,7 +5085,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest401
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0401', 0, () => {
+    it('JsvmTest0401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
             jsVmThrowFromJS(Error());
        `;
@@ -5101,7 +5101,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0402
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0402', 0, () => {
+    it('JsvmTest0402', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
             jsVmThrowError()
        `;
@@ -5117,7 +5117,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0403
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0403', 0, () => {
+    it('JsvmTest0403', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let errMessage = `\"has Error\"`;
       let script: string =
         `
@@ -5135,7 +5135,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0404
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0404', 0, () => {
+    it('JsvmTest0404', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             jsVmThrowTypeError()
@@ -5152,7 +5152,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0405
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0405', 0, () => {
+    it('JsvmTest0405', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let errMessage = `\"has Type Error\"`;
       let script: string =
         `
@@ -5170,7 +5170,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0406
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0406', 0, () => {
+    it('JsvmTest0406', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             jsVmThrowRangeError(1)
@@ -5187,7 +5187,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0407
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0407', 0, () => {
+    it('JsvmTest0407', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             jsVmThrowSyntaxError()
@@ -5204,7 +5204,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0408
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0408', 0, () => {
+    it('JsvmTest0408', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             jsVmIsError(Error())
@@ -5216,7 +5216,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0409
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0409', 0, () => {
+    it('JsvmTest0409', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             jsVmIsError("2333")
@@ -5228,7 +5228,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0410
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0410', 0, () => {
+    it('JsvmTest0410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
            let error = jsVmCreateError()
@@ -5241,7 +5241,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0411
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0411', 0, () => {
+    it('JsvmTest0411', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             let error = jsVmCreateTypeError()
@@ -5254,7 +5254,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0412
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0412', 0, () => {
+    it('JsvmTest0412', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
             let error = jsVmCreateRangeError()
@@ -5267,7 +5267,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0413
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0413', 0, () => {
+    it('JsvmTest0413', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =
         `
              let error = jsVmCreateSyntaxError()
@@ -5280,7 +5280,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0414
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0414', 0, () => {
+    it('JsvmTest0414', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           jsVmGetAndClearLastException().message
       `;
@@ -5291,7 +5291,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0415
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0415', 0, () => {
+    it('JsvmTest0415', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           jsVmIsExceptionPending().message
       `;
@@ -5302,7 +5302,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0416
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0416', 0, () => {
+    it('JsvmTest0416', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string =`
           jsVmGetLastErrorInfo()
       `;
@@ -5316,7 +5316,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0417', 0, () => {
+    it('JsvmTest0417', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
           setInstanceData(1)
       `;
@@ -5330,7 +5330,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-	it('JsvmTest0418', 0, () => {
+	it('JsvmTest0418', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
           getInstanceData()
       `;
@@ -5341,7 +5341,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0419
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0419', 0, () => {
+    it('JsvmTest0419', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '[0, 1, 2, 3, 4, 5]';
       let script: string = `
           getArrayLength(${data})
@@ -5353,7 +5353,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0420
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0420', 0, () => {
+    it('JsvmTest0420', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '[]';
       let script: string = `
           getArrayLength(${data})
@@ -5365,7 +5365,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0421
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0421', 0, () => {
+    it('JsvmTest0421', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = '1';
       let script: string = `
           getArrayLength(${data})
@@ -5377,7 +5377,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0422
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0422', 0, () => {
+    it('JsvmTest0422', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'a'`;
       let script: string = `
           getArrayLength(${data})
@@ -5389,7 +5389,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0423
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0423', 0, () => {
+    it('JsvmTest0423', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'中'`;
       let script: string = `
           getArrayLength(${data})
@@ -5401,7 +5401,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0424
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0424', 0, () => {
+    it('JsvmTest0424', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let data = `'￥%……&*'`;
       let script: string = `
           getArrayLength(${data})
@@ -5413,7 +5413,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0425
      * @tc.desc JsvmTest
      */
-    it("JsvmTest0425", 0, () => {
+    it("JsvmTest0425", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           isDate(new Date())
        `
@@ -5424,7 +5424,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0426
      * @tc.desc JsvmTest
      */
-    it("JsvmTest0426", 0, () => {
+    it("JsvmTest0426", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           isDate('2024-04-16T12:00:00')
        `;
@@ -5435,7 +5435,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0427
      * @tc.desc JsvmTest
      */
-    it("JsvmTest0427", 0, () => {
+    it("JsvmTest0427", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           isDate(1649942400000)
       `;
@@ -5446,7 +5446,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0428
      * @tc.desc JsvmTest
      */
-    it("JsvmTest0428", 0, () => {
+    it("JsvmTest0428", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           isDate('Invalid Date')
       `;
@@ -5457,7 +5457,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0429
      * @tc.desc JsvmTest
      */
-    it("JsvmTest0429", 0, () => {
+    it("JsvmTest0429", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
           isDate({})
       `;
@@ -5468,7 +5468,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0430
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0430', 0, () => {
+    it('JsvmTest0430', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringUtf8()
       `;
@@ -5479,7 +5479,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0431
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0431', 0, () => {
+    it('JsvmTest0431', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringUtf8(45)
       `;
@@ -5490,7 +5490,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0432
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0432', 0, () => {
+    it('JsvmTest0432', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createStringUtf8()
       `;
@@ -5501,7 +5501,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0433
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0433', 0, () => {
+    it('JsvmTest0433', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info('JsvmTest0433 START');
       value = napitest.testValueOperation5()
       console.info('JsvmTest0433 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -5512,7 +5512,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0434
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0434', 0, () => {
+    it('JsvmTest0434', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info('JsvmTest0434 START');
       let rst: number = napitest.testIsCallable();
       console.info('JsvmTest0434 testString result is:' + JSON.stringify(rst));
@@ -5523,7 +5523,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0435
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0435', 0, () => {
+    it('JsvmTest0435', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let rst: boolean = napitest.testHandleMicrotasks();
       console.info('JsvmTest0435 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(true);
@@ -5533,7 +5533,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0436
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0436', 0, () => {
+    it('JsvmTest0436', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let rst: number = napitest.testMultithreadFunction();
       console.info('JsvmTest0436 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(1);
@@ -5543,7 +5543,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0437
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0437', 0, () => {
+    it('JsvmTest0437', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
         let rst: boolean = napitest.testJswmInterface();
         console.info('JsvmTest0437 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
@@ -5553,7 +5553,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0438
      * @tc.desc      JsvmTest
      */
-     it('JsvmTest0438', 0, () => {
+     it('JsvmTest0438', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         var f = () => console.log('no constructable');
         isConstructor(f);
@@ -5565,7 +5565,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0439
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0439', 0, () => {
+    it('JsvmTest0439', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         isConstructor((function(){}));
       `;
@@ -5576,7 +5576,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0440
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0440', 0, () => {
+    it('JsvmTest0440', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info('JsvmTest0440 START');
       value = napitest.testValueOperation6()
       console.info('JsvmTest0440 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -5587,7 +5587,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0441
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0441', 0, () => {
+    it('JsvmTest0441', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info('JsvmTest0441 START');
       value = napitest.testValueOperation7()
       console.info('JsvmTest0441 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -5598,7 +5598,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0442
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0442', 0, () => {
+    it('JsvmTest0442', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp1("ab+c").toString();
       `;
@@ -5609,7 +5609,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0443
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0443', 0, () => {
+    it('JsvmTest0443', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp2("[bc]at").toString();
       `;
@@ -5620,7 +5620,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0444
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0444', 0, () => {
+    it('JsvmTest0444', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp3("d{3}-d{2}-d{4}").toString();
       `;
@@ -5631,7 +5631,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0445
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0445', 0, () => {
+    it('JsvmTest0445', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp4(".at").toString();
       `;
@@ -5642,7 +5642,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0446
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0446', 0, () => {
+    it('JsvmTest0446', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp5("(.)hort").toString();
       `;
@@ -5653,7 +5653,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0447
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0447', 0, () => {
+    it('JsvmTest0447', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp1("ab+c").global.toString();
       `;
@@ -5664,7 +5664,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0448
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0448', 0, () => {
+    it('JsvmTest0448', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExp1("ab+c").ignoreCase.toString();
       `;
@@ -5675,7 +5675,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0449
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0449', 0, () => {
+    it('JsvmTest0449', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         Object.prototype.toString.call(createRegExp1("ab+c"));
       `;
@@ -5686,7 +5686,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0450
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0450', 0, () => {
+    it('JsvmTest0450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         createRegExpEnvNullptr("ab+c").toString();
       `;
@@ -5697,7 +5697,7 @@ export default function JsvmJsunit() {
      * @tc.name      JsvmTest0451
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0451', 0, () => {
+    it('JsvmTest0451', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info('JsvmTest0451 START');
       value = napitest.testValueOperation8()
       console.info('JsvmTest0451 testString result is:'+ value + "--" + JSON.stringify(value) );
@@ -5709,7 +5709,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0452
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0452', 0, () => {
+    it('JsvmTest0452', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let add1 = createFunctionWithScript(\"add\", [\"a\", \"b\"], \"return a + b\")
         let add2 = createFunctionWithScript(\"add\", [\"a\", \"b\"], \"return (a + b) * 2\")
@@ -5725,7 +5725,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0453
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0453', 0, () => {
+    it('JsvmTest0453', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let emptyFunc = createFunctionWithScript(\"add\", [\"a\"], \"\")
         emptyFunc(3)
@@ -5737,7 +5737,7 @@ export default function JsvmJsunit() {
      * @tc.name JsvmTest0454
      * @tc.desc JsvmTest
      */
-    it('JsvmTest0454', 0, () => {
+    it('JsvmTest0454', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
         let func = createFunctionWithScript(\"func\", [\"a\", \"a\"], \"return a\")
         func(3, 5)
@@ -5752,7 +5752,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0455', 0, () => {
+    it('JsvmTest0455', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         Object.prototype.toString.call(createMap());
       `;
@@ -5766,7 +5766,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0456', 0, () => {
+    it('JsvmTest0456', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         var map = createMap();
         map.toString();
@@ -5781,7 +5781,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0457', 0, () => {
+    it('JsvmTest0457', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         var map = createMap();
         map.set("key1", "val1");
@@ -5799,7 +5799,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0458', 0, () => {
+    it('JsvmTest0458', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         var map = createMap();
         map.set("key1", "val1");
@@ -5817,7 +5817,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0459', 0, () => {
+    it('JsvmTest0459', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         var map = createMap();
         map.set("key1", "val1");
@@ -5835,7 +5835,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0460', 0, () => {
+    it('JsvmTest0460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         var map = createMap();
         map.set("key1", "val1");
@@ -5854,7 +5854,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0461', 0, () => {
+    it('JsvmTest0461', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         coerceToBigInt(false) === BigInt(0)
       `;
@@ -5868,7 +5868,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0462', 0, () => {
+    it('JsvmTest0462', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         coerceToBigInt(true) === BigInt(1)
       `;
@@ -5882,7 +5882,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0463', 0, () => {
+    it('JsvmTest0463', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         coerceToBigInt("123") === BigInt(123)
       `;
@@ -5896,7 +5896,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0464', 0, () => {
+    it('JsvmTest0464', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         let val = getValueBigintUint64(BigInt(123))
         coerceToBigInt(val) === BigInt(123)
@@ -5911,7 +5911,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0465', 0, () => {
+    it('JsvmTest0465', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         let val = /pattern/
         isRegExp(val)
@@ -5926,7 +5926,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0466', 0, () => {
+    it('JsvmTest0466', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         let val
         isRegExp(val)
@@ -5941,7 +5941,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0467', 0, () => {
+    it('JsvmTest0467', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp(null)
       `;
@@ -5955,7 +5955,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0468', 0, () => {
+    it('JsvmTest0468', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp(true)
       `;
@@ -5969,7 +5969,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0469', 0, () => {
+    it('JsvmTest0469', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp(123)
       `;
@@ -5983,7 +5983,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0470', 0, () => {
+    it('JsvmTest0470', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp("123")
       `;
@@ -5997,7 +5997,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0471', 0, () => {
+    it('JsvmTest0471', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp({})
       `;
@@ -6011,7 +6011,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0472', 0, () => {
+    it('JsvmTest0472', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp(BigInt(123))
       `;
@@ -6025,7 +6025,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0473', 0, () => {
+    it('JsvmTest0473', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let script: string = `
         isRegExp(Symbol())
       `;
@@ -6039,7 +6039,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0474', 0, () => {
+    it('JsvmTest0474', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: boolean = napitest.testCompileWithOption();
       console.info('JsvmTest0474 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(true);
@@ -6052,7 +6052,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0475', 0, () => {
+    it('JsvmTest0475', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: boolean = napitest.testRetainScript();
       console.info('JsvmTest0475 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(true);
@@ -6065,7 +6065,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0476', 0, () => {
+    it('JsvmTest0476', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: boolean = napitest.testOpenInspectorWithName();
       console.info('JsvmTest0476 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(true);
@@ -6078,7 +6078,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0477', 0, () => {
+    it('JsvmTest0477', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.testArrayBuffer();
       console.info('JsvmTest0477 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6091,7 +6091,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0478', 0, () => {
+    it('JsvmTest0478', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.testArrayBuffer2();
       console.info('JsvmTest0478 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6104,7 +6104,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0479', 0, () => {
+    it('JsvmTest0479', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.testArrayBuffer3();
       console.info('JsvmTest0479 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6117,7 +6117,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0480', 0, () => {
+    it('JsvmTest0480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.testWasmOperator();
       console.info('JsvmTest0480 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6130,7 +6130,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0481', 0, () => {
+    it('JsvmTest0481', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.wasmTest();
       console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6143,7 +6143,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0482', 0, () => {
+    it('JsvmTest0482', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.arrayBufferBackingStoreTest();
       console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -6156,7 +6156,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0483', 0, () => {
+    it('JsvmTest0483', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test1("Hello world")
    `;
@@ -6170,7 +6170,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0484', 0, () => {
+    it('JsvmTest0484', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test2()
    `;
@@ -6184,7 +6184,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0485', 0, () => {
+    it('JsvmTest0485', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test3()
    `;
@@ -6198,7 +6198,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0486', 0, () => {
+    it('JsvmTest0486', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test4()
    `;
@@ -6212,7 +6212,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0487', 0, () => {
+    it('JsvmTest0487', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test5()
    `;
@@ -6226,7 +6226,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0488', 0, () => {
+    it('JsvmTest0488', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf8Test6()
    `;
@@ -6240,7 +6240,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0489', 0, () => {
+    it('JsvmTest0489', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf8Test1()
    `;
@@ -6254,7 +6254,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0490', 0, () => {
+    it('JsvmTest0490', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf8Test2()
    `;
@@ -6268,7 +6268,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0491', 0, () => {
+    it('JsvmTest0491', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf8Test3()
    `;
@@ -6282,7 +6282,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0492', 0, () => {
+    it('JsvmTest0492', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf8Test4()
    `;
@@ -6296,7 +6296,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0493', 0, () => {
+    it('JsvmTest0493', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf16Test1()
    `;
@@ -6310,7 +6310,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0494', 0, () => {
+    it('JsvmTest0494', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf16Test2()
    `;
@@ -6324,7 +6324,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0495', 0, () => {
+    it('JsvmTest0495', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf16Test3()
    `;
@@ -6338,7 +6338,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0496', 0, () => {
+    it('JsvmTest0496', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringUtf16Test4("get utf16 string")
    `;
@@ -6352,7 +6352,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0497', 0, () => {
+    it('JsvmTest0497', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test1("create UTF16")
    `;
@@ -6366,7 +6366,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0498', 0, () => {
+    it('JsvmTest0498', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test2()
    `;
@@ -6380,7 +6380,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0499', 0, () => {
+    it('JsvmTest0499', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test3()
    `;
@@ -6394,7 +6394,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0500', 0, () => {
+    it('JsvmTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test4()
    `;
@@ -6408,7 +6408,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0501', 0, () => {
+    it('JsvmTest0501', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test5()
    `;
@@ -6422,7 +6422,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0502', 0, () => {
+    it('JsvmTest0502', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringUtf16Test6()
    `;
@@ -6436,7 +6436,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0503', 0, () => {
+    it('JsvmTest0503', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringLatin1Test1()
    `;
@@ -6450,7 +6450,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0504', 0, () => {
+    it('JsvmTest0504', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringLatin1Test2()
    `;
@@ -6464,7 +6464,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0505', 0, () => {
+    it('JsvmTest0505', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringLatin1Test3()
    `;
@@ -6478,7 +6478,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0506', 0, () => {
+    it('JsvmTest0506', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateStringLatin1Test4("get Latin1 string")
    `;
@@ -6492,7 +6492,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0507', 0, () => {
+    it('JsvmTest0507', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test1("create Latin1 string")
    `;
@@ -6506,7 +6506,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0508', 0, () => {
+    it('JsvmTest0508', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test2()
    `;
@@ -6520,7 +6520,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0509', 0, () => {
+    it('JsvmTest0509', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test3()
    `;
@@ -6534,7 +6534,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0510', 0, () => {
+    it('JsvmTest0510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test4()
    `;
@@ -6548,7 +6548,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0511', 0, () => {
+    it('JsvmTest0511', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test5()
    `;
@@ -6562,7 +6562,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0512', 0, () => {
+    it('JsvmTest0512', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetValueStringLatin1Test6()
    `;
@@ -6576,7 +6576,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0513', 0, () => {
+    it('JsvmTest0513', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsStringTest1()
    `;
@@ -6590,7 +6590,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0514', 0, () => {
+    it('JsvmTest0514', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsStringTest2()
    `;
@@ -6604,7 +6604,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0515', 0, () => {
+    it('JsvmTest0515', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsStringTest3()
    `;
@@ -6618,7 +6618,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0516', 0, () => {
+    it('JsvmTest0516', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOtherTest1()
    `;
@@ -6632,7 +6632,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0517', 0, () => {
+    it('JsvmTest0517', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateArrayWithLength_01()
    `;
@@ -6646,7 +6646,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0518', 0, () => {
+    it('JsvmTest0518', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateArrayWithLength_02()
    `;
@@ -6660,7 +6660,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0519', 0, () => {
+    it('JsvmTest0519', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateArrayWithLength_03()
    `;
@@ -6674,7 +6674,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0520', 0, () => {
+    it('JsvmTest0520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateArrayWithLength_04()
    `;
@@ -6688,7 +6688,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0521', 0, () => {
+    it('JsvmTest0521', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetArrayLength_01()
    `;
@@ -6702,7 +6702,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0522', 0, () => {
+    it('JsvmTest0522', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetArrayLength_02()
    `;
@@ -6716,7 +6716,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0523', 0, () => {
+    it('JsvmTest0523', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetArrayLength_03()
    `;
@@ -6730,7 +6730,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0524', 0, () => {
+    it('JsvmTest0524', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetArrayLength_04()
    `;
@@ -6744,7 +6744,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0525', 0, () => {
+    it('JsvmTest0525', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_01()
    `;
@@ -6758,7 +6758,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0526', 0, () => {
+    it('JsvmTest0526', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_02()
    `;
@@ -6772,7 +6772,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0527', 0, () => {
+    it('JsvmTest0527', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_03()
    `;
@@ -6786,7 +6786,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0528', 0, () => {
+    it('JsvmTest0528', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_04()
    `;
@@ -6800,7 +6800,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0529', 0, () => {
+    it('JsvmTest0529', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_05()
    `;
@@ -6814,7 +6814,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0530', 0, () => {
+    it('JsvmTest0530', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypedarray_06()
    `;
@@ -6828,7 +6828,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0531', 0, () => {
+    it('JsvmTest0531', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetTypedarrayInfo_01()
    `;
@@ -6842,7 +6842,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0532', 0, () => {
+    it('JsvmTest0532', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetTypedarrayInfo_02()
    `;
@@ -6856,7 +6856,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0533', 0, () => {
+    it('JsvmTest0533', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_01()
    `;
@@ -6870,7 +6870,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0534', 0, () => {
+    it('JsvmTest0534', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_02()
    `;
@@ -6884,7 +6884,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0535', 0, () => {
+    it('JsvmTest0535', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_03()
    `;
@@ -6898,7 +6898,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0536', 0, () => {
+    it('JsvmTest0536', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_04()
    `;
@@ -6912,7 +6912,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0537', 0, () => {
+    it('JsvmTest0537', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_05()
    `;
@@ -6926,7 +6926,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0538', 0, () => {
+    it('JsvmTest0538', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDataview_06()
    `;
@@ -6940,7 +6940,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0539', 0, () => {
+    it('JsvmTest0539', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetDataview_01()
    `;
@@ -6954,7 +6954,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0540', 0, () => {
+    it('JsvmTest0540', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetDataview_02()
    `;
@@ -6968,7 +6968,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0541', 0, () => {
+    it('JsvmTest0541', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_01()
    `;
@@ -6982,7 +6982,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0542', 0, () => {
+    it('JsvmTest0542', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_02()
    `;
@@ -6996,7 +6996,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0543', 0, () => {
+    it('JsvmTest0543', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_03()
    `;
@@ -7010,7 +7010,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0544', 0, () => {
+    it('JsvmTest0544', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_04()
    `;
@@ -7024,7 +7024,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0545', 0, () => {
+    it('JsvmTest0545', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_05()
    `;
@@ -7038,7 +7038,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0546', 0, () => {
+    it('JsvmTest0546', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_06()
    `;
@@ -7052,7 +7052,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0547', 0, () => {
+    it('JsvmTest0547', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testSetElement_07()
    `;
@@ -7066,7 +7066,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0548', 0, () => {
+    it('JsvmTest0548', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_01()
    `;
@@ -7080,7 +7080,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0549', 0, () => {
+    it('JsvmTest0549', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_02()
    `;
@@ -7094,7 +7094,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0550', 0, () => {
+    it('JsvmTest0550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_03()
    `;
@@ -7108,7 +7108,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0551', 0, () => {
+    it('JsvmTest0551', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_04()
    `;
@@ -7122,7 +7122,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0552', 0, () => {
+    it('JsvmTest0552', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_05()
    `;
@@ -7136,7 +7136,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0553', 0, () => {
+    it('JsvmTest0553', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetElement_06()
    `;
@@ -7150,7 +7150,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0554', 0, () => {
+    it('JsvmTest0554', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_01()
    `;
@@ -7164,7 +7164,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0555', 0, () => {
+    it('JsvmTest0555', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_02()
    `;
@@ -7178,7 +7178,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0556', 0, () => {
+    it('JsvmTest0556', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_03()
    `;
@@ -7192,7 +7192,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0557', 0, () => {
+    it('JsvmTest0557', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_04()
    `;
@@ -7206,7 +7206,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0558', 0, () => {
+    it('JsvmTest0558', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_05()
    `;
@@ -7220,7 +7220,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0559', 0, () => {
+    it('JsvmTest0559', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasElement_06()
    `;
@@ -7234,7 +7234,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0560', 0, () => {
+    it('JsvmTest0560', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_01()
    `;
@@ -7248,7 +7248,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0561', 0, () => {
+    it('JsvmTest0561', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_02()
    `;
@@ -7262,7 +7262,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0562', 0, () => {
+    it('JsvmTest0562', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_03()
    `;
@@ -7276,7 +7276,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0563', 0, () => {
+    it('JsvmTest0563', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_04()
    `;
@@ -7290,7 +7290,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0564', 0, () => {
+    it('JsvmTest0564', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_05()
    `;
@@ -7304,7 +7304,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0565', 0, () => {
+    it('JsvmTest0565', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDeleteElement_06()
    `;
@@ -7318,7 +7318,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0566', 0, () => {
+    it('JsvmTest0566', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayProcessSteps_01()
    `;
@@ -7332,7 +7332,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0567', 0, () => {
+    it('JsvmTest0567', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayProcessSteps_02()
    `;
@@ -7346,7 +7346,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0568', 0, () => {
+    it('JsvmTest0568', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypedarrayProcessSteps_01()
    `;
@@ -7360,7 +7360,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0569', 0, () => {
+    it('JsvmTest0569', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypedarrayProcessSteps_02()
    `;
@@ -7374,7 +7374,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0570', 0, () => {
+    it('JsvmTest0570', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayDataviewProcessSteps_01()
    `;
@@ -7388,7 +7388,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0571', 0, () => {
+    it('JsvmTest0571', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayDataviewProcessSteps_02()
    `;
@@ -7402,7 +7402,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0572', 0, () => {
+    it('JsvmTest0572', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeArrayAndDataviewProcessSteps_01()
    `;
@@ -7416,7 +7416,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0573', 0, () => {
+    it('JsvmTest0573', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeArraySetMultipleTimes_01()
    `;
@@ -7430,7 +7430,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0574', 0, () => {
+    it('JsvmTest0574', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArraySetMultipleTimes_01()
    `;
@@ -7444,7 +7444,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0575', 0, () => {
+    it('JsvmTest0575', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayGetMultipleTimes_01()
    `;
@@ -7458,7 +7458,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0576', 0, () => {
+    it('JsvmTest0576', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayDeleteMultipleTimes_01()
    `;
@@ -7472,7 +7472,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0577', 0, () => {
+    it('JsvmTest0577', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testArrayDeleteMultipleTimes_02()
    `;
@@ -7486,7 +7486,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0578', 0, () => {
+    it('JsvmTest0578', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateErrorTest1()
    `;
@@ -7500,7 +7500,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0579', 0, () => {
+    it('JsvmTest0579', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateErrorTest2()
    `;
@@ -7514,7 +7514,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0580', 0, () => {
+    it('JsvmTest0580', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateErrorTest3()
    `;
@@ -7528,7 +7528,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0581', 0, () => {
+    it('JsvmTest0581', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateErrorTest4()
    `;
@@ -7542,7 +7542,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0582', 0, () => {
+    it('JsvmTest0582', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateErrorTest5()
    `;
@@ -7556,7 +7556,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0583', 0, () => {
+    it('JsvmTest0583', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypeErrorTest1()
    `;
@@ -7570,7 +7570,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0584', 0, () => {
+    it('JsvmTest0584', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypeErrorTest2()
    `;
@@ -7584,7 +7584,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0586', 0, () => {
+    it('JsvmTest0586', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypeErrorTest3()
    `;
@@ -7598,7 +7598,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0587', 0, () => {
+    it('JsvmTest0587', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypeErrorTest4()
    `;
@@ -7612,7 +7612,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0588', 0, () => {
+    it('JsvmTest0588', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateTypeErrorTest5()
    `;
@@ -7626,7 +7626,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0589', 0, () => {
+    it('JsvmTest0589', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateRangeErrorTest1()
    `;
@@ -7640,7 +7640,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0590', 0, () => {
+    it('JsvmTest0590', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateRangeErrorTest2()
    `;
@@ -7654,7 +7654,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0591', 0, () => {
+    it('JsvmTest0591', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateRangeErrorTest3()
    `;
@@ -7668,7 +7668,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0592', 0, () => {
+    it('JsvmTest0592', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateRangeErrorTest4()
    `;
@@ -7682,7 +7682,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0593', 0, () => {
+    it('JsvmTest0593', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateRangeErrorTest5()
    `;
@@ -7696,7 +7696,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0594', 0, () => {
+    it('JsvmTest0594', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateSyntaxErrorTest1()
    `;
@@ -7710,7 +7710,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0595', 0, () => {
+    it('JsvmTest0595', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateSyntaxErrorTest2()
    `;
@@ -7724,7 +7724,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0596', 0, () => {
+    it('JsvmTest0596', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateSyntaxErrorTest3()
    `;
@@ -7738,7 +7738,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0597', 0, () => {
+    it('JsvmTest0597', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateSyntaxErrorTest4()
    `;
@@ -7752,7 +7752,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0598', 0, () => {
+    it('JsvmTest0598', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateSyntaxErrorTest5()
    `;
@@ -7766,7 +7766,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0599', 0, () => {
+    it('JsvmTest0599', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest1()
    `;
@@ -7780,7 +7780,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0600', 0, () => {
+    it('JsvmTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest2()
    `;
@@ -7794,7 +7794,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0601', 0, () => {
+    it('JsvmTest0601', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest3()
    `;
@@ -7808,7 +7808,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0602', 0, () => {
+    it('JsvmTest0602', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest4()
    `;
@@ -7822,7 +7822,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0603', 0, () => {
+    it('JsvmTest0603', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest5()
    `;
@@ -7836,7 +7836,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0604', 0, () => {
+    it('JsvmTest0604', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTest6("javascript error")
    `;
@@ -7850,7 +7850,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0605', 0, () => {
+    it('JsvmTest0605', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowErrorTest1()
    `;
@@ -7864,7 +7864,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0606', 0, () => {
+    it('JsvmTest0606', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowErrorTest2()
    `;
@@ -7878,7 +7878,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0607', 0, () => {
+    it('JsvmTest0607', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowErrorTest3()
    `;
@@ -7892,7 +7892,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0608', 0, () => {
+    it('JsvmTest0608', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTypeErrorTest1()
    `;
@@ -7906,7 +7906,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0609', 0, () => {
+    it('JsvmTest0609', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTypeErrorTest2()
    `;
@@ -7920,7 +7920,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0610', 0, () => {
+    it('JsvmTest0610', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowTypeErrorTest3()
    `;
@@ -7934,7 +7934,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0611', 0, () => {
+    it('JsvmTest0611', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowRangeErrorTest1()
    `;
@@ -7948,7 +7948,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0612', 0, () => {
+    it('JsvmTest0612', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowRangeErrorTest2()
    `;
@@ -7962,7 +7962,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0613', 0, () => {
+    it('JsvmTest0613', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowRangeErrorTest3()
    `;
@@ -7976,7 +7976,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0614', 0, () => {
+    it('JsvmTest0614', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowSyntaxErrorTest1()
    `;
@@ -7990,7 +7990,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0615', 0, () => {
+    it('JsvmTest0615', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowSyntaxErrorTest2()
    `;
@@ -8004,7 +8004,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0616', 0, () => {
+    it('JsvmTest0616', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testThrowSyntaxErrorTest3()
    `;
@@ -8018,7 +8018,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0617', 0, () => {
+    it('JsvmTest0617', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsErrorTest1()
    `;
@@ -8032,7 +8032,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0618', 0, () => {
+    it('JsvmTest0618', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsErrorTest2("js error")
    `;
@@ -8046,7 +8046,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0619', 0, () => {
+    it('JsvmTest0619', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetAndClearLastExceptionTest1()
    `;
@@ -8060,7 +8060,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0620', 0, () => {
+    it('JsvmTest0620', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetAndClearLastExceptionTest2()
    `;
@@ -8074,7 +8074,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0621', 0, () => {
+    it('JsvmTest0621', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetAndClearLastExceptionTest2()
    `;
@@ -8088,7 +8088,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0622', 0, () => {
+    it('JsvmTest0622', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetAndClearLastExceptionTest3()
    `;
@@ -8102,7 +8102,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0623', 0, () => {
+    it('JsvmTest0623', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsExceptionPendingTest1()
    `;
@@ -8116,7 +8116,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0624', 0, () => {
+    it('JsvmTest0624', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsExceptionPendingTest2()
    `;
@@ -8130,7 +8130,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0625', 0, () => {
+    it('JsvmTest0625', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsExceptionPendingTest3()
    `;
@@ -8144,7 +8144,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0626', 0, () => {
+    it('JsvmTest0626', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetLastErrorInfoTest1("abc")
    `;
@@ -8158,7 +8158,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0627', 0, () => {
+    it('JsvmTest0627', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetLastErrorInfoTest2()
    `;
@@ -8172,7 +8172,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0628', 0, () => {
+    it('JsvmTest0628', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetLastErrorInfoTest3()
    `;
@@ -8186,7 +8186,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0629', 0, () => {
+    it('JsvmTest0629', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest1()
    `;
@@ -8200,7 +8200,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0630', 0, () => {
+    it('JsvmTest0630', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest2()
    `;
@@ -8214,7 +8214,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0631', 0, () => {
+    it('JsvmTest0631', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest3()
    `;
@@ -8228,7 +8228,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0632', 0, () => {
+    it('JsvmTest0632', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest4()
    `;
@@ -8242,7 +8242,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0633', 0, () => {
+    it('JsvmTest0633', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest5()
    `;
@@ -8256,7 +8256,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0634', 0, () => {
+    it('JsvmTest0634', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest6()
    `;
@@ -8270,7 +8270,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0635', 0, () => {
+    it('JsvmTest0635', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest7()
    `;
@@ -8284,7 +8284,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0636', 0, () => {
+    it('JsvmTest0636', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest8()
    `;
@@ -8299,7 +8299,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0637', 0, () => {
+    it('JsvmTest0637', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest9()
    `;
@@ -8314,7 +8314,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0638', 0, () => {
+    it('JsvmTest0638', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest10()
    `;
@@ -8329,7 +8329,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0639', 0, () => {
+    it('JsvmTest0639', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest11()
    `;
@@ -8344,7 +8344,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0640', 0, () => {
+    it('JsvmTest0640', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest12()
    `;
@@ -8359,7 +8359,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0641', 0, () => {
+    it('JsvmTest0641', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest13()
    `;
@@ -8374,7 +8374,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0642', 0, () => {
+    it('JsvmTest0642', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest14()
    `;
@@ -8389,7 +8389,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0643', 0, () => {
+    it('JsvmTest0643', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest15()
    `;
@@ -8404,7 +8404,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0644', 0, () => {
+    it('JsvmTest0644', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest16()
    `;
@@ -8418,7 +8418,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0645', 0, () => {
+    it('JsvmTest0645', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest17()
    `;
@@ -8432,7 +8432,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0646', 0, () => {
+    it('JsvmTest0646', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest18()
    `;
@@ -8446,7 +8446,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0647', 0, () => {
+    it('JsvmTest0647', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest19()
    `;
@@ -8460,7 +8460,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0648', 0, () => {
+    it('JsvmTest0648', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest20()
    `;
@@ -8475,7 +8475,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0649', 0, () => {
+    it('JsvmTest0649', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest21()
    `;
@@ -8490,7 +8490,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0650', 0, () => {
+    it('JsvmTest0650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest22()
    `;
@@ -8505,7 +8505,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0651', 0, () => {
+    it('JsvmTest0651', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationTest23()
    `;
@@ -8519,7 +8519,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0652', 0, () => {
+    it('JsvmTest0652', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testHasPropertyTest1("key")
    `;
@@ -8533,7 +8533,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0653', 0, () => {
+    it('JsvmTest0653', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = '{ data: 0, key: "key message", 50: 1}';
       testHasPropertyTest2(obj)
@@ -8548,7 +8548,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0654', 0, () => {
+    it('JsvmTest0654', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = '{ data: 0, key: "key message", 50: 1}';
       testDeletePropertyTest1(obj, "key")
@@ -8563,7 +8563,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0655', 0, () => {
+    it('JsvmTest0655', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = '{ data: 0, key: "key message", 50: 1}';
       testDeletePropertyTest2(obj, "key")
@@ -8578,7 +8578,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0656', 0, () => {
+    it('JsvmTest0656', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = '{ data: 0, key: "key message", 50: 1}';
       testHasOwnPropertyTest1(obj, "key")
@@ -8593,7 +8593,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0657', 0, () => {
+    it('JsvmTest0657', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testHasOwnPropertyTest2(obj, "key")
@@ -8608,7 +8608,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0658', 0, () => {
+    it('JsvmTest0658', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { key: "key message" };
       testHasOwnPropertyTest3(obj)
@@ -8623,7 +8623,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0659', 0, () => {
+    it('JsvmTest0659', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testGetNamedPropertyTest1(obj, "key")
@@ -8638,7 +8638,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0660', 0, () => {
+    it('JsvmTest0660', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testGetNamedPropertyTest2(obj, "key")
@@ -8653,7 +8653,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0661', 0, () => {
+    it('JsvmTest0661', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testGetNamedPropertyTest3(obj, "key")
@@ -8668,7 +8668,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0662', 0, () => {
+    it('JsvmTest0662', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testHasNamedPropertyTest1(obj, "key")
@@ -8683,7 +8683,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0663', 0, () => {
+    it('JsvmTest0663', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testHasNamedPropertyTest2(obj, "key")
@@ -8698,7 +8698,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0664', 0, () => {
+    it('JsvmTest0664', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testHasNamedPropertyTest3(obj, "key")
@@ -8713,7 +8713,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0665', 0, () => {
+    it('JsvmTest0665', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testHasNamedPropertyTest4(obj, "key")
@@ -8728,7 +8728,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0666', 0, () => {
+    it('JsvmTest0666', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testDefinePropertiesTest1(obj)
@@ -8743,7 +8743,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0667', 0, () => {
+    it('JsvmTest0667', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testDefinePropertiesTest2(obj)
@@ -8758,7 +8758,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0668', 0, () => {
+    it('JsvmTest0668', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data: 0, key: "key message", 50: 1};
       testDefinePropertiesTest3(obj)
@@ -8773,7 +8773,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0669', 0, () => {
+    it('JsvmTest0669', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { data1: 1, key1: "key message", 50: 1};
       testDefinePropertiesTest4(obj)
@@ -8789,7 +8789,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0670', 0, () => {
+    it('JsvmTest0670', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCombinationPropertyTest1(obj, "key", "key message")
@@ -8805,7 +8805,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0671', 0, () => {
+    it('JsvmTest0671', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCombinationPropertyTest2(obj, "key", "key message")
@@ -8821,7 +8821,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0672', 0, () => {
+    it('JsvmTest0672', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCombinationPropertyTest3(obj, "key", "key message")
@@ -8837,7 +8837,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0673', 0, () => {
+    it('JsvmTest0673', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCombinationPropertyTest4(obj, "key", "key message")
@@ -8853,7 +8853,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0674', 0, () => {
+    it('JsvmTest0674', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCombinationNamedPropertyTest1(obj, "key", "key message")
@@ -8869,7 +8869,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0675', 0, () => {
+    it('JsvmTest0675', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCombinationNamedPropertyTest2()
    `;
@@ -8883,7 +8883,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0676', 0, () => {
+    it('JsvmTest0676', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateObjectTest1()
    `;
@@ -8897,7 +8897,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0677', 0, () => {
+    it('JsvmTest0677', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateObjectTest2()
    `;
@@ -8911,7 +8911,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0678', 0, () => {
+    it('JsvmTest0678', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeofTest1()
    `;
@@ -8925,7 +8925,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0679', 0, () => {
+    it('JsvmTest0679', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = undefined
       testTypeofTest2(value)
@@ -8940,7 +8940,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0680', 0, () => {
+    it('JsvmTest0680', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = null
       testTypeofTest3(value)
@@ -8955,7 +8955,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0681', 0, () => {
+    it('JsvmTest0681', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = true
       testTypeofTest4(value)
@@ -8970,7 +8970,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0682', 0, () => {
+    it('JsvmTest0682', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = 5
       testTypeofTest5(value)
@@ -8985,7 +8985,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0683', 0, () => {
+    it('JsvmTest0683', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = 'string type'
       testTypeofTest6(value)
@@ -9000,7 +9000,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0684', 0, () => {
+    it('JsvmTest0684', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let symbolValue = Symbol("foo")
       testTypeofTest7(symbolValue)
@@ -9015,7 +9015,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0685', 0, () => {
+    it('JsvmTest0685', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let objectValue = {data: "123"}
       testTypeofTest8(objectValue)
@@ -9030,7 +9030,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0686', 0, () => {
+    it('JsvmTest0686', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function fun(){}
       let value = fun
@@ -9046,7 +9046,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0687', 0, () => {
+    it('JsvmTest0687', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeofTest10()
    `;
@@ -9060,7 +9060,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0688', 0, () => {
+    it('JsvmTest0688', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = 3n
       testTypeofTest11(value)
@@ -9075,7 +9075,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0689', 0, () => {
+    it('JsvmTest0689', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeofTest12()
    `;
@@ -9089,7 +9089,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0690', 0, () => {
+    it('JsvmTest0690', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testTypeTagObjectTest1()
    `;
@@ -9103,7 +9103,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0691', 0, () => {
+    it('JsvmTest0691', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testTypeTagObjectTest2(obj)
@@ -9118,7 +9118,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0692', 0, () => {
+    it('JsvmTest0692', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testTypeTagObjectTest3(obj)
@@ -9133,7 +9133,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0693', 0, () => {
+    it('JsvmTest0693', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testTypeTagObjectTest4(obj)
@@ -9148,7 +9148,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0694', 0, () => {
+    it('JsvmTest0694', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCheckObjectTypeTagTest1()
    `;
@@ -9162,7 +9162,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0695', 0, () => {
+    it('JsvmTest0695', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testCheckObjectTypeTagTest2(obj)
@@ -9177,7 +9177,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0696', 0, () => {
+    it('JsvmTest0696', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testCheckObjectTypeTagTest3(obj)
@@ -9192,7 +9192,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0697', 0, () => {
+    it('JsvmTest0697', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testCheckObjectTypeTagTest4(obj)
@@ -9207,7 +9207,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0698', 0, () => {
+    it('JsvmTest0698', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = {data: "value"}
       testCheckObjectTypeTagTest5(obj)
@@ -9223,7 +9223,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0699', 0, () => {
+    it('JsvmTest0699', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function person(){}
       let value = person
@@ -9240,7 +9240,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0700', 0, () => {
+    it('JsvmTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testObjectCombinationTest2()
    `;
@@ -9254,7 +9254,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0702', 0, () => {
+    it('JsvmTest0702', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testInitTest1()
    `;
@@ -9268,7 +9268,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0703', 0, () => {
+    it('JsvmTest0703', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateVMTest1()
    `;
@@ -9282,7 +9282,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0704', 0, () => {
+    it('JsvmTest0704', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateVMTest2()
    `;
@@ -9296,7 +9296,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0705', 0, () => {
+    it('JsvmTest0705', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDestroyVMTest1()
    `;
@@ -9310,7 +9310,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0706', 0, () => {
+    it('JsvmTest0706', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDestroyVMTest2()
    `;
@@ -9324,7 +9324,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0708', 0, () => {
+    it('JsvmTest0708', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOpenVMScopeTest1()
    `;
@@ -9338,7 +9338,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0709', 0, () => {
+    it('JsvmTest0709', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOpenVMScopeTest2()
    `;
@@ -9352,7 +9352,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0711', 0, () => {
+    it('JsvmTest0711', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCloseVMScopeTest1()
    `;
@@ -9366,7 +9366,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0712', 0, () => {
+    it('JsvmTest0712', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCloseVMScopeTest2()
    `;
@@ -9380,7 +9380,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0713', 0, () => {
+    it('JsvmTest0713', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateEnvTest1()
    `;
@@ -9394,7 +9394,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0714', 0, () => {
+    it('JsvmTest0714', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateEnvTest2()
    `;
@@ -9408,7 +9408,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0715', 0, () => {
+    it('JsvmTest0715', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDestroyEnvTest1()
    `;
@@ -9422,7 +9422,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0716', 0, () => {
+    it('JsvmTest0716', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDestroyEnvTest2()
    `;
@@ -9436,7 +9436,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0717', 0, () => {
+    it('JsvmTest0717', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOpenEnvScopeTest1()
    `;
@@ -9450,7 +9450,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0718', 0, () => {
+    it('JsvmTest0718', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOpenEnvScopeTest2()
    `;
@@ -9464,7 +9464,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0719', 0, () => {
+    it('JsvmTest0719', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testOpenEnvScopeTest3()
    `;
@@ -9478,7 +9478,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0721', 0, () => {
+    it('JsvmTest0721', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCloseEnvScopeTest1()
    `;
@@ -9492,7 +9492,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0723', 0, () => {
+    it('JsvmTest0723', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCloseEnvScopeTest2()
    `;
@@ -9507,7 +9507,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0724', 0, () => {
+    it('JsvmTest0724', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDataTypeCombinationTest1()
    `;
@@ -9520,7 +9520,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0725', 0, () => {
+    it('JsvmTest0725', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testCreateDateTest1()
    `;
@@ -9533,7 +9533,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0726', 0, () => {
+    it('JsvmTest0726', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testGetDateValueTest1()
    `;
@@ -9546,7 +9546,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0727', 0, () => {
+    it('JsvmTest0727', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testIsDateTest1()
    `;
@@ -9559,7 +9559,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0728', 0, () => {
+    it('JsvmTest0728', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDateCombinationTest1()
    `;
@@ -9572,7 +9572,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0729', 0, () => {
+    it('JsvmTest0729', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testDateCombinationTest1()
    `;
@@ -9585,7 +9585,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0730', 0, () => {
+    it('JsvmTest0730', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testPumpMessageLoopTest1()
    `;
@@ -9598,7 +9598,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0731', 0, () => {
+    it('JsvmTest0731', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testPerformMicrotaskCheckpointTest1()
    `;
@@ -9611,7 +9611,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0732', 0, () => {
+    it('JsvmTest0732', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testExecuteTasksCombinationTest1()
    `;
@@ -9624,7 +9624,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0733', 0, () => {
+    it('JsvmTest0733', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonParseTest1()
    `;
@@ -9637,7 +9637,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0734', 0, () => {
+    it('JsvmTest0734', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonParseTest2()
    `;
@@ -9650,7 +9650,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0735', 0, () => {
+    it('JsvmTest0735', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonParseTest3()
    `;
@@ -9663,7 +9663,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0736', 0, () => {
+    it('JsvmTest0736', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonStringifyTest1()
    `;
@@ -9676,7 +9676,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0737', 0, () => {
+    it('JsvmTest0737', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonStringifyTest2()
    `;
@@ -9689,7 +9689,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0738', 0, () => {
+    it('JsvmTest0738', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonStringifyTest3()
    `;
@@ -9702,7 +9702,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0739', 0, () => {
+    it('JsvmTest0739', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonCombinationTest1()
    `;
@@ -9715,7 +9715,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0740', 0, () => {
+    it('JsvmTest0740', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testJsonCombinationTest1()
    `;
@@ -9728,7 +9728,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0741', 0, () => {
+    it('JsvmTest0741', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testStrictEqualsTest1()
    `;
@@ -9741,7 +9741,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0742', 0, () => {
+    it('JsvmTest0742', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testStrictEqualsTest2()
    `;
@@ -9754,7 +9754,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0743', 0, () => {
+    it('JsvmTest0743', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       testStrictEqualsTest3()
    `;
@@ -9767,7 +9767,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0744', 0, () => {
+    it('JsvmTest0744', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = undefined
       let rhsValue = undefined
@@ -9782,7 +9782,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0745', 0, () => {
+    it('JsvmTest0745', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       const value = new Set([1, 2, 3])
       const lhsValue = value
@@ -9798,7 +9798,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0746', 0, () => {
+    it('JsvmTest0746', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = true
       let rhsValue = true
@@ -9813,7 +9813,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0747', 0, () => {
+    it('JsvmTest0747', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = 'string123'
       let rhsValue = 'string123'
@@ -9828,7 +9828,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0748', 0, () => {
+    it('JsvmTest0748', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let value = Symbol("foo")
       let lhsValue = value
@@ -9844,7 +9844,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0749', 0, () => {
+    it('JsvmTest0749', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function person(){}
       let value = person
@@ -9861,7 +9861,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0750', 0, () => {
+    it('JsvmTest0750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = 5n
       let rhsValue = 5n
@@ -9876,7 +9876,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0751', 0, () => {
+    it('JsvmTest0751', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       const value = /[a-z]+/g
       const lhsValue = value
@@ -9892,7 +9892,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0752', 0, () => {
+    it('JsvmTest0752', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = new Set([1, 2, 3])
       let rhsValue = new Set([4, 5, 6])
@@ -9907,7 +9907,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0753', 0, () => {
+    it('JsvmTest0753', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = true
       let rhsValue = false
@@ -9922,7 +9922,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0754', 0, () => {
+    it('JsvmTest0754', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = 'string123'
       let rhsValue = 'hello'
@@ -9937,7 +9937,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0755', 0, () => {
+    it('JsvmTest0755', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = Symbol("foo")
       let rhsValue = Symbol("fun")
@@ -9952,7 +9952,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0756', 0, () => {
+    it('JsvmTest0756', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       function person(){}
       let lhsValue = person
@@ -9969,7 +9969,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0757', 0, () => {
+    it('JsvmTest0757', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let lhsValue = 5n
       let rhsValue = 9n
@@ -9984,7 +9984,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0758', 0, () => {
+    it('JsvmTest0758', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       const lhsValue = /[a-z]+/g
       const rhsValue = /[0-9]+/g
@@ -9999,7 +9999,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0759', 0, () => {
+    it('JsvmTest0759', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       const lhsValue = null
       const rhsValue = null
@@ -10015,7 +10015,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0760', 0, () => {
+    it('JsvmTest0760', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.traceTest();
       console.info('JsvmTest0760 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10028,7 +10028,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0761', 0, () => {
+    it('JsvmTest0761', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.wrapperObjectTest();
       console.info('JsvmTest0761 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10041,7 +10041,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0762', 0, () => {
+    it('JsvmTest0762', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.wellKnownSymbolsTest();
       console.info('JsvmTest0762 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10054,7 +10054,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0763', 0, () => {
+    it('JsvmTest0763', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.defineClassWithOptionsTest();
       console.info('JsvmTest0763 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10067,7 +10067,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0764', 0, () => {
+    it('JsvmTest0764', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.triggerExceptionsTest();
       console.info('JsvmTest0764 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10080,7 +10080,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0765', 0, () => {
+    it('JsvmTest0765', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.triggerGCTest();
       console.info('JsvmTest0765 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10093,7 +10093,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0766', 0, () => {
+    it('JsvmTest0766', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.SetMicrotaskPolicy();
       console.info('JsvmTest0766 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10106,7 +10106,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0767', 0, () => {
+    it('JsvmTest0767', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.PromiseRegisterHandler();
       console.info('JsvmTest0767 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10119,7 +10119,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0768', 0, () => {
+    it('JsvmTest0768', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.ProxyTest();
       console.info('JsvmTest0768 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10132,7 +10132,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0769', 0, () => {
+    it('JsvmTest0769', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.privateTest();
       console.info('JsvmTest0769 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10145,7 +10145,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('JsvmTest0770', 0, () => {
+    it('JsvmTest0770', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let rst: number = napitest.externalStringTest();
       console.info('JsvmTest0770 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
@@ -10158,7 +10158,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0771', 0, () => {
+    it('JsvmTest0771', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateArrayBufferCase01()
@@ -10173,7 +10173,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0772', 0, () => {
+    it('JsvmTest0772', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateArrayBufferCase02()
@@ -10187,7 +10187,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0773', 0, () => {
+    it('JsvmTest0773', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateArrayBufferCase03()
@@ -10201,7 +10201,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0774', 0, () => {
+    it('JsvmTest0774', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateArrayBufferCase04()
@@ -10215,7 +10215,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0775', 0, () => {
+    it('JsvmTest0775', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetArrayBufferCase01()
@@ -10229,7 +10229,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0776', 0, () => {
+    it('JsvmTest0776', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetArrayBufferCase02()
@@ -10243,7 +10243,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0777', 0, () => {
+    it('JsvmTest0777', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsArrayBufferCase01()
@@ -10257,7 +10257,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0778', 0, () => {
+    it('JsvmTest0778', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsArrayBufferCase02()
@@ -10271,7 +10271,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0779', 0, () => {
+    it('JsvmTest0779', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsArrayBufferCase03()
@@ -10285,7 +10285,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0780', 0, () => {
+    it('JsvmTest0780', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDetachArrayBufferCase01()
@@ -10299,7 +10299,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0781', 0, () => {
+    it('JsvmTest0781', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDetachArrayBufferCase02()
@@ -10313,7 +10313,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0782', 0, () => {
+    it('JsvmTest0782', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDetachArrayBufferCase03()
@@ -10327,7 +10327,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0783', 0, () => {
+    it('JsvmTest0783', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsDetachedArraybufferCase01()
@@ -10341,7 +10341,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0784', 0, () => {
+    it('JsvmTest0784', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsDetachedArraybufferCase02()
@@ -10355,7 +10355,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0785', 0, () => {
+    it('JsvmTest0785', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsDetachedArraybufferCase03()
@@ -10369,7 +10369,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0786', 0, () => {
+    it('JsvmTest0786', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsDetachedArraybufferCase04()
@@ -10383,7 +10383,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0787', 0, () => {
+    it('JsvmTest0787', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsDetachedArraybufferCase05()
@@ -10399,7 +10399,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0788', 0, () => {
+    it('JsvmTest0788', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateAnyBufferDetachedCase01()
@@ -10413,7 +10413,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0789', 0, () => {
+    it('JsvmTest0789', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt32Case01()
@@ -10427,7 +10427,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0790', 0, () => {
+    it('JsvmTest0790', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt32Case02()
@@ -10441,7 +10441,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0791', 0, () => {
+    it('JsvmTest0791', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt32Case03()
@@ -10455,7 +10455,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0792', 0, () => {
+    it('JsvmTest0792', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt32Case04()
@@ -10469,7 +10469,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0793', 0, () => {
+    it('JsvmTest0793', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateUint32Case01()
@@ -10483,7 +10483,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0794', 0, () => {
+    it('JsvmTest0794', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateUint32Case02()
@@ -10497,7 +10497,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0795', 0, () => {
+    it('JsvmTest0795', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateUint32Case03()
@@ -10511,7 +10511,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0796', 0, () => {
+    it('JsvmTest0796', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateUint32Case04()
@@ -10525,7 +10525,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0797', 0, () => {
+    it('JsvmTest0797', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt64Case01()
@@ -10539,7 +10539,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0798', 0, () => {
+    it('JsvmTest0798', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt64Case02()
@@ -10553,7 +10553,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0799', 0, () => {
+    it('JsvmTest0799', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt64Case03()
@@ -10567,7 +10567,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0800', 0, () => {
+    it('JsvmTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateInt64Case04()
@@ -10581,7 +10581,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0801', 0, () => {
+    it('JsvmTest0801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateDoubleCase01()
@@ -10595,7 +10595,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0802', 0, () => {
+    it('JsvmTest0802', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateDoubleCase02()
@@ -10609,7 +10609,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0803', 0, () => {
+    it('JsvmTest0803', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateDoubleCase03()
@@ -10623,7 +10623,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0804', 0, () => {
+    it('JsvmTest0804', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateDoubleCase04()
@@ -10637,7 +10637,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0805', 0, () => {
+    it('JsvmTest0805', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueUint32Case01()
@@ -10651,7 +10651,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0806', 0, () => {
+    it('JsvmTest0806', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueInt32Case01()
@@ -10665,7 +10665,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0807', 0, () => {
+    it('JsvmTest0807', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueInt64Case01()
@@ -10679,7 +10679,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0808', 0, () => {
+    it('JsvmTest0808', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueDoubleCase01()
@@ -10694,7 +10694,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0809', 0, () => {
+    it('JsvmTest0809', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testBasicDataTypesCase01()
@@ -10709,7 +10709,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0810', 0, () => {
+    it('JsvmTest0810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testBasicDataTypesCase02()
@@ -10724,7 +10724,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0811', 0, () => {
+    it('JsvmTest0811', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testBasicDataTypesCase03()
@@ -10739,7 +10739,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0812', 0, () => {
+    it('JsvmTest0812', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testBasicDataTypesCase04()
@@ -10753,7 +10753,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0813', 0, () => {
+    it('JsvmTest0813', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintInt64Case01()
@@ -10767,7 +10767,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0814', 0, () => {
+    it('JsvmTest0814', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintInt64Case02()
@@ -10781,7 +10781,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0815', 0, () => {
+    it('JsvmTest0815', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintInt64Case03()
@@ -10795,7 +10795,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0816', 0, () => {
+    it('JsvmTest0816', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintInt64Case04()
@@ -10809,7 +10809,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0817', 0, () => {
+    it('JsvmTest0817', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintUint64Case01()
@@ -10823,7 +10823,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0818', 0, () => {
+    it('JsvmTest0818', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintUint64Case02()
@@ -10837,7 +10837,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0819', 0, () => {
+    it('JsvmTest0819', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintUint64Case03()
@@ -10851,7 +10851,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0820', 0, () => {
+    it('JsvmTest0820', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintWordsCase01()
@@ -10865,7 +10865,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0821', 0, () => {
+    it('JsvmTest0821', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintWordsCase02()
@@ -10879,7 +10879,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0822', 0, () => {
+    it('JsvmTest0822', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintWordsCase03()
@@ -10893,7 +10893,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0823', 0, () => {
+    it('JsvmTest0823', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintWordsCase04()
@@ -10907,7 +10907,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0824', 0, () => {
+    it('JsvmTest0824', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateBigintWordsCase05()
@@ -10921,7 +10921,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0825', 0, () => {
+    it('JsvmTest0825', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case01()
@@ -10935,7 +10935,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0826', 0, () => {
+    it('JsvmTest0826', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case02()
@@ -10949,7 +10949,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0827', 0, () => {
+    it('JsvmTest0827', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case03()
@@ -10963,7 +10963,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0828', 0, () => {
+    it('JsvmTest0828', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case04()
@@ -10977,7 +10977,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0829', 0, () => {
+    it('JsvmTest0829', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case05()
@@ -10991,7 +10991,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0830', 0, () => {
+    it('JsvmTest0830', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintInt64Case06()
@@ -11005,7 +11005,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0831', 0, () => {
+    it('JsvmTest0831', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case01()
@@ -11019,7 +11019,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0832', 0, () => {
+    it('JsvmTest0832', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case02()
@@ -11033,7 +11033,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0833', 0, () => {
+    it('JsvmTest0833', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case03()
@@ -11047,7 +11047,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0834', 0, () => {
+    it('JsvmTest0834', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case04()
@@ -11061,7 +11061,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0835', 0, () => {
+    it('JsvmTest0835', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case05()
@@ -11075,7 +11075,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0836', 0, () => {
+    it('JsvmTest0836', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintUint64Case06()
@@ -11089,7 +11089,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0837', 0, () => {
+    it('JsvmTest0837', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintWordsCase01()
@@ -11103,7 +11103,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0838', 0, () => {
+    it('JsvmTest0838', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintWordsCase02()
@@ -11117,7 +11117,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0839', 0, () => {
+    it('JsvmTest0839', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintWordsCase03()
@@ -11131,7 +11131,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0840', 0, () => {
+    it('JsvmTest0840', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintWordsCase04()
@@ -11145,7 +11145,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0841', 0, () => {
+    it('JsvmTest0841', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetValueBigintWordsCase05()
@@ -11161,7 +11161,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0842', 0, () => {
+    it('JsvmTest0842', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateAndGetBigIntProgramCase01()
@@ -11176,7 +11176,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0843', 0, () => {
+    it('JsvmTest0843', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateAndGetBigIntProgramCase02()
@@ -11192,7 +11192,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0844', 0, () => {
+    it('JsvmTest0844', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateAndGetBigIntProgramCase03()
@@ -11206,7 +11206,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0845', 0, () => {
+    it('JsvmTest0845', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testNewInstanceCase01()
@@ -11220,7 +11220,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0846', 0, () => {
+    it('JsvmTest0846', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testNewInstanceCase02()
@@ -11234,7 +11234,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0847', 0, () => {
+    it('JsvmTest0847', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetNewTargetCase01()
@@ -11248,7 +11248,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0848', 0, () => {
+    it('JsvmTest0848', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetNewTargetCase02()
@@ -11262,7 +11262,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0849', 0, () => {
+    it('JsvmTest0849', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetNewTargetCase03()
@@ -11277,7 +11277,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0850', 0, () => {
+    it('JsvmTest0850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDefineClassCase01()
@@ -11292,7 +11292,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0851', 0, () => {
+    it('JsvmTest0851', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDefineClassCase02()
@@ -11307,7 +11307,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0852', 0, () => {
+    it('JsvmTest0852', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testWrapCase01()
@@ -11322,7 +11322,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0853', 0, () => {
+    it('JsvmTest0853', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testWrapCase02()
@@ -11337,7 +11337,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0854', 0, () => {
+    it('JsvmTest0854', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testWrapCase03()
@@ -11352,7 +11352,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0855', 0, () => {
+    it('JsvmTest0855', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testWrapCase04()
@@ -11367,7 +11367,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0856', 0, () => {
+    it('JsvmTest0856', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testUnwrapCase01()
@@ -11382,7 +11382,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0857', 0, () => {
+    it('JsvmTest0857', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testUnwrapCase02()
@@ -11396,7 +11396,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0858', 0, () => {
+    it('JsvmTest0858', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testUnwrapCase03()
@@ -11410,7 +11410,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0859', 0, () => {
+    it('JsvmTest0859', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testUnwrapCase04()
@@ -11424,7 +11424,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0860', 0, () => {
+    it('JsvmTest0860', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRemoveWrapCase01()
@@ -11438,7 +11438,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0861', 0, () => {
+    it('JsvmTest0861', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRemoveWrapCase02()
@@ -11452,7 +11452,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0862', 0, () => {
+    it('JsvmTest0862', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRemoveWrapCase03()
@@ -11466,7 +11466,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0863', 0, () => {
+    it('JsvmTest0863', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRemoveWrapCase04()
@@ -11480,7 +11480,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0864', 0, () => {
+    it('JsvmTest0864', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testClassOperationCase01()
@@ -11496,7 +11496,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0865', 0, () => {
+    it('JsvmTest0865', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction01()
@@ -11512,7 +11512,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0866', 0, () => {
+    it('JsvmTest0866', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction02()
@@ -11528,7 +11528,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0867', 0, () => {
+    it('JsvmTest0867', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction03()
@@ -11544,7 +11544,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0868', 0, () => {
+    it('JsvmTest0868', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction04()
@@ -11560,7 +11560,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0869', 0, () => {
+    it('JsvmTest0869', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction05()
@@ -11576,7 +11576,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0870', 0, () => {
+    it('JsvmTest0870', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction06()
@@ -11592,7 +11592,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0871', 0, () => {
+    it('JsvmTest0871', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction07()
@@ -11608,7 +11608,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0872', 0, () => {
+    it('JsvmTest0872', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction08()
@@ -11624,7 +11624,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0873', 0, () => {
+    it('JsvmTest0873', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCallFunction09()
@@ -11639,7 +11639,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0874', 0, () => {
+    it('JsvmTest0874', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction01()
@@ -11655,7 +11655,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0875', 0, () => {
+    it('JsvmTest0875', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction02()
@@ -11671,7 +11671,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0876', 0, () => {
+    it('JsvmTest0876', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction03()
@@ -11687,7 +11687,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0877', 0, () => {
+    it('JsvmTest0877', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction04()
@@ -11702,7 +11702,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0878', 0, () => {
+    it('JsvmTest0878', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction05()
@@ -11717,7 +11717,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0879', 0, () => {
+    it('JsvmTest0879', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateFunction06()
@@ -11733,7 +11733,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0880', 0, () => {
+    it('JsvmTest0880', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetCbInfo01()
@@ -11748,7 +11748,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0881', 0, () => {
+    it('JsvmTest0881', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetCbInfo02()
@@ -11764,7 +11764,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0882', 0, () => {
+    it('JsvmTest0882', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetCbInfo03()
@@ -11779,7 +11779,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0883', 0, () => {
+    it('JsvmTest0883', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetCbInfo04()
@@ -11794,7 +11794,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0884', 0, () => {
+    it('JsvmTest0884', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetCbInfo05()
@@ -11809,7 +11809,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0885', 0, () => {
+    it('JsvmTest0885', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsFunction01()
@@ -11824,7 +11824,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0886', 0, () => {
+    it('JsvmTest0886', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsFunction02()
@@ -11839,7 +11839,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0887', 0, () => {
+    it('JsvmTest0887', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsFunction03()
@@ -11854,7 +11854,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0888', 0, () => {
+    it('JsvmTest0888', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsFunction04()
@@ -11868,7 +11868,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0889', 0, () => {
+    it('JsvmTest0889', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenHandleScopeCase01()
@@ -11882,7 +11882,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0890', 0, () => {
+    it('JsvmTest0890', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenHandleScopeCase02()
@@ -11896,7 +11896,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0891', 0, () => {
+    it('JsvmTest0891', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenHandleScopeCase03()
@@ -11911,7 +11911,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0892', 0, () => {
+    it('JsvmTest0892', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenHandleScopeCase04()
@@ -11925,7 +11925,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0893', 0, () => {
+    it('JsvmTest0893', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseHandleScopeCase01()
@@ -11939,7 +11939,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0894', 0, () => {
+    it('JsvmTest0894', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseHandleScopeCase02()
@@ -11953,7 +11953,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0895', 0, () => {
+    it('JsvmTest0895', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenAndCloseHandleScopeCase01()
@@ -11967,7 +11967,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0896', 0, () => {
+    it('JsvmTest0896', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenAndCloseHandleScopeCase02()
@@ -11981,7 +11981,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0897', 0, () => {
+    it('JsvmTest0897', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenEscapableHandleScopeCase01()
@@ -11995,7 +11995,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0898', 0, () => {
+    it('JsvmTest0898', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenEscapableHandleScopeCase02()
@@ -12009,7 +12009,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0899', 0, () => {
+    it('JsvmTest0899', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenEscapableHandleScopeCase03()
@@ -12023,7 +12023,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0900', 0, () => {
+    it('JsvmTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseEscapableHandleScopeCase01()
@@ -12037,7 +12037,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0901', 0, () => {
+    it('JsvmTest0901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseEscapableHandleScopeCase02()
@@ -12051,7 +12051,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0902', 0, () => {
+    it('JsvmTest0902', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseEscapableHandleScopeCase03()
@@ -12065,7 +12065,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0903', 0, () => {
+    it('JsvmTest0903', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testEscapeHandleCase01()
@@ -12079,7 +12079,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0904', 0, () => {
+    it('JsvmTest0904', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testEscapeHandleCase02()
@@ -12093,7 +12093,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0905', 0, () => {
+    it('JsvmTest0905', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testEscapeHandleCase03()
@@ -12107,7 +12107,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0906', 0, () => {
+    it('JsvmTest0906', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testEscapeHandleCase04()
@@ -12121,7 +12121,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0907', 0, () => {
+    it('JsvmTest0907', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testEscapeHandleCase05()
@@ -12135,7 +12135,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0908', 0, () => {
+    it('JsvmTest0908', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenClosedEscapeCase01()
@@ -12149,7 +12149,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0909', 0, () => {
+    it('JsvmTest0909', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenClosedEscapeCase02()
@@ -12163,7 +12163,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0910', 0, () => {
+    it('JsvmTest0910', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateReferenceCase01()
@@ -12177,7 +12177,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0911', 0, () => {
+    it('JsvmTest0911', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateReferenceCase02()
@@ -12191,7 +12191,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0912', 0, () => {
+    it('JsvmTest0912', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateReferenceCase03()
@@ -12205,7 +12205,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0913', 0, () => {
+    it('JsvmTest0913', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDeleteReferenceCase01()
@@ -12219,7 +12219,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0914', 0, () => {
+    it('JsvmTest0914', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testDeleteReferenceCase02()
@@ -12233,7 +12233,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0915', 0, () => {
+    it('JsvmTest0915', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceRefCase01()
@@ -12247,7 +12247,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0916', 0, () => {
+    it('JsvmTest0916', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceRefCase02()
@@ -12261,7 +12261,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0917', 0, () => {
+    it('JsvmTest0917', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceRefCase03()
@@ -12275,7 +12275,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0918', 0, () => {
+    it('JsvmTest0918', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceUnrefCase01()
@@ -12289,7 +12289,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0919', 0, () => {
+    it('JsvmTest0919', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceUnrefCase02()
@@ -12303,7 +12303,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0920', 0, () => {
+    it('JsvmTest0920', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testReferenceUnrefCase03()
@@ -12317,7 +12317,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0921', 0, () => {
+    it('JsvmTest0921', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetReferenceValueCase01()
@@ -12331,7 +12331,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0922', 0, () => {
+    it('JsvmTest0922', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetReferenceValueCase02()
@@ -12347,7 +12347,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0923', 0, () => {
+    it('JsvmTest0923', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testHandleAndRefCase01()
@@ -12364,7 +12364,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0924', 0, () => {
+    it('JsvmTest0924', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testHandleAndRefCase02()
@@ -12378,7 +12378,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0925', 0, () => {
+    it('JsvmTest0925', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testHandleAndRefCase03()
@@ -12392,7 +12392,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0926', 0, () => {
+    it('JsvmTest0926', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testAdjustExternalMemoryCase01()
@@ -12406,7 +12406,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0927', 0, () => {
+    it('JsvmTest0927', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testAdjustExternalMemoryCase02()
@@ -12420,7 +12420,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0928', 0, () => {
+    it('JsvmTest0928', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testAdjustExternalMemoryCase03()
@@ -12434,7 +12434,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0929', 0, () => {
+    it('JsvmTest0929', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testAdjustExternalMemoryCase04()
@@ -12448,7 +12448,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0930', 0, () => {
+    it('JsvmTest0930', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testMemoryPressureNotificationCase01()
@@ -12462,7 +12462,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0931', 0, () => {
+    it('JsvmTest0931', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testMemoryPressureNotificationCase02()
@@ -12476,7 +12476,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0932', 0, () => {
+    it('JsvmTest0932', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testMemoryPressureNotificationCase03()
@@ -12491,7 +12491,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0933', 0, () => {
+    it('JsvmTest0933', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testMemoryManagementuseCase01()
@@ -12505,7 +12505,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0934', 0, () => {
+    it('JsvmTest0934', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsPromiseCase01()
@@ -12519,7 +12519,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0935', 0, () => {
+    it('JsvmTest0935', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsPromiseCase02()
@@ -12533,7 +12533,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0936', 0, () => {
+    it('JsvmTest0936', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsPromiseCase03()
@@ -12547,7 +12547,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0937', 0, () => {
+    it('JsvmTest0937', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testIsPromiseCase04()
@@ -12561,7 +12561,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0938', 0, () => {
+    it('JsvmTest0938', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreatePromiseCase01()
@@ -12575,7 +12575,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0939', 0, () => {
+    it('JsvmTest0939', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testResolveDeferredCase01()
@@ -12589,7 +12589,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0940', 0, () => {
+    it('JsvmTest0940', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testResolveDeferredCase02()
@@ -12604,7 +12604,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0941', 0, () => {
+    it('JsvmTest0941', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRejectDeferredCase01()
@@ -12619,7 +12619,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0942', 0, () => {
+    it('JsvmTest0942', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testRejectDeferredCase02()
@@ -12634,7 +12634,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0943', 0, () => {
+    it('JsvmTest0943', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCreateResolveDeferredCase01()
@@ -12648,7 +12648,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0944', 0, () => {
+    it('JsvmTest0944', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetVersionCase01()
@@ -12662,7 +12662,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0945', 0, () => {
+    it('JsvmTest0945', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetVMInfoCase01()
@@ -12676,7 +12676,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0946', 0, () => {
+    it('JsvmTest0946', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetVMInfoCase02()
@@ -12690,7 +12690,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0947', 0, () => {
+    it('JsvmTest0947', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testGetHeapStatisticsCase01()
@@ -12704,7 +12704,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0948', 0, () => {
+    it('JsvmTest0948', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testStartCpuProfilerCase01()
@@ -12718,7 +12718,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0949', 0, () => {
+    it('JsvmTest0949', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testStopCpuProfilerCase01()
@@ -12732,7 +12732,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0950', 0, () => {
+    it('JsvmTest0950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testTakeHeapSnapshotCase01()
@@ -12746,7 +12746,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0951', 0, () => {
+    it('JsvmTest0951', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenInspectorCase01()
@@ -12760,7 +12760,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0952', 0, () => {
+    it('JsvmTest0952', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenInspectorCase02()
@@ -12774,7 +12774,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0953', 0, () => {
+    it('JsvmTest0953', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenInspectorCase03()
@@ -12788,7 +12788,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0954', 0, () => {
+    it('JsvmTest0954', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseInspectorCase01()
@@ -12802,7 +12802,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0955', 0, () => {
+    it('JsvmTest0955', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseInspectorCase02()
@@ -12817,7 +12817,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0956', 0, () => {
+    it('JsvmTest0956', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testCloseInspectorCase03()
@@ -12831,7 +12831,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0957', 0, () => {
+    it('JsvmTest0957', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenInspectorWithNameCase01()
@@ -12845,7 +12845,7 @@ export default function JsvmJsunit() {
      * @tc.type      Function
      * @tc.level     Level 0
      */
-    it('JsvmTest0958', 0, () => {
+    it('JsvmTest0958', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let script: string = `
       let obj = { code: "code init" };
       testOpenInspectorWithNameCase02()
