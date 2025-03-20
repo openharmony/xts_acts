@@ -26,7 +26,6 @@
             ]
         },
         {
-			
             "type": "PushKit",
             "pre-push": [],
             "push": [
