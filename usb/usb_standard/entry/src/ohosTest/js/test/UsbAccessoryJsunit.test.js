@@ -358,6 +358,7 @@ describe("UsbAccessoryJsTest", function () {
             console.info(TAG, 'testOpenAccessory002 err : ', err);
             if (!isDevAccessoryFunc) {
                 expect(err.code).assertEqual(401);
+                done();
             } else {
                 expect(err.code).assertEqual(14401001);
             }
@@ -391,6 +392,7 @@ describe("UsbAccessoryJsTest", function () {
             console.info(TAG, 'testOpenAccessory003 err : ', err);
             if (!isDevAccessoryFunc) {
                 expect(err.code).assertEqual(401);
+                done();
             } else {
                 console.info(TAG, 'testOpenAccessory003 reopen err : ', err);
                 expect(err.code).assertEqual(14401003);
@@ -455,6 +457,7 @@ describe("UsbAccessoryJsTest", function () {
         } catch (err) {
             if (!isDevAccessoryFunc) {
                 expect(err.code).assertEqual(401);
+                done();
             } else {
                 expect(err.code).assertEqual(14400004);
             }
