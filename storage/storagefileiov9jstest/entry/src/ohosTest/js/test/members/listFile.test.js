@@ -608,6 +608,33 @@ export default function fileIOListfile() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1600
+   * @tc.name fileIO_test_listfile_sync_016
+   * @tc.desc Test listFileSync() interfaces.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_sync_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_sync_016');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let dirents = fileIO.listFileSync(dpath, {
+        listNum: 2,
+        recursion: false,
+        mimeType: [".txt"],
+      });
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_sync_016 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_0000
    * @tc.name fileIO_test_listfile_async_000
    * @tc.desc Test listFile() interface. Callback.
