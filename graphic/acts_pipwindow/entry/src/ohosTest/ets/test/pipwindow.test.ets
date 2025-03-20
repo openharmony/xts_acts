@@ -2600,12 +2600,12 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('testUpdateContentSizeErrCode401_0100', 0, async (done: Function) => {
       const message = 'testUpdateContentSizeErrCode401_0100';
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
       let contentHeight = 600;
-      let config:pipWindow.PiPConfiguration = {
+      let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
@@ -2622,18 +2622,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done()
         } catch (e) {
           console.log(message + 'Failed to call updateContentSize. Cause:' + JSON.stringify(e));
-          if(e.code == 801){
+          if (e.code == 801) {
             console.info(message + '此设备不支持updateContentSize能力.');
-          } else{
+          } else {
             expect(e.code).assertEqual(401);
           }
           done()
         }
       } catch (error) {
-        console.log(message + 'Failed2 to call updateContentSize. Cause:' +JSON.stringify(error));
-        if(error.code == 801){
+        console.log(message + 'Failed2 to call updateContentSize. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
           console.info(message + '此设备不支持updateContentSize能力.');
-        } else{
+        } else {
           expect().assertFail();
         }
         done();
@@ -2650,12 +2650,12 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('testUpdatePiPControlStatusErrCode401_0100', 0, async (done: Function) => {
       const message = 'testUpdatePiPControlStatusErrCode401_0100';
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
       let contentHeight = 600;
-      let config:pipWindow.PiPConfiguration = {
+      let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
@@ -2672,18 +2672,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done()
         } catch (e) {
           console.log(message + 'Failed to call updatePiPControlStatus. Cause:' + JSON.stringify(e));
-          if(e.code == 801){
+          if (e.code == 801) {
             console.info(message + '此设备不支持updatePiPControlStatus能力.');
-          } else{
+          } else {
             expect(e.code).assertEqual(401);
           }
           done()
         }
       } catch (error) {
-        console.log(message + 'Failed2 to call updatePiPControlStatus. Cause:' +JSON.stringify(error));
-        if(error.code == 801){
+        console.log(message + 'Failed2 to call updatePiPControlStatus. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
           console.info(message + '此设备不支持updatePiPControlStatus能力.');
-        } else{
+        } else {
           expect().assertFail();
         }
         done();
@@ -2700,12 +2700,12 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('testSetPiPControlEnabledErrCode401_0100', 0, async (done: Function) => {
       const message = 'testSetPiPControlEnabledErrCode401_0100';
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
       let contentHeight = 600;
-      let config:pipWindow.PiPConfiguration = {
+      let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
@@ -2722,18 +2722,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done()
         } catch (e) {
           console.log(message + 'Failed to call setPiPControlEnabled. Cause:' + JSON.stringify(e));
-          if(e.code == 801){
+          if (e.code == 801) {
             console.info(message + '此设备不支持setPiPControlEnabled能力.');
-          } else{
+          } else {
             expect(e.code).assertEqual(401);
           }
           done()
         }
       } catch (error) {
-        console.log(message + 'Failed2 to call setPiPControlEnabled. Cause:' +JSON.stringify(error));
-        if(error.code == 801){
+        console.log(message + 'Failed2 to call setPiPControlEnabled. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
           console.info(message + '此设备不支持setPiPControlEnabled能力.');
-        } else{
+        } else {
           expect().assertFail();
         }
         done();
@@ -2750,12 +2750,12 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('testOnPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
       const message = 'testOnPipWindowSizeChangeErrCode401_0100';
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
       let contentHeight = 600;
-      let config:pipWindow.PiPConfiguration = {
+      let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
@@ -2773,18 +2773,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done()
         } catch (e) {
           console.log(message + 'Failed to call on_pipWindowSizeChange. Cause:' + JSON.stringify(e));
-          if(e.code == 801){
+          if (e.code == 801) {
             console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
-          } else{
+          } else {
             expect(e.code).assertEqual(401);
           }
           done()
         }
       } catch (error) {
-        console.log(message + 'Failed2 to call on_pipWindowSizeChange. Cause:' +JSON.stringify(error));
-        if(error.code == 801){
+        console.log(message + 'Failed2 to call on_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
           console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
-        } else{
+        } else {
           expect().assertFail();
         }
         done();
@@ -2801,12 +2801,12 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('testOffPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
       const message = 'testOffPipWindowSizeChangeErrCode401_0100';
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
       let contentHeight = 600;
-      let config:pipWindow.PiPConfiguration = {
+      let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
@@ -2824,18 +2824,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done()
         } catch (e) {
           console.log(message + 'Failed to call off_pipWindowSizeChange. Cause:' + JSON.stringify(e));
-          if(e.code == 801){
+          if (e.code == 801) {
             console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
-          } else{
+          } else {
             expect(e.code).assertEqual(401);
           }
           done()
         }
       } catch (error) {
-        console.log(message + 'Failed2 to call off_pipWindowSizeChange. Cause:' +JSON.stringify(error));
-        if(error.code == 801){
+        console.log(message + 'Failed2 to call off_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
           console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
-        } else{
+        } else {
           expect().assertFail();
         }
         done();
@@ -2870,9 +2870,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             expect(err.code).assertEqual(1300014);
             done();
           }
-          // // expect(err.code).assertEqual(1300014);
-          // expect().assertFail();
-          // done();
         });
       } catch (error) {
         if (error.code == 801) {
@@ -2884,8 +2881,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           expect().assertFail();
           done();
         }
-        // expect(error.code).assertEqual(1300014);
-        // // expect().assertFail();
         done();
       }
     })
