@@ -14,7 +14,7 @@
  */
 
 import bundleManager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
 export default function getSignatureInfo() {
@@ -27,7 +27,7 @@ export default function getSignatureInfo() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('Sub_Bms_Framework_getSignatureInfo04', 0, async (done: Function) => {
+    it('Sub_Bms_Framework_getSignatureInfo04', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
       bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA
       bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {

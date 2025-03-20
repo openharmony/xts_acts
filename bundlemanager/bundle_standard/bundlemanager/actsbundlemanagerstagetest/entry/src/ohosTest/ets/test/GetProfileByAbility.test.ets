@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@kit.BasicServicesKit';
 import manager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 
 const MODULE_NAME = "testModule"
 const MODULE_NAME_TEST = "testModule1"
@@ -41,7 +41,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid moduleName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidModulePro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME_TEST, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityInvalidModulePro success" + JSON.stringify(data))
         expect(data).assertFail()
@@ -59,7 +59,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty moduleName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyModulePro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility('', ABILITY_NAME, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityEmptyModulePro success" + JSON.stringify(data))
         expect(data).assertFail()
@@ -77,7 +77,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid moduleName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidModuleCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidModuleCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME_TEST, ABILITY_NAME, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         console.error('[getProfileByAbilityInvalidModuleCall]Operation failed. Cause: ' + JSON.stringify(err));
@@ -91,7 +91,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty moduleName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyModuleCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyModuleCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility('', ABILITY_NAME, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_MODULE_NOT_EXIST);
         console.error('[getProfileByAbilityEmptyModuleCall]Operation failed. Cause: ' + JSON.stringify(err));
@@ -105,7 +105,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid abilityName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidAbilityPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidAbilityPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME_TEST, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityInvalidAbilityPro success" + JSON.stringify(data))
         expect(data).assertFail()
@@ -123,7 +123,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty abilityName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyAbilityPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyAbilityPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, '', METADATA_NAME).then(data => {
         console.info("getProfileByAbilityEmptyAbilityPro success" + JSON.stringify(data))
         expect(data).assertFail()
@@ -141,7 +141,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid abilityName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidAbilityCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidAbilityCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME_TEST, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         console.error('[getProfileByAbilityInvalidAbilityCall]Operation failed. Cause: ' + JSON.stringify(err));
@@ -155,7 +155,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty abilityName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyAbilityCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyAbilityCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, '', METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         console.error('[getProfileByAbilityEmptyAbilityCall]Operation failed. Cause: ' + JSON.stringify(err));
@@ -169,7 +169,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the valid metadataName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityCallback', 0, async (done: Function) =>  {
+    it('getProfileByAbilityCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME, (err, data) => {
         console.info('[getProfileByAbilityCallback] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -186,7 +186,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid metadataName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidMetaDataCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidMetaDataCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST, (err, data) => {
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
         console.error('[getProfileByAbilityInvalidMetaDataCall]Operation failed. Cause: ' + JSON.stringify(err));
@@ -200,7 +200,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty metadataName (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyMetaDataCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyMetaDataCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '', (err, data) => {
         console.info('[getProfileByAbilityEmptyMetaDataCall] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -219,7 +219,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the valid metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityPromise', 0, async (done: Function) =>  {
+    it('getProfileByAbilityPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info('[getProfileByAbilityPromise] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -240,7 +240,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityInvalidMetaDataPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityInvalidMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST).then(data => {
         console.info('[getProfileByAbilityInvalidMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         done()
@@ -257,7 +257,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityEmptyMetaDataPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityEmptyMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '').then(data => {
         console.info('[getProfileByAbilityEmptyMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -280,7 +280,7 @@ export default function getProfileByAbility() {
      * @tc.desc: without metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityNoMetaDataPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityNoMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME).then(data => {
         console.info('[getProfileByAbilityNoMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -303,7 +303,7 @@ export default function getProfileByAbility() {
      * @tc.desc: no profile configured under the ability (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityNoProfilePro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityNoProfilePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME1).then(data => {
         console.info('[getProfileByAbilityNoProfilePro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(data).assertFail()
@@ -322,7 +322,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is invalid json format (by promise)
      * @tc.level   0
      */
-    it('getProfileByAbilityNoJsonPro', 0, async (done: Function) =>  {
+    it('getProfileByAbilityNoJsonPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4).then(data => {
         console.info('[getProfileByAbilityNoJsonPro] data is: ' + JSON.stringify(data));
         expect().assertFail();
@@ -340,7 +340,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is invalid json format (by callback)
      * @tc.level   0
      */
-    it('getProfileByAbilityNoJsonCall', 0, async (done: Function) =>  {
+    it('getProfileByAbilityNoJsonCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4, (err, data) => {
         console.info('[getProfileByAbilityNoJsonCall] err: ' + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
@@ -354,7 +354,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncSuccess', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncSuccess', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       try {
         let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME);
         console.info("testGetProfileByAbilitySyncSuccess success" + JSON.stringify(data));
@@ -376,7 +376,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncWithoutMetaData', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncWithoutMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       try {
         let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME);
         console.info("testGetProfileByAbilitySyncWithoutMetaData success" + JSON.stringify(data));
@@ -400,7 +400,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid moduleName (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncByInvalidModuleName', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncByInvalidModuleName', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync('INVALID_NAME', ABILITY_NAME, METADATA_NAME);
         expect().assertFail();
@@ -418,7 +418,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the invalid abilityName (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncByInvalidAbilityName', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncByInvalidAbilityName', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(MODULE_NAME_TEST, 'INVALID_NAME', METADATA_NAME);
         expect().assertFail();
@@ -436,7 +436,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check resource has no prefix (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncInvalidMetaData', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncInvalidMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST);
         expect().assertFail();
@@ -454,7 +454,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty moduleName (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncByEmptyModuleName', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncByEmptyModuleName', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync('', ABILITY_NAME, METADATA_NAME);
         expect().assertFail();
@@ -472,7 +472,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check the empty abilityName (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncByEmptyAbilityName', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncByEmptyAbilityName', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(MODULE_NAME_TEST, '', METADATA_NAME);
         expect().assertFail();
@@ -490,7 +490,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncSuccessEmptyMetaData', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncSuccessEmptyMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       try {
         let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, '');
         console.info("testGetProfileByAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
@@ -514,7 +514,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncNullModule', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncNullModule', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(null, ABILITY_NAME, METADATA_NAME);
         expect().assertFail();
@@ -532,7 +532,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncNullAbility', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncNullAbility', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(MODULE_NAME, null, METADATA_NAME);
         expect().assertFail();
@@ -550,7 +550,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncSuccessNullMetaData', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncSuccessNullMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       try {
         let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, null);
         console.info("testGetProfileByAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
@@ -574,7 +574,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncUndefinedModule', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncUndefinedModule', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(undefined, ABILITY_NAME, METADATA_NAME);
         expect().assertFail();
@@ -592,7 +592,7 @@ export default function getProfileByAbility() {
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncUndefinedAbility', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncUndefinedAbility', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       try {
         manager.getProfileByAbilitySync(MODULE_NAME, undefined, METADATA_NAME);
         expect().assertFail();
@@ -610,7 +610,7 @@ export default function getProfileByAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncUndefinedMetaData', 0, async (done: Function) =>  {
+    it('testGetProfileByAbilitySyncUndefinedMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       try {
         let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, undefined);
         console.info("testGetProfileByAbilitySyncUndefinedMetaData success" + JSON.stringify(data));
