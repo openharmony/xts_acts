@@ -20,23 +20,18 @@ import {
   SubHeaderV2OperationItem,
   SubHeaderV2IconType,
   SubHeaderV2Select,
-} from '@ohos.arkui.advanced.SubHeaderV2';
-import { TextModifier } from '@ohos.arkui.modifier';
+  promptAction
+} from '@kit.ArkUI'
 
 @Entry
 @ComponentV2
-struct SubHeaderV2Example {
-  @Local selectText: string = 'TTTTT';
-  @Local selectIndex: number = 2;
-  @Local flag: boolean = true;
+struct SubHeaderExample {
   @Local index: number = 1;
   @Local primaryTitle: ResourceStr = '一级标题';
   @Local secondaryTitle: ResourceStr = '二级标题';
-  @Local subHeaderIcon: SubHeaderV2IconType | undefined = $r('sys.media.ohos_ic_public_ok');
+  @Local subHeaderIcon: SubHeaderV2IconType | undefined = $r('sys.media.ohos_ic_public_email');
   @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
   @Local title2: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题', secondaryTitle: '二级标题' });
-  @Local primaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
-  @Local secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
   @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.BUTTON;
   @Local subHeaderOperationType2: SubHeaderV2OperationType = SubHeaderV2OperationType.TEXT_ARROW;
   @Local subHeaderOperationType3: SubHeaderV2OperationType = SubHeaderV2OperationType.ICON_GROUP;
@@ -51,15 +46,13 @@ struct SubHeaderV2Example {
     this.title = new SubHeaderV2Title({
       primaryTitle: this.primaryTitle,
       secondaryTitle: this.secondaryTitle,
-      primaryTitleModifier: this.primaryModifier,
-      secondaryTitleModifier: this.secondaryModifier,
     });
     this.operationItems = [new SubHeaderV2OperationItem({
       content: '操作',
       action: () => {
-        console.info('demo')
+        promptAction.showToast({ message: 'demo2' })
       }
-    })];
+    })]
   }
 
   build() {
@@ -70,16 +63,16 @@ struct SubHeaderV2Example {
           title: this.title,
           select: this.select,
           operationType: this.subHeaderOperationType,
-          operationItems: this.operationItems,
-        })
-
+          operationItems: this.operationItems
+        });
+        Divider().color('grey').width('100%').height('2vp')
         SubHeaderV2({
-          title: this.title,
+          title: this.title2,
           select: this.select,
           operationType: this.subHeaderOperationType2,
-          operationItems: this.operationItems,
-        })
-
+          operationItems: this.operationItems
+        });
+        Divider().color('grey').width('100%').height('2vp')
         SubHeaderV2({
           select: new SubHeaderV2Select({
             options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
@@ -88,24 +81,31 @@ struct SubHeaderV2Example {
             onSelect: (index: number, value?: string) => {
               this.selectedIndex = index;
               this.selectedValue = value;
-            },
+              promptAction.showToast({ message: this.selectedValue })
+            }
           }),
           operationType: this.subHeaderOperationType3,
           operationItems: [new SubHeaderV2OperationItem({
-            content: $r('sys.media.ohos_app_icon'),
+            content: $r('sys.media.ohos_ic_public_email'),
             accessibilityText: '图标1',
             accessibilityLevel: 'yes',
+            defaultFocus: true,
+            action: () => {
+              console.info('demo')
+            },
           }), new SubHeaderV2OperationItem({
-            content: $r('sys.media.ohos_app_icon'),
+            content: $r('sys.media.ohos_ic_public_email'),
             accessibilityText: '图标2',
             accessibilityLevel: 'no',
           }), new SubHeaderV2OperationItem({
-            content: $r('sys.media.ohos_app_icon'),
+            content: $r('sys.media.ohos_ic_public_email'),
             accessibilityText: '图标3',
             accessibilityDescription: '点击操作图标3',
-          })],
-        })
-      }.height('60%')
+            defaultFocus: false,
+          })]
+        });
+      }
+      Divider().color('grey').width('100%').height('2vp')
     }
   }
 }

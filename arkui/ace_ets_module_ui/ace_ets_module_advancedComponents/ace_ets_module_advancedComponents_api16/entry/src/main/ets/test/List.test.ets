@@ -18,6 +18,7 @@ import composeListItemOperateItemSymbolStyle from './composeListItem/composeList
 import toolBarAccessibilityTest from './toolBar/toolBarAccessibilityPage.test';
 import progressButtonV2PageTest from './progressButtonV2/progressButtonV2Page.test';
 import subHeaderV2PageTest from './subHeaderV2/subHeaderV2Page.test';
+import subHeaderV2AccessibilityPageTest from './subHeaderV2/subHeaderV2AccessibilityPage.test';
 import toolBarV2PageTest from './toolBarV2/toolBarV2Page.test';
 import toolBarV2ItemStateTest from './toolBarV2/toolBarV2ItemState.test';
 import editableTitleBarAccessibilityTest from './editableTitleBar/editableTitleBarAccessibilityPage.test';
@@ -36,6 +37,7 @@ export default function testsuite() {
   toolBarAccessibilityTest();
   progressButtonV2PageTest();
   subHeaderV2PageTest();
+  subHeaderV2AccessibilityPageTest();
   toolBarV2PageTest();
   toolBarV2ItemStateTest();
   editableTitleBarAccessibilityTest();
