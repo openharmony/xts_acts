@@ -35,15 +35,24 @@
         "label": "$string:EntryAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
+        "permissions":['ohos.permission.READ_HEALTH_DATA'],
         "exported": true,
         "skills": [
           {
             "entities": [
-              "entity.system.home"
+              "entity.system.home",
+              "entity.system.browsable"
             ],
             "actions": [
-              "action.system.home"
-            ]
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "uris": [
+            {
+              "scheme": "https",
+              "host": "www.example2.com"
+            }
+          ]
           }
         ]
       }
