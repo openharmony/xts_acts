@@ -14,10 +14,10 @@
 */
 
 function equalArrays(array1: Array<number | undefined | string>, array2: Array<undefined | string | number>): boolean {
-  let length = array1.length
+  let length = array1.length;
 
-  for (let i = 0; i < length; i++) {
-    if (array1[i] !== array2[i]) {
+  for (let j = 0; j < length; j++) {
+    if (array1[j] !== array2[j]) {
       return false;
     }
   }
@@ -26,7 +26,7 @@ function equalArrays(array1: Array<number | undefined | string>, array2: Array<u
 
 
 function equalObject(array1: any, array2: any): boolean {
-  let length = array1.length
+  let length = array1.length;
   for (let j = 0; j < length; j++) {
     const ob1 = array1[j];
     const key1 = Object.keys(ob1);
@@ -47,10 +47,10 @@ function equalObject(array1: any, array2: any): boolean {
 
 
 function equalArrayArray(array1: any, array2: any): boolean {
-  let length = array1.length
-  for (let i = 0; i < length; i++) {
-    let items2 = array2[i];
-    let items1 = array1[i];
+  let length = array1.length;
+  for (let j = 0; j < length; j++) {
+    let items2 = array2[j];
+    let items1 = array1[j];
 
     if (Array.isArray(items1) && Array.isArray(items2)) {
       if (!equalArrays(items1, items2)) {
