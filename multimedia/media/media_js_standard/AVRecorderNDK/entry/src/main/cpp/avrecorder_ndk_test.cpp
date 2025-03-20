@@ -232,7 +232,6 @@ static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct O
     
     // Optional parameters, no need check error.
     GetInt32Property(env, arg, "audioBitrate", &(config.profile.audioBitrate));
-    GetInt32Property(env, arg, "audioChannels", &(config.profile.audioChannels));
     GetInt32Property(env, arg, "audioSampleRate", &(config.profile.audioSampleRate));
 
     int32_t audioSourceType = 0;
