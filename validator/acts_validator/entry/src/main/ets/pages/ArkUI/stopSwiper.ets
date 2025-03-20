@@ -19,12 +19,12 @@ import fs from '@ohos.file.fs';
 import FirstDialog from '../model/FirstDialog';
 import { BusinessError } from '@ohos.base';
 
-const TAG = '[Swiper]';
+const TAG = '[stopSwiper]';
 
 @Entry
 @Component
 struct stopWhenTouchedSwiper {
-  @State name: string = 'Swiper';
+  @State name: string = 'stopSwiper';
   @State stepTips: string = '操作步骤：子组件自动播放，当stopWhenTouched设置为true时，手指在组件屏幕上按下，停止自动播放' + '\n' + '预期结果：子组件停止自动播放';
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
@@ -170,7 +170,7 @@ struct stopWhenTouchedSwiper {
           ForEach(this.data, (item: number, index) => {
             Text(item.toString())
               .width('90%')
-              .height(130)
+              .height(160)
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
               .fontSize(30)
@@ -208,7 +208,7 @@ struct stopWhenTouchedSwiper {
         Column({ space: 5 }) {
           Button('导航点指示器样式切换')
             .width('47%')
-            .height(20)
+            .height(28)
             .margin({ top: 5 })
             .fontSize(12)
             .onClick(() => {
@@ -217,14 +217,14 @@ struct stopWhenTouchedSwiper {
 
           Row(){
             Button('autoPlay:' + this.isAutoPlay)
-              .height(23)
+              .height(30)
               .onClick((event: ClickEvent) => {
                 this.isAutoPlay = !this.isAutoPlay
               }).margin({ bottom: 2 }).fontWeight(FontWeight.Bold).fontColor(Color.Red)
           }
           Row(){
             Button('stopWhenTouched:' + this.isStopWhenTouched)
-              .height(23)
+              .height(30)
               .onClick((event: ClickEvent) => {
                 this.isStopWhenTouched = !this.isStopWhenTouched
                 console.log('此时的autoPlay值为：' + this.isAutoPlay,
@@ -233,13 +233,13 @@ struct stopWhenTouchedSwiper {
 
           }
           Button('stopWhenTouched:null')
-            .height(20)
+            .height(28)
             .onClick((event: ClickEvent) => {
               this.isStopWhenTouched = null
               console.log('此时的autoPlay值为：' + this.isAutoPlay, '此时的stopWhenTouched值为：null')
             }).margin({ bottom: 2 })
           Button('stopWhenTouched:undefined')
-            .height(20)
+            .height(28)
             .onClick((event: ClickEvent) => {
               this.isStopWhenTouched = undefined
               console.log('此时的autoPlay值为：' + this.isAutoPlay, '此时的stopWhenTouched值为：undefined')
