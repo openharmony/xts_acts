@@ -74,7 +74,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         });
       } catch (error) {
         console.error(`session.loadContentByName fail, error: ${JSON.stringify(error)}`);
-        if (error.code == undefined) {
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -274,6 +274,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
             });
           }
         });
+
     }
   }
 

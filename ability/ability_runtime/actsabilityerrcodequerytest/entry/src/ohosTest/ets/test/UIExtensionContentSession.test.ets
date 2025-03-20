@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,9 +14,10 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
-import base from '@ohos.base';
-import { common } from '@kit.AbilityKit';
+import base, { BusinessError } from '@ohos.base';
+import { abilityAccessCtrl, common } from '@kit.AbilityKit';
 import { router } from '@kit.ArkUI';
+import { bundleManager } from '@kit.AbilityKit';
 
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: ['ACTS_TEST_LOADCONTENT',
@@ -262,7 +263,6 @@ export default function UIExtensionContentSessionTest() {
           }, 2000);
         })
     })
-
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0600
