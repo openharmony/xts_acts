@@ -49,7 +49,7 @@ void NativeDrawingPathLargeValueTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCreate001, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCreate001, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path = OH_Drawing_PathCreate();
     EXPECT_EQ(path == nullptr, false);
@@ -63,7 +63,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathMoveTo002, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathMoveTo002, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path1 = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path1, 2160, 4096);
@@ -78,7 +78,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathMo
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathLineTo003, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathLineTo003, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path2 = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path2, 2160, 4096);
@@ -93,7 +93,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathLi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathReset004, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathReset004, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path3 = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path3, 2160, 4096);
@@ -108,7 +108,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathRe
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathArcTo005, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathArcTo005, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path4 = OH_Drawing_PathCreate();
     OH_Drawing_PathArcTo(path4, 10, 10, 2160, 4096, 0, 90);
@@ -123,7 +123,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAr
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathQuadTo006, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathQuadTo006, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path5 = OH_Drawing_PathCreate();
     OH_Drawing_PathQuadTo(path5, 0, 0, 2160, 4096);
@@ -138,7 +138,8 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathQu
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCubicTo007, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCubicTo007,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path6 = OH_Drawing_PathCreate();
     OH_Drawing_PathCubicTo(path6, 30, 40, 60, 0, 2160, 4096);
@@ -153,7 +154,7 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCu
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathClose008, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathClose008, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path7 = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path7, 2160, 4096);
@@ -188,7 +189,8 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathCo
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAddRect010, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAddRect010,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path = OH_Drawing_PathCreate();
     OH_Drawing_PathAddRect(nullptr, 50, 50, 2160, 4096, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -205,7 +207,8 @@ HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAd
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAddRoundRect011, TestSize.Level1)
+HWTEST_F(NativeDrawingPathLargeValueTest, NativeDrawingPathLargeValueTest_pathAddRoundRect011,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path = OH_Drawing_PathCreate();
     OH_Drawing_PathAddRect(nullptr, 50, 50, 2160, 4096, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
