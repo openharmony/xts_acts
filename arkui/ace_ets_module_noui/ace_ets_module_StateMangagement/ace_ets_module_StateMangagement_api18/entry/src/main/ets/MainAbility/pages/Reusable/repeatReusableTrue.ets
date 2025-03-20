@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @ObservedV2
 class RepeatreutrueClazz {
   @Trace public message: string ;
@@ -70,14 +70,6 @@ struct Repeatreutrue  {
       Text('Select an index and press the button to update data.')
         .height('5%')
         .fontColor(Color.Gray)
-
-      Select(this.selectOptions)
-        .selected(this.selectIdx)
-        .value(this.selectIdx.toString())
-        .key('selectIdx')
-        .onSelect((index: number) => {
-          this.selectIdx = index;
-        })
       Button('Click to last')
         .id('reusabletrue')
         .height('5%')
