@@ -14,13 +14,13 @@
 */
 
 
-export function isArrayEqual(arr1: Array<number | undefined | string>,
-  arr2: Array<number | undefined | string>): boolean {
-  if (arr1.length !== arr2.length) {
+function equalArrays(array1: Array<number | undefined | string>,
+  array2: Array<undefined | string | number>): boolean {
+  if (array1.length !== array2.length) {
     return false;
   }
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
       return false;
     }
   }
@@ -28,20 +28,20 @@ export function isArrayEqual(arr1: Array<number | undefined | string>,
 }
 
 
-export function isObjectEqual(arr1: any, arr2: any): boolean {
-  if (arr1.length !== arr2.length) {
+function equalObject(array1: any, array2: any): boolean {
+  if (array1.length !== array2.length) {
     return false;
   }
-  for (let i = 0; i < arr1.length; i++) {
-    const obj1 = arr1[i];
-    const obj2 = arr2[i];
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
-    if (keys1.length !== keys2.length) {
+  for (let i = 0; i < array1.length; i++) {
+    const ob1 = array1[i];
+    const key1 = Object.keys(ob1);
+    const ob2 = array2[i];
+    const key2 = Object.keys(ob2);
+    if (key1.length !== key2.length) {
       return false;
     }
-    for (let key of keys1) {
-      if (obj1[key] !== obj2[key]) {
+    for (let key of key1) {
+      if (ob1[key] !== ob2[key]) {
         return false;
       }
     }
@@ -50,18 +50,18 @@ export function isObjectEqual(arr1: any, arr2: any): boolean {
 }
 
 
-export function isArrayArrayEqual(arr1: any, arr2: any): boolean {
-  if (arr1.length !== arr2.length) {
+function equalArrayArray(array1: any, array2: any): boolean {
+  if (array1.length !== array2.length) {
     return false;
   }
-  for (let i = 0; i < arr1.length; i++) {
-    const item1 = arr1[i];
-    const item2 = arr2[i];
-    if (Array.isArray(item1) && Array.isArray(item2)) {
-      if (!isArrayEqual(item1, item2)) {
+  for (let i = 0; i < array1.length; i++) {
+    const items2 = array2[i];
+    const items1 = array1[i];
+    if (Array.isArray(items1) && Array.isArray(items2)) {
+      if (!equalArrays(items1, items2)) {
         return false;
       }
-    } else if (item1 !== item2) {
+    } else if (items2 !== items1) {
       return false;
     }
   }
@@ -75,3 +75,5 @@ export function sleep(time: number): Promise<void> {
     }, time);
   });
 }
+
+export {equalArrays as isArrayEqual, equalObject as isObjectEqual, equalArrayArray as isArrayArrayEqual}

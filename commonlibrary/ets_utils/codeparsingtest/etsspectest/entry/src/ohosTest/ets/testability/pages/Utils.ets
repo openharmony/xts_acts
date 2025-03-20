@@ -79,9 +79,3 @@ export function getNumber() {
     return 0;
   };
 }
-
-export interface myObject {
-  name: string;
-  age: number;
-  like: number[];
-}
