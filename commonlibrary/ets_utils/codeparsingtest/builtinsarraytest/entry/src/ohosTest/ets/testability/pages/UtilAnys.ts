@@ -13,13 +13,10 @@
 * limitations under the License.
 */
 
+function equalArrays(array1: Array<number | undefined | string>, array2: Array<undefined | string | number>): boolean {
+  let length = array1.length
 
-function equalArrays(array1: Array<number | undefined | string>,
-  array2: Array<undefined | string | number>): boolean {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-  for (let i = 0; i < array1.length; i++) {
+  for (let i = 0; i < length; i++) {
     if (array1[i] !== array2[i]) {
       return false;
     }
@@ -29,14 +26,13 @@ function equalArrays(array1: Array<number | undefined | string>,
 
 
 function equalObject(array1: any, array2: any): boolean {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-  for (let i = 0; i < array1.length; i++) {
-    const ob1 = array1[i];
+  let length = array1.length
+  for (let j = 0; j < length; j++) {
+    const ob1 = array1[j];
     const key1 = Object.keys(ob1);
-    const ob2 = array2[i];
+    const ob2 = array2[j];
     const key2 = Object.keys(ob2);
+
     if (key1.length !== key2.length) {
       return false;
     }
@@ -51,12 +47,11 @@ function equalObject(array1: any, array2: any): boolean {
 
 
 function equalArrayArray(array1: any, array2: any): boolean {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-  for (let i = 0; i < array1.length; i++) {
-    const items2 = array2[i];
-    const items1 = array1[i];
+  let length = array1.length
+  for (let i = 0; i < length; i++) {
+    let items2 = array2[i];
+    let items1 = array1[i];
+
     if (Array.isArray(items1) && Array.isArray(items2)) {
       if (!equalArrays(items1, items2)) {
         return false;
@@ -76,4 +71,4 @@ export function sleep(time: number): Promise<void> {
   });
 }
 
-export {equalArrays as isArrayEqual, equalObject as isObjectEqual, equalArrayArray as isArrayArrayEqual}
+export { equalArrays as isArrayEqual, equalObject as isObjectEqual, equalArrayArray as isArrayArrayEqual };
