@@ -318,11 +318,8 @@ export default function PasteboardErrTest() {
         console.info(`Succeeded in checking the RemoteData. Result: ${result}`);
         expect(result).assertEqual(false);
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
         console.error(TAG + `Failed to isRemoteData. Cause: ${err.message + err.code}`);
-        expect().assertFail();
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_isRemoteData_ErrTest_0100 end ************')
     })
@@ -345,11 +342,8 @@ export default function PasteboardErrTest() {
         console.info(TAG + `Succeeded in checking the RemoteData. Result: ${result}`);
         expect(result).assertEqual('test label');
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
         console.error(TAG + `Failed to getDataSource. Cause: ${err.message + err.code}`);
-        expect().assertFail();
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_getDataSource_ErrTest_0100 end ************')
     })
@@ -371,11 +365,8 @@ export default function PasteboardErrTest() {
         console.info(TAG + `Succeeded in checking the RemoteData. Result: ${result}`);
         expect(result).assertEqual(false);
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
-        console.error(TAG + `Failed to getDataSource. Cause: ${err.message + err.code}`);
-        expect().assertFail();
+        console.error(TAG + `Failed to hasDataType. Cause: ${err.message + err.code}`);
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_hasDataType_ErrTest_0100 end ************')
     })
@@ -462,11 +453,8 @@ export default function PasteboardErrTest() {
         expect(systemPasteboard.hasDataSync()).assertEqual(false);
         console.info('Succeeded in clearing the pasteboard.');
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
-        expect().assertFail()
         console.error(TAG + `Failed to clearDataSync. Cause: ${err.message + err.code}`);
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_clearDataSync_ErrTest_0100 end ************')
     })
@@ -531,11 +519,8 @@ export default function PasteboardErrTest() {
         expect(result.getPrimaryText()).assertEqual('content');
         console.info('Succeeded in getting PasteData.');
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
         console.error(TAG + `Failed to getDataSync. Cause: ${err.message + err.code}`);
-        expect().assertFail();
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_getDataSync_ErrTest_0100 end ************')
     })
@@ -602,11 +587,8 @@ export default function PasteboardErrTest() {
         console.info(`Succeeded in checking the PasteData. Result: ${result}`);
         expect(result).assertEqual(true);
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
         console.error(TAG + `Failed to hasDataSync. Cause: ${err.message + err.code}`);
-        expect().assertFail();
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_hasDataSync_ErrTest_0100 end ************')
     })
@@ -651,10 +633,8 @@ export default function PasteboardErrTest() {
         expect(systemPasteboard.hasDataSync()).assertEqual(true);
         console.info('Succeeded in setting PasteData.');
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
         console.error(TAG + `Failed to setDataSync. Cause: ${err.message + err.code}`);
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_setDataSync_ErrTest_0100 end ************')
     })
@@ -688,11 +668,8 @@ export default function PasteboardErrTest() {
         expect(outputDataType).assertEqual('general.plain-text');
         console.info('Succeeded in getting UnifiedData.');
       } catch (err) {
-        if (err.code == '12900005') {
-          console.info(TAG + 'Request timed out.');
-        }
-        expect().assertFail();
         console.error(TAG + `Failed to getUnifiedDataSync. Cause: ${err.message + err.code}`);
+        expect(err.code).assertEqual('12900005')
       };
       console.info(TAG + '************ SUB_Pasteboard_getUnifiedDataSync_ErrTest_0100 end ************')
     })
