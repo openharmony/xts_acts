@@ -36,7 +36,7 @@ struct HideToolBarNav {
   build() {
     NavDestination() {
       Stack({ alignContent: Alignment.Center }) {
-        Button("switch")
+        Button('switch')
           .onClick(() => {
             this.show = !this.show;
           })
@@ -133,13 +133,13 @@ struct HideToolBarNavPage {
     Navigation(this.navPathStack) {
       Stack({ alignContent: Alignment.Center }) {
         Column() {
-          Button("push")
+          Button('push')
             .onClick(() => {
               this.navPathStack.pushPathByName('hideToolBarNav', null);
             })
             .id('pushId')
             .height('10%')
-          Button("pushSymbol")
+          Button('pushSymbol')
             .onClick(() => {
               this.navPathStack.pushPathByName('symbolGlyphModifierBack', null);
             })
