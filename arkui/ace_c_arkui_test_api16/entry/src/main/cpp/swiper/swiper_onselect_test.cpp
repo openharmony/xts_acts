@@ -33,9 +33,9 @@ static std::shared_ptr<SwiperComponent> CreateSwiperNode(const std::string& id)
 {
     auto swiper = std::make_shared<SwiperComponent>();
     swiper->SetBackgroundColor(0xFFFFFFF);
-    swiper->SetWidth(SIZE_400);
-    swiper->SetHeight(SIZE_300);
-    swiper->SetMargin(PARAM_20);
+    const double half = 0.5;
+    swiper->SetPercentWidth(half);
+    swiper->SetPercentHeight(half);
     swiper->SetSwiperLoop(false);
     swiper->SetSwiperAutoPlay(true);
     swiper->SetId(id);
