@@ -52,15 +52,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.loadContent fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -75,15 +77,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.loadContentByName fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -104,15 +108,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -133,15 +139,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -162,15 +170,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -191,15 +201,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          session?.terminateSelf((err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-              return;
-            }
-            console.info(`Successed in terminating self.`);
-            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-            });
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+            setTimeout(() => {
+              session?.terminateSelf((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                  return;
+                }
+                console.info(`Successed in terminating self.`);
+              });
+            },500)
           });
         }
       }
@@ -224,15 +236,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         if (err) {
           console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
           if (err.code == 16000050) {
-            session?.terminateSelf((err: BusinessError) => {
-              if (err) {
-                console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-                return;
-              }
-              console.info(`Successed in terminating self.`);
-              commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-                console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-              });
+            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+              setTimeout(() => {
+                session?.terminateSelf((err: BusinessError) => {
+                  if (err) {
+                    console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                    return;
+                  }
+                  console.info(`Successed in terminating self.`);
+                });
+              },500)
             });
           }
         }
@@ -262,15 +276,17 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         .catch((err: BusinessError) => {
           console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
           if (err.code == 16000050) {
-            session?.terminateSelf((err: BusinessError) => {
-              if (err) {
-                console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
-                return;
-              }
-              console.info(`Successed in terminating self.`);
-              commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-                console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
-              });
+            commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+              console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+              setTimeout(() => {
+                session?.terminateSelf((err: BusinessError) => {
+                  if (err) {
+                    console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                    return;
+                  }
+                  console.info(`Successed in terminating self.`);
+                });
+              },500)
             });
           }
         });
