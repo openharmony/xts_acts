@@ -510,7 +510,7 @@ export default function workerErrorCodeTest() {
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.onmessage = (e) => {
         console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
-        expect(err.code).assertEqual(10200004)
+        expect(e.data).assertEqual(10200004)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
@@ -542,7 +542,7 @@ export default function workerErrorCodeTest() {
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
-        expect(err.code).assertEqual(10200006)
+        expect(e.data).assertEqual(10200006)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
@@ -574,7 +574,7 @@ export default function workerErrorCodeTest() {
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
-        expect(err.code).assertEqual(10200019)
+        expect(e.data).assertEqual(10200019)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
@@ -606,7 +606,7 @@ export default function workerErrorCodeTest() {
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
-        expect(err.code).assertEqual(10200020)
+        expect(e.data).assertEqual(10200020)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
@@ -638,7 +638,7 @@ export default function workerErrorCodeTest() {
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
         console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
-        expect(err.code).assertEqual(10200021)
+        expect(e.data).assertEqual(10200021)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {

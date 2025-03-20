@@ -1944,7 +1944,7 @@ export default function TaskPoolErrorCodeTest() {
     it('testTaskErrorCode0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0067';
       console.info(`${caseName} test start`);
-      let runner: taskpool.AsyncRunner = new taskpool.TaskInfo(1);
+      let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(1);
       let count = 0;
       for (let i = 0; i < 20; i++) {
         let task: taskpool.Task = new taskpool.Task(additionDelay, 100);
