@@ -662,8 +662,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"OHNetStackIsCleartextPermitted", nullptr, OHNetStackIsCleartextPermitted, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"OHNetStackIsCleartextPermittedByHostName", nullptr, OHNetStackIsCleartextPermittedByHostName, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
+        {"OHNetStackIsCleartextPermittedByHostName", nullptr, OHNetStackIsCleartextPermittedByHostName,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
