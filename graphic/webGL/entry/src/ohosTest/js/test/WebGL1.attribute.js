@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -98,7 +98,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getAttribLocation
          * @tc.desc Test getAttribLocation.
          */
-        it('webgl_test_getAttribLocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getAttribLocation', 0, async function (done) {
             console.info("webgltest [webgl_test_getAttribLocation] getAttribLocation");
             let vSource = `
             attribute vec4 a_Position;
@@ -135,8 +135,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getAttribLocation_1
          * @tc.desc Test getAttribLocation.
          */
-        it('webgl_test_getAttribLocation_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getAttribLocation_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getAttribLocation_1] getAttribLocation");
             getAttribLocationTemp((p) => {
                 let attr = gl.getAttribLocation(p.program, 0);
@@ -152,8 +151,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getAttribLocation_2
          * @tc.desc Test getAttribLocation.
          */
-        it('webgl_test_getAttribLocation_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getAttribLocation_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getAttribLocation_1] getAttribLocation");
             getAttribLocationTemp((p) => {
                 let attr = gl.getAttribLocation(p.program, undefined);
@@ -169,8 +167,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getAttribLocation_3
          * @tc.desc Test getAttribLocation.
          */
-        it('webgl_test_getAttribLocation_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getAttribLocation_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getAttribLocation_1] getAttribLocation");
             getAttribLocationTemp((p) => {
                 let attr = gl.getAttribLocation(p.program, null);
@@ -182,8 +179,7 @@ export default function webgl1_attribute() {
         })
 
         /**
-         * 验证getActiveAttrib方法是否返回一个WebGLActiveInfo对象，
-         * 并包含在WebGLProgram中给到位置的一个顶点属性的尺寸、类型和名称。
+         * 验证getActiveAttrib方法是否返回一个WebGLActiveInfo对象，并包含在WebGLProgram中给到位置的一个顶点属性的尺寸、类型和名称。
          */
         function getActiveAttrib(callback, finish) {
             let vSource = `
@@ -214,7 +210,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getActiveAttrib
          * @tc.desc Test getActiveAttrib.
          */
-        it('webgl_test_getActiveAttrib', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getActiveAttrib', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveAttrib] getActiveAttrib");
             let vSource = `
             attribute vec4 a_Position;
@@ -251,7 +247,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getActiveAttrib_1
          * @tc.desc Test getActiveAttrib.
          */
-        it('webgl_test_getActiveAttrib_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getActiveAttrib_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveAttrib_1] getActiveAttrib");
             getActiveAttrib((p) => {
                 let activeAttrib = gl.getActiveAttrib(p.program, 10);
@@ -268,7 +264,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getActiveAttrib_2
          * @tc.desc Test getActiveAttrib.
          */
-        it('webgl_test_getActiveAttrib_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getActiveAttrib_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveAttrib_2] getActiveAttrib");
             getActiveAttrib((p) => {
                 let activeAttrib = gl.getActiveAttrib(p.program, null);
@@ -285,7 +281,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getActiveAttrib_3
          * @tc.desc Test getActiveAttrib.
          */
-        it('webgl_test_getActiveAttrib_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getActiveAttrib_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveAttrib_3] getActiveAttrib");
             getActiveAttrib((p) => {
                 let activeAttrib = gl.getActiveAttrib(p.program, -1);
@@ -328,7 +324,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1f
          * @tc.desc Test vertexAttrib1f.
          */
-        it('webgl_test_vertexAttrib1f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1f', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1f] vertexAttrib1f");
             let vSource = `
             attribute float a_PointSize;
@@ -366,7 +362,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1f_1
          * @tc.desc Test vertexAttrib1f.
          */
-        it('webgl_test_vertexAttrib1f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1f_1] vertexAttrib1f");
             vertexAttrib1f((p) => {
                 let a_PointSize = gl.getAttribLocation(p.program, "a_PointSize");
@@ -382,7 +378,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1f_2
          * @tc.desc Test vertexAttrib1f.
          */
-        it('webgl_test_vertexAttrib1f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1f_1] vertexAttrib1f");
             vertexAttrib1f((p) => {
                 let a_PointSize = gl.getAttribLocation(p.program, "a_PointSize");
@@ -398,7 +394,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1f_3
          * @tc.desc Test vertexAttrib1f.
          */
-        it('webgl_test_vertexAttrib1f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1f_1] vertexAttrib1f");
             vertexAttrib1f((p) => {
                 let a_PointSize = gl.getAttribLocation(p.program, "a_PointSize");
@@ -414,7 +410,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1f_4
          * @tc.desc Test vertexAttrib1f.
          */
-        it('webgl_test_vertexAttrib1f_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1f_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1f_4] vertexAttrib1f");
             vertexAttrib1f((p) => {
                 let a_PointSize = gl.getAttribLocation(p.program, "a_PointSize");
@@ -460,7 +456,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2f
          * @tc.desc Test vertexAttrib2f.
          */
-        it('webgl_test_vertexAttrib2f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2f', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2f] vertexAttrib2f");
             let vSource = `
             attribute float a_PointSize;
@@ -498,7 +494,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2f_1
          * @tc.desc Test vertexAttrib2f.
          */
-        it('webgl_test_vertexAttrib2f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2f_1] vertexAttrib2f");
             vertexAttrib2f((attrib) => {
                 gl.vertexAttrib2f(attrib, null, null);
@@ -516,7 +512,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2f_2
          * @tc.desc Test vertexAttrib2f.
          */
-        it('webgl_test_vertexAttrib2f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2f_2] vertexAttrib2f");
             vertexAttrib2f((attrib) => {
                 gl.vertexAttrib2f(attrib, -100, -100);
@@ -534,7 +530,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2f_3
          * @tc.desc Test vertexAttrib2f.
          */
-        it('webgl_test_vertexAttrib2f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2f_3] vertexAttrib2f");
             vertexAttrib2f((attrib) => {
                 gl.vertexAttrib2f(-1, -200, -100);
@@ -580,7 +576,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3f
          * @tc.desc Test vertexAttrib3f.
          */
-        it('webgl_test_vertexAttrib3f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3f', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3f] vertexAttrib3f");
             let vSource = `
             attribute float a_PointSize;
@@ -619,7 +615,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3f_1
          * @tc.desc Test vertexAttrib3f.
          */
-        it('webgl_test_vertexAttrib3f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3f_1] vertexAttrib3f");
             vertexAttrib3f((attrib) => {
                 gl.vertexAttrib3f(attrib, null, null, null);
@@ -639,7 +635,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3f_2
          * @tc.desc Test vertexAttrib3f.
          */
-        it('webgl_test_vertexAttrib3f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3f_2] vertexAttrib3f");
             vertexAttrib3f((attrib) => {
                 gl.vertexAttrib3f(attrib, -1, -1, -1);
@@ -659,7 +655,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3f_3
          * @tc.desc Test vertexAttrib3f.
          */
-        it('webgl_test_vertexAttrib3f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3f_3] vertexAttrib3f");
             vertexAttrib3f((attrib) => {
                 gl.vertexAttrib3f(attrib, undefined, undefined, undefined);
@@ -679,7 +675,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3f_4
          * @tc.desc Test vertexAttrib3f.
          */
-        it('webgl_test_vertexAttrib3f_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3f_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3f_4] vertexAttrib3f");
             vertexAttrib3f((attrib) => {
                 gl.vertexAttrib3f(-1, null, null, null);
@@ -725,7 +721,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4f
          * @tc.desc Test vertexAttrib4f.
          */
-        it('webgl_test_vertexAttrib4f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4f', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4f] vertexAttrib4f");
             let vSource = `
             attribute float a_PointSize;
@@ -765,7 +761,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4f_1
          * @tc.desc Test vertexAttrib4f.
          */
-        it('webgl_test_vertexAttrib4f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4f_1] vertexAttrib4f");
             vertexAttrib4f((attrib) => {
                 gl.vertexAttrib4f(attrib, null, null, null, null);
@@ -786,7 +782,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4f_2
          * @tc.desc Test vertexAttrib4f.
          */
-        it('webgl_test_vertexAttrib4f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4f_2] vertexAttrib4f");
             vertexAttrib4f((attrib) => {
                 gl.vertexAttrib4f(attrib, -1, -1, -1, -1);
@@ -807,7 +803,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4f_3
          * @tc.desc Test vertexAttrib4f.
          */
-        it('webgl_test_vertexAttrib4f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4f_3] vertexAttrib4f");
             vertexAttrib4f((attrib) => {
                 gl.vertexAttrib4f(attrib, undefined, undefined, undefined, undefined);
@@ -828,7 +824,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4f_4
          * @tc.desc Test vertexAttrib4f.
          */
-        it('webgl_test_vertexAttrib4f_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4f_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4f_4] vertexAttrib4f");
             vertexAttrib4f((attrib) => {
                 gl.vertexAttrib4f(-1, 0, 0, 0, 0);
@@ -874,7 +870,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1fv
          * @tc.desc Test vertexAttrib1fv.
          */
-        it('webgl_test_vertexAttrib1fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1fv', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1fv] vertexAttrib1fv");
             let vSource = `
             attribute float a_PointSize;
@@ -914,7 +910,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1fv_1
          * @tc.desc Test vertexAttrib1fv.
          */
-        it('webgl_test_vertexAttrib1fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1fv_1] vertexAttrib1fv");
             vertexAttrib1fv((attrib) => {
                 gl.vertexAttrib1fv(attrib, new Float32Array([-100.0]));
@@ -931,7 +927,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1fv_2
          * @tc.desc Test vertexAttrib1fv.
          */
-        it('webgl_test_vertexAttrib1fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1fv_2] vertexAttrib1fv");
             vertexAttrib1fv((attrib) => {
                 gl.vertexAttrib1fv(attrib, new Float32Array([undefined]));
@@ -948,7 +944,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1fv_3
          * @tc.desc Test vertexAttrib1fv.
          */
-        it('webgl_test_vertexAttrib1fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1fv_3] vertexAttrib1fv");
             vertexAttrib1fv((attrib) => {
                 gl.vertexAttrib1fv(attrib, new Float32Array([null]));
@@ -966,7 +962,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib1fv_4
          * @tc.desc Test vertexAttrib1fv.
          */
-        it('webgl_test_vertexAttrib1fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib1fv_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib1fv_4] vertexAttrib1fv");
             vertexAttrib1fv((attrib) => {
                 gl.vertexAttrib1fv(attrib, new Float32Array([-100]));
@@ -1013,7 +1009,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2fv
          * @tc.desc Test vertexAttrib2fv.
          */
-        it('webgl_test_vertexAttrib2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2fv', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2fv] vertexAttrib2fv");
             let vSource = `
             attribute float a_PointSize;
@@ -1052,7 +1048,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2fv_1
          * @tc.desc Test vertexAttrib2fv.
          */
-        it('webgl_test_vertexAttrib2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2fv_1] vertexAttrib2fv");
             vertexAttrib2fv((attrib) => {
                 gl.vertexAttrib2fv(attrib, new Float32Array([-100.0, -100.0]));
@@ -1070,7 +1066,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2fv_2
          * @tc.desc Test vertexAttrib2fv.
          */
-        it('webgl_test_vertexAttrib2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2fv_2] vertexAttrib2fv");
             vertexAttrib2fv((attrib) => {
                 gl.vertexAttrib2fv(attrib, new Float32Array([undefined, undefined]));
@@ -1089,7 +1085,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2fv_3
          * @tc.desc Test vertexAttrib2fv.
          */
-        it('webgl_test_vertexAttrib2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2fv_3] vertexAttrib2fv");
             vertexAttrib2fv((attrib) => {
                 gl.vertexAttrib2fv(attrib, new Float32Array([null, null]));
@@ -1108,7 +1104,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib2fv_4
          * @tc.desc Test vertexAttrib2fv.
          */
-        it('webgl_test_vertexAttrib2fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib2fv_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib2fv_4] vertexAttrib2fv");
             vertexAttrib2fv((attrib) => {
                 gl.vertexAttrib2fv(attrib, new Float32Array([-100, 100]));
@@ -1156,7 +1152,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3fv
          * @tc.desc Test vertexAttrib3fv.
          */
-        it('webgl_test_vertexAttrib3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3fv', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3fv] vertexAttrib3fv");
             let vSource = `
             attribute float a_PointSize;
@@ -1196,7 +1192,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3fv_1
          * @tc.desc Test vertexAttrib3fv.
          */
-        it('webgl_test_vertexAttrib3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3fv_1] vertexAttrib3fv");
             vertexAttrib3fv((attrib) => {
                 gl.vertexAttrib3fv(attrib, new Float32Array([-100.0, -100.0, -100.0]));
@@ -1216,7 +1212,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3fv_2
          * @tc.desc Test vertexAttrib3fv.
          */
-        it('webgl_test_vertexAttrib3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3fv_2] vertexAttrib3fv");
             vertexAttrib3fv((attrib) => {
                 gl.vertexAttrib3fv(attrib, new Float32Array([undefined, undefined, undefined]));
@@ -1236,7 +1232,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3fv_3
          * @tc.desc Test vertexAttrib3fv.
          */
-        it('webgl_test_vertexAttrib3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3fv_3] vertexAttrib3fv");
             vertexAttrib3fv((attrib) => {
                 gl.vertexAttrib3fv(attrib, new Float32Array([null, null, null]));
@@ -1256,7 +1252,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib3fv_4
          * @tc.desc Test vertexAttrib3fv.
          */
-        it('webgl_test_vertexAttrib3fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib3fv_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib3fv_4] vertexAttrib3fv");
             vertexAttrib3fv((attrib) => {
                 gl.vertexAttrib3fv(-1, new Float32Array([-100, 100, 100]));
@@ -1302,7 +1298,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4fv
          * @tc.desc Test vertexAttrib4fv.
          */
-        it('webgl_test_vertexAttrib4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4fv', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4fv] vertexAttrib4fv");
             let vSource = `
             attribute float a_PointSize;
@@ -1342,7 +1338,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4fv_1
          * @tc.desc Test vertexAttrib4fv.
          */
-        it('webgl_test_vertexAttrib4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4fv_1] vertexAttrib4fv");
             vertexAttrib4fv((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([-100.0, -100.0, -100.0, -100.0]));
@@ -1363,7 +1359,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4fv_2
          * @tc.desc Test vertexAttrib4fv.
          */
-        it('webgl_test_vertexAttrib4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4fv_2] vertexAttrib4fv");
             vertexAttrib4fv((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([undefined, undefined, undefined, undefined]));
@@ -1384,7 +1380,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4fv_3
          * @tc.desc Test vertexAttrib4fv.
          */
-        it('webgl_test_vertexAttrib4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4fv_3] vertexAttrib4fv");
             vertexAttrib4fv((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([null, null, null, null]));
@@ -1405,7 +1401,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttrib4fv_4
          * @tc.desc Test vertexAttrib4fv.
          */
-        it('webgl_test_vertexAttrib4fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_vertexAttrib4fv_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttrib4fv_4] vertexAttrib4fv");
             vertexAttrib4fv((attrib) => {
                 gl.vertexAttrib4fv(-1, new Float32Array([-100, 100, 100, 100]));
@@ -1451,7 +1447,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttrib
          * @tc.desc Test getVertexAttrib.
          */
-        it('webgl_test_getVertexAttrib', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getVertexAttrib', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttrib] getVertexAttrib");
             let vSource = `
             attribute float a_PointSize;
@@ -1492,7 +1488,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttrib_1
          * @tc.desc Test getVertexAttrib.
          */
-        it('webgl_test_getVertexAttrib_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getVertexAttrib_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttrib_1] getVertexAttrib");
             getVertexAttrib((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([-100.0, -100.0, -100.0, -100.0]));
@@ -1513,7 +1509,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttrib_2
          * @tc.desc Test getVertexAttrib.
          */
-        it('webgl_test_getVertexAttrib_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getVertexAttrib_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttrib_2] getVertexAttrib");
             getVertexAttrib((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([undefined, undefined, undefined, undefined]));
@@ -1534,7 +1530,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttrib_3
          * @tc.desc Test getVertexAttrib.
          */
-        it('webgl_test_getVertexAttrib_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getVertexAttrib_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttrib_3] getVertexAttrib");
             getVertexAttrib((attrib) => {
                 gl.vertexAttrib4fv(attrib, new Float32Array([null, null, null, null]));
@@ -1555,7 +1551,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttrib_4
          * @tc.desc Test getVertexAttrib.
          */
-        it('webgl_test_getVertexAttrib_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getVertexAttrib_4', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttrib_4] getVertexAttrib");
             getVertexAttrib((attrib) => {
                 gl.vertexAttrib4fv(-1, new Float32Array([-100, 100, 100, 100]));
@@ -1628,8 +1624,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer] vertexAttribPointer");
             let vSource = `
             attribute vec4 a_Position;
@@ -1698,8 +1693,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_1
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_1', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_1] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 2, gl.FLOAT, false, 0, 0);
@@ -1720,8 +1714,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_2
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_2', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_2] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(-1, 2, gl.FLOAT, false, 0, 0);
@@ -1738,8 +1731,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_3
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_3', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_3] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 2, gl.BYTE, false, 0, 0);
@@ -1760,8 +1752,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_4
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_4', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_4] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 3, gl.SHORT, false, 0, 0);
@@ -1782,8 +1773,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_5
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_5', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_5] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 3, gl.UNSIGNED_BYTE, false, 0, 0);
@@ -1804,8 +1794,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_6
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_6', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_6] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 3, gl.UNSIGNED_SHORT, false, 0, 0);
@@ -1826,8 +1815,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_7
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_7', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_7] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 3, gl.UNSIGNED_SHORT, true, 0, 0);
@@ -1848,8 +1836,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_vertexAttribPointer_8
          * @tc.desc Test vertexAttribPointer.
          */
-        it('webgl_test_vertexAttribPointer_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_vertexAttribPointer_8', 0, async function (done) {
             console.info("webgltest [webgl_test_vertexAttribPointer_8] vertexAttribPointer");
             vertexAttribPointer((attrib) => {
                 gl.vertexAttribPointer(attrib, 3, gl.UNSIGNED_SHORT, true, 2, 0);
@@ -1926,8 +1913,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_enableVertexAttribArray
          * @tc.desc Test enableVertexAttribArray.
          */
-        it('webgl_test_enableVertexAttribArray', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_enableVertexAttribArray', 0, async function (done) {
             console.info("webgltest [webgl_test_enableVertexAttribArray] enableVertexAttribArray");
             let vSource = `
             attribute vec4 a_Position;
@@ -1992,8 +1978,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_enableVertexAttribArray_1
          * @tc.desc Test enableVertexAttribArray.
          */
-        it('webgl_test_enableVertexAttribArray_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_enableVertexAttribArray_1', 0, async function (done) {
             console.info("webgltest [webgl_test_enableVertexAttribArray_1] enableVertexAttribArray");
             enableVertexAttribArray((attrib) => {
                 gl.enableVertexAttribArray(attrib);
@@ -2011,8 +1996,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_enableVertexAttribArray_2
          * @tc.desc Test enableVertexAttribArray.
          */
-        it('webgl_test_enableVertexAttribArray_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_enableVertexAttribArray_2', 0, async function (done) {
             console.info("webgltest [webgl_test_enableVertexAttribArray_2] enableVertexAttribArray");
             enableVertexAttribArray((attrib) => {
                 gl.enableVertexAttribArray(-1);
@@ -2088,8 +2072,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_disableVertexAttribArray
          * @tc.desc Test disableVertexAttribArray.
          */
-        it('webgl_test_disableVertexAttribArray', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_disableVertexAttribArray', 0, async function (done) {
             console.info("webgltest [webgl_test_disableVertexAttribArray] disableVertexAttribArray");
             let vSource = `
             attribute vec4 a_Position;
@@ -2159,8 +2142,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_disableVertexAttribArray_1
          * @tc.desc Test disableVertexAttribArray.
          */
-        it('webgl_test_disableVertexAttribArray_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_disableVertexAttribArray_1', 0, async function (done) {
             console.info("webgltest [webgl_test_disableVertexAttribArray_1] disableVertexAttribArray");
             disableVertexAttribArray((attrib) => {
                 gl.disableVertexAttribArray(attrib);
@@ -2178,8 +2160,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_disableVertexAttribArray_2
          * @tc.desc Test disableVertexAttribArray.
          */
-        it('webgl_test_disableVertexAttribArray_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_disableVertexAttribArray_2', 0, async function (done) {
             console.info("webgltest [webgl_test_disableVertexAttribArray_2] disableVertexAttribArray");
             disableVertexAttribArray((attrib) => {
                 gl.disableVertexAttribArray(-1);
@@ -2197,8 +2178,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_disableVertexAttribArray_3
          * @tc.desc Test disableVertexAttribArray.
          */
-        it('webgl_test_disableVertexAttribArray_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_disableVertexAttribArray_3', 0, async function (done) {
             console.info("webgltest [webgl_test_disableVertexAttribArray_3] disableVertexAttribArray");
             disableVertexAttribArray((attrib) => {
                 gl.disableVertexAttribArray(null);
@@ -2249,8 +2229,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_bindAttribLocation
          * @tc.desc Test bindAttribLocation.
          */
-        it('webgl_test_bindAttribLocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_bindAttribLocation', 0, async function (done) {
             console.info("webgltest [webgl_test_bindAttribLocation] bindAttribLocation");
             let vSource = `
             attribute vec4 a_Position;
@@ -2296,8 +2275,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_bindAttribLocation_1
          * @tc.desc Test bindAttribLocation.
          */
-        it('webgl_test_bindAttribLocation_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_bindAttribLocation_1', 0, async function (done) {
             console.info("webgltest [webgl_test_bindAttribLocation_1] bindAttribLocation");
             bindAttribLocation((program, attrib) => {
                 gl.bindAttribLocation(program, 12, "a_Position");
@@ -2315,8 +2293,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_bindAttribLocation_2
          * @tc.desc Test bindAttribLocation.
          */
-        it('webgl_test_bindAttribLocation_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_bindAttribLocation_2', 0, async function (done) {
             console.info("webgltest [webgl_test_bindAttribLocation_2] bindAttribLocation");
             bindAttribLocation((program, attrib) => {
                 gl.bindAttribLocation(program, 12, "a");
@@ -2334,8 +2311,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_bindAttribLocation_3
          * @tc.desc Test bindAttribLocation.
          */
-        it('webgl_test_bindAttribLocation_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_bindAttribLocation_3', 0, async function (done) {
             console.info("webgltest [webgl_test_bindAttribLocation_3] bindAttribLocation");
             bindAttribLocation((program, attrib) => {
                 gl.bindAttribLocation(program, null, null);
@@ -2353,8 +2329,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_bindAttribLocation_4
          * @tc.desc Test bindAttribLocation.
          */
-        it('webgl_test_bindAttribLocation_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_bindAttribLocation_4', 0, async function (done) {
             console.info("webgltest [webgl_test_bindAttribLocation_4] bindAttribLocation");
             bindAttribLocation((program, attrib) => {
                 gl.bindAttribLocation(program, -1, attrib);
@@ -2429,8 +2404,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttribOffset
          * @tc.desc Test getVertexAttribOffset.
          */
-        it('webgl_test_getVertexAttribOffset', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getVertexAttribOffset', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttribOffset] getVertexAttribOffset");
             let vSource = `
             attribute vec4 a_Position;
@@ -2502,8 +2476,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttribOffset_1
          * @tc.desc Test getVertexAttribOffset.
          */
-        it('webgl_test_getVertexAttribOffset_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getVertexAttribOffset_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttribOffset_1] getVertexAttribOffset");
             getVertexAttribOffset((val, FSIZE) => {
                 gl.vertexAttribPointer(val, 3, gl.FLOAT, false, FSIZE * 6, FSIZE * 3);
@@ -2521,8 +2494,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttribOffset_2
          * @tc.desc Test getVertexAttribOffset.
          */
-        it('webgl_test_getVertexAttribOffset_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getVertexAttribOffset_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttribOffset_2] getVertexAttribOffset");
             getVertexAttribOffset((val, FSIZE) => {
                 gl.vertexAttribPointer(val, 3, gl.FLOAT, false, FSIZE * 6, -FSIZE * 3);
@@ -2539,8 +2511,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttribOffset_3
          * @tc.desc Test getVertexAttribOffset.
          */
-        it('webgl_test_getVertexAttribOffset_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getVertexAttribOffset_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttribOffset_3] getVertexAttribOffset");
             getVertexAttribOffset((val, FSIZE) => {
                 gl.vertexAttribPointer(val, 3, gl.FLOAT, false, FSIZE * 6, null);
@@ -2558,8 +2529,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_getVertexAttribOffset_4
          * @tc.desc Test getVertexAttribOffset.
          */
-        it('webgl_test_getVertexAttribOffset_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getVertexAttribOffset_4', 0, async function (done) {
             console.info("webgltest [webgl_test_getVertexAttribOffset_4] getVertexAttribOffset");
             getVertexAttribOffset((val, FSIZE) => {
                 gl.vertexAttribPointer(val, 3, gl.FLOAT, false, FSIZE * 6, undefined);
@@ -2639,7 +2609,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays] drawArrays");
             let srcViewport = gl.getParameter(gl.VIEWPORT);
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
@@ -2708,7 +2678,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_1
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_1', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_1] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.TRIANGLES, 0, -1);
@@ -2725,7 +2695,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_2
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_2', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_2] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.TRIANGLES, 0, null);
@@ -2742,7 +2712,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_3
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_3', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_3] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.TRIANGLES, -1, null);
@@ -2759,7 +2729,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_4
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_4', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_4] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.POINTS, 0, n);
@@ -2776,7 +2746,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_5
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_5', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_5] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.LINE_STRIP, 0, n);
@@ -2793,7 +2763,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_6
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_6', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_6] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.LINE_LOOP, 0, n);
@@ -2810,7 +2780,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_7
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_7', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_7] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.LINES, 0, n);
@@ -2827,7 +2797,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_8
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_8', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_8] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.TRIANGLE_STRIP, 0, n);
@@ -2844,7 +2814,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawArrays_9
          * @tc.desc Test drawArrays.
          */
-        it('webgl_test_drawArrays_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawArrays_9', 0, async function (done) {
             console.info("webgltest [webgl_test_drawArrays_9] drawArrays");
             drawArrays((n) => {
                 gl.drawArrays(gl.TRIANGLE_FAN, 0, n);
@@ -2952,7 +2922,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements] drawElements");
             let srcViewport = gl.getParameter(gl.VIEWPORT);
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
@@ -3051,7 +3021,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_1
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_1', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_1] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, 0);
@@ -3068,7 +3038,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_2
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_2', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_2] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.POINTS, n, gl.UNSIGNED_BYTE, 0);
@@ -3085,7 +3055,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_3
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_3', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_3] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.LINE_STRIP, n, gl.UNSIGNED_BYTE, 0);
@@ -3102,7 +3072,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_4
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_4', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_4] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.LINE_LOOP, n, gl.UNSIGNED_BYTE, 0);
@@ -3119,7 +3089,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_5
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_5', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_5] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.LINES, n, gl.UNSIGNED_BYTE, 0);
@@ -3136,7 +3106,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_6
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_6', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_6] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLE_STRIP, n, gl.UNSIGNED_BYTE, 0);
@@ -3153,7 +3123,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_7
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_7', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_7] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLE_FAN, n, gl.UNSIGNED_BYTE, 0);
@@ -3170,7 +3140,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_8
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_8', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_8] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_SHORT, 0);
@@ -3187,7 +3157,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_9
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_9', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_9] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_INT, 0);
@@ -3204,7 +3174,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_10
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_10', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_10] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, -1);
@@ -3221,7 +3191,7 @@ export default function webgl1_attribute() {
          * @tc.name webgl_test_drawElements_11
          * @tc.desc Test drawElements.
          */
-        it('webgl_test_drawElements_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_drawElements_11', 0, async function (done) {
             console.info("webgltest [webgl_test_drawElements_11] drawElements");
             drawElements((n) => {
                 gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, null);

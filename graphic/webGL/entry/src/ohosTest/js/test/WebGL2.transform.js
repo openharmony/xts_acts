@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -51,8 +51,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_createTransformFeedback
          * @tc.desc Test createTransformFeedback.
          */
-        it('webgl2_test_createTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_createTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_createTransformFeedback] createTransformFeedback");
             let tf = gl.createTransformFeedback();
             console.info("webgltest tf:", tf);
@@ -72,8 +71,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_deleteTransformFeedback
          * @tc.desc Test deleteTransformFeedback.
          */
-        it('webgl2_test_deleteTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_deleteTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteTransformFeedback] deleteTransformFeedback");
             let transformFeedback = gl.createTransformFeedback();
             gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, transformFeedback);
@@ -91,8 +89,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_deleteTransformFeedback_1
          * @tc.desc Test deleteTransformFeedback.
          */
-        it('webgl2_test_deleteTransformFeedback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_deleteTransformFeedback_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteTransformFeedback_1] deleteTransformFeedback");
             deleteTransformFeedback((transformFeedback) => {
                 gl.deleteTransformFeedback(null);
@@ -106,8 +103,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_deleteTransformFeedback_2
          * @tc.desc Test deleteTransformFeedback.
          */
-        it('webgl2_test_deleteTransformFeedback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_deleteTransformFeedback_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteTransformFeedback_2] deleteTransformFeedback");
             deleteTransformFeedback((transformFeedback) => {
                 gl.deleteTransformFeedback(undefined);
@@ -128,8 +124,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_isTransformFeedback
          * @tc.desc Test isTransformFeedback.
          */
-        it('webgl2_test_isTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_isTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isTransformFeedback] isTransformFeedback");
             let transformFeedback = gl.createTransformFeedback();
             expect(gl.isTransformFeedback(transformFeedback)).assertEqual(false);
@@ -145,8 +140,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_isTransformFeedback_1
          * @tc.desc Test isTransformFeedback.
          */
-        it('webgl2_test_isTransformFeedback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_isTransformFeedback_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isTransformFeedback_1] isTransformFeedback");
             isTransformFeedback((transformFeedback) => {
                 gl.isTransformFeedback(undefined);
@@ -160,8 +154,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_isTransformFeedback_2
          * @tc.desc Test isTransformFeedback.
          */
-        it('webgl2_test_isTransformFeedback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_isTransformFeedback_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isTransformFeedback_2] isTransformFeedback");
             isTransformFeedback((transformFeedback) => {
                 gl.isTransformFeedback(null);
@@ -181,8 +174,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_bindTransformFeedback
          * @tc.desc Test bindTransformFeedback.
          */
-        it('webgl2_test_bindTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_bindTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_bindTransformFeedback] bindTransformFeedback ");
             let transformFeedback = gl.createTransformFeedback();
             expect(gl.getParameter(gl.TRANSFORM_FEEDBACK_BINDING)).assertEqual(null);
@@ -198,8 +190,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_bindTransformFeedback_1
          * @tc.desc Test bindTransformFeedback.
          */
-        it('webgl2_test_bindTransformFeedback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_bindTransformFeedback_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_bindTransformFeedback_1] bindTransformFeedback");
             bindTransformFeedback((transformFeedback) => {
                 gl.bindTransformFeedback(null, transformFeedback);
@@ -213,8 +204,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_bindTransformFeedback_2
          * @tc.desc Test bindTransformFeedback.
          */
-        it('webgl2_test_bindTransformFeedback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_bindTransformFeedback_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_bindTransformFeedback_2] bindTransformFeedback");
             bindTransformFeedback((transformFeedback) => {
                 gl.bindTransformFeedback(undefined, transformFeedback);
@@ -228,8 +218,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_bindTransformFeedback_3
          * @tc.desc Test bindTransformFeedback.
          */
-        it('webgl2_test_bindTransformFeedback_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_bindTransformFeedback_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_bindTransformFeedback_3] bindTransformFeedback");
             bindTransformFeedback((transformFeedback) => {
                 gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, null);
@@ -243,8 +232,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_bindTransformFeedback_4
          * @tc.desc Test bindTransformFeedback.
          */
-        it('webgl2_test_bindTransformFeedback_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_bindTransformFeedback_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_bindTransformFeedback_4] bindTransformFeedback");
             bindTransformFeedback((transformFeedback) => {
                 gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, undefined);
@@ -313,8 +301,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback] beginTransformFeedback");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -396,8 +383,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_1
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_1] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback(gl.LINES);
@@ -411,8 +397,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_2
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_2] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback(gl.POINTS);
@@ -426,8 +411,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_3
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_3] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback(null);
@@ -441,8 +425,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_4
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_4] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback(true);
@@ -456,8 +439,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_5
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_5', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_5] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback(1);
@@ -471,8 +453,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_beginTransformFeedback_6
          * @tc.desc Test beginTransformFeedback.
          */
-        it('webgl2_test_beginTransformFeedback_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_beginTransformFeedback_6', 0, async function (done) {
             console.info("webgl2test [webgl2_test_beginTransformFeedback_6] beginTransformFeedback");
             beginTransformFeedback((transformFeedback) => {
                 gl.beginTransformFeedback("1");
@@ -486,8 +467,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_endTransformFeedback
          * @tc.desc Test endTransformFeedback.
          */
-        it('webgl2_test_endTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_endTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_endTransformFeedback] endTransformFeedback");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -626,8 +606,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_transformFeedbackVaryings
          * @tc.desc Test transformFeedbackVaryings.
          */
-        it('webgl2_test_transformFeedbackVaryings', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_transformFeedbackVaryings', 0, async function (done) {
             console.info("webgl2test [webgl2_test_transformFeedbackVaryings] transformFeedbackVaryings");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -707,8 +686,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_transformFeedbackVaryings_1
          * @tc.desc Test transformFeedbackVaryings.
          */
-        it('webgl2_test_transformFeedbackVaryings_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_transformFeedbackVaryings_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_transformFeedbackVaryings_1] transformFeedbackVaryings");
             transformFeedbackVaryings((p) => {
                 gl.transformFeedbackVaryings(p.program, ["v_position"], null);
@@ -723,8 +701,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_transformFeedbackVaryings_2
          * @tc.desc Test transformFeedbackVaryings.
          */
-        it('webgl2_test_transformFeedbackVaryings_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_transformFeedbackVaryings_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_transformFeedbackVaryings_2] transformFeedbackVaryings");
             transformFeedbackVaryings((p) => {
                 gl.transformFeedbackVaryings(p.program, ["v_position"], undefined);
@@ -795,8 +772,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_getTransformFeedbackVarying
          * @tc.desc Test getTransformFeedbackVarying.
          */
-        it('webgl2_test_getTransformFeedbackVarying', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getTransformFeedbackVarying', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getTransformFeedbackVarying] getTransformFeedbackVarying");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -877,8 +853,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_getTransformFeedbackVarying_1
          * @tc.desc Test getTransformFeedbackVarying.
          */
-        it('webgl2_test_getTransformFeedbackVarying_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getTransformFeedbackVarying_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getTransformFeedbackVarying_1] getTransformFeedbackVarying");
             getTransformFeedbackVarying((p) => {
                 let varyingInfo = gl.getTransformFeedbackVarying(p.program, null);
@@ -892,8 +867,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_getTransformFeedbackVarying_2
          * @tc.desc Test getTransformFeedbackVarying.
          */
-        it('webgl2_test_getTransformFeedbackVarying_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getTransformFeedbackVarying_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getTransformFeedbackVarying_2] getTransformFeedbackVarying");
             getTransformFeedbackVarying((p) => {
                 let varyingInfo = gl.getTransformFeedbackVarying(p.program, undefined);
@@ -907,8 +881,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_pauseTransformFeedback
          * @tc.desc Test pauseTransformFeedback.
          */
-        it('webgl2_test_pauseTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_pauseTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_pauseTransformFeedback] pauseTransformFeedback");
             let p = createProgram(gl, `#version 300 es
                 in vec3 a_position;
@@ -989,8 +962,7 @@ export default function webgl2_transform() {
          * @tc.name webgl2_test_resumeTransformFeedback
          * @tc.desc Test resumeTransformFeedback.
          */
-        it('webgl2_test_resumeTransformFeedback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_resumeTransformFeedback', 0, async function (done) {
             console.info("webgl2test [webgl2_test_resumeTransformFeedback] resumeTransformFeedback");
             let p = createProgram(gl, `#version 300 es
                 in vec3 a_position;

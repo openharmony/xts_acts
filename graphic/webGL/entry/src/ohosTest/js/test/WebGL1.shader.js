@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -85,7 +85,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_createShader
          * @tc.desc Test createShader.
          */
-        it('webgl_test_createShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createShader', 0, async function (done) {
             console.info("webgltest [webgl_test_createShader] createShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             console.info("webgltest vShader: " + vShader);
@@ -106,7 +106,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_createShader_1
          * @tc.desc Test createShader.
          */
-        it('webgl_test_createShader_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createShader_1', 0, async function (done) {
             console.info("webgltest [webgl_test_createShader_1] createShader");
             let vShader = gl.createShader(null);
             if (vShader) gl.deleteShader(vShader);
@@ -121,7 +121,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_createShader_2
          * @tc.desc Test createShader.
          */
-        it('webgl_test_createShader_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createShader_2', 0, async function (done) {
             console.info("webgltest [webgl_test_createShader_2] createShader");
             let vShader = gl.createShader(undefined);
             if (vShader) gl.deleteShader(vShader);
@@ -136,7 +136,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_createShader_3
          * @tc.desc Test createShader.
          */
-        it('webgl_test_createShader_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createShader_3', 0, async function (done) {
             console.info("webgltest [webgl_test_createShader_3] createShader");
             let vShader = gl.createShader("");
             if (vShader) gl.deleteShader(vShader);
@@ -158,7 +158,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_shaderSource
          * @tc.desc Test shaderSource.
          */
-        it('webgl_test_shaderSource', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_shaderSource', 0, async function (done) {
             console.info("webgltest [webgl_test_shaderSource] shaderSource");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             let vSource = `
@@ -183,7 +183,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_shaderSource_1
          * @tc.desc Test shaderSource.
          */
-        it('webgl_test_shaderSource_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_shaderSource_1', 0, async function (done) {
             console.info("webgltest [webgl_test_shaderSource_1] shaderSource");
             shaderSource((vShader) => {
                 gl.shaderSource(vShader, null);
@@ -199,7 +199,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_shaderSource_2
          * @tc.desc Test shaderSource.
          */
-        it('webgl_test_shaderSource_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_shaderSource_2', 0, async function (done) {
             console.info("webgltest [webgl_test_shaderSource_2] shaderSource");
             shaderSource((vShader) => {
                 gl.shaderSource(vShader, undefined);
@@ -215,7 +215,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_shaderSource_3
          * @tc.desc Test shaderSource.
          */
-        it('webgl_test_shaderSource_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_shaderSource_3', 0, async function (done) {
             console.info("webgltest [webgl_test_shaderSource_3] shaderSource");
             shaderSource((vShader) => {
                 gl.shaderSource(vShader, "");
@@ -230,7 +230,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderSource
          * @tc.desc Test getShaderSource.
          */
-        it('webgl_test_getShaderSource', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getShaderSource', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderSource] getShaderSource");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             let vSource = `
@@ -270,7 +270,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderParameter
          * @tc.desc Test getShaderParameter.
          */
-        it('webgl_test_getShaderParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getShaderParameter', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderParameter] getShaderParameter");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             let vSource = `
@@ -298,8 +298,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderParameter_1
          * @tc.desc Test getShaderParameter.
          */
-        it('webgl_test_getShaderParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderParameter_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderParameter_1] getShaderParameter");
             getShaderParameter((vShader) => {
                 let shaderType = gl.getShaderParameter(vShader, gl.DELETE_STATUS);
@@ -316,8 +315,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderParameter_2
          * @tc.desc Test getShaderParameter.
          */
-        it('webgl_test_getShaderParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderParameter_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderParameter_2] getShaderParameter");
             getShaderParameter((vShader) => {
                 let shaderType = gl.getShaderParameter(vShader, null);
@@ -334,8 +332,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderParameter_3
          * @tc.desc Test getShaderParameter.
          */
-        it('webgl_test_getShaderParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderParameter_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderParameter_3] getShaderParameter");
             getShaderParameter((vShader) => {
                 let shaderType = gl.getShaderParameter(vShader, undefined);
@@ -351,7 +348,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_compileShader
          * @tc.desc Test compileShader.
          */
-        it('webgl_test_compileShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_compileShader', 0, async function (done) {
             console.info("webgltest [webgl_test_compileShader] compileShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             let vSource = `
@@ -379,7 +376,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderInfoLog
          * @tc.desc Test getShaderInfoLog.
          */
-        it('webgl_test_getShaderInfoLog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getShaderInfoLog', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderInfoLog] getShaderInfoLog");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             let vSource = `
@@ -409,7 +406,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_isShader
          * @tc.desc Test isShader.
          */
-        it('webgl_test_isShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isShader', 0, async function (done) {
             console.info("webgltest [webgl_test_isShader] isShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             console.info("isShader ", gl.isShader(vShader));
@@ -428,7 +425,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_isShader_1
          * @tc.desc Test isShader.
          */
-        it('webgl_test_isShader_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isShader_1', 0, async function (done) {
             console.info("webgltest [webgl_test_isShader_1] isShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             console.info("isShader ", gl.isShader(null));
@@ -444,7 +441,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_isShader_2
          * @tc.desc Test isShader.
          */
-        it('webgl_test_isShader_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isShader_2', 0, async function (done) {
             console.info("webgltest [webgl_test_isShader_2] isShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             console.info("isShader ", gl.isShader(undefined));
@@ -459,7 +456,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_deleteShader
          * @tc.desc Test deleteShader.
          */
-        it('webgl_test_deleteShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteShader', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteShader] deleteShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             console.info("isShader ", gl.isShader(vShader));
@@ -479,7 +476,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_deleteShader_1
          * @tc.desc Test deleteShader.
          */
-        it('webgl_test_deleteShader_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteShader_1', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteShader_1] deleteShader");
             let vShader = gl.createShader(gl.VERTEX_SHADER);
             expect(gl.isShader(vShader) == true).assertTrue();
@@ -494,7 +491,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_attachShader
          * @tc.desc Test attachShader.
          */
-        it('webgl_test_attachShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_attachShader', 0, async function (done) {
             console.info("webgltest [webgl_test_attachShader] attachShader");
             let program = gl.createProgram();
             expect(gl.getError()).assertEqual(gl.NO_ERROR);
@@ -529,7 +526,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getAttachedShaders
          * @tc.desc Test getAttachedShaders.
          */
-        it('webgl_test_getAttachedShaders', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getAttachedShaders', 0, async function (done) {
             console.info("webgltest [webgl_test_getAttachedShaders] getAttachedShaders");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, `
@@ -559,7 +556,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_detachShader
          * @tc.desc Test detachShader.
          */
-        it('webgl_test_detachShader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_detachShader', 0, async function (done) {
             console.info("webgltest [webgl_test_detachShader] detachShader");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, `
@@ -612,8 +609,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat] getShaderPrecisionFormat");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, `
@@ -628,8 +624,7 @@ export default function webgl1_shader() {
             gl.attachShader(program, vShader);
             let shaderPrecisionFormat = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT);
             expect(gl.getError()).assertEqual(gl.NO_ERROR);
-            console.info('webgltest shaderPrecisionFormat:', JSON.stringify(shaderPrecisionFormat),
-                shaderPrecisionFormat);
+            console.info('webgltest shaderPrecisionFormat:', JSON.stringify(shaderPrecisionFormat), shaderPrecisionFormat);
             expect(typeof shaderPrecisionFormat).assertEqual("object");
             gl.deleteShader(vShader);
             gl.deleteProgram(program);
@@ -642,8 +637,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_1
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_1] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.MEDIUM_FLOAT);
@@ -659,8 +653,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_2
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_2] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_FLOAT);
@@ -676,8 +669,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_3
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_3] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT);
@@ -693,8 +685,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_4
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_4', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_4] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT);
@@ -710,8 +701,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_5
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_5', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_5] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.MEDIUM_INT);
@@ -727,8 +717,7 @@ export default function webgl1_shader() {
          * @tc.name webgl_test_getShaderPrecisionFormat_6
          * @tc.desc Test getShaderPrecisionFormat.
          */
-        it('webgl_test_getShaderPrecisionFormat_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getShaderPrecisionFormat_6', 0, async function (done) {
             console.info("webgltest [webgl_test_getShaderPrecisionFormat_6] getShaderPrecisionFormat");
             getShaderPrecisionFormat((vShader) => {
                 gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_INT);

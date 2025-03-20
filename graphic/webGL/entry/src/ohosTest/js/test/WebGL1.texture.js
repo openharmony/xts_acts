@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -74,7 +74,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_createTexture
          * @tc.desc Test createTexture.
          */
-        it('webgl_test_createTexture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createTexture', 0, async function (done) {
             console.info("webgltest [webgl_test_createTexture] createTexture");
             let texture = gl.createTexture();
             console.info("webgltest ", texture);
@@ -100,7 +100,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_isTexture
          * @tc.desc Test isTexture.
          */
-        it('webgl_test_isTexture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isTexture', 0, async function (done) {
             console.info("webgltest [webgl_test_isTexture] isTexture");
             let texture = gl.createTexture();
             console.info("webgltest ", texture);
@@ -126,7 +126,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_deleteTexture
          * @tc.desc Test deleteTexture.
          */
-        it('webgl_test_deleteTexture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteTexture', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteTexture] deleteTexture");
             let texture = gl.createTexture();
             console.info("webgltest ", texture);
@@ -152,7 +152,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_bindTexture
          * @tc.desc Test bindTexture.
          */
-        it('webgl_test_bindTexture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_bindTexture', 0, async function (done) {
             console.info("webgltest [webgl_test_bindTexture] bindTexture");
             let texture = gl.createTexture();
             console.info("webgltest ", "isTexture :", gl.isTexture(texture));
@@ -180,7 +180,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_activeTexture
          * @tc.desc Test activeTexture.
          */
-        it('webgl_test_activeTexture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_activeTexture', 0, async function (done) {
             console.info("webgltest [webgl_test_activeTexture] activeTexture");
             let srcActiveTexture = gl.getParameter(gl.ACTIVE_TEXTURE);
             gl.activeTexture(gl.TEXTURE0);
@@ -203,17 +203,15 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_getTexParameter
          * @tc.desc Test getTexParameter.
          */
-        it('webgl_test_getTexParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getTexParameter', 0, async function (done) {
             console.info("webgltest [webgl_test_getTexParameter] getTexParameter");
             let texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, texture);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.NEAREST_MIPMAP_LINEAR).assertTrue();
             console.info("webgltest gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)");
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.LINEAR).assertTrue();
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_LINEAR);
             gl.deleteTexture(texture);
@@ -230,17 +228,15 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texParameteri
          * @tc.desc Test texParameteri.
          */
-        it('webgl_test_texParameteri', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texParameteri', 0, async function (done) {
             console.info("webgltest [webgl_test_texParameteri] texParameteri");
             let texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, texture);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.NEAREST_MIPMAP_LINEAR).assertTrue();
             console.info("webgltest gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)");
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.LINEAR).assertTrue();
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_LINEAR);
             gl.deleteTexture(texture);
@@ -257,17 +253,15 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texParameterf
          * @tc.desc Test texParameterf.
          */
-        it('webgl_test_texParameterf', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texParameterf', 0, async function (done) {
             console.info("webgltest [webgl_test_texParameterf] texParameterf");
             let texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, texture);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER):", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.NEAREST_MIPMAP_LINEAR).assertTrue();
             console.info("webgltest gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)");
             gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)",
-                gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
+            console.info("webgltest gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER)", gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER));
             expect(gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER) == gl.LINEAR).assertTrue();
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_LINEAR);
             gl.deleteTexture(texture);
@@ -368,7 +362,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D] texImage2D");
             let image = await loadImage();
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
@@ -442,7 +436,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_2
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_2', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_2] texImage2D");
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
                 attribute vec4 a_Position;
@@ -536,7 +530,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_3
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_3', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_3] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -552,7 +546,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_4
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_4', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_4] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -568,7 +562,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_5
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_5', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_5] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -584,7 +578,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_6
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_6', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_6] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -600,7 +594,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_7
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_7', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_7] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -617,7 +611,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_8
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_8', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_8] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 4, 4, 0, gl.RGBA, gl.UNSIGNED_BYTE, image2D);
@@ -634,7 +628,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_9
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_9', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_9] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 4, 4, 0, gl.RGB, gl.UNSIGNED_BYTE, image2D);
@@ -651,7 +645,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_10
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_10', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_10] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 4, 4, 0, gl.RGB, gl.UNSIGNED_SHORT_5_6_5, image2D);
@@ -667,7 +661,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_11
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_11', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_11] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 4, 4, 0, gl.RGB, gl.UNSIGNED_SHORT_4_4_4_4, image2D);
@@ -683,7 +677,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_12
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_12', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_12] texImage2D");
             await texImage2D((image2D) => {
                 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 4, 4, 0, gl.RGB, gl.UNSIGNED_SHORT_5_5_5_1, image2D);
@@ -699,7 +693,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texImage2D_Error
          * @tc.desc Test texImage2D.
          */
-        it('webgl_test_texImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_texImage2D_Error] texImage2D");
             let width = 256;
             let height = 256;
@@ -763,7 +757,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_generateMipmap
          * @tc.desc Test generateMipmap.
          */
-        it('webgl_test_generateMipmap', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_generateMipmap', 0, async function (done) {
             console.info("webgltest [generateMipmap] generateMipmap");
             gl.generateMipmap(gl.TEXTURE_2D);
             const error = checkError(gl);
@@ -873,7 +867,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D] texSubImage2D");
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
                 attribute vec4 a_Position;
@@ -976,7 +970,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_1
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_1', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_1] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -986,8 +980,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1000,7 +993,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_14
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_14', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_14] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1010,8 +1003,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1024,7 +1016,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_3
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_3', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_3] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1034,8 +1026,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1048,7 +1039,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_4
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_4', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_4] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1058,8 +1049,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1072,7 +1062,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_5
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_5', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_5] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1082,8 +1072,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Z, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1096,7 +1085,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_6
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_6', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_6] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1106,8 +1095,7 @@ export default function webgl1_texture() {
                 const type = gl.UNSIGNED_BYTE;
                 const xOffset = 128;
                 const yOffset = 64;
-                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
-                    level, xOffset, yOffset, width - 128, height - 64, format, type, data);
+                gl.texSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, level, xOffset, yOffset, width - 128, height - 64, format, type, data);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             })
@@ -1120,7 +1108,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_7
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_7', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_7] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1143,7 +1131,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_8
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_8', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_8] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1166,7 +1154,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_9
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_9', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_9] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1189,7 +1177,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_10
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_10', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_10] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1212,7 +1200,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_11
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_11', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_11] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1235,7 +1223,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_12
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_12', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_12] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1258,7 +1246,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_13
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_13', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_13] texSubImage2D");
             await texSubImage2D((data) => {
                 const width = 256;
@@ -1306,7 +1294,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_2
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_texSubImage2D_2', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D_2] texSubImage2D");
             let image = await loadImage()
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
@@ -1409,8 +1397,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_texSubImage2D_Error
          * @tc.desc Test texSubImage2D.
          */
-        it('webgl_test_texSubImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_texSubImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_texSubImage2D] texSubImage2D");
             let image = await loadImage()
             const width = 500;
@@ -1535,8 +1522,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_compressedTexImage2D] compressedTexImage2D");
             var availableExtensions = gl.getSupportedExtensions();
             for (var i = 0; i < availableExtensions.length; i++) {
@@ -1598,8 +1584,9 @@ export default function webgl1_texture() {
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); // 配置纹理参数
             const width = 4;
             const height = 4;
-            gl.compressedTexImage2D(gl.TEXTURE_2D, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT,
-                width, height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+            gl.compressedTexImage2D(gl.TEXTURE_2D, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+            ]));
             if (ext.COMPRESSED_RGBA_S3TC_DXT1_EXT) {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             } else {
@@ -1628,13 +1615,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_1
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_1', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1648,13 +1635,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_2
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_2', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1668,13 +1655,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_3
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_3', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1688,13 +1675,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_4
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_4', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1708,13 +1695,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_5
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_5', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1728,13 +1715,13 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_6
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_6', 0, async function (done) {
             compressedTexImage2D((ext) => {
                 const width = 4;
                 const height = 4;
-                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width,
-                    height, 0, new Uint8Array([0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,]));
+                gl.compressedTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, ext.COMPRESSED_RGBA_S3TC_DXT1_EXT, width, height, 0, new Uint8Array([
+                    0x1e, 0x33, 0xaa, 0xaF, 0x1e, 0x88, 0x1e, 0x77,
+                ]));
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1748,8 +1735,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexImage2D_Error
          * @tc.desc Test compressedTexImage2D.
          */
-        it('webgl_test_compressedTexImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_compressedTexImage2D_Error] compressedTexImage2D");
             const width = 500;
             const height = 500;
@@ -1799,8 +1785,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexSubImage2D
          * @tc.desc Test compressedTexSubImage2D.
          */
-        it('webgl_test_compressedTexSubImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexSubImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_compressedTexSubImage2D] compressedTexSubImage2D");
             let availableExtensions = gl.getSupportedExtensions();
             for (var i = 0; i < availableExtensions.length; i++) {
@@ -1898,8 +1883,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_compressedTexSubImage2D_Error
          * @tc.desc Test compressedTexSubImage2D.
          */
-        it('webgl_test_compressedTexSubImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_compressedTexSubImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_compressedTexSubImage2D_Error] compressedTexSubImage2D");
             const width = 500;
             const height = 500;
@@ -2061,7 +2045,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_copyTexImage2D] copyTexImage2D");
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
                 void main(){
@@ -2164,7 +2148,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_1
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_1', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2179,7 +2163,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_2
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_2', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2194,7 +2178,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_3
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_3', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2209,7 +2193,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_4
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_4', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2224,7 +2208,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_5
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_5', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2239,7 +2223,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_6
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexImage2D_6', 0, async function (done) {
             copyTexImage2D(() => {
                 gl.copyTexImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, gl.RGBA, 128, 128, 128, 128, 0);
             }, () => {
@@ -2254,8 +2238,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexImage2D_Error
          * @tc.desc Test copyTexImage2D.
          */
-        it('webgl_test_copyTexImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_copyTexImage2D] copyTexImage2D");
             const width = 500;
             const height = 500;
@@ -2392,7 +2375,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_copyTexSubImage2D', 0, async function (done) {
             console.info("webgltest [webgl_test_copyTexSubImage2D] copyTexSubImage2D");
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
                 void main(){
@@ -2497,8 +2480,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_1
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_1', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2513,8 +2495,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_2
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_2', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2529,8 +2510,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_3
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_3', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2545,8 +2525,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_4
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_4', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2561,8 +2540,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_5
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_5', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2577,8 +2555,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_6
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_6', 0, async function (done) {
             copyTexSubImage2D(() => {
                 gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, 32, 32, 32, 64, 128, 128);
             }, () => {
@@ -2593,8 +2570,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_copyTexSubImage2D_Error
          * @tc.desc Test copyTexSubImage2D.
          */
-        it('webgl_test_copyTexSubImage2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_copyTexSubImage2D_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_copyTexSubImage2D] copyTexSubImage2D");
             const width = 500;
             const height = 500;
@@ -2721,8 +2697,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D', 0, async function (done) {
             console.info("webgltest [webgl_test_framebufferTexture2D] framebufferTexture2D");
             let {program, vertexShader, fragmentShader} = createProgram(gl, `
                 void main(){
@@ -2820,8 +2795,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_1
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_1', 0, async function (done) {
             framebufferTexture2D((texture) => {
                 gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -2837,8 +2811,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_2
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_2', 0, async function (done) {
             framebufferTexture2D((texture) => {
                 gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_2D, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -2854,11 +2827,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_3
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_3', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_POSITIVE_X, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_POSITIVE_X, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2872,11 +2843,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_4
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_4', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_NEGATIVE_X, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_NEGATIVE_X, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2890,11 +2859,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_5
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_5', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_POSITIVE_Y, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_POSITIVE_Y, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2908,11 +2875,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_6
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_6', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2926,11 +2891,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_7
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_7', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_POSITIVE_Z, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_POSITIVE_Z, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2944,11 +2907,9 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_8
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_8', 0, async function (done) {
             framebufferTexture2D((texture) => {
-                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
-                gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, texture, 0);
+                gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, texture, 0);
                 expect(checkError(gl)).assertEqual(gl.INVALID_OPERATION);
             }, () => {
                 expect(checkError(gl)).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
@@ -2962,8 +2923,7 @@ export default function webgl1_texture() {
          * @tc.name webgl_test_framebufferTexture2D_Error
          * @tc.desc Test framebufferTexture2D.
          */
-        it('webgl_test_framebufferTexture2D_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_framebufferTexture2D_Error', 0, async function (done) {
             let texture = gl.createTexture();
             console.info("webgltest [webgl_test_framebufferTexture2D] framebufferTexture2D");
             console.info("webgltest [webgl_test_framebufferTexture2D] framebufferTexture2D no target");

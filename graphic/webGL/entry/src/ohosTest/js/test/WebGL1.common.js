@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -100,7 +100,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_finish
          * @tc.desc Test finish.
          */
-        it('webgl_test_finish', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_finish', 0, async function (done) {
             console.info("webgltest [webgl_test_finish] finish");
             gl.finish();
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -113,7 +113,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_flush
          * @tc.desc Test flush.
          */
-        it('webgl_test_flush', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_flush', 0, async function (done) {
             console.info("webgltest [webgl_test_flush] flush");
             gl.flush();
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -126,7 +126,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getError
          * @tc.desc Test getError.
          */
-        it('webgl_test_getError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getError', 0, async function (done) {
             console.info("webgltest [webgl_test_getError] getError");
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             let vShader = gl.createShader(1);
@@ -141,7 +141,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isContextLost
          * @tc.desc Test isContextLost.
          */
-        it('webgl_test_isContextLost', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isContextLost', 0, async function (done) {
             console.info("webgltest [webgl_test_isContextLost] isContextLost");
             let isContextLost = gl.isContextLost();
             console.info("webgltest isContextLost:", isContextLost);
@@ -155,7 +155,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled', 0, async function (done) {
             let srcEnable = gl.isEnabled(gl.DEPTH_TEST);
             console.info("webgltest [webgl_test_isEnabled] isEnabled");
             gl.disable(gl.DEPTH_TEST);
@@ -181,7 +181,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_1
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_1', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled1");
             const isEnabled = gl.isEnabled(gl.BLEND)
             console.log("webgltest gl.isEnabled(gl.BLEND):", isEnabled);
@@ -204,7 +204,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_2
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_2', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled2");
             const isEnabled = gl.isEnabled(gl.CULL_FACE)
             console.log("webgltest gl.isEnabled(gl.CULL_FACE):", isEnabled);
@@ -227,7 +227,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_3
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_3', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled3");
             const isEnabled = gl.isEnabled(gl.DEPTH_TEST)
             console.log("webgltest gl.isEnabled(gl.DEPTH_TEST):", isEnabled);
@@ -250,7 +250,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_4
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_4', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled4");
             const isEnabled = gl.isEnabled(gl.DITHER)
             console.log("webgltest gl.isEnabled(gl.DITHER):", isEnabled);
@@ -274,7 +274,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_5
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_5', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled5");
             const isEnabled = gl.isEnabled(gl.POLYGON_OFFSET_FILL)
             console.log("webgltest gl.isEnabled(gl.POLYGON_OFFSET_FILL):", isEnabled);
@@ -297,14 +297,13 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_6
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_6', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled6");
             const isEnabled = gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE)
             console.log("webgltest gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE):", isEnabled);
             console.log("webgltest gl.enable(gl.SAMPLE_ALPHA_TO_COVERAGE)");
             gl.enable(gl.SAMPLE_ALPHA_TO_COVERAGE)
-            console.log("webgltest gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE):",
-                gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE));
+            console.log("webgltest gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE):", gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE));
             expect(gl.isEnabled(gl.SAMPLE_ALPHA_TO_COVERAGE)).assertEqual(true)
             if (isEnabled) {
                 gl.enable(gl.SAMPLE_ALPHA_TO_COVERAGE)
@@ -320,7 +319,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_7
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_7', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled7");
             const isEnabled = gl.isEnabled(gl.SAMPLE_COVERAGE)
             console.log("webgltest gl.isEnabled(gl.SAMPLE_COVERAGE):", isEnabled);
@@ -342,7 +341,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_8
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_8', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled8");
             const isEnabled = gl.isEnabled(gl.SCISSOR_TEST)
             console.log("webgltest gl.isEnabled(gl.SCISSOR_TEST):", isEnabled);
@@ -364,7 +363,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_9
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_9', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled9");
             const isEnabled = gl.isEnabled(gl.STENCIL_TEST)
             console.log("webgltest gl.isEnabled(gl.STENCIL_TEST):", isEnabled);
@@ -386,7 +385,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isEnabled_Error
          * @tc.desc Test isEnabled.
          */
-        it('webgl_test_isEnabled_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isEnabled_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_isEnabled] isEnabled Error");
             expect(gl.isEnabled(undefined)).assertEqual(false);
             expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
@@ -415,7 +414,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable', 0, async function (done) {
             console.info("webgltest [webgl_test_enable] enable");
             console.info("webgltest disable DEPTH_TEST");
             gl.disable(gl.DEPTH_TEST);
@@ -437,7 +436,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_1
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_1', 0, async function (done) {
             checkEnable(gl.BLEND)
             done()
         })
@@ -448,7 +447,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_2
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_2', 0, async function (done) {
             checkEnable(gl.CULL_FACE)
             done()
         })
@@ -459,7 +458,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_3
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_3', 0, async function (done) {
             checkEnable(gl.DITHER)
             done()
         })
@@ -470,7 +469,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_4
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_4', 0, async function (done) {
             checkEnable(gl.POLYGON_OFFSET_FILL)
             done()
         })
@@ -481,7 +480,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_5
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_5', 0, async function (done) {
             checkEnable(gl.SAMPLE_ALPHA_TO_COVERAGE)
             done()
         })
@@ -492,7 +491,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_6
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_6', 0, async function (done) {
             checkEnable(gl.SAMPLE_COVERAGE)
             done()
         })
@@ -503,7 +502,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_7
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_7', 0, async function (done) {
             checkEnable(gl.SCISSOR_TEST)
             done()
         })
@@ -514,7 +513,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_8
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_8', 0, async function (done) {
             checkEnable(gl.STENCIL_TEST)
             done()
         })
@@ -525,7 +524,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_enable_Error
          * @tc.desc Test enable.
          */
-        it('webgl_test_enable_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_enable_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_enable] enable Error");
             console.info("webgltest enable undefined");
             gl.enable(undefined)
@@ -558,7 +557,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable', 0, async function (done) {
             console.info("webgltest [webgl_test_disable] disable");
             console.info("webgltest enable DEPTH_TEST");
             gl.enable(gl.DEPTH_TEST);
@@ -579,7 +578,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_1
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_1', 0, async function (done) {
             checkDisable(gl.BLEND)
             done()
         })
@@ -590,7 +589,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_2
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_2', 0, async function (done) {
             checkDisable(gl.CULL_FACE)
             done()
         })
@@ -601,7 +600,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_3
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_3', 0, async function (done) {
             checkDisable(gl.DITHER)
             done()
         })
@@ -612,7 +611,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_4
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_4', 0, async function (done) {
             checkDisable(gl.POLYGON_OFFSET_FILL)
             done()
         })
@@ -623,7 +622,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_5
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_5', 0, async function (done) {
             checkDisable(gl.SAMPLE_ALPHA_TO_COVERAGE)
             done()
         })
@@ -634,7 +633,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_6
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_6', 0, async function (done) {
             checkDisable(gl.SAMPLE_COVERAGE)
             done()
         })
@@ -645,7 +644,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_7
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_7', 0, async function (done) {
             checkDisable(gl.SCISSOR_TEST)
             done()
         })
@@ -656,7 +655,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_8
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_8', 0, async function (done) {
             checkDisable(gl.STENCIL_TEST)
             done()
         })
@@ -667,7 +666,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_disable_Error
          * @tc.desc Test disable.
          */
-        it('webgl_test_disable_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_disable_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_enable] disable Error");
             console.info("webgltest disable undefined");
             gl.disable(undefined)
@@ -689,8 +688,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getContextAttributes
          * @tc.desc Test getContextAttributes.
          */
-        it('webgl_test_getContextAttributes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getContextAttributes', 0, async function (done) {
             console.info("webgltest [webgl_test_getContextAttributes] getContextAttributes");
             const value = gl.getContextAttributes();
             console.info("webgltest getContextAttributes: ", value);
@@ -717,8 +715,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getContextAttributes_Error
          * @tc.desc Test getContextAttributes.
          */
-        it('webgl_test_getContextAttributes_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getContextAttributes_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_getContextAttributesError] getContextAttributesError");
             console.info("webgltest getContextAttributes(null)", null);
             const value = gl.getContextAttributes(null);
@@ -732,7 +729,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_isContextLost
          * @tc.desc Test isContextLost.
          */
-        it('webgl_test_isContextLost', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isContextLost', 0, async function (done) {
             console.info("webgltest [webgl_test_isContextLost] isContextLost");
             const isContextLostValue = gl.isContextLost();
             console.info("webgltest isContextLost: " + isContextLostValue);
@@ -745,7 +742,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearColor
          * @tc.desc Test clearColor.
          */
-        it('webgl_test_clearColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearColor', 0, async function (done) {
             console.info("webgltest [webgl_test_clearColor] clearColor");
             gl.clearColor(0.5, 0.5, 0.5, 1.0);
             console.info('set clearColor:', 0.5, 0.5, 0.5, 1.0);
@@ -765,7 +762,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearColor_Error
          * @tc.desc Test clearColor.
          */
-        it('webgl_test_clearColor_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearColor_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_clearColor] clearColor error");
             console.info("webgltest [webgl_test_clearColor] clearColor string");
             gl.clearColor('1', '1', '1', '1');
@@ -784,7 +781,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearDepth
          * @tc.desc Test clearDepth.
          */
-        it('webgl_test_clearDepth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearDepth', 0, async function (done) {
             console.info("webgltest [webgl_test_clearDepth] clearDepth");
             gl.clearDepth(0.5)
             console.info('set clearDepth:', 0.5);
@@ -801,7 +798,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearDepth_Error
          * @tc.desc Test clearDepth.
          */
-        it('webgl_test_clearDepth_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearDepth_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_clearDepth] clearDepth Error");
             console.info("webgltest [webgl_test_clearDepth] clearDepth big than 1");
             gl.clearDepth(2)
@@ -826,7 +823,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clear
          * @tc.desc Test clear.
          */
-        it('webgl_test_clear', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clear', 0, async function (done) {
             console.info("webgltest [webgl_test_clear] clear");
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT | gl.STENCIL_BUFFER_BIT);
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -855,7 +852,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter', 0, async function (done) {
             console.info("webgltest [webgl_test_getParameter] getParameter");
             console.info("webgltest ACTIVE_TEXTURE:", gl.getParameter(gl.ACTIVE_TEXTURE));
             gl.activeTexture(gl.TEXTURE0);
@@ -874,7 +871,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_1
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_1', 0, async function (done) {
             checkGetParameter(gl.ALIASED_LINE_WIDTH_RANGE, 'Float32Array', 2)
             done()
         })
@@ -885,7 +882,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_2
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_2', 0, async function (done) {
             checkGetParameter(gl.ALIASED_POINT_SIZE_RANGE, 'Float32Array', 2)
             done()
         })
@@ -896,7 +893,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_3
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_3', 0, async function (done) {
             checkGetParameter(gl.ALPHA_BITS, 'Number')
             done()
         })
@@ -907,7 +904,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_4
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_4', 0, async function (done) {
             let webGLBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, webGLBuffer)
             checkGetParameter(gl.ARRAY_BUFFER_BINDING, 'WebGLBuffer')
@@ -921,7 +918,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_5
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_5', 0, async function (done) {
             checkGetParameter(gl.BLEND, 'Boolean')
             done()
         })
@@ -932,7 +929,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_6
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_6', 0, async function (done) {
             checkGetParameter(gl.BLEND_COLOR, 'Float32Array', 4)
             done()
         })
@@ -943,7 +940,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_7
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_7', 0, async function (done) {
             checkGetParameter(gl.BLEND_DST_ALPHA, 'Number')
             done()
         })
@@ -954,7 +951,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_8
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_8', 0, async function (done) {
             checkGetParameter(gl.BLEND_DST_RGB, 'Number')
             done()
         })
@@ -965,7 +962,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_9
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_9', 0, async function (done) {
             checkGetParameter(gl.BLEND_EQUATION, 'Number')
             done()
         })
@@ -976,7 +973,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_10
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_10', 0, async function (done) {
             checkGetParameter(gl.BLEND_EQUATION_ALPHA, 'Number')
             done()
         })
@@ -987,7 +984,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_11
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_11', 0, async function (done) {
             checkGetParameter(gl.BLEND_EQUATION_RGB, 'Number')
             done()
         })
@@ -998,7 +995,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_12
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_12', 0, async function (done) {
             checkGetParameter(gl.BLEND_SRC_ALPHA, 'Number')
             done()
         })
@@ -1009,7 +1006,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_13
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_13', 0, async function (done) {
             checkGetParameter(gl.BLEND_SRC_RGB, 'Number')
             done()
         })
@@ -1020,7 +1017,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_14
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_14', 0, async function (done) {
             checkGetParameter(gl.BLUE_BITS, 'Number')
             done()
         })
@@ -1031,7 +1028,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_15
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_15', 0, async function (done) {
             checkGetParameter(gl.COLOR_CLEAR_VALUE, 'Float32Array', 4)
             done()
         })
@@ -1042,7 +1039,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_16
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_16', 0, async function (done) {
             checkGetParameter(gl.COLOR_WRITEMASK, 'Array', 4)
             done()
         })
@@ -1053,7 +1050,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_17
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_17', 0, async function (done) {
             checkGetParameter(gl.COMPRESSED_TEXTURE_FORMATS, 'Uint32Array')
             done()
         })
@@ -1064,7 +1061,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_18
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_18', 0, async function (done) {
             checkGetParameter(gl.CULL_FACE, 'Boolean')
             done()
         })
@@ -1075,7 +1072,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_19
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_19', 0, async function (done) {
             checkGetParameter(gl.CULL_FACE_MODE, 'Number')
             done()
         })
@@ -1086,7 +1083,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_20
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_20', 0, async function (done) {
             let {program} = createProgram(gl, `
                 attribute vec4 a_Position;
                 attribute vec2 a_TexCoord;
@@ -1115,7 +1112,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_21
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_21', 0, async function (done) {
             checkGetParameter(gl.DEPTH_BITS, 'Number')
             done()
         })
@@ -1126,7 +1123,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_22
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_22', 0, async function (done) {
             checkGetParameter(gl.DEPTH_CLEAR_VALUE, 'Number')
             done()
         })
@@ -1137,7 +1134,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_23
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_23', 0, async function (done) {
             checkGetParameter(gl.DEPTH_FUNC, 'Number')
             done()
         })
@@ -1148,7 +1145,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_24
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_24', 0, async function (done) {
             checkGetParameter(gl.DEPTH_RANGE, 'Float32Array', 2)
             done()
         })
@@ -1159,7 +1156,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_25
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_25', 0, async function (done) {
             checkGetParameter(gl.DEPTH_TEST, 'Boolean')
             done()
         })
@@ -1170,7 +1167,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_26
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_26', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_26', 0, async function (done) {
             checkGetParameter(gl.DEPTH_WRITEMASK, 'Boolean')
             done()
         })
@@ -1181,7 +1178,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_27
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_27', 0, async function (done) {
             checkGetParameter(gl.DITHER, 'Boolean')
             done()
         })
@@ -1192,7 +1189,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_28
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_28', 0, async function (done) {
             let webGLBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, webGLBuffer)
             checkGetParameter(gl.ELEMENT_ARRAY_BUFFER_BINDING, 'WebGLBuffer')
@@ -1206,7 +1203,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_30
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_30', 0, async function (done) {
             checkGetParameter(gl.FRONT_FACE, 'Number')
             done()
         })
@@ -1217,7 +1214,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_31
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_31', 0, async function (done) {
             checkGetParameter(gl.GENERATE_MIPMAP_HINT, 'Number')
             done()
         })
@@ -1228,7 +1225,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_32
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_32', 0, async function (done) {
             checkGetParameter(gl.GREEN_BITS, 'Number')
             done()
         })
@@ -1239,7 +1236,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_33
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_33', 0, async function (done) {
             checkGetParameter(gl.IMPLEMENTATION_COLOR_READ_FORMAT, 'Number')
             done()
         })
@@ -1250,7 +1247,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_34
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_34', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_34', 0, async function (done) {
             checkGetParameter(gl.IMPLEMENTATION_COLOR_READ_TYPE, 'Number')
             done()
         })
@@ -1261,7 +1258,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_35
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_35', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_35', 0, async function (done) {
             checkGetParameter(gl.LINE_WIDTH, 'Number')
             done()
         })
@@ -1272,7 +1269,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_36
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_36', 0, async function (done) {
             checkGetParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS, 'Number')
             done()
         })
@@ -1283,7 +1280,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_37
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_37', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_37', 0, async function (done) {
             checkGetParameter(gl.MAX_TEXTURE_SIZE, 'Number')
             done()
         })
@@ -1294,7 +1291,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_38
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_38', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_38', 0, async function (done) {
             checkGetParameter(gl.MAX_VARYING_VECTORS, 'Number')
             done()
         })
@@ -1305,7 +1302,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_39
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_39', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_39', 0, async function (done) {
             checkGetParameter(gl.MAX_VERTEX_ATTRIBS, 'Number')
             done()
         })
@@ -1316,7 +1313,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_40
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_40', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_40', 0, async function (done) {
             checkGetParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS, 'Number')
             done()
         })
@@ -1327,7 +1324,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_41
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_41', 0, async function (done) {
             checkGetParameter(gl.MAX_VERTEX_UNIFORM_VECTORS, 'Number')
             done()
         })
@@ -1338,7 +1335,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_42
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_42', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_42', 0, async function (done) {
             checkGetParameter(gl.MAX_VIEWPORT_DIMS, 'Int32Array', 2)
             done()
         })
@@ -1349,7 +1346,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_43
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_43', 0, async function (done) {
             checkGetParameter(gl.PACK_ALIGNMENT, 'Number')
             done()
         })
@@ -1360,7 +1357,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_44
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_44', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_44', 0, async function (done) {
             checkGetParameter(gl.POLYGON_OFFSET_FACTOR, 'Number')
             done()
         })
@@ -1371,7 +1368,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_45
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_45', 0, async function (done) {
             checkGetParameter(gl.POLYGON_OFFSET_FILL, 'Boolean')
             done()
         })
@@ -1382,7 +1379,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_46
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_46', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_46', 0, async function (done) {
             checkGetParameter(gl.POLYGON_OFFSET_UNITS, 'Number')
             done()
         })
@@ -1393,7 +1390,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_47
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_47', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_47', 0, async function (done) {
             checkGetParameter(gl.RED_BITS, 'Number')
             done()
         })
@@ -1404,7 +1401,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_49
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_49', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_49', 0, async function (done) {
             checkGetParameter(gl.RENDERER, 'String')
             done()
         })
@@ -1415,7 +1412,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_50
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_50', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_50', 0, async function (done) {
             checkGetParameter(gl.SAMPLE_BUFFERS, 'Number')
             done()
         })
@@ -1426,7 +1423,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_51
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_51', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_51', 0, async function (done) {
             checkGetParameter(gl.SAMPLE_COVERAGE_INVERT, 'Boolean')
             done()
         })
@@ -1437,7 +1434,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_52
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_52', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_52', 0, async function (done) {
             checkGetParameter(gl.SAMPLE_COVERAGE_VALUE, 'Number')
             done()
         })
@@ -1448,7 +1445,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_53
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_53', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_53', 0, async function (done) {
             checkGetParameter(gl.SAMPLES, 'Number')
             done()
         })
@@ -1459,7 +1456,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_54
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_54', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_54', 0, async function (done) {
             checkGetParameter(gl.SCISSOR_BOX, 'Int32Array', 4)
             done()
         })
@@ -1470,7 +1467,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_55
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_55', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_55', 0, async function (done) {
             checkGetParameter(gl.SCISSOR_TEST, 'Boolean')
             done()
         })
@@ -1481,7 +1478,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_56
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_56', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_56', 0, async function (done) {
             checkGetParameter(gl.SHADING_LANGUAGE_VERSION, 'String')
             done()
         })
@@ -1492,7 +1489,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_57
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_57', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_57', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_FAIL, 'Number')
             done()
         })
@@ -1503,7 +1500,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_58
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_58', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_58', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_FUNC, 'Number')
             done()
         })
@@ -1514,7 +1511,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_59
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_59', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_59', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_PASS_DEPTH_FAIL, 'Number')
             done()
         })
@@ -1525,7 +1522,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_60
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_60', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_60', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_PASS_DEPTH_PASS, 'Number')
             done()
         })
@@ -1536,7 +1533,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_61
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_61', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_61', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_REF, 'Number')
             done()
         })
@@ -1547,7 +1544,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_62
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_62', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_62', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_VALUE_MASK, 'Number')
             done()
         })
@@ -1558,7 +1555,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_63
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_63', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_63', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BACK_WRITEMASK, 'Number')
             done()
         })
@@ -1569,7 +1566,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_64
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_64', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_64', 0, async function (done) {
             checkGetParameter(gl.STENCIL_BITS, 'Number')
             done()
         })
@@ -1580,7 +1577,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_65
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_65', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_65', 0, async function (done) {
             checkGetParameter(gl.STENCIL_CLEAR_VALUE, 'Number')
             done()
         })
@@ -1591,7 +1588,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_66
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_66', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_66', 0, async function (done) {
             checkGetParameter(gl.STENCIL_FAIL, 'Number')
             done()
         })
@@ -1602,7 +1599,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_67
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_67', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_67', 0, async function (done) {
             checkGetParameter(gl.STENCIL_FUNC, 'Number')
             done()
         })
@@ -1613,7 +1610,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_68
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_68', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_68', 0, async function (done) {
             checkGetParameter(gl.STENCIL_PASS_DEPTH_FAIL, 'Number')
             done()
         })
@@ -1624,7 +1621,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_69
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_69', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_69', 0, async function (done) {
             checkGetParameter(gl.STENCIL_PASS_DEPTH_PASS, 'Number')
             done()
         })
@@ -1635,7 +1632,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_70
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_70', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_70', 0, async function (done) {
             checkGetParameter(gl.STENCIL_REF, 'Number')
             done()
         })
@@ -1646,7 +1643,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_71
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_71', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_71', 0, async function (done) {
             checkGetParameter(gl.STENCIL_TEST, 'Boolean')
             done()
         })
@@ -1657,7 +1654,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_72
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_72', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_72', 0, async function (done) {
             checkGetParameter(gl.STENCIL_VALUE_MASK, 'Number')
             done()
         })
@@ -1668,7 +1665,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_73
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_73', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_73', 0, async function (done) {
             checkGetParameter(gl.STENCIL_WRITEMASK, 'Number')
             done()
         })
@@ -1679,7 +1676,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_74
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_74', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_74', 0, async function (done) {
             checkGetParameter(gl.SUBPIXEL_BITS, 'Number')
             done()
         })
@@ -1690,7 +1687,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_75
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_75', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_75', 0, async function (done) {
             let texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, texture);
             checkGetParameter(gl.TEXTURE_BINDING_2D, 'WebGLTexture')
@@ -1704,7 +1701,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_76
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_76', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_76', 0, async function (done) {
             let texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
             checkGetParameter(gl.TEXTURE_BINDING_CUBE_MAP, 'WebGLTexture')
@@ -1718,7 +1715,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_77
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_77', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_77', 0, async function (done) {
             checkGetParameter(gl.UNPACK_ALIGNMENT, 'Number')
             done()
         })
@@ -1729,7 +1726,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_78
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_78', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_78', 0, async function (done) {
             checkGetParameter(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, 'Number')
             done()
         })
@@ -1740,7 +1737,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_79
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_79', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_79', 0, async function (done) {
             checkGetParameter(gl.UNPACK_FLIP_Y_WEBGL, 'Boolean')
             done()
         })
@@ -1751,7 +1748,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_80
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_80', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_80', 0, async function (done) {
             checkGetParameter(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 'Boolean')
             done()
         })
@@ -1762,7 +1759,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_81
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_81', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_81', 0, async function (done) {
             checkGetParameter(gl.VENDOR, 'String')
             done()
         })
@@ -1773,7 +1770,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_82
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_82', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_82', 0, async function (done) {
             checkGetParameter(gl.VERSION, 'String')
             done()
         })
@@ -1784,7 +1781,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_83
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_83', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_83', 0, async function (done) {
             checkGetParameter(gl.VIEWPORT, 'Int32Array', 4)
             done()
         })
@@ -1795,7 +1792,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getParameter_Error
          * @tc.desc Test getParameter.
          */
-        it('webgl_test_getParameter_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getParameter_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_getParameterError] getParameter");
             console.info("webgltest ACTIVE_TEXTURE:undefined");
             expect(gl.getParameter(undefined)).assertEqual(null);
@@ -1814,7 +1811,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getExtension
          * @tc.desc Test getExtension.
          */
-        it('webgl_test_getExtension', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getExtension', 0, async function (done) {
             console.info("webgltest [webgl_test_getExtension] getExtension");
             console.info("webgltest getExtension('');", gl.getExtension(''));
             expect(gl.getExtension('')).assertEqual(null);
@@ -1832,7 +1829,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getExtension_Error
          * @tc.desc Test getExtension.
          */
-        it('webgl_test_getExtension_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getExtension_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_getExtensionError] getExtensionError");
             console.info("webgltest getExtension(undefined);", gl.getExtension(undefined));
             expect(gl.getExtension(undefined)).assertEqual(null);
@@ -1853,8 +1850,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_getSupportedExtensions
          * @tc.desc Test getSupportedExtensions.
          */
-        it('webgl_test_getSupportedExtensions', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getSupportedExtensions', 0, async function (done) {
             console.info("webgltest [webgl_test_getSupportedExtensions] getSupportedExtensions");
             let supportedExtensions = gl.getSupportedExtensions();
             console.info("webgltest getSupportedExtensions();", supportedExtensions);
@@ -1872,7 +1868,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_viewport
          * @tc.desc Test viewport.
          */
-        it('webgl_test_viewport', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_viewport', 0, async function (done) {
             console.info("webgltest [webgl_test_viewport] viewport");
             let defaultViewPort = gl.getParameter(gl.VIEWPORT);
             console.info("webgltest viewPort:", defaultViewPort);
@@ -1894,7 +1890,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_viewport_Error
          * @tc.desc Test viewport.
          */
-        it('webgl_test_viewport_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_viewport_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_viewportError] viewportError");
             console.info("webgltest [webgl_test_viewportError] viewport(x=undefined) ");
             let srcViewport = gl.getParameter(gl.VIEWPORT);
@@ -1925,7 +1921,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_hint
          * @tc.desc Test hint.
          */
-        it('webgl_test_hint', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_hint', 0, async function (done) {
             console.info("webgltest [webgl_test_hint] hint");
             let check = () => {
                 let generateMipMapHint = gl.getParameter(gl.GENERATE_MIPMAP_HINT);
@@ -1959,7 +1955,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_hint_Error
          * @tc.desc Test hint.
          */
-        it('webgl_test_hint_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_hint_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_hintError] webgl_test_hint");
             console.info("webgltest [webgl_test_hintError] hint(target=undefined) ");
             gl.hint(undefined, gl.FASTEST);
@@ -1991,7 +1987,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_lineWidth
          * @tc.desc Test lineWidth.
          */
-        it('webgl_test_lineWidth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_lineWidth', 0, async function (done) {
             console.info("webgltest [webgl_test_lineWidth] lineWidth");
             let defaultLineWidth = gl.getParameter(gl.LINE_WIDTH);
             console.info("webgltest LINE_WIDTH:", defaultLineWidth);
@@ -2012,7 +2008,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_lineWidth_Error
          * @tc.desc Test lineWidth.
          */
-        it('webgl_test_lineWidth_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_lineWidth_Error', 0, async function (done) {
             let defaultLineWidth = gl.getParameter(gl.LINE_WIDTH);
             console.info("webgltest [webgl_test_lineWidthError] webgl_test_lineWidthError");
             console.info("webgltest [webgl_test_lineWidthError] lineWidth(width=undefined) ");
@@ -2033,7 +2029,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_readPixels
          * @tc.desc Test readPixels.
          */
-        it('webgl_test_readPixels', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_readPixels', 0, async function (done) {
             console.info("webgltest [webgl_test_readPixels] readPixels");
             console.info("webgltest gl.clearColor(1.0, 0.0, 0.0, 1);");
             gl.clearColor(1.0, 0.0, 0.0, 1);
@@ -2057,7 +2053,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_readPixels_Error
          * @tc.desc Test readPixels.
          */
-        it('webgl_test_readPixels_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_readPixels_Error', 0, async function (done) {
             const pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
             console.info("webgltest [webgl_test_readPixelsError] webgl_test_readPixelsError");
             console.info("webgltest [webgl_test_lineWidthError] readPixels(x=undefined) ");
@@ -2094,7 +2090,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendColor
          * @tc.desc Test blendColor.
          */
-        it('webgl_test_blendColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendColor', 0, async function (done) {
             console.info("webgltest [webgl_test_blendColor] blendColor");
             let src = gl.getParameter(gl.BLEND_COLOR);
             console.info("webgltest gl.blendColor(1.0, 0.5, 1, 1);");
@@ -2115,7 +2111,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendColor_Error
          * @tc.desc Test blendColor.
          */
-        it('webgl_test_blendColor_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendColor_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_blendColorError] blendColorError");
             let src = gl.getParameter(gl.BLEND_COLOR);
             console.info("webgltest [webgl_test_lineWidthError] blendColor(red=undefined) ");
@@ -2149,7 +2145,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendEquation
          * @tc.desc Test blendEquation.
          */
-        it('webgl_test_blendEquation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendEquation', 0, async function (done) {
             console.info("webgltest [webgl_test_blendEquation] blendEquation");
             console.info("webgltest default value");
             let srcRgb = gl.getParameter(gl.BLEND_EQUATION_RGB);
@@ -2184,8 +2180,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendEquation_Error
          * @tc.desc Test blendEquation.
          */
-        it('webgl_test_blendEquation_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_blendEquation_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_blendEquationError] blendEquationError");
             let srcRgb = gl.getParameter(gl.BLEND_EQUATION_RGB);
             console.info("webgltest [webgl_test_lineWidthError] blendEquation(undefined) ");
@@ -2211,23 +2206,20 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendEquationSeparate
          * @tc.desc Test blendEquationSeparate.
          */
-        it('webgl_test_blendEquationSeparate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_blendEquationSeparate', 0, async function (done) {
             console.info("webgltest [webgl_test_blendEquationSeparate] blendEquationSeparate");
             console.info("webgltest default value");
             let srcRgb = gl.getParameter(gl.BLEND_EQUATION_RGB);
             let srcAlpha = gl.getParameter(gl.BLEND_EQUATION_ALPHA);
             console.info("webgltest BLEND_EQUATION_RGB ", gl.getParameter(gl.BLEND_EQUATION_RGB));
             console.info("webgltest BLEND_EQUATION_ALPHA ", gl.getParameter(gl.BLEND_EQUATION_ALPHA));
-            console.info("webgltest gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_SUBTRACT);",
-                gl.FUNC_ADD, gl.FUNC_SUBTRACT);
+            console.info("webgltest gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_SUBTRACT);", gl.FUNC_ADD, gl.FUNC_SUBTRACT);
             gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_SUBTRACT);
             console.info("webgltest BLEND_EQUATION_RGB ", gl.getParameter(gl.BLEND_EQUATION_RGB));
             console.info("webgltest BLEND_EQUATION_ALPHA ", gl.getParameter(gl.BLEND_EQUATION_ALPHA));
             expect(gl.getParameter(gl.BLEND_EQUATION_RGB)).assertEqual(gl.FUNC_ADD);
             expect(gl.getParameter(gl.BLEND_EQUATION_ALPHA)).assertEqual(gl.FUNC_SUBTRACT);
-            console.info("webgltest gl.blendEquationSeparate(gl.FUNC_SUBTRACT, gl.FUNC_REVERSE_SUBTRACT);",
-                gl.FUNC_SUBTRACT, gl.FUNC_REVERSE_SUBTRACT);
+            console.info("webgltest gl.blendEquationSeparate(gl.FUNC_SUBTRACT, gl.FUNC_REVERSE_SUBTRACT);", gl.FUNC_SUBTRACT, gl.FUNC_REVERSE_SUBTRACT);
             gl.blendEquationSeparate(gl.FUNC_SUBTRACT, gl.FUNC_REVERSE_SUBTRACT);
             console.info("webgltest BLEND_EQUATION_RGB ", gl.getParameter(gl.BLEND_EQUATION_RGB));
             console.info("webgltest BLEND_EQUATION_ALPHA ", gl.getParameter(gl.BLEND_EQUATION_ALPHA));
@@ -2243,8 +2235,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendEquationSeparate_Error
          * @tc.desc Test blendEquationSeparate.
          */
-        it('webgl_test_blendEquationSeparate_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_blendEquationSeparate_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_blendEquationSeparateError] blendEquationSeparateError");
             console.info("webgltest default value");
             let srcRgb = gl.getParameter(gl.BLEND_EQUATION_RGB);
@@ -2268,7 +2259,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendFunc
          * @tc.desc Test blendFunc.
          */
-        it('webgl_test_blendFunc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendFunc', 0, async function (done) {
             console.info("webgltest [webgl_test_blendFunc] blendFunc");
             console.info("webgltest default value");
             let isEnable = gl.isEnabled(gl.BLEND);
@@ -2301,7 +2292,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendFunc_Error
          * @tc.desc Test blendFunc.
          */
-        it('webgl_test_blendFunc_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendFunc_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_blendFuncError] blendFunc");
             console.info("webgltest default value");
             let isEnable = gl.isEnabled(gl.BLEND);
@@ -2336,7 +2327,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendFuncSeparate
          * @tc.desc Test blendFuncSeparate.
          */
-        it('webgl_test_blendFuncSeparate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_blendFuncSeparate', 0, async function (done) {
             console.info("webgltest [webgl_test_blendFuncSeparate] blendFuncSeparate");
             let isEnable = gl.isEnabled(gl.BLEND);
             let src = gl.getParameter(gl.BLEND_SRC_RGB);
@@ -2344,8 +2335,7 @@ export default function webgl1_common() {
             let dst = gl.getParameter(gl.BLEND_DST_RGB);
             let dstAlpha = gl.getParameter(gl.BLEND_DST_ALPHA);
             gl.enable(gl.BLEND);
-            console.info("webgltest gl.blendFuncSeparate(gl.SRC_COLOR, gl.DST_COLOR, gl.ONE, gl.ZERO);",
-                gl.SRC_COLOR, gl.DST_COLOR, gl.ONE, gl.ZERO);
+            console.info("webgltest gl.blendFuncSeparate(gl.SRC_COLOR, gl.DST_COLOR, gl.ONE, gl.ZERO);", gl.SRC_COLOR, gl.DST_COLOR, gl.ONE, gl.ZERO);
             gl.blendFuncSeparate(gl.SRC_COLOR, gl.DST_COLOR, gl.ONE, gl.ZERO);
             console.info("webgltest gl.getParameter(gl.BLEND_SRC_RGB) ", gl.getParameter(gl.BLEND_SRC_RGB));
             console.info("webgltest gl.getParameter(gl.BLEND_DST_RGB) ", gl.getParameter(gl.BLEND_DST_RGB));
@@ -2375,8 +2365,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_blendFuncSeparate_Error
          * @tc.desc Test blendFuncSeparate.
          */
-        it('webgl_test_blendFuncSeparate_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_blendFuncSeparate_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_blendFuncSeparateError] blendFuncSeparate");
             let isEnable = gl.isEnabled(gl.BLEND);
             let src = gl.getParameter(gl.BLEND_SRC_RGB);
@@ -2414,7 +2403,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearStencil
          * @tc.desc Test clearStencil.
          */
-        it('webgl_test_clearStencil', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearStencil', 0, async function (done) {
             console.info("webgltest [webgl_test_clearStencil] clearStencil");
             let src = gl.getParameter(gl.STENCIL_CLEAR_VALUE);
             console.info("webgltest default clearStencil", src);
@@ -2436,7 +2425,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_clearStencil_Error
          * @tc.desc Test clearStencil.
          */
-        it('webgl_test_clearStencil_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_clearStencil_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_clearStencilError] clearStencil");
             let src = gl.getParameter(gl.STENCIL_CLEAR_VALUE);
             console.info("webgltest [webgl_test_clearStencilError] clearStencil(undefined) ");
@@ -2461,7 +2450,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_colorMask
          * @tc.desc Test colorMask.
          */
-        it('webgl_test_colorMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_colorMask', 0, async function (done) {
             console.info("webgltest [webgl_test_colorMask] colorMask");
             let src = gl.getParameter(gl.COLOR_WRITEMASK);
             console.info("webgltest gl.colorMask(false, false, false, false);");
@@ -2490,7 +2479,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_colorMask_Error
          * @tc.desc Test colorMask.
          */
-        it('webgl_test_colorMask_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_colorMask_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_colorMaskError] colorMask");
             let src = gl.getParameter(gl.COLOR_WRITEMASK);
             console.info("webgltest [webgl_test_colorMaskError] colorMask(red = undefined) ");
@@ -2518,7 +2507,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_cullFace
          * @tc.desc Test cullFace.
          */
-        it('webgl_test_cullFace', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_cullFace', 0, async function (done) {
             console.info("webgltest [webgl_test_cullFace] cullFace");
             console.info("webgltest CULL_FACE_MODE default gl.BACK ", gl.BACK);
             let src = gl.getParameter(gl.CULL_FACE_MODE);
@@ -2539,7 +2528,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_cullFace_Error
          * @tc.desc Test cullFace.
          */
-        it('webgl_test_cullFace_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_cullFace_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_cullFaceError] cullFace");
             console.info("webgltest CULL_FACE_MODE default gl.BACK ", gl.BACK);
             let src = gl.getParameter(gl.CULL_FACE_MODE);
@@ -2566,7 +2555,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthFunc
          * @tc.desc Test depthFunc.
          */
-        it('webgl_test_depthFunc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthFunc', 0, async function (done) {
             console.info("webgltest [webgl_test_depthFunc] depthFunc");
             let isEnable = gl.isEnabled(gl.DEPTH_TEST);
             gl.enable(gl.DEPTH_TEST);
@@ -2592,7 +2581,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthFunc_Error
          * @tc.desc Test depthFunc.
          */
-        it('webgl_test_depthFunc_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthFunc_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_depthFuncError] depthFunc");
             let isEnable = gl.isEnabled(gl.DEPTH_TEST);
             gl.enable(gl.DEPTH_TEST);
@@ -2622,7 +2611,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthMask
          * @tc.desc Test depthMask.
          */
-        it('webgl_test_depthMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthMask', 0, async function (done) {
             console.info("webgltest [webgl_test_depthMask] depthMask");
             let src = gl.getParameter(gl.DEPTH_WRITEMASK);
             gl.depthMask(false);
@@ -2643,7 +2632,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthMask_Error
          * @tc.desc Test depthMask.
          */
-        it('webgl_test_depthMask_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthMask_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_depthMaskError] depthMask");
             let src = gl.getParameter(gl.DEPTH_WRITEMASK);
             console.info("webgltest [webgl_test_depthFuncError] depthMask(undefined) ");
@@ -2674,7 +2663,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthRange
          * @tc.desc Test depthRange.
          */
-        it('webgl_test_depthRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthRange', 0, async function (done) {
             console.info("webgltest [webgl_test_depthRange] depthRange");
             let src = gl.getParameter(gl.DEPTH_RANGE);
             console.info("webgltest default depthRange", src);
@@ -2694,7 +2683,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_depthRange_Error
          * @tc.desc Test depthRange.
          */
-        it('webgl_test_depthRange_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_depthRange_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_depthRangeError] depthRange");
             let src = gl.getParameter(gl.DEPTH_RANGE);
             console.info("webgltest [webgl_test_depthRangeError] depthRange(zNear = undefined) ");
@@ -2721,7 +2710,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_frontFace
          * @tc.desc Test frontFace.
          */
-        it('webgl_test_frontFace', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_frontFace', 0, async function (done) {
             console.info("webgltest [webgl_test_frontFace] frontFace");
             let src = gl.getParameter(gl.FRONT_FACE);
             console.info("webgltest gl.frontFace(gl.CW);", gl.CW);
@@ -2742,7 +2731,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_frontFace_Error
          * @tc.desc Test frontFace.
          */
-        it('webgl_test_frontFace_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_frontFace_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_frontFaceError] frontFace");
             let src = gl.getParameter(gl.FRONT_FACE);
             console.info("webgltest [webgl_test_depthRangeError] frontFace(undefined) ");
@@ -2767,7 +2756,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilFunc
          * @tc.desc Test stencilFunc.
          */
-        it('webgl_test_stencilFunc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilFunc', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilFunc] stencilFunc");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -2804,7 +2793,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilFunc_Error
          * @tc.desc Test stencilFunc.
          */
-        it('webgl_test_stencilFunc_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilFunc_Error', 0, async function (done) {
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
             let defVal = gl.getParameter(gl.STENCIL_VALUE_MASK);
@@ -2833,8 +2822,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilFuncSeparate
          * @tc.desc Test stencilFuncSeparate.
          */
-        it('webgl_test_stencilFuncSeparate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_stencilFuncSeparate', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilFuncSeparate] stencilFuncSeparate");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -2875,8 +2863,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilFuncSeparate_Error
          * @tc.desc Test stencilFuncSeparate.
          */
-        it('webgl_test_stencilFuncSeparate_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_stencilFuncSeparate_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilFuncSeparateError] stencilFuncSeparate");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -2909,7 +2896,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilMask
          * @tc.desc Test stencilMask.
          */
-        it('webgl_test_stencilMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilMask', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilMask] stencilMask");
             let srcStencilWriteMask = gl.getParameter(gl.STENCIL_WRITEMASK);
             let srcStencilBackWriteMask = gl.getParameter(gl.STENCIL_BACK_WRITEMASK);
@@ -2930,7 +2917,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilMask_Error
          * @tc.desc Test stencilMask.
          */
-        it('webgl_test_stencilMask_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilMask_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilMaskError] stencilMask");
             let srcStencilWriteMask = gl.getParameter(gl.STENCIL_WRITEMASK);
             console.info("webgltest [webgl_test_stencilFuncError] stencilMask(undefined) ");
@@ -2955,8 +2942,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilMaskSeparate
          * @tc.desc Test stencilMaskSeparate.
          */
-        it('webgl_test_stencilMaskSeparate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_stencilMaskSeparate', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilMaskSeparate] stencilMaskSeparate");
             let srcStencilWriteMask = gl.getParameter(gl.STENCIL_WRITEMASK);
             let srcStencilBackWriteMask = gl.getParameter(gl.STENCIL_BACK_WRITEMASK);
@@ -2983,8 +2969,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilMaskSeparate_Error
          * @tc.desc Test stencilMaskSeparate.
          */
-        it('webgl_test_stencilMaskSeparate_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_stencilMaskSeparate_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilMaskSeparateError] stencilMaskSeparate");
             let srcStencilWriteMask = gl.getParameter(gl.STENCIL_WRITEMASK);
             let srcStencilBackWriteMask = gl.getParameter(gl.STENCIL_BACK_WRITEMASK);
@@ -3011,7 +2996,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilOp
          * @tc.desc Test stencilOp.
          */
-        it('webgl_test_stencilOp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilOp', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilOp] stencilOp");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -3059,7 +3044,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilOp_Error
          * @tc.desc Test stencilOp.
          */
-        it('webgl_test_stencilOp_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilOp_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilOpError] stencilOp");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -3088,7 +3073,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilOpSeparate
          * @tc.desc Test stencilOpSeparate.
          */
-        it('webgl_test_stencilOpSeparate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_stencilOpSeparate', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilOpSeparate] stencilOpSeparate");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -3120,10 +3105,8 @@ export default function webgl1_common() {
             expect(info.backFail).assertEqual(gl.KEEP);
             expect(info.backPassDepthFail).assertEqual(gl.KEEP);
             expect(info.backPassDepthPass).assertEqual(gl.KEEP);
-            console.info("webgltest gl.stencilOpSeparate(gl.FRONT,gl.INCR, gl.DECR, gl.INVERT);",
-                gl.FRONT, gl.INCR, gl.DECR, gl.INVERT);
-            console.info("webgltest gl.stencilOpSeparate(gl.BACK,gl.KEEP, gl.DECR, gl.INVERT);",
-                gl.BACK, gl.KEEP, gl.DECR, gl.INVERT);
+            console.info("webgltest gl.stencilOpSeparate(gl.FRONT,gl.INCR, gl.DECR, gl.INVERT);", gl.FRONT, gl.INCR, gl.DECR, gl.INVERT);
+            console.info("webgltest gl.stencilOpSeparate(gl.BACK,gl.KEEP, gl.DECR, gl.INVERT);", gl.BACK, gl.KEEP, gl.DECR, gl.INVERT);
             gl.stencilOpSeparate(gl.FRONT, gl.INCR, gl.DECR, gl.INVERT);
             gl.stencilOpSeparate(gl.BACK, gl.KEEP, gl.DECR, gl.INVERT);
             info = getInfo();
@@ -3146,8 +3129,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_stencilOpSeparate_Error
          * @tc.desc Test stencilOpSeparate.
          */
-        it('webgl_test_stencilOpSeparate_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_stencilOpSeparate_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_stencilOpSeparateError] stencilOpSeparate");
             let isEnable = gl.isEnabled(gl.STENCIL_TEST);
             gl.enable(gl.STENCIL_TEST);
@@ -3179,7 +3161,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_scissor
          * @tc.desc Test scissor.
          */
-        it('webgl_test_scissor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_scissor', 0, async function (done) {
             console.info("webgltest [webgl_test_scissor] scissor");
             let isEnable = gl.isEnabled(gl.SCISSOR_TEST);
             let src = gl.getParameter(gl.SCISSOR_BOX);
@@ -3206,7 +3188,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_scissor_Error
          * @tc.desc Test scissor.
          */
-        it('webgl_test_scissor_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_scissor_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_scissorError] scissor");
             let isEnable = gl.isEnabled(gl.SCISSOR_TEST);
             let src = gl.getParameter(gl.SCISSOR_BOX);
@@ -3240,7 +3222,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_polygonOffset
          * @tc.desc Test polygonOffset.
          */
-        it('webgl_test_polygonOffset', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_polygonOffset', 0, async function (done) {
             console.info("webgltest [polygonOffset] polygonOffset");
             let isEnable = gl.isEnabled(gl.POLYGON_OFFSET_FILL);
             gl.enable(gl.POLYGON_OFFSET_FILL);
@@ -3271,8 +3253,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_polygonOffset_Error
          * @tc.desc Test polygonOffset.
          */
-        it('webgl_test_polygonOffset_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_polygonOffset_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_polygonOffsetError] polygonOffset");
             let isEnable = gl.isEnabled(gl.POLYGON_OFFSET_FILL);
             gl.enable(gl.POLYGON_OFFSET_FILL);
@@ -3297,7 +3278,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_sampleCoverage
          * @tc.desc Test sampleCoverage.
          */
-        it('webgl_test_sampleCoverage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_sampleCoverage', 0, async function (done) {
             console.info("webgltest [sampleCoverage] sampleCoverage");
             let isEnable = gl.isEnabled(gl.SAMPLE_COVERAGE);
             gl.enable(gl.SAMPLE_COVERAGE);
@@ -3327,8 +3308,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_sampleCoverage_Error
          * @tc.desc Test sampleCoverage.
          */
-        it('webgl_test_sampleCoverage_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_sampleCoverage_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_sampleCoverageError] sampleCoverage");
             let isEnable = gl.isEnabled(gl.SAMPLE_COVERAGE);
             gl.enable(gl.SAMPLE_COVERAGE);
@@ -3358,7 +3338,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_pixelStorei
          * @tc.desc Test pixelStorei.
          */
-        it('webgl_test_pixelStorei', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_pixelStorei', 0, async function (done) {
             console.info("webgltest [pixelStorei] pixelStorei");
             let srcUnpack = gl.getParameter(gl.UNPACK_ALIGNMENT);
             let srcPack = gl.getParameter(gl.PACK_ALIGNMENT);
@@ -3384,7 +3364,7 @@ export default function webgl1_common() {
          * @tc.name webgl_test_pixelStorei_Error
          * @tc.desc Test pixelStorei.
          */
-        it('webgl_test_pixelStorei_Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_pixelStorei_Error', 0, async function (done) {
             console.info("webgltest [webgl_test_pixelStoreiError] pixelStorei");
             let srcUnpack = gl.getParameter(gl.UNPACK_ALIGNMENT);
             let srcPack = gl.getParameter(gl.PACK_ALIGNMENT);

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -85,7 +85,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_createProgram
          * @tc.desc Test createProgram.
          */
-        it('webgl_test_createProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_createProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_createProgram] createProgram");
             let program = gl.createProgram();
             console.info("webgltest program:", program);
@@ -113,7 +113,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_deleteProgram
          * @tc.desc Test deleteProgram.
          */
-        it('webgl_test_deleteProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteProgram] deleteProgram");
             let program = gl.createProgram();
             console.info("webgltest program:", program);
@@ -134,7 +134,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_deleteProgram_1
          * @tc.desc Test deleteProgram.
          */
-        it('webgl_test_deleteProgram_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteProgram_1', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteProgram_1] deleteProgram");
             deleteProgram((program) => {
                 gl.deleteProgram(null);
@@ -151,7 +151,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_deleteProgram_2
          * @tc.desc Test deleteProgram.
          */
-        it('webgl_test_deleteProgram_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_deleteProgram_2', 0, async function (done) {
             console.info("webgltest [webgl_test_deleteProgram_2] deleteProgram");
             deleteProgram((program) => {
                 gl.deleteProgram(undefined);
@@ -175,7 +175,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_isProgram
          * @tc.desc Test isProgram.
          */
-        it('webgl_test_isProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_isProgram] isProgram");
             let program = gl.createProgram();
             console.log("webgltest isProgram:", gl.isProgram(program));
@@ -194,7 +194,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_isProgram_1
          * @tc.desc Test isProgram.
          */
-        it('webgl_test_isProgram_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isProgram_1', 0, async function (done) {
             console.info("webgltest [webgl_test_isProgram_1] isProgram");
             isProgram((program) => {
                 gl.isProgram(null);
@@ -211,7 +211,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_isProgram_2
          * @tc.desc Test isProgram.
          */
-        it('webgl_test_isProgram_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_isProgram_2', 0, async function (done) {
             console.info("webgltest [webgl_test_isProgram_2] isProgram");
             isProgram((program) => {
                 gl.isProgram(undefined);
@@ -227,7 +227,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_linkProgram
          * @tc.desc Test linkProgram.
          */
-        it('webgl_test_linkProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_linkProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_linkProgram] linkProgram");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, VERTEX_SOURCE_DEMO);
@@ -266,8 +266,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_getProgramParameter
          * @tc.desc Test getProgramParameter.
          */
-        it('webgl_test_getProgramParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getProgramParameter', 0, async function (done) {
             console.info("webgltest [webgl_test_getProgramParameter] getProgramParameter");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, VERTEX_SOURCE_DEMO);
@@ -301,8 +300,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_getProgramParameter_1
          * @tc.desc Test getProgramParameter.
          */
-        it('webgl_test_getProgramParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getProgramParameter_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getProgramParameter_1] getProgramParameter");
             getProgramParameter((program) => {
                 gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS)
@@ -317,7 +315,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_validateProgram
          * @tc.desc Test validateProgram.
          */
-        it('webgl_test_validateProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_validateProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_validateProgram] validateProgram");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, VERTEX_SOURCE_DEMO);
@@ -371,7 +369,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_useProgram
          * @tc.desc Test useProgram.
          */
-        it('webgl_test_useProgram', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_useProgram', 0, async function (done) {
             console.info("webgltest [webgl_test_useProgram] useProgram");
             let program = gl.createProgram();
             let program2 = gl.createProgram();
@@ -411,7 +409,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_useProgram_1
          * @tc.desc Test useProgram.
          */
-        it('webgl_test_useProgram_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_useProgram_1', 0, async function (done) {
             console.info("webgltest [webgl_test_useProgram_1] useProgram");
             getProgramParameter((program) => {
                 gl.useProgram(null);
@@ -427,7 +425,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_useProgram_2
          * @tc.desc Test useProgram.
          */
-        it('webgl_test_useProgram_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_useProgram_2', 0, async function (done) {
             console.info("webgltest [webgl_test_useProgram_2] useProgram");
             getProgramParameter((program) => {
                 gl.useProgram(undefined);
@@ -442,7 +440,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_getProgramInfoLog
          * @tc.desc Test getProgramInfoLog.
          */
-        it('webgl_test_getProgramInfoLog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getProgramInfoLog', 0, async function (done) {
             console.info("webgltest [webgl_test_getProgramInfoLog] getProgramInfoLog");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, VERTEX_SOURCE_DEMO);
@@ -467,8 +465,7 @@ export default function webgl1_program() {
          * @tc.name webgl_test_getProgramInfoLog_2
          * @tc.desc Test getProgramInfoLog.
          */
-        it('webgl_test_getProgramInfoLog_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getProgramInfoLog_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getProgramInfoLog] getProgramInfoLog");
             let program = gl.createProgram();
             let vShader = initShader(gl, gl.VERTEX_SHADER, VERTEX_SOURCE_DEMO);

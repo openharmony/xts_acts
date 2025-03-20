@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -73,7 +73,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getActiveUniform
          * @tc.desc Test getActiveUniform.
          */
-        it('webgl_test_getActiveUniform', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getActiveUniform', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveUniform] getActiveUniform");
             let vSource = `
             void main(){
@@ -111,8 +111,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getActiveUniforms_1
          * @tc.desc Test getActiveUniforms.
          */
-        it('webgl_test_getActiveUniforms_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getActiveUniforms_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveUniforms_1] getActiveUniforms_1");
             getActiveUniform((program) => {
                 let activeUniform = gl.getActiveUniform(program, 0);
@@ -129,8 +128,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getActiveUniforms_2
          * @tc.desc Test getActiveUniforms.
          */
-        it('webgl_test_getActiveUniforms_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getActiveUniforms_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveUniforms_2] getActiveUniforms_1");
             getActiveUniform((program) => {
                 let activeUniform = gl.getActiveUniform(program, -1);
@@ -146,8 +144,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getActiveUniforms_3
          * @tc.desc Test getActiveUniforms.
          */
-        it('webgl_test_getActiveUniforms_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getActiveUniforms_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getActiveUniforms_3] getActiveUniforms_1");
             getActiveUniform((program) => {
                 let activeUniform = gl.getActiveUniform(program, null);
@@ -164,7 +161,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getUniformLocation
          * @tc.desc Test getUniformLocation.
          */
-        it('webgl_test_getUniformLocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getUniformLocation', 0, async function (done) {
             console.info("webgltest [webgl_test_getUniformLocation] getUniformLocation");
             let vSource = `
             void main(){
@@ -219,8 +216,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getUniformLocation_1
          * @tc.desc Test getUniformLocation.
          */
-        it('webgl_test_getUniformLocation_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getUniformLocation_1', 0, async function (done) {
             console.info("webgltest [webgl_test_getUniformLocation_1] getUniformLocation");
             getUniformLocation((program) => {
                 let u_FragColor = gl.getUniformLocation(program, "u_FragColor");
@@ -236,8 +232,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getUniformLocation_2
          * @tc.desc Test getUniformLocation.
          */
-        it('webgl_test_getUniformLocation_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getUniformLocation_2', 0, async function (done) {
             console.info("webgltest [webgl_test_getUniformLocation_2] getUniformLocation");
             getUniformLocation((program) => {
                 let u_FragColor = gl.getUniformLocation(program, "u_FragColor_1");
@@ -253,8 +248,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getUniformLocation_3
          * @tc.desc Test getUniformLocation.
          */
-        it('webgl_test_getUniformLocation_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl_test_getUniformLocation_3', 0, async function (done) {
             console.info("webgltest [webgl_test_getUniformLocation_3] getUniformLocation");
             getUniformLocation((program) => {
                 let u_FragColor = gl.getUniformLocation(program, null);
@@ -294,7 +288,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1f
          * @tc.desc Test uniform1f.
          */
-        it('webgl_test_uniform1f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1f', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1f] uniform1f");
             let vSource = `
             attribute vec4 a_Position;
@@ -330,7 +324,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1f_1
          * @tc.desc Test uniform1f.
          */
-        it('webgl_test_uniform1f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1f_1] uniform1f");
             uniform1f((program, val) => {
                 gl.uniform1f(val, 0);
@@ -348,7 +342,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1f_2
          * @tc.desc Test uniform1f.
          */
-        it('webgl_test_uniform1f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1f_2] uniform1f");
             uniform1f((program, val) => {
                 gl.uniform1f(val, null);
@@ -366,7 +360,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1f_3
          * @tc.desc Test uniform1f.
          */
-        it('webgl_test_uniform1f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1f_3] uniform1f");
             uniform1f((program, val) => {
                 gl.uniform1f(val, undefined);
@@ -384,7 +378,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1f_4
          * @tc.desc Test uniform1f.
          */
-        it('webgl_test_uniform1f_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1f_4', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1f_4] uniform1f");
             uniform1f((program, val) => {
                 gl.uniform1f(val, "0");
@@ -427,7 +421,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2f
          * @tc.desc Test uniform2f.
          */
-        it('webgl_test_uniform2f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2f', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2f] uniform2f");
             let vSource = `
             attribute vec4 a_Position;
@@ -466,7 +460,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2f_1
          * @tc.desc Test uniform2f.
          */
-        it('webgl_test_uniform2f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2f_1] uniform2f");
             uniform2f((val) => {
                 gl.uniform2f(val, 0, 0);
@@ -485,7 +479,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2f_2
          * @tc.desc Test uniform2f.
          */
-        it('webgl_test_uniform2f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2f_2] uniform2f");
             uniform2f((val) => {
                 gl.uniform2f(val, null, null);
@@ -504,7 +498,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2f_3
          * @tc.desc Test uniform2f.
          */
-        it('webgl_test_uniform2f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2f_3] uniform2f");
             uniform2f((val) => {
                 gl.uniform2f(val, undefined, undefined);
@@ -549,7 +543,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3f
          * @tc.desc Test uniform3f.
          */
-        it('webgl_test_uniform3f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3f', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3f] uniform3f");
             let vSource = `
             attribute vec4 a_Position;
@@ -590,7 +584,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3f_1
          * @tc.desc Test uniform3f.
          */
-        it('webgl_test_uniform3f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3f_1] uniform3f");
             uniform3f((val) => {
                 gl.uniform3f(val, 0, 0, 0);
@@ -610,7 +604,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3f_2
          * @tc.desc Test uniform3f.
          */
-        it('webgl_test_uniform3f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3f_2] uniform3f");
             uniform3f((val) => {
                 gl.uniform3f(val, null, null, null);
@@ -630,7 +624,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3f_3
          * @tc.desc Test uniform3f.
          */
-        it('webgl_test_uniform3f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3f_3] uniform3f");
             uniform3f((val) => {
                 gl.uniform3f(val, undefined, undefined, undefined);
@@ -677,7 +671,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4f
          * @tc.desc Test uniform4f.
          */
-        it('webgl_test_uniform4f', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4f', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4f] uniform4f");
             let vSource = `
             attribute vec4 a_Position;
@@ -720,7 +714,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4f_1
          * @tc.desc Test uniform4f.
          */
-        it('webgl_test_uniform4f_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4f_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4f_1] uniform4f");
             uniform4f((val) => {
                 gl.uniform4f(val, 0, 0, 0, 0);
@@ -741,7 +735,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4f_2
          * @tc.desc Test uniform4f.
          */
-        it('webgl_test_uniform4f_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4f_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4f_2] uniform4f");
             uniform4f((val) => {
                 gl.uniform4f(val, null, null, null, null);
@@ -762,7 +756,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4f_3
          * @tc.desc Test uniform4f.
          */
-        it('webgl_test_uniform4f_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4f_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4f_3] uniform4f");
             uniform4f((val) => {
                 gl.uniform4f(val, undefined, undefined, undefined, undefined);
@@ -807,7 +801,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1fv
          * @tc.desc Test uniform1fv.
          */
-        it('webgl_test_uniform1fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1fv] uniform1fv");
             let vSource = `
             attribute vec4 a_Position;
@@ -844,7 +838,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1fv_1
          * @tc.desc Test uniform1fv.
          */
-        it('webgl_test_uniform1fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1fv_1] uniform1fv");
             uniform1fv((val) => {
                 gl.uniform1fv(val, [0]);
@@ -862,7 +856,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1fv_2
          * @tc.desc Test uniform1fv.
          */
-        it('webgl_test_uniform1fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1fv_2] uniform1fv");
             uniform1fv((val) => {
                 gl.uniform1fv(val, [null]);
@@ -880,7 +874,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1fv_3
          * @tc.desc Test uniform1fv.
          */
-        it('webgl_test_uniform1fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1fv_3] uniform1fv");
             uniform1fv((val) => {
                 gl.uniform1fv(val, [undefined]);
@@ -923,7 +917,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2fv
          * @tc.desc Test uniform2fv.
          */
-        it('webgl_test_uniform2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2fv] uniform2fv");
             let vSource = `
             attribute vec4 a_Position;
@@ -962,7 +956,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2fv_1
          * @tc.desc Test uniform2fv.
          */
-        it('webgl_test_uniform2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2fv_1] uniform2fv");
             uniform2fv((val) => {
                 gl.uniform2fv(val, [0, 0]);
@@ -981,7 +975,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2fv_2
          * @tc.desc Test uniform2fv.
          */
-        it('webgl_test_uniform2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2fv_2] uniform2fv");
             uniform2fv((val) => {
                 gl.uniform2fv(val, [null, null]);
@@ -1000,7 +994,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2fv_3
          * @tc.desc Test uniform2fv.
          */
-        it('webgl_test_uniform2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2fv_3] uniform2fv");
             uniform2fv((val) => {
                 gl.uniform2fv(val, [undefined, undefined]);
@@ -1045,7 +1039,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3fv
          * @tc.desc Test uniform3fv.
          */
-        it('webgl_test_uniform3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3fv] uniform3fv");
             let vSource = `
             attribute vec4 a_Position;
@@ -1086,7 +1080,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3fv_1
          * @tc.desc Test uniform3fv.
          */
-        it('webgl_test_uniform3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3fv_1] uniform3fv");
             uniform3fv((val) => {
                 gl.uniform3fv(val, [0, 0, 0]);
@@ -1106,7 +1100,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3fv_2
          * @tc.desc Test uniform3fv.
          */
-        it('webgl_test_uniform3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3fv_2] uniform3fv");
             uniform3fv((val) => {
                 gl.uniform3fv(val, [null, null, null]);
@@ -1126,7 +1120,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3fv_3
          * @tc.desc Test uniform3fv.
          */
-        it('webgl_test_uniform3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3fv_3] uniform3fv");
             uniform3fv((val) => {
                 gl.uniform3fv(val, [undefined, undefined, undefined]);
@@ -1173,7 +1167,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4fv
          * @tc.desc Test uniform4fv.
          */
-        it('webgl_test_uniform4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4fv] uniform4fv");
             let vSource = `
             attribute vec4 a_Position;
@@ -1216,7 +1210,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4fv_1
          * @tc.desc Test uniform4fv.
          */
-        it('webgl_test_uniform4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4fv_1] uniform4fv");
             uniform4fv((val) => {
                 gl.uniform4fv(val, [0, 0, 0, 0]);
@@ -1237,7 +1231,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4fv_2
          * @tc.desc Test uniform4fv.
          */
-        it('webgl_test_uniform4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4fv_2] uniform4fv");
             uniform4fv((val) => {
                 gl.uniform4fv(val, [null, null, null, null]);
@@ -1258,7 +1252,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4fv_3
          * @tc.desc Test uniform4fv.
          */
-        it('webgl_test_uniform4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4fv_3] uniform4fv");
             uniform4fv((val) => {
                 gl.uniform4fv(val, [undefined, undefined, undefined, undefined]);
@@ -1303,7 +1297,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1i
          * @tc.desc Test uniform1i.
          */
-        it('webgl_test_uniform1i', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1i', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1i] uniform1i");
             let vSource = `
             attribute vec4 a_Position;
@@ -1345,7 +1339,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1i_1
          * @tc.desc Test uniform1i.
          */
-        it('webgl_test_uniform1i_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1i_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1i_1] uniform1i");
             uniform1i((val) => {
                 gl.uniform1i(val, 1);
@@ -1363,7 +1357,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1i_2
          * @tc.desc Test uniform1i.
          */
-        it('webgl_test_uniform1i_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1i_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1i_2] uniform1i");
             uniform1i((val) => {
                 gl.uniform1i(val, null);
@@ -1381,7 +1375,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1i_3
          * @tc.desc Test uniform1i.
          */
-        it('webgl_test_uniform1i_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1i_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1i_3] uniform1i");
             uniform1i((val) => {
                 gl.uniform1i(val, undefined);
@@ -1429,7 +1423,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1iv
          * @tc.desc Test uniform1iv.
          */
-        it('webgl_test_uniform1iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1iv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1iv] uniform1iv");
             let vSource = `
             attribute vec4 a_Position;
@@ -1471,7 +1465,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1iv_1
          * @tc.desc Test uniform1iv.
          */
-        it('webgl_test_uniform1iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1iv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1iv_1] uniform1iv");
             uniform1iv((val) => {
                 gl.uniform1iv(val, [1]);
@@ -1489,7 +1483,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1iv_2
          * @tc.desc Test uniform1iv.
          */
-        it('webgl_test_uniform1iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1iv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1iv_2] uniform1iv");
             uniform1iv((val) => {
                 gl.uniform1iv(val, [null]);
@@ -1507,7 +1501,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform1iv_3
          * @tc.desc Test uniform1iv.
          */
-        it('webgl_test_uniform1iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform1iv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform1iv_3] uniform1iv");
             uniform1iv((val) => {
                 gl.uniform1iv(val, [undefined]);
@@ -1550,7 +1544,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2iv
          * @tc.desc Test uniform2iv.
          */
-        it('webgl_test_uniform2iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2iv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2iv] uniform2iv");
             let vSource = `
             uniform ivec2 a_Position;
@@ -1589,7 +1583,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2iv_1
          * @tc.desc Test uniform2iv.
          */
-        it('webgl_test_uniform2iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2iv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2iv_1] uniform2iv");
             uniform2iv((val) => {
                 gl.uniform2iv(val, [1, 1]);
@@ -1608,7 +1602,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2iv_2
          * @tc.desc Test uniform2iv.
          */
-        it('webgl_test_uniform2iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2iv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2iv_2] uniform2iv");
             uniform2iv((val) => {
                 gl.uniform2iv(val, [null, null]);
@@ -1627,7 +1621,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2iv_3
          * @tc.desc Test uniform2iv.
          */
-        it('webgl_test_uniform2iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2iv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2iv_3] uniform2iv");
             uniform2iv((val) => {
                 gl.uniform2iv(val, [undefined, undefined]);
@@ -1672,7 +1666,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3iv
          * @tc.desc Test uniform3iv.
          */
-        it('webgl_test_uniform3iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3iv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3iv] uniform3iv");
             let vSource = `
             uniform ivec3 a_Position1;
@@ -1722,7 +1716,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3iv_1
          * @tc.desc Test uniform3iv.
          */
-        it('webgl_test_uniform3iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3iv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3iv_1] uniform3iv");
             uniform3iv((val) => {
                 gl.uniform3iv(val, [1, 1, 1]);
@@ -1742,7 +1736,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3iv_2
          * @tc.desc Test uniform3iv.
          */
-        it('webgl_test_uniform3iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3iv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3iv_2] uniform3iv");
             uniform3iv((val) => {
                 gl.uniform3iv(val, [null, null, null]);
@@ -1762,7 +1756,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3iv_3
          * @tc.desc Test uniform3iv.
          */
-        it('webgl_test_uniform3iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3iv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3iv_3] uniform3iv");
             uniform3iv((val) => {
                 gl.uniform3iv(val, [undefined, undefined, undefined]);
@@ -1809,7 +1803,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4iv
          * @tc.desc Test uniform4iv.
          */
-        it('webgl_test_uniform4iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4iv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4iv] uniform4iv");
             let vSource = `
             uniform ivec4 a_Position;
@@ -1852,7 +1846,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4iv_1
          * @tc.desc Test uniform4iv.
          */
-        it('webgl_test_uniform4iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4iv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4iv_1] uniform4iv");
             uniform4iv((val) => {
                 gl.uniform4iv(val, [1, 1, 1, 1]);
@@ -1873,7 +1867,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4iv_2
          * @tc.desc Test uniform4iv.
          */
-        it('webgl_test_uniform4iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4iv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4iv_2] uniform4iv");
             uniform4iv((val) => {
                 gl.uniform4iv(val, [null, null, null, null]);
@@ -1894,7 +1888,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4iv_3
          * @tc.desc Test uniform4iv.
          */
-        it('webgl_test_uniform4iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4iv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4iv_3] uniform4iv");
             uniform4iv((val) => {
                 gl.uniform4iv(val, [undefined, undefined, undefined, undefined]);
@@ -1940,7 +1934,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2i
          * @tc.desc Test uniform2i.
          */
-        it('webgl_test_uniform2i', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2i', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2i] uniform2i");
             let vSource = `
             uniform ivec2 a_Position;
@@ -1979,7 +1973,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2i_1
          * @tc.desc Test uniform2i.
          */
-        it('webgl_test_uniform2i_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2i_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2i_1] uniform2i");
             uniform2i((val) => {
                 gl.uniform2i(val, 1, 1);
@@ -1998,7 +1992,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2i_2
          * @tc.desc Test uniform2i.
          */
-        it('webgl_test_uniform2i_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2i_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2i_2] uniform2i");
             uniform2i((val) => {
                 gl.uniform2i(val, null, null);
@@ -2017,7 +2011,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform2i_3
          * @tc.desc Test uniform2i.
          */
-        it('webgl_test_uniform2i_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform2i_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform2i_3] uniform2i");
             uniform2i((val) => {
                 gl.uniform2i(val, undefined, undefined);
@@ -2062,7 +2056,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3i
          * @tc.desc Test uniform3i.
          */
-        it('webgl_test_uniform3i', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3i', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3i] uniform3i");
             let vSource = `
             uniform ivec3 a_Position;
@@ -2103,7 +2097,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3i_1
          * @tc.desc Test uniform3i.
          */
-        it('webgl_test_uniform3i_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3i_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3i_1] uniform3i");
             uniform3i((val) => {
                 gl.uniform3i(val, 1, 1, 1);
@@ -2123,7 +2117,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3i_2
          * @tc.desc Test uniform3i.
          */
-        it('webgl_test_uniform3i_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3i_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3i_2] uniform3i");
             uniform3i((val) => {
                 gl.uniform3i(val, null, null, null);
@@ -2143,7 +2137,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform3i_3
          * @tc.desc Test uniform3i.
          */
-        it('webgl_test_uniform3i_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform3i_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform3i_3] uniform3i");
             uniform3i((val) => {
                 gl.uniform3i(val, undefined, undefined, undefined);
@@ -2190,7 +2184,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4i
          * @tc.desc Test uniform4i.
          */
-        it('webgl_test_uniform4i', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4i', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4i] uniform4i");
             let vSource = `
             uniform ivec4 a_Position;
@@ -2233,7 +2227,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4i_1
          * @tc.desc Test uniform4i.
          */
-        it('webgl_test_uniform4i_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4i_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4i_1] uniform4i");
             uniform4i((val) => {
                 gl.uniform4i(val, 1, 1, 1, 1);
@@ -2254,7 +2248,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4i_2
          * @tc.desc Test uniform4i.
          */
-        it('webgl_test_uniform4i_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4i_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4i_2] uniform4i");
             uniform4i((val) => {
                 gl.uniform4i(val, null, null, null, null);
@@ -2275,7 +2269,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniform4i_3
          * @tc.desc Test uniform4i.
          */
-        it('webgl_test_uniform4i_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniform4i_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniform4i_3] uniform4i");
             uniform4i((val) => {
                 gl.uniform4i(val, undefined, undefined, undefined, undefined);
@@ -2296,7 +2290,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_getUniform
          * @tc.desc Test getUniform.
          */
-        it('webgl_test_getUniform', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_getUniform', 0, async function (done) {
             console.info("webgltest [webgl_test_getUniform] getUniform");
             let vSource = `
             attribute vec4 a_Position;
@@ -2360,7 +2354,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix4fv
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl_test_uniformMatrix4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix4fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix4fv] uniformMatrix4fv");
             let vSource = `
             attribute vec4 a_Position;
@@ -2416,7 +2410,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix4fv_1
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl_test_uniformMatrix4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix4fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix4fv_1] uniformMatrix4fv");
             uniformMatrix4fv((val) => {
                 gl.uniformMatrix4fv(val, false, [
@@ -2441,7 +2435,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix4fv_2
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl_test_uniformMatrix4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix4fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix4fv_2] uniformMatrix4fv");
             uniformMatrix4fv((val) => {
                 gl.uniformMatrix4fv(val, false, [
@@ -2462,7 +2456,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix4fv_3
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl_test_uniformMatrix4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix4fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix4fv_3] uniformMatrix4fv");
             uniformMatrix4fv((val) => {
                 gl.uniformMatrix4fv(val, false, [
@@ -2513,7 +2507,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix3fv
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl_test_uniformMatrix3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix3fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix3fv] uniformMatrix3fv");
             let vSource = `
             attribute vec2 a_Position;
@@ -2561,7 +2555,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix3fv_1
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl_test_uniformMatrix3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix3fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix3fv_1] uniformMatrix3fv");
             uniformMatrix3fv((val) => {
                 gl.uniformMatrix3fv(val, false, [
@@ -2585,7 +2579,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix3fv_2
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl_test_uniformMatrix3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix3fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix3fv_2] uniformMatrix3fv");
             uniformMatrix3fv((val) => {
                 gl.uniformMatrix3fv(val, false, [
@@ -2605,7 +2599,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix3fv_3
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl_test_uniformMatrix3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix3fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix3fv_3] uniformMatrix3fv");
             uniformMatrix3fv((val) => {
                 gl.uniformMatrix3fv(val, false, [
@@ -2655,7 +2649,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix2fv
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl_test_uniformMatrix2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix2fv', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix2fv] uniformMatrix2fv");
             let vSource = `
             attribute vec2 a_Position;
@@ -2697,7 +2691,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix2fv_1
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl_test_uniformMatrix2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix2fv_1', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix2fv_1] uniformMatrix2fv");
             uniformMatrix2fv((val) => {
                 gl.uniformMatrix2fv(val, false, [
@@ -2720,7 +2714,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix2fv_2
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl_test_uniformMatrix2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix2fv_2', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix2fv_2] uniformMatrix2fv");
             uniformMatrix2fv((val) => {
                 gl.uniformMatrix2fv(val, false, [
@@ -2740,7 +2734,7 @@ export default function webgl1_uniform() {
          * @tc.name webgl_test_uniformMatrix2fv_3
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl_test_uniformMatrix2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl_test_uniformMatrix2fv_3', 0, async function (done) {
             console.info("webgltest [webgl_test_uniformMatrix2fv_3] uniformMatrix2fv");
             uniformMatrix2fv((val) => {
                 gl.uniformMatrix2fv(val, false, [

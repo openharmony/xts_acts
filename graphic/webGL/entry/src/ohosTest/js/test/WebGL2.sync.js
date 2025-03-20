@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -58,7 +58,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_fenceSync
          * @tc.desc Test fenceSync.
          */
-        it('webgl2_test_fenceSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_fenceSync', 0, async function (done) {
             console.info("webgl2test [webgl2_test_fenceSync] fenceSync");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             console.log("webgltest Sync:", sync);
@@ -76,7 +76,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_fenceSync_1
          * @tc.desc Test fenceSync.
          */
-        it('webgl2_test_fenceSync_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_fenceSync_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_fenceSync] fenceSync");
             fenceSync((sync) => {
                 gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, null);
@@ -91,7 +91,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_fenceSync_2
          * @tc.desc Test fenceSync.
          */
-        it('webgl2_test_fenceSync_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_fenceSync_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_fenceSync] fenceSync");
             fenceSync((sync) => {
                 gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, undefined);
@@ -106,7 +106,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_fenceSync_3
          * @tc.desc Test fenceSync.
          */
-        it('webgl2_test_fenceSync_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_fenceSync_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_fenceSync] fenceSync");
             fenceSync((sync) => {
                 gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, false);
@@ -121,7 +121,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_fenceSync_4
          * @tc.desc Test fenceSync.
          */
-        it('webgl2_test_fenceSync_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_fenceSync_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_fenceSync] fenceSync");
             fenceSync((sync) => {
                 gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -143,7 +143,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_isSync
          * @tc.desc Test isSync.
          */
-        it('webgl2_test_isSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_isSync', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isSync] isSync");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             console.log("webgltest Sync:", sync);
@@ -161,7 +161,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_isSync_1
          * @tc.desc Test isSync.
          */
-        it('webgl2_test_isSync_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_isSync_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isSync] isSync");
             isSync((sync) => {
                 gl.isSync(null);
@@ -176,7 +176,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_isSync_2
          * @tc.desc Test isSync.
          */
-        it('webgl2_test_isSync_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_isSync_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_isSync] isSync");
             isSync((sync) => {
                 gl.isSync(undefined);
@@ -197,7 +197,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_deleteSync
          * @tc.desc Test deleteSync.
          */
-        it('webgl2_test_deleteSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_deleteSync', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSync] deleteSync");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             console.log("webgltest Sync:", sync);
@@ -215,7 +215,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_deleteSync_1
          * @tc.desc Test deleteSync.
          */
-        it('webgl2_test_deleteSync_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_deleteSync_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSync] deleteSync");
             deleteSync((sync) => {
                 gl.deleteSync(null);
@@ -230,7 +230,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_deleteSync_2
          * @tc.desc Test deleteSync.
          */
-        it('webgl2_test_deleteSync_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_deleteSync_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSync] deleteSync");
             deleteSync((sync) => {
                 gl.deleteSync(undefined);
@@ -253,7 +253,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             let status = gl.clientWaitSync(sync, gl.SYNC_FLUSH_COMMANDS_BIT, 0);
@@ -273,7 +273,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_1
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, 0, 0);
@@ -288,7 +288,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_2
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, 1, 0);
@@ -303,7 +303,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_3
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, null, null);
@@ -318,7 +318,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_4
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, null, 0);
@@ -333,7 +333,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_5
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_5', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, undefined, undefined);
@@ -348,7 +348,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_6
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_6', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, undefined, 0);
@@ -363,7 +363,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_7
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_7', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, false, false);
@@ -378,7 +378,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_8
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_8', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, false, 0);
@@ -393,7 +393,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_clientWaitSync_9
          * @tc.desc Test clientWaitSync.
          */
-        it('webgl2_test_clientWaitSync_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_clientWaitSync_9', 0, async function (done) {
             console.info("webgl2test [webgl2_test_clientWaitSync] clientWaitSync");
             clientWaitSync((sync) => {
                 gl.clientWaitSync(sync, gl.SYNC_FLUSH_COMMANDS_BIT, 0);
@@ -415,7 +415,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_waitSync
          * @tc.desc Test waitSync.
          */
-        it('webgl2_test_waitSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_waitSync', 0, async function (done) {
             console.info("webgl2test [webgl2_test_waitSync] waitSync");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             console.log("webgltest gl.waitSync(sync!, 0, gl.TIMEOUT_IGNORED):", gl.waitSync(sync, 0, gl.TIMEOUT_IGNORED));
@@ -433,7 +433,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_waitSync_1
          * @tc.desc Test waitSync.
          */
-        it('webgl2_test_waitSync_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_waitSync_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_waitSync] waitSync");
             waitSync((sync) => {
                 gl.waitSync(sync, null, gl.TIMEOUT_IGNORED);
@@ -448,7 +448,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_waitSync_2
          * @tc.desc Test waitSync.
          */
-        it('webgl2_test_waitSync_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_waitSync_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_waitSync] waitSync");
             waitSync((sync) => {
                 gl.waitSync(sync, undefined, gl.TIMEOUT_IGNORED);
@@ -463,7 +463,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_waitSync_3
          * @tc.desc Test waitSync.
          */
-        it('webgl2_test_waitSync_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_waitSync_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_waitSync] waitSync");
             waitSync((sync) => {
                 gl.waitSync(sync, false, gl.TIMEOUT_IGNORED);
@@ -478,7 +478,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_waitSync_4
          * @tc.desc Test waitSync.
          */
-        it('webgl2_test_waitSync_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_waitSync_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_waitSync] waitSync");
             waitSync((sync) => {
                 gl.waitSync(sync, 0, gl.TIMEOUT_IGNORED);
@@ -501,7 +501,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_getSyncParameter
          * @tc.desc Test getSyncParameter.
          */
-        it('webgl2_test_getSyncParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it('webgl2_test_getSyncParameter', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getSyncParameter] getSyncParameter");
             let sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
             let status = gl.clientWaitSync(sync, gl.SYNC_FLUSH_COMMANDS_BIT, 0);
@@ -520,8 +520,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_getSyncParameter_1
          * @tc.desc Test getSyncParameter.
          */
-        it('webgl2_test_getSyncParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getSyncParameter_1', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getSyncParameter] getSyncParameter");
             getSyncParameter((sync) => {
                 gl.getSyncParameter(sync, gl.OBJECT_TYPE);
@@ -536,8 +535,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_getSyncParameter_2
          * @tc.desc Test getSyncParameter.
          */
-        it('webgl2_test_getSyncParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getSyncParameter_2', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getSyncParameter] getSyncParameter");
             getSyncParameter((sync) => {
                 gl.getSyncParameter(sync, gl.SYNC_CONDITION);
@@ -552,8 +550,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_getSyncParameter_3
          * @tc.desc Test getSyncParameter.
          */
-        it('webgl2_test_getSyncParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getSyncParameter_3', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getSyncParameter] getSyncParameter");
             getSyncParameter((sync) => {
                 gl.getSyncParameter(sync, gl.SYNC_FLAGS);
@@ -568,8 +565,7 @@ export default function webgl2_sync() {
          * @tc.name webgl2_test_getSyncParameter_4
          * @tc.desc Test getSyncParameter.
          */
-        it('webgl2_test_getSyncParameter_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-            async function (done) {
+        it('webgl2_test_getSyncParameter_4', 0, async function (done) {
             console.info("webgl2test [webgl2_test_getSyncParameter] getSyncParameter");
             getSyncParameter((sync) => {
                 gl.getSyncParameter(sync, gl.SYNC_STATUS);
