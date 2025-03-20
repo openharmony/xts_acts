@@ -52,7 +52,7 @@ struct Index {
   build() {
     Column() {
       PopoverDialogV2({
-        visible: this.isShow!!,
+        visible: this.isShow,
         $visible: (visible: boolean) => {
           console.info('Callback when the visible changed');
           this.isShow = visible
