@@ -45,7 +45,7 @@ import VectorStoreTest from './VectorStore.test';
 import RelationalStoreCustom from './RelationalStoreCustom.test';
 import RelationalStoreNoneTokenizer from './RelationalStoreNoneTokenizer.test'
 import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test'
-import relationalStoreTest from './relationalstore.test'
+import relationalStoreInterfaceTest from './relationalstore.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -81,6 +81,6 @@ export default function testsuite() {
   RelationalStoreCustom()
   RelationalStoreNoneTokenizer()
   RelationalStoreSetDistributedTables()
-  relationalStoreTest()
+  relationalStoreInterfaceTest()
 }
 
