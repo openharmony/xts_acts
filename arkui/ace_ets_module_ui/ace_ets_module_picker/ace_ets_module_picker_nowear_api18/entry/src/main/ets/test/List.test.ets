@@ -25,6 +25,9 @@ import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialo
 import SliderEnableHapticFeedbackTest from './slider/SliderEnableHapticFeedbackTest.test'
 import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
 import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
+import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
+import calendarPickerDialogBackgroundColorTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundColor.test';
+import calendarPickerDialogBackgroundShadowTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundShadow.test';
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
     calendarPickerStartEndTest()
@@ -39,4 +42,7 @@ export default function testsuite() {
     SliderEnableHapticFeedbackTest();
     textPickerDialogDefaultTextStyleTest();
     textPickerDialogDisableTextStyleAnimationTest();
+    calendarPickerDialogBackgroundBlurStyleTest();
+    calendarPickerDialogBackgroundColorTest();
+    calendarPickerDialogBackgroundShadowTest();
 }

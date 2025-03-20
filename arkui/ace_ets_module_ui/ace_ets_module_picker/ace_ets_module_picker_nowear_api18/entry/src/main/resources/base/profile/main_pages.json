@@ -13,6 +13,7 @@
     "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback",
     "MainAbility/pages/slider/SliderEnableHapticFeedbackTest",
     "MainAbility/pages/textPickerDialog/textPickerDialogDefaultTextStyle",
-    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation"
+    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation",
+    "MainAbility/pages/calendarPickerDialog/calendarPickerDialogBackgroundStyle"
   ]
 }
