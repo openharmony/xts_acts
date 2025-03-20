@@ -47,9 +47,9 @@ export default {
   },
 
   /**
-   * Convert ArrayBuffer to String.
+   * Convert Uint8Array to String.
    *
-   * @param {ArrayBuffer} buffer
+   * @param {Uint8Array} buffer
    * @return {string}
    */
   ab2str(buf) {
@@ -57,10 +57,10 @@ export default {
   },
 
   /**
-   * Convert string to ArrayBuffer object.
+   * Convert string to Uint8Array object.
    *
    * @param {string}
-   * @return {ArrayBuffer} buffer
+   * @return {Uint8Array} buffer
    */
   str2ab(str) {
     var arr = [];
