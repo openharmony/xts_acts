@@ -500,27 +500,27 @@ export default function workerErrorCodeTest() {
      */
     it('testThreadWorkerErrorCode0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0019";
-      try {
-        const workerInstance: worker.ThreadWorker =
-          new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister1", {
-            priority: ThreadWorkerPriority.HIGH
-          });
-        workerInstance.postMessage(10);
-        let registerObj = new TestObj();
-        workerInstance.registerGlobalCallObject("myObj", registerObj);
-        workerInstance.onmessage = (e) => {
-          workerInstance.terminate();
-        }
-        workerInstance.onexit = (code) => {
-          console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
-        }
-        await Sleep(300)
-        done();
-      } catch (err) {
-        console.error(`${caseName} failed, error: ${err.code} =>${err.message}`);
+      let finish = false
+      const workerInstance: worker.ThreadWorker =
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister1", {
+          priority: ThreadWorkerPriority.HIGH
+        });
+      workerInstance.postMessage(10);
+      let registerObj = new TestObj();
+      workerInstance.registerGlobalCallObject("myObj", registerObj);
+      workerInstance.onmessage = (e) => {
+        console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
         expect(err.code).assertEqual(10200004)
-        done();
+        workerInstance.terminate();
       }
+      workerInstance.onexit = (code) => {
+        console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        finish = true
+      }
+      while (!finish) {
+        await Sleep(100)
+      }
+      done();
     });
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_2000
@@ -532,6 +532,7 @@ export default function workerErrorCodeTest() {
      */
     it('testThreadWorkerErrorCode0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0020";
+      let finish = false
       const workerInstance: worker.ThreadWorker =
         new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister2", {
           priority: ThreadWorkerPriority.HIGH
@@ -540,12 +541,17 @@ export default function workerErrorCodeTest() {
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
+        console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
+        expect(err.code).assertEqual(10200006)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        finish = true
       }
-      await Sleep(300)
+      while (!finish) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -558,18 +564,26 @@ export default function workerErrorCodeTest() {
      */
     it('testThreadWorkerErrorCode0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0021";
+      let finish = false
       const workerInstance: worker.ThreadWorker =
         new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister3", {
           priority: ThreadWorkerPriority.HIGH
         });
+      let registerObj = new TestObjAsync();
+      workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
+        console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
+        expect(err.code).assertEqual(10200019)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        finish = true
       }
-      await Sleep(500)
+      while (!finish) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -582,6 +596,7 @@ export default function workerErrorCodeTest() {
      */
     it('testThreadWorkerErrorCode0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0022";
+      let finish = false
       const workerInstance: worker.ThreadWorker =
         new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister4", {
           priority: ThreadWorkerPriority.HIGH
@@ -590,12 +605,17 @@ export default function workerErrorCodeTest() {
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
+        console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
+        expect(err.code).assertEqual(10200020)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        finish = true
       }
-      await Sleep(1000)
+      while (!finish) {
+        await Sleep(100)
+      }
       done();
     });
     /**
@@ -608,6 +628,7 @@ export default function workerErrorCodeTest() {
      */
     it('testThreadWorkerErrorCode0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0023";
+      let finish = false
       const workerInstance: worker.ThreadWorker =
         new worker.ThreadWorker("../../workers/ErrorCode/WorkerRegister5", {
           priority: ThreadWorkerPriority.HIGH
@@ -616,12 +637,17 @@ export default function workerErrorCodeTest() {
       workerInstance.registerGlobalCallObject("myObj", registerObj);
       workerInstance.postMessage(10);
       workerInstance.onmessage = (e) => {
+        console.log(`${caseName} main onmessage: ` + JSON.stringify(e.data));
+        expect(err.code).assertEqual(10200021)
         workerInstance.terminate();
       }
       workerInstance.onexit = (code) => {
         console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        finish = true
       }
-      await Sleep(400)
+      while (!finish) {
+        await Sleep(100)
+      }
       done();
     });
     /**

@@ -1933,6 +1933,38 @@ export default function TaskPoolErrorCodeTest() {
       console.info(`${caseName} test end`);
       done();
     });
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_TASK_ERROR_CODE_6700
+     * @tc.name      : testTaskErrorCode0067
+     * @tc.desc      : taskpool state waiting
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskErrorCode0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      const caseName: string = 'testTaskErrorCode0067';
+      console.info(`${caseName} test start`);
+      let runner: taskpool.AsyncRunner = new taskpool.TaskInfo(1);
+      let count = 0;
+      for (let i = 0; i < 20; i++) {
+        let task: taskpool.Task = new taskpool.Task(additionDelay, 100);
+        runner.execute(task).then(() => {
+          console.info("seqrunner: task1 done.");
+          count++;
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+          count++;
+          expect(error.code).assertEqual(10200055);
+        });
+        taskpool.cancel(task.taskId);
+      }
+      while (count < 20) {
+        await promiseCase();
+      }
+      console.info(`${caseName} test end`);
+      expect(taskpool.State.WAITING.valueOf()).assertEqual(1);
+      done();
+    });
 
 
   });
