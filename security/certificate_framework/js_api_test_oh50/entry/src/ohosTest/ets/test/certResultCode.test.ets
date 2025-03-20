@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import { cryptoFramework } from "@kit.CryptoArchitectureKit";
 import {
@@ -67,11 +67,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0100
      * @tc.name parse cert and verify, Promise style.
      * @tc.desc The X509 Cert Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -92,11 +93,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0100
      * @tc.name parse cert and verify, CallBack style.
      * @tc.desc The X509 Cert Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -117,11 +119,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0300
      * @tc.name parse cert and verify, CallBack style.
      * @tc.desc The X509 Cert Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -153,11 +156,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0400
      * @tc.name parse cert and verify, Promise style.
      * @tc.desc The X509 Cert Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -184,11 +188,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0500
      * @tc.name parse crl, Promise style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(crlPem),
@@ -212,11 +217,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0600
      * @tc.name parse crl, Callback style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(crlPem),
@@ -244,11 +250,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0700
      * @tc.name parse CRL, Callback style.
      * @tc.desc The X509 CRL Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(crlPem),
@@ -276,11 +283,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0800
      * @tc.name parse CRL, Promise style.
      * @tc.desc The X509 CRL Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(crlPem),
@@ -306,11 +314,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_0900
      * @tc.name parse Crl, Promise style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_0900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(crlPem),
@@ -335,11 +344,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1000
      * @tc.name parse Crl, Promise style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(crlCert),
@@ -364,11 +374,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1100
      * @tc.name parse Crl, pubKey not match priKey, Promise style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(crlCert),
@@ -393,11 +404,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1200
      * @tc.name parse Crl, pubKey not match priKey, Callback style.
      * @tc.desc The X509 Crl Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob1: cert.EncodingBlob = {
           data: stringTouInt8Array(crlCert),
@@ -429,11 +441,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1300
      * @tc.name parse cert and get pubkey, Promise style.
      * @tc.desc The X509 Cert Format is PEM
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(x509CertErrorPubkey),
@@ -453,11 +466,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1400
      * @tc.name parse cert and check date.
      * @tc.desc The X509 Cert Format is PEM, return ERR_CRYPTO_OPERATION
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -478,11 +492,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1500
      * @tc.name parse cert and check date.
      * @tc.desc The X509 Cert Format is PEM, return INVALID_PARAMS
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(rsaPem4096),
@@ -502,11 +517,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1600
      * @tc.name parse cert and check date.
      * @tc.desc The X509 Cert Format is PEM, return ERR_CRYPTO_OPERATION
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let encodingBlob: cert.EncodingBlob = {
           data: stringTouInt8Array(certNotEffect),
@@ -527,11 +543,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1700
      * @tc.name parse cert and check subject name, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certUft8WithChineseSubject),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -552,11 +569,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1800
      * @tc.name parse cert and check date, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNotBeforeTime),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -576,11 +594,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_1900
      * @tc.name parse cert and check date, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_1900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNotAfterTime),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -600,11 +619,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2000
      * @tc.name parse cert and check signature, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNotSignature),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -624,22 +644,30 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2100
      * @tc.name parse cert and check signature alg name, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNotSignAlgName),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
       };
+      let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
       try {
-        let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
         x509Cert.getSignatureAlgName();
         expect(null).assertFail();
       } catch (error) {
         console.error(`SUB_Security_Cert_Framework_ErrorCode_Func_2100 ${error}, error code: ${error.code}`);
         expect(error.code).assertEqual(cert.CertResult.ERR_CRYPTO_OPERATION);
+      }
+      try {
+        x509Cert.getSignatureAlgParams();
+      } catch (error) {
+        if (error.code == cert.CertResult.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
       }
       done();
     });
@@ -648,11 +676,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2200
      * @tc.name parse cert and check signature alg oid, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNotSignatureOid),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -672,11 +701,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2300
      * @tc.name parse cert and check signature alg oid, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certErrorOid),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -695,11 +725,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2400
      * @tc.name parse cert and check signature alg oid, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certSignParams),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -719,11 +750,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2500
      * @tc.name parse cert and check ExtKeyUsage, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoKeyUsage),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -743,11 +775,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2600
      * @tc.name parse cert and check keyUsage, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoKeyUsage),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -767,11 +800,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2700
      * @tc.name parse cert and check subject alt name, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoSubjectAltName),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -791,11 +825,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2800
      * @tc.name parse cert and check issuer alt name, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoSubjectAltName),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -815,11 +850,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_2900
      * @tc.name parse cert and check issuer alt name, return ERR_RUNTIME_ERROR、 ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_2900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoSubjectAltName),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -846,11 +882,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3000
      * @tc.name parse cert and check issuer alt name, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoPubKey),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -870,11 +907,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3100
      * @tc.name parse cert and check crl point, return ERR_RUNTIME_ERROR
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoPubKey),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -894,11 +932,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3200
      * @tc.name parse cert and check crl point, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoCRLPoint),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -918,11 +957,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3300
      * @tc.name parse cert and check issuer, return ERR_OUT_OF_MEMORY
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certIssuerDisName),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -943,11 +983,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3400
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certNoExtension),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -967,11 +1008,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3500
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certExtension),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1000,11 +1042,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3600
      * @tc.name parse cert and check extension, return INVALID_PARAMS、ERR_RUNTIME_ERROR
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certEntryObject),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1041,11 +1084,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3700
      * @tc.name parse cert and check extension, return INVALID_PARAMS、ERR_RUNTIME_ERROR
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certEntryMaxObject),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1077,11 +1121,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3800
      * @tc.name parse cert and check extension, return INVALID_PARAMS、ERR_RUNTIME_ERROR
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         cert.createCertCRLCollection([], [])
       } catch (error) {
@@ -1095,11 +1140,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_3900
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_3900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certCheckCA),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1119,11 +1165,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4000
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certExtensionsPath_2147483648),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1144,11 +1191,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4100
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(certEntryMaxObject),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1169,11 +1217,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4200
      * @tc.name parse cert and check extension, return INVALID_PARAMS、ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: extData,
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1212,11 +1261,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4400
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlMaxSignData),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1235,11 +1285,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4500
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlCert),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1259,11 +1310,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4600
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlCert),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1283,11 +1335,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4700
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlPem),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1309,11 +1362,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_4900
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_4900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_4900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlMaxIssuerNameLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1333,11 +1387,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5000
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlBadData),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1358,11 +1413,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5100
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlBadSerial),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1383,11 +1439,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5200
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlBadData),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1408,11 +1465,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5500
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorIssuer),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1432,11 +1490,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5600
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlMaxIssuerNameLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1456,11 +1515,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5700
      * @tc.name parse cert and check extension, return ERR_OUT_OF_MEMORY
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorIssuer),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1481,11 +1541,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5800
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorIssuer),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1506,11 +1567,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_5900
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_5900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_5900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlPem),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1530,11 +1592,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_6000
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_6000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_6000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlPem),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1554,11 +1617,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_6200
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_6200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_6200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1578,11 +1642,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_6300
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_6300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_6300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1602,11 +1667,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_6600
      * @tc.name parse cert and check extension, return INVALID_PARAMS
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_6600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_6600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1626,11 +1692,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_6900
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_6900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_6900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlLastNextMaxLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1650,11 +1717,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7000
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlLastNextMaxLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1674,11 +1742,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7100
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlLastNextMaxLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1698,11 +1767,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7200
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlLastNextMaxLen),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1722,11 +1792,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7300
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1747,11 +1818,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7400
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1772,11 +1844,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7500
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob1: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1801,11 +1874,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7600
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob1: cert.EncodingBlob = {
         data: stringToUint8Array(crlVerify),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1830,11 +1904,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7700
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlIsRevokedMax),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1861,11 +1936,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7800
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlIsRevokedMax),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1892,11 +1968,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_7900
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_7900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_7900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlNoSignature),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1916,11 +1993,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8000
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlNoSignature),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1940,11 +2018,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8100
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorSignAlg),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1964,11 +2043,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8200
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorSignAlg),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -1988,11 +2068,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8300
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorSignOid),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -2013,11 +2094,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8400
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorSignOid),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -2038,11 +2120,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8500
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         await cert.createX509Crl(null);
         expect(null).assertFail();
@@ -2078,11 +2161,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8600
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlErrorSignOid),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -2102,11 +2186,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8700
      * @tc.name parse cert chain, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         cert.createCertChainValidator("PKIX2")
         expect(null).assertFail();
@@ -2121,6 +2206,20 @@ export default function certFrameworkResultCodeTestUnit() {
         console.error(`createCertChainValidator ${error}, error code: ${error.code}`);
         expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
       }
+      let validator = cert.createCertChainValidator("PKIX");
+      let data = {} as cert.CertChainData;
+      try {
+        await validator.validate(data);
+      } catch (error) {
+        console.error(`validator.validate Promise ${error}, error code: ${error.code}`);
+        expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
+      }
+      try {
+        validator.validate(data, (err) => {});
+      } catch (error) {
+        console.error(`validator.validate Callback ${error}, error code: ${error.code}`);
+        expect(error.code).assertEqual(cert.CertResult.INVALID_PARAMS);
+      }
       done();
     });
 
@@ -2128,11 +2227,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8800
      * @tc.name parse cert and check extension, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(crlPem),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -2163,11 +2263,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_8900
      * @tc.name parse cert chain, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_8900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_8900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let encodingBlob: cert.EncodingBlob = {
         data: stringToUint8Array(chainPem),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -2195,11 +2296,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_9000
      * @tc.name parse cert chain, return ERR_CRYPTO_OPERATION
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_9000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_9000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let pkcs12: Uint8Array = new Uint8Array(pkcs12Cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -2218,11 +2320,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_9100
      * @tc.name cert pkcs7 cms
      * @tc.desc Use Promise Type
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_9100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_9100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
       let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
       let signer: cert.CmsSignerConfig = {
@@ -2266,11 +2369,12 @@ export default function certFrameworkResultCodeTestUnit() {
      * @tc.number SUB_Security_Cert_Framework_ErrorCode_Func_9200
      * @tc.name generate csr
      * @tc.desc The X509 CSR
-     * @tc.size SmallTest
+     * @tc.size Medium
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ErrorCode_Func_9200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ErrorCode_Func_9200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let keyInfo: cert.PrivateKeyInfo = {
           key: rsa_pkcs1_enc_pem,
