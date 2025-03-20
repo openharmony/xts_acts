@@ -343,7 +343,7 @@ export default function PasteboardErrTest() {
       try {
         let result: string = systemPasteboard.getDataSource();
         console.info(TAG + `Succeeded in checking the RemoteData. Result: ${result}`);
-        expect(result).assertEqual('label');
+        expect(result).assertEqual('test label');
       } catch (err) {
         if (err.code == '12900005') {
           console.info(TAG + 'Request timed out.');
