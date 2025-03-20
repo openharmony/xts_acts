@@ -283,7 +283,7 @@ export default function graphicDisplaySyncInterfaceTest() {
         expect().assertFail();
         done();     
       } catch (err) {
-        console.error(msg + 'Failed to onoff. Cause:' + exception.code);
+        console.error(msg + 'Failed to onoff. Cause:' + err.code);
         expect(401).assertEqual(err.code);
         done();
       }
