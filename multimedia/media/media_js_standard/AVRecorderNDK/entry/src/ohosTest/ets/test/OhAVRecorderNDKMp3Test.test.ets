@@ -31,7 +31,7 @@ let fdPath: string;
 let videoFrameWidth: number;
 let videoFrameHeight: number;
 let audioSampleRate: number;
-let audioBiterate: number;
+let audioBitrate: number;
 
 export default function OhAVRecorderNDKMp3Test() { // L2
   describe('OhAVRecorderNDKMp3Test', () => {
@@ -55,12 +55,12 @@ export default function OhAVRecorderNDKMp3Test() { // L2
       let audioSampleRateIndex: number = Math.floor(Math.random() * audioSampleRateList.length)
       audioSampleRate = audioSampleRateList[audioSampleRateIndex]
 
-      //audioBiterate随机数MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000,
+      //audioBitrate随机数MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000,
       // 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]
       let audioBitrateList: Array<number> = [8000, 16000, 32000, 40000, 480000, 56000, 64000, 80000,
         96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]
       let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
-      audioBiterate = audioBitrateList[audioBitrateIndex]
+      audioBitrate = audioBitrateList[audioBitrateIndex]
 
     });
     afterEach(async () => {
@@ -95,7 +95,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -143,7 +143,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -191,7 +191,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -235,7 +235,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -281,7 +281,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -329,7 +329,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -375,7 +375,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -425,7 +425,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -473,7 +473,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -521,7 +521,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -567,7 +567,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -611,7 +611,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -657,7 +657,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -703,7 +703,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -749,7 +749,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -797,7 +797,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -843,7 +843,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -893,7 +893,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -941,7 +941,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -986,7 +986,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1036,7 +1036,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1094,7 +1094,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1152,7 +1152,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1200,7 +1200,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         fileFormat: 9,
         audioCodec: 4,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         recorderTimer: 2000
       }
       let mySteps = new Array(

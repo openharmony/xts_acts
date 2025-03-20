@@ -31,7 +31,7 @@ let fdPath: string;
 let videoFrameWidth: number;
 let videoFrameHeight: number;
 let audioSampleRate: number;
-let audioBiterate: number;
+let audioBitrate: number;
 let videoFrameRate: number;
 let videoOrientation: number;
 let cameraVideoProfile: Array<camera.VideoProfile>;
@@ -95,11 +95,11 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         let audioSampleRateIndex: number = Math.floor(Math.random() * audioSampleRateList.length)
         audioSampleRate = audioSampleRateList[audioSampleRateIndex]
 
-        //audioBiterate随机数AAC编码格式支持比特率范围[32000 - 500000]
+        //audioBitrate随机数AAC编码格式支持比特率范围[32000 - 500000]
         let audioBitrateList: Array<number> = [32000, 40000, 480000, 56000, 64000, 80000,
           96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000, 500000]
         let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
-        audioBiterate = audioBitrateList[audioBitrateIndex]
+        audioBitrate = audioBitrateList[audioBitrateIndex]
 
         let videoFrameRateList: Array<number> = [15, 30, 60]
         let videoFrameRateIndex: number = Math.floor(Math.random() * videoFrameRateList.length)
@@ -151,7 +151,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -209,7 +209,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -265,7 +265,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -322,7 +322,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -377,7 +377,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -432,7 +432,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -506,7 +506,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -555,7 +555,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -606,7 +606,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -659,7 +659,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -714,7 +714,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -763,7 +763,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -814,7 +814,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -865,7 +865,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
@@ -921,7 +921,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         videoFrameWidth: videoFrameWidth,
         videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBiterate: audioBiterate,
+        audioBitrate: audioBitrate,
         videoFrameRate: videoFrameRate,
         videoOrientation: videoOrientation,
         recorderTimer: 2000
