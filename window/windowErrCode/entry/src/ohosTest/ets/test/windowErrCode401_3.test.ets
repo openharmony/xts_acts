@@ -794,6 +794,56 @@ export default function windowErrCode401_3() {
     })
 
     /**
+     * @tc.number     : testCreateSubWindowWithOptionsPromiseErrCode401_0100
+     * @tc.name       : testCreateSubWindowWithOptionsPromiseErrCode401_0100
+     * @tc.desc       : testCreateSubWindowWithOptionsPromiseErrCode401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testCreateSubWindowWithOptionsPromiseErrCode401_0100', 0, async (done: Function) => {
+      let caseName = "testCreateSubWindowWithOptionsPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let mainWindow: ohosWindow.Window | undefined;
+      await windowStage.getMainWindow().then((data) => {
+        mainWindow = data;
+        console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
+        done()
+      });
+      expect(!!mainWindow).assertTrue();
+
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: true
+      };
+
+      try {
+        await mainWindow!.createSubWindowWithOptions(null, options).then(async () => {
+          console.info(msgStr + 'Succeeded in calling createSubWindowWithOptions.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call createSubWindowWithOptions. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call createSubWindowWithOptions. Cause:' +
+        JSON.stringify(exception));
+        if (exception.code === undefined) {
+          console.info(msgStr + '此设备不支持createSubWindowWithOptions能力.');
+        } else {
+          expect(exception.code).assertEqual(401);
+        }
+        done()
+      }
+    })
+
+    /**
      * @tc.number     : testLoadContentByNameCallbackErrCode401_0300
      * @tc.name       : testLoadContentByNameCallbackErrCode401_0300
      * @tc.desc       : testLoadContentByNameCallbackErrCode401_0300

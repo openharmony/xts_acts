@@ -19,6 +19,10 @@ import windowErrCode401_3 from './windowErrCode401_3.test'
 import windowErrCode1300002_1 from './windowErrCode1300002_1.test'
 import windowErrCode1300002_2 from './windowErrCode1300002_2.test'
 import windowErrCode1300004 from './windowErrCode1300004.test'
+import windowErrCode1300005 from './windowErrCode1300005.test'
+import windowErrCode1300006 from './windowErrCode1300006.test'
+import windowErrCode1300009 from './windowErrCode1300009.test'
+import windowErrCode1300010 from './windowErrCode1300010.test'
 export default function testsuite() {
   windowErrCode401_1()
   windowErrCode401_2()
@@ -26,4 +30,8 @@ export default function testsuite() {
   windowErrCode1300002_1()
   windowErrCode1300002_2()
   windowErrCode1300004()
+  windowErrCode1300005()
+  windowErrCode1300006()
+  windowErrCode1300009()
+  windowErrCode1300010()
 }
