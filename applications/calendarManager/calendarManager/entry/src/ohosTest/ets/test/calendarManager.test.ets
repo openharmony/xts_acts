@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import calendarManager from '@ohos.calendarManager';
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import uitest from '@ohos.UiTest';
 import systemDateTime from '@ohos.systemDateTime';
@@ -96,7 +96,7 @@ export default function CalendarManagerTest() {
      * @tc.level   Level 2
 
      */
-    it("SUB_Application_CalendarManagerApi_test_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.CalendarType.LOCAL == 'local').assertTrue();
       expect(calendarManager.CalendarType.EMAIL == 'email').assertTrue();
       expect(calendarManager.CalendarType.BIRTHDAY == 'birthday').assertTrue(); // undefined
@@ -112,7 +112,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_test_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.RecurrenceFrequency.YEARLY == 0).assertTrue();
       expect(calendarManager.RecurrenceFrequency.MONTHLY == 1).assertTrue();
       expect(calendarManager.RecurrenceFrequency.WEEKLY == 2).assertTrue();
@@ -127,7 +127,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_test_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.ServiceType.MEETING == 'Meeting').assertTrue();
       expect(calendarManager.ServiceType.WATCHING == 'Watching').assertTrue();
       expect(calendarManager.ServiceType.REPAYMENT == 'Repayment').assertTrue();
@@ -147,7 +147,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_test_0400", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
       expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
     });
@@ -160,7 +160,7 @@ export default function CalendarManagerTest() {
    * @tc.type    User
    * @tc.level   Level 2
    */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_AsyncCreateCalendar_NoPermission_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'HUAWEI日历',
@@ -188,7 +188,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'HUAWEI日历',
@@ -216,7 +216,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'HUAWEI日历',
@@ -244,7 +244,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'HUAWEI日历',
@@ -271,7 +271,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_Async_0200';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xxx@huawei.com',
@@ -298,7 +298,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_Async_0300';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xx生日账户',
@@ -325,7 +325,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0400", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_Async_0400';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'CalDAV协议帐户',
@@ -352,7 +352,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -378,7 +378,7 @@ export default function CalendarManagerTest() {
    * @tc.type    User
    * @tc.level   Level 2
    */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -404,7 +404,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -430,7 +430,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_CreateCalendar_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -455,7 +455,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0100';
       calendarMgrErr?.getCalendar((err, data) => {
         if (err) {
@@ -484,7 +484,7 @@ export default function CalendarManagerTest() {
    * @tc.type    User
    * @tc.level   Level 2
    */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100';
       calendarMgr?.getCalendar((err, data) => {
         if (err) {
@@ -513,7 +513,7 @@ export default function CalendarManagerTest() {
   * @tc.type    User
   * @tc.level   Level 2
   */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100';
       calendarMgr?.getCalendar((err, data) => {
         if (err) {
@@ -542,7 +542,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0100';
       calendarMgr?.getCalendar((err, data) => {
         if (err) {
@@ -571,7 +571,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0200';
       calendarMgr?.getCalendar((err, data) => {
         if (err) {
@@ -600,7 +600,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xx生日账户',
@@ -628,7 +628,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xx生日账户',
@@ -656,7 +656,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xx生日账户',
@@ -684,7 +684,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0300';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'xx生日账户',
@@ -711,7 +711,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0400", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0400';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'CalDAV协议帐户',
@@ -738,7 +738,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -763,7 +763,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -789,7 +789,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -815,7 +815,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -840,7 +840,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Promise_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetCalendar_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Promise_0200';
       calendarMgr?.getCalendar().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -866,7 +866,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100';
       calendarMgrErr?.getAllCalendars((err, data) => {
         if (err) {
@@ -889,7 +889,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100';
       calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
@@ -912,7 +912,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100';
       calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
@@ -935,7 +935,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100';
       calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
@@ -957,7 +957,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100';
       calendarMgrErr?.getAllCalendars().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -978,7 +978,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100';
       calendarMgr?.getAllCalendars().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -999,7 +999,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100';
       calendarMgr?.getAllCalendars().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -1020,7 +1020,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100';
       calendarMgr?.getAllCalendars().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -1040,7 +1040,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1073,7 +1073,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1106,7 +1106,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1139,7 +1139,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1171,7 +1171,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1201,7 +1201,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1232,7 +1232,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1263,7 +1263,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1294,7 +1294,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_AddEvent_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_AddEvent_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_AddEvent_Async_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -1344,7 +1344,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_AddEvent_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_AddEvent_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_AddEvent_Promise_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -1391,7 +1391,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_AddEvents_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_AddEvents_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_AddEvent_Async_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -1449,7 +1449,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_AddEvents_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_AddEvents_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_AddEvent_Promise_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -1503,7 +1503,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_UpdateEvent_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_UpdateEvent_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_UpdateEvent_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1577,7 +1577,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_UpdateEvent_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_UpdateEvent_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_UpdateEvent_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '生日帐户',
@@ -1643,7 +1643,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetAccount_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetAccount_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAccount_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '生日帐户',
@@ -1670,7 +1670,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_SetConfig_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_SetConfig_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_SetConfig_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -1706,7 +1706,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_SetConfig_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_SetConfig_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_SetConfig_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '生日帐户',
@@ -1740,7 +1740,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Async_0100';
 
       let CalendarAccounts: calendarManager.CalendarAccount = {
@@ -1774,7 +1774,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Async_0200';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['type', 'startTime', 'endTime'];
@@ -1824,7 +1824,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Async_0300';
       const filter = calendarManager.EventFilter.filterByTime(1686931200, 1703733961);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -1860,7 +1860,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0400", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Async_0400';
       const filter = calendarManager.EventFilter.filterByTitle('开会日程');
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -1897,7 +1897,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0100';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -1932,7 +1932,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0200", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0200';
       const filter = calendarManager.EventFilter.filterByTime(1686931200, 1703733961);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -1967,7 +1967,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0300", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0300';
       const filter = calendarManager.EventFilter.filterByTitle('开会日程');
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -2002,7 +2002,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0400", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0400';
       const filter = calendarManager.EventFilter.filterByTitle('开会日程');
 
@@ -2039,7 +2039,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0500", 0, () => {
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0500';
 
       let CalendarAccounts: calendarManager.CalendarAccount = {
@@ -2072,7 +2072,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteEvent_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteEvent_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteEvent_Async_0100';
 
       let CalendarAccounts: calendarManager.CalendarAccount = {
@@ -2118,7 +2118,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteEvent_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteEvent_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteEvent_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -2161,7 +2161,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteEvents_Async_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteEvents_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteEvents_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -2211,7 +2211,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_Application_CalendarManagerApi_DeleteEvents_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_DeleteEvents_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_DeleteEvents_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -2259,7 +2259,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", 0, () => {
+    it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_EditEvent_Promise_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -2316,7 +2316,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -2390,7 +2390,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -2465,7 +2465,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -2500,7 +2500,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
@@ -2535,7 +2535,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetAccount_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetAccount_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetAccount_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '生日帐户',
@@ -2569,7 +2569,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '日历',
@@ -2603,7 +2603,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -2642,7 +2642,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '本地帐户',
@@ -2679,7 +2679,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: '订阅帐户',
@@ -2711,7 +2711,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400';
       let CalendarAccounts: calendarManager.CalendarAccount = {
         name: 'CalDAV协议帐户',
@@ -2745,7 +2745,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100';
       calendarMgr?.getCalendar((err, data) => {
         if (err) {
@@ -2781,7 +2781,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100';
       calendarMgr?.getAllCalendars().then((data) => {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
@@ -2808,7 +2808,7 @@ export default function CalendarManagerTest() {
      * @tc.type    User
      * @tc.level   Level 2
      */
-    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100';
       calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
@@ -2837,7 +2837,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100", 0, () => {
+    it("SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100';
       const filter = calendarManager.EventFilter.filterById([0, 1]);
       const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime',
