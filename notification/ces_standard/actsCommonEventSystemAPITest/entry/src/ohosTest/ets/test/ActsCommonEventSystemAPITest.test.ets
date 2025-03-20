@@ -184,7 +184,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
 
       //构造commonEventManager.subscribe 401错误码
       try {
-        commonEventManager.unsubscribe(subscriber, null);
+        commonEventManager.unsubscribe(null, null);
         expect(false).assertTrue()
         done()
       } catch (err) {
