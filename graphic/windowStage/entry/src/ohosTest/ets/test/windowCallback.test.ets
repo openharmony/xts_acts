@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
@@ -84,7 +84,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -200,7 +200,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -310,7 +310,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -400,7 +400,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -508,7 +508,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Invalid_Parameter_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Invalid_Parameter_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Invalid_Parameter_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -614,7 +614,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_RGB_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_RGB_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_RGB_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -667,7 +667,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Hexadecimal_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Hexadecimal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Hexadecimal_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -731,7 +731,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_KeywordForm_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_KeywordForm_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_KeywordForm_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -793,7 +793,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreate_Not_Exist_Win_Type_Callback', 0, async (done: Function) => {
+    it('testCreate_Not_Exist_Win_Type_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreate_Not_Exist_Win_Type_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -822,7 +822,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testListener_Sys_AvoidAreaChange_Callback', 0, async (done: Function) => {
+    it('testListener_Sys_AvoidAreaChange_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(800)
       let caseName: string = 'testListener_Sys_AvoidAreaChange_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -902,7 +902,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Create_SysWin_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Create_SysWin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Create_SysWin_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -935,7 +935,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Para_Is_Null_Create_SysWin_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -970,7 +970,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Input_Para_Path_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Input_Para_Path_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Input_Para_Path_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -997,7 +997,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Input_Para_Is_Null_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Input_Para_Is_Null_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Input_Para_Is_Null_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1031,7 +1031,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Input_Para_PathAndStorage_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Input_Para_PathAndStorage_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Input_Para_PathAndStorage_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1059,7 +1059,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Para_PathAndStorage_Is_Null_Callback', 0, async (done: Function) => {
+    it('testLoadContent_Para_PathAndStorage_Is_Null_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Para_PathAndStorage_Is_Null_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1092,7 +1092,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindow_WinName_IsNot_Empty_Callback', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinName_IsNot_Empty_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreateSubWindow_WinName_IsNot_Empty_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1170,7 +1170,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindow_WinName_Is_Null_Callback', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinName_Is_Null_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreateSubWindow_WinName_Is_Null_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1202,7 +1202,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetSubWindow_Callback', 0, async (done: Function) => {
+    it('testGetSubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testGetSubWindow_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1230,7 +1230,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPrivacyMode_AppSubWin_Callback', 0, async (done: Function) => {
+    it('testSetPrivacyMode_AppSubWin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetPrivacyMode_AppSubWin_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let tempWnd: ohosWindow.Window | void;
@@ -1305,7 +1305,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPrivacyMode_createSubWindow_Callback', 0, async (done: Function) => {
+    it('testSetPrivacyMode_createSubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetPrivacyMode_createSubWindow_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify("ohosWindow"));
@@ -1391,7 +1391,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_Callback', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetPreferredOrientation_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1449,7 +1449,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSnapshotTest_Callback_Form', 0, async (done: Function) => {
+    it('testSnapshotTest_Callback_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSnapshotTest_Callback_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1494,7 +1494,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testDialogTargetTouch_Callback', 0, async (done: Function) => {
+    it('testDialogTargetTouch_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testDialogTargetTouch_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
@@ -1522,7 +1522,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_Cancel_Upon_Success_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_Cancel_Upon_Success_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetAspectRatio_Cancel_Upon_Success_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1590,7 +1590,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_Invalid_Params_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_Invalid_Params_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetAspectRatio_Invalid_Params_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1636,7 +1636,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_loadContentByName_callback_withstorage', 0, async (done: Function) => {
+    it('test_loadContentByName_callback_withstorage', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msg = "test_loadContentByName_callback_withstorage"
       try {
         windowStage.loadContentByName("Index1", abilityStorage, (err: BusinessError) => {
@@ -1665,7 +1665,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_loadContentByName_callback_withoutstorage', 0, async (done: Function) => {
+    it('test_loadContentByName_callback_withoutstorage', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msg = "test_loadContentByName_callback_withoutstorage"
       try {
         windowStage.loadContentByName("Index1", (err: BusinessError) => {
@@ -1694,7 +1694,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_loadContentByName_Promise', 0, async (done: Function) => {
+    it('test_loadContentByName_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msg = "test_loadContentByName_Promise"
       try {
         let promise = windowStage.loadContentByName("Index1", abilityStorage);
@@ -1721,7 +1721,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetTitleButtonRect', 0, async (done: Function) => {
+    it('testGetTitleButtonRect', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr: string = 'testGetTitleButtonRect';
       console.log(msgStr + 'begin');
       let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
@@ -1753,7 +1753,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_on_Function_Callback', 0, async (done: Function) => {
+    it('testWindowTitleButtonRectChange_on_Function_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr: string = 'testWindowTitleButtonRectChange_on';
       console.log(msgStr + "begin on")
       try {
@@ -1786,7 +1786,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_off_Function_Callback', 0, async (done: Function) => {
+    it('testWindowTitleButtonRectChange_off_Function_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr: string = 'testWindowTitleButtonRectChange_off';
       console.log(msgStr + 'begin off');
       try {
@@ -1816,7 +1816,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testEnumWindow_windowType', 0, async () => {
+    it('testEnumWindow_windowType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       console.info('testEnumWindow_windowType test the enum value of windowType begin');
       console.info('testEnumWindow_windowType' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       try {
@@ -1850,7 +1850,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_windowClassLoadContentByName_callback_withstorage', 0, async (done: Function) => {
+    it('test_windowClassLoadContentByName_callback_withstorage', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msg = "test_windowClassLoadContentByName_callback_withstorage"
       let windowClass: ohosWindow.Window = windowStage.getMainWindowSync()
       let storage: LocalStorage = new LocalStorage()
@@ -1886,7 +1886,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_windowClassLoadContentByName_callback_withoutstorage', 0, async (done: Function) => {
+    it('test_windowClassLoadContentByName_callback_withoutstorage', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msg = "test_windowClassLoadContentByName_callback_withoutstorage"
       let windowClass: ohosWindow.Window = windowStage.getMainWindowSync()
       console.log(msg + ' begin')
@@ -1921,7 +1921,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_windowClassLoadContentByName_Promise', 0, async (done: Function) => {
+    it('test_windowClassLoadContentByName_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
 
       let msg = "test_windowClassLoadContentByName_Promise"
       let windowClass: ohosWindow.Window = windowStage.getMainWindowSync();
@@ -1956,7 +1956,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testNoInteractionDetected_on_Function_Callback", 0, async (done: Function) =>{
+    it("testNoInteractionDetected_on_Function_Callback", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>{
       let msgStr = "testNoInteractionDetected_on_Function_Callback";
       console.log(msgStr + "begin");
       try{
@@ -1989,7 +1989,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testNoInteractionDetected_off_Function_Callback", 0, async (done: Function) =>{
+    it("testNoInteractionDetected_off_Function_Callback", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>{
       let msgStr = "tetestNoInteractionDetected_off_Function_Callback";
       console.log(msgStr + "begin");
       try{

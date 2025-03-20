@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
@@ -50,7 +50,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTextBlobMakeFromPosTextNormal', DEFAULT, () => {
+    it('testTextBlobMakeFromPosTextNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testTextBlobMakeFromPosTextNormal';
       let font = new drawing.Font();
 
@@ -87,7 +87,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromPosTextNull', 3, () => {
+    it('testTextBlobMakeFromPosTextNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromPosTextNull';
       let font = new drawing.Font();
       let points: common2D.Point[] = [];
@@ -181,7 +181,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromPosTextMultipleCalls', 3, () => {
+    it('testTextBlobMakeFromPosTextMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromPosTextMultipleCalls';
       let font = new drawing.Font();
       const points: common2D.Point[] = [{
@@ -207,7 +207,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromPosTextAbnormal', 3, () => {
+    it('testTextBlobMakeFromPosTextAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromPosTextAbnormal';
       let font = new drawing.Font();
 
@@ -239,7 +239,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromPosTextNormal', 3, () => {
+    it('testTextBlobMakeFromPosTextNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromPosTextNormal';
       let font = new drawing.Font();
 
@@ -266,7 +266,7 @@ export default function textBlob2Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromPosTextMultipleCalls', 3, () => {
+    it('testTextBlobMakeFromPosTextMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromPosTextMultipleCalls';
       let font = new drawing.Font();
 

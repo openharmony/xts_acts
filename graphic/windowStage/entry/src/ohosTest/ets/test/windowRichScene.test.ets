@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -37,7 +37,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testCreateWindow_Invalid_WinType_Promise', 0, async (done: Function) => {
+    it('testCreateWindow_Invalid_WinType_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testCreateWindow_Invalid_WinType_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -65,7 +65,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testCreateWindow_Invalid_WinType_Callback', 0, async (done: Function) => {
+    it('testCreateWindow_Invalid_WinType_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testCreateWindow_Invalid_WinType_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -100,7 +100,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testCreate_Invalid_WinType_Promise', 0, async (done: Function) => {
+    it('testCreate_Invalid_WinType_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testCreate_Invalid_WinType_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -119,7 +119,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testCreate_Invalid_WinType_Callback', 0, async (done: Function) => {
+    it('testCreate_Invalid_WinType_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testCreate_Invalid_WinType_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -151,7 +151,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testFind_Invoke_Interface_Continuously', 0, async (done: Function) => {
+    it('testFind_Invoke_Interface_Continuously', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testFind_Invoke_Interface_Continuously';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -194,7 +194,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testFind_WinName_IsNot_Exist', 0, async (done: Function) => {
+    it('testFind_WinName_IsNot_Exist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testFind_WinName_IsNot_Exist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -227,7 +227,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetTopWindow_Invoke_Interfae_Two_Times', 0, async (done: Function) => {
+    it('testGetTopWindow_Invoke_Interfae_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetTopWindow_Invoke_Interfae_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -267,7 +267,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testShowWindow_Invoked_Twice', 0, async (done: Function) => {
+    it('testShowWindow_Invoked_Twice', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testShowWindow_Invoked_Twice';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -308,7 +308,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testShowWindow_Window_NotExist', 0, async (done: Function) => {
+    it('testShowWindow_Window_NotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testShowWindow_Window_NotExist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -339,7 +339,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testDestroyWindow_Destory_Same_Win_Type', 0, async (done: Function) => {
+    it('testDestroyWindow_Destory_Same_Win_Type', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testDestroyWindow_Destory_Same_Win_Type';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -376,7 +376,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetWindowProperties_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetWindowProperties_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetWindowProperties_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -415,7 +415,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetWindowAvoidArea_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetWindowAvoidArea_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -456,7 +456,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetWindowAvoidArea_Invalid_Parameter', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Invalid_Parameter', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetWindowAvoidArea_Invalid_Parameter';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -485,7 +485,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -552,7 +552,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowLayoutFullScreen_Destroyed_Win', 0, async (done: Function) => {
+    it('testSetWindowLayoutFullScreen_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -621,7 +621,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowColorSpace_Invalid_ParamsOne', 0, async (done: Function) => {
+    it('testSetWindowColorSpace_Invalid_ParamsOne', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowColorSpace_Invalid_ParamsOne';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -655,7 +655,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default', 0, async (done: Function) => {
+    it('testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -704,7 +704,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetWindowColorSpace_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetWindowColorSpace_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetWindowColorSpace_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -730,7 +730,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Multiple_Calls', 0, async (done: Function) => {
+    it('testSetWindowBackgroundColor_Multiple_Calls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowBackgroundColor_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -766,7 +766,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Invalid_ParamsOne', 0, async (done: Function) => {
+    it('testSetWindowBackgroundColor_Invalid_ParamsOne', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowBackgroundColor_Invalid_ParamsOne';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -793,7 +793,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsOne_Promise', 0, async (done: Function) => {
+    it('testSetWindowBrightness_Invalid_ParamsOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowBrightness_Invalid_ParamsOne_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -828,7 +828,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Multiple_Calls_Promise_And_Callback', 0, async (done: Function) => {
+    it('testSetWindowBrightness_Multiple_Calls_Promise_And_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowBrightness_Multiple_Calls_Promise_And_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -882,7 +882,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowFocusable_Multiple_Calls_Promise_And_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_Multiple_Calls_Promise_And_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowFocusable_Multiple_Calls_Promise_And_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -935,7 +935,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowKeepScreenOn_Window_State_Abnorma', 0, async (done: Function) => {
+    it('testSetWindowKeepScreenOn_Window_State_Abnorma', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowKeepScreenOn_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -970,7 +970,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowKeepScreenOn_Multiple_Calls', 0, async (done: Function) => {
+    it('testSetWindowKeepScreenOn_Multiple_Calls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowKeepScreenOn_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1025,7 +1025,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowPrivacyMode_Window_State_Abnorma', 0, async (done: Function) => {
+    it('testSetWindowPrivacyMode_Window_State_Abnorma', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowPrivacyMode_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1060,7 +1060,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowPrivacyMode_Window_Multiple_Calls', 0, async (done: Function) => {
+    it('testSetWindowPrivacyMode_Window_Multiple_Calls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowPrivacyMode_Window_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1113,7 +1113,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowTouchable_Promise_Form', 0, async (done: Function) => {
+    it('testSetWindowTouchable_Promise_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowTouchable_Promise_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1168,7 +1168,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowTouchable_Window_NotExist', 0, async (done: Function) => {
+    it('testSetWindowTouchable_Window_NotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowTouchable_Window_NotExist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1203,7 +1203,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetProperties_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetProperties_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetProperties_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1246,7 +1246,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetProperties_Destroyed_Win', 0, async (done: Function) => {
+    it('testGetProperties_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetProperties_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1275,7 +1275,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetAvoidArea_Invoke_Interfaca_Two_Times', 0, async (done: Function) => {
+    it('testGetAvoidArea_Invoke_Interfaca_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetAvoidArea_Invoke_Interfaca_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1320,7 +1320,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetAvoidArea_Invalid_Parameter', 0, async (done: Function) => {
+    it('testGetAvoidArea_Invalid_Parameter', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetAvoidArea_Invalid_Parameter';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1351,7 +1351,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetAvoidArea_Type_CutOut_Destroyed_Win', 0, async (done: Function) => {
+    it('testGetAvoidArea_Type_CutOut_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetAvoidArea_Type_CutOut_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1382,7 +1382,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetFullScreen_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testSetFullScreen_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1423,7 +1423,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetFullScreen_Destroyed_Win', 0, async (done: Function) => {
+    it('testSetFullScreen_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1453,7 +1453,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetLayoutFullScreen_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testSetLayoutFullScreen_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1494,7 +1494,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetLayoutFullScreen_Destroyed_Win', 0, async (done: Function) => {
+    it('testSetLayoutFullScreen_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1524,7 +1524,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetSystemBarEnable_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1565,7 +1565,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetSystemBarEnable_Destroyed_Win', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Destroyed_Win', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1596,7 +1596,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetMainWindow_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetMainWindow_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetMainWindow_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1636,7 +1636,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetMainWindowSync_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetMainWindowSync_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetMainWindowSync_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1670,7 +1670,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testCreateSubWindow_Two_Consecutive_Calls', 0, async (done: Function) => {
+    it('testCreateSubWindow_Two_Consecutive_Calls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testCreateSubWindow_Two_Consecutive_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1726,7 +1726,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetSubWindow_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testGetSubWindow_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetSubWindow_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1763,7 +1763,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testIsWindowSupportWideGamut_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testIsWindowSupportWideGamut_Invoke_Interface_Two_Times', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testIsWindowSupportWideGamut_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1798,7 +1798,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContent_Window_State_Abnorma_Callback', 0, async (done: Function) => {
+    it('testSetUIContent_Window_State_Abnorma_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetUIContent_Window_State_Abnorma_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1837,7 +1837,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContent_Multiple_Calls', 0, async (done: Function) => {
+    it('testSetUIContent_Multiple_Calls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetUIContent_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1872,7 +1872,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarEnable_More_Params', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnable_More_Params', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowSystemBarEnable_More_Params';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1908,7 +1908,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarEnable_Window_State_Abnorma', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnable_Window_State_Abnorma', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testSetWindowSystemBarEnable_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

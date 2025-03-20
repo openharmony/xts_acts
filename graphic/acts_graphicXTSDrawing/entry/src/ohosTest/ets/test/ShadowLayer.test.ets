@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
@@ -49,7 +49,7 @@ export default function shadowLayerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShadowLayerCreateNormal', DEFAULT, () => {
+    it('testShadowLayerCreateNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShadowLayerCreateNormal';
       const pen = new drawing.Pen();
 
@@ -92,7 +92,7 @@ export default function shadowLayerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShadowLayerCreateNull', DEFAULT, () => {
+    it('testShadowLayerCreateNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testShadowLayerCreateNull';
 
       try {
@@ -172,7 +172,7 @@ export default function shadowLayerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShadowLayerCreateMultipleCalls', DEFAULT, () => {
+    it('testShadowLayerCreateMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testShadowLayerCreateMultipleCalls';
 
       for (let i = 0; i < 20; i++) {
@@ -203,7 +203,7 @@ export default function shadowLayerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShadowLayerCreateBoundaryValue', DEFAULT, () => {
+    it('testShadowLayerCreateBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testShadowLayerCreateBoundaryValue';
 
       try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium";
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
@@ -80,7 +80,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testListener_Sys_AvoidAreaChange_Promise', 0, async (done: Function) => {
+    it('testListener_Sys_AvoidAreaChange_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(800)
       let caseName: string = 'testListener_Sys_AvoidAreaChange_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -154,7 +154,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testListener_windowSizeChange', 0, async (done: Function) => {
+    it('testListener_windowSizeChange', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(900)
       let caseName: string = 'testListener_windowSizeChange';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -198,7 +198,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testListener_SystemAvoidAreaChange_Off', 0, async (done: Function) => {
+    it('testListener_SystemAvoidAreaChange_Off', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(800)
       let caseName: string = 'testListener_SystemAvoidAreaChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -267,7 +267,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testListener_windowSizeChange_Off', 0, async (done: Function) => {
+    it('testListener_windowSizeChange_Off', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(900)
       let caseName: string = 'testListener_windowSizeChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -315,7 +315,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -351,7 +351,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -388,7 +388,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -425,7 +425,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -462,7 +462,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnable_Invalid_Parameter_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_Invalid_Parameter_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarEnable_Invalid_Parameter_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -501,7 +501,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarProperties_RGB_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarProperties_RGB_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarProperties_RGB_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -555,7 +555,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarProperties_KeywordForm_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarProperties_KeywordForm_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarProperties_KeywordForm_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -609,7 +609,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarProperties_Hexadecimal_Promise', 0, async (done: Function) => {
+    it('testSetSystemBarProperties_Hexadecimal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetSystemBarProperties_Hexadecimal_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -663,7 +663,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreate_App_Type_Win_Promise', 0, async (done: Function) => {
+    it('testCreate_App_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreate_App_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -687,7 +687,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreate_Sys_Type_Win_Promise', 0, async (done: Function) => {
+    it('testCreate_Sys_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreate_Sys_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -723,7 +723,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreate_Not_Exist_Win_Promise', 0, async (done: Function) => {
+    it('testCreate_Not_Exist_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreate_Not_Exist_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -744,7 +744,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreate_Repeate_Id_Win_Promise', 0, async (done: Function) => {
+    it('testCreate_Repeate_Id_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreate_Repeate_Id_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -771,7 +771,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Create_SysWin_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Create_SysWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Create_SysWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -806,7 +806,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Para_Is_Null_Create_SysWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -851,7 +851,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Input_Para_Path_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Input_Para_Path_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Input_Para_Path_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -872,7 +872,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Input_Para_Is_Null_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Input_Para_Is_Null_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Input_Para_Is_Null_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -895,7 +895,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Exist_Input_Para_PathAndStorage_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Exist_Input_Para_PathAndStorage_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Input_Para_PathAndStorage_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -918,7 +918,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadContent_Para_PathAndStorage_Is_Null_Promise', 0, async (done: Function) => {
+    it('testLoadContent_Para_PathAndStorage_Is_Null_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testLoadContent_Para_PathAndStorage_Is_Null_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -938,7 +938,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindow_WinName_IsNot_Empty_Promise', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinName_IsNot_Empty_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreateSubWindow_WinName_IsNot_Empty_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -961,7 +961,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindow_WinName_Is_Null_Promise', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinName_Is_Null_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testCreateSubWindow_WinName_Is_Null_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -984,7 +984,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetSubWindow_Promise', 0, async (done: Function) => {
+    it('testGetSubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testGetSubWindow_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1005,7 +1005,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPrivacyMode_SppSubWin_Promise', 0, async (done: Function) => {
+    it('testSetPrivacyMode_SppSubWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetPrivacyMode_SppSubWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
@@ -1061,7 +1061,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_Promise', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetPreferredOrientation_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1104,7 +1104,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetForbidSplitMove_Promise', 0, async (done: Function) => {
+    it('testSetForbidSplitMove_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetForbidSplitMove_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1134,7 +1134,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSnapshotTest_Promise_Form', 0, async (done: Function) => {
+    it('testSnapshotTest_Promise_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       await sleep(900);
       let caseName: string = 'testSnapshotTest_Promise_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -1173,7 +1173,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testDialogTargetTouch_Promise', 0, async (done: Function) => {
+    it('testDialogTargetTouch_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testDialogTargetTouch_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
@@ -1205,7 +1205,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_Cancel_Upon_Success_Promise', 0, async (done: Function) => {
+    it('testSetAspectRatio_Cancel_Upon_Success_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetAspectRatio_Cancel_Upon_Success_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1243,7 +1243,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_Invalid_Params_Promise', 0, async (done: Function) => {
+    it('testSetAspectRatio_Invalid_Params_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSetAspectRatio_Invalid_Params_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1274,7 +1274,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowEventType_Enum', 0, async (done: Function) => {
+    it('testWindowEventType_Enum', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWindowEventType_Enum';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1306,7 +1306,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async (done: Function) => {
+    it('testSetSpecificSystemBarEnabled_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr: string = 'testSetSpecificSystemBarEnabled';
       console.log(msgStr + 'begin')
       try {
@@ -1338,7 +1338,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async (done: Function) => {
+    it('testSetSpecificSystemBarEnabled_2_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = 'testSetSpecificSystemBarEnabled_2';
       console.log(msgStr + 'begin')
       try {
@@ -1368,7 +1368,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowDecorVisible', 0, async (done: Function) => {
+    it('testSetWindowDecorVisible', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr: string = 'testSetWindowDecorVisible';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1405,7 +1405,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowDecorHeight', 0, async (done: Function) => {
+    it('testSetWindowDecorHeight', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr: string = 'testSetWindowDecorHeight';
       console.log(msgStr + ' begin');
       let height = 50
@@ -1439,7 +1439,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetWindowDecorHeight', 0, async (done: Function) => {
+    it('testGetWindowDecorHeight', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'www data';
       let msgStr: string = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1475,7 +1475,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSubWindowOptions', 0, async (done: Function) => {
+    it('testSubWindowOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr: string = 'testSubWindowOptions';
       console.log(msgStr + ' begin');
       try {
@@ -1521,7 +1521,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testKeepKeyboardOnFocus', 0, async (done: Function) => {
+    it('testKeepKeyboardOnFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testKeepKeyboardOnFocus';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1551,7 +1551,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_Function_Promise', 0, async (done: Function) => {
+    it('testShiftAppWindowFocus_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr: string = 'testShiftAppWindowFocus_Function_Promise';
       console.log(msgStr + 'begin');
       try {
@@ -1587,7 +1587,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreateSubWindowWithOptions_Function_Promise", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_Function_Promise", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window | void;
@@ -1624,7 +1624,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testGetWindowSystemBarProperties_Function", 0, async (done: Function) => {
+    it("testGetWindowSystemBarProperties_Function", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = "testGetWindowSystemBarProperties_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1651,7 +1651,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties", 0, async (done: Function) => {
+    it("test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties";
       let SystemBarProperties: ohosWindow.SystemBarProperties = {
         statusBarColor: '#FF0000FF',
@@ -1726,7 +1726,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("test_subWindow_SetWindowSystemBarProperties", 0, async () => {
+    it("test_subWindow_SetWindowSystemBarProperties", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
       console.log(msgStr + " begin");
       let SubWindowClass: ohosWindow.Window | void;
@@ -1807,7 +1807,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testEnableLandscapeMultiWindow_Function", 0, async (done: Function) => {
+    it("testEnableLandscapeMultiWindow_Function", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = "testEnableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1839,7 +1839,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testDisableLandscapeMultiWindow_Function", 0, async (done: Function) => {
+    it("testDisableLandscapeMultiWindow_Function", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let msgStr = "testDisableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1871,7 +1871,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetWindowMask_Function_Promise", 0, async () => {
+    it("testSetWindowMask_Function_Promise", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let msgStr = "testSetWindowMask_Function_Promise";
       console.log(msgStr + " begin")
       let windowMask: Array<Array<number>> = new Array<Array<number>>()

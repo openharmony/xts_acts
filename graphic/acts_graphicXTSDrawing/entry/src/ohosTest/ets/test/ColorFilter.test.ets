@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
@@ -56,7 +56,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateBlendModeColorFilterNormal', DEFAULT, () => {
+    it('testColorFilterCreateBlendModeColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testColorFilterCreateBlendModeColorFilterNormal';
 
       try {
@@ -114,7 +114,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateBlendModeColorFilterNull', DEFAULT, () => {
+    it('testColorFilterCreateBlendModeColorFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateBlendModeColorFilterNull';
 
       try {
@@ -142,7 +142,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateBlendModeColorFilterMultipleCalls', DEFAULT, () => {
+    it('testColorFilterCreateBlendModeColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateBlendModeColorFilterMultipleCalls';
 
       for (let i = 0; i < 20; i++) {
@@ -172,7 +172,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateBlendModeColorFilterBoundaryValue', DEFAULT, () => {
+    it('testColorFilterCreateBlendModeColorFilterBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateBlendModeColorFilterBoundaryValue';
 
       const randomColor : common2D.Color = {
@@ -271,7 +271,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateComposeColorFilterNormal', DEFAULT, () => {
+    it('testColorFilterCreateComposeColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testColorFilterCreateComposeColorFilterNormal';
 
       let colorFilter1: drawing.ColorFilter | null = null;
@@ -337,7 +337,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateComposeColorFilterNull', DEFAULT, () => {
+    it('testColorFilterCreateComposeColorFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateComposeColorFilterNull';
 
       let colorFilter1: drawing.ColorFilter | null = null;
@@ -395,7 +395,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateComposeColorFilterMultipleCalls', DEFAULT, () => {
+    it('testColorFilterCreateComposeColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateComposeColorFilterMultipleCalls';
       const filters = [
         drawing.ColorFilter.createSRGBGammaToLinear(),
@@ -423,7 +423,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateLinearToSRGBGammaNormal', DEFAULT, () => {
+    it('testColorFilterCreateLinearToSRGBGammaNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testColorFilterCreateLinearToSRGBGammaNormal';
       try {
         drawing.ColorFilter.createLinearToSRGBGamma();
@@ -442,7 +442,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateLinearToSRGBGammaMultipleCalls', DEFAULT, () => {
+    it('testColorFilterCreateLinearToSRGBGammaMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateLinearToSRGBGammaMultipleCalls';
       try {
         for (let i = 0; i < 20; i++) {
@@ -463,7 +463,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateSRGBGammaToLinearNormal', DEFAULT, () => {
+    it('testColorFilterCreateSRGBGammaToLinearNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testColorFilterCreateSRGBGammaToLinearNormal';
       try {
         drawing.ColorFilter.createSRGBGammaToLinear();
@@ -482,7 +482,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateSRGBGammaToLinearMultipleCalls', DEFAULT, () => {
+    it('testColorFilterCreateSRGBGammaToLinearMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateSRGBGammaToLinearMultipleCalls';
       try {
         for (let i = 0; i < 20; i++) {
@@ -503,7 +503,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateLumaColorFilterNormal', DEFAULT, () => {
+    it('testColorFilterCreateLumaColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testColorFilterCreateLumaColorFilterNormal';
       try {
         drawing.ColorFilter.createLumaColorFilter();
@@ -522,7 +522,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateLumaColorFilterMultipleCalls', DEFAULT, () => {
+    it('testColorFilterCreateLumaColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testColorFilterCreateLumaColorFilterMultipleCalls';
       try {
         for (let i = 0; i < 20; i++) {
@@ -543,7 +543,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateMatrixColorFilterNormal' , DEFAULT , () => {
+    it('testColorFilterCreateMatrixColorFilterNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testColorFilterCreateMatrixColorFilterNormal';
       const matrix_ = [
         1, 0, 0, 0, 0, // 红色通道
@@ -569,7 +569,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateMatrixColorFilterNull' , DEFAULT , () => {
+    it('testColorFilterCreateMatrixColorFilterNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testColorFilterCreateMatrixColorFilterNull';
       try {
         drawing.ColorFilter.createMatrixColorFilter(null);
@@ -596,7 +596,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateMatrixColorFilterMultipleCalls' , DEFAULT , () => {
+    it('testColorFilterCreateMatrixColorFilterMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testColorFilterCreateMatrixColorFilterMultipleCalls';
       for ( let i = 0 ; i < 20 ; i ++ ) {
         const matrix: number[] = Array(20).fill(0).map(() => Math.random() * 10 - 5);
@@ -620,7 +620,7 @@ export default function colorFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateMatrixColorFilterAbnormal' , DEFAULT , () => {
+    it('testColorFilterCreateMatrixColorFilterAbnormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testColorFilterCreateMatrixColorFilterAbnormal';
       try {
         drawing.ColorFilter.createMatrixColorFilter([]);
