@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioReadtext() {
 describe('fileio_readtext', function () {
@@ -404,6 +405,31 @@ describe('fileio_readtext', function () {
         fileio.unlinkSync(fpath);
         done();
       });
+    } catch (e) {
+      console.log('fileio_test_readtext_async_006 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0600
+   * @tc.name fileio_test_readtext_async_006
+   * @tc.desc Test readtext() interfaces. Promise.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+  */
+  it('fileio_test_readtext_async_006', Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('fileio_test_readtext_async_006');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let str = await fileio.readText(fpath);
+      expect(str == FILE_CONTENT).assertTrue();
+      fileio.unlinkSync(fpath);
+      done();
     } catch (e) {
       console.log('fileio_test_readtext_async_006 has failed for ' + e);
       expect(false).assertTrue();
