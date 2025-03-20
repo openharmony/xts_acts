@@ -16,7 +16,6 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { commonEventManager } from '@kit.BasicServicesKit';
 
 export default class applicationContext05 extends UIAbility {
   onCreate(want) {
@@ -27,7 +26,6 @@ export default class applicationContext05 extends UIAbility {
     console.info('applicationContext05 JSON.stringify(want) is', JSON.stringify(want.parameters));
   };
 
-
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }
@@ -36,7 +34,7 @@ export default class applicationContext05 extends UIAbility {
     // Main window is created, set main page for this ability
     console.info('applicationContext05 onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('testability/pages/UiAbility12', (err, data) => {
+    windowStage.loadContent('testability/pages/UiAbility/UiAbility12', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;

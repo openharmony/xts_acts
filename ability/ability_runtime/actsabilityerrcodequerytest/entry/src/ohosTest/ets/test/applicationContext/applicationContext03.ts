@@ -18,6 +18,8 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
+let tag:string = `SUB_ChildProcessManager_sendableContextManager_1000`;
+
 export default class applicationContext03 extends UIAbility {
   onCreate(want) {
     console.info('applicationContext03 onCreate');
@@ -25,16 +27,20 @@ export default class applicationContext03 extends UIAbility {
     globalThis.applicationContext03 = this.context
     console.info('applicationContext03 JSON.stringify(want) is', JSON.stringify(want));
     console.info('applicationContext03 JSON.stringify(want) is', JSON.stringify(want.parameters));
+    // want.parameters.demo_num++
     // let applicationContext = globalThis.applicationContext03.getApplicationContext();
-    // let want1: Want = {
-    //   bundleName: 'com.example.myapp',
-    //   abilityName: 'EntryAbility'
-    // };
     // try {
-    //   applicationContext.restartApp(undefined);
+    //   if(want.parameters.demo_num==1){
+    //     console.log(`${tag} restartApp begin`);
+    //     applicationContext.restartApp(want);
+    //     console.log(`${tag} restartApp first`);
+    //   }else if(want.parameters.demo_num==2){
+    //     applicationContext.restartApp(want);
+    //     console.log(`${tag} restartApp second`);
+    //   }
     // } catch (error) {
-    //   console.error(`restartApp fail, error: ${JSON.stringify(error)}`);
-    //   if(error.code==401){
+    //   console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
+    //   if(error.code==16000064){
     //     globalThis.applicationContext03.terminateSelfWithResult(
     //       {
     //         resultCode: 100,
@@ -45,12 +51,11 @@ export default class applicationContext03 extends UIAbility {
     //         }
     //       }, () => {
     //       console.log("====>terminateSelfWithResult success====>")
-    //       commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-    //         console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3000 publish ACTS_TEST_DESTROY');
-    //       });
+    //     });
+    //     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+    //       console.info('====>SUB_ChildProcessManager_sendableContextManager_1000 publish ACTS_TEST_DESTROY');
     //     });
     //   }
-    // }
   };
 
   onDestroy() {
@@ -61,26 +66,12 @@ export default class applicationContext03 extends UIAbility {
     // Main window is created, set main page for this ability
     console.info('applicationContext03 onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('testability/pages/UiAbility12', (err, data) => {
+    windowStage.loadContent('testability/pages/UiAbility/UiAbility12', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-    globalThis.applicationContext03.terminateSelfWithResult(
-      {
-        resultCode: 100,
-        want: {
-          parameters: {
-            keyString: 'NextCase',
-          }
-        }
-      }, () => {
-      console.log("====>terminateSelfWithResult success====>")
-      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3000 publish ACTS_TEST_DESTROY');
-      });
     });
   }
 
@@ -93,6 +84,7 @@ export default class applicationContext03 extends UIAbility {
     // Ability has brought to foreground
     console.info('applicationContext03 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+
   }
 
   onBackground() {

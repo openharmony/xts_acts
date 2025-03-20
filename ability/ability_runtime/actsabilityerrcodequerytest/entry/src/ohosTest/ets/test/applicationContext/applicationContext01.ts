@@ -32,12 +32,24 @@ export default class applicationContext01 extends UIAbility {
     let applicationContext = globalThis.applicationContext01.getApplicationContext()
     console.log('killAllProcesses begin');
     try {
-      applicationContext.killAllProcesses(undefined).then(data => {
-        console.log('killAllProcesses success', JSON.stringify(data));
-      }).catch(err => {
-        console.log('killAllProcesses fail', JSON.stringify(err.code));
+      applicationContext.killAllProcesses(undefined)
+      console.log('killAllProcesses success');
+      globalThis.applicationContext01.terminateSelfWithResult(
+        {
+          resultCode: 100,
+          want: {
+            parameters: {
+              keyString: 'NextCase',
+            }
+          }
+        }, () => {
+        console.log("====>terminateSelfWithResult success====>")
+        commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+          console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3000 publish ACTS_TEST_DESTROY');
+        });
       });
     } catch (err) {
+      console.log('killAllProcesses fail', JSON.stringify(err.code));
     }
     console.log('killAllProcesses end');
   };
@@ -51,7 +63,7 @@ export default class applicationContext01 extends UIAbility {
     // Main window is created, set main page for this ability
     console.info('applicationContext01 onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('testability/pages/UiAbility12', (err, data) => {
+    windowStage.loadContent('testability/pages/UiAbility/UiAbility12', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -83,6 +95,20 @@ export default class applicationContext01 extends UIAbility {
     // Ability has brought to foreground
     console.info('applicationContext01 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    globalThis.applicationContext01.terminateSelfWithResult(
+      {
+        resultCode: 100,
+        want: {
+          parameters: {
+            keyString: 'NextCase',
+          }
+        }
+      }, () => {
+      console.log("====>terminateSelfWithResult success====>")
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3000 publish ACTS_TEST_DESTROY');
+      });
+    });
   }
 
   onBackground() {

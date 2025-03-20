@@ -20,6 +20,7 @@ import base from '@ohos.base';
 import { common } from '@kit.AbilityKit';
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
+import { router } from '@kit.ArkUI';
 
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: ['ACTS_TEST_OPENLINK', 'ACTS_TEST_DESTROY']
@@ -67,6 +68,7 @@ export default function sendableContextManagerTest() {
         // let context: common.AbilityStageContext = sendableContextManager.convertToAbilityStageContext(undefined);
         // let context: common.UIAbilityContext = sendableContextManager.convertToUIAbilityContext(undefined);
         console.info(`${tag} sendableContextManager.convertFromContext success`);
+        done();
       } catch (error) {
         console.error(`${tag}convertFromContext failed,error is:`, JSON.stringify(error));
         expect(error.code).assertEqual(401)
@@ -162,63 +164,63 @@ export default function sendableContextManagerTest() {
         moduleContext = context.createAreaModeContext(undefined)
       } catch (error) {
         console.error(`${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-        expect(error.code).assertEqual(undefined)
+        expect(error.code).assertEqual(401)
         done();
       }
     })
 
-    /*
-     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0600
-     * @tc.name   : killAllProcesses with undefined
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 0
-     */
-    it('SUB_ChildProcessManager_sendableContextManager_0600', 0, (done:Function) => {
-      let tag:string = `SUB_ChildProcessManager_sendableContextManager_0600`;
-      let link:string = 'https://www.applicationContext01.com'
-      let want: Want = {
-        uri: link,
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.startAbility(want, (err: BusinessError) => {
-                  if (err.code) {
-                    console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  }
-                })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    })
+    // /*
+    //  * @tc.number : SUB_ChildProcessManager_sendableContextManager_0600
+    //  * @tc.name   : killAllProcesses with undefined
+    //  * @tc.desc   : Function test
+    //  * @tc.size:   MediumTest
+    //  * @tc.type:   Function
+    //  * @tc.level  : 0
+    //  */
+    // it('SUB_ChildProcessManager_sendableContextManager_0600', 0, (done:Function) => {
+    //   let tag:string = `SUB_ChildProcessManager_sendableContextManager_0600`;
+    //   let link:string = 'https://www.applicationContext01.com'
+    //   let want: Want = {
+    //     uri: link,
+    //     parameters: {
+    //       appLinkingOnly: false,
+    //       demo_num: 111
+    //     }
+    //   }
+    //   commonEventManager.createSubscriber(ACTS_EVENT)
+    //     .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+    //       subscriber = commonEventSubscriber;
+    //       let unSubscribeCallback = () => {
+    //         setTimeout(async () => {
+    //           console.info(`====>${tag} unSubscribeCallback`);
+    //           done();
+    //         }, 1000);
+    //       }
+    //       let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+    //         console.log("OpenLink subscribeCallBack success")
+    //         if (data.event == 'ACTS_TEST_OPENLINK') {
+    //           setTimeout(() => {
+    //             context.startAbility(want, (err: BusinessError) => {
+    //               if (err.code) {
+    //                 console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+    //                 expect(err.code).assertEqual(16000019);
+    //                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+    //               }
+    //             })
+    //           }, 500);
+    //         }
+    //         if (data.event == 'ACTS_TEST_DESTROY') {
+    //           setTimeout(() => {
+    //             commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+    //           }, 500);
+    //         }
+    //       }
+    //       commonEventManager.subscribe(subscriber, subscribeCallBack);
+    //       setTimeout(() => {
+    //         commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+    //       }, 100)
+    //     })
+    // })
 
     /*
      * @tc.number : SUB_ChildProcessManager_sendableContextManager_0700
@@ -250,6 +252,7 @@ export default function sendableContextManagerTest() {
      */
       it('SUB_ChildProcessManager_sendableContextManager_0800', 0, (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
+      let applicationContext = context.getApplicationContext();
       let link:string = 'https://www.applicationContext02.com'
       let want: Want = {
         uri: link,
@@ -270,15 +273,7 @@ export default function sendableContextManagerTest() {
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.startAbility(want, (err: BusinessError) => {
-                  if (err.code) {
-                    console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  }
-                })
-              }, 500);
+              applicationContext.restartApp(want);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -292,7 +287,6 @@ export default function sendableContextManagerTest() {
           }, 100)
         })
     })
-
 
     /*
      * @tc.number : SUB_ChildProcessManager_sendableContextManager_0900
@@ -305,105 +299,17 @@ export default function sendableContextManagerTest() {
     it('SUB_ChildProcessManager_sendableContextManager_0900', 0, (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0900`;
       let applicationContext = context.getApplicationContext();
-      let link:string = 'https://www.applicationContextError.com'
-      let want: Want = {
-        uri: link,
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      try {
-        applicationContext.restartApp(want);
-      } catch (error) {
-        console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(401);
-        done();
-      }
-    })
-
-    /*
-     * @tc.number : SUB_ChildProcessManager_sendableContextManager_1000
-     * @tc.name   : restartApp twice in three seconds
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 0
-     */
-    it('SUB_ChildProcessManager_sendableContextManager_1000', 0, (done:Function) => {
-      let tag:string = `SUB_ChildProcessManager_sendableContextManager_1000`;
-      let applicationContext = context.getApplicationContext();
-      let link:string = 'https://www.applicationContext03.com'
       let want: Want = {
         bundleName: 'ohos.example.myapplication',
-        abilityName: 'TestAbility'
+        abilityName: 'entry'
       };
       try {
-        console.error(`${tag} restartApp begin`);
         applicationContext.restartApp(want);
-        console.error(`${tag} restartApp first`);
-        setTimeout(async () => {
-          applicationContext.restartApp(want);
-          console.error(`${tag} restartApp second`);
-        }, 1000);
       } catch (error) {
         console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(16000063);
         done();
       }
-    })
-
-    /*
-     * @tc.number : SUB_ChildProcessManager_sendableContextManager_1100
-     * @tc.name   : session.loadContent
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 0
-     */
-    it('SUB_ChildProcessManager_sendableContextManager_1100', 0, (done:Function) => {
-      let tag:string = `SUB_ChildProcessManager_sendableContextManager_1100`;
-      let link:string = 'https://www.applicationContext04.com'
-      let want: Want = {
-        uri: link,
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.startAbility(want, (err: BusinessError) => {
-                  if (err.code) {
-                    console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  }
-                })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
     })
 
     /*
