@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import inotify from 'libinotifyndk.so'
 
@@ -33,7 +33,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInotifyInotifyInit001', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyInit();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -47,7 +47,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInotifyInotifyInit1001', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyInit1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyInit1(0);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -61,7 +61,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInotifyInotifyInit1002', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyInit1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyInit1(1);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -75,7 +75,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInotifyInotifyInit1003', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyInit1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyInit1(2);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -89,7 +89,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInotifyInotifyAddWatch001', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyAddWatch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyAddWatch();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -103,7 +103,7 @@ export default function inotifyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInotifyInotifyRmWatch001', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyRmWatch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyRmWatch();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);

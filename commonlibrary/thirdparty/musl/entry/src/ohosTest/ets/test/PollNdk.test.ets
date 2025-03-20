@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import poll from 'libpollndk.so'
 
@@ -32,7 +32,7 @@ export default function pollNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPollPoll001', 0, async (done: Function) => {
+    it('testMuslPollPoll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = poll.poll();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);

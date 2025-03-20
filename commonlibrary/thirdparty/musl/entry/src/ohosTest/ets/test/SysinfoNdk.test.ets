@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import sysInfo from 'libsysinfondk.so'
 
@@ -32,7 +32,7 @@ export default function SysInfoNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSysInfoGetPhysPages001', 0, async (done: Function) => {
+    it('testMuslSysInfoGetPhysPages001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: boolean = sysInfo.getPhysPages();
       expect(result).assertEqual(resultTrue);
@@ -47,7 +47,7 @@ export default function SysInfoNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSysInfoGetNprocsConf001', 0, async (done: Function) => {
+    it('testMuslSysInfoGetNprocsConf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: boolean = sysInfo.getNprocsConf();
       expect(result).assertEqual(resultTrue);
@@ -62,7 +62,7 @@ export default function SysInfoNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSysInfoGetNprocs001', 0, async (done: Function) => {
+    it('testMuslSysInfoGetNprocs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: boolean = sysInfo.getNprocs();
       expect(result).assertEqual(resultTrue);
@@ -77,7 +77,7 @@ export default function SysInfoNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSysInfoGetAvphysPages001', 0, async (done: Function) => {
+    it('testMuslSysInfoGetAvphysPages001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: boolean = sysInfo.getAvphysPages();
       expect(result).assertEqual(resultTrue);

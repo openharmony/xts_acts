@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import unistd1 from 'libunistdndk1.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetCwdChk001', 0, async (done: Function) => {
+    it('testMuslUnistdGetCwdChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.GetcwdChk_One()).assertEqual(1);
       done()
     });
@@ -47,7 +47,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetCwdChk002', 0, async (done: Function) => {
+    it('testMuslUnistdGetCwdChk002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.GetcwdChk_Two()).assertEqual(1);
       done()
     });
@@ -60,7 +60,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetCwdChk003', 0, async (done: Function) => {
+    it('testMuslUnistdGetCwdChk003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.GetcwdChk_Three()).assertEqual(1);
       done()
     });
@@ -73,7 +73,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdPreadchk001', 0, async (done: Function) => {
+    it('testMuslUnistdPreadchk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PreadChk_One()).assertEqual(1);
       done();
     });
@@ -86,7 +86,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdPreadchk002', 0, async (done: Function) => {
+    it('testMuslUnistdPreadchk002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PreadChk_Two()).assertEqual(1);
       done();
     });
@@ -99,7 +99,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdReadChk001', 0, async (done: Function) => {
+    it('testMuslUnistdReadChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PreadChk_Two()).assertEqual(1);
       done();
     });
@@ -112,7 +112,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdReadChk002', 0, async (done: Function) => {
+    it('testMuslUnistdReadChk002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PreadChk_Two()).assertEqual(1);
       done();
     });
@@ -125,7 +125,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPRead64001', 0, async (done: Function) => {
+    it('testMuslUnistdPRead64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PRead64_One()).assertEqual(1);
       done();
     });
@@ -138,7 +138,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPRead64002', 0, async (done: Function) => {
+    it('testMuslUnistdPRead64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PRead64_Two()).assertEqual(1);
       done();
     });
@@ -151,7 +151,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPWrite001', 0, async (done: Function) => {
+    it('testMuslUnistdPWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PWrite_One()).assertEqual(1);
       done();
     });
@@ -164,7 +164,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPWrite002', 0, async (done: Function) => {
+    it('testMuslUnistdPWrite002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PWrite_Two()).assertEqual(1);
       done();
     });
@@ -177,7 +177,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPWrite64001', 0, async (done: Function) => {
+    it('testMuslUnistdPWrite64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PWrite64_One()).assertEqual(1);
       done();
     });
@@ -190,7 +190,7 @@ export default function unistdNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPWrite64002', 0, async (done: Function) => {
+    it('testMuslUnistdPWrite64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.PWrite64_Two()).assertEqual(1);
       done();
     });
@@ -203,7 +203,7 @@ export default function unistdNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUnistdLseek64001', 0, async (done: Function) => {
+    it('testMuslUnistdLseek64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.Lseek64_One()).assertEqual(1);
       done();
     });
@@ -216,7 +216,7 @@ export default function unistdNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUnistdLseek64002', 0, async (done: Function) => {
+    it('testMuslUnistdLseek64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.Lseek64_Two()).assertEqual(1);
       done();
     });
@@ -229,7 +229,7 @@ export default function unistdNdk1Test() {
     * @tc.type     : Function
     * @tc.level    : Level 1
     */
-    it('testMuslUnistdLseek001', 0, async (done: Function) => {
+    it('testMuslUnistdLseek001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.Lseek_One()).assertEqual(1);
       done();
     });
@@ -242,7 +242,7 @@ export default function unistdNdk1Test() {
     * @tc.type     : Function
     * @tc.level    : Level 1
     */
-    it('testMuslUnistdLseek002', 0, async (done: Function) => {
+    it('testMuslUnistdLseek002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(unistd1.Lseek_Two()).assertEqual(1);
       done();
     });

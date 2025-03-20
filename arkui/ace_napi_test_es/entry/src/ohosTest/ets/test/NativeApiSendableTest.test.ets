@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 import utils from '@arkts.utils';
@@ -45,7 +45,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest001
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest001', 0, async (done: Function) => {
+    it('napiSendableTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest001 START');
       class Class {
         constructor() {}
@@ -67,7 +67,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest004
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest004', 0, async (done: Function) => {
+    it('napiSendableTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest004 START');
       let value = napitest.NapiCreateSendableArray();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -80,7 +80,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest005
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest005', 0, async (done: Function) => {
+    it('napiSendableTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest005 START');
       let value = napitest.NapiCreateSendableArrayWithLength();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -93,7 +93,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest006
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest006', 0, async (done: Function) => {
+    it('napiSendableTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest006 START');
       let value = napitest.NapiCreateSendableArrayBuffer();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -106,7 +106,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest007
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest007', 0, async (done: Function) => {
+    it('napiSendableTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest007 START');
       let value = napitest.NapiCreateSendableTypedArray();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -119,7 +119,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest008
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest008', 0, async (done: Function) => {
+    it('napiSendableTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest008 START');
       let value = napitest.NapiCreateSendableObject();
       napitest.NapiWrapSendable(value, "data");
@@ -134,7 +134,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest009
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest009', 0, async (done: Function) => {
+    it('napiSendableTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest009 START');
       let value = napitest.NapiCreateSendableObject();
       napitest.NapiWrapSendableWithSize(value, "data");
@@ -149,18 +149,18 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest010
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest010', 0, async (done: Function) => {
+    it('napiSendableTest010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest010 START');
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
       let p = lock.lockAsync(async () => {
-        exchange(flag, 0, 1);
+        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 1);
         await Promise.resolve();
         exchange(flag, 1, 0);
 
       })
       let p0 = lock.lockAsync(async () => {
-        exchange(flag, 0, 2);
+        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 2);
         await Promise.resolve();
         exchange(flag, 2, 0);
       })
@@ -173,12 +173,12 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest011
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest011', 0, async (done: Function) => {
+    it('napiSendableTest011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest011 START');
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
       let p = lock.lockAsync(async () => {
-        exchange(flag, 0, 1);
+        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 1);
         lock.lockAsync(async () => {
           exchange(flag, 1, 2);
         }, utils.locks.AsyncLockMode.SHARED);

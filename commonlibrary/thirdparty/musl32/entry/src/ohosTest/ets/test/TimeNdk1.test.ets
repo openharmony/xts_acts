@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import time1 from 'libtimendk32.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -35,7 +35,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimerGetTime64001', 0, async (done: Function) => {
+    it('testMuslTimeTimerGetTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Timer_getTime64_One()).assertEqual(1);
       done()
     });
@@ -48,7 +48,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimerGetTime64002', 0, async (done: Function) => {
+    it('testMuslTimeTimerGetTime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Timer_getTime64_Two()).assertEqual(1);
       done()
     });
@@ -61,7 +61,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimerSetTime64001', 0, async (done: Function) => {
+    it('testMuslTimeTimerSetTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Timer_setTime64_One()).assertEqual(1);
       done()
     });
@@ -74,7 +74,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimerSetTime64002', 0, async (done: Function) => {
+    it('testMuslTimeTimerSetTime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Timer_setTime64_Two()).assertEqual(1);
       done()
     });

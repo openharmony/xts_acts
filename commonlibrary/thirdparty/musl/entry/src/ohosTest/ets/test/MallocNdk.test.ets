@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import malloc from 'libmallocndk.so'
 
@@ -32,7 +32,7 @@ export default function mallocNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMallocMalloc001', 0, async (done: Function) => {
+    it('testMuslMallocMalloc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = malloc.malloc();
       expect(a).assertEqual(0);
@@ -46,7 +46,7 @@ export default function mallocNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMallocMemalign001', 0, async (done: Function) => {
+    it('testMuslMallocMemalign001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = malloc.memalign();
       expect(a).assertEqual(1);
@@ -60,7 +60,7 @@ export default function mallocNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMallocMallocUsableSize001', 0, async (done: Function) => {
+    it('testMuslMallocMallocUsableSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = malloc.mallocUsableSize();
       expect(a).assertEqual(0);
       done()
@@ -73,7 +73,7 @@ export default function mallocNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslMallocMallopt001', 0, async (done: Function) => {
+    it('testMuslMallocMallopt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = malloc.mallopt();
       expect(a).assertEqual(0);
       done()

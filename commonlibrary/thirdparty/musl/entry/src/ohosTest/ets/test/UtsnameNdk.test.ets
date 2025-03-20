@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import utsname from 'libutsnamendk.so'
 
@@ -32,7 +32,7 @@ export default function utsnameNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUtsnameUname001', 0, async (done: Function) => {
+    it('testMuslUtsnameUname001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = utsname.uname();
       expect(result).assertEqual(resultTrue);
