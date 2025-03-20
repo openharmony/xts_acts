@@ -149,6 +149,9 @@ export default function testsuite() {
   nestedScrollSwiper()
   scrollSourceDrag()
   offsetRemain()
+  finishTransSwiper()
+  preloadErrorTabs()
+  symbolTabs()
   TabsAp1()
   ScrollApi1()
   scrollXOffsetJsunit();
