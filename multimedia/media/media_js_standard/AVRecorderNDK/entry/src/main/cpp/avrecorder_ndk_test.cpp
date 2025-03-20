@@ -242,6 +242,14 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             break;
     }
 
+    parseSetConfigAudioSourceType(env, args[0], *config);
+    parseSetConfigAudioCodec(env, args[0], *config);
+    
+    return true;
+}
+
+static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
+{
     int32_t audioSourceType = 0;
     GetInt32Property(env, arg, "audioSourceType", &audioSourceType);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioSourceType :%{public}d", audioSourceType);
@@ -268,7 +276,10 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             config.audioSourceType = AVRECORDER_DEFAULT;
             break;
     }
+}
 
+static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
+{
     int32_t audioCodec = 3;
     GetInt32Property(env, arg, "audioCodec", &audioCodec);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioCodec :%{public}d", audioCodec);
@@ -287,7 +298,6 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             break;
     }
 
-    return true;
 }
 
 // 配置参数
@@ -580,8 +590,7 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameWidth : %{public}d", videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameHeight : %{public}d", videoFrameHeight);
 
-    g_ndkCamera = new NDKCamera(focusMode, cameraDeviceIndex, sceneMode, previewId, photoId, videoId, videoFrameWidth,
-                               videoFrameHeight);
+    g_ndkCamera = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
     int result = 6;
     napi_value res;
     napi_create_int32(env, result, &res);

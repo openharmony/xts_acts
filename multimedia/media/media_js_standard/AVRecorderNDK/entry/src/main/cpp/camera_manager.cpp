@@ -20,6 +20,10 @@
 
 static int g_myParam1  = 1920;
 static int g_myParam2 = 1080;
+static int g_focusMode = 2;
+static int g_cameraDeviceIndex = 0;
+static char *g_photoId = nullptr;
+static char *g_videoId = nullptr;
 
 namespace OHOS_CAMERA_SAMPLE {
 NDKCamera *NDKCamera::g_ndkCamera = nullptr;
@@ -27,10 +31,9 @@ std::mutex NDKCamera::mtx_;
 const std::unordered_map<uint32_t, Camera_SceneMode> g_int32ToCameraSceneMode = {
     {1, Camera_SceneMode::NORMAL_PHOTO}, {2, Camera_SceneMode::NORMAL_VIDEO}, {12, Camera_SceneMode::SECURE_PHOTO}};
 
-NDKCamera::NDKCamera(uint32_t focusMode, uint32_t cameraDeviceIndex, uint32_t sceneMode, char *previewId, char *photoId,
-                     char *videoId, int param1, int param2)
-    : focusMode_(focusMode), cameraDeviceIndex_(cameraDeviceIndex), previewSurfaceId_(previewId),
-      photoSurfaceId_(photoId), videoSurfaceId_(videoId), cameras_(nullptr), profile_(nullptr),
+NDKCamera::NDKCamera(char *previewId, char *photoId, int param1, int param2)
+    : focusMode_(g_focusMode), cameraDeviceIndex_(g_cameraDeviceIndex), previewSurfaceId_(previewId),
+      photoSurfaceId_(g_photoId), videoSurfaceId_(g_videoId), cameras_(nullptr), profile_(nullptr),
       cameraOutputCapability_(nullptr), captureSession_(nullptr), cameraInput_(nullptr), previewOutput_(nullptr),
       photoOutput_(nullptr), videoOutput_(nullptr), isCameraMuted_(nullptr), metaDataObjectType_(nullptr),
       metadataOutput_(nullptr), isExposureModeSupported_(false), isFocusModeSupported_(false), isSuccess_(false),
@@ -700,7 +703,7 @@ Camera_ErrorCode NDKCamera::IsFocusPoint(float x, float y)
     }
     result_ = OH_CaptureSession_GetFocusPoint(captureSession_, &focusPoint);
     if (&focusPoint == nullptr || result_ != CAMERA_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint is not available.");
+        OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFocusPoint Profile_ is invalid.");
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "IsFocusPoint end.");
@@ -716,7 +719,8 @@ int32_t NDKCamera::GetVideoFrameWidth(void)
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "GetVideoFrameWidth end.");
-    return videoProfile_->size.width;
+    int32_t  getVideoFrameWidth = videoProfile_->size.width;
+    return getVideoFrameWidth;
 }
 
 int32_t NDKCamera::GetVideoFrameHeight(void)
@@ -728,7 +732,8 @@ int32_t NDKCamera::GetVideoFrameHeight(void)
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "GetVideoFrameHeight end.");
-    return videoProfile_->size.height;
+    int32_t  getVideoFrameHeight = videoProfile_->size.height;
+    return getVideoFrameHeight;
 }
 
 int32_t NDKCamera::GetVideoFrameRate(void)
@@ -740,7 +745,8 @@ int32_t NDKCamera::GetVideoFrameRate(void)
         return CAMERA_INVALID_ARGUMENT;
     }
     OH_LOG_INFO(LOG_APP, "GetVideoFrameRate end.");
-    return videoProfile_->range.min;
+    int32_t  getVideoFrameRatemin = videoProfile_->range.min;
+    return getVideoFrameRatemin;
 }
 
 Camera_ErrorCode NDKCamera::VideoOutputStop(void)

@@ -42,8 +42,7 @@ namespace OHOS_CAMERA_SAMPLE {
 class NDKCamera {
 public:
     ~NDKCamera();
-    NDKCamera(uint32_t focusMode, uint32_t cameraDeviceIndex, uint32_t sceneMode, char *previewId, char *photoId,
-              char *videoId, int param1, int param2);
+    NDKCamera(char *previewId, int param1, int param2);
 
     static void Destroy()
     {

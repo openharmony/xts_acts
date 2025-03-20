@@ -57,8 +57,7 @@ struct Index {
           .onClick(() => {
             const result = testapi.createPrepareAVRecorder();
             hilog.info(0x0000, 'testTag', 'Prepare AVRecorder %{public}d', result);
-            const prepareCameraResult = testapi.prepareCamera(this.focusMode, this.cameraDeviceIndex,
-            this.sceneMode, this.previewId, this.photoId, this.videoId,1920,1080);
+            const prepareCameraResult = testapi.prepareCamera( this.previewId, 1920,1080);
             hilog.info(0x0000, 'testTag', 'Prepare AVRecorder %{public}d', prepareCameraResult);
           })
         Button('Start', { type: ButtonType.Circle, stateEffect: true })

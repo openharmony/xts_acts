@@ -32,8 +32,7 @@ export const releaseAVRecorder: () => number;
 
 export const updateRotationAVRecorder: (videoRotation: number) => number;
 
-export const prepareCamera: (focusMode: number, cameraDeviceIndex: number, sceneMode: number, previewId: string,
-  photeId: string, videoId: string, videoFrameWidth: number, videoFrameHeight: number) => number;
+export const prepareCamera: (previewId: string, videoFrameWidth: number, videoFrameHeight: number) => number;
 
 export const setPreviewSurfaceId: () => number;
 

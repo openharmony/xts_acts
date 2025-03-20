@@ -113,8 +113,7 @@ export default class AVRecorderNdkTestBase {
           this.previewId = await AppStorage.get('testsurfaceId');
           let videoFrameWidth: number = config['videoFrameWidth']
           let videoFrameHeight: number = config['videoFrameHeight']
-          this.result = await testNapi.prepareCamera(this.focusMode, this.cameraDeviceIndex,
-            this.sceneMode, this.previewId, this.photoId, this.videoId, videoFrameWidth, videoFrameHeight);
+          this.result = await testNapi.prepareCamera(this.previewId, videoFrameWidth, videoFrameHeight);
           // expect(this.result).assertEqual(6);
           this.toNextStep(config, fdNumber, steps, done);
           break;
