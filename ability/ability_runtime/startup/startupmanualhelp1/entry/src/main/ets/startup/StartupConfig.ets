@@ -135,6 +135,23 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
       } else {
         console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get error');
       }
+      
+      let Sample_103_init: string = AppStorage.get('Sample_103_init') as string;
+      if (Sample_103_init == 'Sample_103_init') {
+        console.log('Custom StartupTest Sample_103 startupManager AppStorage.get success');
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': error?.code,
+          }
+        }
+        commonEventManager.publish('Sample_103_init', commonEventData, (err, data)=>{
+          console.info('StartupTest Sample_103_init init, publish msg, err=' + JSON.stringify(err));
+          console.info('StartupTest Sample_103_init, publish msg, data=' + JSON.stringify(data));
+        })
+      } else {
+          console.log('Custom StartupTest  Sample_103_init startupManager AppStorage.get error');
+      }
+
       let initValue13: string = AppStorage.get('Sample_013_init') as string;
       if (initValue13 == 'Sample_013_init') {
         console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get success');
