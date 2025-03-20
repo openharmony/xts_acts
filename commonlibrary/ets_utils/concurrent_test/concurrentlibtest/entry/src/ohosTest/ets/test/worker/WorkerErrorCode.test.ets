@@ -1485,5 +1485,65 @@ export default function workerErrorCodeTest() {
       }
     });
 
+
+    /**
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_4700
+     * @tc.name       : testThreadWorkerErrorCode0047
+     * @tc.desc       : ThreadWorker9+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testThreadWorkerErrorCode0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const caseName = "testThreadWorkerErrorCode0047";
+      let bool = false;
+      const workerInstance: worker.ThreadWorker =
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
+      let buffer = new ArrayBuffer(1)
+      workerInstance.postMessage(buffer, {transfer: [buffer]});
+      workerInstance.onmessage = (e) => {
+        workerInstance.terminate();
+      }
+      workerInstance.onexit = (code) => {
+        console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        bool = true;
+      }
+      while (!bool) {
+        await Sleep(100)
+      }
+      done();
+    });
+    /**
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_Error_Code_4800
+     * @tc.name       : testThreadWorkerErrorCode0048
+     * @tc.desc       : ThreadWorker9+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testThreadWorkerErrorCode0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const caseName = "testThreadWorkerErrorCode0048";
+      let bool = false;
+      const workerInstance: worker.ThreadWorker =
+        new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {
+          priority: ThreadWorkerPriority.HIGH
+        });
+      let buffer = new ArrayBuffer(1)
+      workerInstance.postMessage(buffer, {});
+      workerInstance.onmessage = (e) => {
+        workerInstance.terminate();
+      }
+      workerInstance.onexit = (code) => {
+        console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+        bool = true;
+      }
+      while (!bool) {
+        await Sleep(100)
+      }
+      done();
+    });
+
   })
 }
