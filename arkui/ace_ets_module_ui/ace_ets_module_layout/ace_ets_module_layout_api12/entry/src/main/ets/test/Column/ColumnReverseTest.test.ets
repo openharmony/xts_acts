@@ -79,9 +79,6 @@ export default function ColumnReverseTest() {
     it('ColumnReverseTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[ColumnReverseTest_0200] START');
       await CommonFunc.sleep(1000);
-      //let strJson = getInspectorByKey('ColumnReverseTest_Text01');
-      //let obj: ESObject = JSON.parse(strJson);
-      //console.info("[ColumnReverseTest_0200] component obj is: " + JSON.stringify(obj));
 
       let Column_2 = CommonFunc.getComponentRect('ColumnReverse_Column_2');
       let Column_03 = CommonFunc.getComponentRect('ColumnReverse_Column_03');
