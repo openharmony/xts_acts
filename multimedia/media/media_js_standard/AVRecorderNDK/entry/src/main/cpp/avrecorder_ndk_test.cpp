@@ -196,7 +196,6 @@ static bool parseSetConfigFileFormatOps(napi_env env, napi_value arg, struct OH_
         return false;
     }
     int32_t fileFormat = -1;
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     switch (fileFormat) {
@@ -231,7 +230,6 @@ static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct O
     }
     
     // Optional parameters, no need check error.
-    GetInt32Property(env, arg, "audioBitrate", &(config.profile.audioBitrate));
     GetInt32Property(env, arg, "audioSampleRate", &(config.profile.audioSampleRate));
 
     int32_t audioSourceType = 0;
@@ -290,6 +288,8 @@ static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVR
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
     }
+    
+    OH_LOG_INFO(LOG_APP, "NDK getAVRecorderConfig profile.audioBitrate :%{public}d:", config->profile.audioBitrate);
     return true;
 }
 
