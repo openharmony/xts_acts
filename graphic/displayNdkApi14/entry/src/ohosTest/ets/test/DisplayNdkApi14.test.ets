@@ -76,7 +76,7 @@ export default function ActsDisplayNdkApi14Test() {
     let rotation:string[];
     let orientation:string[];
     let code:number = 0;
-
+    let displayFoldStatus:number;
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -89,20 +89,23 @@ export default function ActsDisplayNdkApi14Test() {
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
       deviceType = deviceInfo.deviceType;
       console.log('jsUnittest beforeAll deviceType =' + deviceType);
-      
+      displayFoldStatus = display.getFoldStatus();
+        console.log('jsUnittest beforeAll getFoldStatus =' + displayFoldStatus);
       try{
         let data:string = displayClass.getDisplayCapability();
         let capabilityData:CapabilityData = JSON.parse(data);
         console.log('jsUnittest beforeAll deviceMessage =' + JSON.stringify(capabilityData));
         for(const capability of capabilityData.capability){
-          foldStatus = capability.foldStatus;
-          foldDisplayMode = capability.foldDisplayMode;
-          rotation = capability.rotation;
-          orientation = capability.orientation;
-          console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
-          console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
-          console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
-          console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          if(Number(capability.foldStatus) == displayFoldStatus){
+            foldStatus = capability.foldStatus;
+            foldDisplayMode = capability.foldDisplayMode;
+            rotation = capability.rotation;
+            orientation = capability.orientation;
+            console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
+            console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
+            console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
+            console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          }
         }
       } catch (err) {
         console.log('jsUnittest beforeAll getDisplayCapability failed ' + err.code);

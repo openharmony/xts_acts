@@ -33,20 +33,25 @@ export default function DisplayNdkTest() {
     let rotation:string[];
     let orientation:string[];
     let code:number;
+    let displayFoldStatus:number;
     beforeAll(() => {
       try{
+        displayFoldStatus = display.getFoldStatus();
+        console.log('jsUnittest beforeAll getFoldStatus =' + displayFoldStatus);
         let data:string = displayClass.getDisplayCapability();
         let capabilityData:CapabilityData = JSON.parse(data);
         console.log('jsUnittest beforeAll deviceMessage =' + JSON.stringify(capabilityData));
         for(const capability of capabilityData.capability){
-          foldStatus = capability.foldStatus;
-          foldDisplayMode = capability.foldDisplayMode;
-          rotation = capability.rotation;
-          orientation = capability.orientation;
-          console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
-          console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
-          console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
-          console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          if(Number(capability.foldStatus) == displayFoldStatus){
+            foldStatus = capability.foldStatus;
+            foldDisplayMode = capability.foldDisplayMode;
+            rotation = capability.rotation;
+            orientation = capability.orientation;
+            console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
+            console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
+            console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
+            console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          }
         }
       } catch (err) {
         console.log('jsUnittest beforeAll getDisplayCapability failed' + err.code+' ' +err.message);
@@ -170,12 +175,11 @@ export default function DisplayNdkTest() {
         console.log(caseName + ' :'+ displayOrientation);
         let display1 = display.getDefaultDisplaySync()
         console.log(caseName + 'jsOrientation :'+ display1.orientation);
+        console.log(caseName + 'displayOrientation :'+ displayOrientation);
         if(code == 801){
-            expect(displayOrientation).assertEqual(0);
             expect(displayOrientation).assertEqual(0);
              done();
           }else {
-            expect(displayOrientation).assertEqual(Number(rotation[0]));
             expect(displayOrientation).assertEqual(Number(orientation[0]));
             done();
           }

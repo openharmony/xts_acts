@@ -70,6 +70,7 @@ export default function windowPropertiesTest() {
         let promise = window.getAllWindowLayoutInfo(displayId)
         promise.then((data) => {
           console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data windowRect: ` + JSON.stringify(data.windowRect));
           expect(data.length).assertLargerOrEqual(1);
           done();
         }).catch((err: BusinessError) => {
