@@ -144,7 +144,7 @@ struct HideToolBarNavPage {
               this.navPathStack.pushPathByName('symbolGlyphModifierBack', null);
             })
             .height('10%')
-          Button("pushPixelMap")
+          Button('pushPixelMap')
             .onClick(() => {
               this.navPathStack.pushPathByName('pushPixelMap', null);
             })
