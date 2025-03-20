@@ -1393,7 +1393,7 @@ export default function workerErrorCodeTest() {
         try {
           let worker: worker.ThreadWorker = workerInstancesONE[i]
           worker.terminate()
-          workerInstance.onexit = (code) => {
+          worker.onexit = (code) => {
             console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
             count++
           }
