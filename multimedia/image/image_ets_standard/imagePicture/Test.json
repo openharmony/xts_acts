@@ -47,6 +47,7 @@
                 "./resource/image/FragmentMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files"
             ]
         },
+        
         {
             "type": "ShellKit",
             "run-command": [
