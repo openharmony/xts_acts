@@ -47,6 +47,58 @@
         ]
       },
       {
+        "name": "MainAbility1",
+        "srcEntry": "./ets/test/MainAbility/MainAbility1.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.example.com"
+              }
+            ]
+          }
+        ],
+      },
+      {
+        "name": "MainAbility2",
+        "srcEntry": "./ets/test/MainAbility/MainAbility2.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": false,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+          }
+        ],
+        "permissions": [
+          "ohos.permission.ACCESS_BBOX_DIR",
+          'ohos.permission.READ_HEALTH_DATA'
+        ]
+      },
+      {
         "name": "applicationContext01",
         "srcEntry": "./ets/test/applicationContext/applicationContext01.ts",
         "description": "$string:TestAbility_desc",
