@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import storage from '@system.storage';
 
 const TAG = '[SYSTEM_STORAGE_JSKITS_TEST]'
@@ -56,7 +56,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testSet001', 0, async function (done) {
+        it('testSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testSet001 start *************');
             let completeRet = false;
             let successRet = false;
@@ -94,7 +94,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testSet002', 0, async function (done) {
+        it('testSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testSet002 start *************');
             let testData = undefined;
             let testErrCode = undefined;
@@ -131,7 +131,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testSet003', 0, async function (done) {
+        it('testSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testSet003 start *************');
             let testData = undefined;
             let testErrCode = undefined;
@@ -169,7 +169,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testSet004', 0, async function (done) {
+        it('testSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testSet004 start *************');
             let testData = undefined;
             let testErrCode = undefined;
@@ -205,7 +205,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGet001', 0, async function (done) {
+        it('testGet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testGet001 start *************');
             let completeRet = false;
             let promise1 = await storage.set({
@@ -246,7 +246,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGet002', 0, async function (done) {
+        it('testGet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testGet002 start *************');
             let completeRet = false;
             let promise = await storage.get({
@@ -280,7 +280,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGet003', 0, async function (done) {
+        it('testGet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testGet003 start *************');
             let testVal = undefined;
             let testData = undefined;
@@ -323,7 +323,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGet004', 0, async function (done) {
+        it('testGet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testGet004 start *************');
             let testVal = undefined;
             let completeRet = false;
@@ -357,7 +357,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDelete001', 0, async function (done) {
+        it('testDelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testDelete001 start *************');
             let completeRet = false;
             let successRet = false;
@@ -409,7 +409,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDelete002', 0, async function (done) {
+        it('testDelete002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testDelete002 start *************');
             let testData = undefined;
             let testErrCode = undefined;
@@ -461,7 +461,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDelete003', 0, async function (done) {
+        it('testDelete003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testDelete003 start *************');
             let completeRet = false;
             let promise1 = await storage.set({
@@ -516,7 +516,7 @@ export default function SystemStorageJsunit(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testClear001', 0, async function (done) {
+        it('testClear001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + '************* testClear001 start *************');
             let successRet = false;
             let compelteRet = false;

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import storage from '@ohos.data.storage'
 
 const PATH = '/data/storage/el2/database/test_storage';
@@ -56,7 +56,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testClear0011', 0, async function (done) {
+        it('testClear0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             await mPref.flushSync();
             await mPref.clear().then((ret) => {
@@ -76,7 +76,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0031', 0, async function (done) {
+        it('testHasKey0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             await mPref.has(KEY_TEST_STRING_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -95,7 +95,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0032', 0, async function (done) {
+        it('testHasKey0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
             await mPref.has(KEY_TEST_INT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -114,7 +114,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0033', 0, async function (done) {
+        it('testHasKey0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 2.0);
             await mPref.has(KEY_TEST_FLOAT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -133,7 +133,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0034', 0, async function (done) {
+        it('testHasKey0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
             await mPref.has(KEY_TEST_BOOLEAN_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -152,7 +152,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0035', 0, async function (done) {
+        it('testHasKey0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
             await mPref.has(KEY_TEST_LONG_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
@@ -171,7 +171,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue0061', 0, async function (done) {
+        it('testGetDefValue0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultValue").then((ret) => {
                 expect('defaultValue').assertEqual(ret);
@@ -190,7 +190,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetFloat0071', 0, async function (done) {
+        it('testGetFloat0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
             await mPref.get(KEY_TEST_FLOAT_ELEMENT, 0.0).then((ret) => {
@@ -210,7 +210,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetInt0081', 0, async function (done) {
+        it('testGetInt0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
             await mPref.get(KEY_TEST_INT_ELEMENT, 0.0).then((ret) => {
@@ -230,7 +230,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetLong0091', 0, async function (done) {
+        it('testGetLong0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_LONG_ELEMENT, 3);
             await mPref.get(KEY_TEST_LONG_ELEMENT, 0).then((ret) => {
@@ -250,7 +250,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetString101', 0, async function (done) {
+        it('testGetString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             await mPref.flushSync();
@@ -271,7 +271,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutBoolean0121', 0, async function (done) {
+        it('testPutBoolean0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.put(KEY_TEST_BOOLEAN_ELEMENT, true).then(async (ret) => {
                 expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
@@ -292,7 +292,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutFloat0131', 0, async function (done) {
+        it('testPutFloat0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.put(KEY_TEST_FLOAT_ELEMENT, 4.0).then(async (ret) => {
                 expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
@@ -313,7 +313,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutInt0141', 0, async function (done) {
+        it('testPutInt0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.put(KEY_TEST_INT_ELEMENT, 4).then((ret) => {
                 expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
@@ -334,7 +334,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutLong0151', 0, async function (done) {
+        it('testPutLong0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_LONG_ELEMENT, 4);
             await mPref.put(KEY_TEST_LONG_ELEMENT, 4).then(async (ret) => {
@@ -356,7 +356,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutString0161', 0, async function (done) {
+        it('testPutString0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             await mPref.put(KEY_TEST_STRING_ELEMENT, '').then(async (ret) => {
@@ -378,7 +378,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutString0171', 0, async function (done) {
+        it('testPutString0171', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             await mPref.put(KEY_TEST_STRING_ELEMENT, '').then(async (ret) => {
                 expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
@@ -399,7 +399,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testFlush00181', 0, async function (done) {
+        it('testFlush00181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             await mPref.put(KEY_TEST_STRING_ELEMENT, 'test').then(async (ret) => {
@@ -421,7 +421,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testMaxLengthofKey0200', 0, async function (done) {
+        it('testMaxLengthofKey0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.put(MAX_KEY_LENGTH, "value1").then((ret) => {
                 expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "defaultvalue"));
@@ -441,7 +441,7 @@ export default function storagePromiseTest() {
          * @tc.level Level 2
          */
 
-        it('testMaxLengthofValue0210', 0, async function (done) {
+        it('testMaxLengthofValue0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync("test", "abc");
             await mPref.put("test", MAX_VALUE_LENGTH).then((ret) => {
@@ -463,7 +463,7 @@ export default function storagePromiseTest() {
          * @tc.level Level 2
          */
 
-        it('testMaxLengthofValue0220', 0, async function (done) {
+        it('testMaxLengthofValue0220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync("test", MAX_VALUE_LENGTH);
             await mPref.put("test", "y".repeat(16*1024*1024)).then((ret) => {
@@ -484,7 +484,7 @@ export default function storagePromiseTest() {
          * @tc.level Level 2
          */
 
-        it('testDelete0230', 0, async function (done) {
+        it('testDelete0230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
             await mPref.delete(KEY_TEST_STRING_ELEMENT).then((ret) => {
@@ -504,7 +504,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testMaxLengthofKey0240', 0, async function (done) {
+        it('testMaxLengthofKey0240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.putSync(MAX_KEY_LENGTH, "value1");
             expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "default"));
             await mPref.delete(MAX_KEY_LENGTH).then((ret) => {
@@ -525,7 +525,7 @@ export default function storagePromiseTest() {
          * @tc.level Level 2
          */
 
-        it('testMaxLengthofValue0250', 0, async function (done) {
+        it('testMaxLengthofValue0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clearSync();
             await mPref.putSync("test", MAX_VALUE_LENGTH)
             await mPref.put("test", "y".repeat(16*1024*1024)).then((ret) => {
@@ -547,7 +547,7 @@ export default function storagePromiseTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue0260', 0, async function (done) {
+        it('testGetDefValue0260', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clear();
             await mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true).then((ret) => {
                 expect(true).assertEqual(ret);

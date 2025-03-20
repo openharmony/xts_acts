@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import pasteboard from '@ohos.pasteboard';
 import { Want } from '@kit.AbilityKit';
@@ -49,7 +49,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0100 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record[pasteboard.MIMETYPE_TEXT_PLAIN] = 'hello';
@@ -73,7 +73,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0200 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record[pasteboard.MIMETYPE_TEXT_HTML] = html;
@@ -97,7 +97,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0300 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record[pasteboard.MIMETYPE_TEXT_URI] = uri;
@@ -121,7 +121,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0400 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record[pasteboard.MIMETYPE_TEXT_WANT] = object;
@@ -145,7 +145,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0500 start ************')
       let buffer = new ArrayBuffer(128);
       let realSize: image.Size = { height: 3, width: 5 };
@@ -185,7 +185,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0600 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record['app/xml'] = new ArrayBuffer(256);
@@ -209,7 +209,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0700 start ************')
       let buffer = new ArrayBuffer(128);
       let realSize: image.Size = { height: 3, width: 5 };
@@ -274,7 +274,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0800 start ************')
       let buffer = new ArrayBuffer(128);
       let realSize: image.Size = { height: 3, width: 5 };
