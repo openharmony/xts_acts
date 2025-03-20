@@ -147,38 +147,19 @@ static bool GetInt32Property(napi_env env, napi_value root, const char *utf8name
     return (napi_get_value_int32(env, property, res) == napi_ok);
 }
 
-
 static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
 {
-    if (env == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "env is nullptr");
-        return false;
-    }
-    if (arg == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "arg is nullptr");
-        return false;
-    }
-    // Optional parameters, no need check error.
-    GetInt32Property(env, arg, "audioBitrate", &(config.profile.audioBitrate));
-    GetInt32Property(env, arg, "audioChannels", &(config.profile.audioChannels));
-    GetInt32Property(env, arg, "audioSampleRate", &(config.profile.audioSampleRate));
-
     int32_t videoSourceType = 0;
     GetInt32Property(env, arg, "videoSourceType", &videoSourceType);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoSourceType :%{public}d", videoSourceType);
 
     int32_t fileGenerationMode = 0;
     GetInt32Property(env, arg, "fileGenerationMode", &fileGenerationMode);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileGenerationMode :%{public}d", fileGenerationMode);
 
     int32_t videoCodec = 2;
     GetInt32Property(env, arg, "videoCodec", &videoCodec);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoCodec :%{public}d", videoCodec);
 
     int32_t fileFormat = -1;
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
     const int VIDEO_BITRAGE_2000KHZ = 2000000;
     const int VIDEO_FRAMEWIDTH_1920 = 1920;
     const int VIDEO_FRAMEHEIGHT_1080 = 1080;
@@ -225,6 +206,29 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameRate :%{public}d",
                         config.profile.videoFrameRate);
             break;
+        default:
+            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+            break;
+    }
+
+    return true;
+}
+
+static bool parseSetConfigFileFormatOps(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
+{
+    if (env == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "env is nullptr");
+        return false;
+    }
+    if (arg == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "arg is nullptr");
+        return false;
+    }
+    int32_t fileFormat = -1;
+    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
+    GetInt32Property(env, arg, "fileFormat", &fileFormat);
+    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config fileFormat :%{public}d", fileFormat);
+    switch (fileFormat) {
         case AVRECORDER_CFT_MPEG_4A:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
@@ -241,7 +245,6 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
             break;
     }
-
     return true;
 }
 
@@ -255,6 +258,12 @@ static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct O
         OH_LOG_ERROR(LOG_APP, "arg is nullptr");
         return false;
     }
+    
+    // Optional parameters, no need check error.
+    GetInt32Property(env, arg, "audioBitrate", &(config.profile.audioBitrate));
+    GetInt32Property(env, arg, "audioChannels", &(config.profile.audioChannels));
+    GetInt32Property(env, arg, "audioSampleRate", &(config.profile.audioSampleRate));
+
     int32_t audioSourceType = 0;
     GetInt32Property(env, arg, "audioSourceType", &audioSourceType);
     OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config audioSourceType :%{public}d", audioSourceType);
