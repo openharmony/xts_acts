@@ -251,7 +251,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_AppManager_0100', 0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0100";
-      console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] start');
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0100] start');
       appManager.isAppRunning("com.acts.startuiserviceextensiontest").then((data: boolean) => {
         hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
         try{expect(data).assertTrue();}catch{};
@@ -261,8 +261,57 @@ export default function abilityTest() {
         try{expect().assertFail();}catch{};
         done();
       })
-      console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] end');
-      done();
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0200
+     * @tc.name: Call the interface to return whether the current application is running
+     * @tc.desc: Call the interface to return whether the current application is running
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_AppManager_0200', 0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_AppManager_0200";
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0200] start');
+      appManager.isAppRunning("com.acts.startuiserviceextensiontest", 1001).then((data: boolean) => {
+        hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
+        try{expect().assertFail();}catch{};
+        done();
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+        try{expect(err?.code).assertEqual(16000073);}catch{};
+        done();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0300
+     * @tc.name: Call the interface to 401 when bundlename is undefined.
+     * @tc.desc: Call the interface to 401 when bundlename is undefined.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_AppManager_0300', 0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_AppManager_0300";
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0300] start');
+      try{
+        await appManager.isAppRunning(undefined, 0).then((data: boolean) => {
+          hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
+          try{expect().assertFail();}catch{};
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'testTag', tag + `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+          try{expect().assertFail();}catch{};
+          done();
+        })
+      }catch(e){
+        hilog.error(0x0000, 'testTag', tag + `isAppRunning catch error, code: ${e.code}, msg:${e.message}`);
+        expect(e?.code).assertEqual(401);
+        done();
+      }
+      
     })
 
     /*
