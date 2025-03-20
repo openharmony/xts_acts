@@ -19,8 +19,10 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
   workerPort.postMessage(e.data);
+  throw new Error("error")
 }
 
 workerPort.onmessageerror = (err: MessageEvents) => {
   console.log('worker.ets onmessageerror', JSON.stringify(err));
 }
+workerPort.close()

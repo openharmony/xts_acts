@@ -18,5 +18,6 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
-  workerPort.postMessageWithSharedSendable(e.data, undefined);
+  let buffer = new ArrayBuffer(10);
+  workerPort.postMessageWithSharedSendable(e.data, [buffer]);
 }
