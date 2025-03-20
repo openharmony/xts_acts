@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import childProcessManager from './childProcessManager.test';
 import UIExtensionContentSessionTest from './UIExtensionContentSession.test'
+import sendableContextManagerTest from './sendableContextManager.test'
 
 export default function testsuite() {
-  childProcessManager();
   UIExtensionContentSessionTest();
+  sendableContextManagerTest();
 }

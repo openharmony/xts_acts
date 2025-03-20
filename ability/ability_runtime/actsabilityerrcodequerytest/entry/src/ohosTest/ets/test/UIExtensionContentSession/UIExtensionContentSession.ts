@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+import { Want, UIExtensionAbility, UIExtensionContentSession, common } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 let TAG: string = 'UIExtensionContentSession UIExtAbility';
 let caseTag: string = 'Sub_UIExtensionContentSession_errorCode_0100';
+
 export default class UIExtensionProvider extends UIExtensionAbility {
   onCreate() {
     console.log(TAG, `onCreate`);
@@ -41,7 +42,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
     let storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('session', session);
 
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0100'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0100') {
       try {
         session.loadContent(undefined);
         console.info(`${caseTag} session.loadContent success`);
@@ -50,7 +51,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         });
       } catch (error) {
         console.error(`session.loadContent fail, error: ${JSON.stringify(error)}`);
-        if(error.code==401){
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -64,7 +65,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         }
       }
     }
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0200'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0200') {
       try {
         session.loadContentByName(undefined);
         console.info('loadContentByName session.loadContentByName success');
@@ -73,7 +74,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         });
       } catch (error) {
         console.error(`session.loadContentByName fail, error: ${JSON.stringify(error)}`);
-        if(error.code==undefined){
+        if (error.code == undefined) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -87,7 +88,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         }
       }
     }
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0300'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0300') {
       try {
         session?.terminateSelfWithResult(undefined, (err: BusinessError) => {
           if (err) {
@@ -102,7 +103,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         });
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
-        if(error.code==401){
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -116,7 +117,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         }
       }
     }
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0400'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0400') {
       try {
         session?.terminateSelfWithResult(undefined)
           .then(() => {
@@ -131,7 +132,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
           });
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
-        if(error.code==401){
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -145,7 +146,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         }
       }
     }
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0500'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0500') {
       try {
         session.setWindowPrivacyMode(undefined)
           .then(() => {
@@ -159,8 +160,8 @@ export default class UIExtensionProvider extends UIExtensionAbility {
             console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
           });
       } catch (error) {
-        console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
-        if(error.code==401){
+        console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -174,7 +175,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
         }
       }
     }
-    if(want.action == 'Sub_UIExtensionContentSession_errorCode_0600'){
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0600') {
       try {
         session.setWindowPrivacyMode(undefined, (err: BusinessError) => {
           if (err) {
@@ -188,8 +189,8 @@ export default class UIExtensionProvider extends UIExtensionAbility {
           });
         });
       } catch (error) {
-        console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
-        if(error.code==401){
+        console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
+        if (error.code == 401) {
           session?.terminateSelf((err: BusinessError) => {
             if (err) {
               console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
@@ -202,6 +203,77 @@ export default class UIExtensionProvider extends UIExtensionAbility {
           });
         }
       }
+    }
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0700') {
+      let wantParams: Record<string, Object> = {
+        'sceneType': 1
+      };
+      let abilityStartCallback: common.AbilityStartCallback = {
+        onError: (code: number, name: string, message: string) => {
+          console.error(`onError, code: ${code}, name: ${name}, msg: ${message}`);
+        },
+        onResult: (result: common.AbilityResult) => {
+          console.info(`onResult, result: ${JSON.stringify(result)}`);
+          console.error(`Test case execution results do not match expected outcomes.`);
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+          });
+        }
+      };
+      session.startAbilityByType('xxxxx', wantParams, abilityStartCallback, (err: BusinessError) => {
+        if (err) {
+          console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
+          if (err.code == 16000050) {
+            session?.terminateSelf((err: BusinessError) => {
+              if (err) {
+                console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                return;
+              }
+              console.info(`Successed in terminating self.`);
+              commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+                console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+              });
+            });
+          }
+        }
+        console.info(`Successed in startAbilityByType`);
+      });
+    }
+    if (want.action == 'Sub_UIExtensionContentSession_errorCode_0800') {
+      let wantParams: Record<string, Object> = {
+        'sceneType': 1
+      };
+      let abilityStartCallback: common.AbilityStartCallback = {
+        onError: (code: number, name: string, message: string) => {
+          console.error(`onError, code: ${code}, name: ${name}, msg: ${message}`);
+        },
+        onResult: (result: common.AbilityResult) => {
+          console.info(`onResult, result: ${JSON.stringify(result)}`);
+          console.error(`Test case execution results do not match expected outcomes.`);
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+          });
+        }
+      };
+      session.startAbilityByType('xxxxxx', wantParams, abilityStartCallback)
+        .then(() => {
+          console.info(`Successed in startAbilityByType`);
+        })
+        .catch((err: BusinessError) => {
+          console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
+          if (err.code == 16000050) {
+            session?.terminateSelf((err: BusinessError) => {
+              if (err) {
+                console.error(`Failed to terminate self, code: ${err.code}, msg: ${err.message}`);
+                return;
+              }
+              console.info(`Successed in terminating self.`);
+              commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+                console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
+              });
+            });
+          }
+        });
     }
   }
 
