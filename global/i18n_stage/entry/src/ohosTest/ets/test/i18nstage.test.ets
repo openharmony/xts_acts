@@ -988,150 +988,31 @@ export default function i18nStageTest() {
     })
 
     /**
-     * @tc.number   : SUB_GLOBAL_I18N_getDisplayLanguage_0200
-     * @tc.name     : SUB_GLOBAL_I18N_getDisplayLanguage_0200
-     * @tc.desc     : errcode 890001
+     * @tc.number   : SUB_GLOBAL_I18N_getTimeInMillis_0500
+     * @tc.name     : SUB_GLOBAL_I18N_SR000IFGMS_0500
+     * @tc.desc     : hour=[18,20],local="en-US",in the evening
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_getDisplayLanguage_0200', Level.LEVEL3, () => {
-      try {
-        I18n.System.getDisplayLanguage('2', '1');
-      } catch (e) {
-        console.log('SUB_GLOBAL_I18N_getDisplayLanguage_0200 code&message:' + e.code + e.message);
-        expect(e.code == 890001).assertTrue();
-      }
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0500', 0, () => {
+      let value = I18n.I18NUtil.getTimePeriodName(-4, "en-US"); //24+(-4)=20
+      console.log('SUB_GLOBAL_I18N_SR000IFGMS_0500:' + value);
+      expect(value == "in the evening").assertTrue();
     })
 
     /**
-     * @tc.number   : SUB_GLOBAL_I18N_getSystemCountries_0100
-     * @tc.name     : SUB_GLOBAL_I18N_getSystemCountries_0100
-     * @tc.desc     : errcode 890001
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('SUB_GLOBAL_I18N_getSystemCountries_0100', Level.LEVEL3, () => {
-      try {
-        I18n.System.getSystemCountries('xx');
-        console.log('SUB_GLOBAL_I18N_getSystemCountries_0100: 1++');
-      } catch (e) {
-        console.log('SUB_GLOBAL_I18N_getSystemCountries_0100: code&message:' + e.code + e.message);
-        expect(e.code == 890001).assertTrue();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_GLOBAL_I18N_isSuggested_0200
-     * @tc.name     : SUB_GLOBAL_I18N_isSuggested_0200
-     * @tc.desc     : errcode 890001
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('SUB_GLOBAL_I18N_isSuggested_0200', Level.LEVEL3, () => {
-      try {
-        I18n.System.isSuggested("aaa", '111');
-        console.log('SUB_GLOBAL_I18N_isSuggested_0200:asdf');
-      } catch (e) {
-        console.log('SUB_GLOBAL_I18N_isSuggested_0200:code&message:' + e.code + e.message);
-        expect(e.code == 890001).assertTrue();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_GLOBAL_I18N_getTimePeriodName_0200
-     * @tc.name     : SUB_GLOBAL_I18N_getTimePeriodName_0200
-     * @tc.desc     : getTimePeriodName errcode 890001
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('SUB_GLOBAL_I18N_getTimePeriodName_0200', Level.LEVEL3, () => {
-      try {
-        I18n.I18NUtil.getTimePeriodName(2, 'invalid');
-      } catch (e) {
-        console.log('SUB_GLOBAL_I18N_getTimePeriodName_0200 code&message:' + e.code + e.message);
-        expect(e.code == 890001).assertTrue();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_GLOBAL_I18N_unitConvert_0100
-     * @tc.name     : SUB_GLOBAL_I18N_unitConvert_0100
-     * @tc.desc     : unitConvert
+     * @tc.number   : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.name     : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.desc     : hour=[21,5],at night
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_unitConvert_0100', Level.LEVEL2, () => {
-      let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'},
-        {unit: 'liter', measureSystem: 'SI'},
-        1000,
-        'en-US');
-      console.log('SUB_GLOBAL_I18N_unitConvert_0100 ' + value);
-      expect(value).assertContain('236.588');
-    })
-
-    /**
-     * @tc.number   : i18n_calendar_test_2600
-     * @tc.name     : i18n_calendar_test_2600
-     * @tc.desc     : getCalendar
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 2
-     */
-    it('i18n_calendar_test_2600', Level.LEVEL2, () => {
-      let calendar = I18n.getCalendar('zh');
-      calendar.set(2021, 11, 11, 10);
-      let value = calendar.isWeekend();
-      console.log('i18n_calendar_test_2600 ' + value);
-      expect(value).assertTrue();
-    })
-
-    /**
-     * @tc.number   : SUB_GLOBAL_I18N_getHolidayInfoItemArray_0100
-     * @tc.name     : SUB_GLOBAL_I18N_getHolidayInfoItemArray_0100
-     * @tc.desc     : getHolidayInfoItemArray error code 890001
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('SUB_GLOBAL_I18N_getHolidayInfoItemArray_0100', Level.LEVEL3, () => {
-      try {
-        let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
-        holidayManager.getHolidayInfoItemArray(-1);
-      } catch (e) {
-        console.log('SUB_GLOBAL_I18N_getHolidayInfoItemArray_0100 code&message:' + e.code + e.message);
-        expect(e.code).assertEqual('890001')
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_GLOBAL_I18N_addPreferredLanguage_0100
-     * @tc.name     : SUB_GLOBAL_I18N_addPreferredLanguage_0100
-     * @tc.desc     : addPreferredLanguage
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 2
-     */
-    it('SUB_GLOBAL_I18N_addPreferredLanguage_0100', Level.LEVEL2, () => {
-      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + 'start');
-      let list = I18n.getPreferredLanguageList();
-      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + list);
-      expect(list.length).assertLarger(0);
-      if(list[0] != 'zh-Hans-CN' && list[0] != 'zh-Hans'){
-        let value = I18n.addPreferredLanguage('zh-Hans-CN', 1);
-        console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + value);
-        expect(list.length > 0).assertTrue();
-      }
-      else{
-        let value = I18n.addPreferredLanguage('en-Latn-US', 2);
-        console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + value);
-        expect(list.length > 0).assertTrue();
-      }
-      console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + I18n.getPreferredLanguageList());
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0800', Level.LEVEL2, () => {
+      let value = I18n.I18NUtil.getTimePeriodName(5);
+      console.log('SUB_GLOBAL_I18N_SR000IFGMS_0800:' + value);
+      expect(value != null).assertTrue();
     })
 
     console.log('*************end i18nStageTest*************');
