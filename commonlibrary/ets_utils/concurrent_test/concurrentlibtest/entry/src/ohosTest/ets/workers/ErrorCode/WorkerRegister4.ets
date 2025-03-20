@@ -17,7 +17,7 @@ import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 const workerPort = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents): void => {
-  console.log("testThreadWorkerErrorCode0022 worker name", workerPort.name)
+  console.log('testThreadWorkerErrorCode0022 worker name', workerPort.name)
   try {
     let res: string = workerPort.callGlobalCallObjectMethod('myObj', 'getMessage', 0) as string;
     console.info('worker:', res) //worker: this is a message from TestObj with input: hello there!
