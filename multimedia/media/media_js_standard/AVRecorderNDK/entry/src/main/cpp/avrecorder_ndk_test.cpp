@@ -151,19 +151,12 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
 {
     int32_t videoSourceType = 0;
     GetInt32Property(env, arg, "videoSourceType", &videoSourceType);
-
     int32_t fileGenerationMode = 0;
     GetInt32Property(env, arg, "fileGenerationMode", &fileGenerationMode);
-
     int32_t videoCodec = 2;
     GetInt32Property(env, arg, "videoCodec", &videoCodec);
-
     int32_t fileFormat = -1;
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
-    const int VIDEO_BITRAGE_2000KHZ = 2000000;
-    const int VIDEO_FRAMEWIDTH_1920 = 1920;
-    const int VIDEO_FRAMEHEIGHT_1080 = 1080;
-    const int VIDEO_FRAMERATE_30 = 30;
     switch (fileFormat) {
         case AVRECORDER_CFT_MPEG_4:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
@@ -184,33 +177,19 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             }
             config.profile.isHdr = false;
             config.profile.enableTemporalScale = true;
-            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
-    
             if (fileGenerationMode == AVRECORDER_APP_CREATE) {
                 config.fileGenerationMode = AVRECORDER_APP_CREATE;
             } else if (fileGenerationMode == AVRECORDER_AUTO_CREATE_CAMERA_SCENE) {
                 config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
             }
-            config.profile.videoBitrate = VIDEO_BITRAGE_2000KHZ;
             GetInt32Property(env, arg, "videoBitrate", &(config.profile.videoBitrate));
-            config.profile.videoFrameWidth = VIDEO_FRAMEWIDTH_1920;
-            config.profile.videoFrameHeight = VIDEO_FRAMEHEIGHT_1080;
             GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
             GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
-            config.profile.videoFrameRate = VIDEO_FRAMERATE_30;
             GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));
-            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameWidth :%{public}d",
-                        config.profile.videoFrameWidth);
-            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameHeight :%{public}d",
-                        config.profile.videoFrameHeight);
-            OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_Config videoFrameRate :%{public}d",
-                        config.profile.videoFrameRate);
             break;
         default:
-            config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
             break;
     }
-
     return true;
 }
 
@@ -290,6 +269,7 @@ static bool parseSetConfigAudioSourceType(napi_env env, napi_value arg, struct O
             config.audioSourceType = AVRECORDER_DEFAULT;
             break;
     }
+    return true;
 }
 
 static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVRecorder_Config &config)
@@ -319,7 +299,7 @@ static bool parseSetConfigAudioCodec(napi_env env, napi_value arg, struct OH_AVR
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
     }
-
+    return true;
 }
 
 // 配置参数
@@ -344,38 +324,26 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     (void)info;
     OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
     SetConfig(*config);
-
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
     char *fd = nullptr;
     size_t typeLen = 0;
     napi_get_value_string_utf8(env, args[1], nullptr, 0, &typeLen);
     fd = new char[typeLen + 1];
     napi_get_value_string_utf8(env, args[1], fd, typeLen + 1, &typeLen);
     config->url = fd;
-
     parseSetConfigOps(env, args[0], *config);
+    parseSetConfigFileFormatOps(env, args[0], *config);
     parseSetConfigAudioSourceType(env, args[0], *config);
     parseSetConfigAudioCodec(env, args[0], *config);
-
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoFrameWidth = fd: %{public}d", config->profile.videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url.profile.videoFrameHeight = fd: %{public}d",
                 config->profile.videoFrameHeight);
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
-
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback in");
     OH_AVErrCode ret = OH_AVRecorder_SetUriCallback(g_avRecorder, OnUri, nullptr);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback out");
-
-    if (ret == AV_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback successed");
-    } else {
-        OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback error code :%{public}d", ret);
-    }
 
     int result = AV_ERR_OK;
     result = OH_AVRecorder_Prepare(g_avRecorder, config);
@@ -401,11 +369,7 @@ static napi_value createPrepareAVRecorder(napi_env env, napi_callback_info info)
 
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
-
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback in");
     OH_AVErrCode ret = OH_AVRecorder_SetUriCallback(g_avRecorder, OnUri, nullptr);
-    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetUriCallback out");
-
     int result1 = OH_AVRecorder_Prepare(g_avRecorder, config1);
     if (result1 != AV_ERR_OK || result != AV_ERR_OK) {
         result = AV_ERR_UNKNOWN;

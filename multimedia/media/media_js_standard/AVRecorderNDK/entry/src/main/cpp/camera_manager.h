@@ -95,9 +95,6 @@ public:
     Camera_ErrorCode ReleaseCamera(void);
     Camera_ErrorCode SessionRealese(void);
     Camera_ErrorCode ReleaseSession(void);
-    int32_t GetVideoFrameWidth(void);
-    int32_t GetVideoFrameHeight(void);
-    int32_t GetVideoFrameRate(void);
 
     Camera_ErrorCode VideoOutputStop(void);
     Camera_ErrorCode VideoOutputRelease(void);
