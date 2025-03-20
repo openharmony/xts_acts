@@ -23,7 +23,7 @@ import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
 
 export default function imagePixelMapFramework() {
-    describe('imagePixelMapFramework',async function () {
+    describe('imagePixelMapFramework', async function () {
         let globalpixelmap;
         let globalImagesource;
         let globalreceiver;
