@@ -788,7 +788,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer002 GetStatus');
   })
 
@@ -818,7 +818,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
     let controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, undefined, 'testControlTransfer003 GetStatus');
   })
 
@@ -847,7 +847,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
     let controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, null, 'testControlTransfer004 GetStatus');
   })
 
@@ -876,7 +876,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
     let controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await usbManager.controlTransfer(testParam.pip, controlParam).then(data => {
       console.info(TAG, 'usb controlTransfer ret data : ', data, ' ', 'testControlTransfer005 GetStatus');
       console.info(TAG, 'usb controlTransfer controlParam.data buffer : ',
@@ -913,7 +913,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(8, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer006 GetConfiguration');
   })
 
@@ -943,7 +943,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(10, usbManager.USB_REQUEST_TARGET_INTERFACE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 1);
+      | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer007 GetInterface');
   })
 
@@ -972,7 +972,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(1, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer008 ClearFeature');
   })
 
@@ -1088,7 +1088,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
-      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer012 ClearFeature');
   })
 
@@ -1189,7 +1189,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = 5000;
     let controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
-      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     try {
       await callControlTransferEx(testParamPip, controlParam, timeout, 'testControlTransfer015 ClearFeature');
     } catch (err) {
@@ -1254,7 +1254,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     let timeout = "invalid";
     let controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
-      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 0);
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     await callControlTransfer(testParam.pip, controlParam, timeout, 'testControlTransfer017 ClearFeature');
   })
 })

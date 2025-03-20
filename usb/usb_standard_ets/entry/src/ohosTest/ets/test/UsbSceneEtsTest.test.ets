@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
-import usbManager from "@ohos.usbManager"
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
+import usbMgr from "@ohos.usbManager"
 
 
 export default function UsbSceneEtsTest() {
@@ -23,7 +23,7 @@ export default function UsbSceneEtsTest() {
   describe('UsbSceneEtsTest', () => {
 
     const TAG: string = "[UsbSceneEtsTest]";
-    let deviceList = usbManager.getDevices();
+    let deviceList = usbMgr.getDevices();
     let portCurrentMode = 0;
     
 
@@ -46,7 +46,7 @@ export default function UsbSceneEtsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testConnectDeviceNormalApp001', 0, async (done: Function) => {
+    it('testConnectDeviceNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       if (portCurrentMode != 1) {
         console.info('usb case get_device port is device');
         done()
@@ -54,10 +54,10 @@ export default function UsbSceneEtsTest() {
       }
       let device = deviceList[0];
       try {
-          let right = usbManager.hasRight(deviceList[0].name);
+          let right = usbMgr.hasRight(deviceList[0].name);
           console.log(TAG, 'hasRight result: ' + right);
           if (!right) {
-            let devicepipe = usbManager.connectDevice(device);
+            let devicepipe = usbMgr.connectDevice(device);
             console.log(TAG, 'connectDevice failed result: ' + devicepipe);
             expect(devicepipe === null).assertTrue();
           }

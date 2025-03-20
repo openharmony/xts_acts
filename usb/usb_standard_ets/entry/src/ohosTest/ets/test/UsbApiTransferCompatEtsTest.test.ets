@@ -96,7 +96,7 @@ function findInitPoint(testParam: TransferTestParam, interfaceIndex: number): bo
     }
   });
 
-  if (isEndpointFound ) {
+  if (isEndpointFound) {
     testParam.interface = testParam.config.interfaces[interfaceIndex];
     return isEndpointFound;
   }

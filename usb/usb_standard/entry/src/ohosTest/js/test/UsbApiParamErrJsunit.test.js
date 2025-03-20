@@ -64,7 +64,7 @@ describe('UsbApiParamErrJsunitTest', function () {
                 CheckEmptyUtils.sleep(1000);
             }
 
-            requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), 0, 18);
         }
     })
 
@@ -7750,7 +7750,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_NULL, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULL, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7779,7 +7779,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_UNDEFINED, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_UNDEFINED, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7808,7 +7808,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(PARAM_NULLSTRING, 0x06, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULLSTRING, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7837,7 +7837,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULL, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULL, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7866,7 +7866,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_UNDEFINED, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_UNDEFINED, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7895,7 +7895,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULLSTRING, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULLSTRING, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7924,7 +7924,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULL, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULL, 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7953,7 +7953,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_UNDEFINED, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_UNDEFINED, 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -7982,7 +7982,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULLSTRING, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULLSTRING, 0, 18);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8098,7 +8098,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_NULL);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULL);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8127,7 +8127,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_UNDEFINED);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_UNDEFINED);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8156,7 +8156,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, PARAM_NULLSTRING);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULLSTRING);
             let timeout = 5000;
 
             let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
@@ -8185,7 +8185,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_NULL;
@@ -8215,7 +8215,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_UNDEFINED;
@@ -8245,7 +8245,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
             tmpRequestparam.data = PARAM_NULLSTRING;
