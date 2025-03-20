@@ -19,6 +19,7 @@
 #include <hilog/log.h>
 #include <network/netstack/net_websocket.h>
 #include <network/netstack/net_ssl/net_ssl_c.h>
+#include <string>
 #include <cstring>
 #include <thread>
 #include <iostream>
@@ -41,6 +42,7 @@
 #define CASE_INDEX_10 10
 #define CASE_INDEX_11 11
 #define SLEEP_TIME_3 3
+#define DEFAULT_HOST_LEN 20
 
 static const int CLOSE_RESULT_FROM_CLIENT_CODE = 1000;
 
@@ -608,6 +610,30 @@ static napi_value OHNetStackDestroyCertificatesContent(napi_env env, napi_callba
     return nullptr;
 }
 
+static napi_value OHNetStackIsCleartextPermitted(napi_env env, napi_callback_info info)
+{
+    bool isCleartextPermitted;
+    int res = OH_Netstack_IsCleartextPermitted(&isCleartextPermitted);
+    napi_value result = nullptr;
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
+static napi_value OHNetStackIsCleartextPermittedByHostName(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char hostname[1024] = {0};
+    size_t sizeT1;
+    napi_get_value_string_utf8(env, args[0], hostname, DEFAULT_HOST_LEN, &sizeT1);
+    bool isCleartextPermitted;
+    int res = OH_Netstack_IsCleartextPermittedByHostName(hostname, &isCleartextPermitted);
+    napi_value result = nullptr;
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -634,6 +660,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"OHNetStackDestroyCertificatesContent", nullptr, OHNetStackDestroyCertificatesContent, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"OHNetStackIsCleartextPermitted", nullptr, OHNetStackIsCleartextPermitted, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OHNetStackIsCleartextPermittedByHostName", nullptr, OHNetStackIsCleartextPermittedByHostName, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -654,3 +684,4 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
     napi_module_register(&demoModule);
 }
+

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
 import wsAPI from 'libtestNetStackNdk.so'
@@ -788,6 +788,38 @@ export default function NetStackNDKTest() {
     it('testOHWebSocketClientDestroy_0400',0, () => {
       let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_4);
       expect(result).assertEqual(WEBSOCKET_OK);
+    });
+    
+    /**
+     * @tc.number : SUB_NetStack_IsCleartextPermitted_0100
+     * @tc.name   ：testNetStackIsCleartextPermitted_0100
+     * @tc.desc   ：test NetStackIsCleartextPermitted is true
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+
+    it('testNetStackIsCleartextPermitted_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(`testNetStackIsCleartextPermitted_0100 start`);
+      let re: number = wsAPI.OHNetStackIsCleartextPermitted();
+      expect(re).assertEqual(WEBSOCKET_OK);
+      done();
+    });
+    
+    /**
+     * @tc.number : SUB_NetStack_IsCleartextPermittedByHostName_0100
+     * @tc.name   ：testNetStackIsCleartextPermittedByHostName_0100
+     * @tc.desc   ：test NetStackIsCleartextPermittedByHostName is true.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('testNetStackIsCleartextPermittedByHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      const hostname: string = "test.com";
+      console.info(`testNetStackIsCleartextPermitted_0200 start`);
+      let re: number = wsAPI.OHNetStackIsCleartextPermittedByHostName(hostname);
+      expect(re).assertEqual(WEBSOCKET_OK);
+      done();
     });
 
   });
