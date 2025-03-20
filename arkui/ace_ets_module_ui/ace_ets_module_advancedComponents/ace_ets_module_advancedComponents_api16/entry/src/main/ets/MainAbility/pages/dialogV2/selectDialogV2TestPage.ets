@@ -51,6 +51,40 @@ struct Index {
       ]
     })
   }
+
+  @Builder
+  contentDialogBuilder(): void {
+    SelectDialogV2({
+      title: '文本标题',
+      content: '文本内容',
+      selectedIndex: this.radioIndex,
+      confirm: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {},
+      }),
+      radioContent: [
+        {
+          title: '文本文本文本文本文本',
+          action: () => {
+            this.radioIndex = 0
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 1
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 2
+          }
+        },
+      ]
+    })
+  }
+
   build() {
     Row() {
       Stack() {
@@ -62,6 +96,16 @@ struct Index {
               promptAction.openCustomDialog({
                 builder: () => {
                   this.dialogBuilder();
+                }
+              })
+            })
+          Button('SecSelectDialogV2')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              promptAction.openCustomDialog({
+                builder: () => {
+                  this.contentDialogBuilder();
                 }
               })
             })

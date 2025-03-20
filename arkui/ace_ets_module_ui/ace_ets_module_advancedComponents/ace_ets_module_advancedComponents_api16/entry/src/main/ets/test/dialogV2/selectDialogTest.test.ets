@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -57,7 +57,7 @@ export default function selectDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('selectDialogTest_0100', 0, async (done: Function) => {
+    it('selectDialogTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[selectDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
@@ -76,6 +76,38 @@ export default function selectDialogTest() {
       await cancelButton.click();
       await driver.delayMs(1000);
       console.info('[selectDialogTest_0100] END');
+      done();
+    });
+
+    /**
+     * @tc.number selectDialogTest
+     * @tc.name   selectDialogTest
+     * @tc.desc   Test selectDialog
+     * @tc.size   MediumTest
+     * @tc.type   Function
+     * @tc.level  0
+     */
+    it('selectDialogTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[selectDialogTest_0200] START');
+      let driver = await Driver.create();
+      await driver.delayMs(2000);
+      // 点击打开SelectDialog
+      let openAlertDialog = await driver.findComponent(ON.type('Button').text('SecSelectDialogV2'))
+      await openAlertDialog.click();
+      await driver.delayMs(1000);
+      // 点击打开SelectDialog是否存在以下入口。
+      let primaryTitle = await driver.findComponent(ON.text('文本标题'));
+      let content = await driver.findComponent(ON.text('文本内容'));
+      let selectContent = await driver.findComponent(ON.text('文本文本文本文本文本'));
+      let cancelButton = await driver.findComponent(ON.type('Button').text('取消'));
+      expect(primaryTitle !== null).assertTrue();
+      expect(content !== null).assertTrue();
+      expect(selectContent !== null).assertTrue();
+      expect(cancelButton !== null).assertTrue();
+      // 关闭SelectDialog
+      await cancelButton.click();
+      await driver.delayMs(1000);
+      console.info('[selectDialogTest_0200] END');
       done();
     });
   })
