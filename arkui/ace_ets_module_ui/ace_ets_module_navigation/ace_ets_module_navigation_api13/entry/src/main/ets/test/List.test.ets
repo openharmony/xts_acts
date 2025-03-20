@@ -18,6 +18,8 @@ import EntryOptionPage2 from './Navigation/EntryOptionPage2.test'
 import EntryOptionPage from './Navigation/EntryOptionPage.test'
 import NavigationCustomTitlePage from './Navigation/NavigationCustomTitlePage.test'
 import TitleOptionsToolOptions from './Navigation/TitleOptionsToolOptions.test'
+import BarStylePage from './Navigation/BarStylePage.test'
+import HideToolBarNavPage from './Navigation/HideToolBarNavPage.test'
 
 export default function testsuite() {
   NavigationTitleTextModifier();
@@ -25,4 +27,6 @@ export default function testsuite() {
   EntryOptionPage2();
   NavigationCustomTitlePage();
   TitleOptionsToolOptions();
+  BarStylePage();
+  HideToolBarNavPage();
 }
