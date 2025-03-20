@@ -6658,7 +6658,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateToUTCString0002', 0, async () => {
+    it('testDateToUTCString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testDateToUTCString0002";
       try {
         const x: Date = new Date();
@@ -6714,7 +6714,7 @@ export default function dateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDateValueOf0002', 0, async () => {
+    it('testDateValueOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testDateValueOf0002";
       try {
         const x1 = new Date();

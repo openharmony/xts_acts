@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 
 export default function abilityTest() {
   describe('BigIntTest', () => {
@@ -46,7 +46,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0001', 0, () => {
+    it('testBigIntAsIntN0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0001";
       try {
         const I64_CEIL = 2n**63n;
@@ -66,7 +66,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0002', 0, () => {
+    it('testBigIntAsIntN0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0002";
       try {
         const I64_CEIL = 2n**63n;
@@ -86,7 +86,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0003', 0, () => {
+    it('testBigIntAsIntN0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0003";
       try {
         const I64_CEIL = 2n**63n;
@@ -106,7 +106,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0004', 0, () => {
+    it('testBigIntAsIntN0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0004";
       try {
         const I64_CEIL = 2n**63n;
@@ -126,7 +126,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntAsIntN0005", 0, () => {
+    it("testBigIntAsIntN0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0005";
       try {
         const I64_CEIL = 2n**63n;
@@ -146,7 +146,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntUintN0001", 0, () => {
+    it("testBigIntUintN0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntUintN0001";
       try {
         const U64_CEIL = 2n**64n;
@@ -166,7 +166,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntUintN0002", 0, () => {
+    it("testBigIntUintN0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntUintN0002";
       try {
         const U64_CEIL = 2n**64n;
@@ -186,7 +186,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntUintN0003", 0, () => {
+    it("testBigIntUintN0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntUintN0003";
       try {
         const U64_CEIL = 2n**64n;
@@ -206,7 +206,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntUnitN0004', 0, () => {
+    it('testBigIntUnitN0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntUnitN0004";
       try {
         const U64_CEIL = 2n**64n;
@@ -226,7 +226,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntUnitN0005', 0, () => {
+    it('testBigIntUnitN0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntUnitN0005";
       try {
         const U64_CEIL = 2n**64n;
@@ -246,7 +246,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntToLocaleString0001', 0, () => {
+    it('testBigIntToLocaleString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0001";
       try {
         const bigint = 3500n;
@@ -266,7 +266,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntToLocaleString0002', 0, () => {
+    it('testBigIntToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0002";
       try {
         const bigint = '';
@@ -286,7 +286,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntToLocaleString0003', 0, () => {
+    it('testBigIntToLocaleString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0003";
       try {
         const bigint = -1n;
@@ -306,7 +306,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntToLocaleString0004', 0, () => {
+    it('testBigIntToLocaleString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0004";
       try {
         const bigint = 'Test';
@@ -326,7 +326,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntToLocaleString0005", 0, () => {
+    it("testBigIntToLocaleString0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0005";
       try {
         const bigint = 123456789123456789n;
@@ -345,7 +345,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntToLocaleString0006", 0, () => {
+    it("testBigIntToLocaleString0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0006";
       try {
         const bigint = 123456789123456789n;
@@ -364,7 +364,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntToLocaleString0007", 0, () => {
+    it("testBigIntToLocaleString0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0007";
       try {
         const bigint = 123456789123456789n;
@@ -383,7 +383,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBigIntToLocaleString0008", 0, () => {
+    it("testBigIntToLocaleString0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0008";
       try {
         const bigint = 123456789123456789n;
@@ -403,7 +403,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntToLocaleString0009', 0, () => {
+    it('testBigIntToLocaleString0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntToLocaleString0009";
       try {
         const bigint = 123456789123456789n;
@@ -423,7 +423,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString17n0001', 0, () => {
+    it('testBigIntPrototypeToString17n0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString17n0001";
       try {
         let s = 17n;
@@ -443,7 +443,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString17n0002', 0, () => {
+    it('testBigIntPrototypeToString17n0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString17n0002";
       try {
         let s = 17n;
@@ -463,7 +463,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString17n0003', 0, () => {
+    it('testBigIntPrototypeToString17n0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString17n0003";
       try {
         let s = 17n;
@@ -482,7 +482,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString17n0004', 0, () => {
+    it('testBigIntPrototypeToString17n0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString17n0004";
       try {
         let s = 17n;
@@ -501,7 +501,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString17n0005', 0, () => {
+    it('testBigIntPrototypeToString17n0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString17n0005";
       try {
         let s = 17n;
@@ -520,7 +520,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString66n0001', 0, () => {
+    it('testBigIntPrototypeToString66n0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString66n0001";
       try {
         let s = 66n;
@@ -540,7 +540,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString66n0002', 0, () => {
+    it('testBigIntPrototypeToString66n0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString66n0002";
       try {
         let s = 66n;
@@ -560,7 +560,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString66n0003', 0, () => {
+    it('testBigIntPrototypeToString66n0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString66n0003";
       try {
         let s = 66n;
@@ -579,7 +579,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString66n0004', 0, () => {
+    it('testBigIntPrototypeToString66n0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString66n0004";
       try {
         let s = 66n;
@@ -598,7 +598,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString66n0005', 0, () => {
+    it('testBigIntPrototypeToString66n0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString66n0005";
       try {
         let s = 66n;
@@ -617,7 +617,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString254n0001', 0, () => {
+    it('testBigIntPrototypeToString254n0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString254n0001";
       try {
         let s = 254n;
@@ -636,7 +636,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString254n0002', 0, () => {
+    it('testBigIntPrototypeToString254n0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString254n0002";
       try {
         let s = 254n;
@@ -655,7 +655,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString254n0003', 0, () => {
+    it('testBigIntPrototypeToString254n0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString254n0003";
       try {
         let s = 254n;
@@ -674,7 +674,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString254n0004', 0, () => {
+    it('testBigIntPrototypeToString254n0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString254n0004";
       try {
         let s = 254n;
@@ -693,7 +693,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString254n0005', 0, () => {
+    it('testBigIntPrototypeToString254n0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString254n0005";
       try {
         let s = 254n;
@@ -712,7 +712,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigInt.prototype.toString0016', 0, () => {
+    it('testBigInt.prototype.toString0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBigInt.prototype.toString0016';
       try {
         let s = -10n;
@@ -732,7 +732,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigInt.prototype.toString0017', 0, () => {
+    it('testBigInt.prototype.toString0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBigInt.prototype.toString0017';
       try {
         let s = -10n;
@@ -752,7 +752,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigInt.prototype.toString0018', 0, () => {
+    it('testBigInt.prototype.toString0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBigInt.prototype.toString0018';
       try {
         let s = -10n;
@@ -771,7 +771,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigInt.prototype.toString0019', 0, () => {
+    it('testBigInt.prototype.toString0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBigInt.prototype.toString0019';
       try {
         let s = -10n;
@@ -790,7 +790,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigInt.prototype.toString0020', 0, () => {
+    it('testBigInt.prototype.toString0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBigInt.prototype.toString0020';
       try {
         let s = -10n;
@@ -809,7 +809,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString0xffn0001', 0, () => {
+    it('testBigIntPrototypeToString0xffn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString0xffn0001";
       try {
         let s = -0xffn;
@@ -829,7 +829,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString0xffn0002', 0, () => {
+    it('testBigIntPrototypeToString0xffn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString0xffn0002";
       try {
         let s = -0xffn;
@@ -849,7 +849,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString0xffn0003', 0, () => {
+    it('testBigIntPrototypeToString0xffn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString0xffn0003";
       try {
         let s = -0xffn;
@@ -868,7 +868,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString0xffn0004', 0, () => {
+    it('testBigIntPrototypeToString0xffn0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString0xffn0004";
       try {
         let s = -0xffn;
@@ -887,7 +887,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToString0xffn0005', 0, () => {
+    it('testBigIntPrototypeToString0xffn0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToString0xffn0005";
       try {
         let s = -0xffn;
@@ -906,7 +906,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToStringOn0001', 0, () => {
+    it('testBigIntPrototypeToStringOn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToStringOn0001";
       try {
         let s = 0n;
@@ -926,7 +926,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToStringOn0002', 0, () => {
+    it('testBigIntPrototypeToStringOn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToStringOn0002";
       try {
         let s = 0n;
@@ -946,7 +946,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToStringBigInt0001', 0, () => {
+    it('testBigIntPrototypeToStringBigInt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToStringBigInt0001";
       try {
         let result = BigInt(-0).toString();
@@ -965,7 +965,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBigIntPrototypeToStringBigInt0002', 0, () => {
+    it('testBigIntPrototypeToStringBigInt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntPrototypeToStringBigInt0002";
       try {
         let result = BigInt(-0).toString(undefined);

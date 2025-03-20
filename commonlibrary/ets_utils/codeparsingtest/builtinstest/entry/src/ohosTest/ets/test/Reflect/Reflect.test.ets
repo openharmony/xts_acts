@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 interface GeneratedObjectLiteralInterface_1 {
   x: number;
@@ -68,7 +68,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGet0001', 0, () => {
+    it('testGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGet0001";
       try {
         let obj: GeneratedObjectLiteralInterface_1 = {
@@ -90,7 +90,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGet0002', 0, () => {
+    it('testGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGet0002";
       try {
         const result = Reflect.get(["zero", "one"], 1);
@@ -109,7 +109,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0001', 0, () => {
+    it('testHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0001";
       try {
         let x: GeneratedObjectLiteralInterface_2 = {
@@ -131,7 +131,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0002', 0, () => {
+    it('testHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0002";
       try {
         let x: GeneratedObjectLiteralInterface_2 = {
@@ -153,7 +153,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHas0003', 0, () => {
+    it('testHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHas0003";
       try {
         let x: GeneratedObjectLiteralInterface_2 = {
@@ -175,7 +175,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOwnKeys0001', 0, () => {
+    it('testOwnKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOwnKeys0001";
       try {
         const object1: GeneratedObjectLiteralInterface_3 = {
@@ -200,7 +200,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOwnKeys0002', 0, () => {
+    it('testOwnKeys0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOwnKeys0002";
       try {
         const object1: GeneratedObjectLiteralInterface_3 = {
@@ -225,7 +225,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOwnKeys0003', 0, () => {
+    it('testOwnKeys0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOwnKeys0003";
       try {
         const obj: GeneratedObjectLiteralInterface_4 = {
@@ -250,7 +250,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOwnKeys0004', 0, () => {
+    it('testOwnKeys0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOwnKeys0004";
       try {
         const result = Reflect.ownKeys([]);
@@ -270,7 +270,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0001', 0, () => {
+    it('testSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSet0001";
       try {
         let obj: GeneratedObjectLiteralInterface_5 = {
@@ -293,7 +293,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0002', 0, () => {
+    it('testSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSet0002";
       try {
         let arr = ["duck", "duck", "duck"];
@@ -314,7 +314,7 @@ export default function ReflectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSet0003', 0, () => {
+    it('testSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSet0003";
       try {
         let arr = ["duck", "duck", "duck"];

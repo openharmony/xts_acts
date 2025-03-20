@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 interface GeneratedObjectLiteralInterface {
   a: string;
@@ -48,7 +48,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectConstructor0001', 0, () => {
+    it('testObjectConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testObjectConstructor0001";
       try {
         const obj = new Object();
@@ -68,7 +68,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectConstructor0002', 0, () => {
+    it('testObjectConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testObjectConstructor0002";
       try {
         const obj = new Object(1);
@@ -88,7 +88,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectConstructor0003', 0, () => {
+    it('testObjectConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testObjectConstructor0003";
       try {
         const obj = new Object('Test');
@@ -108,7 +108,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectConstructor0004', 0, () => {
+    it('testObjectConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testObjectConstructor0004";
       try {
         const obj = new Object(undefined);
@@ -128,7 +128,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectConstructor0005', 0, () => {
+    it('testObjectConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testObjectConstructor0005";
       try {
         const obj = new Object(null);
@@ -148,7 +148,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectGetOwnPropertyNames0001', 0, async () => {
+    it('testObjectGetOwnPropertyNames0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testObjectGetOwnPropertyNames0001";
       try {
         const object1: GeneratedObjectLiteralInterface = {
@@ -172,7 +172,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectGetOwnPropertyNames0002', 0, async () => {
+    it('testObjectGetOwnPropertyNames0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testObjectGetOwnPropertyNames0002";
       try {
         const object1: GeneratedObjectLiteralInterface = {
@@ -195,7 +195,7 @@ export default function TestObject() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testObjectGetOwnPropertyNames0003', 0, async () => {
+    it('testObjectGetOwnPropertyNames0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testObjectGetOwnPropertyNames0003";
       try {
         const object1: GeneratedObjectLiteralInterface = {
