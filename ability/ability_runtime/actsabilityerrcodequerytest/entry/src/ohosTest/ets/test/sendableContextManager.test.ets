@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -169,59 +169,6 @@ export default function sendableContextManagerTest() {
       }
     })
 
-    // /*
-    //  * @tc.number : SUB_ChildProcessManager_sendableContextManager_0600
-    //  * @tc.name   : killAllProcesses with undefined
-    //  * @tc.desc   : Function test
-    //  * @tc.size:   MediumTest
-    //  * @tc.type:   Function
-    //  * @tc.level  : 0
-    //  */
-    // it('SUB_ChildProcessManager_sendableContextManager_0600', 0, (done:Function) => {
-    //   let tag:string = `SUB_ChildProcessManager_sendableContextManager_0600`;
-    //   let link:string = 'https://www.applicationContext01.com'
-    //   let want: Want = {
-    //     uri: link,
-    //     parameters: {
-    //       appLinkingOnly: false,
-    //       demo_num: 111
-    //     }
-    //   }
-    //   commonEventManager.createSubscriber(ACTS_EVENT)
-    //     .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-    //       subscriber = commonEventSubscriber;
-    //       let unSubscribeCallback = () => {
-    //         setTimeout(async () => {
-    //           console.info(`====>${tag} unSubscribeCallback`);
-    //           done();
-    //         }, 1000);
-    //       }
-    //       let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-    //         console.log("OpenLink subscribeCallBack success")
-    //         if (data.event == 'ACTS_TEST_OPENLINK') {
-    //           setTimeout(() => {
-    //             context.startAbility(want, (err: BusinessError) => {
-    //               if (err.code) {
-    //                 console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-    //                 expect(err.code).assertEqual(16000019);
-    //                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-    //               }
-    //             })
-    //           }, 500);
-    //         }
-    //         if (data.event == 'ACTS_TEST_DESTROY') {
-    //           setTimeout(() => {
-    //             commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-    //           }, 500);
-    //         }
-    //       }
-    //       commonEventManager.subscribe(subscriber, subscribeCallBack);
-    //       setTimeout(() => {
-    //         commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-    //       }, 100)
-    //     })
-    // })
-
     /*
      * @tc.number : SUB_ChildProcessManager_sendableContextManager_0700
      * @tc.name   : restartApp with undefined
@@ -240,52 +187,6 @@ export default function sendableContextManagerTest() {
         expect(error.code).assertEqual(401);
         done();
       }
-    })
-
-    /*
-     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0800
-     * @tc.name   : restartApp in background
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 0
-     */
-      it('SUB_ChildProcessManager_sendableContextManager_0800', 0, (done:Function) => {
-      let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
-      let applicationContext = context.getApplicationContext();
-      let link:string = 'https://www.applicationContext02.com'
-      let want: Want = {
-        uri: link,
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              applicationContext.restartApp(want);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
     })
 
     /*

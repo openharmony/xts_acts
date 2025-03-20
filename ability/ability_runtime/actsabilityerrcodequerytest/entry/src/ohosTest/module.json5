@@ -46,6 +46,147 @@
           }
         ]
       },
+      {
+        "name": "applicationContext01",
+        "srcEntry": "./ets/test/applicationContext/applicationContext01.ts",
+        "description": "$string:SecondAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:SecondAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "multiton",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.applicationContext01.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "applicationContext02",
+        "srcEntry": "./ets/test/applicationContext/applicationContext02.ts",
+        "description": "$string:SecondAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:SecondAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "multiton",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.applicationContext02.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "applicationContext03",
+        "srcEntry": "./ets/test/applicationContext/applicationContext03.ts",
+        "description": "$string:SecondAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:SecondAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "multiton",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.applicationContext03.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "applicationContext04",
+        "srcEntry": "./ets/test/applicationContext/applicationContext04.ts",
+        "description": "$string:SecondAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:SecondAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "multiton",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.applicationContext04.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "applicationContext05",
+        "srcEntry": "./ets/test/applicationContext/applicationContext05.ts",
+        "description": "$string:SecondAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:SecondAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "multiton",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.applicationContext05.com"
+              }
+            ]
+          }
+        ]
+      }
     ],
     "extensionAbilities": [
       {
