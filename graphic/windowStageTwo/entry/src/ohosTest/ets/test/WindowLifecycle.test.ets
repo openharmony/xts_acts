@@ -17,7 +17,7 @@ import window from '@ohos.window';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
-import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName'; // ��������·��ҳ��
+import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName'; // 导入命名路由页面
 
 export default function WindowLifecycle() {
   describe('WindowLifecycleTest', async () => {
@@ -1494,7 +1494,7 @@ export default function WindowLifecycle() {
           expect().assertFail();
           done();
         } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'å½“å‰è®¾å¤‡ç±»åž‹ä¸æ”¯æŒç³»ç»Ÿèƒ½åŠ›SystemCapability.Window.SessionManager');
           console.log(msgStr + JSON.stringify(exception));
           expect(exception.code).assertEqual(801);
           // done();
@@ -1508,7 +1508,7 @@ export default function WindowLifecycle() {
           expect().assertFail();
           done();
         } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'å½“å‰è®¾å¤‡ç±»åž‹ä¸æ”¯æŒç³»ç»Ÿèƒ½åŠ›SystemCapability.Window.SessionManager');
           console.log(msgStr + JSON.stringify(exception));
           expect(exception.code).assertEqual(1300002);
           // done();
@@ -1552,7 +1552,7 @@ export default function WindowLifecycle() {
           expect().assertFail();
           done();
         } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'å½“å‰è®¾å¤‡ç±»åž‹ä¸æ”¯æŒç³»ç»Ÿèƒ½åŠ›SystemCapability.Window.SessionManager');
           console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect(error.code).assertEqual(801);
           done();
@@ -1584,7 +1584,7 @@ export default function WindowLifecycle() {
           expect().assertFail();
           done();
         } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'å½“å‰è®¾å¤‡ç±»åž‹ä¸æ”¯æŒç³»ç»Ÿèƒ½åŠ›SystemCapability.Window.SessionManager');
           console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect(error.code).assertEqual(801);
           done();

@@ -69,7 +69,6 @@ export default function windowErrCode1300009() {
           } else {
             expect(err.code).assertEqual(1300009);
           }
-          //expect(err.code).assertEqual(1300009);
           done()
         });
       } catch (exception) {
@@ -78,9 +77,7 @@ export default function windowErrCode1300009() {
           console.info(msgStr + '此设备不支持setWindowTitleMoveEnabled能力.');
         } else {
           expect().assertFail();
-          // expect(exception.code).assertEqual(1300009);
         }
-        // expect().assertFail();
         done()
       }
     })
