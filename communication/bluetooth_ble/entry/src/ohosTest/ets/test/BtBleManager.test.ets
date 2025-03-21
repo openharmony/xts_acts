@@ -314,10 +314,23 @@ function wrDescriptorVal() {
           writeNoResponse: false,
           read: false,
           notify: false,
-          indicate: false
+          indicate: false,
+          broadcast: false,
+          authenticatedSignedWrite: false,
+          extendedProperties: false
         };
+        let gattPermissions: bluetoothBle.GattPermissions = {
+          read: false,
+          readEncrypted: false,
+          readEncryptedMitm: false,
+          write: false,
+          writeEncrypted: false,
+          writeEncryptedMitm: false,
+          writeSigned: false,
+          writeSignedMitm: false
+        }
         let characteristic: bluetoothBle.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors, properties: gattProperties};
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors, properties: gattProperties, permissions: gattPermissions};
     return new Promise<void>((resolve, reject) => {
       gattC.setCharacteristicChangeNotification(characteristic, false, (err: BusinessError, data: void) => {
         if (err) {
@@ -836,9 +849,19 @@ function wrDescriptorVal() {
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 11;
+            let gattPermissions: bluetoothBle.GattPermissions = {
+              read: false,
+              readEncrypted: false,
+              readEncryptedMitm: false,
+              write: false,
+              writeEncrypted: false,
+              writeEncryptedMitm: false,
+              writeSigned: false,
+              writeSignedMitm: false
+            }
             let descriptor : bluetoothBle.BLEDescriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
               characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-              descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc, descriptorHandle: 0};
+              descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc, descriptorHandle: 0, permissions: gattPermissions};
             descriptors[0] = descriptor;
 
             let bufferCCC = new ArrayBuffer(8);
