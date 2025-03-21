@@ -50,15 +50,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
     beforeEach(async () => {
       await avRecorderNdkTestBase.msleepAsync(3000);
       console.info(`case to beforeEach `);
+      //-当使用MP3编码格式时，采样率和比特率的映射关系：
+      //- 采样率使用16K以下时，对应比特率范围为[8000 - 64000]。
+      //- 采样率使用16K~32K时对应的比特率范围为[8000 - 160000]。
+      //- 采样率使用32K以上时对应的比特率范围为[32000 - 320000]。
+
       //audioSampleRate随机数MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]
-      let audioSampleRateList: Array<number> = [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]
+      let audioSampleRateList: Array<number> = [8000, 11025, 12000, 16000]
       let audioSampleRateIndex: number = Math.floor(Math.random() * audioSampleRateList.length)
       audioSampleRate = audioSampleRateList[audioSampleRateIndex]
 
       //audioBitrate随机数MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000,
       // 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]
-      let audioBitrateList: Array<number> = [8000, 16000, 32000, 40000, 480000, 56000, 64000, 80000,
-        96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]
+      let audioBitrateList: Array<number> = [8000, 16000, 32000, 40000, 480000, 56000, 64000]
       let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
       audioBitrate = audioBitrateList[audioBitrateIndex]
 

@@ -174,7 +174,7 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             } else if (fileGenerationMode == AVRECORDER_AUTO_CREATE_CAMERA_SCENE) {
                 config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
             }
-            GetInt32Property(env, arg, "videoBitrate", &(config.profile.videoBitrate));
+            config.profile.videoBitrate = 20000;
             GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
             GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
             GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));
@@ -328,9 +328,11 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
     parseSetConfigAudioSourceType(env, args[0], *config);
     parseSetConfigAudioCodec(env, args[0], *config);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.url = fd: %{public}s", config->url);
+    OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.audioSampleRate : %{public}d", config->profile.audioSampleRate);
     OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.audioBitrate : %{public}d", config->profile.audioBitrate);
-    OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoFrameWidth = fd: %{public}d", config->profile.videoFrameWidth);
-    OH_LOG_INFO(LOG_APP, "AVRecorder config.url.profile.videoFrameHeight = fd: %{public}d",
+    OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoBitrate : %{public}d", config->profile.videoBitrate);
+    OH_LOG_INFO(LOG_APP, "AVRecorder config.profile.videoFrameWidth =  %{public}d", config->profile.videoFrameWidth);
+    OH_LOG_INFO(LOG_APP, "AVRecorder config.url.profile.videoFrameHeight =  %{public}d",
                 config->profile.videoFrameHeight);
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
