@@ -11,14 +11,6 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsUIExtensionErrocodeMain") {
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsmultiInstancEerrCodeMain"
-  subsystem_name = "ability"
-  part_name = "ability_runtime"
-}
-
 ohos_js_app_suite("ActsUIExtensionErrocodeTest") {
   test_hap = true
   testonly = true
@@ -26,5 +18,4 @@ ohos_js_app_suite("ActsUIExtensionErrocodeTest") {
   hap_name = "ActsUIExtensionErrocodeTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
-  deps = [ ":ActsUIExtensionErrocodeMain" ]
 }
