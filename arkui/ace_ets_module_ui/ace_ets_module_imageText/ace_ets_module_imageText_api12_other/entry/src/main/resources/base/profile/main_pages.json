@@ -2,6 +2,8 @@
   "src": [
   "MainAbility/pages/index/index",
   "MainAbility/pages/Text/textAreaInputTest",
-  "MainAbility/pages/Text/TextDecorationStyleTest"
+  "MainAbility/pages/Text/TextDecorationStyleTest",
+  "MainAbility/pages/TextInput/ContentType",
+  "MainAbility/pages/TextInput/fontFeature"
   ]
 }
