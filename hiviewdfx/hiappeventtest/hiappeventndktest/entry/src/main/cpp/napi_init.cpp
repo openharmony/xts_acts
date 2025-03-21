@@ -15,6 +15,10 @@
 
 #include "napi/native_api.h"
 #include "hiappevent/hiappevent.h"
+#include <cstring>
+#include <vector>
+#include <string>
+
 #define FAIL (-1)
 #define SUCCESS 0
 #define PARAM_0 0
@@ -446,6 +450,357 @@ static napi_value RemoveWatcherInvOperation(napi_env env, napi_callback_info inf
     return ret;
 }
 
+// 封装 OH_HiAppEvent_CreateProcessor 的 NAPI 接口
+static napi_value CreateProcessor(napi_env env, napi_callback_info info) {
+    // 解析参数
+    size_t argc = 1; // 期望 1 个参数
+    napi_value args[1];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    // 获取 name 参数
+    size_t str_size;
+    napi_get_value_string_utf8(env, args[0], nullptr, 0, &str_size);
+    char*  name = new char[str_size + 1];
+    napi_get_value_string_utf8(env, args[0], name, str_size + 1, nullptr);
+
+    napi_valuetype valueType;
+    napi_typeof(env, args[0], &valueType);
+
+    // 调用 OH_HiAppEvent_CreateProcessor 创建 processor
+    HiAppEvent_Processor* processor = OH_HiAppEvent_CreateProcessor(name);
+
+    delete[] name;
+
+    // 将 processor 指针返回给 ETS
+    napi_value retVal;
+    napi_create_external(env, processor, nullptr, nullptr, &retVal);
+    return retVal;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetReportRoute
+napi_value SetReportRoute(napi_env env, napi_callback_info info) {
+    size_t argc = 3;
+    napi_value args[3];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // **获取参数类型**
+    napi_valuetype processorType, appIdType, routeInfoType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &appIdType);
+    napi_typeof(env, args[2], &routeInfoType);
+
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    size_t appIdSize, routeInfoSize;
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &appIdSize);
+    napi_get_value_string_utf8(env, args[2], nullptr, 0, &routeInfoSize);
+
+    char* appId = new char[appIdSize + 1];
+    char* routeInfo = new char[routeInfoSize + 1];
+    // 填充appId
+    napi_get_value_string_utf8(env, args[1], appId, appIdSize + 1, nullptr);
+    // 填充routeInfo
+    napi_get_value_string_utf8(env, args[2], routeInfo, routeInfoSize + 1, nullptr);
+
+    // 调用 OH_HiAppEvent_SetReportRoute
+    int result = OH_HiAppEvent_SetReportRoute(processor, appId, routeInfo);
+
+    delete[] appId;
+    delete[] routeInfo;
+
+    // 返回结果给 ETS
+    napi_value retVal;
+    napi_create_int32(env, result, &retVal);
+    return retVal;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetReportPolicy
+napi_value SetReportPolicy(napi_env env, napi_callback_info info) {
+    size_t argc = 5;
+    napi_value args[5];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // **获取参数类型**
+    napi_valuetype processorType, periodReportType, batchReportType, onStartReportType, onBackgroundReportType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &periodReportType);
+    napi_typeof(env, args[2], &batchReportType);
+    napi_typeof(env, args[3], &onStartReportType);
+    napi_typeof(env, args[4], &onBackgroundReportType);
+
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+     // **获取 int 型参数**
+    int32_t periodReport, batchReport;
+    napi_get_value_int32(env, args[1], &periodReport);
+    napi_get_value_int32(env, args[2], &batchReport);
+
+    // **获取 bool 型参数**
+    bool onStartReport, onBackgroundReport;
+    napi_get_value_bool(env, args[3], &onStartReport);
+    napi_get_value_bool(env, args[4], &onBackgroundReport);
+
+    // **填充参数长度**
+    size_t periodSize = sizeof(int32_t);
+    size_t batchSize = sizeof(int32_t);
+    size_t startReportSize = sizeof(bool);
+    size_t backgroundReportSize = sizeof(bool);
+
+    // **参数填充**
+    memset(&periodReport, 0, periodSize);
+    memset(&batchReport, 0, batchSize);
+    memset(&onStartReport, 0, startReportSize);
+    memset(&onBackgroundReport, 0, backgroundReportSize);
+    // 调用 OH_HiAppEvent_SetReportRoute
+    int result =  OH_HiAppEvent_SetReportPolicy(processor, periodReport, batchReport, onStartReport, onBackgroundReport);
+
+    // 返回结果给 ETS
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetReportPolicy
+napi_value SetReportEvent(napi_env env, napi_callback_info info) {
+    size_t argc = 4;
+    napi_value args[4];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // **获取参数类型**
+    napi_valuetype processorType, domainType, nameType, isRealTimeType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &domainType);
+    napi_typeof(env, args[2], &nameType);
+    napi_typeof(env, args[3], &isRealTimeType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    size_t domainSize, nameSize;
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &domainSize);
+    napi_get_value_string_utf8(env, args[2], nullptr, 0, &nameSize);
+    char* domain = new char[domainSize + 1];
+    char* name = new char[nameSize + 1];
+    napi_get_value_string_utf8(env, args[1], domain, domainSize + 1, nullptr);
+    napi_get_value_string_utf8(env, args[2], name, nameSize + 1, nullptr);
+    bool isRealTime;
+    napi_get_value_bool(env, args[3], &isRealTime);
+    // 调用 OH_HiAppEvent_SetReportRoute
+    int result = OH_HiAppEvent_SetReportEvent(processor, domain, name, isRealTime);
+    // 释放资源
+    delete[] domain;
+    delete[] name;
+    // 返回结果给 ETS
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetCustomConfig
+napi_value SetCustomConfig(napi_env env, napi_callback_info info) {
+    size_t argc = 3;
+    napi_value args[3];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // **获取参数类型**
+    napi_valuetype processorType, keyType, valueType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &keyType);
+    napi_typeof(env, args[2], &valueType);
+
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    size_t keySize, valueSize;
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &keySize);
+    napi_get_value_string_utf8(env, args[2], nullptr, 0, &valueSize);
+
+    char* key = new char[keySize + 1];
+    char* value = new char[valueSize + 1];
+    napi_get_value_string_utf8(env, args[1], key, keySize + 1, nullptr);
+    napi_get_value_string_utf8(env, args[2], value, valueSize + 1, nullptr);
+
+    // 调用 OH_HiAppEvent_SetReportRoute
+    int result = OH_HiAppEvent_SetCustomConfig (processor, key,  value );
+
+    delete[] key;
+    delete[] value;
+
+    // 返回结果给 ETS
+    napi_value retVal;
+    napi_create_int32(env, result, &retVal);
+    return retVal;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetConfigId()
+napi_value SetConfigId(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType, configIdType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &configIdType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    int32_t configId;
+    napi_get_value_int32(env, args[1], &configId);
+    // **填充参数长度**
+    size_t configIdSize = sizeof(int32_t);
+    //**参数填充**
+    memset(&configId, 0, configIdSize);
+    // 调用 OH_HiAppEvent_SetReportRoute
+    int result =  OH_HiAppEvent_SetConfigId(processor, configId);
+
+    // 返回结果给 ETS
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_SetReportUserId
+napi_value SetReportUserId(napi_env env, napi_callback_info info) {
+    size_t argc = 3;
+    napi_value args[3];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType, userIdNamesType, sizeType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &userIdNamesType);
+    napi_typeof(env, args[2], &sizeType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    // 解析 size 参数
+    int size;
+    napi_get_value_int32(env, args[2], &size);
+    // 读取 userIdNames 数据
+    std::vector<std::string> userIdStrings;
+    std::vector<const char*> userIdNames;
+    for (uint32_t i = 0; i < size; i++) {
+        napi_value element;
+        napi_get_element(env, args[1], i, &element);
+        size_t strSize;
+        napi_get_value_string_utf8(env, element, nullptr, 0, &strSize);
+        std::string str(strSize, '\0');
+        napi_get_value_string_utf8(env, element, &str[0], strSize + 1, &strSize);
+        userIdStrings.push_back(str);
+        userIdNames.push_back(userIdStrings.back().c_str());
+        }
+
+    // 调用 OH_HiAppEvent_SetCustomConfig
+    int result = OH_HiAppEvent_SetReportUserId(processor,userIdNames.data(), size);
+
+    // 返回结果给 ETS
+    napi_value retVal;
+    napi_create_int32(env, result, &retVal);
+    return retVal;
+
+}
+
+//// NAPI 封装：调用 OH_HiAppEvent_SetReportUserId
+napi_value SetReportUserProperty(napi_env env, napi_callback_info info) {
+    size_t argc = 3;
+    napi_value args[3];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType, userPropertyNamesType, sizeType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &userPropertyNamesType);
+    napi_typeof(env, args[2], &sizeType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    // 解析 size 参数
+    int size;
+    napi_get_value_int32(env, args[2], &size);
+    // 读取 userIdNames 数据
+    std::vector<std::string> userPropertyNamesStrings;
+    std::vector<const char*> userPropertyNames;
+    for (uint32_t i = 0; i < size; i++) {
+        napi_value element;
+        napi_get_element(env, args[1], i, &element);
+        size_t strSize;
+        napi_get_value_string_utf8(env, element, nullptr, 0, &strSize);
+        std::string str(strSize, '\0');
+        napi_get_value_string_utf8(env, element, &str[0], strSize + 1, &strSize);
+        userPropertyNamesStrings.push_back(str);
+        userPropertyNames.push_back(userPropertyNamesStrings.back().c_str());
+        }
+
+    // 调用 OH_HiAppEvent_SetCustomConfig
+    int result = OH_HiAppEvent_SetReportUserId(processor,userPropertyNames.data(), size);
+
+    // 返回结果给 ETS
+    napi_value retVal;
+    napi_create_int32(env, result, &retVal);
+    return retVal;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_AddProcessor
+napi_value AddProcessor(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType;
+    napi_typeof(env, args[0], &processorType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    // 调用 OH_HiAppEvent_CreateProcessor 创建 processor
+    int result = OH_HiAppEvent_AddProcessor( processor);
+    // 返回结果给 ETS
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_RemoveProcessor
+napi_value RemoveProcessor(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType;
+    napi_typeof(env, args[0], &processorType);
+    // 获取 processorID 参数（从 ETS 传入的外部对象）
+    int64_t processorId;
+    napi_get_value_int64(env, args[0], &processorId);
+     // 调用 OH_HiAppEvent_CreateProcessor 创建 processor
+    int result = OH_HiAppEvent_RemoveProcessor(processorId);
+    // 返回结果给 ETS
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
+// NAPI 封装：调用 OH_HiAppEvent_DestroyProcessor
+napi_value DestroyProcessor(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     // **获取参数类型**
+    napi_valuetype processorType;
+    napi_typeof(env, args[0], &processorType);
+    // 获取 processor 参数（从 ETS 传入的外部对象）
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+
+    // 调用 OH_HiAppEvent_CreateProcessor 创建 processor
+    OH_HiAppEvent_DestroyProcessor(processor);
+    // 返回结果给 ETS
+    napi_value Result;
+    napi_get_undefined(env, &Result);
+    return Result;
+}
+
 static napi_value Add(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
@@ -540,6 +895,17 @@ static napi_value Init(napi_env env, napi_value exports)
         {"removeWatcherInvWatcher", nullptr, RemoveWatcherInvWatcher, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"removeWatcherInvOperation", nullptr, RemoveWatcherInvOperation, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        { "SetReportRoute", nullptr, SetReportRoute, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "CreateProcessor", nullptr, CreateProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetReportPolicy", nullptr, SetReportPolicy, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetReportEvent", nullptr, SetReportEvent, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetCustomConfig", nullptr, SetCustomConfig, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetConfigId", nullptr, SetConfigId, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetReportUserId", nullptr, SetReportUserId, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetReportUserProperty", nullptr, SetReportUserId, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "AddProcessor", nullptr, AddProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "RemoveProcessor", nullptr, RemoveProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "DestroyProcessor", nullptr, DestroyProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
         {"add", nullptr, NAPI_Global_add, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

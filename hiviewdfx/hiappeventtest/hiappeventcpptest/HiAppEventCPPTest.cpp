@@ -1231,113 +1231,113 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3700, Function|M
 /**
 * @tc.name Test of the HiAppEvent Native Write Interface in which the keyvalue
 *          is of the boolean type and the bool value is true.
-* @tc.number SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_3800
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100, Function | MediumTest | Level3) {
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100 start" << endl;
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3800, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3800 start" << endl;
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(nullptr, "testName", "testValue"), ErrorCode::ERROR_EVENT_CONFIG_IS_NULL);
- 
+
     int maxStrLen = 1024;
     std::string longStr(maxStrLen, 'a');
     std::string longInvalidStr(maxStrLen + 1, 'a');
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
-    
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "", "testValue"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, longStr.c_str(), "testValue"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, nullptr, "testValue"), ErrorCode::ERROR_INVALID_PARAM_VALUE);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, longInvalidStr.c_str(), "testValue"),
               ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "testName", ""), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "testName", longStr.c_str()),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "testName", nullptr), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "testName", longInvalidStr.c_str()),
               ErrorCode::ERROR_INVALID_PARAM_VALUE);
-    
+
     OH_HiAppEvent_DestroyConfig(configDemo);
 
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100 end" << endl;
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3800 end" << endl;
 }
 
 /**
 * @tc.name Test of the HiAppEvent Native Write Interface in which the keyvalue
 *          is of the boolean type and the bool value is true.
-* @tc.number SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_3900
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200, Function | MediumTest | Level3) {
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200 start" << endl;
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3900, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3900 start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "0"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig(nullptr, configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("testName", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
     int maxStrLen = 1024;
     std::string longInvalidStr(maxStrLen + 1, 'a');
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig(longInvalidStr.c_str(), configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     OH_HiAppEvent_DestroyConfig(configDemo);
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200 end" << endl;
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3900 end" << endl;
 }
 
 /**
 * @tc.name Test of the HiAppEvent Native Write Interface in which the keyvalue
 *          is of the boolean type and the bool value is true.
-* @tc.number SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_4000
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300, Function | MediumTest | Level3) {
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300 start" << endl;
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4000, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4000 start" << endl;
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", nullptr), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "-1"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "abc"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", ""), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", nullptr), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "100"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "0"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "2"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     OH_HiAppEvent_DestroyConfig(configDemo);
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300 end" << endl;
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4000 end" << endl;
 }
 
 /**
 * @tc.name Test of the HiAppEvent Native Write Interface in which the keyvalue
 *          is of the boolean type and the bool value is true.
-* @tc.number SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_4100
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400, Function | MediumTest | Level3) {
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400 start" << endl;
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4100, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4100  start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "1"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "ignore_startup_time", "10"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", "100"),
@@ -1346,23 +1346,23 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400, Function |
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_count", "21"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     OH_HiAppEvent_DestroyConfig(configDemo);
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400 end" << endl;
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4100  end" << endl;
 }
 
 /**
 * @tc.name Test of the HiAppEvent Native Write Interface in which the keyvalue
 *          is of the boolean type and the bool value is true.
-* @tc.number SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_4200
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500, Function | MediumTest | Level3) {
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500 start" << endl;
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4200, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4200 start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "1"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_count", "21"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "ignore_startup_time", "10"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
@@ -1370,26 +1370,51 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500, Function |
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", "50"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);  // sample_interval range is [50, 1000]
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", "-1"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", "49"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", "aa"),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
-    
+
     std::string maxValue = "92233720368547758079223372036854775807";
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "sample_interval", maxValue.c_str()),
               ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", configDemo), ErrorCode::ERROR_INVALID_PARAM_VALUE);
- 
+
     OH_HiAppEvent_DestroyConfig(configDemo);
-    GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500 end" << endl;
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4200 end" << endl;
+}
+
+/**
+* @tc.name Test of the HiAppEvent Native SetReportRoute Interface in which the keyvalue
+*          is of the boolean type and the bool value is true.
+* @tc.number DFX_DFT_HiviewKit_HiAppEvent_Native_4300
+* @author z30053398
+* @tc.desc The keyvalue is of the boolean type and the bool value is false.
+*/
+
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4300, Function | MediumTest | Level3) {
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4300 start" << endl;
+    const char *  validname = "test_processor";
+    HiAppEvent_Processor * processor0= OH_HiAppEvent_CreateProcessor (validname);
+    ASSERT_EQ(OH_HiAppEvent_SetReportRoute(processor0, "com.example.app", "https://hiappevents.com/test"), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetReportPolicy(processor0, 10, 5, true, false), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetReportEvent(processor0, "OS", "ADDRESS_SANITIZER", true), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetCustomConfig(processor0, "test", "test"), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetConfigId(processor0, 123), -200);
+    const char* User[] = {"testprocessor", "processor2", "processor3"};
+    ASSERT_EQ(OH_HiAppEvent_SetReportUserId(processor0, User, 1), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, User, 1), -200);
+    ASSERT_EQ(OH_HiAppEvent_AddProcessor(processor0), -200);
+    ASSERT_EQ(OH_HiAppEvent_RemoveProcessor(123), -200);
+    GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4300 end" << endl;
 }

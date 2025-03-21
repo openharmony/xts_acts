@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+declare class HiAppEvent_Processor {}
+
+export type Processor = HiAppEvent_Processor;
 export const add: (a: number, b: number) => number;
 export const oHHiAppEventWrite: () => number;
 export const oHHiAppEventConfigure: () => number;
@@ -51,3 +54,14 @@ export const addWatcherInvWatcher: () => number;
 export const removeWatcher: () => number;
 export const removeWatcherInvWatcher: () => number;
 export const removeWatcherInvOperation: () => number;
+export const CreateProcessor: (name: string) => Processor;
+export const SetReportRoute: (processor: Processor, appId: string, routeInfo: string )=> number;
+export const SetReportPolicy: (processor: Processor, periodReport: number , batchReport: number, onStartReport: boolean, onBackgroundReport:boolean )=> number;
+export const SetReportEvent: (processor: Processor, domain: string, name: string, isRealTime: boolean) => number;
+export const SetCustomConfig: (processor: Processor, key: string, value: string )=> number;
+export const SetConfigId: (processor: Processor, configId: number  )=> number;
+export const SetReportUserId: (processor: Processor, userIdNames: string[], size: number  )=> number;
+export const SetReportUserProperty: (processor: Processor, userPropertyNames: string[], size: number  )=> number;
+export const AddProcessor: (processor: Processor) => number;
+export const RemoveProcessor: (processorId: number) => number;
+export const DestroyProcessor: (processor: Processor) => void;

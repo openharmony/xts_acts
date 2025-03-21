@@ -30,6 +30,7 @@ group("hiviewdfxtestacts") {
       "hicollietest/hicolliendktest:ActsHicollieTest",
       "hidebugtest/hidebugtestcoltest:ActsHiDebugColTest",
       "hidebugtest/hidebugtestjstest:ActsHiDebugTest",
+      "hidebugtest/hidebugtestrawtest:ActsHidebugrawTest",
       "hilogndktest:ActsHilogNdkTest",
       "hilogtest/hilogdomainofftest:ActsHilogDomainOffJsTest",
       "hilogtest/hilogdomainontest:ActsHilogDomainOnJsTest",
