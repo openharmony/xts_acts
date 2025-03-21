@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import ActsLongTimeTaskManagerTest from './ActsLongTimeTaskManagerTest.test';
+import ActsLongTimeTaskManagerErrorCodeTest from './ActsLongTimeTaskManagerErrorCodeTest.test';
 
 export default function testsuite() {
   ActsLongTimeTaskManagerTest();
+  ActsLongTimeTaskManagerErrorCodeTest();
 }
