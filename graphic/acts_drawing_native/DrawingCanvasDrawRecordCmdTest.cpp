@@ -113,7 +113,7 @@ OH_Drawing_RecordCmd *threadFunctionTest6()
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, TestSize.Level0) {
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, Function | SmallTest | Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);
@@ -134,7 +134,7 @@ HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, TestSize.Level0) {
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, Function | SmallTest | Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);

@@ -70,7 +70,7 @@ class DrawingNativeColorTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, Function | SmallTest | Level0) {
     // 1
     uint32_t color = OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF);
     // add assert
@@ -90,7 +90,7 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, Function | SmallTest | Level3) {
     // 1、Passing empty for the first argument of OH_Drawing_ColorSetArgb
     uint32_t color1 = OH_Drawing_ColorSetArgb(0, 0xFF, 0xFF, 0xFF);
     // add assert
@@ -117,7 +117,7 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ColorSetArgb with random numbers between 0 and 255, 10 times
     for (int i = 0; i < 10; i++) {
         uint32_t color = OH_Drawing_ColorSetArgb(rand() % 256, rand() % 256, rand() % 256, rand() % 256);
@@ -134,7 +134,7 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, Function | SmallTest | Level3) {
     // 1. The first argument of OH_Drawing_ColorSetArgb is a negative number
     uint32_t color1 = OH_Drawing_ColorSetArgb(-0x01, 0xFF, 0xFF, 0xFF);
     // add assert
@@ -161,7 +161,7 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorTest, testColorSetArgbMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbMaximum, Function | SmallTest | Level3) {
     // 1
     uint32_t color1 = OH_Drawing_ColorSetArgb(0xFF + 1, 0x00, 0x00, 0xFF);
     // add assert
