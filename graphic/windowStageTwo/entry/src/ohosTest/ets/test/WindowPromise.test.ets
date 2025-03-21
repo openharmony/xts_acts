@@ -2406,17 +2406,29 @@ export default function windowPromiseTest() {
       let msgStr = "test_SetFollowParentWindowLayoutEnabled_true";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
+      let mainWindow = windowStage.getMainWindowSync();
+      let mainWindowProwindowRect = mainWindow.getWindowProperties().windowRect;
+      console.info(msgStr + 'Succeeded in get mainWindow windowRect. Data: ' + JSON.stringify(mainWindowProwindowRect));
       try {
         let promise = windowStage.createSubWindow('test_SetFollowParentWindowLayoutEnabled_true');
         promise.then(async (data) => {
           subWindowClass = data;
           console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index1');
+          await sleep(300);
+          await subWindowClass.showWindow();
+          await subWindowClass.resizeAsync(500,500);
+          subWindowClass.on('windowSizeChange', async (data) => {
+            console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
+            let subWindowRect = data;
+            expect(Math.abs(subWindowRect.width-mainWindowProwindowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect.height-mainWindowProwindowRect.height)).assertLessOrEqual(1);
+            await subWindowClass.destroyWindow();
+            done();
+          });
           let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(true);
           promise2.then(async () => {
             console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
-            await subWindowClass.destroyWindow();
-            expect(true).assertTrue();
-            done();
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
             await subWindowClass.destroyWindow();
@@ -2466,11 +2478,21 @@ export default function windowPromiseTest() {
         promise.then(async (data) => {
           subWindowClass = data;
           console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index1');
+          await sleep(300);
+          await subWindowClass.showWindow();
+          let subWindowRect1 = subWindowClass.getWindowProperties().windowRect;
+          console.info(msgStr + 'Succeeded in get  subWindowRect1. Data: ' + JSON.stringify(subWindowRect1));
           let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(false);
           promise2.then(async () => {
             console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+            let subWindowRect2 = subWindowClass.getWindowProperties().windowRect;
+            console.info(msgStr + 'Succeeded in get  subWindowRect2. Data: ' + JSON.stringify(subWindowRect2));
+            expect(Math.abs(subWindowRect1.width-subWindowRect2.width)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.height-subWindowRect2.height)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.left-subWindowRect2.left)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.top-subWindowRect2.top)).assertLessOrEqual(1);
             await subWindowClass.destroyWindow();
-            expect(true).assertTrue();
             done();
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -2557,6 +2579,48 @@ export default function windowPromiseTest() {
           }
 
         });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0200
+     * @tc.name      : test_snapshotIgnorePrivacy
+     * @tc.desc      :  test_snapshotIgnorePrivacy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_snapshotIgnorePrivacy", 2, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy";
+      console.log(msgStr + "begin");
+      let mainWoindow: ohosWindow.Window = windowStage.getMainWindowSync();
+      try {
+          let promise2 = mainWoindow.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            let widthBefore: number = mainWoindow.getWindowProperties().windowRect.width;
+            let heightBefore: number = mainWoindow.getWindowProperties().windowRect.height;
+            console.info(`${msgStr} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
       } catch (error) {
         console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
         expect(false).assertTrue();
