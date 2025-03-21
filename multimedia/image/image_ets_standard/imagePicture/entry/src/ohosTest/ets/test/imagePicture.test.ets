@@ -24,6 +24,7 @@ import resourceManager from '@ohos.resourceManager';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
+import taskpool from '@ohos.taskpool';
 
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
@@ -32,6 +33,26 @@ let sleep = async (delay: number): Promise<void> => {
     }, delay);
   });
 };
+
+async function taskpoolTest(pixelMap : image.PixelMap) {
+  console.info("start taskpoolTest");
+  try {
+    let task = new taskpool.Task(pixelTest, pixelMap);
+    taskpool.execute(task);
+  } catch (error) {
+    console.error('taskpool execute error is ' + error)
+  }
+}
+
+@Concurrent
+async function pixelTest(pixelMap: image.PixelMap) {
+  console.info("Start first time");
+  // 模拟异步操作
+  setTimeout(() => {
+    console.log('Start asynchronous blocking');
+  }, 1000);
+  return pixelMap;
+}
 
 export default function imagePicture() {
   let filesDir: string|undefined;
@@ -7563,6 +7584,898 @@ export default function imagePicture() {
     })
 
     /**
+     * @tc.number    : testImageCropSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_CROP_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CROP_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_CROP_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let region: image.Region = { x: 0, y: 0, size: { height: 1, width: 1 } };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.cropSync(region);
+          console.info(tag + ' Succeeded in cropping Sync pixelmap. Expect fail.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to cropSync pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageFlipSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_FLIP_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_FLIP_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_FLIP_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let horizontal : boolean = true;
+      let vertical : boolean = false;
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.flipSync(horizontal, vertical);
+          console.info(tag + ' Succeeded in flipping pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to flip pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageRotateSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_ROTATE_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_ROTATE_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_ROTATE_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let angle : number = 90.0;
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.rotateSync(angle);
+          console.info(tag + ' Succeeded in rotating pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to rotate pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageTranslateSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_TRANSLATE_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_TRANSLATE_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_TRANSLATE_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let translateX : number = 50.0;
+      let translateY : number = 10.0;
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.translateSync(translateX, translateY);
+          console.info(tag + ' Succeeded in translating pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to translate pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageCreateScaledPixelMapSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let scaleX: number = 2.0;
+      let scaleY: number = 1.0;
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          let scaledPixelMap = pixelMap.createScaledPixelMapSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
+          console.info(tag + ' Succeeded in scaling Sync pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to scale Sync pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageReadPixelsToBufferSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_READ_PIXEL_TO_BUFFER_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_READ_PIXEL_TO_BUFFER_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_READ_PIXEL_TO_BUFFER_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      const readBuffer: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.readPixelsToBufferSync(readBuffer);
+          console.info(tag + ' Succeeded in reading to buffer Sync pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to read to buffer Sync pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageReadPixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_READ_PIXELS_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_READ_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_READ_PIXELS_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      const area : image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+      };
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.readPixelsSync(area);
+          console.info(tag + ' Succeeded in reading pixels Sync pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to read pixels Sync pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageWritePixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_WRITE_PIXELS_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_WRITE_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_WRITE_PIXELS_SYNC_0100";
+      const area: image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+      };
+      let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = i + 1;
+      }
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.writePixelsSync(area);
+          console.info(tag + ' Succeeded in writing pixels Sync pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to write pixels Sync pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageWriteBufferToPixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_WRITE_BUFFER_TO_PIXELS_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_WRITE_BUFFER_TO_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_WRITE_BUFFER_TO_PIXELS_SYNC_0100";
+      const color : ArrayBuffer = new ArrayBuffer(96);
+      let bufferArr : Uint8Array = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = i + 1;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.writeBufferToPixelsSync(color);
+          console.info(tag + ' Succeeded in Writting to buffer Sync pixelmap.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to write to buffer Sync pixelmap. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageGetImageInfoSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_IMAGE_INFO_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_IMAGE_INFO_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_GET_IMAGE_INFO_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+          console.info(tag + ' Succeeded in getting info Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to get info Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageOpacitySync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_OPACITY_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_OPACITY_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_OPACITY_SYNC_0100";
+      let rate : number = 0.5;
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.opacitySync(rate);
+          console.info(tag + ' Succeeded in getting info Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to get info Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageCreateAlphaPixelmapSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_CREATE_ALPHA_PIXEL_MAP_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_ALPHA_PIXEL_MAP_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_CREATE_ALPHA_PIXEL_MAP_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          let pixelmap : image.PixelMap = pixelMap.createAlphaPixelmapSync();
+          console.info(tag + ' Succeeded in creating Alpha Pixelmap Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to create Alpha Pixelmap Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageScaleSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0100";
+      let scaleX: number = 2.0;
+      let scaleY: number = 1.0;
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.scaleSync(scaleX, scaleY);
+          console.info(tag + ' Succeeded in scaling Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to scale Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageScaleSync0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0200
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SCALE_SYNC_0200";
+      let scaleX: number = 2.0;
+      let scaleY: number = 1.0;
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.scaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
+          console.info(tag + ' Succeeded in scaling Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to scale Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageCloneSync0100
+     * @tc.name      : SUB_MULTIMEDIA_CLONE_SYNC_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CLONE_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CLONE_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        try {
+          pixelMap.cloneSync();
+          console.info(tag + ' Succeeded in cloning Sync.');
+          expect().assertFail();
+          done();
+        } catch (error) {
+          console.error(tag + ` Failed to clone Sync. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        }
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageScale0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SCALE_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SCALE_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SCALE_0100";
+      let scaleX: number = 2.0;
+      let scaleY: number = 1.0;
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
+          console.info(tag + ' Succeeded in scaling.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(tag + ` Failed to scale. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        })
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageCreateScaledPixelMap0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_CREATE_SCALE_PIXEL_MAP_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let scaleX: number = 2.0;
+      let scaleY: number = 1.0;
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        let scaledPixelMap = pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
+          console.info(tag + ' Succeeded in scaling pixelmap.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(tag + ` Failed to scale pixelmap.  error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        })
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageClone0100
+     * @tc.name      : SUB_MULTIMEDIA_CLONE_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CLONE_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CLONE_SYNC_0100";
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        pixelMap.clone().then((clonePixelMap: image.PixelMap) => {
+          console.info(tag + ' Succeeded in cloning.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(tag + ` Failed to clone. Error code is ` + error.code);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        })
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageSetMetadata0100
+     * @tc.name      : SUB_MULTIMEDIA_SET_METADATA_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_SET_METADATA_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_SET_METADATA_0100";
+      let staticMetadata: image.HdrStaticMetadata = {
+        displayPrimariesX: [1.1, 1.1, 1.1],
+        displayPrimariesY: [1.2, 1.2, 1.2],
+        whitePointX: 1.1,
+        whitePointY: 1.2,
+        maxLuminance: 2.1,
+        minLuminance: 1.0,
+        maxContentLightLevel: 2.1,
+        maxFrameAverageLightLevel: 2.1,
+      }
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+      let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        console.info(tag + " Succeeded in creating pixel map");
+        taskpoolTest(pixelMap);
+        pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
+          console.info(tag + ' Succeeded in Setting Metadata.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(tag + ` Failed to set metadata. Error code is ` + error);
+          expect(Number(error) == 501).assertTrue();
+          done();
+        })
+      } else {
+        console.info(tag + " Failed to create pixel map");
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageCreatePremultipliedPixelMap0100
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0100";
+      const color: ArrayBuffer = new ArrayBuffer(16);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 255;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 122;
+      }
+      let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
+      let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
+      let optsForPre: image.InitializationOptions = { editable: false, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
+      let dstPixelMap = image.createPixelMapSync(optsForPre);
+      image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
+        if(error) {
+          console.error(tag + ` Failed to Create Premultiplied PixelMap. code is ${error}`);
+          expect(Number(error) == 62980248).assertTrue();
+          done();
+        } else {
+          console.info(tag + ' Succeeded in Creating Premultiplied PixelMap.');
+          expect().assertFail();
+          done();
+        }
+      })
+    })
+
+    /**
+     * @tc.number    : testImageCreatePremultipliedPixelMap0200
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0200
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0200";
+      const color: ArrayBuffer = new ArrayBuffer(16);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 255;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 122;
+      }
+      let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
+      let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
+      let optsForPre: image.InitializationOptions = { editable: false, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
+      let dstPixelMap = image.createPixelMapSync(optsForPre);
+      image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
+        console.info(tag + ' Succeeded in Creating Premultiplied PixelMap.');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(tag + ` Failed to Create Premultiplied PixelMap. code is ${error}`);
+        expect(Number(error) == 62980248).assertTrue();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : testImageCreateUnpremultipliedPixelMap0100
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0100
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0100";
+      const color: ArrayBuffer = new ArrayBuffer(16);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 255;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 122;
+      }
+      let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
+      let srcPixelmap = image.createPixelMapSync(color, optsForPre);
+      let optsForUnpre: image.InitializationOptions = { editable: false, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
+      let dstPixelMap = image.createPixelMapSync(optsForUnpre);
+      image.createUnpremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
+        console.error(tag + ` Failed to Create unpremultiplied PixelMap. code is ${error}`);
+        expect(Number(error) == 62980248).assertTrue();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : testImageCreateUnpremultipliedPixelMap0200
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0200
+     * @tc.desc      : 501
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0200";
+      const color: ArrayBuffer = new ArrayBuffer(16);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 255;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 122;
+      }
+      let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
+      let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
+      let optsForPre: image.InitializationOptions = { editable: false, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
+      let dstPixelMap = image.createPixelMapSync(optsForPre);
+      image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
+        console.info(tag + ' Succeeded in Creating unpremultiplied PixelMap.');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(tag + ` Failed to Create unpremultiplied PixelMap. code is ${error}`);
+        expect(Number(error) == 62980248).assertTrue();
+        done();
+      })
+    })
+    
+    /**
     * @tc.number    : testImageFragmentMapPropertyKey0100
     * @tc.name      : SUB_MULTIMEDIA_IMAGE_FRAGMENT_MAP_PROPERTY_KEY_0100
     * @tc.desc      : 
@@ -7779,24 +8692,19 @@ export default function imagePicture() {
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
         index: 0,
       };
+      let imageSourceApi = await getImageSource(fileName, "uri")
       try {
-        let imageSourceApi = await getImageSource(fileName, "uri")
         imageSourceApi.createPixelMapList(decodeOpts, (error: BusinessError, pixelMapList: Array<image.PixelMap>) => {
-          if (error) {
-            console.error(tag + ` Failed to create pixelMapList object. Callback code is ${error.code}`);
-            expect(Number(error.code) == 62980116).assertTrue();
-            done();
-          } else {
-            console.info(tag + ' Succeeded in creating pixelMapList object.');
-            expect(false).assertFail();
-            done();
-          }
+          console.error(tag + ` Failed to create pixelMapList object. Callback code is ${error.code}`);
+          expect(true).assertTrue();
+          done();
         })
       } catch (error) {
-        console.info(tag + ' Failed to create pixelMapList object.');
-        expect(false).assertFail();
+        console.error(tag + ` Failed to create pixelMapList object. Callback code is ${error.code}`);
+        expect(Number(error.code) == 62980116).assertTrue();
         done();
       }
+      done();
     })
     
   })
