@@ -22,6 +22,7 @@ import webViewControllerErrorCode from './WebViewControllerErrorCode.test'
 import webErrorCode from './WebErrorCode.test'
 import webViewControllerPostUrlErrorCode from './WebViewControllerPostUrlErrorCode.test'
 import webDownloadErrorCode from './WebDownloadErrorCode.test'
+import webViewControllerErrorCodeSecond from './WebViewControllerErrorCodeSecond.test'
 
 export default function testsuite() {
   webErrorCode()
@@ -34,4 +35,5 @@ export default function testsuite() {
   webViewControllerErrorCode()
   webViewControllerPostUrlErrorCode()
   webDownloadErrorCode()
+  webViewControllerErrorCodeSecond()
 }
