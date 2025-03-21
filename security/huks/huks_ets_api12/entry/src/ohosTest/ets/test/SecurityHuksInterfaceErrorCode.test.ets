@@ -1116,6 +1116,48 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
         }
       }
     })
+
+    /**
+     * @tc.number : SUB_Security_HUKS_ErrorCode_API16_Interface_3500
+     * @tc.name   : test update, error code 401
+     * @tc.desc   : generate key, init, update
+     * @tc.type   : Safety
+     * @tc.size   : SmallTest
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_ErrorCode_API16_Interface_3500', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_ErrorCode_API16_Interface_3500";
+      await huks.generateKeyItem(testNumber, genKeyOption);
+      let handle = (await huks.initSession(testNumber, encryptOption)).handle as number;
+      let token = new Uint8Array([0, 0, 0, 0]);
+      try {
+        await huks.update(handle, token, encryptOptionMultiAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+      }
+    })
+
+    /**
+     * @tc.number : SUB_Security_HUKS_ErrorCode_API16_Interface_3510
+     * @tc.name   : test update, error code 401
+     * @tc.desc   : generate key, init, update
+     * @tc.type   : Safety
+     * @tc.size   : SmallTest
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_ErrorCode_API16_Interface_3510', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_ErrorCode_API16_Interface_3510";
+      await huksCallback.generateKeyItem(testNumber, genKeyOption);
+      let handle = (await huksCallback.initSession(testNumber, encryptOption)).handle as number;
+      let token = new Uint8Array([0, 0, 0, 0]);
+      try {
+        await huksCallback.update(handle, token, encryptOptionMultiAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+      }
+    })
   }
   )
 }
