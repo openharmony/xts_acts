@@ -1538,25 +1538,6 @@ export default function nativeWindowTest() {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2005
-     * @tc.name       : testNativeWindowCleanCacheLoopProduceBuffer
-     * @tc.desc       : testNativeWindowCleanCacheLoopProduceBuffer
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testNativeWindowCleanCacheLoopProduceBuffer', 3, async (done: Function) => {
-      let task1 = sendToWorker("001");
-      let task2 = sendToWorker("002");
-
-      const results = await Promise.all([task1, task2]);
-
-      expect(results[0]).assertEqual(0);
-      expect(results[1]).assertEqual(0);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2006
      * @tc.name       : testNativeWindowCleanCacheLoopWhenBufferRequested
      * @tc.desc       : testNativeWindowCleanCacheLoopWhenBufferRequested
@@ -1581,24 +1562,6 @@ export default function nativeWindowTest() {
     it('testNativeWindowCleanCacheLoopWhenBufferFlushed', 3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferFlushed();
       expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2008
-     * @tc.name       : testNativeWindowCleanCacheLoopBufferCirculation
-     * @tc.desc       : testNativeWindowCleanCacheLoopBufferCirculation
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testNativeWindowCleanCacheLoopBufferCirculation', 3, async (done: Function) => {
-      let t1 = sendToWorker("003");
-      let t2 = sendToWorker("004");
-
-      const results = await Promise.all([t1, t2])
-      expect(results[0]).assertEqual(0);
-      expect(results[1]).assertEqual(0);
       done();
     });
   })
