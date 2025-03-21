@@ -28,7 +28,8 @@ struct CalendarPickerDialogOptions {
     BlurStyle.Thin,BlurStyle.Regular,BlurStyle.Thick,
     BlurStyle.BACKGROUND_THIN,BlurStyle.BACKGROUND_REGULAR, BlurStyle.BACKGROUND_THICK,BlurStyle.BACKGROUND_ULTRA_THICK,
     BlurStyle.NONE,
-    BlurStyle.COMPONENT_ULTRA_THIN,BlurStyle.COMPONENT_THIN, BlurStyle.COMPONENT_REGULAR,BlurStyle.COMPONENT_THICK,BlurStyle.COMPONENT_ULTRA_THICK,
+    BlurStyle.COMPONENT_ULTRA_THIN,BlurStyle.COMPONENT_THIN, BlurStyle.COMPONENT_REGULAR,BlurStyle.COMPONENT_THICK,
+    BlurStyle.COMPONENT_ULTRA_THICK,
     undefined,null,-1,100]
   bgStyleIndex: number = 0
 
