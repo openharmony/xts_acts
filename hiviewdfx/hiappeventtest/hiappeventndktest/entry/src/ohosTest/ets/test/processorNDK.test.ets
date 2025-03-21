@@ -624,7 +624,7 @@ export default function processorNDKTest() {
      */
     it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("test");
-      const appId = "com_huawei_hmos_sdk_ocg";
+      const appId = "com_hmos_sdk_ocg";
       const routeInfo = "AUTO";
       hiappevent.SetReportRoute(processor, appId, routeInfo)
       const domain = "api_diagnostic";

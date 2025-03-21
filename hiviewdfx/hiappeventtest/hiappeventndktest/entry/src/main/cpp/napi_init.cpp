@@ -488,7 +488,7 @@ napi_value SetReportRoute(napi_env env, napi_callback_info info)
     char* appId = new char[appIdSize + 1];
     char* routeInfo = new char[routeInfoSize + 1];
     napi_get_value_string_utf8(env, args[1], appId, appIdSize + 1, nullptr);
-    napi_get_value_string_utf8(env, args[2], routeInfo, routeInfoSize + 1, nullptr);e
+    napi_get_value_string_utf8(env, args[2], routeInfo, routeInfoSize + 1, nullptr);
     int result = OH_HiAppEvent_SetReportRoute(processor, appId, routeInfo);
     delete[] appId;
     delete[] routeInfo;
@@ -514,21 +514,24 @@ napi_value SetReportPolicy(napi_env env, napi_callback_info info)
     napi_typeof(env, args[4], &onBackgroundReportType);
     HiAppEvent_Processor* processor;
     napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
-    int32_t periodReport, batchReport;
+    int32_t periodReport;
+    int32_t batchReport;
     napi_get_value_int32(env, args[1], &periodReport);
     napi_get_value_int32(env, args[2], &batchReport);
-    bool onStartReport, onBackgroundReport;
+    bool onStartReport;
+    bool onBackgroundReport;
     napi_get_value_bool(env, args[3], &onStartReport);
     napi_get_value_bool(env, args[4], &onBackgroundReport);
     size_t periodSize = sizeof(int32_t);
     size_t batchSize = sizeof(int32_t);
     size_t startReportSize = sizeof(bool);
     size_t backgroundReportSize = sizeof(bool);
-    std::fill((uint8_t*)&periodReport, (uint8_t*)&periodReport + periodSize, 0);
-    std::fill((uint8_t*)&batchReport, (uint8_t*)&batchReport + batchSize, 0);
-    std::fill((uint8_t*)&onStartReport, (uint8_t*)&onStartReport + startReportSize, 0);
-    std::fill((uint8_t*)&onBackground, (uint8_t*)&onBackgroundReport + backgroundReportSize, 0);
-    int result =  OH_HiAppEvent_SetReportPolicy(processor, periodReport, batchReport, onStartReport, onBackgroundReport);
+    std::fill(reinterpret_cast<uint8_t*>(&periodReport), reinterpret_cast<uint8_t*>(&periodReport) + periodSize, 0);
+    std::fill(reinterpret_cast<uint8_t*>(&batchReport), reinterpret_cast<uint8_t*>(&batchReport) + batchSize, 0);
+    std::fill(reinterpret_cast<uint8_t*>(&onStartReport), reinterpret_cast<uint8_t*>(&onStartReport) + startReportSize, 0);
+    std::fill(reinterpret_cast<uint8_t*>(&onBackground), reinterpret_cast<uint8_t*>(&onBackgroundReport) + backgroundReportSize, 0);
+    int OH_HiAppEvent_SetReportPolicy(
+        processor, periodReport, batchReport, onStartReport, onBackgroundReport);
     napi_value napiResult;
     napi_create_int32(env, result, &napiResult);
     return napiResult;
@@ -572,7 +575,9 @@ napi_value SetCustomConfig(napi_env env, napi_callback_info info)
     size_t argc = 3;
     napi_value args[3];
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_valuetype processorType, keyType, valueType;
+    napi_valuetype processorType;
+    napi_valuetype keyType;
+    napi_valuetype valueType;
     napi_typeof(env, args[0], &processorType);
     napi_typeof(env, args[1], &keyType);
     napi_typeof(env, args[2], &valueType);
@@ -586,7 +591,7 @@ napi_value SetCustomConfig(napi_env env, napi_callback_info info)
     char* value = new char[valueSize + 1];
     napi_get_value_string_utf8(env, args[1], key, keySize + 1, nullptr);
     napi_get_value_string_utf8(env, args[2], value, valueSize + 1, nullptr);
-    int result = OH_HiAppEvent_SetCustomConfig(processor, key,  value );
+    int result = OH_HiAppEvent_SetCustomConfig(processor, key, value);
     delete[] key;
     delete[] value;
     napi_value retVal;
@@ -608,7 +613,7 @@ napi_value SetConfigId(napi_env env, napi_callback_info info)
     int32_t configId;
     napi_get_value_int32(env, args[1], &configId);
     size_t configIdSize = sizeof(int32_t);
-    std::fill((uint8_t*)&configId, (uint8_t*)&configId + configIdSize, 0);
+    std::fill(reinterpret_cast<uint8_t*>(&configId), reinterpret_cast<uint8_t*>(&configId) + configIdSize, 0);
     int result = OH_HiAppEvent_SetConfigId(processor, configId);
     napi_value napiResult;
     napi_create_int32(env, result, &napiResult);
@@ -642,7 +647,7 @@ napi_value SetReportUserId(napi_env env, napi_callback_info info)
         userIdStrings.push_back(str);
         userIdNames.push_back(userIdStrings.back().c_str());
         }
-    int result = OH_HiAppEvent_SetReportUserId(processor,userIdNames.data(), size);
+    int result = OH_HiAppEvent_SetReportUserId(processor, userIdNames.data(), size);
     napi_value retVal;
     napi_create_int32(env, result, &retVal);
     return retVal;
@@ -665,8 +670,7 @@ napi_value SetReportUserProperty(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[2], &size);
     std::vector<std::string> userPropertyNamesStrings;
     std::vector<const char*> userPropertyNames;
-    for (uint32_t i = 0; i < size; i++)
-    {
+    for (uint32_t i = 0; i < size; i++) {
         napi_value element;
         napi_get_element(env, args[1], i, &element);
         size_t strSize;
@@ -676,7 +680,7 @@ napi_value SetReportUserProperty(napi_env env, napi_callback_info info)
         userPropertyNamesStrings.push_back(str);
         userPropertyNames.push_back(userPropertyNamesStrings.back().c_str());
         }
-    int result = OH_HiAppEvent_SetReportUserId(processor,userPropertyNames.data(), size);
+    int result = OH_HiAppEvent_SetReportUserId(processor, userPropertyNames.data(), size);
     napi_value retVal;
     napi_create_int32(env, result, &retVal);
     return retVal;

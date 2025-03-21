@@ -1411,7 +1411,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4300, Function |
     ASSERT_EQ(OH_HiAppEvent_SetReportEvent(processor0, "OS", "ADDRESS_SANITIZER", true), -200);
     ASSERT_EQ(OH_HiAppEvent_SetCustomConfig(processor0, "test", "test"), -200);
     ASSERT_EQ(OH_HiAppEvent_SetConfigId(processor0, 123), -200);
-    const char * g_userList[] = {"testprocessor", "processor2", "processor3"};
+    const char* g_userList[] = {"testprocessor", "processor2", "processor3"};
     ASSERT_EQ(OH_HiAppEvent_SetReportUserId(processor0, g_userList, 1), -200);
     ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, g_userList, 1), -200);
     ASSERT_EQ(OH_HiAppEvent_AddProcessor(processor0), -200);
