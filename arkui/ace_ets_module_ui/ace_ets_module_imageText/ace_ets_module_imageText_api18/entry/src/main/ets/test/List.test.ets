@@ -18,6 +18,7 @@ import ContentTypeTest1 from './TextInputTest/ContentType1.test';
 import ContentTypeTest2 from './TextInputTest/ContentType2.test';
 import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.test';
 import monitorInvisibleArea from './ImageAnimator/monitorInvisibleArea.test';
+import textBackgroundStyleTest from './RichEditorTest/textBackgroundStyleTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -25,4 +26,5 @@ export default function testsuite() {
   ContentTypeTest2();
   symbolGlyphFontScaleTest();
   monitorInvisibleArea();
+  textBackgroundStyleTest();
 }
