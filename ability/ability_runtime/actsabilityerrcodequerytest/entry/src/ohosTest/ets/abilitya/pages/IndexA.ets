@@ -13,15 +13,17 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct IndexA {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbilityA indexA aboutToAppear');
   }
 
-  @State message: string = 'Hello World';
+  @State message: string = 'Hello World AAA';
 
   build() {
     Row() {
@@ -29,11 +31,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button() {
-          Text('next page')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }
+        Button('Terminate AAA')
         .type(ButtonType.Capsule)
         .margin({
           top: 20
@@ -42,6 +40,23 @@ struct Index {
         .width('35%')
         .height('5%')
         .onClick(() => {
+          try {
+            let context = getContext(this) as common.UIAbilityContext;
+            context.terminateSelf((err: BusinessError) => {
+              if (err.code) {
+                // 处理业务逻辑错误
+                console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              // 执行正常业务
+              console.info('terminateSelf succeed');
+            });
+          } catch (err) {
+            // 捕获同步的参数错误
+            let code = (err as BusinessError).code;
+            let message = (err as BusinessError).message;
+            console.error(`terminateSelf failed, code is ${code}, message is ${message}`);
+          }
         })
       }
       .width('100%')
