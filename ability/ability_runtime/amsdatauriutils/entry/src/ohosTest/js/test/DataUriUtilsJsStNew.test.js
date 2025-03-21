@@ -15,8 +15,8 @@
 import dataUriUtils from '@ohos.app.ability.dataUriUtils'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-export default function ActsDataUriUtilsTest() {
-  describe('ActsDataUriUtilsTest', function () {
+export default function DataUriUtilsJsStNew() {
+  describe('DataUriUtilsJsStNew', function () {
 
     /*
     * @tc.number: Sub_Ability_AbilityBase_dataUriUtils_getId_0100

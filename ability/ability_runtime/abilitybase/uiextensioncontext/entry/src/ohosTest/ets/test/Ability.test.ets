@@ -64,9 +64,9 @@ export default function ActsUIExtensionContextMethodTest() {
               hilog.info(0x0000, tag, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
               try {
                 expect(commonEventData.parameters?.result).assertEqual(401);
-                commonEventManager.publish("teminate",() => {});
               } catch {
               }
+              commonEventManager.publish("teminate",() => {});
               commonEventManager.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -116,9 +116,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -168,9 +168,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -220,9 +220,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -272,9 +272,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -324,9 +324,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -376,9 +376,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -428,9 +428,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -480,9 +480,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -532,9 +532,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -584,9 +584,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -636,9 +636,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -688,9 +688,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -740,9 +740,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -792,9 +792,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -844,9 +844,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -896,9 +896,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -948,9 +948,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1000,9 +1000,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1052,9 +1052,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1104,9 +1104,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1156,9 +1156,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1208,9 +1208,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1260,9 +1260,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1312,9 +1312,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1364,9 +1364,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1416,9 +1416,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1468,9 +1468,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1520,9 +1520,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1572,9 +1572,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1624,9 +1624,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1676,9 +1676,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1729,9 +1729,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1781,9 +1781,9 @@ export default function ActsUIExtensionContextMethodTest() {
             hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(401);
-              commonEventManager.publish("teminate",() => {});
             } catch {
             }
+            commonEventManager.publish("teminate",() => {});
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -1808,7 +1808,5 @@ export default function ActsUIExtensionContextMethodTest() {
         done();
       }
     });
-
-
   })
 }
