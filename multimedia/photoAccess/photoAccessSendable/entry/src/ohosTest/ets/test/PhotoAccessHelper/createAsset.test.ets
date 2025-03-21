@@ -243,7 +243,6 @@ export default function createAssetTest () {
       const options: photoAccessHelper.CreateOptions | undefined = undefined;
       await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
-
     /**
      * @tc.number    : SUB_PHOTO_ACCESS_SENADABLE_ERROR_CREATE_ASSET_0000
      * @tc.name      : sendable_error_create_asset_mp4_extension_000
@@ -263,6 +262,7 @@ export default function createAssetTest () {
         let uri: string = await sendablePhAccessHelper.createAsset(photoType, extension, options);
         console.info(`${testNum} :: createAsset uri ${uri}`);
         console.info(`${testNum} :: createAsset successfully`);
+        expect(false).assertTrue(true);
         done();
       } catch (error) {
         console.error(`${testNum} :: createAsset failed, error: ${error.code}, ${error.message}`);
@@ -289,6 +289,7 @@ export default function createAssetTest () {
         let uri: string = await sendablePhAccessHelper.createAsset(photoType, extension, options);
         console.info(`${testNum} :: createAsset uri ${uri}`);
         console.info(`${testNum} :: createAsset successfully`);
+        expect(false).assertTrue(true);
         done();
       } catch (error) {
         console.error(`${testNum} :: createAsset failed, error: ${error.code}, ${error.message}`);
