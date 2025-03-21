@@ -7620,9 +7620,9 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1270 start');
       try {
-        let result = UTD.getUniformDataTypesByFilenameExtension(".html", "general.Text");
+         let result = UTD.getUniformDataTypesByFilenameExtension(".rb", 'general.shell-script');
         console.log("result=====>" + JSON.stringify(result));
-        expect(result[0]).assertEqual(UTD.UniformDataType.HTML)
+        expect(result[0]).assertEqual(UTD.UniformDataType.RUBY_SCRIPT)
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
