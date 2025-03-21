@@ -11017,28 +11017,25 @@ static napi_value NapiCreateDateViewTest(napi_env env, napi_callback_info info)
     void *data;
     napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
 
-//    //undefined
-//    napi_value undefined = nullptr;
-//    napi_get_undefined(env, &undefined);
-//    //arraybuffer is undefined
-//    status = napi_create_dataview(env, byteLength, undefined, byteOffset, &result);
-//    NAPI_ASSERT(env, status != napi_ok, "arraybuffer is undefined, napi_create_dataview failed.");
-//    //result is undefined
-//    status = napi_create_dataview(env, byteLength, arrayBuffer, byteOffset, &undefined);
-//    NAPI_ASSERT(env, status != napi_ok, "result is undefined, napi_create_dataview ok.");
-//
-//    //env is null
-//    status = napi_create_dataview(nullptr, byteLength, arrayBuffer, byteOffset, &result);
-//    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_dataview failed.");
-//    //arrayBuffer is null
-//    status = napi_create_dataview(nullptr, byteLength, nullptr, byteOffset, &result);
-//    NAPI_ASSERT(env, status == napi_invalid_arg, "arrayBuffer is null, napi_create_dataview failed.");
-//    //*result is null
-//    status = napi_create_dataview(nullptr, byteLength, arrayBuffer, byteOffset, nullptr);
-//    NAPI_ASSERT(env, status == napi_invalid_arg, "*result is null, napi_create_dataview failed.");
-//    //all is null
-//    status = napi_create_dataview(nullptr, byteLength, nullptr, byteOffset, nullptr);
-//    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_dataview failed.");
+    //undefined
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    //arraybuffer is undefined
+    status = napi_create_dataview(env, byteLength, undefined, byteOffset, &result);
+    NAPI_ASSERT(env, status != napi_ok, "arraybuffer is undefined, napi_create_dataview failed.");
+
+    //env is null
+    status = napi_create_dataview(nullptr, byteLength, arrayBuffer, byteOffset, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_dataview failed.");
+    //arrayBuffer is null
+    status = napi_create_dataview(nullptr, byteLength, nullptr, byteOffset, &result);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "arrayBuffer is null, napi_create_dataview failed.");
+    //*result is null
+    status = napi_create_dataview(nullptr, byteLength, arrayBuffer, byteOffset, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "*result is null, napi_create_dataview failed.");
+    //all is null
+    status = napi_create_dataview(nullptr, byteLength, nullptr, byteOffset, nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_dataview failed.");
 
     napi_value rst;
     bool bRet = true;
