@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -887,6 +887,122 @@ export default function ReminderAgentManagerTest() {
                 })
             } catch (error) {
                 console.info('reminderRequestAttribute_0030 getValidReminders error.code is : ' + error.code);
+            }
+        })
+
+        /**
+         * @tc.number: reminderRequestAttribute_0031
+         * @tc.name: reminderRequestAttribute_0031
+         * @tc.desc: test cancelReminder promise function 
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderRequestAttribute_0031", 3, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0031---------------------------');
+            reminderAgent.cancelAllReminders().then((err, data) => {
+                console.info('reminderRequestAttribute_0031 cancelAllReminders success');
+                expect(true).assertTrue();
+                done();
+            });
+            const currentYear = new Date().getFullYear();
+            const nextYear = currentYear + 1
+            let ReminderRequest = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: nextYear,
+                    month: 1,
+                    day: 11,
+                    hour: 11,
+                    minute: 11,
+                    second: 11
+                },
+                actionButton: [
+                    {
+                        title: 'close',
+                        type: 0,
+                    }
+                ],
+                titleResourceId: 123
+            }
+            try {
+                reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
+                    if (err) {                           
+                        console.log('reminderRequestAttribute_0031 callback err.code is :' + err.code);
+                    }
+                    expect(reminderId).assertLarger(0);
+                    done();
+                    console.log('reminderRequestAttribute_0031 callback reminderId = ' + reminderId);
+                    reminderAgent.cancelReminder(reminderId).then(() => {
+                        console.log("reminderRequestAttribute_0031 cancelReminder promise");
+                        expect(false).assertTrue();
+                        done();
+                      }).catch((err) => {
+                        console.log("reminderRequestAttribute_0031 promise err code:" + err.code + " message:" + err.message);
+                      });
+                })             
+            } catch (error) {
+                console.log("reminderRequestAttribute_0031 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number: reminderRequestAttribute_0032
+         * @tc.name: reminderRequestAttribute_0032
+         * @tc.desc: test cancelReminder callback function 
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderRequestAttribute_0032", 3, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0032---------------------------');
+            reminderAgent.cancelAllReminders().then((err, data) => {
+                console.info('reminderRequestAttribute_0032 cancelAllReminders success');
+                expect(true).assertTrue();
+                done();
+            });
+            const currentYear = new Date().getFullYear();
+            const nextYear = currentYear + 1
+            let ReminderRequest = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: nextYear,
+                    month: 1,
+                    day: 11,
+                    hour: 11,
+                    minute: 11,
+                    second: 11
+                },
+                actionButton: [
+                    {
+                        title: 'close',
+                        type: 0,
+                    }
+                ],
+                titleResourceId: 123
+            }
+            try {
+                reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
+                    if (err) {                           
+                        console.error('reminderRequestAttribute_0032 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0032 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                        reminderAgent.cancelReminder(reminderId, (err) => {
+                            if (err.code) {
+                              console.error("reminderRequestAttribute_0032 cancelReminder callback err code:" + err.code + " message:" + err.message);
+                            } else {
+                              console.log("reminderRequestAttribute_0032 cancelReminder callback");
+                              expect(false).assertTrue();
+                              done();
+                            }
+                        });
+                        done();
+                    }
+                })             
+            } catch (error) {
+                console.log("reminderRequestAttribute_0032 publishReminder error.code:" + error.code);
             }
         })
     })

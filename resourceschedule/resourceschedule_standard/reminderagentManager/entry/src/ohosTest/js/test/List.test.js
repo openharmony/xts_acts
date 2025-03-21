@@ -14,8 +14,10 @@
  */
 import ReminderAgentManagerTest from './ReminderAgentManagerJs.test.js'
 import ReminderAgentManagerOnlyMainTest from './ReminderAgentManagerOnlyMainJs.test.js'
+import ReminderAgentManagerErrorCodeTest from './ReminderAgentManagerErrorCodeJs.test.js'
 
 export default function testsuite() {
 ReminderAgentManagerTest();
 ReminderAgentManagerOnlyMainTest();
+ReminderAgentManagerErrorCodeTest();
 }
