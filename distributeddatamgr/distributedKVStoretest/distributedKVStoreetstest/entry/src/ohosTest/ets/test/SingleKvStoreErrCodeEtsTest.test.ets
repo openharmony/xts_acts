@@ -38,8 +38,8 @@ const options: distributedKVStore.Options = {
 };
 const options1: distributedKVStore.Options = {
   createIfMissing: false,
-  encrypt: false,
-  backup: false,
+  encrypt: true,
+  backup: true,
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   securityLevel: distributedKVStore.SecurityLevel.S2,
