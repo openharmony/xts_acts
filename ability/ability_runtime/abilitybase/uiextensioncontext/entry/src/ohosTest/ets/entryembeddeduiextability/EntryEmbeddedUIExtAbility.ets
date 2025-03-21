@@ -921,7 +921,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
     if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1700'){
       try{
         let code = this.context.setColorMode(undefined);
-        'console.log('setcolor mode', JSON.stringify(code));;
+        console.log('setcolor mode', JSON.stringify(code));
       }catch(err){
         console.log(TAG + `setColorMode catch failed, code is ${err}`);
         console.log(TAG + `setColorMode catch failed, code is ${err.code}`);
