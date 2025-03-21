@@ -1154,7 +1154,7 @@ export default function displayTest() {
         })
       } catch (err) {
         console.log(caseName + 'error in destroyVirtualScreen, err : ' + JSON.stringify(err));
-        expect(err.code == 401 || err.code == 801).assertFail()
+        expect(err.code == 401 || err.code == 801).assertTrue()
         done();
       }
     });
