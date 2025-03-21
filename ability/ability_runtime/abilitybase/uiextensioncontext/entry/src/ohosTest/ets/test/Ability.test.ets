@@ -985,7 +985,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.level: Level 3
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionContext_1900', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1900";
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -1037,7 +1037,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.level: Level 3
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionContext_2000', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2000";
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {

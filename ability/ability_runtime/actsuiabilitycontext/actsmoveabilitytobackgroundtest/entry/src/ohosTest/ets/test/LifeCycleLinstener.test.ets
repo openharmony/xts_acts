@@ -20,10 +20,10 @@ import common from '@ohos.app.ability.common';
 import { ApplicationStateChangeCallback } from '@kit.AbilityKit';
 
 let TestAbilityContext:common.UIAbilityContext;
-export default function moveAbilityToBackgroundTest() {
+export default function LifeCycleLinstenerTest() {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
   let mpEnable = '';
-  describe('ActsMoveAbilityToBackgroundTest', () => {
+  describe('LifeCycleLinstenerTest', () => {
     beforeAll(() => {
       TestAbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext
       try {
