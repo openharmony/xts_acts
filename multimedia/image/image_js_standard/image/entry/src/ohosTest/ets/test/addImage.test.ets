@@ -646,7 +646,6 @@ export default function addImage() {
                 done();
             }
         });
-
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_TRANSLATE_PIXELMAP_SYNC_0100
          * @tc.name      : Pixelmap Translate -sync
