@@ -43,7 +43,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开AlertDialogV2弹窗")
+          Button('打开AlertDialogV2弹窗')
             .width(96)
             .height(40)
             .onClick(() => {
