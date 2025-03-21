@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG = '[ttt]'
 
@@ -24,13 +25,13 @@ export default function UDMFApiCallback() {
 
     beforeEach(async () => {
       console.info(TAG + "beforeEach")
-      let options = {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       await unifiedDataChannel.deleteData(options).then((data) => {
         let size = data.length;
         console.info(TAG, ` [beforeEach] success to deleteData data.size = ${size}`);
-      }).catch((err) => {
+      }).catch((err:BusinessError) => {
         console.info(TAG, ` [beforeEach] Failed to deleteData. code is ${err.code},message is ${err.message} `);
       });
     })
@@ -45,8 +46,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0100', 0, (done: Function) => {
-      let Options = {}
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {}
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
@@ -77,8 +78,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0200', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {
         intention: undefined
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -111,8 +112,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0300', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options: unifiedDataChannel.Options= {
         intention: null
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -145,8 +146,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0400', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {
         intention: undefined,
         key: undefined
       }
@@ -180,9 +181,9 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0500', 0, (done: Function) => {
-      let Options = {
-        key: null
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options: unifiedDataChannel.Options= {
+        key: String (null)
       }
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
@@ -214,8 +215,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0600', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -247,8 +248,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1000', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options= {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -290,8 +291,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0800', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -339,8 +340,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0900', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -389,8 +390,8 @@ export default function UDMFApiCallback() {
      * @tc.level     : Level 3
      */
 
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0700', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB,
         key: undefined
       }
@@ -437,8 +438,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }; 
       let plainText = new unifiedDataChannel.PlainText();
@@ -462,7 +463,7 @@ export default function UDMFApiCallback() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
@@ -492,8 +493,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1200', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -517,7 +518,7 @@ export default function UDMFApiCallback() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text :unifiedDataChannel.PlainText= (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
@@ -546,8 +547,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1300', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -560,7 +561,7 @@ export default function UDMFApiCallback() {
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          let options2 = {
+          let options2:unifiedDataChannel.Options = {
             intention: unifiedDataChannel.Intention.DATA_HUB,
             key: data
           };
@@ -573,7 +574,7 @@ export default function UDMFApiCallback() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
@@ -602,8 +603,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1400', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -616,7 +617,7 @@ export default function UDMFApiCallback() {
             return;
           }
           console.info(TAG + `insertData0400 success; data = ${data}, options = ${options1}`);
-          let options2 = {
+          let options2:unifiedDataChannel.Options = {
             intention: unifiedDataChannel.Intention.DATA_HUB,
             key: 'data'
           };
@@ -630,7 +631,7 @@ export default function UDMFApiCallback() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
@@ -664,8 +665,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1500', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -680,7 +681,7 @@ export default function UDMFApiCallback() {
               return;
             }
             console.info(TAG + `insertData0500 success; data = ${data}, options = ${options1}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: undefined
             };
@@ -693,7 +694,7 @@ export default function UDMFApiCallback() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
@@ -724,8 +725,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1600', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -753,7 +754,7 @@ export default function UDMFApiCallback() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
@@ -783,8 +784,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1700', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -814,7 +815,7 @@ export default function UDMFApiCallback() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
@@ -844,8 +845,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1800', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -864,7 +865,7 @@ export default function UDMFApiCallback() {
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: data
             };
@@ -877,7 +878,7 @@ export default function UDMFApiCallback() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
@@ -907,8 +908,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1900', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -927,7 +928,7 @@ export default function UDMFApiCallback() {
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: 'data'
             };
@@ -941,7 +942,7 @@ export default function UDMFApiCallback() {
                     let size = records.length;
                     for (let j = 0; j < size; j++) {
                       if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                        let text = <unifiedDataChannel.PlainText> (records[j]);
+                        let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                         console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                       }
                     }
@@ -977,8 +978,8 @@ export default function UDMFApiCallback() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_2000', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -997,7 +998,7 @@ export default function UDMFApiCallback() {
                 return;
               }
               console.info(TAG, ` queryData size = ${ret.length}`);
-              let options2 = {
+              let options2:unifiedDataChannel.Options = {
                 intention: unifiedDataChannel.Intention.DATA_HUB,
                 key: undefined
               };
@@ -1010,7 +1011,7 @@ export default function UDMFApiCallback() {
                     let size = records.length;
                     for (let j = 0; j < size; j++) {
                       if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                        let text = <unifiedDataChannel.PlainText> (records[j]);
+                        let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                         console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                       }
                     }

@@ -14,12 +14,12 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libUdmfNdkex.so'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 
 const TAG = "[ UdmfNdkexTest ] ------ ";
 
 export default function UdmfNdkexTest() {
-  describe('UdmfNdkexTest', async function () {
+  describe('UdmfNdkexTest', async () => {
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0100
      * @tc.name OH_Udmf_AddRecord001
@@ -28,13 +28,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddRecord001',0, async function () {
-      console.info( TAG + 'OH_Udmf_AddRecord001' );
+    it('OH_Udmf_AddRecord001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddRecord001');
       let data = testNapi.OH_Udmf_AddRecord001();
-      console.info( TAG + 'OH_Udmf_AddRecord001 data= ' + JSON.stringify(data));
+      console.info(TAG + 'OH_Udmf_AddRecord001 data= ' + JSON.stringify(data));
       expect(data).assertEqual(1);
-    })
-
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0200
      * @tc.name OH_Udmf_AddRecord002
@@ -43,13 +42,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddRecord002',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddRecord002' );
-       let data = testNapi.OH_Udmf_AddRecord002();
-       console.info( TAG + 'OH_Udmf_AddRecord002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddRecord002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddRecord002');
+      let data = testNapi.OH_Udmf_AddRecord002();
+      console.info(TAG + 'OH_Udmf_AddRecord002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0300
      * @tc.name OH_Udmf_AddRecord003
@@ -58,13 +56,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddRecord003',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddRecord003' );
-       let data = testNapi.OH_Udmf_AddRecord003();
-       console.info( TAG + 'OH_Udmf_AddRecord003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddRecord003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddRecord003');
+      let data = testNapi.OH_Udmf_AddRecord003();
+      console.info(TAG + 'OH_Udmf_AddRecord003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0400
      * @tc.name OH_UdsPlainText_SetContent_003
@@ -73,13 +70,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_HasType001',0, async function () {
-       console.info( TAG + 'OH_UdmfData_HasType001' );
-       let data = testNapi.OH_UdmfData_HasType001();
-       console.info( TAG + 'OH_UdmfData_HasType001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_HasType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_HasType001');
+      let data = testNapi.OH_UdmfData_HasType001();
+      console.info(TAG + 'OH_UdmfData_HasType001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0500
      * @tc.name OH_UdmfData_HasType002
@@ -88,13 +84,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_HasType002',0, async function () {
-       console.info( TAG + 'OH_UdmfData_HasType002' );
-       let data = testNapi.OH_UdmfData_HasType002();
-       console.info( TAG + 'OH_UdmfData_HasType002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_HasType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_HasType002');
+      let data = testNapi.OH_UdmfData_HasType002();
+      console.info(TAG + 'OH_UdmfData_HasType002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0600
      * @tc.name OH_UdmfData_HasType003
@@ -103,13 +98,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_HasType003',0, async function () {
-       console.info( TAG + 'OH_UdmfData_HasType003' );
-       let data = testNapi.OH_UdmfData_HasType003();
-       console.info( TAG + 'OH_UdmfData_HasType003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_HasType003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_HasType003');
+      let data = testNapi.OH_UdmfData_HasType003();
+      console.info(TAG + 'OH_UdmfData_HasType003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0700
      * @tc.name OH_UdmfData_HasType004
@@ -118,13 +112,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_HasType004',0, async function () {
-       console.info( TAG + 'OH_UdmfData_HasType004' );
-       let data = testNapi.OH_UdmfData_HasType004();
-       console.info( TAG + 'OH_UdmfData_HasType004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_HasType004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_HasType004');
+      let data = testNapi.OH_UdmfData_HasType004();
+      console.info(TAG + 'OH_UdmfData_HasType004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0800
      * @tc.name OH_UdmfData_HasType005
@@ -133,13 +126,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_HasType005',0, async function () {
-       console.info( TAG + 'OH_UdmfData_HasType005' );
-       let data = testNapi.OH_UdmfData_HasType005();
-       console.info( TAG + 'OH_UdmfData_HasType005 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_HasType005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_HasType005');
+      let data = testNapi.OH_UdmfData_HasType005();
+      console.info(TAG + 'OH_UdmfData_HasType005 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0900
      * @tc.name OH_UdmfData_GetTypes001
@@ -148,13 +140,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_GetTypes001',0, async function () {
-       console.info( TAG + 'OH_UdmfData_GetTypes001' );
-       let data = testNapi.OH_UdmfData_GetTypes001();
-       console.info( TAG + 'OH_UdmfData_GetTypes001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_GetTypes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_GetTypes001');
+      let data = testNapi.OH_UdmfData_GetTypes001();
+      console.info(TAG + 'OH_UdmfData_GetTypes001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1000
      * @tc.name OH_UdmfData_GetTypes002
@@ -163,13 +154,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_GetTypes002',0, async function () {
-       console.info( TAG + 'OH_UdmfData_GetTypes002' );
-       let data = testNapi.OH_UdmfData_GetTypes002();
-       console.info( TAG + 'OH_UdmfData_GetTypes002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_GetTypes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_GetTypes002');
+      let data = testNapi.OH_UdmfData_GetTypes002();
+      console.info(TAG + 'OH_UdmfData_GetTypes002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1100
      * @tc.name OH_UdmfData_GetTypes003
@@ -178,13 +168,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_GetTypes003',0, async function () {
-       console.info( TAG + 'OH_UdmfData_GetTypes003' );
-       let data = testNapi.OH_UdmfData_GetTypes003();
-       console.info( TAG + 'OH_UdmfData_GetTypes003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_GetTypes003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_GetTypes003');
+      let data = testNapi.OH_UdmfData_GetTypes003();
+      console.info(TAG + 'OH_UdmfData_GetTypes003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1200
      * @tc.name OH_UdmfRecord_GetTypes001
@@ -193,13 +182,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetTypes001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetTypes001' );
-       let data = testNapi.OH_UdmfRecord_GetTypes001();
-       console.info( TAG + 'OH_UdmfRecord_GetTypes001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetTypes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetTypes001');
+      let data = testNapi.OH_UdmfRecord_GetTypes001();
+      console.info(TAG + 'OH_UdmfRecord_GetTypes001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1300
      * @tc.name OH_UdmfRecord_GetTypes002
@@ -208,13 +196,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetTypes002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetTypes002' );
-       let data = testNapi.OH_UdmfRecord_GetTypes002();
-       console.info( TAG + 'OH_UdmfRecord_GetTypes002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetTypes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetTypes002');
+      let data = testNapi.OH_UdmfRecord_GetTypes002();
+      console.info(TAG + 'OH_UdmfRecord_GetTypes002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1400
      * @tc.name OH_UdmfRecord_GetTypes003
@@ -223,13 +210,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetTypes003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetTypes003' );
-       let data = testNapi.OH_UdmfRecord_GetTypes003();
-       console.info( TAG + 'OH_UdmfRecord_GetTypes003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetTypes003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetTypes003');
+      let data = testNapi.OH_UdmfRecord_GetTypes003();
+      console.info(TAG + 'OH_UdmfRecord_GetTypes003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1500
      * @tc.name OH_Udmf_SetUnifiedData001
@@ -238,13 +224,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetUnifiedData001',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetUnifiedData001' );
-       let data = testNapi.OH_Udmf_SetUnifiedData001();
-       console.info( TAG + 'OH_Udmf_SetUnifiedData001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetUnifiedData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetUnifiedData001');
+      let data = testNapi.OH_Udmf_SetUnifiedData001();
+      console.info(TAG + 'OH_Udmf_SetUnifiedData001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1600
      * @tc.name OH_UdmfData_GetRecords001
@@ -253,13 +238,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_GetRecords001',0, async function () {
-       console.info( TAG + 'OH_UdmfData_GetRecords001' );
-       let data = testNapi.OH_UdmfData_GetRecords001();
-       console.info( TAG + 'OH_UdmfData_GetRecords001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_GetRecords001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_GetRecords001');
+      let data = testNapi.OH_UdmfData_GetRecords001();
+      console.info(TAG + 'OH_UdmfData_GetRecords001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1700
      * @tc.name OH_UdmfData_GetRecords002
@@ -268,13 +252,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfData_GetRecords002',0, async function () {
-       console.info( TAG + 'OH_UdmfData_GetRecords002' );
-       let data = testNapi.OH_UdmfData_GetRecords002();
-       console.info( TAG + 'OH_UdmfData_GetRecords002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfData_GetRecords002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfData_GetRecords002');
+      let data = testNapi.OH_UdmfData_GetRecords002();
+      console.info(TAG + 'OH_UdmfData_GetRecords002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1800
      * @tc.name OH_Udmf_GetUnifiedData002
@@ -283,13 +266,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetUnifiedData002',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetUnifiedData002' );
-       let data = testNapi.OH_Udmf_GetUnifiedData002();
-       console.info( TAG + 'OH_Udmf_GetUnifiedData002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetUnifiedData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetUnifiedData002');
+      let data = testNapi.OH_Udmf_GetUnifiedData002();
+      console.info(TAG + 'OH_Udmf_GetUnifiedData002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_1900
      * @tc.name OH_Udmf_GetUnifiedData003
@@ -298,13 +280,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetUnifiedData003',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetUnifiedData003' );
-       let data = testNapi.OH_Udmf_GetUnifiedData003();
-       console.info( TAG + 'OH_Udmf_GetUnifiedData003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetUnifiedData003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetUnifiedData003');
+      let data = testNapi.OH_Udmf_GetUnifiedData003();
+      console.info(TAG + 'OH_Udmf_GetUnifiedData003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2000
      * @tc.name OH_Udmf_AddAndGetGeneralEntry001
@@ -313,13 +294,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddAndGetGeneralEntry001',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry001' );
-       let data = testNapi.OH_Udmf_AddAndGetGeneralEntry001();
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddAndGetGeneralEntry001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry001');
+      let data = testNapi.OH_Udmf_AddAndGetGeneralEntry001();
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2100
      * @tc.name OH_Udmf_AddAndGetGeneralEntry002
@@ -328,13 +308,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddAndGetGeneralEntry002',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry002' );
-       let data = testNapi.OH_Udmf_AddAndGetGeneralEntry002();
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddAndGetGeneralEntry002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry002');
+      let data = testNapi.OH_Udmf_AddAndGetGeneralEntry002();
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2200
      * @tc.name OH_Udmf_AddAndGetGeneralEntry003
@@ -343,13 +322,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddAndGetGeneralEntry003',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry003' );
-       let data = testNapi.OH_Udmf_AddAndGetGeneralEntry003();
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddAndGetGeneralEntry003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry003');
+      let data = testNapi.OH_Udmf_AddAndGetGeneralEntry003();
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2300
      * @tc.name OH_Udmf_AddAndGetGeneralEntry004
@@ -358,13 +336,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_AddAndGetGeneralEntry004',0, async function () {
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry004' );
-       let data = testNapi.OH_Udmf_AddAndGetGeneralEntry004();
-       console.info( TAG + 'OH_Udmf_AddAndGetGeneralEntry004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_AddAndGetGeneralEntry004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry004');
+      let data = testNapi.OH_Udmf_AddAndGetGeneralEntry004();
+      console.info(TAG + 'OH_Udmf_AddAndGetGeneralEntry004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2400
      * @tc.name OH_UdmfRecord_AddPlainText001
@@ -373,13 +350,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddPlainText001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText001' );
-       let data = testNapi.OH_UdmfRecord_AddPlainText001();
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddPlainText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText001');
+      let data = testNapi.OH_UdmfRecord_AddPlainText001();
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2500
      * @tc.name OH_UdmfRecord_AddPlainText002
@@ -388,13 +364,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddPlainText002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText002' );
-       let data = testNapi.OH_UdmfRecord_AddPlainText002();
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddPlainText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText002');
+      let data = testNapi.OH_UdmfRecord_AddPlainText002();
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2600
      * @tc.name OH_UdmfRecord_AddPlainText003
@@ -403,13 +378,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddPlainText003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText003' );
-       let data = testNapi.OH_UdmfRecord_AddPlainText003();
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddPlainText003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText003');
+      let data = testNapi.OH_UdmfRecord_AddPlainText003();
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2700
      * @tc.name OH_UdmfRecord_AddPlainText004
@@ -418,13 +392,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddPlainText004',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText004' );
-       let data = testNapi.OH_UdmfRecord_AddPlainText004();
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddPlainText004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText004');
+      let data = testNapi.OH_UdmfRecord_AddPlainText004();
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2800
      * @tc.name OH_UdmfRecord_AddPlainText005
@@ -433,13 +406,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddPlainText005',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText005' );
-       let data = testNapi.OH_UdmfRecord_AddPlainText005();
-       console.info( TAG + 'OH_UdmfRecord_AddPlainText005 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddPlainText005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText005');
+      let data = testNapi.OH_UdmfRecord_AddPlainText005();
+      console.info(TAG + 'OH_UdmfRecord_AddPlainText005 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_2900
      * @tc.name OH_UdmfRecord_GetPlainText002
@@ -448,13 +420,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetPlainText002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText002' );
-       let data = testNapi.OH_UdmfRecord_GetPlainText002();
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetPlainText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText002');
+      let data = testNapi.OH_UdmfRecord_GetPlainText002();
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3000
      * @tc.name OH_UdmfRecord_GetPlainText003
@@ -463,13 +434,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetPlainText003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText003' );
-       let data = testNapi.OH_UdmfRecord_GetPlainText003();
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetPlainText003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText003');
+      let data = testNapi.OH_UdmfRecord_GetPlainText003();
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3100
      * @tc.name OH_UdmfRecord_AddHyperlink001
@@ -478,13 +448,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHyperlink001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink001' );
-       let data = testNapi.OH_UdmfRecord_AddHyperlink001();
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHyperlink001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink001');
+      let data = testNapi.OH_UdmfRecord_AddHyperlink001();
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3200
      * @tc.name OH_UdmfRecord_AddHyperlink002
@@ -493,13 +462,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHyperlink002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink002' );
-       let data = testNapi.OH_UdmfRecord_AddHyperlink002();
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHyperlink002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink002');
+      let data = testNapi.OH_UdmfRecord_AddHyperlink002();
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3300
      * @tc.name OH_UdmfRecord_AddHyperlink003
@@ -508,13 +476,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHyperlink003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink003' );
-       let data = testNapi.OH_UdmfRecord_AddHyperlink003();
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHyperlink003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink003');
+      let data = testNapi.OH_UdmfRecord_AddHyperlink003();
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3400
      * @tc.name OH_UdmfRecord_AddHyperlink004
@@ -523,13 +490,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHyperlink004',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink004' );
-       let data = testNapi.OH_UdmfRecord_AddHyperlink004();
-       console.info( TAG + 'OH_UdmfRecord_AddHyperlink004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHyperlink004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink004');
+      let data = testNapi.OH_UdmfRecord_AddHyperlink004();
+      console.info(TAG + 'OH_UdmfRecord_AddHyperlink004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3500
      * @tc.name OH_UdmfRecord_GetHyperlink001
@@ -538,13 +504,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHyperlink001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink001' );
-       let data = testNapi.OH_UdmfRecord_GetHyperlink001();
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHyperlink001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink001');
+      let data = testNapi.OH_UdmfRecord_GetHyperlink001();
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3600
      * @tc.name OH_UdmfRecord_GetHyperlink002
@@ -553,13 +518,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHyperlink002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink002' );
-       let data = testNapi.OH_UdmfRecord_GetHyperlink002();
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHyperlink002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink002');
+      let data = testNapi.OH_UdmfRecord_GetHyperlink002();
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3700
      * @tc.name OH_UdmfRecord_GetHyperlink003
@@ -568,13 +532,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHyperlink003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink003' );
-       let data = testNapi.OH_UdmfRecord_GetHyperlink003();
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHyperlink003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink003');
+      let data = testNapi.OH_UdmfRecord_GetHyperlink003();
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3800
      * @tc.name OH_UdmfRecord_GetHyperlink004
@@ -583,13 +546,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHyperlink004',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink004' );
-       let data = testNapi.OH_UdmfRecord_GetHyperlink004();
-       console.info( TAG + 'OH_UdmfRecord_GetHyperlink004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHyperlink004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink004');
+      let data = testNapi.OH_UdmfRecord_GetHyperlink004();
+      console.info(TAG + 'OH_UdmfRecord_GetHyperlink004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_3900
      * @tc.name OH_UdmfRecord_AddHtml001
@@ -598,13 +560,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHtml001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHtml001' );
-       let data = testNapi.OH_UdmfRecord_AddHtml001();
-       console.info( TAG + 'OH_UdmfRecord_AddHtml001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHtml001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHtml001');
+      let data = testNapi.OH_UdmfRecord_AddHtml001();
+      console.info(TAG + 'OH_UdmfRecord_AddHtml001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4000
      * @tc.name OH_UdmfRecord_AddHtml002
@@ -613,13 +574,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHtml002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHtml002' );
-       let data = testNapi.OH_UdmfRecord_AddHtml002();
-       console.info( TAG + 'OH_UdmfRecord_AddHtml002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHtml002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHtml002');
+      let data = testNapi.OH_UdmfRecord_AddHtml002();
+      console.info(TAG + 'OH_UdmfRecord_AddHtml002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4100
      * @tc.name OH_UdmfRecord_AddHtml003
@@ -628,13 +588,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHtml003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHtml003' );
-       let data = testNapi.OH_UdmfRecord_AddHtml003();
-       console.info( TAG + 'OH_UdmfRecord_AddHtml003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHtml003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHtml003');
+      let data = testNapi.OH_UdmfRecord_AddHtml003();
+      console.info(TAG + 'OH_UdmfRecord_AddHtml003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4200
      * @tc.name OH_UdmfRecord_AddHtml004
@@ -643,13 +602,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddHtml004',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddHtml004' );
-       let data = testNapi.OH_UdmfRecord_AddHtml004();
-       console.info( TAG + 'OH_UdmfRecord_AddHtml004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddHtml004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddHtml004');
+      let data = testNapi.OH_UdmfRecord_AddHtml004();
+      console.info(TAG + 'OH_UdmfRecord_AddHtml004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4300
      * @tc.name OH_UdmfRecord_GetHtml001
@@ -658,13 +616,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHtml001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHtml001' );
-       let data = testNapi.OH_UdmfRecord_GetHtml001();
-       console.info( TAG + 'OH_UdmfRecord_GetHtml001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHtml001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHtml001');
+      let data = testNapi.OH_UdmfRecord_GetHtml001();
+      console.info(TAG + 'OH_UdmfRecord_GetHtml001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4400
      * @tc.name OH_UdmfRecord_GetHtml002
@@ -673,13 +630,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHtml002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHtml002' );
-       let data = testNapi.OH_UdmfRecord_GetHtml002();
-       console.info( TAG + 'OH_UdmfRecord_GetHtml002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHtml002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHtml002');
+      let data = testNapi.OH_UdmfRecord_GetHtml002();
+      console.info(TAG + 'OH_UdmfRecord_GetHtml002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4500
      * @tc.name OH_UdmfRecord_GetHtml003
@@ -688,13 +644,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetHtml003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetHtml003' );
-       let data = testNapi.OH_UdmfRecord_GetHtml003();
-       console.info( TAG + 'OH_UdmfRecord_GetHtml003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_GetHtml003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetHtml003');
+      let data = testNapi.OH_UdmfRecord_GetHtml003();
+      console.info(TAG + 'OH_UdmfRecord_GetHtml003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4600
      * @tc.name OH_UdmfRecord_AddAppItem001
@@ -703,13 +658,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddAppItem001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem001' );
-       let data = testNapi.OH_UdmfRecord_AddAppItem001();
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddAppItem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem001');
+      let data = testNapi.OH_UdmfRecord_AddAppItem001();
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4700
      * @tc.name OH_UdmfRecord_AddAppItem002
@@ -718,13 +672,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddAppItem002',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem002' );
-       let data = testNapi.OH_UdmfRecord_AddAppItem002();
-       console.info( TAG + 'OH_UdsHtml_GetPlainContent_002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddAppItem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem002');
+      let data = testNapi.OH_UdmfRecord_AddAppItem002();
+      console.info(TAG + 'OH_UdsHtml_GetPlainContent_002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4800
      * @tc.name OH_UdmfRecord_AddAppItem003
@@ -733,13 +686,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddAppItem003',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem003' );
-       let data = testNapi.OH_UdmfRecord_AddAppItem003();
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddAppItem003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem003');
+      let data = testNapi.OH_UdmfRecord_AddAppItem003();
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_4900
      * @tc.name OH_UdmfRecord_AddAppItem004
@@ -748,13 +700,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_AddAppItem004',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem004' );
-       let data = testNapi.OH_UdmfRecord_AddAppItem004();
-       console.info( TAG + 'OH_UdmfRecord_AddAppItem004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfRecord_AddAppItem004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem004');
+      let data = testNapi.OH_UdmfRecord_AddAppItem004();
+      console.info(TAG + 'OH_UdmfRecord_AddAppItem004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5000
      * @tc.name OH_UdmfProperty_Create001
@@ -763,13 +714,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfProperty_Create001',0, async function () {
-       console.info( TAG + 'OH_UdmfProperty_Create001' );
-       let data = testNapi.OH_UdmfProperty_Create001();
-       console.info( TAG + 'OH_UdmfProperty_Create001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfProperty_Create001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfProperty_Create001');
+      let data = testNapi.OH_UdmfProperty_Create001();
+      console.info(TAG + 'OH_UdmfProperty_Create001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5100
      * @tc.name OH_Udmf_SetPropertiesTag001
@@ -778,13 +728,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesTag001',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag001' );
-       let data = testNapi.OH_Udmf_SetPropertiesTag001();
-       console.info( TAG + 'OH_UdsAppIOH_Udmf_SetPropertiesTag001tem_SetId_002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesTag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag001');
+      let data = testNapi.OH_Udmf_SetPropertiesTag001();
+      console.info(TAG + 'OH_UdsAppIOH_Udmf_SetPropertiesTag001tem_SetId_002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5200
      * @tc.name OH_Udmf_SetPropertiesTag002
@@ -793,13 +742,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesTag002',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag002' );
-       let data = testNapi.OH_Udmf_SetPropertiesTag002();
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesTag002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag002');
+      let data = testNapi.OH_Udmf_SetPropertiesTag002();
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5300
      * @tc.name OH_Udmf_SetPropertiesTag003
@@ -808,13 +756,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesTag003',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag003' );
-       let data = testNapi.OH_Udmf_SetPropertiesTag003();
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesTag003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag003');
+      let data = testNapi.OH_Udmf_SetPropertiesTag003();
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5400
      * @tc.name OH_Udmf_SetPropertiesTag004
@@ -823,13 +770,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesTag004',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag004' );
-       let data = testNapi.OH_Udmf_SetPropertiesTag004();
-       console.info( TAG + 'OH_Udmf_SetPropertiesTag004 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesTag004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag004');
+      let data = testNapi.OH_Udmf_SetPropertiesTag004();
+      console.info(TAG + 'OH_Udmf_SetPropertiesTag004 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5500
      * @tc.name OH_Udmf_GetPropertiesTag001
@@ -838,13 +784,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetPropertiesTag001',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetPropertiesTag001' );
-       let data = testNapi.OH_Udmf_GetPropertiesTag001();
-       console.info( TAG + 'OH_Udmf_GetPropertiesTag001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetPropertiesTag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetPropertiesTag001');
+      let data = testNapi.OH_Udmf_GetPropertiesTag001();
+      console.info(TAG + 'OH_Udmf_GetPropertiesTag001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5600
      * @tc.name OH_UdsAppItem_GetId_002
@@ -853,13 +798,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetPropertiesTag002',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetPropertiesTag002' );
-       let data = testNapi.OH_Udmf_GetPropertiesTag002();
-       console.info( TAG + 'OH_Udmf_GetPropertiesTag002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetPropertiesTag002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetPropertiesTag002');
+      let data = testNapi.OH_Udmf_GetPropertiesTag002();
+      console.info(TAG + 'OH_Udmf_GetPropertiesTag002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5700
      * @tc.name OH_UdmfProperty_GetTimestamp001
@@ -868,13 +812,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfProperty_GetTimestamp001',0, async function () {
-       console.info( TAG + 'OH_UdmfProperty_GetTimestamp001' );
-       let data = testNapi.OH_UdmfProperty_GetTimestamp001();
-       console.info( TAG + 'OH_UdmfProperty_GetTimestamp001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_UdmfProperty_GetTimestamp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfProperty_GetTimestamp001');
+      let data = testNapi.OH_UdmfProperty_GetTimestamp001();
+      console.info(TAG + 'OH_UdmfProperty_GetTimestamp001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5800
      * @tc.name OH_Udmf_SetPropertiesShareOption001
@@ -883,13 +826,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesShareOption001',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption001' );
-       let data = testNapi.OH_Udmf_SetPropertiesShareOption001();
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesShareOption001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption001');
+      let data = testNapi.OH_Udmf_SetPropertiesShareOption001();
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_5900
      * @tc.name OH_Udmf_SetPropertiesShareOption002
@@ -898,13 +840,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesShareOption002',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption002' );
-       let data = testNapi.OH_Udmf_SetPropertiesShareOption002();
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesShareOption002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption002');
+      let data = testNapi.OH_Udmf_SetPropertiesShareOption002();
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6000
      * @tc.name OH_Udmf_SetPropertiesShareOption003
@@ -913,13 +854,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesShareOption003',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption003' );
-       let data = testNapi.OH_Udmf_SetPropertiesShareOption003();
-       console.info( TAG + 'OH_Udmf_SetPropertiesShareOption003 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesShareOption003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption003');
+      let data = testNapi.OH_Udmf_SetPropertiesShareOption003();
+      console.info(TAG + 'OH_Udmf_SetPropertiesShareOption003 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6100
      * @tc.name OH_Udmf_SetPropertiesExtrasIntParam001
@@ -928,13 +868,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesExtrasIntParam001',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesExtrasIntParam001' );
-       let data = testNapi.OH_Udmf_SetPropertiesExtrasIntParam001();
-       console.info( TAG + 'OH_Udmf_SetPropertiesExtrasIntParam001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesExtrasIntParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesExtrasIntParam001');
+      let data = testNapi.OH_Udmf_SetPropertiesExtrasIntParam001();
+      console.info(TAG + 'OH_Udmf_SetPropertiesExtrasIntParam001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6200
      * @tc.name OH_Udmf_GetPropertiesExtrasIntParam002
@@ -943,13 +882,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetPropertiesExtrasIntParam002',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetPropertiesExtrasIntParam002' );
-       let data = testNapi.OH_Udmf_GetPropertiesExtrasIntParam002();
-       console.info( TAG + 'OH_Udmf_GetPropertiesExtrasIntParam002 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetPropertiesExtrasIntParam002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetPropertiesExtrasIntParam002');
+      let data = testNapi.OH_Udmf_GetPropertiesExtrasIntParam002();
+      console.info(TAG + 'OH_Udmf_GetPropertiesExtrasIntParam002 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6300
      * @tc.name OH_Udmf_SetPropertiesExtrasStringParam001
@@ -958,13 +896,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesExtrasStringParam001',0, async function () {
-       console.info( TAG + 'OH_Udmf_SetPropertiesExtrasStringParam001' );
-       let data = testNapi.OH_Udmf_SetPropertiesExtrasStringParam001();
-       console.info( TAG + 'OH_Udmf_SetPropertiesExtrasStringParam001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_SetPropertiesExtrasStringParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_SetPropertiesExtrasStringParam001');
+      let data = testNapi.OH_Udmf_SetPropertiesExtrasStringParam001();
+      console.info(TAG + 'OH_Udmf_SetPropertiesExtrasStringParam001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6400
      * @tc.name OH_Udmf_GetPropertiesExtrasStringParam001
@@ -973,13 +910,12 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_GetPropertiesExtrasStringParam001',0, async function () {
-       console.info( TAG + 'OH_Udmf_GetPropertiesExtrasStringParam001' );
-       let data = testNapi.OH_Udmf_GetPropertiesExtrasStringParam001();
-       console.info( TAG + 'OH_Udmf_GetPropertiesExtrasStringParam001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
-
+    it('OH_Udmf_GetPropertiesExtrasStringParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_Udmf_GetPropertiesExtrasStringParam001');
+      let data = testNapi.OH_Udmf_GetPropertiesExtrasStringParam001();
+      console.info(TAG + 'OH_Udmf_GetPropertiesExtrasStringParam001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
     /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6500
      * @tc.name OH_UdmfRecord_GetPlainText001
@@ -988,11 +924,11 @@ export default function UdmfNdkexTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_UdmfRecord_GetPlainText001',0, async function () {
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText001' );
-       let data = testNapi.OH_UdmfRecord_GetPlainText001();
-       console.info( TAG + 'OH_UdmfRecord_GetPlainText001 data= ' + JSON.stringify(data));
-       expect(data).assertEqual(1);
-     })
+    it('OH_UdmfRecord_GetPlainText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText001');
+      let data = testNapi.OH_UdmfRecord_GetPlainText001();
+      console.info(TAG + 'OH_UdmfRecord_GetPlainText001 data= ' + JSON.stringify(data));
+      expect(data).assertEqual(1);
+    });
   })
 }
