@@ -22,7 +22,7 @@ export default function dialogDialogDisableDateRangeAndMarkTodayTest() {
     beforeEach(async (done: Function) => {
       console.info('DialogDisableDateRangeAndMarkToday beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/CalendarPicker/dialogDisableDateRangeAndMarkToday',
+        url: 'MainAbility/pages/calendarPickerDialog/dialogDisableDateRangeAndMarkToday',
       }
       try {
         router.clear();
