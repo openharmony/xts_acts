@@ -108,9 +108,9 @@ export default {
               }, (err) => {
                 console.info('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err?.code);
               });
-            }catch(err){
+            } catch(err) {
               console.info('ACTS_SerivceAbilityServer acquireDateHelper callback=====' + 
-                err?.code + " " + err?.message);
+                err?.code + ' ' + err?.message);
                 commonEvent.publish('ACTS_SerivceAbilityServer_FunctionCallback', {
                   parameters: {
                     result: 'fail get value'
@@ -130,9 +130,9 @@ export default {
               console.info('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err?.code);
               
             });
-          }catch(err){
+          } catch(err) {
             console.info('ACTS_SerivceAbilityServer acquireDateHelper callback=====' + 
-              err?.code + " " + err?.message);
+              err?.code + ' ' + err?.message);
               commonEvent.publish('ACTS_SerivceAbilityServer_FunctionCallback', {
                 parameters: {
                   result: 101

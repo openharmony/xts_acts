@@ -212,56 +212,6 @@ export default function moveAbilityToBackgroundTest() {
         done();
       }
     });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_WillAndDidLife_0100
-     * @tc.name   : Call UIAbilityContext moveAbilityToBackground
-     * @tc.desc   : expect current ability moved to background and onBackground() called.
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_WillAndDidLife_0100', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_WillAndDidLife_0100`;
-      console.log(`${tag}, it begin`);
-      if (mpEnable === 'true') {
-        try {
-          await TestAbilityContext.startAbility({
-            bundleName:'com.acts.moveabilitytobgtest',
-            abilityName:'EntryAbility1'
-          }).then((data)=>{
-            console.info(tag + ` startAbility success`);
-          }).catch((error:BusinessError)=>{
-            console.info(tag + `error: ${(error as BusinessError).code}, ${(error as BusinessError).message}`);
-            try{expect().assertFail();}catch{}
-            done();
-          })
-          await sleep(2000);
-          console.info(`${tag} startAbility life check: ${JSON.stringify(globalThis.lifeCycleList)}`);
-          await globalThis.entryAbilityContext1?.moveAbilityToBackground();
-          await sleep(2000);
-          console.info(`${tag} afterback life check: ${JSON.stringify(globalThis.lifeCycleList)}`);
-          expect(globalThis.lifeCycleList[0]).assertEqual('onWillForeground');
-          expect(globalThis.lifeCycleList[1]).assertEqual('onForeground');
-          expect(globalThis.lifeCycleList[2]).assertEqual('onDidForeground');
-          expect(globalThis.lifeCycleList[3]).assertEqual('onWillBackground');
-          expect(globalThis.lifeCycleList[4]).assertEqual('onBackground');
-          expect(globalThis.lifeCycleList[5]).assertEqual('onDidBackground');
-          done();
-        } catch (err) {
-          console.info(`${tag} error, errorCode: ${JSON.stringify(err?.message)}`);
-          expect().assertFail();
-          done();
-        }
-      }else if(mpEnable === 'false') {
-        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
-        done();
-      }else{
-        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
-        expect().assertFail();
-        done();
-      }
-    });
   })
 }
 

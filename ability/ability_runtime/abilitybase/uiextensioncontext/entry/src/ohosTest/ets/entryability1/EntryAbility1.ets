@@ -53,7 +53,7 @@ export default class EntryAbility1 extends UIAbility {
     // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'EntryAbility1 onForeground');
     let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-      events: ["teminate"]
+      events: ['teminate']
     };
     commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
       sub2 = subscriber;

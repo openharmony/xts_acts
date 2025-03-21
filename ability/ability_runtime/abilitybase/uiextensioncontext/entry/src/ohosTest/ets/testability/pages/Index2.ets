@@ -45,8 +45,7 @@ struct Index {
           .onTerminated((info)=>{
             this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
             this.context.terminateSelf()
-          })
-          .onError((error)=>{console.log("EmbeddedComponent uiextension " + JSON.stringify(error))
+          }).onError((error)=>{console.log("EmbeddedComponent uiextension " + JSON.stringify(error))
             this.message = 'Error: code = ' + error.code;
           })
       }.width('100%')
