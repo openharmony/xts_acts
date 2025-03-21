@@ -15,11 +15,10 @@
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 // 加载js测试框架
-import { Caller, common, sendableContextManager, WantAgent, wantAgent, wantConstant, StartOptions, } from '@kit.AbilityKit';
+import { Caller, common, sendableContextManager, WantAgent, wantAgent, wantConstant, StartOptions, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
-
 let mpEnable: string;
 let context: common.UIAbilityContext
 export default function openLinkTest() {
@@ -36,6 +35,13 @@ export default function openLinkTest() {
         mpEnable = 'fail';
       }
     })
+    afterEach((done: Function) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability afterEach');
+      setTimeout(() => {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability setTimeout');
+        done();
+      }, 1000);
+    });
 
     /*
      * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0200
@@ -561,6 +567,350 @@ export default function openLinkTest() {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 end');
     })
 
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_0400
+     * @tc.name   : To verify the scenario where error code 16000076 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0400', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0400 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_100"
+        }
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,(err, data)=>{
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_0400 ${err?.code}`);
+            try{expect(err?.code).assertEqual(16000076);}catch(e){}
+            done();
+          })
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_0400 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0400 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_1400
+     * @tc.name   : To verify the scenario where error code 16000076 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1400', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1400 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_100"
+        }
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,options,(err, data)=>{
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1400 ${err?.code}`);
+            try{expect(err?.code).assertEqual(16000076);}catch(e){}
+            done();
+          })
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1400 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1400 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_2400
+     * @tc.name   : To verify the scenario where error code 16000076 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2400', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2400 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_100"
+        }
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,options)
+            .then((result: common.AbilityResult) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityForResult succeed`);
+              try{expect().assertFail();}catch(e){}
+              done();
+            })
+            .catch((err: BusinessError) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2400 ${err?.code}`);
+              try{expect(err?.code).assertEqual(16000076);}catch(e){}
+              done();
+            });
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2400 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2400 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_3600
+     * @tc.name   : To verify the scenario where error code 16000076 is returned when the startAbilityByCall interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3600', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3600 start');
+      let caller: Caller;
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_100"
+        }
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityByCall(want)
+            .then((obj: Caller) => {
+              caller = obj;
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityByCall succeed`);
+              try{expect().assertFail();}catch(e){}
+              done();
+            })
+            .catch((err: BusinessError) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_3500 ${err?.code}`);
+              try{expect(err?.code).assertEqual(16000076);}catch(e){}
+              done();
+            });
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2400 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3600 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_0700
+     * @tc.name   : To verify the scenario where error code 16000079 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0700', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0700 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.CREATE_APP_INSTANCE_KEY]:true,
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_instance_0"
+        }
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,(err, data)=>{
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_0700 ${err?.code}`);
+            try{expect(err?.code).assertEqual(16000079);}catch(e){}
+            done();
+          })
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_0700 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0700 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_1700
+     * @tc.name   : To verify the scenario where error code 16000079 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1700', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1700 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.CREATE_APP_INSTANCE_KEY]:true,
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_0"
+        }
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,options,(err, data)=>{
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1700 ${err?.code}`);
+            try{expect(err?.code).assertEqual(16000079);}catch(e){}
+            done();
+          })
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1700 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1700 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_2700
+     * @tc.name   : To verify the scenario where error code 16000079 is returned when the startAbilityForResult interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2700', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2700 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.CREATE_APP_INSTANCE_KEY]:true,
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_0"
+        }
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityForResult(want,options)
+            .then((result: common.AbilityResult) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityForResult succeed`);
+              try{expect().assertFail();}catch(e){}
+              done();
+            })
+            .catch((err: BusinessError) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2600 ${err?.code}`);
+              try{expect(err?.code).assertEqual(16000079);}catch(e){}
+              done();
+            });
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2700 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2700 end');
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_3900
+     * @tc.name   : To verify the scenario where error code 16000079 is returned when the startAbilityByCall interface is invoked
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3900', 0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3900 start');
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+        abilityName: 'EntryAbility',
+        parameters:{
+          [wantConstant.Params.CREATE_APP_INSTANCE_KEY]:true,
+          [wantConstant.Params.APP_INSTANCE_KEY]:"app_default_0"
+        }
+      };
+      let caller: Caller;
+      if(mpEnable == 'true'){
+        try {
+          context.startAbilityByCall(want)
+            .then((obj: Caller) => {
+              caller = obj;
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityByCall succeed`);
+              try{expect().assertFail();}catch(e){}
+              done();
+            })
+            .catch((err: BusinessError) => {
+              hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_3900 ${err?.code}`);
+              try{expect(err?.code).assertEqual(16000079);}catch(e){}
+              done();
+            });
+        } catch (err) {
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_3900 ${err?.code}`);
+          try{expect().assertFail();}catch(e){}
+          done();
+        }
+      }else{
+        console.error(`${TAG} multiinstance error, current device not set param value.`);
+        done();
+      }
+
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3900 end');
+    })
   })
 }
 

@@ -32,15 +32,18 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_AutoSave_0100', 0, async (done:Function) => {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoSave_0100_TAG';
-      
+      let isSuccess = false;
+      let isFailure = false;
       let uiContext: UIContext | undefined = undefined;
       console.info("uiContext: ", uiContext);
       let callback: autoFillManager.AutoSaveCallback = {
         onSuccess: () => {
           console.log("save request on success");
+          isSuccess = true;
         },
         onFailure: () => {
           console.log("save request on failure");
+          isFailure = true;
         }
       }
       console.log("callback: ", JSON.stringify(callback));
@@ -49,6 +52,8 @@ export default function abilityTest() {
       } catch (error) {
         console.log("requestAutoSave catch error, code: ", JSON.stringify(error.code));
         expect(error.code == 401).assertTrue();
+        expect(isSuccess).assertFalse();
+        expect(isFailure).assertFalse();
         done();
       }
       console.log("du.yuan end");
