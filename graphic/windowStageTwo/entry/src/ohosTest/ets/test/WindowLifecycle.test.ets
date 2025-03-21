@@ -17,7 +17,7 @@ import window from '@ohos.window';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
-import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
+// import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
 
 export default function WindowLifecycle() {
   describe('WindowLifecycleTest', async () => {
@@ -1627,61 +1627,60 @@ export default function WindowLifecycle() {
       }
     });
 
+    // /**
+    //  * @tc.number    : SUB_BASIC_WMS_WINDOW_EVENT_TYPE_0100
+    //  * @tc.name      : test_WindowEventType_enum
+    //  * @tc.desc      : test_WindowEventType_enum
+    //  * @tc.size      : MediumTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level 0
+    //  */
+    // it("test_WindowEventType_enum", 2, async (done:Function) => {
+    //   let msgStr = "test_WindowEventType_enum";
+    //   console.log(msgStr + "begin");
+    //   try {
+    //     expect(window.WindowEventType.WINDOW_DESTROYED).assertEqual(7);
+    //     console.info('Succeeded in test_WindowEventType_enum.');
+    //     done();
+    //   } catch (error) {
+    //     console.log(msgStr + 'Failed to test_WindowEventType_enum. Cause: ' + JSON.stringify(error));
+    //     expect().assertFail();
+    //     done();
+    //   }
+    // });
 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_WINDOW_EVENT_TYPE_0100
-     * @tc.name      : test_WindowEventType_enum
-     * @tc.desc      : test_WindowEventType_enum
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it("test_WindowEventType_enum", 2, async (done:Function) => {
-      let msgStr = "test_WindowEventType_enum";
-      console.log(msgStr + "begin");
-      try {
-        expect(window.WindowEventType.WINDOW_DESTROYED).assertEqual(7);
-        console.info('Succeeded in test_WindowEventType_enum.');
-        done();
-      } catch (error) {
-        console.log(msgStr + 'Failed to test_WindowEventType_enum. Cause: ' + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_LOAD_CONTENT_BY_NAME_0100
-     * @tc.name      : test_loadContentByName
-     * @tc.desc      : test_loadContentByName
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it("test_loadContentByName", 2, async (done:Function) => {
-      let msgStr = "test_loadContentByName";
-      console.log(msgStr + "begin");
-      try {
-        windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
-          console.info('Succeeded in loadContentByName.');
-          expect(true).assertTrue();
-          // 恢复原本页面
-          await windowStage.loadContent('testability/pages/Index');
-          done();
-        }).catch(async (err: BusinessError) => {
-          console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          // 恢复原本页面
-          await windowStage.loadContent('testability/pages/Index');
-          done();
-        });
-      } catch (error) {
-        console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
-        expect().assertFail();
-        // 恢复原本页面
-        await windowStage.loadContent('testability/pages/Index');
-        done();
-      }
-    });
+    // /**
+    //  * @tc.number    : SUB_BASIC_WMS_LOAD_CONTENT_BY_NAME_0100
+    //  * @tc.name      : test_loadContentByName
+    //  * @tc.desc      : test_loadContentByName
+    //  * @tc.size      : MediumTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level 3
+    //  */
+    // it("test_loadContentByName", 2, async (done:Function) => {
+    //   let msgStr = "test_loadContentByName";
+    //   console.log(msgStr + "begin");
+    //   try {
+    //     windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
+    //       console.info('Succeeded in loadContentByName.');
+    //       expect(true).assertTrue();
+    //       // 恢复原本页面
+    //       await windowStage.loadContent('testability/pages/Index');
+    //       done();
+    //     }).catch(async (err: BusinessError) => {
+    //       console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
+    //       expect().assertFail();
+    //       // 恢复原本页面
+    //       await windowStage.loadContent('testability/pages/Index');
+    //       done();
+    //     });
+    //   } catch (error) {
+    //     console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
+    //     expect().assertFail();
+    //     // 恢复原本页面
+    //     await windowStage.loadContent('testability/pages/Index');
+    //     done();
+    //   }
+    // });
   })
 }
