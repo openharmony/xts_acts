@@ -144,11 +144,12 @@ export default function LineMetricsTwoTest() {
         let metrics = font.getMetrics();
         let max = metrics.maxCharWidth;
         expect(true).assertTrue();
+        done();
       } catch(err){
         console.info(msg + 'test error' + err);
         expect().assertFail();
+        done();
       }
-      done();
     })
 
     /**
@@ -167,11 +168,12 @@ export default function LineMetricsTwoTest() {
         const myTypeface = drawing.Typeface.makeFromFile(str);
         font.setTypeface(myTypeface);
         expect().assertFail();
+        done();
       } catch (err) {
         console.info(msg + 'test error' + err);
-        expect(401).assertEqual(err.code);
+        expect(err.code == 401).assertTrue();
+        done();
       }
-      done();
     })
 
     /**
@@ -197,7 +199,7 @@ export default function LineMetricsTwoTest() {
         done();
       } catch (err) {
         console.info(msg + 'test error' + err);
-        expect(401).assertEqual(err.code);
+        expect(err.code == 401).assertTrue();
         done();
       }
     })
