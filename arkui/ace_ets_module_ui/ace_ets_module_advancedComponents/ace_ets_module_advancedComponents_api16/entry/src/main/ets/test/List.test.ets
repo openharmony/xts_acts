@@ -30,7 +30,10 @@ import tipsDialogTest from './dialogV2/tipsDialogTest.test';
 import selectDialogTest from './dialogV2/selectDialogTest.test';
 import confirmDialogTest from './dialogV2/confirmDialogTest.test';
 import composeListItemAccessibilityPageTest from './composeListItem/composeListItemAccessibilityPage.test';
-import exceptionPromptSymbolStyleTest from './exceptionPrompt/exceptionPromptSymbolStyle.test'
+import exceptionPromptSymbolStyleTest from './exceptionPrompt/exceptionPromptSymbolStyle.test';
+import alertDialogTest from  './dialogV2/alertDialogTest.test';
+import loadingDialogTest from './dialogV2/loadingDialogTest.test';
+import popoverDialogTest from './dialogV2/popoverDialogTest.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -49,6 +52,9 @@ export default function testsuite() {
   tipsDialogTest();
   selectDialogTest();
   confirmDialogTest();
+  alertDialogTest();
+  loadingDialogTest();
+  popoverDialogTest();
   composeListItemAccessibilityPageTest();
   exceptionPromptSymbolStyleTest();
 }
