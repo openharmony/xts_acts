@@ -18,7 +18,7 @@ import common from '@ohos.app.ability.common';
 import request from "@ohos.request";
 import Server from '../common/Server'
 import deviceinfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestUploadJSUnit() {

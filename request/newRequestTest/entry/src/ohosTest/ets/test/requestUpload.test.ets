@@ -16,7 +16,7 @@
 import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestUploadJSUnit() {
   describe('requestUploadJSUnit', () => {

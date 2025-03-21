@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import systemDateTime from "@ohos.systemDateTime";
 
 export default function timeNdkTest() {

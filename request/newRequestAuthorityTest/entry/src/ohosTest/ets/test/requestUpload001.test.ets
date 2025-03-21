@@ -17,7 +17,7 @@ import Server from '../common/Server'
 import request from "@ohos.request";
 import fileio from '@ohos.fileio'
 import commonEvent from '@ohos.commonEventManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
 

@@ -17,7 +17,7 @@ import request from "@ohos.request";
 import fileio from '@ohos.fileio';
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestDownloadJSUnit() {

@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
 import { BusinessError } from '@ohos.base';
 
 export default function systemTimeAuthorityJsunit() {
-  describe('systemTimeCommonEventTest', () => {
+  describe('systemTimeAuthorityTest', () => {
     console.info('====>---------------systemTimeAuthorityTest start-----------------------');
 
     /**

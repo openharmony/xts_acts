@@ -16,7 +16,7 @@
 import request from "@ohos.request";
 import featureAbility from '@ohos.ability.featureAbility'
 import fileio from '@ohos.fileio';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 
 export default function requestDownloadJSUnit() {

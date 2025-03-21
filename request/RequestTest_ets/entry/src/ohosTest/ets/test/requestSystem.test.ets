@@ -16,7 +16,7 @@
 import request from '@system.request';
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium";
 
 export default function requestSystemJSUnit() {
   describe('requestSystemJSUnit', () => {

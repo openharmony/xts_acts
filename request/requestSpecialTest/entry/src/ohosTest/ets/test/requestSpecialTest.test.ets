@@ -17,7 +17,7 @@ import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestSpecialUnitTest() {

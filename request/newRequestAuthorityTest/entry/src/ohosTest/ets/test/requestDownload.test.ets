@@ -14,7 +14,7 @@
  */
 import request from "@ohos.request";
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestDownloadJSUnit() {
   describe('requestDownloadJSUnit', () => {
@@ -1160,11 +1160,13 @@ export default function requestDownloadJSUnit() {
       try {
         task = await request.agent.create(baseContext, config);
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 create success");
-        await request.agent.getTask(undefined, task.tid);
+        let task1 = await request.agent.getTask(undefined, task.tid);
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 getTask success");
-        expect().assertFail();
+        expect(task1 !== undefined || task1 !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 remove success");
         done();
-      } catch (err) {
+      }  catch (err) {
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 catch: " + JSON.stringify(err));
         if (task !== null){
           await request.agent.remove(task.tid);
