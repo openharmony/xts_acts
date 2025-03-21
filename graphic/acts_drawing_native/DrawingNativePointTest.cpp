@@ -50,7 +50,7 @@ class DrawingNativePointTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePointTest, testPointCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePointTest, testPointCreateNormal, Function | SmallTest | Level0) {
     // 1. Pass integer values for X and Y coordinates to OH_Drawing_PointCreate interface
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -72,7 +72,7 @@ HWTEST_F(DrawingNativePointTest, testPointCreateNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointCreateNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointCreateNull, Function | SmallTest | Level3) {
     // 1. The first parameter of OH_Drawing_PointCreate is empty
     OH_Drawing_Point *point = OH_Drawing_PointCreate(0, 60);
     // add assert
@@ -94,7 +94,7 @@ HWTEST_F(DrawingNativePointTest, testPointCreateNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointCreateAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointCreateAbnormal, Function | SmallTest | Level3) {
     // 1. The first parameter of OH_Drawing_PointCreate is negative
     OH_Drawing_Point *point = OH_Drawing_PointCreate(-100, 60);
     // add assert
@@ -116,7 +116,7 @@ HWTEST_F(DrawingNativePointTest, testPointCreateAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointCreateMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointCreateMaximum, Function | SmallTest | Level3) {
     // 1. The first parameter of OH_Drawing_PointCreate is FLT_MAX
     OH_Drawing_Point *point = OH_Drawing_PointCreate(FLT_MAX, 60);
     // add assert
@@ -138,7 +138,7 @@ HWTEST_F(DrawingNativePointTest, testPointCreateMaximum, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointCreateMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointCreateMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_PointCreate 10 times with random values for X and Y coordinates
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -159,7 +159,7 @@ HWTEST_F(DrawingNativePointTest, testPointCreateMultipleCalls, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePointTest, testPointDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePointTest, testPointDestroyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_PointCreate
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -176,7 +176,7 @@ HWTEST_F(DrawingNativePointTest, testPointDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointDestroyNull, Function | SmallTest | Level3) {
     // 1. The parameter of OH_Drawing_PointDestroy is nullptr
     OH_Drawing_PointDestroy(nullptr);
     // add assert
@@ -191,7 +191,7 @@ HWTEST_F(DrawingNativePointTest, testPointDestroyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePointTest, testPointGetXNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePointTest, testPointGetXNormal, Function | SmallTest | Level0) {
     //1. Pass integer values to OH_Drawing_PointGetX interface
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -216,7 +216,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetXNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointGetXNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointGetXNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_PointGetX with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -237,7 +237,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetXNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointGetXMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointGetXMultipleCalls, Function | SmallTest | Level3) {
     //1. Call OH_Drawing_PointGetX 10 times with random values
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -262,7 +262,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetXMultipleCalls, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePointTest, testPointGetYNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePointTest, testPointGetYNormal, Function | SmallTest | Level0) {
     //1. Pass integer values to OH_Drawing_PointGetY interface
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -287,7 +287,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetYNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointGetYNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointGetYNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_PointGetY with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -308,7 +308,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetYNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointGetYMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointGetYMultipleCalls, Function | SmallTest | Level3) {
     //1. Call OH_Drawing_PointGetX 10 times with random values
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -333,7 +333,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetYMultipleCalls, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePointTest, testPointSetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePointTest, testPointSetNormal, Function | SmallTest | Level0) {
     //1. Pass integar point values to OH_Drawing_PointSet interface
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -355,7 +355,7 @@ HWTEST_F(DrawingNativePointTest, testPointSetNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointSetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointSetNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_PointSet with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert
@@ -377,7 +377,7 @@ HWTEST_F(DrawingNativePointTest, testPointSetNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePointTest, testPointSetMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePointTest, testPointSetMultipleCalls, Function | SmallTest | Level3) {
     //1. Call OH_Drawing_PointSet 10 times with random values
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     // add assert

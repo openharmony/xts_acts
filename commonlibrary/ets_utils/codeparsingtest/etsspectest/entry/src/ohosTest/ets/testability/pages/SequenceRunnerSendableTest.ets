@@ -59,6 +59,7 @@ export function anyReturn(num: number): number {
 
 export class MyClass {
   public value: number;
+
   constructor(value: number) {
     this.value = value;
     return
@@ -67,6 +68,7 @@ export class MyClass {
 
 export class MyClass1 {
   public value: number = 42;
+
   constructor() {
     return
   }
@@ -109,10 +111,12 @@ export function filterOddOrZeroVoid(num: number): void {
 
 export class TestClass {
   public value: number = 0;
+
   public setValueAndReturn(value: number): number {
     this.value = value;
     return value;
   }
+
   public getValue(): number {
     return this.value;
   }

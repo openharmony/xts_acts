@@ -30,6 +30,7 @@ group("storage") {
       "storagefilesharendktest:ActsStorageFileshareNdkTest",
       "storagefileurijstest:storagefileuri_js_test",
       "storagefileurindktest:ActsStorageFileUriNdkTest",
+      "storagenopermissionjstest:storagenopermission_js_test",
       "storagepickerjstest:storagepicker_js_test",
       "storagesecuritylabeljstest:storagesecuritylabel_js_test",
       "storagestatfsjstest:storagestatfs_js_test",

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import wctype from 'libwctypendk.so'
 
@@ -32,7 +32,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnum001', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnum001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswalnum(b);
       expect(a).assertEqual(1);
@@ -47,7 +47,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnum002', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnum002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswalnum(b);
       expect(a).assertEqual(1);
@@ -61,7 +61,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnum003', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnum003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = wctype.iswalnum(b);
       expect(a).assertEqual(0);
@@ -76,7 +76,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnumL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnumL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswalnumL(b);
       expect(a).assertEqual(1);
@@ -91,7 +91,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnumL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnumL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswalnumL(b);
       expect(a).assertEqual(1);
@@ -105,7 +105,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalnumL003', 0, async (done: Function) => {
+    it('testMuslWctypeIswalnumL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = wctype.iswalnumL(b);
       expect(a).assertEqual(0);
@@ -121,7 +121,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalpha001', 0, async (done: Function) => {
+    it('testMuslWctypeIswalpha001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswalpha(b);
       expect(a).assertEqual(0);
@@ -135,7 +135,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalpha002', 0, async (done: Function) => {
+    it('testMuslWctypeIswalpha002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswalpha(b);
       expect(a).assertEqual(1);
@@ -149,7 +149,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalpha003', 0, async (done: Function) => {
+    it('testMuslWctypeIswalpha003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = wctype.iswalpha(b);
       expect(a).assertEqual(0);
@@ -164,7 +164,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalphaL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswalphaL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswalphaL(b);
       expect(a).assertEqual(0);
@@ -178,7 +178,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalphaL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswalphaL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswalphaL(b);
       expect(a).assertEqual(1);
@@ -192,7 +192,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswalphaL003', 0, async (done: Function) => {
+    it('testMuslWctypeIswalphaL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = wctype.iswalphaL(b);
       expect(a).assertEqual(0);
@@ -208,7 +208,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswblank001', 0, async (done: Function) => {
+    it('testMuslWctypeIswblank001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswblank(b);
       expect(a).assertEqual(0);
@@ -222,7 +222,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswblank002', 0, async (done: Function) => {
+    it('testMuslWctypeIswblank002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswblank(b);
       expect(a).assertEqual(1);
@@ -237,7 +237,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswblankL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswblankL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswblankL(b);
       expect(a).assertEqual(0);
@@ -251,7 +251,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswblankL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswblankL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswblankL(b);
       expect(a).assertEqual(1);
@@ -266,7 +266,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrl001', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = wctype.iswcntrl(b);
       expect(a).assertEqual(1);
@@ -280,7 +280,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrl002', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 31
       let a: number = wctype.iswcntrl(b);
       expect(a).assertEqual(1);
@@ -294,7 +294,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrl003', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrl003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 127
       let a: number = wctype.iswcntrl(b);
       expect(a).assertEqual(1);
@@ -308,7 +308,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrl004', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrl004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 32
       let a: number = wctype.iswcntrl(b);
       expect(a).assertEqual(0);
@@ -324,7 +324,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrlL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrlL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = wctype.iswcntrlL(b);
       expect(a).assertEqual(1);
@@ -338,7 +338,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrlL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrlL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 31
       let a: number = wctype.iswcntrlL(b);
       expect(a).assertEqual(1);
@@ -352,7 +352,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrlL003', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrlL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 127
       let a: number = wctype.iswcntrlL(b);
       expect(a).assertEqual(1);
@@ -366,7 +366,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswcntrlL004', 0, async (done: Function) => {
+    it('testMuslWctypeIswcntrlL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 32
       let a: number = wctype.iswcntrlL(b);
       expect(a).assertEqual(0);
@@ -382,7 +382,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswdigit001', 0, async (done: Function) => {
+    it('testMuslWctypeIswdigit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswdigit(b);
       expect(a).assertEqual(1);
@@ -396,7 +396,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswdigit002', 0, async (done: Function) => {
+    it('testMuslWctypeIswdigit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswdigit(b);
       expect(a).assertEqual(0);
@@ -411,7 +411,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswdigitL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswdigitL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = wctype.iswdigitL(b);
       expect(a).assertEqual(1);
@@ -425,7 +425,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswdigitL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswdigitL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswdigitL(b);
       expect(a).assertEqual(0);
@@ -441,7 +441,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraphL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraphL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '2'
       let a: number = wctype.iswgraphL(b);
       expect(a).assertEqual(1);
@@ -455,7 +455,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraphL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraphL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = wctype.iswgraphL(b);
       expect(a).assertEqual(1);
@@ -469,7 +469,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraphL003', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraphL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswgraphL(b);
       expect(a).assertEqual(0);
@@ -483,7 +483,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraph001', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraph001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '2'
       let a: number = wctype.iswgraph(b);
       expect(a).assertEqual(1);
@@ -497,7 +497,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraph002', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraph002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = wctype.iswgraph(b);
       expect(a).assertEqual(1);
@@ -511,7 +511,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswgraph003', 0, async (done: Function) => {
+    it('testMuslWctypeIswgraph003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswgraph(b);
       expect(a).assertEqual(0);
@@ -526,7 +526,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswlower001', 0, async (done: Function) => {
+    it('testMuslWctypeIswlower001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = wctype.iswlower(b);
       expect(a).assertEqual(1);
@@ -540,7 +540,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswlower002', 0, async (done: Function) => {
+    it('testMuslWctypeIswlower002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'B'
       let a: number = wctype.iswlower(b);
       expect(a).assertEqual(0);
@@ -555,7 +555,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswlowerL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswlowerL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = wctype.iswlowerL(b);
       expect(a).assertEqual(1);
@@ -569,7 +569,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswlowerL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswlowerL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'B'
       let a: number = wctype.iswlowerL(b);
       expect(a).assertEqual(0);
@@ -584,7 +584,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprint001', 0, async (done: Function) => {
+    it('testMuslWctypeIswprint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '3'
       let a: number = wctype.iswprint(b);
       expect(a).assertEqual(1);
@@ -598,7 +598,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprint002', 0, async (done: Function) => {
+    it('testMuslWctypeIswprint002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'c'
       let a: number = wctype.iswprint(b);
       expect(a).assertEqual(1);
@@ -612,7 +612,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprint003', 0, async (done: Function) => {
+    it('testMuslWctypeIswprint003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswprint(b);
       expect(a).assertEqual(1);
@@ -626,7 +626,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprint004', 0, async (done: Function) => {
+    it('testMuslWctypeIswprint004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\t'
       let a: number = wctype.iswprint(b);
       expect(a).assertEqual(0);
@@ -641,7 +641,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprintL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswprintL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '3'
       let a: number = wctype.iswprintL(b);
       expect(a).assertEqual(1);
@@ -655,7 +655,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprintL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswprintL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'c'
       let a: number = wctype.iswprintL(b);
       expect(a).assertEqual(1);
@@ -669,7 +669,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprintL003', 0, async (done: Function) => {
+    it('testMuslWctypeIswprintL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = wctype.iswprintL(b);
       expect(a).assertEqual(1);
@@ -683,7 +683,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswprintL004', 0, async (done: Function) => {
+    it('testMuslWctypeIswprintL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\t'
       let a: number = wctype.iswprintL(b);
       expect(a).assertEqual(0);
@@ -699,7 +699,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswpunct001', 0, async (done: Function) => {
+    it('testMuslWctypeIswpunct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '/'
       let a: number = wctype.iswpunct(b);
       expect(a).assertEqual(1);
@@ -713,7 +713,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswpunct002', 0, async (done: Function) => {
+    it('testMuslWctypeIswpunct002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswpunct(b);
       expect(a).assertEqual(0);
@@ -727,7 +727,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswpunctL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswpunctL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '/'
       let a: number = wctype.iswpunctL(b);
       expect(a).assertEqual(1);
@@ -741,7 +741,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswpunctL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswpunctL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswpunctL(b);
       expect(a).assertEqual(0);
@@ -755,7 +755,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswspace001', 0, async (done: Function) => {
+    it('testMuslWctypeIswspace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\v'
       let a: number = wctype.iswspace(b);
       expect(a).assertEqual(1);
@@ -769,7 +769,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswspace002', 0, async (done: Function) => {
+    it('testMuslWctypeIswspace002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'v'
       let a: number = wctype.iswspace(b);
       expect(a).assertEqual(0);
@@ -783,7 +783,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswspaceL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswspaceL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\v'
       let a: number = wctype.iswspaceL(b);
       expect(a).assertEqual(1);
@@ -797,7 +797,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswspaceL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswspaceL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'v'
       let a: number = wctype.iswspaceL(b);
       expect(a).assertEqual(0);
@@ -813,7 +813,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswupperL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswupperL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let a: number = wctype.iswupperL(b);
       expect(a).assertEqual(1);
@@ -827,7 +827,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswupperL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswupperL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswupperL(b);
       expect(a).assertEqual(0);
@@ -842,7 +842,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswupper001', 0, async (done: Function) => {
+    it('testMuslWctypeIswupper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let a: number = wctype.iswupper(b);
       expect(a).assertEqual(1);
@@ -856,7 +856,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswupper002', 0, async (done: Function) => {
+    it('testMuslWctypeIswupper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = wctype.iswupper(b);
       expect(a).assertEqual(0);
@@ -871,7 +871,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswctype001', 0, async (done: Function) => {
+    it('testMuslWctypeIswctype001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let c = "upper"
       let a: number = wctype.iswctype(b, c);
@@ -886,7 +886,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswctype002', 0, async (done: Function) => {
+    it('testMuslWctypeIswctype002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let c = "upper"
       let a: number = wctype.iswctype(b, c);
@@ -901,7 +901,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswctypeL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswctypeL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let c = "upper"
       let a: number = wctype.iswctypeL(b, c);
@@ -916,7 +916,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswctypeL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswctypeL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let c = "upper"
       let a: number = wctype.iswctypeL(b, c);
@@ -932,7 +932,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswxdigit001', 0, async (done: Function) => {
+    it('testMuslWctypeIswxdigit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '6'
       let a: number = wctype.iswxdigit(b);
       expect(a).assertEqual(1);
@@ -946,7 +946,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswxdigit002', 0, async (done: Function) => {
+    it('testMuslWctypeIswxdigit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'L'
       let a: number = wctype.iswxdigit(b);
       expect(a).assertEqual(0);
@@ -961,7 +961,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswxdigitL001', 0, async (done: Function) => {
+    it('testMuslWctypeIswxdigitL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '6'
       let a: number = wctype.iswxdigitL(b);
       expect(a).assertEqual(1);
@@ -975,7 +975,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeIswxdigitL002', 0, async (done: Function) => {
+    it('testMuslWctypeIswxdigitL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'L'
       let a: number = wctype.iswxdigitL(b);
       expect(a).assertEqual(0);
@@ -990,7 +990,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctrans001', 0, async (done: Function) => {
+    it('testMuslWctypeTowctrans001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let towctransResult: number = wctype.towctrans(param);
       console.info("Test towctransResult= " + towctransResult);
@@ -1006,7 +1006,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctrans002', 0, async (done: Function) => {
+    it('testMuslWctypeTowctrans002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 1;
       let towctransResult: number = wctype.towctrans(param);
       console.info("Test towctransResult= " + towctransResult);
@@ -1022,7 +1022,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctrans003', 0, async (done: Function) => {
+    it('testMuslWctypeTowctrans003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let towctransResult: number = wctype.towctrans(param);
       console.info("Test towctransResult= " + towctransResult);
@@ -1038,7 +1038,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctransL001', 0, async (done: Function) => {
+    it('testMuslWctypeTowctransL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let towctransLResult: number = wctype.towctransL(param);
       console.info("Test towctransLResult= " + towctransLResult);
@@ -1054,7 +1054,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctransL002', 0, async (done: Function) => {
+    it('testMuslWctypeTowctransL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 1;
       let towctransLResult: number = wctype.towctransL(param);
       console.info("Test towctransLResult= " + towctransLResult);
@@ -1070,7 +1070,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowctransL003', 0, async (done: Function) => {
+    it('testMuslWctypeTowctransL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let towctransLResult: number = wctype.towctransL(param);
       console.info("Test towctransLResult= " + towctransLResult);
@@ -1087,7 +1087,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowlowerL001', 0, async (done: Function) => {
+    it('testMuslWctypeTowlowerL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let towlowerLResult: number = wctype.towlowerL(param);
       console.info("Test towlowerLResult= " + towlowerLResult);
@@ -1103,7 +1103,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowlowerL002', 0, async (done: Function) => {
+    it('testMuslWctypeTowlowerL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 1;
       let towlowerLResult: number = wctype.towlowerL(param);
       console.info("Test towlowerLResult= " + towlowerLResult);
@@ -1119,7 +1119,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowlowerL003', 0, async (done: Function) => {
+    it('testMuslWctypeTowlowerL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 2;
       let towlowerLResult: number = wctype.towlowerL(param);
       console.info("Test towlowerLResult= " + towlowerLResult);
@@ -1135,7 +1135,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowlowerL004', 0, async (done: Function) => {
+    it('testMuslWctypeTowlowerL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let towlowerLResult: number = wctype.towlowerL(param);
       console.info("Test towlowerLResult= " + towlowerLResult);
@@ -1151,7 +1151,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowupperL001', 0, async (done: Function) => {
+    it('testMuslWctypeTowupperL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let towupperLResult: number = wctype.towupperL(param);
       console.info("Test towupperLResult= " + towupperLResult);
@@ -1167,7 +1167,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowupperL002', 0, async (done: Function) => {
+    it('testMuslWctypeTowupperL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 1;
       let towupperLResult: number = wctype.towupperL(param);
       console.info("Test towupperLResult= " + towupperLResult);
@@ -1183,7 +1183,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowupperL003', 0, async (done: Function) => {
+    it('testMuslWctypeTowupperL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 2;
       let towupperLResult: number = wctype.towupperL(param);
       console.info("Test towupperLResult= " + towupperLResult);
@@ -1199,7 +1199,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeTowupperL004', 0, async (done: Function) => {
+    it('testMuslWctypeTowupperL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let towupperLResult: number = wctype.towupperL(param);
       console.info("Test towupperLResult= " + towupperLResult);
@@ -1215,7 +1215,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeWctrans001', 0, async (done: Function) => {
+    it('testMuslWctypeWctrans001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = wctype.wctrans(param);
       console.info("Test result= " + result);
@@ -1231,7 +1231,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeWctrans002', 0, async (done: Function) => {
+    it('testMuslWctypeWctrans002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = wctype.wctrans(param);
       console.info("Test result= " + result);
@@ -1247,7 +1247,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeWctransL001', 0, async (done: Function) => {
+    it('testMuslWctypeWctransL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = wctype.wctransL(param);
       console.info("Test result= " + result);
@@ -1263,7 +1263,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWctypeWctransL002', 0, async (done: Function) => {
+    it('testMuslWctypeWctransL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = wctype.wctransL(param);
       console.info("Test result= " + result);
@@ -1279,7 +1279,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeWctype001', 0, async (done: Function) => {
+    it('testMuslWctypeWctype001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = wctype.wctype(param);
       console.info("Test result= " + result);
@@ -1295,7 +1295,7 @@ export default function wctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWctypeWctypeL001', 0, async (done: Function) => {
+    it('testMuslWctypeWctypeL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = wctype.wctypeL(param);
       console.info("Test result= " + result);

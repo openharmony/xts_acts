@@ -14,7 +14,7 @@
  */
 
 import bundle from '@ohos.bundle'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.l3jsdemo';
 const BUNDLE_NAME2 = 'com.open.harmony.packagemag';
@@ -27,7 +27,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with other hap.
      */
-    it('getNameForUid_0100', 0, async function (done) {
+    it('getNameForUid_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME1);
@@ -48,7 +48,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with hap.
      */
-    it('getNameForUid_0200', 0, async function (done) {
+    it('getNameForUid_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME2,bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME2);
@@ -69,7 +69,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with notexist hap.
      */
-    it('getNameForUid_0300', 0, async function (done) {
+    it('getNameForUid_0300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         await bundle.getNameForUid(123456).then(data => {
             expect(data).assertFail();
         }).catch(err => {
@@ -88,7 +88,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with error param.
      */
-    it('getNameForUid_0400', 0, async function (done) {
+    it('getNameForUid_0400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         await bundle.getNameForUid(undefined).then(data => {
             expect(data).assertFail();
         }).catch(err => {

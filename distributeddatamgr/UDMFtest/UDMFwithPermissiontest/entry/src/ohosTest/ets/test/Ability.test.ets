@@ -1,5 +1,19 @@
+/*
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 
 const TAG = '[ttt]'
@@ -63,7 +77,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
         console.info(TAG, `setAppShareOptions is successed`);
@@ -80,7 +94,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0200', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.CROSS_APP);
         console.info(TAG, `setAppShareOptions is successed`);
@@ -98,7 +112,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
 
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DATA_HUB, unifiedDataChannel.ShareOptions.CROSS_APP);
@@ -118,7 +132,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DATA_HUB, unifiedDataChannel.ShareOptions.IN_APP);
         console.info(TAG, `setAppShareOptions is successed`);
@@ -137,7 +151,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0500', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
@@ -159,7 +173,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0600', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
 
       try {
         unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG); 
@@ -176,7 +190,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0700', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
 
       try {
         unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DATA_HUB);
@@ -195,7 +209,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0800', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
         unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG);
@@ -212,7 +226,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0900', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
         unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG);
@@ -231,7 +245,7 @@ export default function dragPerssionNormalTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_1000', 0, async(done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragPerssionNormal_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async(done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DRAG
       }

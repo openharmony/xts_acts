@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import threads from 'libthreadsndk.so'
 
@@ -32,7 +32,7 @@ export default function threadsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslThreadsCndTimedWait001', 0, async (done: Function) => {
+    it('testMuslThreadsCndTimedWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(threads.cnd_timedwait()).assertEqual(1);
       done()
     });

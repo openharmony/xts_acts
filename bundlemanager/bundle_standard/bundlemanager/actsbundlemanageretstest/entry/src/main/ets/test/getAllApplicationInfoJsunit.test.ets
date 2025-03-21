@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe,beforeAll, it, expect } from '@ohos/hypium';
+import { describe,beforeAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
@@ -53,7 +53,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0100_001, 0, async function (done) {
+        it(TAG_TEST_0100_001, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).catch((error) => {
@@ -74,7 +74,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0100_002, 0, async function (done) {
+        it(TAG_TEST_0100_002, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, userId).catch((error) => {
@@ -95,7 +95,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0100_003, 0, async function (done) {
+        it(TAG_TEST_0100_003, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, userId).catch((error) => {
@@ -117,7 +117,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0200_001, 0, async function (done) {
+        it(TAG_TEST_0200_001, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION).catch((error) => {
@@ -138,7 +138,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0200_002, 0, async function (done) {
+        it(TAG_TEST_0200_002, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_ALL_APPLICATION_INFO).catch((error) => {
@@ -159,7 +159,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it(TAG_TEST_0200_003, 0, async function (done) {
+        it(TAG_TEST_0200_003, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE).catch((error) => {
@@ -180,7 +180,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level   0
          */
-        it(TAG_TEST_0300_001, 0, async function (done) {
+        it(TAG_TEST_0300_001, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let datas;
             let startTime = await Utils.getNowTime();
             Bundle.getAllApplicationInfo(
@@ -208,7 +208,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level   0
          */
-        it(TAG_TEST_0400_001, 0, async function (done) {
+        it(TAG_TEST_0400_001, TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let datas;
             let startTime = await Utils.getNowTime();
             Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
@@ -234,7 +234,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_1020', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_1020', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await Bundle.getAllApplicationInfo(DEFAULT_FLAG).then((data) => {
                 expect(data.length).assertLarger(10);
                 let flag = 0;
@@ -268,7 +268,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_1060', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_1060', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await Bundle.getAllApplicationInfo(null).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -293,7 +293,7 @@ export default function getAllApplicationBundleTest() {
          * @tc.name: getAllApplicationInfoNoMetaData
          * @tc.desc: Check the return value of the interface
          */
-        it('getAllApplicationInfoNoMetaData', 0, async function (done) {
+        it('getAllApplicationInfoNoMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await Bundle.getAllApplicationInfo(DEFAULT_FLAG,userId).then((data) => {
                 expect(data.length).assertLarger(10);
                 let flag = 0;

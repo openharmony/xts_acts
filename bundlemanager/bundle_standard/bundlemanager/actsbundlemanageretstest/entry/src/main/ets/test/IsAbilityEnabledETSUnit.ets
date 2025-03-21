@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -61,7 +61,7 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Status_AbilityEnable_5400', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
@@ -88,7 +88,7 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
-        it('Sub_Bms_Framework_Status_AbilityEnable_5300', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let abilityInfo1 = generateAbilityInfoForTest(ABILITY_ERROR1.bundleName,ABILITY_ERROR1.name);
             let abilityInfo2 = generateAbilityInfoForTest(ABILITY_ERROR2.bundleName,ABILITY_ERROR2.name);
             let abilityInfo3 = generateAbilityInfoForTest(ABILITY_ERROR3.bundleName,ABILITY_ERROR3.name);
@@ -137,7 +137,7 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
-        it('Sub_Bms_Framework_Status_AbilityEnable_5200', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let abilityInfo4 = generateAbilityInfoForTest(ABILITY_ERROR4.bundleName,ABILITY_ERROR4.name);
             let abilityInfo5 = generateAbilityInfoForTest(ABILITY_ERROR5.bundleName,ABILITY_ERROR5.name);
             let abilityInfo6 = generateAbilityInfoForTest(ABILITY_ERROR6.bundleName,ABILITY_ERROR6.name);
@@ -176,7 +176,7 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Status_AbilityEnable_5500', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_OTHER,ABILITY_NAME_OTHER);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 expect(data).assertTrue();

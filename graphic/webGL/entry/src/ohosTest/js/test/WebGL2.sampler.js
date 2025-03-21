@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -51,7 +51,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_createSampler
          * @tc.desc Test createSampler.
          */
-        it('webgl2_test_createSampler', 0, async function (done) {
+        it('webgl2_test_createSampler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_createSampler] createSampler");
             let sampler = gl.createSampler();
             console.log("webgltest Sampler:", sampler);
@@ -76,7 +76,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_deleteSampler
          * @tc.desc Test deleteSampler.
          */
-        it('webgl2_test_deleteSampler', 0, async function (done) {
+        it('webgl2_test_deleteSampler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSampler] deleteSampler");
             let sampler = gl.createSampler();
             console.log("webgltest Sampler:", sampler);
@@ -94,7 +94,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_deleteSampler_1
          * @tc.desc Test deleteSampler.
          */
-        it('webgl2_test_deleteSampler_1', 0, async function (done) {
+        it('webgl2_test_deleteSampler_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSampler] deleteSampler");
             deleteSampler((sampler) => {
                 gl.deleteSampler(null);
@@ -109,7 +109,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_deleteSampler_2
          * @tc.desc Test deleteSampler.
          */
-        it('webgl2_test_deleteSampler_2', 0, async function (done) {
+        it('webgl2_test_deleteSampler_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteSampler] deleteSampler");
             deleteSampler((sampler) => {
                 gl.deleteSampler(undefined);
@@ -131,7 +131,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_isSampler
          * @tc.desc Test isSampler.
          */
-        it('webgl2_test_isSampler', 0, async function (done) {
+        it('webgl2_test_isSampler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_isSampler] isSampler");
             let sampler = gl.createSampler();
             console.log("webgltest Sampler:", sampler);
@@ -149,7 +149,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_isSampler_1
          * @tc.desc Test isSampler.
          */
-        it('webgl2_test_isSampler_1', 0, async function (done) {
+        it('webgl2_test_isSampler_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_isSampler] isSampler");
             isSampler((sampler) => {
                 gl.isSampler(null);
@@ -164,7 +164,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_isSampler_2
          * @tc.desc Test isSampler.
          */
-        it('webgl2_test_isSampler_2', 0, async function (done) {
+        it('webgl2_test_isSampler_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_isSampler] isSampler");
             isSampler((sampler) => {
                 gl.isSampler(undefined);
@@ -190,7 +190,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler', 0, async function (done) {
+        it('webgl2_test_bindSampler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             let sampler = gl.createSampler();
             let texture = gl.createTexture();
@@ -215,7 +215,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_1
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_1', 0, async function (done) {
+        it('webgl2_test_bindSampler_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(null, sampler);
@@ -231,7 +231,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_2
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_2', 0, async function (done) {
+        it('webgl2_test_bindSampler_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(undefined, sampler);
@@ -247,7 +247,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_3
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_3', 0, async function (done) {
+        it('webgl2_test_bindSampler_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(1, sampler);
@@ -263,7 +263,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_4
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_4', 0, async function (done) {
+        it('webgl2_test_bindSampler_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(2, sampler);
@@ -279,7 +279,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_5
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_5', 0, async function (done) {
+        it('webgl2_test_bindSampler_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(3, sampler);
@@ -295,7 +295,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_6
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_6', 0, async function (done) {
+        it('webgl2_test_bindSampler_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(4, sampler);
@@ -311,7 +311,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_7
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_7', 0, async function (done) {
+        it('webgl2_test_bindSampler_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(5, sampler);
@@ -327,7 +327,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_8
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_8', 0, async function (done) {
+        it('webgl2_test_bindSampler_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(6, sampler);
@@ -343,7 +343,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_9
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_9', 0, async function (done) {
+        it('webgl2_test_bindSampler_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(7, sampler);
@@ -359,7 +359,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_10
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_10', 0, async function (done) {
+        it('webgl2_test_bindSampler_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(8, sampler);
@@ -375,7 +375,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_bindSampler_11
          * @tc.desc Test bindSampler.
          */
-        it('webgl2_test_bindSampler_11', 0, async function (done) {
+        it('webgl2_test_bindSampler_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_bindSampler] bindSampler");
             bindSampler((sampler) => {
                 gl.bindSampler(false, sampler);
@@ -402,7 +402,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameteri
          * @tc.desc Test samplerParameteri.
          */
-        it('webgl2_test_samplerParameteri', 0, async function (done) {
+        it('webgl2_test_samplerParameteri', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameteri] samplerParameteri");
             let sampler = gl.createSampler();
             let texture = gl.createTexture();
@@ -424,7 +424,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameteri_1
          * @tc.desc Test samplerParameteri.
          */
-        it('webgl2_test_samplerParameteri_1', 0, async function (done) {
+        it('webgl2_test_samplerParameteri_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameteri] samplerParameteri");
             samplerParameteri((sampler) => {
                 gl.samplerParameteri(sampler, gl.TEXTURE_MAX_LOD, gl.LINEAR);
@@ -440,7 +441,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameteri_2
          * @tc.desc Test samplerParameteri.
          */
-        it('webgl2_test_samplerParameteri_2', 0, async function (done) {
+        it('webgl2_test_samplerParameteri_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameteri] samplerParameteri");
             samplerParameteri((sampler) => {
                 gl.samplerParameteri(sampler, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -456,7 +458,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameteri_3
          * @tc.desc Test samplerParameteri.
          */
-        it('webgl2_test_samplerParameteri_3', 0, async function (done) {
+        it('webgl2_test_samplerParameteri_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameteri] samplerParameteri");
             samplerParameteri((sampler) => {
                 gl.samplerParameteri(sampler, gl.TEXTURE_MIN_LOD, gl.LINEAR);
@@ -483,7 +486,7 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameterf
          * @tc.desc Test samplerParameterf.
          */
-        it('webgl2_test_samplerParameterf', 0, async function (done) {
+        it('webgl2_test_samplerParameterf', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameterf] samplerParameterf");
             let sampler = gl.createSampler();
             let texture = gl.createTexture();
@@ -505,7 +508,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameterf_1
          * @tc.desc Test samplerParameterf.
          */
-        it('webgl2_test_samplerParameterf_1', 0, async function (done) {
+        it('webgl2_test_samplerParameterf_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameterf] samplerParameterf");
             samplerParameterf((sampler) => {
                 gl.samplerParameterf(sampler, gl.TEXTURE_MAX_LOD, gl.LINEAR);
@@ -521,7 +525,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameterf_2
          * @tc.desc Test samplerParameterf.
          */
-        it('webgl2_test_samplerParameterf_2', 0, async function (done) {
+        it('webgl2_test_samplerParameterf_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameterf] samplerParameterf");
             samplerParameterf((sampler) => {
                 gl.samplerParameterf(sampler, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -537,7 +542,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_samplerParameterf_3
          * @tc.desc Test samplerParameterf.
          */
-        it('webgl2_test_samplerParameterf_3', 0, async function (done) {
+        it('webgl2_test_samplerParameterf_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_samplerParameterf] samplerParameterf");
             samplerParameterf((sampler) => {
                 gl.samplerParameterf(sampler, gl.TEXTURE_MIN_LOD, gl.LINEAR);
@@ -564,7 +570,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             let sampler = gl.createSampler();
             let texture = gl.createTexture();
@@ -586,7 +593,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_1
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_1', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_COMPARE_FUNC);
@@ -602,7 +610,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_2
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_2', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_COMPARE_MODE);
@@ -618,7 +627,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_3
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_3', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_MAX_LOD);
@@ -634,7 +644,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_4
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_4', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_MIN_FILTER);
@@ -650,7 +661,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_5
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_5', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_MIN_LOD);
@@ -666,7 +678,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_6
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_6', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_WRAP_R);
@@ -682,7 +695,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_7
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_7', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_WRAP_S);
@@ -698,7 +712,8 @@ export default function webgl2_sampler() {
          * @tc.name webgl2_test_getSamplerParameter_8
          * @tc.desc Test getSamplerParameter.
          */
-        it('webgl2_test_getSamplerParameter_8', 0, async function (done) {
+        it('webgl2_test_getSamplerParameter_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getSamplerParameter] getSamplerParameter");
             getSamplerParameter((sampler) => {
                 gl.getSamplerParameter(sampler, gl.TEXTURE_WRAP_T);

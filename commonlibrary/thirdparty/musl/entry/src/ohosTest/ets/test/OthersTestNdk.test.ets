@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import otherstestndk from 'libotherstestndk.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlOpen001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlOpen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dlopen()).assertEqual(0);
       done()
     });
@@ -47,7 +47,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlClose001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dlclose()).assertEqual(0);
       done()
     });
@@ -60,7 +60,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlError001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dlerror()).assertEqual(0);
       done()
     });
@@ -73,7 +73,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlAddr001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlAddr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dladdr()).assertEqual(0);
       done()
     });
@@ -86,7 +86,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslReSoLvDnComp001', 0, async (done: Function) => {
+    it('testMuslReSoLvDnComp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dn_comp()).assertEqual(0);
       done()
     });
@@ -99,7 +99,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslReSoLvDnSkipName001', 0, async (done: Function) => {
+    it('testMuslReSoLvDnSkipName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dn_skipname()).assertEqual(1);
       done()
     });
@@ -112,7 +112,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMathDRem001', 0, async (done: Function) => {
+    it('testMuslMathDRem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1;
       let secondParam = 3.651;
       expect(otherstestndk.drem(firstParam, secondParam)).assertEqual(1);
@@ -127,7 +127,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMathDRemF001', 0, async (done: Function) => {
+    it('testMuslMathDRemF001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1;
       let secondParam = 3.651;
       expect(otherstestndk.dremf(firstParam, secondParam)).assertEqual(1);
@@ -142,7 +142,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMathFinite001', 0, async (done: Function) => {
+    it('testMuslMathFinite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1.78941;
       expect(otherstestndk.finite(firstParam)).assertEqual(1);
       done()
@@ -156,7 +156,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMathFiniteF001', 0, async (done: Function) => {
+    it('testMuslMathFiniteF001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1.78941;
       expect(otherstestndk.finitef(firstParam)).assertEqual(1);
       done()
@@ -170,7 +170,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMnTentEndMntEnt001', 0, async (done: Function) => {
+    it('testMuslMnTentEndMntEnt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.endmntent()).assertEqual(1);
       done()
     });
@@ -183,7 +183,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSchEdClone001', 0, async (done: Function) => {
+    it('testMuslSchEdClone001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.clone()).assertEqual(0);
       done()
     });
@@ -196,7 +196,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslLibGenDirName001', 0, async (done: Function) => {
+    it('testMuslLibGenDirName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.dirname()).assertEqual("/data/storage/el2/base/files");
       done()
     });
@@ -209,7 +209,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSyslogCloseLog001', 0, async (done: Function) => {
+    it('testMuslSyslogCloseLog001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.closelog()).assertEqual(0);
       done()
     });
@@ -222,7 +222,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUTmpEndUTent001', 0, async (done: Function) => {
+    it('testMuslUTmpEndUTent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.endutent()).assertEqual(0);
       done()
     });
@@ -235,7 +235,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEpollEpollCreate001', 0, async (done: Function) => {
+    it('testMuslEpollEpollCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.epoll_create();
       expect(result).assertLarger(0);
       done()
@@ -249,7 +249,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEpollEpollCreate1001', 0, async (done: Function) => {
+    it('testMuslEpollEpollCreate1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.epoll_create1();
       expect(result).assertLarger(0);
       done()
@@ -263,7 +263,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEpollEpollCtl001', 0, async (done: Function) => {
+    it('testMuslEpollEpollCtl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.epoll_ctl()).assertEqual(0);
       done()
     });
@@ -276,7 +276,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEpollEpollPWait001', 0, async (done: Function) => {
+    it('testMuslEpollEpollPWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.epoll_pwait()).assertEqual(0);
       done()
     });
@@ -289,7 +289,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEpollEpollWait001', 0, async (done: Function) => {
+    it('testMuslEpollEpollWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.epoll_wait()).assertEqual(0);
       done()
     });
@@ -302,7 +302,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEtherEtherATon001', 0, async (done: Function) => {
+    it('testMuslEtherEtherATon001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.ether_aton()).assertEqual(0);
       done()
     });
@@ -315,7 +315,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEtherEtherATonR001', 0, async (done: Function) => {
+    it('testMuslEtherEtherATonR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.ether_aton_r()).assertEqual(0);
       done()
     });
@@ -328,7 +328,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEtherEtherNToa001', 0, async (done: Function) => {
+    it('testMuslEtherEtherNToa001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.ether_ntoa()).assertEqual(0);
       done()
     });
@@ -341,7 +341,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEtherEtherNToaR001', 0, async (done: Function) => {
+    it('testMuslEtherEtherNToaR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.ether_ntoa_r()).assertEqual(0);
       done()
     });
@@ -354,7 +354,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEventFdEventFd001', 0, async (done: Function) => {
+    it('testMuslEventFdEventFd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = false;
       if (otherstestndk.eventfd() >= 0) {
         result = true;
@@ -371,7 +371,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEventFdEventFdRead001', 0, async (done: Function) => {
+    it('testMuslEventFdEventFdRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.eventfd_read()).assertEqual(0);
       done()
     });
@@ -384,7 +384,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslEventFdEventFdWrite001', 0, async (done: Function) => {
+    it('testMuslEventFdEventFdWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.eventfd_write()).assertEqual(0);
       done()
     });
@@ -397,7 +397,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslXAttrFGetXAttr001', 0, async (done: Function) => {
+    it('testMuslXAttrFGetXAttr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.fgetxattr()).assertLarger(0);
       done()
     });
@@ -410,7 +410,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFileFlock001', 0, async (done: Function) => {
+    it('testMuslFileFlock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.flock()).assertEqual(0);
       done()
     });
@@ -423,7 +423,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatUMaskChk001', 0, async (done: Function) => {
+    it('testMuslStatUMaskChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.__umask_chk()).assertEqual(0);
       done()
     });
@@ -436,7 +436,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSendToChk001', 0, async (done: Function) => {
+    it('testMuslSocketSendToChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.__sendto_chk()).assertEqual(0);
       done()
     });
@@ -449,7 +449,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSendChk001', 0, async (done: Function) => {
+    it('testMuslSocketSendChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.__send_chk()).assertEqual(0);
       done()
     });
@@ -462,7 +462,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecVChk001', 0, async (done: Function) => {
+    it('testMuslSocketRecVChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.__recv_chk()).assertEqual(0);
       done()
     });
@@ -475,7 +475,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecVFromChk001', 0, async (done: Function) => {
+    it('testMuslSocketRecVFromChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(otherstestndk.__recvfrom_chk()).assertEqual(0);
       done()
     });
@@ -487,7 +487,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslThreadsCndWait001', 0, async (done: Function) => {
+    it('testMuslThreadsCndWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = otherstestndk.cndWait()
       expect(a).assertEqual(0);
       done()
@@ -502,7 +502,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCtypegetmbcurmax001', 0, async (done: Function) => {
+    it('testCtypegetmbcurmax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.ctypegetmbcurmax();
       expect(result).assertEqual(0);
       done();
@@ -516,7 +516,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplocale001', 0, async (done: Function) => {
+    it('testDuplocale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.duplocale();
       expect(result).assertEqual(0);
       done();
@@ -530,7 +530,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrnolocation001', 0, async (done: Function) => {
+    it('testErrnolocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.errnolocation();
       expect(result).assertEqual(0);
       done();
@@ -544,7 +544,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFltrounds001', 0, async (done: Function) => {
+    it('testFltrounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.fltrounds();
       expect(result).assertEqual(1);
       done();
@@ -558,7 +558,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHerrnolocation001', 0, async (done: Function) => {
+    it('testHerrnolocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.herrnolocation();
       expect(result).assertEqual(0);
       done();
@@ -572,7 +572,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLibccurrentsigrtmax001', 0, async (done: Function) => {
+    it('testLibccurrentsigrtmax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.libccurrentsigrtmax();
       expect(result).assertEqual(0);
       done();
@@ -586,7 +586,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLibccurrentsigrtmin001', 0, async (done: Function) => {
+    it('testLibccurrentsigrtmin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.libccurrentsigrtmin();
       expect(result).assertEqual(0);
       done();
@@ -600,7 +600,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOverflow001', 0, async (done: Function) => {
+    it('testOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -620,7 +620,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadcleanuppush001', 0, async (done: Function) => {
+    it('testPthreadcleanuppush001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadcleanuppush();
       expect(result).assertEqual(0);
       done();
@@ -634,7 +634,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAccept001', 0, async (done: Function) => {
+    it('testAccept001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.accept();
       expect(result).assertEqual(0);
       done();
@@ -648,7 +648,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAccept4001', 0, async (done: Function) => {
+    it('testAccept4001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.accept4();
       expect(result).assertEqual(0);
       done();
@@ -663,7 +663,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadgettidnp001', 0, async (done: Function) => {
+    it('testPthreadgettidnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadgettidnp();
       expect(result).assertEqual(0);
       done();
@@ -677,7 +677,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testQuickexit001', 0, async (done: Function) => {
+    it('testQuickexit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.quickexit();
       expect(result).assertEqual(0);
       done();
@@ -691,7 +691,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOptreset001', 0, async (done: Function) => {
+    it('testOptreset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.optreset();
       expect(result).assertEqual(0);
       done();
@@ -705,7 +705,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetfatalmessage001', 0, async (done: Function) => {
+    it('testGetfatalmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.getfatalmessage();
       expect(result).assertEqual(0);
       done();
@@ -719,7 +719,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadcondclockwait001', 0, async (done: Function) => {
+    it('testPthreadcondclockwait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadcondclockwait();
       expect(result).assertEqual(0);
       done();
@@ -733,7 +733,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadcondtimedwaitmonotonicnp001', 0, async (done: Function) => {
+    it('testPthreadcondtimedwaitmonotonicnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadcondtimedwaitmonotonicnp();
       expect(result).assertEqual(0);
       done();
@@ -747,7 +747,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadcondtimeoutnp001', 0, async (done: Function) => {
+    it('testPthreadcondtimeoutnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadcondtimeoutnp();
       expect(result).assertEqual(0);
       done();
@@ -761,7 +761,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadgetnamenp001', 0, async (done: Function) => {
+    it('testPthreadgetnamenp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadgetnamenp();
       expect(result).assertEqual(0);
       done();
@@ -775,7 +775,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadmutexlocktimeoutnp001', 0, async (done: Function) => {
+    it('testPthreadmutexlocktimeoutnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadmutexlocktimeoutnp();
       expect(result).assertEqual(0);
       done();
@@ -789,7 +789,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadmutextimedlockmonotonicnp001', 0, async (done: Function) => {
+    it('testPthreadmutextimedlockmonotonicnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadmutextimedlockmonotonicnp();
       expect(result).assertEqual(0);
       done();
@@ -803,7 +803,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadmutexclocklock001', 0, async (done: Function) => {
+    it('testPthreadmutexclocklock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadmutexclocklock();
       expect(result).assertEqual(0);
       done();
@@ -817,7 +817,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadrwlockclockrdlock001', 0, async (done: Function) => {
+    it('testPthreadrwlockclockrdlock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadrwlockclockrdlock();
       expect(result).assertEqual(0);
       done();
@@ -831,7 +831,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadrwlockclockwrlock001', 0, async (done: Function) => {
+    it('testPthreadrwlockclockwrlock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadrwlockclockwrlock();
       expect(result).assertEqual(0);
       done();
@@ -845,7 +845,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadrwlocktimedrdlockmonotonicnp001', 0, async (done: Function) => {
+    it('testPthreadrwlocktimedrdlockmonotonicnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadrwlocktimedrdlockmonotonicnp();
       expect(result).assertEqual(0);
       done();
@@ -859,7 +859,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadrwlocktimedwrlockmonotonicnp001', 0, async (done: Function) => {
+    it('testPthreadrwlocktimedwrlockmonotonicnp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadrwlocktimedwrlockmonotonicnp();
       expect(result).assertEqual(0);
       done();
@@ -873,7 +873,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetapplicationtargetsdkversion001', 0, async (done: Function) => {
+    it('testSetapplicationtargetsdkversion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.setapplicationtargetsdkversion();
       expect(result).assertEqual(0);
       done();
@@ -887,7 +887,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetfatalmessage001', 0, async (done: Function) => {
+    it('testSetfatalmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.setfatalmessage();
       expect(result).assertEqual(0);
       done();
@@ -901,7 +901,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPthreadcleanuppop001', 0, async (done: Function) => {
+    it('testPthreadcleanuppop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.pthreadcleanuppop();
       expect(result).assertEqual(0);
       done();
@@ -915,7 +915,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTlsgetaddr001', 0, async (done: Function) => {
+    it('testTlsgetaddr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.tlsgetaddr();
       expect(result).assertEqual(0);
       done();
@@ -929,7 +929,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDeletemodule001', 0, async (done: Function) => {
+    it('testDeletemodule001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.delete_module();
       expect(result).assertEqual(0);
       done();
@@ -943,7 +943,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUflow001', 0, async (done: Function) => {
+    it('testUflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.uflow();
       expect(result).assertEqual(0);
       done();

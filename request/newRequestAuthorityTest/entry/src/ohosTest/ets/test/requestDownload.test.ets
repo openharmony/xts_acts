@@ -1154,23 +1154,24 @@ export default function requestDownloadJSUnit() {
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Agent_GetTask_Promise_0400.txt',
         network: request.agent.Network.ANY,
-        token:'downloadTest'
       };
       let task:request.agent.Task | null = null;
       try {
         task = await request.agent.create(baseContext, config);
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 create success");
-        await request.agent.getTask(undefined, task.tid);
+        let task1 = await request.agent.getTask(undefined, task.tid);
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 getTask success");
-        expect().assertFail();
+        expect(task1 !== undefined || task1 !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 remove success");
         done();
       } catch (err) {
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 catch: " + JSON.stringify(err));
         if (task !== null){
           await request.agent.remove(task.tid);
         }
-        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 remove success");
-        expect(err.code === 401).assertTrue();
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0400 catch remove success");
+        expect().assertFail();
         done();
       }
     });

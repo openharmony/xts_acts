@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import setjmp from 'libsetjmpndk1.so'
 
@@ -32,7 +32,7 @@ export default function muslSetJmpNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSetjmpLongjmp001', 0, async (done: Function) => {
+    it('testMuslSetjmpLongjmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = setjmp.longjmp();
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function muslSetJmpNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSetjmpSetjmp1001', 0, async (done: Function) => {
+    it('testMuslSetjmpSetjmp1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a:number = setjmp._setjmp();
       expect(a).assertEqual(0);
       done()
@@ -60,7 +60,7 @@ export default function muslSetJmpNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSetjmpLongJmp1001', 0, async (done: Function) => {
+    it('testMuslSetjmpLongJmp1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a:number = setjmp._longjmp();
       expect(a).assertEqual(0);
       done()

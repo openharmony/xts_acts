@@ -52,7 +52,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_DialogWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -89,7 +89,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_SubWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -122,7 +122,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_MainWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -151,7 +151,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_SubWindowWithOps', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindowWithOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_SubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

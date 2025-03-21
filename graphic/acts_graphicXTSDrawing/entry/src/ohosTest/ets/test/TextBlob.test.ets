@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
@@ -49,7 +49,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTextBlobMakeFromStringNormal', DEFAULT, () => {
+    it('testTextBlobMakeFromStringNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testTextBlobMakeFromStringNormal';
 
       let font = new drawing.Font();
@@ -98,7 +98,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromStringNull', DEFAULT, () => {
+    it('testTextBlobMakeFromStringNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromStringNull';
       let font = new drawing.Font();
 
@@ -159,7 +159,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromStringMultipleCalls', DEFAULT, () => {
+    it('testTextBlobMakeFromStringMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromStringMultipleCalls';
       let font = new drawing.Font();
 
@@ -188,7 +188,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTextBlobMakeFromRunBufferBoundsNormal', DEFAULT, () => {
+    it('testTextBlobMakeFromRunBufferBoundsNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testTextBlobMakeFromRunBufferBoundsNormal';
       let font = new drawing.Font(); // Create a new Font object
 
@@ -288,7 +288,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromRunBufferBoundsNull', DEFAULT, () => {
+    it('testTextBlobMakeFromRunBufferBoundsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromRunBufferBoundsNull';
       let font = new drawing.Font();
 
@@ -422,7 +422,7 @@ export default function textBlobTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTextBlobMakeFromRunBufferBoundsMultipleCalls', DEFAULT, () => {
+    it('testTextBlobMakeFromRunBufferBoundsMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTextBlobMakeFromRunBufferBoundsMultipleCalls';
       let font = new drawing.Font(); // Create a new Font object
 

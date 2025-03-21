@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 
@@ -48,7 +48,7 @@ export default function samplingOptionsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSamplingOptionsConstructorNormal', DEFAULT, () => {
+    it('testSamplingOptionsConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testSamplingOptionsConstructorNormal';
       try {
         new drawing.SamplingOptions();
@@ -75,7 +75,7 @@ export default function samplingOptionsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSamplingOptionsConstructorMultipleCalls', DEFAULT, () => {
+    it('testSamplingOptionsConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testSamplingOptionsConstructorMultipleCalls';
 
       for (let i = 0; i < 20; i++) {

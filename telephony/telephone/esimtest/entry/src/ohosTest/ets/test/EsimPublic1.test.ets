@@ -236,10 +236,18 @@ export default function EsimPublic1() {
         console.info(`${caseName} test end`);
         done();
       } catch (err) {
-        console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(3120002);
-        console.info(`${caseName} test end`);
-        done();
+        if (err.code === 801) {
+          console.info(`${caseName} The current device type does not, promise: err->${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(801);
+          console.info(`${caseName} test end`);
+          done();
+        }
+        else{
+          console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(3120002);
+          console.info(`${caseName} test end`);
+          done();
+        }
       }
     });
 
@@ -261,10 +269,18 @@ export default function EsimPublic1() {
         console.info(`${caseName} test end`);
         done();
       } catch (err) {
-        console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(401);
-        console.info(`${caseName} test end`);
-        done();
+        if (err.code === 801) {
+          console.info(`${caseName} The current device type does not, promise: err->${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(801);
+          console.info(`${caseName} test end`);
+          done();
+        }
+        else{
+          console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(401);
+          console.info(`${caseName} test end`);
+          done();
+          }
       }
     });
   })

@@ -14,7 +14,7 @@
 */
 
 import bundle from '@ohos.bundle'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.bmsmainabilityfirstscene';
 const BUNDLE_NAME2 = 'com.example.third2';
@@ -42,7 +42,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo from one app by getBundleInfo
      * @tc.desc: get the module information of the hap with type of entry
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         async function callback(err, result) {
@@ -75,7 +75,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo from two modules by getBundleInfo
      * @tc.desc: get the module information of the hap with type of feature
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8520', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
@@ -103,7 +103,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo one app without mainAbility by getBundleInfo
      * @tc.desc: get the module information of the hap without mainAbility
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8540', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));
@@ -135,7 +135,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo through getBundleInfo, an application that adds mainAbility
      * @tc.desc: get the module information of the hap with the added field mainAbility
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8560', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8560', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
@@ -167,7 +167,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo from the system through getBundleInfo 
      * @tc.desc: get module information of mainAbility system application 
      */
-    it('Sub_Bms_Framework_Query_AppInfo_0120', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0120', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         function callback(err, data) {

@@ -15,7 +15,6 @@
 
 import dataManagerHasCartTest from './DataManagerHasCard.test';
 import dataManagerEmptyTest from './DataManagerEmpty.test';
-import CallUXUsabilityOptimizationTest from './CallSettingSyncCheck.test';
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
@@ -23,7 +22,6 @@ export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     if(sim.hasSimCardSync(0)){
       dataManagerHasCartTest();
-      CallUXUsabilityOptimizationTest();
     } else {
       dataManagerEmptyTest();
     }

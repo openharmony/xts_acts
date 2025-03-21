@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { BusinessError } from '@kit.BasicServicesKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import defaultAppMgr from '@ohos.bundle.defaultAppManager'
 
 const PARAM_ERROR_CODE = 401;
@@ -26,7 +26,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise and Callback
      * @tc.desc: No default image application is set. Query and return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_0900', 0, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_0900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE).then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_0900  successfully: ' + JSON.stringify(data));
@@ -57,7 +57,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_0650', 0, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_0650', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication("image/").then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_0650  successfully: ' + JSON.stringify(data));
@@ -79,7 +79,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_1150', 0, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_1150', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication("abc").then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_1150  successfully: ' + JSON.stringify(data));
@@ -101,7 +101,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: test ApplicationType
      * @tc.desc: ApplicationType is string
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_1200', 0, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       expect(typeof (defaultAppMgr.ApplicationType.BROWSER)).assertEqual("string");
       expect(defaultAppMgr.ApplicationType.BROWSER).assertEqual("Web Browser");
 
@@ -136,7 +136,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: testIsDefaultApplicationNotExistedType
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it('testIsDefaultApplicationNotExistedType', 0, async (done: Function) => {
+    it('testIsDefaultApplicationNotExistedType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         let data = defaultAppMgr.isDefaultApplicationSync("abc");
         expect(data).assertFalse();
@@ -152,7 +152,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: testIsDefaultApplicationNullType
      * @tc.desc: The parameter type is null, the string format is incorrect, return false
      */
-    it('testIsDefaultApplicationNullType', 0, async (done: Function) => {
+    it('testIsDefaultApplicationNullType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = defaultAppMgr.isDefaultApplicationSync(null);
         expect(data).assertFail();
@@ -174,7 +174,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: testIsDefaultApplicationUndefinedType
      * @tc.desc: The parameter type is undefined, the string format is incorrect, return false
      */
-    it('testIsDefaultApplicationUndefinedType', 0, async (done: Function) => {
+    it('testIsDefaultApplicationUndefinedType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = defaultAppMgr.isDefaultApplicationSync(undefined);
         expect(data).assertFail();

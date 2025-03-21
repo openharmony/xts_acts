@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import bundle from '@ohos.bundle'
 import pkg from '@system.package'
 import account from '@ohos.account.osAccount'
@@ -47,7 +47,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getApplicationInfosUnPermission
         * @tc.desc      test getAllApplicationInfo 
         */
-        it('getApplicationInfosUnPermission', 0, async function (done) {
+        it('getApplicationInfosUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -65,7 +65,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getBundleInfoUnPermission
         * @tc.desc      test getBundleInfo
         */
-        it('getBundleInfoUnPermission', 0, async function (done) {
+        it('getBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -83,7 +83,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getApplicationInfoUnPermission
         * @tc.desc      test getApplicationInfo 
         */
-        it('getApplicationInfoUnPermission', 0, async function (done) {
+        it('getApplicationInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -101,7 +101,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: hasInstalledUnPermissionSelf
          * @tc.desc: test hasInstalled without permission
         */
-        it('hasInstalledUnPermissionSelf', 0, async function (done) {
+        it('hasInstalledUnPermissionSelf', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,
@@ -127,7 +127,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: hasInstalledUnPermissionOther
          * @tc.desc: test hasInstalled without permission
         */
-        it('hasInstalledUnPermissionOther', 0, async function (done) {
+        it('hasInstalledUnPermissionOther', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: BUNDLE_NAME_OTHER,
@@ -153,7 +153,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: getAbilityIconUnPermission
          * @tc.desc: test getAbilityIcon without permission
         */
-        it('getAbilityIconUnPermission', 0, async function (done) {
+        it('getAbilityIconUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {
@@ -170,7 +170,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: getAbilityInfoUnPermissionSelf
          * @tc.desc: test getAbilityInfo
         */
-        it('getAbilityInfoUnPermissionSelf', 0, async function (done) {
+        it('getAbilityInfoUnPermissionSelf', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getAbilityInfo(SELF_BUNDLENAME, SELF_ABILITYNAME).then(res => {
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
                 for (const item in res) {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll , afterEach , beforeAll , beforeEach , describe , expect , it } from '@ohos/hypium';
+import { afterAll , afterEach , beforeAll , beforeEach , describe , expect , it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import uiEffect from '@ohos.graphics.uiEffect';
@@ -50,7 +50,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateBlurImageFilterNormal' , DEFAULT , () => {
+    it('testImageFilterCreateBlurImageFilterNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateBlurImageFilterNormal';
 
       try {
@@ -102,7 +102,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateBlurImageFilterMultipleCalls' , DEFAULT , () => {
+    it('testImageFilterCreateBlurImageFilterMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateBlurImageFilterMultipleCalls';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
@@ -125,7 +125,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateBlurImageFilterToNull' , DEFAULT , () => {
+    it('testImageFilterCreateBlurImageFilterToNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateBlurImageFilterToNull';
 
       try {
@@ -193,7 +193,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateBlurImageFilterAbnormal' , DEFAULT , () => {
+    it('testImageFilterCreateBlurImageFilterAbnormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateBlurImageFilterAbnormal';
 
       try {
@@ -245,7 +245,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateFromColorFilterNormal' , DEFAULT , () => {
+    it('testImageFilterCreateFromColorFilterNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateFromColorFilterNormal';
 
       try {
@@ -276,7 +276,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImageFilterCreateFromColorFilterMultipleCalls' , DEFAULT , () => {
+    it('testImageFilterCreateFromColorFilterMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testImageFilterCreateFromColorFilterMultipleCalls';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
@@ -301,7 +301,7 @@ export default function imageFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testImageFilterCreateFromColorFilterToNull' , DEFAULT , () => {
+    it('testImageFilterCreateFromColorFilterToNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testImageFilterCreateFromColorFilterToNull';
 
       try {

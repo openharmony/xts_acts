@@ -18,6 +18,8 @@
     "MainAbility/pages/dialogV2/loadingDialogV2TestPage",
     "MainAbility/pages/dialogV2/confirmDialogV2TestPage",
     "MainAbility/pages/dialogV2/tipsDialogV2TestPage",
+    "MainAbility/pages/composeListItem/composeListItemAccessibilityPage",
+    "MainAbility/pages/exceptionPrompt/exceptionPromptSymbolStyle",
     "MainAbility/pages/dialogV2/alertDialogV2TestPage",
     "MainAbility/pages/dialogV2/popoverDialogV2TestPage"
   ]

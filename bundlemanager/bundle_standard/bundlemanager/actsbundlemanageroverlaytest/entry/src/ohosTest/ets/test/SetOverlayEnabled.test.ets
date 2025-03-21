@@ -15,7 +15,7 @@
 
 import overlay from '@ohos.bundle.overlay';
 import Utils from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 
 const MODULE_NAME = "entry_test";
 const MODULE_NAME1 = "test1";
@@ -30,7 +30,7 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameIsNull
      * @tc.desc: Failed to set when the incoming moduleName is empty
      */
-    it('SetOverlayEnabledModuleNameIsNull', 0, async () => {
+    it('SetOverlayEnabledModuleNameIsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       try {
         await overlay.setOverlayEnabled("", true).then(data => {
           console.info("SetOverlayEnabledModuleNameIsNull result1111" + JSON.stringify(data))
@@ -59,7 +59,7 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameNotInstall
      * @tc.desc: Failed to set when the incoming moduleName is not installed
      */
-    it('SetOverlayEnabledModuleNameNotInstall', 0, async () => {
+    it('SetOverlayEnabledModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       try {
         await overlay.setOverlayEnabled(MODULE_NAME1, true).then(data => {
           console.info("SetOverlayEnabledModuleNameNotInstall result" + JSON.stringify(data));
@@ -88,7 +88,7 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameIsNotOverlay
      * @tc.desc: Failed to set when the incoming moduleName is not overlay
      */
-    it('SetOverlayEnabledModuleNameIsNotOverlay', 0, async () => {
+    it('SetOverlayEnabledModuleNameIsNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       try {
         await overlay.setOverlayEnabled(MODULE_NAME, true).then(data => {
           console.info("SetOverlayEnabledModuleNameIsNotOverlay result" + JSON.stringify(data));

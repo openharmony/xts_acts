@@ -14,7 +14,7 @@
  */
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const SYSTEM_NAME = 'com.example.system2';
@@ -43,7 +43,7 @@ export default function ActsBmsQueryAbilityByWant() {
         * @tc.desc: 1.queryAbilityByWant callback
         *           2.queryAbilityByWant for third app
         */
-        it('queryAbilityByWantThirdApp', 0, async function (done) {
+        it('queryAbilityByWantThirdApp', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.queryAbilityByWant({
                 action: ACTION_NAME,
                 entities: [ENTITY_NAME],
@@ -72,7 +72,7 @@ export default function ActsBmsQueryAbilityByWant() {
         * @tc.desc: 1.queryAbilityByWant callback
         *           2.queryAbilityByWant for systemapp
         */
-        it('queryAbilityByWantSystemApp', 0, async function (done) {
+        it('queryAbilityByWantSystemApp', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.queryAbilityByWant(
                 {
                     action: ACTION_NAME,
@@ -111,7 +111,7 @@ export default function ActsBmsQueryAbilityByWant() {
         * @tc.name: queryAbilityByWantImplicitByEntities
         * @tc.desc: The entities in the parameter want pass in the new field, and use the implicit query to get abilitInfos
         */
-        it('queryAbilityByWantImplicitByEntities', 0, async function (done) {
+        it('queryAbilityByWantImplicitByEntities', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: ACTION_NAME,
                 entities: ["entity.app.music",

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import err from 'liberrndk.so'
 
@@ -32,7 +32,7 @@ export default function errNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslErrWarn001', 0, async (done: Function) => {
+    it('testMuslErrWarn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 13;
       let result: number = err.warn();
       expect(result).assertEqual(resultTrue);
@@ -47,7 +47,7 @@ export default function errNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslErrWarnx001', 0, async (done: Function) => {
+    it('testMuslErrWarnx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 13;
       let result: number = err.warnx();
       expect(result).assertEqual(resultTrue);

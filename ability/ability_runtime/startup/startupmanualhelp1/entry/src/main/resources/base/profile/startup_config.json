@@ -134,7 +134,37 @@
       "name": "Sample_019",
       "srcEntry": "./ets/startup/Sample_019.ets",
       "excludeFromAutoStart": true
+    },
+    {
+      "name": "Sample_100",
+      "srcEntry": "./ets/startup/Sample_100.ets",
+      "excludeFromAutoStart": true,
+      "dependencies": [
+        "Sample_101"
+      ]
+
+    },
+    {
+      "name": "Sample_101",
+      "srcEntry": "./ets/startup/Sample_101.ets",
+      "excludeFromAutoStart": true,
+      "dependencies": [
+        "Sample_100"
+      ]
+
+    },
+    {
+      "name": "Sample_102",
+      "srcEntry": "./ets/startup/Sample_102.ets",
+      "excludeFromAutoStart": true
+    },
+    {
+      "name": "Sample_103",
+      "srcEntry": "./ets/startup/Sample_103.ets",
+      "excludeFromAutoStart": true,
+      "waitOnMainThread":false
     }
+
   ],
   "configEntry": "./ets/startup/StartupConfig.ets"
 }

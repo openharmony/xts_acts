@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 import { getEnumCount, getRandomNumber } from './utils';
@@ -48,7 +48,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetColorNormal', DEFAULT, () => {
+    it('testBrushSetColorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetColorNormal';
       const brush = new drawing.Brush();
       const colors: Array<common2D.Color> = [
@@ -78,7 +78,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColorNull', DEFAULT, () => {
+    it('testBrushSetColorNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColorNull';
       const brush = new drawing.Brush();
       const colors: Array<Partial<common2D.Color>> = [
@@ -126,7 +126,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColorMultipleCalls', DEFAULT, () => {
+    it('testBrushSetColorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColorMultipleCalls';
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
@@ -154,7 +154,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColorBoundaryValue', DEFAULT, () => {
+    it('testBrushSetColorBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColorBoundaryValue';
       const brush = new drawing.Brush();
       const colors: Array<common2D.Color> = [
@@ -202,7 +202,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetAntiAliasNormal', DEFAULT, () => {
+    it('testBrushSetAntiAliasNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetAntiAliasNormal';
       const brush = new drawing.Brush();
 
@@ -232,7 +232,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetAntiAliasNull', DEFAULT, () => {
+    it('testBrushSetAntiAliasNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetAntiAliasNull';
       const brush = new drawing.Brush();
 
@@ -262,7 +262,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetAntiAliasMultipleCalls', DEFAULT, () => {
+    it('testBrushSetAntiAliasMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetAntiAliasMultipleCalls';
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
@@ -285,7 +285,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetAlphaNormal', DEFAULT, () => {
+    it('testBrushSetAlphaNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetAlphaNormal';
       const brush = new drawing.Brush();
 
@@ -322,7 +322,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetAlphaNull', DEFAULT, () => {
+    it('testBrushSetAlphaNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetAlphaNull';
       const brush = new drawing.Brush();
 
@@ -351,7 +351,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetAlphaMultipleCalls', DEFAULT, () => {
+    it('testBrushSetAlphaMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetAlphaMultipleCalls';
       try {
         const brush = new drawing.Brush();
@@ -374,7 +374,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetColorFilterNormal', DEFAULT, () => {
+    it('testBrushSetColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetColorFilterNormal';
       try {
         const brush = new drawing.Brush();
@@ -394,7 +394,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColorFilterNull', DEFAULT, () => {
+    it('testBrushSetColorFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColorFilterNull';
       const brush = new drawing.Brush();
 
@@ -423,7 +423,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColorFilterMultipleCalls', DEFAULT, () => {
+    it('testBrushSetColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColorFilterMultipleCalls';
       const brush = new drawing.Brush();
       try {
@@ -445,7 +445,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetMaskFilterNormal', DEFAULT, () => {
+    it('testBrushSetMaskFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetMaskFilterNormal';
       try {
         const brush = new drawing.Brush();
@@ -465,7 +465,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetMaskFilterNull', DEFAULT, () => {
+    it('testBrushSetMaskFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetMaskFilterNull';
       try {
         const brush = new drawing.Brush();
@@ -486,7 +486,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetMaskFilterMultipleCalls', DEFAULT, () => {
+    it('testBrushSetMaskFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetMaskFilterMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -511,7 +511,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetShadowLayerNormal', DEFAULT, () => {
+    it('testBrushSetShadowLayerNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetShadowLayerNormal';
       try {
         const brush = new drawing.Brush();
@@ -533,7 +533,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetShadowLayerNull', DEFAULT, () => {
+    it('testBrushSetShadowLayerNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetShadowLayerNull';
       const brush = new drawing.Brush();
 
@@ -562,7 +562,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetShadowLayerMultipleCalls', DEFAULT, () => {
+    it('testBrushSetShadowLayerMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetShadowLayerMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -595,7 +595,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetBlendModeNormal', DEFAULT, () => {
+    it('testBrushSetBlendModeNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetBlendModeNormal';
       const brush = new drawing.Brush();
       try {
@@ -643,7 +643,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetBlendModeNull', DEFAULT, () => {
+    it('testBrushSetBlendModeNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetBlendModeNull';
       const brush = new drawing.Brush();
 
@@ -672,7 +672,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetBlendModeMultipleCalls', DEFAULT, () => {
+    it('testBrushSetBlendModeMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetBlendModeMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -697,7 +697,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetColor12Normal', DEFAULT, () => {
+    it('testBrushSetColor12Normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testBrushSetColor12Normal';
       try {
         const brush = new drawing.Brush();
@@ -718,7 +718,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColor12Null', DEFAULT, () => {
+    it('testBrushSetColor12Null', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColor12Null';
       try {
         const brush = new drawing.Brush();
@@ -794,7 +794,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColor12MultipleCalls', DEFAULT, () => {
+    it('testBrushSetColor12MultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColor12MultipleCalls';
       try {
         const brush = new drawing.Brush();
@@ -816,7 +816,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetColor12BoundaryValue', DEFAULT, () => {
+    it('testBrushSetColor12BoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testBrushSetColor12BoundaryValue';
       try {
         const brush = new drawing.Brush();
@@ -892,7 +892,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetImageFilterNormal' , DEFAULT , () => {
+    it('testBrushSetImageFilterNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushSetImageFilterNormal';
       const brush = new drawing.Brush();
       const imgFilter = new drawing.ImageFilter();
@@ -922,7 +922,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetImageFilterNull' , DEFAULT , () => {
+    it('testBrushSetImageFilterNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushSetImageFilterNull';
       const brush = new drawing.Brush();
 
@@ -943,7 +943,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetImageFilterMultipleCalls' , DEFAULT , () => {
+    it('testBrushSetImageFilterMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushSetImageFilterMultipleCalls';
       const brush = new drawing.Brush();
       const imgFilter = new drawing.ImageFilter();
@@ -967,7 +967,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushGetColorFilterNormal' , DEFAULT , () => {
+    it('testBrushGetColorFilterNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushGetColorFilterNormal';
       const brush = new drawing.Brush();
 
@@ -989,7 +989,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushGetColorFilterMultipleCalls' , DEFAULT , () => {
+    it('testBrushGetColorFilterMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushGetColorFilterMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -1012,7 +1012,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushConstructorNormal' , DEFAULT , () => {
+    it('testBrushConstructorNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushConstructorNormal';
       const brush = new drawing.Brush();
 
@@ -1052,7 +1052,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushConstructorMultipleCalls' , DEFAULT , () => {
+    it('testBrushConstructorMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushConstructorMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -1076,7 +1076,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushGetAlphaNormal' , DEFAULT , () => {
+    it('testBrushGetAlphaNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushGetAlphaNormal';
       const brush = new drawing.Brush();
 
@@ -1118,7 +1118,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushGetAlphaMultipleCalls' , DEFAULT , () => {
+    it('testBrushGetAlphaMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushGetAlphaMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -1142,7 +1142,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushIsAntiAliasNormal' , DEFAULT , () => {
+    it('testBrushIsAntiAliasNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushIsAntiAliasNormal';
       const brush = new drawing.Brush();
 
@@ -1184,7 +1184,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushIsAntiAliasMultipleCalls' , DEFAULT , () => {
+    it('testBrushIsAntiAliasMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushIsAntiAliasMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -1208,7 +1208,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushGetColorNormal' , DEFAULT , () => {
+    it('testBrushGetColorNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushGetColorNormal';
       const brush = new drawing.Brush();
 
@@ -1256,7 +1256,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushGetColorMultipleCalls' , DEFAULT , () => {
+    it('testBrushGetColorMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushGetColorMultipleCalls';
       const brush = new drawing.Brush();
 
@@ -1280,7 +1280,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetShaderEffectNormal' , DEFAULT , () => {
+    it('testBrushSetShaderEffectNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushSetShaderEffectNormal';
       const brush = new drawing.Brush();
       const shaderEffect = new drawing.ShaderEffect();
@@ -1310,7 +1310,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetShaderEffectNull' , DEFAULT , () => {
+    it('testBrushSetShaderEffectNull' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushSetShaderEffectNull';
       const brush = new drawing.Brush();
 
@@ -1331,7 +1331,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetShaderEffectMultipleCalls' , DEFAULT , () => {
+    it('testBrushSetShaderEffectMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushSetShaderEffectMultipleCalls';
       const brush = new drawing.Brush();
       const shaderEffect = new drawing.ShaderEffect();
@@ -1355,7 +1355,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushResetNormal' , DEFAULT , () => {
+    it('testBrushResetNormal' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0 , () => {
       const msg = 'testBrushResetNormal';
       const brush = new drawing.Brush();
 
@@ -1385,7 +1385,7 @@ export default function brushTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushResetMultipleCalls' , DEFAULT , () => {
+    it('testBrushResetMultipleCalls' , TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3 , () => {
       const msg = 'testBrushResetMultipleCalls';
       const brush = new drawing.Brush();
 

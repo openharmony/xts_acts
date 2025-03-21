@@ -50,7 +50,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Count1.count = 0
       // 创建一个任务
       let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: 测试参数
@@ -72,7 +72,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done()
+      done()
     });
 
     /**
@@ -83,7 +83,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0100_2', 0,  (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0100_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -98,7 +98,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(10200014); // 错误码应为 10200014
-          Done()
+          done()
         });
     });
 
@@ -110,7 +110,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testTaskExecutionTimeEqualsDelay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('testTaskExecutionTimeEqualsDelay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -146,7 +146,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done();
+      done();
     });
     /**
      * @tc.number taskPoolExecuteDelayedTimeConsumTest0101_2
@@ -156,7 +156,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0101_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0101_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
 
@@ -178,7 +178,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(undefined);
-          Done()
+          done()
         });
     });
 
@@ -190,7 +190,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -222,7 +222,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       }
 
       expect(1).assertEqual(Count1.count)
-      Done();
+      done();
     });
 
     /**
@@ -233,7 +233,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0102_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0102_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
@@ -252,7 +252,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
           // 断言：验证错误码和错误信息
           expect(e.code).assertEqual(undefined); // 错误码应为 10200028
-          Done()
+          done()
         });
     });
   })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import glob from 'libglobndk.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function muslGlobdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslGlobGlob001', 0, async (done: Function) => {
+    it('testMuslGlobGlob001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = glob.glob();
       expect(result).assertEqual(0)
       done()
@@ -48,7 +48,7 @@ export default function muslGlobdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslGlobGlobfree001', 0, async (done: Function) => {
+    it('testMuslGlobGlobfree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = glob.globfree();
       expect(result).assertEqual(0)
       done()

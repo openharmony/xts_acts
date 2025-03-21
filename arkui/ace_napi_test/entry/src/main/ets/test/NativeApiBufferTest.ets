@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 
@@ -33,7 +33,7 @@ export default function napiBufferTest() {
     * @tc.name      napiBufferTest001
     * @tc.desc      aceNapiEtsTest
     */
-    it('napiBufferTest001', 0, () => {
+    it('napiBufferTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(napitest.CreateBuffer().toString()).assertDeepEquals(napitest.testStr);
       expect(napitest.CreateExternalBuffer().toString()).assertDeepEquals(napitest.testStr);
     })
@@ -43,7 +43,7 @@ export default function napiBufferTest() {
     * @tc.name      napiBufferTest001
     * @tc.desc      aceNapiEtsTest
     */
-    it('napiBufferTest002', 0, () => {
+    it('napiBufferTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let buffer: Object = napitest.CreateBuffer();
       expect(napitest.IsBuffer(buffer)).assertTrue();
       expect(napitest.GetBufferInfo(buffer)).assertTrue();

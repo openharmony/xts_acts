@@ -13,18 +13,13 @@
  * limitations under the License.
  */
 
-import { ToolBar, ToolBarOptions } from '@ohos.arkui.advanced.ToolBar';
-
-enum ItemState {
-  ENABLE = 1,
-  DISABLE = 2,
-  ACTIVATE = 3,
-}
+import { ToolBar, ToolBarOptions, ItemState } from '@ohos.arkui.advanced.ToolBar';
 
 @Entry
 @Component
 struct ToolBarItemState {
   @State toolbarList: ToolBarOptions = new ToolBarOptions()
+  toolbarControl: TabsController = new TabsController();
   aboutToAppear() {
     this.toolbarList.push({
       content: 'ENABLE',
@@ -55,6 +50,7 @@ struct ToolBarItemState {
           ToolBar({
             activateIndex: 2,
             toolBarList: this.toolbarList,
+            controller: this.toolbarControl,
           })
         }
       }

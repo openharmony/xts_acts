@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle'
 import image from '@ohos.multimedia.image'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const BUNDLE_NAME = "com.open.harmony.packagemag";
 const ABILITIY_NAME = "com.open.harmony.packagemag.MainAbility";
@@ -33,7 +33,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_2800', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 console.log('Sub_Bms_Framework_Query_Icon_2800 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
@@ -53,7 +53,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_2700', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME).then(pixelmap => {
                 console.log('Sub_Bms_Framework_Query_Icon_2700 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
@@ -73,7 +73,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_2900', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, SERVICE_NAME).then(pixelmap => {
                 expect().assertFail();
             }).catch(err => {
@@ -91,7 +91,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_3200', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_3200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME_ERROR).then(pixelmap => {
                 expect(pixelmap !== null).assertFail();
             }).catch(err => {
@@ -128,7 +128,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_3000', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_3000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, undefined).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import inttypes from 'libinttypesndk.so'
 
@@ -32,7 +32,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesStrtoimax001', 0, async (done: Function) => {
+    it('testMuslInttypesStrtoimax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = '1000xyz';
       let b = 'a';
       let c = 10;
@@ -50,7 +50,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesStrtoimax002', 0, async (done: Function) => {
+    it('testMuslInttypesStrtoimax002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 'ff';
       let b = 'xyz';
       let c = 16;
@@ -68,7 +68,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesStrtoumax001', 0, async (done: Function) => {
+    it('testMuslInttypesStrtoumax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = '1000xyz';
       let b = 'a';
       let c = 10;
@@ -86,7 +86,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesStrtoumax002', 0, async (done: Function) => {
+    it('testMuslInttypesStrtoumax002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 'ff';
       let b = 'xyz';
       let c = 16;
@@ -103,7 +103,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesImaxdiv001', 0, async (done: Function) => {
+    it('testMuslInttypesImaxdiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: object = inttypes.imaxdiv(5, 2);
       expect(result['quot']).assertEqual(2);
       expect(result['rem']).assertEqual(1);
@@ -117,7 +117,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesImaxdiv002', 0, async (done: Function) => {
+    it('testMuslInttypesImaxdiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: object = inttypes.imaxdiv(4, 2);
       expect(result['quot']).assertEqual(2);
       expect(result['rem']).assertEqual(0);
@@ -132,7 +132,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesImaxabs001', 0, async (done: Function) => {
+    it('testMuslInttypesImaxabs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = inttypes.imaxabs(1)
       expect(result).assertEqual(1);
       done()
@@ -145,7 +145,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslInttypesImaxabs002', 0, async (done: Function) => {
+    it('testMuslInttypesImaxabs002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = inttypes.imaxabs(-1)
       expect(result).assertEqual(1);
       done()
@@ -158,7 +158,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInttypesWcstoimax001', 0, async (done: Function) => {
+    it('testMuslInttypesWcstoimax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 10;
       let wcstoimaxResult: number = inttypes.wcstoimax(param);
       console.info("Test wcstoimaxResult= " + wcstoimaxResult);
@@ -174,7 +174,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInttypesWcstoimax002', 0, async (done: Function) => {
+    it('testMuslInttypesWcstoimax002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let wcstoimaxResult: number = inttypes.wcstoimax(param);
       console.info("Test wcstoimaxResult= " + wcstoimaxResult);
@@ -190,7 +190,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInttypesWcstoumax001', 0, async (done: Function) => {
+    it('testMuslInttypesWcstoumax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 10;
       let wcstoumaxResult: number = inttypes.wcstoumax(param);
       console.info("Test wcstoumaxResult= " + wcstoumaxResult);
@@ -206,7 +206,7 @@ export default function inttypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInttypesWcstoumax002', 0, async (done: Function) => {
+    it('testMuslInttypesWcstoumax002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let wcstoumaxResult: number = inttypes.wcstoumax(param);
       console.info("Test wcstoumaxResult= " + wcstoumaxResult);

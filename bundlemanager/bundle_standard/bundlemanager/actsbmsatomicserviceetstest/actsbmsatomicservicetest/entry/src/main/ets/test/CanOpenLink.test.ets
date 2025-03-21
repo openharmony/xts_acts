@@ -14,7 +14,7 @@
  */
 
 import bundle from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 
 const PARAM_ERROR_CODE = 401;
 const ERROR_SCHEME_NOT_IN_QUERYSCHEMES = 17700056;
@@ -28,7 +28,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkCanOpen
      * @tc.desc: Test canOpenLink, return true.
      */
-    it('canOpenLinkCanOpen', 0, async (done: Function) => {
+    it('canOpenLinkCanOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("http://");
         expect(data).assertTrue();
@@ -44,7 +44,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkCanNotOpen
      * @tc.desc: Test canOpenLink, return false.
      */
-    it('canOpenLinkCanNotOpen', 0, async (done: Function) => {
+    it('canOpenLinkCanNotOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("welink://");
         expect(data).assertFalse();
@@ -60,7 +60,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkNotInQuerySchemes
      * @tc.desc: The scheme of the specified link is not in the querySchemes.
      */
-    it('canOpenLinkNotInQuerySchemes', 0, async (done: Function) => {
+    it('canOpenLinkNotInQuerySchemes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("https://");
         expect(data).assertFail();
@@ -76,7 +76,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkInvalidLink
      * @tc.desc: The specified link is invalid.
      */
-    it('canOpenLinkInvalidLink', 0, async (done: Function) => {
+    it('canOpenLinkInvalidLink', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("http:/");
         expect(data).assertFail();
@@ -92,7 +92,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkNullType
      * @tc.desc: The parameter type is incorrect.
      */
-    it('canOpenLinkNullType', 0, async (done: Function) => {
+    it('canOpenLinkNullType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink(null);
         expect(data).assertFail();
@@ -108,7 +108,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkUndefinedType
      * @tc.desc: The parameter type is incorrect.
      */
-    it('canOpenLinkUndefinedType', 0, async (done: Function) => {
+    it('canOpenLinkUndefinedType', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink(undefined);
         expect(data).assertFail();
@@ -124,7 +124,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkEmptyParam
      * @tc.desc: The parameter is incorrect.
      */
-    it('canOpenLinkEmptyParam', 0, async (done: Function) => {
+    it('canOpenLinkEmptyParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("");
         expect(data).assertFail();
@@ -140,7 +140,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkLowercaseParam
      * @tc.desc: The parameter is lowercase letter when configure is capital letter.
      */
-    it('canOpenLinkLowercaseParam', 0, async (done: Function) => {
+    it('canOpenLinkLowercaseParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("scheme://com.ohos.test");
         expect(data).assertTrue();
@@ -156,7 +156,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkSchemeMatch
      * @tc.desc: Test canOpenLink when scheme match.
      */
-    it('canOpenLinkSchemeMatch', 0, async (done: Function) => {
+    it('canOpenLinkSchemeMatch', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("matchscheme1://com.ohos.test");
         expect(data).assertTrue();
@@ -172,7 +172,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkHostMatch
      * @tc.desc: Test canOpenLink when host match.
      */
-    it('canOpenLinkHostMatch', 0, async (done: Function) => {
+    it('canOpenLinkHostMatch', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("matchscheme2://com.ohos.test:8080");
         expect(data).assertTrue();
@@ -188,7 +188,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkPortMatch
      * @tc.desc: Test canOpenLink when port match.
      */
-    it('canOpenLinkPortMatch', 0, async (done: Function) => {
+    it('canOpenLinkPortMatch', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("Matchscheme3://com.ohos.test:8080/hello");
         expect(data).assertTrue();
@@ -204,7 +204,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkHostNotMatch
      * @tc.desc: Test canOpenLink when host not match.
      */
-    it('canOpenLinkHostNotMatch', 0, async (done: Function) => {
+    it('canOpenLinkHostNotMatch', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("Matchscheme3://host.ohos.test:8080");
         expect(data).assertFalse();

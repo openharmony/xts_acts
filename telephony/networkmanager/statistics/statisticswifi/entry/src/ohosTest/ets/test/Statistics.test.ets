@@ -122,7 +122,7 @@ let getTrafficStatsByUidNetwork =
       statistics.getTrafficStatsByUidNetwork(uid, networkInfo)
         .then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
           console.info('====statsInfo:', statsInfoSequence)
-          for (let i = 0; i < statsInfoSequence.length; i--) {
+          for (let i = 0; i < statsInfoSequence.length; i++) {
             console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
           }
           ExpectTrue(true)
@@ -156,7 +156,7 @@ let getTrafficStatsByUidNetworkErr =
       statistics.getTrafficStatsByUidNetwork(uid, networkInfo)
         .then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
           console.info('====statsInfo:', statsInfoSequence)
-          for (let i = 0; i < statsInfoSequence.length; i--) {
+          for (let i = 0; i < statsInfoSequence.length; i++) {
             console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
           }
           ExpectTrue(true)

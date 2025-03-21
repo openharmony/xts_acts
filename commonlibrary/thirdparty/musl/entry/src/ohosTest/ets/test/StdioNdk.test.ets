@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import stdio from 'libstdiondk.so'
 
@@ -32,7 +32,7 @@ export default function stdioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioVsprintfChk001', 0, async (done: Function) => {
+    it('testMuslStdioVsprintfChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stdio.vsprintfChk();
       expect(data).assertEqual(0);
       done();
@@ -45,7 +45,7 @@ export default function stdioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioSetbuf001', 0, async (done: Function) => {
+    it('testMuslStdioSetbuf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stdio.setbuf();
       expect(data).assertEqual(0);
       done();
@@ -59,7 +59,7 @@ export default function stdioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioSetbuffer001', 0, async (done: Function) => {
+    it('testMuslStdioSetbuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stdio.setbuffer();
       expect(data).assertEqual(0);
       done();
@@ -73,7 +73,7 @@ export default function stdioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioSetlinebuf001', 0, async (done: Function) => {
+    it('testMuslStdioSetlinebuf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stdio.setlinebuf();
       expect(data).assertEqual(0);
       done();
@@ -87,7 +87,7 @@ export default function stdioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioFEof001', 0, async (done: Function) => {
+    it('testMuslStdioFEof001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(stdio.feof()).assertEqual(0);
       done()
     });

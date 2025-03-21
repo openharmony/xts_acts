@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getRandomNumber } from './utils';
 
@@ -47,7 +47,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testCreateDashPathEffectNormal', DEFAULT, () => {
+    it('testCreateDashPathEffectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCreateDashPathEffectNormal';
 
       try {
@@ -91,7 +91,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateDashPathEffectNull', DEFAULT, () => {
+    it('testCreateDashPathEffectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCreateDashPathEffectNull';
 
       try {
@@ -146,7 +146,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateDashPathEffectMultipleCalls', DEFAULT, () => {
+    it('testCreateDashPathEffectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCreateDashPathEffectMultipleCalls';
 
       for (let i = 0; i < 20; i++) {
@@ -172,7 +172,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testcreateCornerPathEffectNormal', DEFAULT, () => {
+    it('testcreateCornerPathEffectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testcreateCornerPathEffectNormal';
 
       try {
@@ -200,7 +200,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testcreateCornerPathEffectNull', DEFAULT, () => {
+    it('testcreateCornerPathEffectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testcreateCornerPathEffectNull';
 
       try {
@@ -228,7 +228,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testcreateCornerPathEffectMultipleCalls', DEFAULT, () => {
+    it('testcreateCornerPathEffectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testcreateCornerPathEffectMultipleCalls';
 
       try {
@@ -256,7 +256,7 @@ export default function pathEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testcreateCornerPathEffectMultipleCalls', DEFAULT, () => {
+    it('testcreateCornerPathEffectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testcreateCornerPathEffectMultipleCalls';
 
       for (let i = 0; i < 20; i++) {

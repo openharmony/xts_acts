@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const LAUNCHER_BUNDLE_NAME = 'com.example.myapplication1';
 const LAUNCHER_MAIN_ABILITY = 'com.example.myapplication1.MainAbility';
@@ -42,7 +42,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getApplicationInfoUnPermissionUserId
      * @tc.desc: test getApplicationInfo
      */
-    it('getApplicationInfoUnPermissionUserId', 0, async function (done) {
+    it('getApplicationInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -60,7 +60,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getApplicationInfosUnPermissionUserId
      * @tc.desc: test getAllApplicationInfo
      */
-    it('getApplicationInfosUnPermissionUserId', 0, async function (done) {
+    it('getApplicationInfosUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getAllApplicationInfo(DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -78,7 +78,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getBundleInfoUnPermissionUserId
      * @tc.desc: test getBundleInfo
      */
-    it('getBundleInfoUnPermissionUserId', 0, async function (done) {
+    it('getBundleInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -96,7 +96,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getAllBundleInfoUnPermission
      * @tc.desc: test getAllBundleInfo
      */
-    it('getAllBundleInfoUnPermission', 0, async function (done) {
+    it('getAllBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getAllBundleInfo(DEFAULT_FLAG).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -114,7 +114,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: queryAbilityByWantUnPermission
      * @tc.desc: test queryAbilityByWant
      */
-    it('queryAbilityByWantUnPermission', 0, async function (done) {
+    it('queryAbilityByWantUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         await bundle.queryAbilityByWant({
             bundleName: LAUNCHER_BUNDLE_NAME,
             abilityName: LAUNCHER_MAIN_ABILITY
@@ -139,7 +139,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getLaunchWantForBundleUnPermission
      * @tc.desc: test getLaunchWantForBundle
      */
-    it('getLaunchWantForBundleUnPermission', 0, async function (done) {
+    it('getLaunchWantForBundleUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         await bundle.getLaunchWantForBundle(LAUNCHER_BUNDLE_NAME).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -158,7 +158,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     * @tc.desc: Check the return value of the interface
     * @tc.level   0
     */
-    it('getAbilityLabelUnPermission', 0, async function (done) {
+    it('getAbilityLabelUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getAbilityLabel(LAUNCHER_BUNDLE_NAME, LAUNCHER_MAIN_ABILITY)
             .then((data) => {
                 expect().assertFail();
@@ -178,7 +178,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getAbilityInfoUnPermission
      * @tc.desc: test getAbilityInfo
      */
-    it('getAbilityInfo_100', 0, async function (done) {
+    it('getAbilityInfo_100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         await bundle.getAbilityInfo(LAUNCHER_BUNDLE_NAME, LAUNCHER_MAIN_ABILITY).then(data => {
             expect().assertFail();
         }).catch(err => {

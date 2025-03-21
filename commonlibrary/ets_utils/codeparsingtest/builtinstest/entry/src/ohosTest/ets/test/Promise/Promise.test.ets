@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 
 export default function promiseTest() {
@@ -45,7 +45,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0001', 0, async (done: Function) => {
+    it('testPromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = await dealPromise(flag);
       expect(array[0]).assertEqual('resolve result : success');
@@ -61,7 +61,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0002', 0, async (done: Function) => {
+    it('testPromise0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = false;
       let array: Array<string> = await dealPromise(flag);
       expect(array[0]).assertEqual('reject result : success');
@@ -78,7 +78,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0003', 0, async (done: Function) => {
+    it('testPromise0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = false;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -107,7 +107,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0004', 0, async (done: Function) => {
+    it('testPromise0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -136,7 +136,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0005', 0, async (done: Function) => {
+    it('testPromise0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -195,7 +195,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0006', 0, async (done: Function) => {
+    it('testPromise0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = false;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -248,7 +248,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0007', 0, async (done: Function) => {
+    it('testPromise0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -307,7 +307,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0008', 0, async (done: Function) => {
+    it('testPromise0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -364,7 +364,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0009', 0, async (done: Function) => {
+    it('testPromise0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -435,7 +435,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0010', 0, async (done: Function) => {
+    it('testPromise0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -503,7 +503,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0011', 0, async (done: Function) => {
+    it('testPromise0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       await new Promise<string>((resolve, reject) => {
@@ -596,7 +596,7 @@ export default function promiseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPromise0012', 0, async (done: Function) => {
+    it('testPromise0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = new Array;
       setTimeout(() => {

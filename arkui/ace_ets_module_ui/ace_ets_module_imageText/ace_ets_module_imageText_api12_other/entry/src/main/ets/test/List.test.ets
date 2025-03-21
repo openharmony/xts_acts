@@ -15,8 +15,10 @@
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextDecorationStyleTest from './TextTest/TextDecorationStyleTest.test'
+import textShadowTest from './RichEditorTest/textShadowTest.test'
 
 export default function testsuite() {
   textAreaInputTest();
   TextDecorationStyleTest();
+  textShadowTest();
 }

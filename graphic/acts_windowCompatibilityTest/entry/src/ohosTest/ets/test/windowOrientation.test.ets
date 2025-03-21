@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -61,7 +61,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_DialogWindow_Promise', 0, async () => {
+    it('testSetPreferredOrientation_DialogWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetPreferredOrientation_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -98,7 +98,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_DialogWindow_Callback', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_DialogWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetPreferredOrientation_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -144,7 +144,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_SubWindow_Promise', 0, async () => {
+    it('testSetPreferredOrientation_SubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetPreferredOrientation_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -177,7 +177,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_SubWindow_Callback', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_SubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetPreferredOrientation_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -219,7 +219,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_DialogWindow', 0, async () => {
+    it('testGetPreferredOrientation_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetPreferredOrientation_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -251,7 +251,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_SubWindow', 0, async () => {
+    it('testGetPreferredOrientation_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetPreferredOrientation_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -280,7 +280,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_SubWindowWithOptions_Promise', 0, async () => {
+    it('testSetPreferredOrientation_SubWindowWithOptions_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -327,7 +327,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetPreferredOrientation_SubWindowWithOptions_Callback', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_SubWindowWithOptions_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -384,7 +384,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_SubWindowWithOptions', 0, async () => {
+    it('testGetPreferredOrientation_SubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetPreferredOrientation_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

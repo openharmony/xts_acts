@@ -16,7 +16,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import bundle from '@ohos.bundle';
 import image from '@ohos.multimedia.image';
 import bundleManager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium";
 
 const BUNDLE_NAME = "ohos.acts.bundle.stage.test";
 const BUNDLE_NAME1 = "com.example.myapplication1";
@@ -32,7 +32,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getBundleInfoTest
      * @tc.desc: Test getBundleInfo of API8 in version9 normal project
      */
-    it('getBundleInfoTest', 0, async (done: Function) =>  {
+    it('getBundleInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getBundleInfo(BUNDLE_NAME , bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
         console.info("getBundleInfoTest" + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -54,7 +54,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getAbilityInfoTest
      * @tc.desc: Test getAbilityInfo of API8 in version9 normal project
      */
-    it('getAbilityInfoTest', 0, async (done: Function) =>  {
+    it('getAbilityInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getAbilityInfo(BUNDLE_NAME, ABILITY_NAME).then((data) => {
         console.info('getAbilityInfoTest promise data is: ' + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -76,7 +76,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getApplicationInfoTest
      * @tc.desc: Test getApplicationInfo of API8 in version9 normal project
      */
-    it('getApplicationInfoTest', 0, async (done: Function) =>  {
+    it('getApplicationInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getApplicationInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
         console.info("getApplicationInfoTest result" + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -97,7 +97,7 @@ export default function PublicApiEightTest() {
       * @tc.name queryAbilityByWantTest
       * @tc.desc Test queryAbilityByWant of API8 in version9 normal project
       */
-      it('queryAbilityByWantTest', 0, async (done: Function) =>  {
+      it('queryAbilityByWantTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.queryAbilityByWant(
           {
             "bundleName": BUNDLE_NAME,
@@ -127,7 +127,7 @@ export default function PublicApiEightTest() {
       * @tc.name getAllBundleInfoTest
       * @tc.desc Test getAllBundleInfo of API8 in version9 normal project
       */
-      it('getAllBundleInfoTest', 0, async (done: Function) =>  {
+      it('getAllBundleInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
           console.info("getAllBundleInfoTest success:" + JSON.stringify(data));
           expect(data.length).assertEqual(0);
@@ -149,7 +149,7 @@ export default function PublicApiEightTest() {
       * @tc.name getAllApplicationInfoTest
       * @tc.desc Test getAllApplicationInfo of API8 in version9 normal project
       */
-      it('getAllApplicationInfoTest', 0, async (done: Function) =>  {
+      it('getAllApplicationInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getAllApplicationInfo(bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
           console.info("getAllApplicationInfoTest success:" + JSON.stringify(data));
           expect(data.length).assertEqual(0);
@@ -171,7 +171,7 @@ export default function PublicApiEightTest() {
       * @tc.name getNameForUidTest
       * @tc.desc Test getNameForUid of API8 in version9 normal project
       */
-      it('getNameForUidTest', 0, async (done: Function) =>  {
+      it('getNameForUidTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
           expect(data).assertFail();
@@ -191,7 +191,7 @@ export default function PublicApiEightTest() {
       * @tc.name getBundleArchiveInfoTest
       * @tc.desc Test getBundleArchiveInfo of API8 in version9 normal project
       */
-      it('getBundleArchiveInfoTest', 0, async (done: Function) =>  {
+      it('getBundleArchiveInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
           console.info("getBundleArchiveInfoTest success:" + JSON.stringify(data));
           expect(data.name).assertEqual("");
@@ -213,7 +213,7 @@ export default function PublicApiEightTest() {
       * @tc.name getLaunchWantForBundleTest
       * @tc.desc Test getLaunchWantForBundle of API8 in version9 normal project
       */
-      it('getLaunchWantForBundleTest', 0, async (done: Function) =>  {
+      it('getLaunchWantForBundleTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getLaunchWantForBundle(BUNDLE_NAME).then(data => {
           console.info("getLaunchWantForBundleTest success:" + JSON.stringify(data));
           expect().assertFail();
@@ -235,7 +235,7 @@ export default function PublicApiEightTest() {
       * @tc.name getAbilityLabelTest
       * @tc.desc Test getAbilityLabel of API8 in version9 normal project
       */
-      it('getAbilityLabelTest', 0, async (done: Function) =>  {
+      it('getAbilityLabelTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME).then((data) => {
           console.info("getAbilityLabelTest success:" + JSON.stringify(data));
           expect(data).assertFail();
@@ -256,7 +256,7 @@ export default function PublicApiEightTest() {
       * @tc.name getAbilityIconTest
       * @tc.desc Test getAbilityIcon of API8 in version9 normal project
       */
-      it('getAbilityIconTest', 0, async (done: Function) =>  {
+      it('getAbilityIconTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.getAbilityIcon(BUNDLE_NAME, ABILITY_NAME).then(data => {
           console.info("getAbilityIconTest success:" + JSON.stringify(data));
           expect(data).assertFail();
@@ -278,7 +278,7 @@ export default function PublicApiEightTest() {
       * @tc.name isApplicationEnabledTest
       * @tc.desc Test isApplicationEnabled of API8 in version9 normal project
       */
-      it('isApplicationEnabledTest', 0, async (done: Function) =>  {
+      it('isApplicationEnabledTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
         await bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
           expect(data).assertFalse();
         }).catch((error: BusinessError) => {

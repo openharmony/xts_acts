@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want';
 import PrintExtension from '../testability/PrintExtension';
 
@@ -33,7 +33,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0100', 0, () => {
+    it('printExtension_function_0100', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0100 onCreate begin');
       let want: Want = {
         bundleName: 'com.ohos.printxtstest',
@@ -50,7 +50,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0200', 0, () => {
+    it('printExtension_function_0200', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0200 onStartDiscoverPrinter begin');
       printExtension.onStartDiscoverPrinter();
     })
@@ -63,7 +63,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0300', 0, () => {
+    it('printExtension_function_0300', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0300 onStopDiscoverPrinter begin');
       printExtension.onStopDiscoverPrinter();
     })
@@ -76,7 +76,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0400', 0, () => {
+    it('printExtension_function_0400', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0400 onConnectPrinter begin');
       printExtension.onConnectPrinter();
     })
@@ -89,7 +89,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0500', 0, () => {
+    it('printExtension_function_0500', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0500 onDisconnectPrinter begin');
       printExtension.onDisconnectPrinter();
     })
@@ -102,7 +102,7 @@ export default function printExtensionTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('printExtension_function_0600', 0, () => {
+    it('printExtension_function_0600', Level.LEVEL2, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0600 onDestroy begin');
       printExtension.onDestroy();
     })

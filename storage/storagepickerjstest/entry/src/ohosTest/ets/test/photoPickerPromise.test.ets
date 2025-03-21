@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
 
@@ -151,15 +151,16 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_007", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_007", Level.LEVEL0, async (done: Function) => {
       try {
         let options = new picker.PhotoSelectOptions();
         options.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
         options.maxSelectNumber = 5;
         let photoPicker = new picker.PhotoViewPicker();
-        photoPicker.select(options).then((result) => {
-          console.info('photopicker_select_promise_007 successfully, photoSelectResult uri: ' + JSON.stringify(result));
-          console.info('isOriginalPhoto: ' + result.isOriginalPhoto);
+        photoPicker.select(options).then((PhotoSelectResult) => {
+          console.info('photopicker_select_promise_007 successfully, photoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+          console.info('isOriginalPhoto: ' + PhotoSelectResult.isOriginalPhoto);
+          console.info('photoUris: ' + PhotoSelectResult.photoUris);
           done();
         }).catch((err: Error) => {
           console.info('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
