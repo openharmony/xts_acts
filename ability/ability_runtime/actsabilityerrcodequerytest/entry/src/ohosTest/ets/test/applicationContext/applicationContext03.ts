@@ -27,35 +27,6 @@ export default class applicationContext03 extends UIAbility {
     globalThis.applicationContext03 = this.context
     console.info('applicationContext03 JSON.stringify(want) is', JSON.stringify(want));
     console.info('applicationContext03 JSON.stringify(want) is', JSON.stringify(want.parameters));
-    // want.parameters.demo_num++
-    // let applicationContext = globalThis.applicationContext03.getApplicationContext();
-    // try {
-    //   if(want.parameters.demo_num==1){
-    //     console.log(`${tag} restartApp begin`);
-    //     applicationContext.restartApp(want);
-    //     console.log(`${tag} restartApp first`);
-    //   }else if(want.parameters.demo_num==2){
-    //     applicationContext.restartApp(want);
-    //     console.log(`${tag} restartApp second`);
-    //   }
-    // } catch (error) {
-    //   console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
-    //   if(error.code==16000064){
-    //     globalThis.applicationContext03.terminateSelfWithResult(
-    //       {
-    //         resultCode: 100,
-    //         want: {
-    //           parameters: {
-    //             keyString: 'NextCase',
-    //           }
-    //         }
-    //       }, () => {
-    //       console.log("====>terminateSelfWithResult success====>")
-    //     });
-    //     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-    //       console.info('====>SUB_ChildProcessManager_sendableContextManager_1000 publish ACTS_TEST_DESTROY');
-    //     });
-    //   }
   };
 
   onDestroy() {

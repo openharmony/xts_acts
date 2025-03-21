@@ -28,8 +28,6 @@ export default class applicationContext04 extends UIExtensionAbility  {
     globalThis.applicationContext04 = this.context
     console.info('applicationContext04 JSON.stringify(want) is', JSON.stringify(want));
     console.info('applicationContext04 JSON.stringify(want) is', JSON.stringify(want.parameters));
-    // let storage: LocalStorage = new LocalStorage();
-    // storage.setOrCreate('session', session);
     try {
       this.session.loadContent(undefined);
     } catch (error) {
