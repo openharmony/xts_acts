@@ -143,3 +143,14 @@ export async function anonAttestKeyItem(keyAlias: string, options: huks.HuksOpti
     })
   })
 }
+
+export async function update(handle: number, token: Uint8Array | undefined, options: huks.HuksOptions): Promise<huks.HuksReturnResult> {
+  return new Promise((resolve, reject) => {
+    huks.update(handle, token, options, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    })
+  })
+}
