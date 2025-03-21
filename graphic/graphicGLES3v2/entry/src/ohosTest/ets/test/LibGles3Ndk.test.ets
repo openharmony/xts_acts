@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import gles3ndk from 'libentry.so'
 
 export default function glesNdkTest() {
@@ -26,7 +26,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLSamplerParameterfv001', 0, async (done: Function) => {
+    it('testGLSamplerParameterfv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLSamplerParameterfv();
       expect(result).assertEqual(0);
       done();
@@ -40,7 +40,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLSamplerParameteri001', 0, async (done: Function) => {
+    it('testGLSamplerParameteri001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLSamplerParameteri();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +54,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLSamplerParameterIiv001', 0, async (done: Function) => {
+    it('testGLSamplerParameterIiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLSamplerParameterIiv();
       expect(result).assertEqual(0);
       done();
@@ -68,7 +68,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLSamplerParameterIuiv001', 0, async (done: Function) => {
+    it('testGLSamplerParameterIuiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLSamplerParameterIuiv();
       expect(result).assertEqual(0);
       done();
@@ -82,7 +82,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLSamplerParameteriv001', 0, async (done: Function) => {
+    it('testGLSamplerParameteriv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLSamplerParameteriv();
       expect(result).assertEqual(0);
       done();
@@ -96,7 +96,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLScissor001', 0, async (done: Function) => {
+    it('testGLScissor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLScissor();
       expect(result).assertEqual(0);
       done();
@@ -110,7 +110,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLShaderBinary001', 0, async (done: Function) => {
+    it('testGLShaderBinary001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLShaderBinary();
       expect(result).assertEqual(-1);
       done();
@@ -124,7 +124,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLShaderSource001', 0, async (done: Function) => {
+    it('testGLShaderSource001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLShaderSource();
       expect(result).assertEqual(0);
       done();
@@ -138,7 +138,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilFunc001', 0, async (done: Function) => {
+    it('testGLStencilFunc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilFunc();
       expect(result).assertEqual(0);
       done();
@@ -152,7 +152,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilFuncSeparate001', 0, async (done: Function) => {
+    it('testGLStencilFuncSeparate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilFuncSeparate();
       expect(result).assertEqual(0);
       done();
@@ -166,7 +166,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilMask001', 0, async (done: Function) => {
+    it('testGLStencilMask001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilMask();
       expect(result).assertEqual(0);
       done();
@@ -180,7 +180,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilMaskSeparate001', 0, async (done: Function) => {
+    it('testGLStencilMaskSeparate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilMaskSeparate();
       expect(result).assertEqual(0);
       done();
@@ -194,7 +194,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilOp001', 0, async (done: Function) => {
+    it('testGLStencilOp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilOp();
       expect(result).assertEqual(0);
       done();
@@ -208,7 +208,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLStencilOpSeparate001', 0, async (done: Function) => {
+    it('testGLStencilOpSeparate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLStencilOpSeparate();
       expect(result).assertEqual(0);
       done();
@@ -222,7 +222,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexBuffer001', 0, async (done: Function) => {
+    it('testGLTexBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexBuffer();
       expect(result).assertEqual(0);
       done();
@@ -236,7 +236,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexBufferRange001', 0, async (done: Function) => {
+    it('testGLTexBufferRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexBufferRange();
       expect(result).assertEqual(0);
       done();
@@ -250,7 +250,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexImage2D001', 0, async (done: Function) => {
+    it('testGLTexImage2D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexImage2D();
       expect(result).assertEqual(0);
       done();
@@ -264,7 +264,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexImage3D001', 0, async (done: Function) => {
+    it('testGLTexImage3D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexImage3D();
       expect(result).assertEqual(0);
       done();
@@ -278,7 +278,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameterf001', 0, async (done: Function) => {
+    it('testGLTexParameterf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameterf();
       expect(result).assertEqual(0);
       done();
@@ -292,7 +292,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameterfv001', 0, async (done: Function) => {
+    it('testGLTexParameterfv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameterfv();
       expect(result).assertEqual(0);
       done();
@@ -306,7 +306,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameteri001', 0, async (done: Function) => {
+    it('testGLTexParameteri001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameteri();
       expect(result).assertEqual(0);
       done();
@@ -320,7 +320,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameterIiv001', 0, async (done: Function) => {
+    it('testGLTexParameterIiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameterIiv();
       expect(result).assertEqual(0);
       done();
@@ -334,7 +334,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameterIuiv001', 0, async (done: Function) => {
+    it('testGLTexParameterIuiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameterIuiv();
       expect(result).assertEqual(0);
       done();
@@ -348,7 +348,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexParameteriv001', 0, async (done: Function) => {
+    it('testGLTexParameteriv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexParameteriv();
       expect(result).assertEqual(0);
       done();
@@ -362,7 +362,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexStorage2D001', 0, async (done: Function) => {
+    it('testGLTexStorage2D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexStorage2D();
       expect(result).assertEqual(0);
       done();
@@ -376,7 +376,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexStorage2DMultisample001', 0, async (done: Function) => {
+    it('testGLTexStorage2DMultisample001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.gLTexStorage2DMultisample();
       expect(result).assertEqual(0);
       done();
@@ -390,7 +391,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexStorage3D001', 0, async (done: Function) => {
+    it('testGLTexStorage3D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexStorage3D();
       expect(result).assertEqual(0);
       done();
@@ -404,7 +405,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexStorage3DMultisample001', 0, async (done: Function) => {
+    it('testGLTexStorage3DMultisample001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.gLTexStorage3DMultisample();
       expect(result).assertEqual(0);
       done();
@@ -418,7 +420,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexSubImage2D001', 0, async (done: Function) => {
+    it('testGLTexSubImage2D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexSubImage2D();
       expect(result).assertEqual(0);
       done();
@@ -432,7 +434,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTexSubImage3D001', 0, async (done: Function) => {
+    it('testGLTexSubImage3D001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLTexSubImage3D();
       expect(result).assertEqual(0);
       done();
@@ -446,7 +448,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLTransformFeedbackVaryings001', 0, async (done: Function) => {
+    it('testGLTransformFeedbackVaryings001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.gLTransformFeedbackVaryings();
       expect(result).assertEqual(0);
       done();
@@ -460,7 +463,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1f001', 0, async (done: Function) => {
+    it('testGLUniform1f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1f();
       expect(result).assertEqual(0);
       done();
@@ -474,7 +477,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1fv001', 0, async (done: Function) => {
+    it('testGLUniform1fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1fv();
       expect(result).assertEqual(0);
       done();
@@ -488,7 +491,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1i001', 0, async (done: Function) => {
+    it('testGLUniform1i001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1i();
       expect(result).assertEqual(0);
       done();
@@ -502,7 +505,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1iv001', 0, async (done: Function) => {
+    it('testGLUniform1iv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1iv();
       expect(result).assertEqual(0);
       done();
@@ -516,7 +519,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1ui001', 0, async (done: Function) => {
+    it('testGLUniform1ui001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1ui();
       expect(result).assertEqual(0);
       done();
@@ -530,7 +533,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1uiv001', 0, async (done: Function) => {
+    it('testGLUniform1uiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform1uiv();
       expect(result).assertEqual(0);
       done();
@@ -544,7 +547,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2f001', 0, async (done: Function) => {
+    it('testGLUniform2f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2f();
       expect(result).assertEqual(0);
       done();
@@ -558,7 +561,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2fv001', 0, async (done: Function) => {
+    it('testGLUniform2fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2fv();
       expect(result).assertEqual(0);
       done();
@@ -572,7 +575,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2i001', 0, async (done: Function) => {
+    it('testGLUniform2i001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2i();
       expect(result).assertEqual(0);
       done();
@@ -586,7 +589,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2iv001', 0, async (done: Function) => {
+    it('testGLUniform2iv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2iv();
       expect(result).assertEqual(0);
       done();
@@ -600,7 +603,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2ui001', 0, async (done: Function) => {
+    it('testGLUniform2ui001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2ui();
       expect(result).assertEqual(0);
       done();
@@ -614,7 +617,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2uiv001', 0, async (done: Function) => {
+    it('testGLUniform2uiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform2uiv();
       expect(result).assertEqual(0);
       done();
@@ -628,7 +631,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3f001', 0, async (done: Function) => {
+    it('testGLUniform3f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3f();
       expect(result).assertEqual(0);
       done();
@@ -642,7 +645,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3fv001', 0, async (done: Function) => {
+    it('testGLUniform3fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3fv();
       expect(result).assertEqual(0);
       done();
@@ -656,7 +659,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3i001', 0, async (done: Function) => {
+    it('testGLUniform3i001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3i();
       expect(result).assertEqual(0);
       done();
@@ -670,7 +673,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3iv001', 0, async (done: Function) => {
+    it('testGLUniform3iv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3iv();
       expect(result).assertEqual(0);
       done();
@@ -684,7 +687,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3ui001', 0, async (done: Function) => {
+    it('testGLUniform3ui001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3ui();
       expect(result).assertEqual(0);
       done();
@@ -698,7 +701,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3uiv001', 0, async (done: Function) => {
+    it('testGLUniform3uiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform3uiv();
       expect(result).assertEqual(0);
       done();
@@ -712,7 +715,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4f001', 0, async (done: Function) => {
+    it('testGLUniform4f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4f();
       expect(result).assertEqual(0);
       done();
@@ -726,7 +729,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4fv001', 0, async (done: Function) => {
+    it('testGLUniform4fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4fv();
       expect(result).assertEqual(0);
       done();
@@ -740,7 +743,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4i001', 0, async (done: Function) => {
+    it('testGLUniform4i001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4i();
       expect(result).assertEqual(0);
       done();
@@ -754,7 +757,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4iv001', 0, async (done: Function) => {
+    it('testGLUniform4iv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4iv();
       expect(result).assertEqual(0);
       done();
@@ -768,7 +771,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4ui001', 0, async (done: Function) => {
+    it('testGLUniform4ui001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4ui();
       expect(result).assertEqual(0);
       done();
@@ -782,7 +785,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4uiv001', 0, async (done: Function) => {
+    it('testGLUniform4uiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniform4uiv();
       expect(result).assertEqual(0);
       done();
@@ -796,7 +799,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformBlockBinding001', 0, async (done: Function) => {
+    it('testGLUniformBlockBinding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformBlockBinding();
       expect(result).assertEqual(0);
       done();
@@ -810,7 +813,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix2fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix2fv();
       expect(result).assertEqual(0);
       done();
@@ -824,7 +827,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2x3fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix2x3fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix2x3fv();
       expect(result).assertEqual(0);
       done();
@@ -838,7 +841,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2x4fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix2x4fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix2x4fv();
       expect(result).assertEqual(0);
       done();
@@ -852,7 +855,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix3fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix3fv();
       expect(result).assertEqual(0);
       done();
@@ -866,7 +869,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3x2fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix3x2fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix3x2fv();
       expect(result).assertEqual(0);
       done();
@@ -880,7 +883,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3x4fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix3x4fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix3x4fv();
       expect(result).assertEqual(0);
       done();
@@ -894,7 +897,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix4fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix4fv();
       expect(result).assertEqual(0);
       done();
@@ -908,7 +911,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4x2fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix4x2fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix4x2fv();
       expect(result).assertEqual(0);
       done();
@@ -922,7 +925,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4x3fv001', 0, async (done: Function) => {
+    it('testGLUniformMatrix4x3fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUniformMatrix4x3fv();
       expect(result).assertEqual(0);
       done();
@@ -936,7 +939,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUnmapBuffer001', 0, async (done: Function) => {
+    it('testGLUnmapBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUnmapBuffer();
       expect(result).assertEqual(0);
       done();
@@ -950,7 +953,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUseProgram001', 0, async (done: Function) => {
+    it('testGLUseProgram001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUseProgram();
       expect(result).assertEqual(0);
       done();
@@ -964,7 +967,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUseProgramStages001', 0, async (done: Function) => {
+    it('testGLUseProgramStages001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLUseProgramStages();
       expect(result).assertEqual(0);
       done();
@@ -978,7 +981,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLValidateProgram001', 0, async (done: Function) => {
+    it('testGLValidateProgram001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLValidateProgram();
       expect(result).assertEqual(0);
       done();
@@ -992,7 +995,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLValidateProgramPipeline001', 0, async (done: Function) => {
+    it('testGLValidateProgramPipeline001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.gLValidateProgramPipeline();
       expect(result).assertEqual(0);
       done();
@@ -1006,7 +1010,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib1f001', 0, async (done: Function) => {
+    it('testGLVertexAttrib1f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib1f();
       expect(result).assertEqual(0);
       done();
@@ -1020,7 +1024,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib1fv001', 0, async (done: Function) => {
+    it('testGLVertexAttrib1fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib1fv();
       expect(result).assertEqual(0);
       done();
@@ -1034,7 +1038,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib2f001', 0, async (done: Function) => {
+    it('testGLVertexAttrib2f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib2f();
       expect(result).assertEqual(0);
       done();
@@ -1048,7 +1052,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib2fv001', 0, async (done: Function) => {
+    it('testGLVertexAttrib2fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib2fv();
       expect(result).assertEqual(0);
       done();
@@ -1062,7 +1066,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib3f001', 0, async (done: Function) => {
+    it('testGLVertexAttrib3f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib3f();
       expect(result).assertEqual(0);
       done();
@@ -1076,7 +1080,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib3fv001', 0, async (done: Function) => {
+    it('testGLVertexAttrib3fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib3fv();
       expect(result).assertEqual(0);
       done();
@@ -1090,7 +1094,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib4f001', 0, async (done: Function) => {
+    it('testGLVertexAttrib4f001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib4f();
       expect(result).assertEqual(0);
       done();
@@ -1104,7 +1108,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttrib4fv001', 0, async (done: Function) => {
+    it('testGLVertexAttrib4fv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttrib4fv();
       expect(result).assertEqual(0);
       done();
@@ -1118,7 +1122,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribBinding001', 0, async (done: Function) => {
+    it('testGLVertexAttribBinding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribBinding();
       expect(result).assertEqual(0);
       done();
@@ -1132,7 +1136,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribDivisor001', 0, async (done: Function) => {
+    it('testGLVertexAttribDivisor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribDivisor();
       expect(result).assertEqual(0);
       done();
@@ -1146,7 +1150,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribFormat001', 0, async (done: Function) => {
+    it('testGLVertexAttribFormat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribFormat();
       expect(result).assertEqual(0);
       done();
@@ -1160,7 +1164,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribI4i001', 0, async (done: Function) => {
+    it('testGLVertexAttribI4i001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribI4i();
       expect(result).assertEqual(0);
       done();
@@ -1174,7 +1178,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribI4iv001', 0, async (done: Function) => {
+    it('testGLVertexAttribI4iv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribI4iv();
       expect(result).assertEqual(0);
       done();
@@ -1188,7 +1192,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribI4ui001', 0, async (done: Function) => {
+    it('testGLVertexAttribI4ui001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribI4ui();
       expect(result).assertEqual(0);
       done();
@@ -1202,7 +1206,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribI4uiv001', 0, async (done: Function) => {
+    it('testGLVertexAttribI4uiv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribI4uiv();
       expect(result).assertEqual(0);
       done();
@@ -1216,7 +1220,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribIFormat001', 0, async (done: Function) => {
+    it('testGLVertexAttribIFormat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribIFormat();
       expect(result).assertEqual(0);
       done();
@@ -1230,7 +1234,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribIPointer001', 0, async (done: Function) => {
+    it('testGLVertexAttribIPointer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribIPointer();
       expect(result).assertEqual(0);
       done();
@@ -1244,7 +1248,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexAttribPointer001', 0, async (done: Function) => {
+    it('testGLVertexAttribPointer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexAttribPointer();
       expect(result).assertEqual(0);
       done();
@@ -1258,7 +1262,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLVertexBindingDivisor001', 0, async (done: Function) => {
+    it('testGLVertexBindingDivisor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLVertexBindingDivisor();
       expect(result).assertEqual(0);
       done();
@@ -1272,7 +1276,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLViewport001', 0, async (done: Function) => {
+    it('testGLViewport001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLViewport();
       expect(result).assertEqual(0);
       done();
@@ -1286,7 +1290,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLWaitSync001', 0, async (done: Function) => {
+    it('testGLWaitSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.gLWaitSync();
       expect(result).assertEqual(0);
       done();
@@ -1301,7 +1305,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLActiveShaderProgram002', 0, async (done: Function) => {
+    it('testGLActiveShaderProgram002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glActiveShaderProgramAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1315,7 +1319,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLActiveTexture002', 0, async (done: Function) => {
+    it('testGLActiveTexture002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glActiveTextureAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1329,7 +1333,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLAttachShader002', 0, async (done: Function) => {
+    it('testGLAttachShader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glAttachShaderAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1343,7 +1347,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBeginQuery002', 0, async (done: Function) => {
+    it('testGLBeginQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBeginQueryAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1357,7 +1361,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBeginTransformFeedback002', 0, async (done: Function) => {
+    it('testGLBeginTransformFeedback002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glBeginTransformFeedbackAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1371,7 +1376,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindAttribLocation002', 0, async (done: Function) => {
+    it('testGLBindAttribLocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindAttribLocationAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1385,7 +1390,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindBuffer002', 0, async (done: Function) => {
+    it('testGLBindBuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindBufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1399,7 +1404,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindBufferBase002', 0, async (done: Function) => {
+    it('testGLBindBufferBase002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindBufferBaseAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1413,7 +1418,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindBufferRange002', 0, async (done: Function) => {
+    it('testGLBindBufferRange002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindBufferRangeAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1427,7 +1432,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindFramebuffer002', 0, async (done: Function) => {
+    it('testGLBindFramebuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindFramebufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1441,7 +1446,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindImageTexture002', 0, async (done: Function) => {
+    it('testGLBindImageTexture002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindImageTextureAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1455,7 +1460,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindProgramPipeline002', 0, async (done: Function) => {
+    it('testGLBindProgramPipeline002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindProgramPipelineAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1469,7 +1474,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindRenderbuffer002', 0, async (done: Function) => {
+    it('testGLBindRenderbuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindRenderbufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1483,7 +1488,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindSampler002', 0, async (done: Function) => {
+    it('testGLBindSampler002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindSamplerAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1497,7 +1502,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindTexture002', 0, async (done: Function) => {
+    it('testGLBindTexture002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindTextureAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1511,7 +1516,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindTransformFeedback002', 0, async (done: Function) => {
+    it('testGLBindTransformFeedback002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glBindTransformFeedbackAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1525,7 +1531,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindVertexArray002', 0, async (done: Function) => {
+    it('testGLBindVertexArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindVertexArrayAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1539,7 +1545,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBindVertexBuffer002', 0, async (done: Function) => {
+    it('testGLBindVertexBuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBindVertexBufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1553,7 +1559,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendEquation002', 0, async (done: Function) => {
+    it('testGLBlendEquation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendEquationAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1567,7 +1573,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendEquationi002', 0, async (done: Function) => {
+    it('testGLBlendEquationi002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendEquationiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1581,7 +1587,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendEquationSeparate002', 0, async (done: Function) => {
+    it('testGLBlendEquationSeparate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glBlendEquationSeparateAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1595,7 +1602,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendEquationSeparatei002', 0, async (done: Function) => {
+    it('testGLBlendEquationSeparatei002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glBlendEquationSeparateiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1609,7 +1617,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendFunc002', 0, async (done: Function) => {
+    it('testGLBlendFunc002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendFuncAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1623,7 +1631,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendFunci002', 0, async (done: Function) => {
+    it('testGLBlendFunci002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendFunciAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1637,7 +1645,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendFuncSeparate002', 0, async (done: Function) => {
+    it('testGLBlendFuncSeparate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendFuncSeparateAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1651,7 +1659,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlendFuncSeparatei002', 0, async (done: Function) => {
+    it('testGLBlendFuncSeparatei002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlendFuncSeparateiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1665,7 +1673,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBlitFramebuffer002', 0, async (done: Function) => {
+    it('testGLBlitFramebuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBlitFramebufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1679,7 +1687,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBufferData002', 0, async (done: Function) => {
+    it('testGLBufferData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBufferDataAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1693,7 +1701,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLBufferSubData002', 0, async (done: Function) => {
+    it('testGLBufferSubData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glBufferSubDataAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1707,7 +1715,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCheckFramebufferStatus002', 0, async (done: Function) => {
+    it('testGLCheckFramebufferStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glCheckFramebufferStatusAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1721,7 +1730,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClear002', 0, async (done: Function) => {
+    it('testGLClear002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClearAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1735,7 +1744,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClearBufferfi002', 0, async (done: Function) => {
+    it('testGLClearBufferfi002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClearBufferfiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1749,7 +1758,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClearBufferfv002', 0, async (done: Function) => {
+    it('testGLClearBufferfv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClearBufferfvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1763,7 +1772,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClearBufferiv002', 0, async (done: Function) => {
+    it('testGLClearBufferiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClearBufferivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1777,7 +1786,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClearBufferuiv002', 0, async (done: Function) => {
+    it('testGLClearBufferuiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClearBufferuivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1791,7 +1800,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLClientWaitSync002', 0, async (done: Function) => {
+    it('testGLClientWaitSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glClientWaitSyncAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1805,7 +1814,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLColorMaski002', 0, async (done: Function) => {
+    it('testGLColorMaski002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glColorMaskiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1819,7 +1828,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCopyBufferSubData002', 0, async (done: Function) => {
+    it('testGLCopyBufferSubData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCopyBufferSubDataAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1833,7 +1842,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCopyImageSubData002', 0, async (done: Function) => {
+    it('testGLCopyImageSubData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCopyImageSubDataAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1847,7 +1856,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCopyTexImage2D002', 0, async (done: Function) => {
+    it('testGLCopyTexImage2D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCopyTexImage2DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1861,7 +1870,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCopyTexSubImage2D002', 0, async (done: Function) => {
+    it('testGLCopyTexSubImage2D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCopyTexSubImage2DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1875,7 +1884,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCreateShader002', 0, async (done: Function) => {
+    it('testGLCreateShader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCreateShaderAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1889,7 +1898,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCreateShaderProgramv002', 0, async (done: Function) => {
+    it('testGLCreateShaderProgramv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCreateShaderProgramvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1903,7 +1912,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCullFace002', 0, async (done: Function) => {
+    it('testGLCullFace002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCullFaceAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1917,7 +1926,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDebugMessageControl002', 0, async (done: Function) => {
+    it('testGLDebugMessageControl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDebugMessageControlAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1931,7 +1940,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteBuffers002', 0, async (done: Function) => {
+    it('testGLDeleteBuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteBuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1945,7 +1954,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteFramebuffers002', 0, async (done: Function) => {
+    it('testGLDeleteFramebuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteFramebuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1959,7 +1968,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteProgram002', 0, async (done: Function) => {
+    it('testGLDeleteProgram002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteProgramAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1973,7 +1982,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteProgramPipelines002', 0, async (done: Function) => {
+    it('testGLDeleteProgramPipelines002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDeleteProgramPipelinesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1987,7 +1997,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteQueries002', 0, async (done: Function) => {
+    it('testGLDeleteQueries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteQueriesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2001,7 +2011,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteRenderbuffers002', 0, async (done: Function) => {
+    it('testGLDeleteRenderbuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteRenderbuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2015,7 +2025,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteSamplers002', 0, async (done: Function) => {
+    it('testGLDeleteSamplers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteSamplersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2029,7 +2039,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteShader002', 0, async (done: Function) => {
+    it('testGLDeleteShader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteShaderAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2043,7 +2053,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteSync002', 0, async (done: Function) => {
+    it('testGLDeleteSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteSyncAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2057,7 +2067,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteTextures002', 0, async (done: Function) => {
+    it('testGLDeleteTextures002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteTexturesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2071,7 +2081,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteTransformFeedbacks002', 0, async (done: Function) => {
+    it('testGLDeleteTransformFeedbacks002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDeleteTransformFeedbacksAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2085,7 +2096,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDeleteVertexArrays002', 0, async (done: Function) => {
+    it('testGLDeleteVertexArrays002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDeleteVertexArraysAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2099,7 +2110,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDepthFunc002', 0, async (done: Function) => {
+    it('testGLDepthFunc002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDepthFuncAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2113,7 +2124,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDetachShader002', 0, async (done: Function) => {
+    it('testGLDetachShader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDetachShaderAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2127,7 +2138,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDisable002', 0, async (done: Function) => {
+    it('testGLDisable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDisableAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2141,7 +2152,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDisablei002', 0, async (done: Function) => {
+    it('testGLDisablei002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDisableiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2155,7 +2166,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDisableVertexAttribArray002', 0, async (done: Function) => {
+    it('testGLDisableVertexAttribArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDisableVertexAttribArrayAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2169,7 +2181,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDispatchCompute002', 0, async (done: Function) => {
+    it('testGLDispatchCompute002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDispatchComputeAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2183,7 +2195,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDispatchComputeIndirect002', 0, async (done: Function) => {
+    it('testGLDispatchComputeIndirect002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDispatchComputeIndirectAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2197,7 +2210,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawArrays002', 0, async (done: Function) => {
+    it('testGLDrawArrays002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawArraysAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2211,7 +2224,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawArraysIndirect002', 0, async (done: Function) => {
+    it('testGLDrawArraysIndirect002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawArraysIndirectAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2225,7 +2238,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawArraysInstanced002', 0, async (done: Function) => {
+    it('testGLDrawArraysInstanced002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawArraysInstancedAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2239,7 +2252,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawBuffers002', 0, async (done: Function) => {
+    it('testGLDrawBuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawBuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2253,7 +2266,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFlushMappedBufferRange002', 0, async (done: Function) => {
+    it('testGLFlushMappedBufferRange002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glFlushMappedBufferRangeAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2267,7 +2281,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFramebufferParameteri002', 0, async (done: Function) => {
+    it('testGLFramebufferParameteri002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glFramebufferParameteriAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2281,7 +2296,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFramebufferRenderbuffer002', 0, async (done: Function) => {
+    it('testGLFramebufferRenderbuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glFramebufferRenderbufferAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2295,7 +2311,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFramebufferTexture002', 0, async (done: Function) => {
+    it('testGLFramebufferTexture002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glFramebufferTextureAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2309,7 +2325,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFramebufferTexture2D002', 0, async (done: Function) => {
+    it('testGLFramebufferTexture2D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glFramebufferTexture2DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2323,7 +2339,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFramebufferTextureLayer002', 0, async (done: Function) => {
+    it('testGLFramebufferTextureLayer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glFramebufferTextureLayerAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2337,7 +2354,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFrontFace002', 0, async (done: Function) => {
+    it('testGLFrontFace002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glFrontFaceAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2351,7 +2368,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenBuffers002', 0, async (done: Function) => {
+    it('testGLGenBuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenBuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2365,7 +2382,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenerateMipmap002', 0, async (done: Function) => {
+    it('testGLGenerateMipmap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenerateMipmapAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2379,7 +2396,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenFramebuffers002', 0, async (done: Function) => {
+    it('testGLGenFramebuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenFramebuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2393,7 +2410,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenProgramPipelines002', 0, async (done: Function) => {
+    it('testGLGenProgramPipelines002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenProgramPipelinesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2407,7 +2424,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenQueries002', 0, async (done: Function) => {
+    it('testGLGenQueries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenQueriesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2421,7 +2438,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenRenderbuffers002', 0, async (done: Function) => {
+    it('testGLGenRenderbuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenRenderbuffersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2435,7 +2452,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenSamplers002', 0, async (done: Function) => {
+    it('testGLGenSamplers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenSamplersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2449,7 +2466,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenTextures002', 0, async (done: Function) => {
+    it('testGLGenTextures002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenTexturesAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2463,7 +2480,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenTransformFeedbacks002', 0, async (done: Function) => {
+    it('testGLGenTransformFeedbacks002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGenTransformFeedbacksAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2477,7 +2495,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGenVertexArrays002', 0, async (done: Function) => {
+    it('testGLGenVertexArrays002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGenVertexArraysAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2491,7 +2509,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetActiveAttrib002', 0, async (done: Function) => {
+    it('testGLGetActiveAttrib002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetActiveAttribAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2505,7 +2523,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetAttachedShaders002', 0, async (done: Function) => {
+    it('testGLGetAttachedShaders002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetAttachedShadersAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2519,7 +2537,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetAttribLocation002', 0, async (done: Function) => {
+    it('testGLGetAttribLocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetAttribLocationAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2533,7 +2551,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetBooleani_v002', 0, async (done: Function) => {
+    it('testGLGetBooleani_v002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetBooleani_vAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2547,7 +2565,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetBooleanv002', 0, async (done: Function) => {
+    it('testGLGetBooleanv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetBooleanvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2561,7 +2579,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetBufferParameteri64v002', 0, async (done: Function) => {
+    it('testGLGetBufferParameteri64v002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetBufferParameteri64vAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2575,7 +2594,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetBufferParameteriv002', 0, async (done: Function) => {
+    it('testGLGetBufferParameteriv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetBufferParameterivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2589,7 +2608,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetBufferPointerv002', 0, async (done: Function) => {
+    it('testGLGetBufferPointerv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetBufferPointervAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2603,7 +2622,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetFloatv002', 0, async (done: Function) => {
+    it('testGLGetFloatv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetFloatvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2617,7 +2636,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetFragDataLocation002', 0, async (done: Function) => {
+    it('testGLGetFragDataLocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetFragDataLocationAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2631,7 +2650,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetFramebufferAttachmentParameteriv002', 0, async (done: Function) => {
+    it('testGLGetFramebufferAttachmentParameteriv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetFramebufferAttachmentParameterivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2645,7 +2665,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetFramebufferParameteriv002', 0, async (done: Function) => {
+    it('testGLGetFramebufferParameteriv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetFramebufferParameterivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2659,7 +2680,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetInteger64i_v002', 0, async (done: Function) => {
+    it('testGLGetInteger64i_v002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetInteger64i_vAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2673,7 +2694,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetInteger64v002', 0, async (done: Function) => {
+    it('testGLGetInteger64v002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetInteger64vAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2687,7 +2708,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetIntegeri_v002', 0, async (done: Function) => {
+    it('testGLGetIntegeri_v002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetIntegeri_vAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2701,7 +2722,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetIntegerv002', 0, async (done: Function) => {
+    it('testGLGetIntegerv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetIntegervAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2715,7 +2736,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetInternalformativ002', 0, async (done: Function) => {
+    it('testGLGetInternalformativ002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetInternalformativAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2729,7 +2750,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetObjectLabel002', 0, async (done: Function) => {
+    it('testGLGetObjectLabel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetObjectLabelAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2743,7 +2764,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetObjectPtrLabel002', 0, async (done: Function) => {
+    it('testGLGetObjectPtrLabel002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetObjectPtrLabelAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2757,7 +2778,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetPointerv002', 0, async (done: Function) => {
+    it('testGLGetPointerv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetPointervAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2771,7 +2792,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramBinary002', 0, async (done: Function) => {
+    it('testGLGetProgramBinary002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetProgramBinaryAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2785,7 +2806,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramInterfaceiv002', 0, async (done: Function) => {
+    it('testGLGetProgramInterfaceiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetProgramInterfaceivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2799,7 +2821,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramiv002', 0, async (done: Function) => {
+    it('testGLGetProgramiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetProgramivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2813,7 +2835,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramPipelineiv002', 0, async (done: Function) => {
+    it('testGLGetProgramPipelineiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetProgramPipelineivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2827,7 +2849,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramResourceIndex002', 0, async (done: Function) => {
+    it('testGLGetProgramResourceIndex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetProgramResourceIndexAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2841,7 +2864,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramResourceiv002', 0, async (done: Function) => {
+    it('testGLGetProgramResourceiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetProgramResourceivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2855,7 +2878,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramResourceLocation002', 0, async (done: Function) => {
+    it('testGLGetProgramResourceLocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetProgramResourceLocationAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2869,7 +2893,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetProgramResourceName002', 0, async (done: Function) => {
+    it('testGLGetProgramResourceName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetProgramResourceNameAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2883,7 +2908,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetQueryiv002', 0, async (done: Function) => {
+    it('testGLGetQueryiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetQueryivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2897,7 +2922,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetQueryObjectuiv002', 0, async (done: Function) => {
+    it('testGLGetQueryObjectuiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glGetQueryObjectuivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2911,7 +2936,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetRenderbufferParameteriv002', 0, async (done: Function) => {
+    it('testGLGetRenderbufferParameteriv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetRenderbufferParameterivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2925,7 +2951,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetSamplerParameterfv002', 0, async (done: Function) => {
+    it('testGLGetSamplerParameterfv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetSamplerParameterfvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2939,7 +2966,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetSamplerParameterIiv002', 0, async (done: Function) => {
+    it('testGLGetSamplerParameterIiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetSamplerParameterIivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2953,7 +2981,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetSamplerParameterIuiv002', 0, async (done: Function) => {
+    it('testGLGetSamplerParameterIuiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetSamplerParameterIuivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2967,7 +2996,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLGetSamplerParameteriv002', 0, async (done: Function) => {
+    it('testGLGetSamplerParameteriv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glGetSamplerParameterivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2981,7 +3011,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1f002', 0, async (done: Function) => {
+    it('testGLUniform1f002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1fAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2995,7 +3025,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1fv002', 0, async (done: Function) => {
+    it('testGLUniform1fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3009,7 +3039,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1i002', 0, async (done: Function) => {
+    it('testGLUniform1i002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1iAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3023,7 +3053,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1iv002', 0, async (done: Function) => {
+    it('testGLUniform1iv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1ivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3037,7 +3067,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1ui002', 0, async (done: Function) => {
+    it('testGLUniform1ui002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1uiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3051,7 +3081,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform1uiv002', 0, async (done: Function) => {
+    it('testGLUniform1uiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform1uivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3065,7 +3095,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2f002', 0, async (done: Function) => {
+    it('testGLUniform2f002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2fAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3079,7 +3109,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2fv002', 0, async (done: Function) => {
+    it('testGLUniform2fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3093,7 +3123,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2i002', 0, async (done: Function) => {
+    it('testGLUniform2i002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2iAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3107,7 +3137,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2iv002', 0, async (done: Function) => {
+    it('testGLUniform2iv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2ivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3121,7 +3151,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2ui002', 0, async (done: Function) => {
+    it('testGLUniform2ui002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2uiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3135,7 +3165,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform2uiv002', 0, async (done: Function) => {
+    it('testGLUniform2uiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform2uivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3149,7 +3179,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3f002', 0, async (done: Function) => {
+    it('testGLUniform3f002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3fAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3163,7 +3193,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3fv002', 0, async (done: Function) => {
+    it('testGLUniform3fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3177,7 +3207,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3i002', 0, async (done: Function) => {
+    it('testGLUniform3i002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3iAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3191,7 +3221,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3iv002', 0, async (done: Function) => {
+    it('testGLUniform3iv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3ivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3205,7 +3235,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3ui002', 0, async (done: Function) => {
+    it('testGLUniform3ui002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3uiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3219,7 +3249,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform3uiv002', 0, async (done: Function) => {
+    it('testGLUniform3uiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform3uivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3233,7 +3263,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4f002', 0, async (done: Function) => {
+    it('testGLUniform4f002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4fAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3247,7 +3277,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4fv002', 0, async (done: Function) => {
+    it('testGLUniform4fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3261,7 +3291,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4i002', 0, async (done: Function) => {
+    it('testGLUniform4i002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4iAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3275,7 +3305,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4iv002', 0, async (done: Function) => {
+    it('testGLUniform4iv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4ivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3289,7 +3319,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4ui002', 0, async (done: Function) => {
+    it('testGLUniform4ui002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4uiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3303,7 +3333,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniform4uiv002', 0, async (done: Function) => {
+    it('testGLUniform4uiv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniform4uivAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3317,7 +3347,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformBlockBinding002', 0, async (done: Function) => {
+    it('testGLUniformBlockBinding002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformBlockBindingAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3331,7 +3361,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix2fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix2fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3345,7 +3375,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2x3fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix2x3fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix2x3fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3359,7 +3389,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix2x4fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix2x4fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix2x4fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3373,7 +3403,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix3fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix3fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3387,7 +3417,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3x2fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix3x2fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix3x2fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3401,7 +3431,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix3x4fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix3x4fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix3x4fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3415,7 +3445,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix4fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix4fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3429,7 +3459,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4x2fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix4x2fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix4x2fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3443,7 +3473,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLUniformMatrix4x3fv002', 0, async (done: Function) => {
+    it('testGLUniformMatrix4x3fv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glUniformMatrix4x3fvAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3457,7 +3487,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCompileShader002', 0, async (done: Function) => {
+    it('testGLCompileShader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCompileShaderAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3471,7 +3501,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCompressedTexImage2D002', 0, async (done: Function) => {
+    it('testGLCompressedTexImage2D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCompressedTexImage2DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3485,7 +3515,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCompressedTexImage3D002', 0, async (done: Function) => {
+    it('testGLCompressedTexImage3D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCompressedTexImage3DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3499,7 +3529,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCompressedTexSubImage2D002', 0, async (done: Function) => {
+    it('testGLCompressedTexSubImage2D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glCompressedTexSubImage2DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3513,7 +3544,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCompressedTexSubImage3D002', 0, async (done: Function) => {
+    it('testGLCompressedTexSubImage3D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glCompressedTexSubImage3DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3527,7 +3559,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLCopyTexSubImage3D002', 0, async (done: Function) => {
+    it('testGLCopyTexSubImage3D002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glCopyTexSubImage3DAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3541,7 +3573,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawElements002', 0, async (done: Function) => {
+    it('testGLDrawElements002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawElementsAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3555,7 +3587,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawElementsBaseVertex002', 0, async (done: Function) => {
+    it('testGLDrawElementsBaseVertex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDrawElementsBaseVertexAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3569,7 +3602,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawElementsIndirect002', 0, async (done: Function) => {
+    it('testGLDrawElementsIndirect002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawElementsIndirectAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3583,7 +3616,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawElementsInstanced002', 0, async (done: Function) => {
+    it('testGLDrawElementsInstanced002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDrawElementsInstancedAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3597,7 +3631,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawElementsInstancedBaseVertex002', 0, async (done: Function) => {
+    it('testGLDrawElementsInstancedBaseVertex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDrawElementsInstancedBaseVertexAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3611,7 +3646,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawRangeElements002', 0, async (done: Function) => {
+    it('testGLDrawRangeElements002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glDrawRangeElementsAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3625,7 +3660,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLDrawRangeElementsBaseVertex002', 0, async (done: Function) => {
+    it('testGLDrawRangeElementsBaseVertex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glDrawRangeElementsBaseVertexAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3639,7 +3675,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLEnable002', 0, async (done: Function) => {
+    it('testGLEnable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glEnableAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3653,7 +3689,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLEnablei002', 0, async (done: Function) => {
+    it('testGLEnablei002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glEnableiAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3667,7 +3703,8 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLEnableVertexAttribArray002', 0, async (done: Function) => {
+    it('testGLEnableVertexAttribArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = gles3ndk.glEnableVertexAttribArrayAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3681,7 +3718,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLEndQuery002', 0, async (done: Function) => {
+    it('testGLEndQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glEndQueryAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3695,7 +3732,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLEndTransformFeedback002', 0, async (done: Function) => {
+    it('testGLEndTransformFeedback002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glEndTransformFeedbackAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -3709,7 +3746,7 @@ export default function glesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGLFenceSync002', 0, async (done: Function) => {
+    it('testGLFenceSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = gles3ndk.glFenceSyncAbnormal();
       expect(result).assertEqual(-1);
       done();
