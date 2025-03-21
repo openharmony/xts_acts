@@ -174,7 +174,8 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             } else if (fileGenerationMode == AVRECORDER_AUTO_CREATE_CAMERA_SCENE) {
                 config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
             }
-            config.profile.videoBitrate = 20000;
+            const int VIDEO_BITRATE_20KHZ = 20000;
+            config.profile.videoBitrate = VIDEO_BITRATE_20KHZ;
             GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
             GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
             GetInt32Property(env, arg, "videoFrameRate", &(config.profile.videoFrameRate));

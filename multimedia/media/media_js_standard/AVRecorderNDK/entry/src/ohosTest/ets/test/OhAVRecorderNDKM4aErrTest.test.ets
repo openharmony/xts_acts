@@ -55,7 +55,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         audioSampleRate = audioSampleRateList[audioSampleRateIndex]
 
         //audioBitrate随机数AAC编码格式支持比特率范围[32000 - 500000]
-        let audioBitrateList: Array<number> = [32000, 40000, 480000, 56000, 64000, 80000,
+        let audioBitrateList: Array<number> = [32000, 40000, 48000, 56000, 64000, 80000,
           96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000, 500000]
         let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
         audioBitrate = audioBitrateList[audioBitrateIndex]

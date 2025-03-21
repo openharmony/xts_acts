@@ -62,7 +62,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
 
       //audioBitrate随机数MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000,
       // 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]
-      let audioBitrateList: Array<number> = [8000, 16000, 32000, 40000, 480000, 56000, 64000]
+      let audioBitrateList: Array<number> = [8000, 16000, 32000, 40000, 48000, 56000, 64000]
       let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
       audioBitrate = audioBitrateList[audioBitrateIndex]
 
@@ -81,15 +81,15 @@ export default function OhAVRecorderNDKMp3Test() { // L2
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0010
-     * @tc.name       : testOhAvRecorder_m4a_success_0010
+     * @tc.number     : testOhAvRecorder_mp3_success_0010
+     * @tc.name       : testOhAvRecorder_mp3_success_0010
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0010', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0010 test start `);
+    it('testOhAvRecorder_mp3_success_0010', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0010 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -125,19 +125,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0010 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0010 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00101
-     * @tc.name       : testOhAvRecorder_m4a_success_00101
+     * @tc.number     : testOhAvRecorder_mp3_success_00101
+     * @tc.name       : testOhAvRecorder_mp3_success_00101
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00101', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00101 test start `);
+    it('testOhAvRecorder_mp3_success_00101', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00101 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -173,19 +173,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00101 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00101 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00102
-     * @tc.name       : testOhAvRecorder_m4a_success_00102
+     * @tc.number     : testOhAvRecorder_mp3_success_00102
+     * @tc.name       : testOhAvRecorder_mp3_success_00102
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00102', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00102 test start `);
+    it('testOhAvRecorder_mp3_success_00102', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00102 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -217,19 +217,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00102 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00102 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00103
-     * @tc.name       : testOhAvRecorder_m4a_success_00103
+     * @tc.number     : testOhAvRecorder_mp3_success_00103
+     * @tc.name       : testOhAvRecorder_mp3_success_00103
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00103', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00103 test start `);
+    it('testOhAvRecorder_mp3_success_00103', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00103 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -263,19 +263,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00103 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00103 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00104
-     * @tc.name       : testOhAvRecorder_m4a_success_00104
+     * @tc.number     : testOhAvRecorder_mp3_success_00104
+     * @tc.name       : testOhAvRecorder_mp3_success_00104
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00104', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00104 test start `);
+    it('testOhAvRecorder_mp3_success_00104', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00104 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -311,19 +311,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00104 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00104 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00105
-     * @tc.name       : testOhAvRecorder_m4a_success_00105
+     * @tc.number     : testOhAvRecorder_mp3_success_00105
+     * @tc.name       : testOhAvRecorder_mp3_success_00105
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00105', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00104 test start `);
+    it('testOhAvRecorder_mp3_success_00105', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00104 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -357,19 +357,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00104 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00104 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00106
-     * @tc.name       : testOhAvRecorder_m4a_success_00106
+     * @tc.number     : testOhAvRecorder_mp3_success_00106
+     * @tc.name       : testOhAvRecorder_mp3_success_00106
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00106', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00106 test start `);
+    it('testOhAvRecorder_mp3_success_00106', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00106 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -407,19 +407,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00106 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00106 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00107
-     * @tc.name       : testOhAvRecorder_m4a_success_00107
+     * @tc.number     : testOhAvRecorder_mp3_success_00107
+     * @tc.name       : testOhAvRecorder_mp3_success_00107
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00107', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00107 test start `);
+    it('testOhAvRecorder_mp3_success_00107', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00107 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -455,19 +455,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00107 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00107 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00108
-     * @tc.name       : testOhAvRecorder_m4a_success_00108
+     * @tc.number     : testOhAvRecorder_mp3_success_00108
+     * @tc.name       : testOhAvRecorder_mp3_success_00108
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00108', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00108 test start `);
+    it('testOhAvRecorder_mp3_success_00108', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00108 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -503,19 +503,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00108 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00108 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00109
-     * @tc.name       : testOhAvRecorder_m4a_success_00109
+     * @tc.number     : testOhAvRecorder_mp3_success_00109
+     * @tc.name       : testOhAvRecorder_mp3_success_00109
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00109', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00109 test start `);
+    it('testOhAvRecorder_mp3_success_00109', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_00109 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -549,19 +549,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00109 test end `);
+      console.info(`testOhAvRecorder_mp3_success_00109 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_002
-     * @tc.name       : testOhAvRecorder_m4a_success_002
+     * @tc.number     : testOhAvRecorder_mp3_success_002
+     * @tc.name       : testOhAvRecorder_mp3_success_002
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_002', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_002 test start `);
+    it('testOhAvRecorder_mp3_success_002', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_002 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -593,19 +593,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_002 test end `);
+      console.info(`testOhAvRecorder_mp3_success_002 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0021
-     * @tc.name       : testOhAvRecorder_m4a_success_0021
+     * @tc.number     : testOhAvRecorder_mp3_success_0021
+     * @tc.name       : testOhAvRecorder_mp3_success_0021
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0021', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0021 test start `);
+    it('testOhAvRecorder_mp3_success_0021', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0021 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -639,19 +639,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0021 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0021 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0022
-     * @tc.name       : testOhAvRecorder_m4a_success_0022
+     * @tc.number     : testOhAvRecorder_mp3_success_0022
+     * @tc.name       : testOhAvRecorder_mp3_success_0022
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0022', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0022 test start `);
+    it('testOhAvRecorder_mp3_success_0022', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0022 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -685,19 +685,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0022 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0022 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0023
-     * @tc.name       : testOhAvRecorder_m4a_success_0023
+     * @tc.number     : testOhAvRecorder_mp3_success_0023
+     * @tc.name       : testOhAvRecorder_mp3_success_0023
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0023', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0023 test start `);
+    it('testOhAvRecorder_mp3_success_0023', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0023 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -731,19 +731,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0023 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0023 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0024
-     * @tc.name       : testOhAvRecorder_m4a_success_0024
+     * @tc.number     : testOhAvRecorder_mp3_success_0024
+     * @tc.name       : testOhAvRecorder_mp3_success_0024
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0024', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0024 test start `);
+    it('testOhAvRecorder_mp3_success_0024', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0024 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -779,19 +779,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0024 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0024 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0025
-     * @tc.name       : testOhAvRecorder_m4a_success_0025
+     * @tc.number     : testOhAvRecorder_mp3_success_0025
+     * @tc.name       : testOhAvRecorder_mp3_success_0025
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0025', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0025 test start `);
+    it('testOhAvRecorder_mp3_success_0025', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0025 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -825,19 +825,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0025 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0025 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0026
-     * @tc.name       : testOhAvRecorder_m4a_success_0026
+     * @tc.number     : testOhAvRecorder_mp3_success_0026
+     * @tc.name       : testOhAvRecorder_mp3_success_0026
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0026', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0026 test start `);
+    it('testOhAvRecorder_mp3_success_0026', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0026 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -875,19 +875,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0026 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0026 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0027
-     * @tc.name       : testOhAvRecorder_m4a_success_0027
+     * @tc.number     : testOhAvRecorder_mp3_success_0027
+     * @tc.name       : testOhAvRecorder_mp3_success_0027
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0027', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0027 test start `);
+    it('testOhAvRecorder_mp3_success_0027', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0027 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -923,19 +923,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0027 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0027 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0028
-     * @tc.name       : testOhAvRecorder_m4a_success_0028
+     * @tc.number     : testOhAvRecorder_mp3_success_0028
+     * @tc.name       : testOhAvRecorder_mp3_success_0028
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0028', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0028 test start `);
+    it('testOhAvRecorder_mp3_success_0028', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_0028 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -968,19 +968,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       )
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0028 test end `);
+      console.info(`testOhAvRecorder_mp3_success_0028 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_003
-     * @tc.name       : testOhAvRecorder_m4a_success_003
+     * @tc.number     : testOhAvRecorder_mp3_success_003
+     * @tc.name       : testOhAvRecorder_mp3_success_003
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_003', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_003 test start `);
+    it('testOhAvRecorder_mp3_success_003', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_003 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -1018,19 +1018,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_003 test end `);
+      console.info(`testOhAvRecorder_mp3_success_003 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_004
-     * @tc.name       : testOhAvRecorder_m4a_success_004
+     * @tc.number     : testOhAvRecorder_mp3_success_004
+     * @tc.name       : testOhAvRecorder_mp3_success_004
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_004', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_004 test start `);
+    it('testOhAvRecorder_mp3_success_004', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_004 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -1076,19 +1076,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_004 test end `);
+      console.info(`testOhAvRecorder_mp3_success_004 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_005
-     * @tc.name       : testOhAvRecorder_m4a_success_005
+     * @tc.number     : testOhAvRecorder_mp3_success_005
+     * @tc.name       : testOhAvRecorder_mp3_success_005
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_005', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_005 test start `);
+    it('testOhAvRecorder_mp3_success_005', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_005 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -1134,19 +1134,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_005 test end `);
+      console.info(`testOhAvRecorder_mp3_success_005 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_006
-     * @tc.name       : testOhAvRecorder_m4a_success_006
+     * @tc.number     : testOhAvRecorder_mp3_success_006
+     * @tc.name       : testOhAvRecorder_mp3_success_006
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_006', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_006 test start `);
+    it('testOhAvRecorder_mp3_success_006', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_006 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -1182,19 +1182,19 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_006 test end `);
+      console.info(`testOhAvRecorder_mp3_success_006 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_007
-     * @tc.name       : testOhAvRecorder_m4a_success_007
+     * @tc.number     : testOhAvRecorder_mp3_success_007
+     * @tc.name       : testOhAvRecorder_mp3_success_007
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_007', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_007 test start `);
+    it('testOhAvRecorder_mp3_success_007', 0, async (done: Function) => {
+      console.info(`testOhAvRecorder_mp3_success_007 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -1234,7 +1234,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_007 test end `);
+      console.info(`testOhAvRecorder_mp3_success_007 test end `);
     });
   });
 }
