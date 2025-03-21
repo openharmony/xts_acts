@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { ConfirmDialog } from '@ohos.arkui.advanced.Dialog';
+import { LoadingDialog } from '@ohos.arkui.advanced.Dialog';
 import { CustomColors, CustomTheme } from '@ohos.arkui.theme';
 
 class CustomThemeImpl implements CustomTheme {
@@ -31,47 +31,34 @@ class CustomThemeColors implements CustomColors {
 
 @Entry
 @Component
-struct ConfirmDialogTest {
+struct Index {
   @State customTheme: CustomTheme = new CustomThemeImpl(new CustomThemeColors());
-  isChecked = false;
-  dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
-    builder: ConfirmDialog({
-      title: '文本标题',
-      content: '这里是内容区',
-      isChecked: this.isChecked,
-      checkTips: '禁止后不再提示',
-      primaryButton: {
-        value: '禁止',
-        action: () => {},
-      },
-      secondaryButton: {
-        value: '允许',
-        action: () => {
-          this.isChecked = false
-          console.info('Callback when the second button is clicked')
-        }
-      },
-      onCheckedChange: () => {
-        console.info('Callback when the checkbox is clicked')
-      },
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: LoadingDialog({
+      content: 'text',
       theme: this.customTheme,
       themeColorMode: ThemeColorMode.LIGHT,
-    }),
-    autoCancel: true,
-  })
+    })
+  });
 
   build() {
-    Column() {
-      Button('ConfirmDialog')
-        .width(96)
-        .height(40)
-        .onClick(() => {
-          this.dialogControllerCheckBox.open()
-        })
+    Row() {
+      Stack() {
+        Column() {
+          Button('LoadingDialog')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              this.dialogController.open();
+            })
+        }
+        .margin({ bottom: 300 })
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
     .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
   }
 }
