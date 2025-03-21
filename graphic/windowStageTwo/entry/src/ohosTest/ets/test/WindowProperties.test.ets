@@ -3429,8 +3429,13 @@ export default function windowPropertiesTest() {
                     done();
                 }).catch((err: BusinessError) => {
                     console.error(`${caseName} Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
-                    expect().assertFail();
-                    done();
+                    if(err.code == 801){
+                        done();
+                    }else{
+                        expect().assertFail();
+                        done();
+                    }
+                    
                 });
             } catch (exception) {
                 console.error(`${caseName} Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -3438,6 +3443,103 @@ export default function windowPropertiesTest() {
                 done();
             }
         })
+        /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
+     * @tc.name      : testmoveWindowToGlobal_moveConfiguration
+     * @tc.desc      : testmoveWindowToGlobal_moveConfiguration
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testmoveWindowToGlobal_moveConfiguration', 0, async (done: Function) => {
+      let caseName = 'testmoveWindowToGlobal_moveConfiguration';
+      try {
+        let moveConfiguration: window.MoveConfiguration = {
+          displayId: 0
+        };
+        const windowClass = await windowStage.createSubWindow('testmoveWindowToGlobal_moveConfiguration');
+        let promise = windowClass.moveWindowToGlobal(300, 300, moveConfiguration);
+        promise.then(async () => {
+          console.info(`${caseName} Succeeded in moving the window`);
+          await windowClass.destroyWindow();
+          expect(true).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+          await windowClass.destroyWindow();
+          if(err.code == 801){
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`${caseName} Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+     /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
+         * @tc.name      : testsetWindowLayoutFullScreen_callback_401
+         * @tc.desc      : testsetWindowLayoutFullScreen_callback_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+        it('testsetWindowLayoutFullScreen_callback_401', 0, async (done: Function) => {
+            let caseName = 'testsetWindowLayoutFullScreen_callback_401';
+            try {
+                let windowClass = windowStage.getMainWindowSync();
+                 windowClass.setWindowLayoutFullScreen(null, (err: BusinessError) => {
+                    const errCode: number = err.code;
+                    if (errCode) {
+                        console.error(`Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(401);
+                        done();
+                    }
+                    console.info('Succeeded in setting the window layout to full-screen mode.');
+                    expect(false).assertTrue();
+                    done();
+                })
+    
+            } catch (exception) {
+                console.error(`${caseName} Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+                expect(exception.code).assertEqual(401);
+                done();
+            }
+        })
+         /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
+         * @tc.name      : testsetWindowLayoutFullScreen_promise_401
+         * @tc.desc      : testsetWindowLayoutFullScreen_promise_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+        it('testsetWindowLayoutFullScreen_promise_401', 0, async (done: Function) => {
+            let caseName = 'testsetWindowLayoutFullScreen_promise_401';
+            try {
+                let windowClass = windowStage.getMainWindowSync();
+                 let promise = windowClass.setWindowLayoutFullScreen(null);
+                promise.then(() => {
+                console.info('Succeeded in setting the window layout to full-screen mode.');
+                expect(false).assertTrue();
+                done();
+                }).catch((err: BusinessError) => {
+                console.error(`Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+                })
+    
+            } catch (exception) {
+                console.error(`${caseName} Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+                expect(exception.code).assertEqual(401);
+                done();
+            }
+        })
+
         /**
          * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7900
          * @tc.name      : testgetGlobalRect
