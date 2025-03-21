@@ -28,7 +28,7 @@ export default function CalendarPickerDialogBackgroundColorTest() {
         router.clear();
         let pages = router.getState();
         console.info('get CalendarPickerDialogBackgroundColorTest state pages:' + JSON.stringify(pages));
-        if (!('CalendarPickerDialogBackgroundColor' == pages.name)) {
+        if (!('calendarPickerDialogBackgroundStyle' == pages.name)) {
           console.info('get CalendarPickerDialogBackgroundColorTest pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2500);

@@ -28,7 +28,7 @@ export default function textPickerDialogDefaultTextStyleTest() {
         router.clear();
         let pages = router.getState();
         console.info('get textPickerDialogDefaultTextStyleTest state pages:' + JSON.stringify(pages));
-        if (!('timePickerDialogSelectedArea' == pages.name)) {
+        if (!('textPickerDialogDefaultTextStyle' == pages.name)) {
           console.info('get textPickerDialogDefaultTextStyleTest pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2500);

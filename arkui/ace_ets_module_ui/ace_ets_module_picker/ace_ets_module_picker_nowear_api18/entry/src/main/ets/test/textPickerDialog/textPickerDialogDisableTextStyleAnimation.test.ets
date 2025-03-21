@@ -28,7 +28,7 @@ export default function textPickerDialogDisableTextStyleAnimationTest() {
         router.clear();
         let pages = router.getState();
         console.info('get textPickerDialogDisableTextStyleAnimationTest state pages:' + JSON.stringify(pages));
-        if (!('timePickerDialogSelectedArea' == pages.name)) {
+        if (!('textPickerDialogDisableTextStyleAnimation' == pages.name)) {
           console.info('get textPickerDialogDisableTextStyleAnimationTest pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2500);

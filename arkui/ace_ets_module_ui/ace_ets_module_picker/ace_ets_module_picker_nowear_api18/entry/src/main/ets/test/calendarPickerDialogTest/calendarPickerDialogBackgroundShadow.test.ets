@@ -28,7 +28,7 @@ export default function CalendarPickerDialogBackgroundShadowTest() {
         router.clear();
         let pages = router.getState();
         console.info('get CalendarPickerDialogBackgroundShadowTest state pages:' + JSON.stringify(pages));
-        if (!('CalendarPickerDialogBackgroundColor' == pages.name)) {
+        if (!('calendarPickerDialogBackgroundStyle' == pages.name)) {
           console.info('get CalendarPickerDialogBackgroundShadowTest pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2500);
