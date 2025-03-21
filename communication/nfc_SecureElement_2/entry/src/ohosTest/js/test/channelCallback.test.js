@@ -293,7 +293,7 @@ export default function channelCallbacktest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]12 openLogicalChannel_callback occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             sleep(900);
             done();
