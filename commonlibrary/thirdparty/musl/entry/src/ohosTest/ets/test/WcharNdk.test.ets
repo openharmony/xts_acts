@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import wchar from 'libwcharndk.so'
 
@@ -32,7 +32,7 @@ export default function wcharNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslWcharGetwc001', 0, async (done: Function) => {
+    it('testMuslWcharGetwc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = wchar.getwc();
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function wcharNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbrlen001', 0, async (done: Function) => {
+    it('testMuslWcharMbrlen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = wchar.mbrlen();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -61,7 +61,7 @@ export default function wcharNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharFGetWs001', 0, async (done: Function) => {
+    it('testMuslWcharFGetWs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = wchar.fgetws();
       expect(result).assertEqual(0);
       done()
@@ -75,7 +75,7 @@ export default function wcharNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharFGetWc001', 0, async (done: Function) => {
+    it('testMuslWcharFGetWc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = wchar.fgetwc();
       expect(result).assertEqual(0);
       done()

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, it, expect} from "@ohos/hypium"
+import {describe, it, expect, Level, Size, TestType} from "@ohos/hypium"
 import {add as add1} from 'har'
 import {add as add2} from './test'
 import hilog from "@ohos.hilog"
@@ -21,19 +21,19 @@ import testNapi from "libentry.so"
 
 export default function staticImport() {
   describe("StaticImportTest", () => {
-    it('importHar', 0, () => {
+    it('importHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(add1(2, 3)).assertEqual(5)
     })
-    it('importRelative', 0, () => {
+    it('importRelative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(add2(2, 3)).assertEqual(5)
     })
-    it('importSystemInternal', 0, () => {
+    it('importSystemInternal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       hilog.info(0x0000, "testTag", 'dexter log: call ohos.hilog')
     })
-    it('importSystemBuiltin', 0, () => {
+    it('importSystemBuiltin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       app.getInfo()
     })
-    it("ImportAppNapi", 0, () => {
+    it("ImportAppNapi", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(testNapi.add(2, 3)).assertEqual(5)
     })
   })

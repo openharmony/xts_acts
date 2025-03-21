@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -51,7 +51,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_createQuery
          * @tc.desc Test createQuery.
          */
-        it('webgl2_test_createQuery', 0, async function (done) {
+        it('webgl2_test_createQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_createQuery] createQuery");
             let query = gl.createQuery();
             console.log("webgltest Query:", query);
@@ -78,7 +78,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_deleteQuery
          * @tc.desc Test deleteQuery.
          */
-        it('webgl2_test_deleteQuery', 0, async function (done) {
+        it('webgl2_test_deleteQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_deleteQuery] deleteQuery");
             let query = gl.createQuery();
             console.log("webgltest Query:", query);
@@ -97,7 +97,7 @@ export default function webgl2_query() {
          * @tc.name webgl_test_deleteQuery_1
          * @tc.desc Test deleteQuery.
          */
-        it('webgl_test_deleteQuery_1', 0, async function (done) {
+        it('webgl_test_deleteQuery_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteQuery_1] deleteQuery");
             deleteQuery((query) => {
                 gl.deleteQuery(null);
@@ -113,7 +113,7 @@ export default function webgl2_query() {
          * @tc.name webgl_test_deleteQuery_2
          * @tc.desc Test deleteQuery.
          */
-        it('webgl_test_deleteQuery_2', 0, async function (done) {
+        it('webgl_test_deleteQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteQuery_2] deleteQuery");
             deleteQuery((query) => {
                 gl.deleteQuery(undefined);
@@ -129,7 +129,7 @@ export default function webgl2_query() {
          * @tc.name webgl_test_deleteQuery_3
          * @tc.desc Test deleteQuery.
          */
-        it('webgl_test_deleteQuery_2', 0, async function (done) {
+        it('webgl_test_deleteQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteQuery_2] deleteQuery");
             deleteQuery((query) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -153,7 +153,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_isQuery
          * @tc.desc Test isQuery.
          */
-        it('webgl2_test_isQuery', 0, async function (done) {
+        it('webgl2_test_isQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_isQuery] isQuery");
             let query = gl.createQuery();
             console.log("webgltest Query:", query);
@@ -172,7 +172,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_isQuery_1
          * @tc.desc Test isQuery.
          */
-        it('webgl2_test_isQuery_1', 0, async function (done) {
+        it('webgl2_test_isQuery_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isQuery_1] isQuery");
             isQuery((query) => {
                 gl.isQuery(null);
@@ -187,7 +187,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_isQuery_2
          * @tc.desc Test isQuery.
          */
-        it('webgl2_test_isQuery_2', 0, async function (done) {
+        it('webgl2_test_isQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isQuery_2] isQuery");
             isQuery((query) => {
                 gl.isQuery(undefined);
@@ -210,7 +210,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_beginQuery
          * @tc.desc Test beginQuery.
          */
-        it('webgl2_test_beginQuery', 0, async function (done) {
+        it('webgl2_test_beginQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_beginQuery] beginQuery");
             let query = gl.createQuery();
             console.log("webgltest Query:", query);
@@ -232,7 +232,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_beginQuery_1
          * @tc.desc Test beginQuery.
          */
-        it('webgl2_test_beginQuery_1', 0, async function (done) {
+        it('webgl2_test_beginQuery_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_beginQuery] beginQuery");
             beginQuery((query) => {
                 gl.beginQuery(gl.ANY_SAMPLES_PASSED_CONSERVATIVE, query);
@@ -247,7 +247,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_beginQuery_2
          * @tc.desc Test beginQuery.
          */
-        it('webgl2_test_beginQuery_2', 0, async function (done) {
+        it('webgl2_test_beginQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_beginQuery] beginQuery");
             beginQuery((query) => {
                 gl.beginQuery(gl.TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN, query);
@@ -262,7 +262,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_beginQuery_3
          * @tc.desc Test beginQuery.
          */
-        it('webgl2_test_beginQuery_3', 0, async function (done) {
+        it('webgl2_test_beginQuery_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_beginQuery] beginQuery");
             beginQuery((query) => {
                 gl.beginQuery(gl.ANY_SAMPLES_PASSED, query);
@@ -288,7 +288,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_endQuery
          * @tc.desc Test endQuery.
          */
-        it('webgl2_test_endQuery', 0, async function (done) {
+        it('webgl2_test_endQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_endQuery] endQuery");
             let query = gl.createQuery();
             let currentQuery = gl.getQuery(gl.ANY_SAMPLES_PASSED, gl.CURRENT_QUERY);
@@ -310,7 +310,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_endQuery_1
          * @tc.desc Test endQuery.
          */
-        it('webgl2_test_endQuery_1', 0, async function (done) {
+        it('webgl2_test_endQuery_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_endQuery] endQuery");
             endQuery((query) => {
                 gl.endQuery(gl.ANY_SAMPLES_PASSED_CONSERVATIVE);
@@ -325,7 +325,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_endQuery_2
          * @tc.desc Test endQuery.
          */
-        it('webgl2_test_endQuery_2', 0, async function (done) {
+        it('webgl2_test_endQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_endQuery] endQuery");
             endQuery((query) => {
                 gl.endQuery(gl.TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN);
@@ -351,7 +351,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQuery
          * @tc.desc Test getQuery.
          */
-        it('webgl2_test_getQuery', 0, async function (done) {
+        it('webgl2_test_getQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_getQuery] getQuery");
             let query = gl.createQuery();
             let currentQuery = gl.getQuery(gl.ANY_SAMPLES_PASSED, gl.CURRENT_QUERY);
@@ -375,7 +375,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQuery_1
          * @tc.desc Test getQuery.
          */
-        it('webgl2_test_getQuery_1', 0, async function (done) {
+        it('webgl2_test_getQuery_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_getQuery] getQuery");
             getQuery((query) => {
                 gl.getQuery(gl.ANY_SAMPLES_PASSED_CONSERVATIVE, gl.CURRENT_QUERY);
@@ -390,7 +390,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQuery_2
          * @tc.desc Test getQuery.
          */
-        it('webgl2_test_getQuery_2', 0, async function (done) {
+        it('webgl2_test_getQuery_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_getQuery] getQuery");
             getQuery((query) => {
                 gl.getQuery(gl.TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN, gl.CURRENT_QUERY);
@@ -405,7 +405,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQuery_3
          * @tc.desc Test getQuery.
          */
-        it('webgl2_test_getQuery_3', 0, async function (done) {
+        it('webgl2_test_getQuery_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_getQuery] getQuery");
             getQuery((query) => {
                 gl.getQuery(gl.ANY_SAMPLES_PASSED, gl.CURRENT_QUERY);
@@ -429,7 +429,7 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQueryParameter
          * @tc.desc Test getQueryParameter.
          */
-        it('webgl2_test_getQueryParameter', 0, async function (done) {
+        it('webgl2_test_getQueryParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_getQueryParameter] getQueryParameter");
             let query = gl.createQuery();
             console.log("webgltest Query:", query);
@@ -452,7 +452,8 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQueryParameter_1
          * @tc.desc Test getQueryParameter.
          */
-        it('webgl2_test_getQueryParameter_1', 0, async function (done) {
+        it('webgl2_test_getQueryParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getQueryParameter] getQueryParameter");
             getQueryParameter((query) => {
                 gl.getQueryParameter(query, gl.QUERY_RESULT_AVAILABLE);
@@ -467,7 +468,8 @@ export default function webgl2_query() {
          * @tc.name webgl2_test_getQueryParameter_2
          * @tc.desc Test getQueryParameter.
          */
-        it('webgl2_test_getQueryParameter_2', 0, async function (done) {
+        it('webgl2_test_getQueryParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_getQueryParameter] getQueryParameter");
             getQueryParameter((query) => {
                 gl.getQueryParameter(query, gl.QUERY_RESULT);

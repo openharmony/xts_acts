@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
@@ -69,7 +69,7 @@ export default function UiTest() {
     * @tc.name: testScrollSearchHorizontal
     * @tc.desc: scroll horizontally on this UiComponent to find matched UiComponent.
     */
-    it('testScrollSearchHorizontal', 0, async () => {
+    it('testScrollSearchHorizontal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(TestTag, 'testScrollSearchHorizontal start');
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await driver.delayMs(waitUiReadyMs);
@@ -123,7 +123,7 @@ export default function UiTest() {
     * @tc.name: testMouseDrag
     * @tc.desc: drag on the screen between the specified points by mouse.
     */
-    it('testMouseDrag', 0, async () => {
+    it('testMouseDrag', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(ON.id('jump'))
@@ -138,6 +138,7 @@ export default function UiTest() {
       await driver.delayMs(2000)
       let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
       expect(text == null).assertTrue()
+	  await driver.mouseDrag(point1, point2)
     })
 
   })
@@ -159,7 +160,7 @@ export default function UiTest() {
      * @tc.name: testFling
      * @tc.desc: inject fling on the device display.
      */
-    it('testFling', 0, async () => {
+    it('testFling', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       let d = await display.getDefaultDisplaySync()
@@ -210,7 +211,7 @@ export default function UiTest() {
      * @tc.name: testTriggerCombineKeys
      * @tc.desc: press two or three key combinations
      */
-    it('testTriggerCombineKeys', 0, async () => {
+    it('testTriggerCombineKeys', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(2000)
       let text = await driver.findComponent(ON.type('TextInput'))
@@ -248,7 +249,7 @@ export default function UiTest() {
      * @tc.name: testDisplayRotation
      * @tc.desc: get the rotation of the device display and set it.
      */
-    it('testDisplayRotation', 0, async () => {
+    it('testDisplayRotation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
@@ -300,7 +301,7 @@ export default function UiTest() {
      * @tc.name: testSetDisplayRotationEnabled
      * @tc.desc: enable/disable the rotation of device display.
      */
-    it('testSetDisplayRotationEnabled', 0, async () => {
+    it('testSetDisplayRotationEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       await driver.setDisplayRotationEnabled(true)
@@ -322,7 +323,7 @@ export default function UiTest() {
      * @tc.name: testPressHome
      * @tc.desc: press the home key.
      */
-    it('testPressHome', 0, async () => {
+    it('testPressHome', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       await driver.pressHome()
@@ -337,7 +338,7 @@ export default function UiTest() {
      * @tc.name: testDrag
      * @tc.desc: drag on the screen between the specified points.
      */
-    it('testDrag', 0, async () => {
+    it('testDrag', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(ON.id('jump'))
@@ -359,7 +360,7 @@ export default function UiTest() {
      * @tc.name: testDragTos
      * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
      */
-    it('testDragTo', 0, async () => {
+    it('testDragTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(ON.id('jump'))

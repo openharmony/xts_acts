@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import ctype from 'libctypendk.so'
 
@@ -32,7 +32,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnum001', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isalnum(b);
       expect(a).assertEqual(1);
@@ -47,7 +47,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnum002', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isalnum(b);
       expect(a).assertEqual(1);
@@ -61,7 +61,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnum003', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = ctype.isalnum(b);
       expect(a).assertEqual(0);
@@ -76,7 +76,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnumL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(1);
@@ -91,7 +91,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnumL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(1);
@@ -105,7 +105,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalnumL003', 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(0);
@@ -120,7 +120,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalpha001', 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isalpha(b);
       expect(a).assertEqual(0);
@@ -134,7 +134,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalpha002', 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isalpha(b);
       expect(a).assertEqual(1);
@@ -148,7 +148,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalpha003', 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '?'
       let a: number = ctype.isalpha(b);
       expect(a).assertEqual(0);
@@ -163,7 +163,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalphaL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(0);
@@ -177,7 +177,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalphaL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(1);
@@ -191,7 +191,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsalphaL003', 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '!'
       let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(0);
@@ -206,7 +206,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsascii001', 0, async (done: Function) => {
+    it('testMuslCtypeIsascii001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = ctype.isascii(b);
       expect(a).assertEqual(1);
@@ -220,7 +220,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsascii002', 0, async (done: Function) => {
+    it('testMuslCtypeIsascii002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 127
       let a: number = ctype.isascii(b);
       expect(a).assertEqual(1);
@@ -234,7 +234,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsascii003', 0, async (done: Function) => {
+    it('testMuslCtypeIsascii003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 128
       let a: number = ctype.isascii(b);
       expect(a).assertEqual(0);
@@ -249,7 +249,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsblank001', 0, async (done: Function) => {
+    it('testMuslCtypeIsblank001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isblank(b);
       expect(a).assertEqual(0);
@@ -263,7 +263,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsblank002', 0, async (done: Function) => {
+    it('testMuslCtypeIsblank002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isblank(b);
       expect(a).assertEqual(1);
@@ -278,7 +278,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsblankL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsblankL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isblankL(b);
       expect(a).assertEqual(0);
@@ -292,7 +292,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsblankL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsblankL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isblankL(b);
       expect(a).assertEqual(1);
@@ -307,7 +307,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrl001', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
@@ -321,7 +321,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrl002', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 31
       let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
@@ -335,7 +335,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrl003', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 127
       let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
@@ -349,7 +349,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrl004', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 32
       let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(0);
@@ -364,7 +364,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrlL001', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
@@ -378,7 +378,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrlL002', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 31
       let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
@@ -392,7 +392,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrlL003', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 127
       let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
@@ -406,7 +406,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIscntrlL004', 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 32
       let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(0);
@@ -421,7 +421,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsdigit001', 0, async (done: Function) => {
+    it('testMuslCtypeIsdigit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isdigit(b);
       expect(a).assertEqual(1);
@@ -435,7 +435,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsdigit002', 0, async (done: Function) => {
+    it('testMuslCtypeIsdigit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isdigit(b);
       expect(a).assertEqual(0);
@@ -450,7 +450,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsdigitL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsdigitL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '1'
       let a: number = ctype.isdigitL(b);
       expect(a).assertEqual(1);
@@ -464,7 +464,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsdigitL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsdigitL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isdigitL(b);
       expect(a).assertEqual(0);
@@ -479,7 +479,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraphL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '2'
       let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(1);
@@ -493,7 +493,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraphL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(1);
@@ -507,7 +507,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraphL003', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(0);
@@ -521,7 +521,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraph001', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '2'
       let a: number = ctype.isgraph(b);
       expect(a).assertEqual(1);
@@ -535,7 +535,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraph002', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = ctype.isgraph(b);
       expect(a).assertEqual(1);
@@ -549,7 +549,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsgraph003', 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isgraph(b);
       expect(a).assertEqual(0);
@@ -564,7 +564,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIslower001', 0, async (done: Function) => {
+    it('testMuslCtypeIslower001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = ctype.islower(b);
       expect(a).assertEqual(1);
@@ -578,7 +578,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIslower002', 0, async (done: Function) => {
+    it('testMuslCtypeIslower002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'B'
       let a: number = ctype.islower(b);
       expect(a).assertEqual(0);
@@ -593,7 +593,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIslowerL001', 0, async (done: Function) => {
+    it('testMuslCtypeIslowerL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'b'
       let a: number = ctype.islowerL(b);
       expect(a).assertEqual(1);
@@ -607,7 +607,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIslowerL002', 0, async (done: Function) => {
+    it('testMuslCtypeIslowerL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'B'
       let a: number = ctype.islowerL(b);
       expect(a).assertEqual(0);
@@ -622,7 +622,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprint001', 0, async (done: Function) => {
+    it('testMuslCtypeIsprint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '3'
       let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
@@ -636,7 +636,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprint002', 0, async (done: Function) => {
+    it('testMuslCtypeIsprint002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'c'
       let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
@@ -650,7 +650,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprint003', 0, async (done: Function) => {
+    it('testMuslCtypeIsprint003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
@@ -664,7 +664,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprint004', 0, async (done: Function) => {
+    it('testMuslCtypeIsprint004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\t'
       let a: number = ctype.isprint(b);
       expect(a).assertEqual(0);
@@ -679,7 +679,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprintL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '3'
       let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
@@ -693,7 +693,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprintL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'c'
       let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
@@ -707,7 +707,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprintL003', 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = ' '
       let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
@@ -721,7 +721,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsprintL004', 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\t'
       let a: number = ctype.isprintL(b);
       expect(a).assertEqual(0);
@@ -737,7 +737,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIspunct001', 0, async (done: Function) => {
+    it('testMuslCtypeIspunct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '/'
       let a: number = ctype.ispunct(b);
       expect(a).assertEqual(1);
@@ -751,7 +751,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIspunct002', 0, async (done: Function) => {
+    it('testMuslCtypeIspunct002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.ispunct(b);
       expect(a).assertEqual(0);
@@ -765,7 +765,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIspunctL001', 0, async (done: Function) => {
+    it('testMuslCtypeIspunctL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '/'
       let a: number = ctype.ispunctL(b);
       expect(a).assertEqual(1);
@@ -779,7 +779,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIspunctL002', 0, async (done: Function) => {
+    it('testMuslCtypeIspunctL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.ispunctL(b);
       expect(a).assertEqual(0);
@@ -793,7 +793,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsspace001', 0, async (done: Function) => {
+    it('testMuslCtypeIsspace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\v'
       let a: number = ctype.isspace(b);
       expect(a).assertEqual(1);
@@ -807,7 +807,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsspace002', 0, async (done: Function) => {
+    it('testMuslCtypeIsspace002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'v'
       let a: number = ctype.isspace(b);
       expect(a).assertEqual(0);
@@ -821,7 +821,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsspaceL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsspaceL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '\v'
       let a: number = ctype.isspaceL(b);
       expect(a).assertEqual(1);
@@ -835,7 +835,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsspaceL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsspaceL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'v'
       let a: number = ctype.isspaceL(b);
       expect(a).assertEqual(0);
@@ -850,7 +850,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsupperL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsupperL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let a: number = ctype.isupperL(b);
       expect(a).assertEqual(1);
@@ -864,7 +864,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsupperL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsupperL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isupperL(b);
       expect(a).assertEqual(0);
@@ -879,7 +879,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsupper001', 0, async (done: Function) => {
+    it('testMuslCtypeIsupper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'A'
       let a: number = ctype.isupper(b);
       expect(a).assertEqual(1);
@@ -893,7 +893,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsupper002', 0, async (done: Function) => {
+    it('testMuslCtypeIsupper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'a'
       let a: number = ctype.isupper(b);
       expect(a).assertEqual(0);
@@ -909,7 +909,7 @@ export default function ctypeNdkTest() {
      * @tc.level      : Level 1
      *
      */
-    it('testMuslCtypeIsxdigit001', 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '6'
       let a: number = ctype.isxdigit(b);
       expect(a).assertEqual(1);
@@ -923,7 +923,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsxdigit002', 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'L'
       let a: number = ctype.isxdigit(b);
       expect(a).assertEqual(0);
@@ -938,7 +938,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsxdigitL001', 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigitL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = '6'
       let a: number = ctype.isxdigitL(b);
       expect(a).assertEqual(1);
@@ -952,7 +952,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCtypeIsxdigitL002', 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigitL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 'L'
       let a: number = ctype.isxdigitL(b);
       expect(a).assertEqual(0);
@@ -967,7 +967,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToascii001', 0, async (done: Function) => {
+    it('testMuslCtypeToascii001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = ctype.toascii();
       expect(a).assertContain("a");
       done()
@@ -981,7 +981,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolower001', 0, async (done: Function) => {
+    it('testMuslCtypeTolower001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let tolowerResult: number = ctype.tolower(a);
       console.info("Test tolowerResult= " + tolowerResult);
@@ -997,7 +997,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolower002', 0, async (done: Function) => {
+    it('testMuslCtypeTolower002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let tolowerResult: number = ctype.tolower(a);
       console.info("Test tolowerResult= " + tolowerResult);
@@ -1013,7 +1013,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolower003', 0, async (done: Function) => {
+    it('testMuslCtypeTolower003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2;
       let tolowerResult: number = ctype.tolower(a);
       console.info("Test tolowerResult= " + tolowerResult);
@@ -1029,7 +1029,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolower004', 0, async (done: Function) => {
+    it('testMuslCtypeTolower004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = -1;
       let tolowerResult: number = ctype.tolower(a);
       console.info("Test tolowerResult= " + tolowerResult);
@@ -1045,7 +1045,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolowerL001', 0, async (done: Function) => {
+    it('testMuslCtypeTolowerL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let tolowerLResult: number = ctype.tolowerL(a);
       console.info("Test tolowerLResult= " + tolowerLResult);
@@ -1061,7 +1061,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolowerL002', 0, async (done: Function) => {
+    it('testMuslCtypeTolowerL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let tolowerLResult: number = ctype.tolowerL(a);
       console.info("Test tolowerLResult= " + tolowerLResult);
@@ -1077,7 +1077,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolowerL003', 0, async (done: Function) => {
+    it('testMuslCtypeTolowerL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2;
       let tolowerLResult: number = ctype.tolowerL(a);
       console.info("Test tolowerLResult= " + tolowerLResult);
@@ -1093,7 +1093,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeTolowerL004', 0, async (done: Function) => {
+    it('testMuslCtypeTolowerL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = -1;
       let tolowerLResult: number = ctype.tolowerL(a);
       console.info("Test tolowerLResult= " + tolowerLResult);
@@ -1109,7 +1109,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupper001', 0, async (done: Function) => {
+    it('testMuslCtypeToupper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let toupperResult: number = ctype.toupper(a);
       console.info("Test toupperResult= " + toupperResult);
@@ -1125,7 +1125,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupper002', 0, async (done: Function) => {
+    it('testMuslCtypeToupper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let toupperResult: number = ctype.toupper(a);
       console.info("Test toupperResult= " + toupperResult);
@@ -1141,7 +1141,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupper003', 0, async (done: Function) => {
+    it('testMuslCtypeToupper003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2;
       let toupperResult: number = ctype.toupper(a);
       console.info("Test toupperResult= " + toupperResult);
@@ -1157,7 +1157,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupper004', 0, async (done: Function) => {
+    it('testMuslCtypeToupper004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = -1;
       let toupperResult: number = ctype.toupper(a);
       console.info("Test toupperResult= " + toupperResult);
@@ -1173,7 +1173,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupperL001', 0, async (done: Function) => {
+    it('testMuslCtypeToupperL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let toupperLResult: number = ctype.toupperL(a);
       console.info("Test toupperLResult= " + toupperLResult);
@@ -1189,7 +1189,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupperL002', 0, async (done: Function) => {
+    it('testMuslCtypeToupperL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let toupperLResult: number = ctype.tolowerL(a);
       console.info("Test toupperLResult= " + toupperLResult);
@@ -1205,7 +1205,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupperL003', 0, async (done: Function) => {
+    it('testMuslCtypeToupperL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2;
       let toupperLResult: number = ctype.tolowerL(a);
       console.info("Test toupperLResult= " + toupperLResult);
@@ -1221,7 +1221,7 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslCtypeToupperL004', 0, async (done: Function) => {
+    it('testMuslCtypeToupperL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = -1;
       let toupperLResult: number = ctype.tolowerL(a);
       console.info("Test toupperLResult= " + toupperLResult);

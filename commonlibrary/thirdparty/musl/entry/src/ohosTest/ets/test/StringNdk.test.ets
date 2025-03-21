@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import string from 'libstringndk.so'
 
@@ -32,7 +32,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncmp001', 0, async (done: Function) => {
+    it('testMuslStringStrncmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'a';
       let secondParam = 'a';
       let thirdParam = 1;
@@ -50,7 +50,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncpy001', 0, async (done: Function) => {
+    it('testMuslStringStrncpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'GGcdefg';
       let secondParam = 'ab';
       let thirdParam = 2;
@@ -68,7 +68,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncpy002', 0, async (done: Function) => {
+    it('testMuslStringStrncpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'GGGcdefg';
       let secondParam = 'ab';
       let thirdParam = 3;
@@ -86,7 +86,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncpy003', 0, async (done: Function) => {
+    it('testMuslStringStrncpy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'GGGcdefg';
       let secondParam = 'ab';
       let thirdParam = 1;
@@ -104,7 +104,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrndup001', 0, async (done: Function) => {
+    it('testMuslStringStrndup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'abcdefg';
       let secondParam = 3;
       let strndupResult: number = string.strndup(firstParam, secondParam);
@@ -121,7 +121,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrndup002', 0, async (done: Function) => {
+    it('testMuslStringStrndup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'abcdefg';
       let secondParam = 10;
       let strndupResult: number = string.strndup(firstParam, secondParam);
@@ -138,7 +138,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrnlen002', 0, async (done: Function) => {
+    it('testMuslStringStrnlen002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'abcdefg';
       let secondParam = 10;
       let strnlenResult: number = string.strnlen(firstParam, secondParam);
@@ -155,7 +155,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrpbrk001', 0, async (done: Function) => {
+    it('testMuslStringStrpbrk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'abcdefg';
       let secondParam = 'ef';
       let strpbrkResult: number = string.strpbrk(firstParam, secondParam);
@@ -172,7 +172,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrpbrk002', 0, async (done: Function) => {
+    it('testMuslStringStrpbrk002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'abcdefg';
       let secondParam = 'hijk';
       let strpbrkResult: number = string.strpbrk(firstParam, secondParam);
@@ -189,7 +189,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrsep001', 0, async (done: Function) => {
+    it('testMuslStringStrsep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '01234-56789';
       let secondParam = '-';
       let strsepResult: number = string.strsep(firstParam, secondParam);
@@ -206,7 +206,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrspn002', 0, async (done: Function) => {
+    it('testMuslStringStrspn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '0123456789';
       let secondParam = 'abcd';
       let strspnResult: number = string.strspn(firstParam, secondParam);
@@ -223,7 +223,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrstr001', 0, async (done: Function) => {
+    it('testMuslStringStrstr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '0123456789';
       let secondParam = '0';
       let strstrResult: number = string.strstr(firstParam, secondParam);
@@ -240,7 +240,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrstr002', 0, async (done: Function) => {
+    it('testMuslStringStrstr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '0123456789';
       let secondParam = 'a';
       let strstrResult: number = string.strstr(firstParam, secondParam);
@@ -257,7 +257,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrtok001', 0, async (done: Function) => {
+    it('testMuslStringStrtok001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '01234-56789';
       let secondParam = '-';
       let strtokResult: number = string.strtok(firstParam, secondParam);
@@ -274,7 +274,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrtok002', 0, async (done: Function) => {
+    it('testMuslStringStrtok002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '01234-56789';
       let secondParam = 'a';
       let strtokResult: number = string.strtok(firstParam, secondParam);
@@ -291,7 +291,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrtokR001', 0, async (done: Function) => {
+    it('testMuslStringStrtokR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'ab,cd,ef';
       let secondParam = ',';
       let strtokRResult: number = string.strtokR(firstParam, secondParam);
@@ -308,7 +308,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrtokR002', 0, async (done: Function) => {
+    it('testMuslStringStrtokR002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'ab,cd,ef';
       let secondParam = '1';
       let strtokRResult: number = string.strtokR(firstParam, secondParam);
@@ -325,7 +325,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrxfrm001', 0, async (done: Function) => {
+    it('testMuslStringStrxfrm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 0;
       let secondParam = 'abcdefg';
       let thirdParam = 10;
@@ -343,7 +343,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrxfrm002', 0, async (done: Function) => {
+    it('testMuslStringStrxfrm002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1;
       let secondParam = 'abcdefg';
       let thirdParam = 4;
@@ -360,7 +360,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerror001', 0, async (done: Function) => {
+    it('testMuslStringStrerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror(0);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -374,7 +374,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerror002', 0, async (done: Function) => {
+    it('testMuslStringStrerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror(1);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -388,7 +388,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerror003', 0, async (done: Function) => {
+    it('testMuslStringStrerror003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror(2);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -402,7 +402,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorL001', 0, async (done: Function) => {
+    it('testMuslStringStrerrorL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror_l(0);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -416,7 +416,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorL002', 0, async (done: Function) => {
+    it('testMuslStringStrerrorL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror_l(1);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -430,7 +430,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorL003', 0, async (done: Function) => {
+    it('testMuslStringStrerrorL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: String = string.strerror_l(2);
       let result = (firstParam != null);
       expect(result).assertTrue();
@@ -444,7 +444,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorR001', 0, async (done: Function) => {
+    it('testMuslStringStrerrorR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: number = string.strerror_r(0);
       expect(firstParam).assertEqual(0);
       done()
@@ -457,7 +457,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorR002', 0, async (done: Function) => {
+    it('testMuslStringStrerrorR002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: number = string.strerror_r(1);
       expect(firstParam).assertEqual(0);
       done()
@@ -470,7 +470,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorR003', 0, async (done: Function) => {
+    it('testMuslStringStrerrorR003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: number = string.strerror_r(2);
       expect(firstParam).assertEqual(0);
       done()
@@ -483,7 +483,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorR004', 0, async (done: Function) => {
+    it('testMuslStringStrerrorR004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: number = string.strerror_r(3);
       expect(firstParam).assertEqual(0);
       done()
@@ -496,7 +496,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrerrorR005', 0, async (done: Function) => {
+    it('testMuslStringStrerrorR005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam: number = string.strerror_r(4);
       expect(firstParam).assertEqual(34);
       done()
@@ -509,7 +509,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrdup001', 0, async (done: Function) => {
+    it('testMuslStringStrdup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let result: String = string.strdup(firstParam);
       expect(result).assertEqual(firstParam);
@@ -523,7 +523,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcat001', 0, async (done: Function) => {
+    it('testMuslStringStrcat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "CD"
       let result: String = string.strcat(firstParam, secondParam);
@@ -539,7 +539,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrchr001', 0, async (done: Function) => {
+    it('testMuslStringStrchr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "0009876"
       let result: String = string.strchr(firstParam);
       expect(result).assertEqual("9876");
@@ -553,7 +553,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcmp001', 0, async (done: Function) => {
+    it('testMuslStringStrcmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCD"
       let result: number = string.strcmp(firstParam, secondParam);
@@ -569,7 +569,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcmp002', 0, async (done: Function) => {
+    it('testMuslStringStrcmp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCDE"
       let result: number = string.strcmp(firstParam, secondParam);
@@ -585,7 +585,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcmp003', 0, async (done: Function) => {
+    it('testMuslStringStrcmp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "AB"
       let result: number = string.strcmp(firstParam, secondParam);
@@ -601,7 +601,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcoll001', 0, async (done: Function) => {
+    it('testMuslStringStrcoll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCD"
       let result: number = string.strcoll(firstParam, secondParam);
@@ -617,7 +617,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcoll002', 0, async (done: Function) => {
+    it('testMuslStringStrcoll002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCDE"
       let result: number = string.strcoll(firstParam, secondParam);
@@ -633,7 +633,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcoll003', 0, async (done: Function) => {
+    it('testMuslStringStrcoll003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "AB"
       let result: number = string.strcoll(firstParam, secondParam);
@@ -649,7 +649,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcollL001', 0, async (done: Function) => {
+    it('testMuslStringStrcollL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCD"
       let result: number = string.strcoll_l(firstParam, secondParam);
@@ -665,7 +665,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcollL002', 0, async (done: Function) => {
+    it('testMuslStringStrcollL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCDE"
       let result: number = string.strcoll_l(firstParam, secondParam);
@@ -681,7 +681,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcollL003', 0, async (done: Function) => {
+    it('testMuslStringStrcollL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "AB"
       let result: number = string.strcoll_l(firstParam, secondParam);
@@ -697,7 +697,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrlen001', 0, async (done: Function) => {
+    it('testMuslStringStrlen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let result: number = string.strlen(firstParam);
       expect(result).assertEqual(4);
@@ -711,7 +711,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncat001', 0, async (done: Function) => {
+    it('testMuslStringStrncat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "ABCD"
       let result: String = string.strncat(firstParam, secondParam, 10);
@@ -727,7 +727,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcat001', 0, async (done: Function) => {
+    it('testMuslStringStrlcat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcd"
       let result: number = string.strlcat(firstParam);
       expect(result).assertEqual(4);
@@ -741,7 +741,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcat002', 0, async (done: Function) => {
+    it('testMuslStringStrlcat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = ""
       let result: number = string.strlcat(firstParam);
       expect(result).assertEqual(0);
@@ -755,7 +755,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcpy001', 0, async (done: Function) => {
+    it('testMuslStringStrlcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcd"
       let result: number = string.strlcpy(firstParam);
       expect(result).assertEqual(4);
@@ -769,7 +769,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcpy002', 0, async (done: Function) => {
+    it('testMuslStringStrlcpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = ""
       let result: number = string.strlcpy(firstParam);
       expect(result).assertEqual(0);
@@ -783,7 +783,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrchrnul001', 0, async (done: Function) => {
+    it('testMuslStringStrchrnul001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "Hello world"
       let secondParam = 1
       let result: String = string.strchrnul(firstParam, secondParam);
@@ -798,7 +798,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrchrnul002', 0, async (done: Function) => {
+    it('testMuslStringStrchrnul002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "Hello world"
       let secondParam = 2
       let result: String = string.strchrnul(firstParam, secondParam);
@@ -813,7 +813,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrchrnul003', 0, async (done: Function) => {
+    it('testMuslStringStrchrnul003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "Hello world"
       let secondParam = 3
       let result: String = string.strchrnul(firstParam, secondParam);
@@ -829,7 +829,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrcasestr001', 0, async (done: Function) => {
+    it('testMuslStringStrcasestr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcdABCD"
       let secondParam = ""
       let result: String = string.strcasestr(firstParam, secondParam);
@@ -844,7 +844,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrcasestr002', 0, async (done: Function) => {
+    it('testMuslStringStrcasestr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcdABCD"
       let secondParam = "B"
       let result: String = string.strcasestr(firstParam, secondParam);
@@ -859,7 +859,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrcasestr003', 0, async (done: Function) => {
+    it('testMuslStringStrcasestr003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcdABCD"
       let secondParam = "b"
       let result: String = string.strcasestr(firstParam, secondParam);
@@ -874,7 +874,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrcasestr004', 0, async (done: Function) => {
+    it('testMuslStringStrcasestr004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "abcdABCD"
       let secondParam = "CD"
       let result: String = string.strcasestr(firstParam, secondParam);
@@ -889,7 +889,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrsignal001', 0, async (done: Function) => {
+    it('testMuslStringStrsignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 0
       let result: String = string.strsignal(firstParam);
       expect(result).assertEqual("Hangup");
@@ -903,7 +903,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrsignal002', 0, async (done: Function) => {
+    it('testMuslStringStrsignal002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1
       let result: String = string.strsignal(firstParam);
       expect(result).assertEqual("Interrupt");
@@ -918,7 +918,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrrchr001', 0, async (done: Function) => {
+    it('testMuslStringStrrchr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 'aabbdcc';
       let strrchrResult: string = string.strrchr(firstParam);
       console.info("Test strrchrResult= " + strrchrResult);
@@ -934,7 +934,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrrchr002', 0, async (done: Function) => {
+    it('testMuslStringStrrchr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '/aa/bb/cc';
       let strrchrResult: string = string.strrchr(firstParam);
       console.info("Test strrchrResult= " + strrchrResult);
@@ -950,7 +950,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrspn001', 0, async (done: Function) => {
+    it('testMuslStringStrspn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = '0123456789';
       let secondParam = '190126abcde';
       let strspnResult: number = string.strspn(firstParam, secondParam);
@@ -967,7 +967,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrxfrmL001', 0, async (done: Function) => {
+    it('testMuslStringStrxfrmL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 0;
       let secondParam = 'abcdefg';
       let thirdParam = 10;
@@ -985,7 +985,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrxfrmL002', 0, async (done: Function) => {
+    it('testMuslStringStrxfrmL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1;
       let secondParam = 'abcdefg';
       let thirdParam = 4;
@@ -1002,7 +1002,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpcpy001', 0, async (done: Function) => {
+    it('testMuslStringStpcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let result: String = string.stpcpy(firstParam);
       expect(result).assertEqual(firstParam);
@@ -1016,7 +1016,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpcpy002', 0, async (done: Function) => {
+    it('testMuslStringStpcpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCDEFG"
       let result: String = string.stpcpy(firstParam);
       expect(result).assertEqual(firstParam);
@@ -1030,7 +1030,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpncpy001', 0, async (done: Function) => {
+    it('testMuslStringStpncpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let result: String = string.stpncpy(firstParam);
       expect(result).assertEqual("ABcd");
@@ -1044,7 +1044,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpncpy002', 0, async (done: Function) => {
+    it('testMuslStringStpncpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCDEFG"
       let result: String = string.stpncpy(firstParam);
       expect(result).assertEqual("ABcd");
@@ -1058,7 +1058,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcpy001', 0, async (done: Function) => {
+    it('testMuslStringStrcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let result: String = string.strcpy(firstParam);
       expect(firstParam).assertEqual(result);
@@ -1072,7 +1072,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringMemmoveChk001', 0, async (done: Function) => {
+    it('testMuslStringMemmoveChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memmoveChk();
       expect(result).assertEqual(0);
       done()
@@ -1086,7 +1086,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringMemsetChk001', 0, async (done: Function) => {
+    it('testMuslStringMemsetChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memsetChk();
       expect(result).assertEqual(0);
       done()
@@ -1100,7 +1100,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpncpyChk001', 0, async (done: Function) => {
+    it('testMuslStringStpncpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: String = string.stpncpyChk();
       expect(result).assertEqual("cd");
       done()
@@ -1114,7 +1114,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringMempcpyChk001', 0, async (done: Function) => {
+    it('testMuslStringMempcpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.mempcpyChk();
       expect(result).assertEqual(0);
       done()
@@ -1128,7 +1128,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrlenChk001', 0, async (done: Function) => {
+    it('testMuslStringStrlenChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.strlenChk();
       expect(result).assertEqual(4);
       done()
@@ -1142,7 +1142,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrncpyChk001', 0, async (done: Function) => {
+    it('testMuslStringStrncpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: String = string.strncpyChk();
       expect(result).assertEqual("efcd");
       done()
@@ -1155,7 +1155,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcpy002', 0, async (done: Function) => {
+    it('testMuslStringStrcpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCDEF"
       let result: String = string.strcpy(firstParam);
       expect(result).assertEqual(firstParam);
@@ -1169,7 +1169,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcspn001', 0, async (done: Function) => {
+    it('testMuslStringStrcspn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "AB"
       let result: number = string.strcspn(firstParam, secondParam);
@@ -1184,7 +1184,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcspn002', 0, async (done: Function) => {
+    it('testMuslStringStrcspn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCDEF"
       let secondParam = "G"
       let result: number = string.strcspn(firstParam, secondParam);
@@ -1199,7 +1199,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemCpy001', 0, async (done: Function) => {
+    it('testMuslStringMemCpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let result: String = string.memCpy(firstParam);
       expect(result).assertEqual("ABCDEF");
@@ -1213,7 +1213,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemCpy002', 0, async (done: Function) => {
+    it('testMuslStringMemCpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABDC"
       let result: String = string.memCpy(firstParam);
       expect(result).assertEqual("ABDCEF");
@@ -1227,7 +1227,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemCpy003', 0, async (done: Function) => {
+    it('testMuslStringMemCpy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABDCEFGH"
       let result: String = string.memCpy(firstParam);
       expect(result).assertEqual("ABDCEFGH");
@@ -1241,7 +1241,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslStringMemMem001', 0, async (done: Function) => {
+    it('testMuslStringMemMem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "BCD"
       let result: number = string.memMem(firstParam);
       expect(result).assertEqual(0);
@@ -1255,7 +1255,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslStringMemMem002', 0, async (done: Function) => {
+    it('testMuslStringMemMem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "BCAD"
       let result: number = string.memMem(firstParam);
       expect(result).assertEqual(-1);
@@ -1269,7 +1269,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemMove001', 0, async (done: Function) => {
+    it('testMuslStringMemMove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "BCD"
       let result: String = string.memMove(firstParam);
       expect(result).assertEqual("BCD");
@@ -1283,7 +1283,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemPCpy001', 0, async (done: Function) => {
+    it('testMuslStringMemPCpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "1234"
       let result: String = string.memPCpy(firstParam);
       expect(result).assertEqual(firstParam);
@@ -1297,7 +1297,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemPCpy002', 0, async (done: Function) => {
+    it('testMuslStringMemPCpy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "12345678910"
       let result: String = string.memPCpy2(firstParam);
       expect(result).assertEqual("345678910");
@@ -1311,7 +1311,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemPCpy003', 0, async (done: Function) => {
+    it('testMuslStringMemPCpy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "1234"
       let result: String = string.memPCpy3(firstParam);
       expect(result).assertEqual("3BCDEF");
@@ -1325,7 +1325,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemPCpy004', 0, async (done: Function) => {
+    it('testMuslStringMemPCpy004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "1234"
       let result: String = string.memPCpy4(firstParam);
       expect(result).assertEqual("ABCDEF");
@@ -1339,7 +1339,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemRChr001', 0, async (done: Function) => {
+    it('testMuslStringMemRChr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: String = string.memrChr();
       expect(result).assertEqual("r_0100 test.");
       done()
@@ -1352,7 +1352,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemRChr002', 0, async (done: Function) => {
+    it('testMuslStringMemRChr002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memrChr2();
       expect(result).assertEqual(0);
       done()
@@ -1365,7 +1365,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemSet001', 0, async (done: Function) => {
+    it('testMuslStringMemSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memSet();
       expect(result).assertEqual(0);
       done()
@@ -1378,7 +1378,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemCcpy001', 0, async (done: Function) => {
+    it('testMuslStringMemCcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memCcpy();
       expect(result).assertEqual(0);
       done()
@@ -1391,7 +1391,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemChr001', 0, async (done: Function) => {
+    it('testMuslStringMemChr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memChr();
       expect(result).assertEqual(1);
       done()
@@ -1404,7 +1404,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemcmp001', 0, async (done: Function) => {
+    it('testMuslStringMemcmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memCmp();
       expect(result).assertEqual(1);
       done()
@@ -1418,7 +1418,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrncatChk001', 0, async (done: Function) => {
+    it('testMuslStringStrncatChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: String = string.strncatChk();
       console.info("Test result= " + result);
       expect(result).assertEqual('ABCDABCD');
@@ -1433,7 +1433,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrcatChk001', 0, async (done: Function) => {
+    it('testMuslStringStrcatChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "CD"
       let result: string = string.strcatChk(firstParam, secondParam);
@@ -1450,7 +1450,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStdioMemcpyChk001', 0, async (done: Function) => {
+    it('testMuslStdioMemcpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = string.memcpyChk();
       expect(result).assertEqual(0);
       done()
@@ -1463,7 +1463,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringMemrchrChk001', 0, async (done: Function) => {
+    it('testMuslStringMemrchrChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "this is __memrchr_chk test.";
       let secondParam = "c";
       let result: string = string.memrchrChk(firstParam, secondParam);
@@ -1479,7 +1479,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStrcpyChk001', 0, async (done: Function) => {
+    it('testMuslStringStrcpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "this is __strcpy_chk test.";
       let result: string = string.strcpyChk(firstParam);
       expect(result).assertEqual("this is __strcpy_chk test.");
@@ -1494,7 +1494,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringStpcpyChk001', 0, async (done: Function) => {
+    it('testMuslStringStpcpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "this is __stpcpy_chk test.";
       let result: string = string.stpcpyChk(firstParam);
       expect(result).assertEqual("this is __stpcpy_chk test.");
@@ -1509,7 +1509,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrchrChk001', 0, async (done: Function) => {
+    it('testMuslStringStrchrChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "this is __strchr_chk test.";
       let secondParam = 'h';
       let result: string = string.strchrChk(firstParam, secondParam);
@@ -1524,7 +1524,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrrchrChk001', 0, async (done: Function) => {
+    it('testMuslStringStrrchrChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number =string.__strrchr_chk();
       expect(data).assertEqual(0);
       done()
@@ -1537,7 +1537,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringMemchrChk001', 0, async (done: Function) => {
+    it('testMuslStringMemchrChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       let data: number =string.__memchr_chk();
       expect(data).assertEqual(0);
@@ -1552,7 +1552,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcpyChk001', 0, async (done: Function) => {
+    it('testMuslStringStrlcpyChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number =string.__strlcpy_chk();
       expect(data).assertEqual(6);
       done()
@@ -1566,7 +1566,7 @@ export default function stringNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringStrlcatChk001', 0, async (done: Function) => {
+    it('testMuslStringStrlcatChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number =string.__strlcat_chk();
       expect(data).assertEqual(6);
       done()

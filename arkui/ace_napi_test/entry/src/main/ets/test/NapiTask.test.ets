@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from "@ohos/hypium";
+import { describe, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import napitest from 'libnapitest.so';
 // import napitest from 'libentry.so';
 import { taskpool } from '@kit.ArkTS';
@@ -608,7 +608,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0001', 0, async () => {
+    it('testExecuteTask0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -636,7 +636,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0002', 0, async () => {
+    it('testExecuteTask0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -664,7 +664,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0003', 0, async () => {
+    it('testExecuteTask0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -692,7 +692,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0004', 0, async () => {
+    it('testExecuteTask0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -720,7 +720,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0005', 0, async () => {
+    it('testExecuteTask0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -748,7 +748,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0006', 0, async () => {
+    it('testExecuteTask0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -776,7 +776,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0007', 0, async () => {
+    it('testExecuteTask0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -804,7 +804,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0008', 0, async () => {
+    it('testExecuteTask0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -832,7 +832,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0009', 0, async () => {
+    it('testExecuteTask0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -860,7 +860,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0010', 0, async () => {
+    it('testExecuteTask0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -888,7 +888,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0011', 0, async () => {
+    it('testExecuteTask0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -916,7 +916,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0012', 0, async () => {
+    it('testExecuteTask0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -944,7 +944,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0013', 0, async () => {
+    it('testExecuteTask0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -972,7 +972,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0014', 0, async () => {
+    it('testExecuteTask0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1000,7 +1000,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0015', 0, async () => {
+    it('testExecuteTask0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1028,7 +1028,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0016', 0, async () => {
+    it('testExecuteTask0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1056,7 +1056,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0017', 0, async () => {
+    it('testExecuteTask0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1084,7 +1084,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0018', 0, async () => {
+    it('testExecuteTask0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1112,7 +1112,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0019', 0, async () => {
+    it('testExecuteTask0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1140,7 +1140,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0020', 0, async () => {
+    it('testExecuteTask0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1168,7 +1168,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0021', 0, async () => {
+    it('testExecuteTask0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1196,7 +1196,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0022', 0, async () => {
+    it('testExecuteTask0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1224,7 +1224,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0023', 0, async () => {
+    it('testExecuteTask0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1252,7 +1252,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0024', 0, async () => {
+    it('testExecuteTask0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1280,7 +1280,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0025', 0, async () => {
+    it('testExecuteTask0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1308,7 +1308,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0026', 0, async () => {
+    it('testExecuteTask0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0026';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1336,7 +1336,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0027', 0, async () => {
+    it('testExecuteTask0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0027';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1364,7 +1364,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0028', 0, async () => {
+    it('testExecuteTask0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0028';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1392,7 +1392,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0029', 0, async () => {
+    it('testExecuteTask0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0029';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1420,7 +1420,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0030', 0, async () => {
+    it('testExecuteTask0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0030';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1448,7 +1448,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0031', 0, async () => {
+    it('testExecuteTask0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0031';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1476,7 +1476,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0032', 0, async () => {
+    it('testExecuteTask0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0032';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1504,7 +1504,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0033', 0, async () => {
+    it('testExecuteTask0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0033';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1532,7 +1532,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0034', 0, async () => {
+    it('testExecuteTask0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0034';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1560,7 +1560,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0035', 0, async () => {
+    it('testExecuteTask0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0035';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1588,7 +1588,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0036', 0, async () => {
+    it('testExecuteTask0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0036';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1616,7 +1616,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0037', 0, async () => {
+    it('testExecuteTask0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0037';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1644,7 +1644,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0038', 0, async () => {
+    it('testExecuteTask0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0038';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1672,7 +1672,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0039', 0, async () => {
+    it('testExecuteTask0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0039';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1700,7 +1700,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0040', 0, async () => {
+    it('testExecuteTask0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0040';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1728,7 +1728,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0041', 0, async () => {
+    it('testExecuteTask0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0041';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1756,7 +1756,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0042', 0, async () => {
+    it('testExecuteTask0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0042';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1784,7 +1784,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0043', 0, async () => {
+    it('testExecuteTask0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0043';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1812,7 +1812,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0044', 0, async () => {
+    it('testExecuteTask0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0044';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1840,7 +1840,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0045', 0, async () => {
+    it('testExecuteTask0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0045';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1868,7 +1868,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0046', 0, async () => {
+    it('testExecuteTask0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0046';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1896,7 +1896,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0047', 0, async () => {
+    it('testExecuteTask0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0047';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1924,7 +1924,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0048', 0, async () => {
+    it('testExecuteTask0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0048';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1952,7 +1952,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0049', 0, async () => {
+    it('testExecuteTask0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0049';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1980,7 +1980,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0050', 0, async () => {
+    it('testExecuteTask0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0050';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2008,7 +2008,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0051', 0, async () => {
+    it('testExecuteTask0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0051';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2036,7 +2036,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0052', 0, async () => {
+    it('testExecuteTask0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0052';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2064,7 +2064,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0053', 0, async () => {
+    it('testExecuteTask0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0053';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2092,7 +2092,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0054', 0, async () => {
+    it('testExecuteTask0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0054';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2120,7 +2120,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0055', 0, async () => {
+    it('testExecuteTask0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0055';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2148,7 +2148,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiDeleteSerializationData0056', 0, async () => {
+    it('testNapiDeleteSerializationData0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiDeleteSerializationData0056';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2176,7 +2176,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0057', 0, async () => {
+    it('testExecuteTask0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0057';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2204,7 +2204,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0058', 0, async () => {
+    it('testExecuteTask0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0058';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2232,7 +2232,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0059', 0, async () => {
+    it('testExecuteTask0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0059';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2260,7 +2260,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0060', 0, async () => {
+    it('testExecuteTask0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0060';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2288,7 +2288,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0061', 0, async () => {
+    it('testExecuteTask0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0061';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2316,7 +2316,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0062', 0, async () => {
+    it('testExecuteTask0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0062';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2344,7 +2344,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0063', 0, async () => {
+    it('testExecuteTask0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0063';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2372,7 +2372,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0064', 0, async () => {
+    it('testExecuteTask0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0064';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2400,7 +2400,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testExecuteTask0065', 0, async () => {
+    it('testExecuteTask0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testExecuteTask0065';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2428,7 +2428,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetModuleFileName0066', 0, async () => {
+    it('testGetModuleFileName0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testGetModuleFileName0066';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2456,7 +2456,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateAsyncResource0067', 0, async () => {
+    it('testCreateAsyncResource0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testCreateAsyncResource0067';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2484,7 +2484,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testAsyncWorkWithQos0068', 0, async () => {
+    it('testAsyncWorkWithQos0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testAsyncWorkWithQos0068';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2512,7 +2512,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiRunScriptPathEnvNull0069', 0, async () => {
+    it('testNapiRunScriptPathEnvNull0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiRunScriptPathEnvNull0069';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2540,7 +2540,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiLoadModule0070', 0, async () => {
+    it('testNapiLoadModule0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiLoadModule0070';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2568,7 +2568,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateObjectWithProperties0071', 0, async () => {
+    it('testCreateObjectWithProperties0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testCreateObjectWithProperties0071';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2596,7 +2596,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateObjectWithNamedProperties0072', 0, async () => {
+    it('testCreateObjectWithNamedProperties0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testCreateObjectWithNamedProperties0072';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2624,7 +2624,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToNativeBindingObjectEnvNull0073', 0, async () => {
+    it('testCoerceToNativeBindingObjectEnvNull0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testCoerceToNativeBindingObjectEnvNull0073';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2652,7 +2652,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSerialize0074', 0, async () => {
+    it('testNapiSerialize0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiSerialize0074';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2680,7 +2680,7 @@ export default function NapiTaskTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiDeSerialize0075', 0, async () => {
+    it('testNapiDeSerialize0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiDeSerialize0075';
       console.info(`${caseName} test start`);
       let num = 0;

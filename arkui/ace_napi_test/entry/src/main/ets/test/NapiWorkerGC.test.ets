@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
 import napitest from 'libnapitest.so';
 // import napitest from 'libentry.so';
@@ -66,7 +66,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0001', 0, async () => {
+    it('testNapiWorkerGC0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0001';
       console.info(`${caseName} test start`);
       try {
@@ -92,7 +92,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0002', 0, async () => {
+    it('testNapiWorkerGC0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0002';
       console.info(`${caseName} test start`);
       try {
@@ -118,7 +118,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0003', 0, async () => {
+    it('testNapiWorkerGC0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0003';
       console.info(`${caseName} test start`);
       try {
@@ -144,7 +144,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0004', 0, async () => {
+    it('testNapiWorkerGC0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0004';
       console.info(`${caseName} test start`);
       try {
@@ -170,7 +170,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0005', 0, async () => {
+    it('testNapiWorkerGC0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0005';
       console.info(`${caseName} test start`);
       try {
@@ -196,7 +196,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0006', 0, async () => {
+    it('testNapiWorkerGC0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0006';
       console.info(`${caseName} test start`);
       try {
@@ -222,7 +222,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0007', 0, async () => {
+    it('testNapiWorkerGC0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0007';
       console.info(`${caseName} test start`);
       try {
@@ -248,7 +248,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0008', 0, async () => {
+    it('testNapiWorkerGC0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0008';
       console.info(`${caseName} test start`);
       try {
@@ -275,7 +275,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0009', 0, async () => {
+    it('testNapiWorkerGC0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0009';
       console.info(`${caseName} test start`);
       try {
@@ -301,7 +301,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0010', 0, async () => {
+    it('testNapiWorkerGC0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0010';
       console.info(`${caseName} test start`);
       try {
@@ -327,7 +327,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0011', 0, async () => {
+    it('testNapiWorkerGC0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0011';
       console.info(`${caseName} test start`);
       try {
@@ -353,7 +353,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0012', 0, async () => {
+    it('testNapiWorkerGC0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0012';
       console.info(`${caseName} test start`);
       try {
@@ -379,7 +379,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0013', 0, async () => {
+    it('testNapiWorkerGC0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0013';
       console.info(`${caseName} test start`);
       try {
@@ -406,7 +406,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0014', 0, async () => {
+    it('testNapiWorkerGC0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0014';
       console.info(`${caseName} test start`);
       try {
@@ -433,7 +433,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0015', 0, async () => {
+    it('testNapiWorkerGC0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorkerGC0015';
       console.info(`${caseName} test start`);
       try {
@@ -460,7 +460,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0016', 0, async () => {
+    it('testNapiWorkerGC0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0016';
       console.info(`${caseName} test start`);
       try {
@@ -487,7 +487,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0017', 0, async () => {
+    it('testNapiWorkerGC0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0017';
       console.info(`${caseName} test start`);
       try {
@@ -514,7 +514,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0018', 0, async () => {
+    it('testNapiWorkerGC0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0018';
       console.info(`${caseName} test start`);
       try {
@@ -541,7 +541,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0019', 0, async () => {
+    it('testNapiWorkerGC0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0019';
       console.info(`${caseName} test start`);
       try {
@@ -568,7 +568,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0020', 0, async () => {
+    it('testNapiWorkerGC0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0020';
       console.info(`${caseName} test start`);
       try {
@@ -595,7 +595,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0021', 0, async () => {
+    it('testNapiWorkerGC0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0021';
       console.info(`${caseName} test start`);
       try {
@@ -622,7 +622,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0022', 0, async () => {
+    it('testNapiWorkerGC0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0022';
       console.info(`${caseName} test start`);
       try {
@@ -649,7 +649,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0023', 0, async () => {
+    it('testNapiWorkerGC0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0023';
       console.info(`${caseName} test start`);
       try {
@@ -676,7 +676,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0024', 0, async () => {
+    it('testNapiWorkerGC0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0024';
       console.info(`${caseName} test start`);
       try {
@@ -703,7 +703,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0025', 0, async () => {
+    it('testNapiWorkerGC0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0025';
       console.info(`${caseName} test start`);
       try {
@@ -730,7 +730,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0026', 0, async () => {
+    it('testNapiWorkerGC0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0026';
       console.info(`${caseName} test start`);
       try {
@@ -757,7 +757,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0027', 0, async () => {
+    it('testNapiWorkerGC0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0027';
       console.info(`${caseName} test start`);
       try {
@@ -784,7 +784,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0028', 0, async () => {
+    it('testNapiWorkerGC0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0028';
       console.info(`${caseName} test start`);
       try {
@@ -811,7 +811,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0029', 0, async () => {
+    it('testNapiWorkerGC0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0029';
       console.info(`${caseName} test start`);
       try {
@@ -838,7 +838,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0030', 0, async () => {
+    it('testNapiWorkerGC0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0030';
       console.info(`${caseName} test start`);
       try {
@@ -865,7 +865,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0031', 0, async () => {
+    it('testNapiWorkerGC0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0031';
       console.info(`${caseName} test start`);
       try {
@@ -892,7 +892,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0032', 0, async () => {
+    it('testNapiWorkerGC0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0032';
       console.info(`${caseName} test start`);
       try {
@@ -919,7 +919,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0033', 0, async () => {
+    it('testNapiWorkerGC0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0033';
       console.info(`${caseName} test start`);
       try {
@@ -946,7 +946,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0034', 0, async () => {
+    it('testNapiWorkerGC0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0034';
       console.info(`${caseName} test start`);
       try {
@@ -973,7 +973,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0035', 0, async () => {
+    it('testNapiWorkerGC0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0035';
       console.info(`${caseName} test start`);
       try {
@@ -1000,7 +1000,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0036', 0, async () => {
+    it('testNapiWorkerGC0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0036';
       console.info(`${caseName} test start`);
       try {
@@ -1032,7 +1032,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0037', 0, async () => {
+    it('testNapiWorkerGC0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0037';
       console.info(`${caseName} test start`);
       try {
@@ -1064,7 +1064,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0038', 0, async () => {
+    it('testNapiWorkerGC0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0038';
       console.info(`${caseName} test start`);
       try {
@@ -1091,7 +1091,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0039', 0, async () => {
+    it('testNapiWorkerGC0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0039';
       console.info(`${caseName} test start`);
       try {
@@ -1123,7 +1123,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0040', 0, async () => {
+    it('testNapiWorkerGC0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0040';
       console.info(`${caseName} test start`);
       try {
@@ -1155,7 +1155,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0041', 0, async () => {
+    it('testNapiWorkerGC0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0041';
       console.info(`${caseName} test start`);
       try {
@@ -1182,7 +1182,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0042', 0, async () => {
+    it('testNapiWorkerGC0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0042';
       console.info(`${caseName} test start`);
       try {
@@ -1209,7 +1209,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0043', 0, async () => {
+    it('testNapiWorkerGC0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0043';
       console.info(`${caseName} test start`);
       try {
@@ -1236,7 +1236,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0044', 0, async () => {
+    it('testNapiWorkerGC0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0044';
       console.info(`${caseName} test start`);
       try {
@@ -1263,7 +1263,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0045', 0, async () => {
+    it('testNapiWorkerGC0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0045';
       console.info(`${caseName} test start`);
       try {
@@ -1290,7 +1290,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0046', 0, async () => {
+    it('testNapiWorkerGC0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0046';
       console.info(`${caseName} test start`);
       try {
@@ -1317,7 +1317,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0047', 0, async () => {
+    it('testNapiWorkerGC0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0047';
       console.info(`${caseName} test start`);
       try {
@@ -1344,7 +1344,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0048', 0, async () => {
+    it('testNapiWorkerGC0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0048';
       console.info(`${caseName} test start`);
       try {
@@ -1371,7 +1371,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0049', 0, async () => {
+    it('testNapiWorkerGC0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0049';
       console.info(`${caseName} test start`);
       try {
@@ -1398,7 +1398,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0050', 0, async () => {
+    it('testNapiWorkerGC0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0050';
       console.info(`${caseName} test start`);
       try {
@@ -1425,7 +1425,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0051', 0, async () => {
+    it('testNapiWorkerGC0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0051';
       console.info(`${caseName} test start`);
       try {
@@ -1452,7 +1452,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0052', 0, async () => {
+    it('testNapiWorkerGC0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0052';
       console.info(`${caseName} test start`);
       try {
@@ -1479,7 +1479,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0053', 0, async () => {
+    it('testNapiWorkerGC0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0053';
       console.info(`${caseName} test start`);
       try {
@@ -1506,7 +1506,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0054', 0, async () => {
+    it('testNapiWorkerGC0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0054';
       console.info(`${caseName} test start`);
       try {
@@ -1533,7 +1533,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0055', 0, async () => {
+    it('testNapiWorkerGC0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0055';
       console.info(`${caseName} test start`);
       try {
@@ -1560,7 +1560,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0056', 0, async () => {
+    it('testNapiWorkerGC0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0056';
       console.info(`${caseName} test start`);
       try {
@@ -1587,7 +1587,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0057', 0, async () => {
+    it('testNapiWorkerGC0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0057';
       console.info(`${caseName} test start`);
       try {
@@ -1614,7 +1614,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0058', 0, async () => {
+    it('testNapiWorkerGC0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0058';
       console.info(`${caseName} test start`);
       try {
@@ -1641,7 +1641,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0059', 0, async () => {
+    it('testNapiWorkerGC0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0059';
       console.info(`${caseName} test start`);
       try {
@@ -1668,7 +1668,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0060', 0, async () => {
+    it('testNapiWorkerGC0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0060';
       console.info(`${caseName} test start`);
       try {
@@ -1695,7 +1695,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0061', 0, async () => {
+    it('testNapiWorkerGC0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0061';
       console.info(`${caseName} test start`);
       try {
@@ -1722,7 +1722,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0062', 0, async () => {
+    it('testNapiWorkerGC0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0062';
       console.info(`${caseName} test start`);
       try {
@@ -1749,7 +1749,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0063', 0, async () => {
+    it('testNapiWorkerGC0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0063';
       console.info(`${caseName} test start`);
       try {
@@ -1776,7 +1776,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0064', 0, async () => {
+    it('testNapiWorkerGC0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0064';
       console.info(`${caseName} test start`);
       try {
@@ -1803,7 +1803,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0065', 0, async () => {
+    it('testNapiWorkerGC0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0065';
       console.info(`${caseName} test start`);
       try {
@@ -1830,7 +1830,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0066', 0, async () => {
+    it('testNapiWorkerGC0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0066';
       console.info(`${caseName} test start`);
       try {
@@ -1857,7 +1857,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0067', 0, async () => {
+    it('testNapiWorkerGC0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0067';
       console.info(`${caseName} test start`);
       try {
@@ -1884,7 +1884,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0068', 0, async () => {
+    it('testNapiWorkerGC0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0068';
       console.info(`${caseName} test start`);
       try {
@@ -1914,7 +1914,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0069', 0, async () => {
+    it('testNapiWorkerGC0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0069';
       console.info(`${caseName} test start`);
       try {
@@ -1941,7 +1941,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0070', 0, async () => {
+    it('testNapiWorkerGC0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0070';
       console.info(`${caseName} test start`);
       try {
@@ -1968,7 +1968,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0071', 0, async () => {
+    it('testNapiWorkerGC0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0071';
       console.info(`${caseName} test start`);
       try {
@@ -1995,7 +1995,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0072', 0, async () => {
+    it('testNapiWorkerGC0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0072';
       console.info(`${caseName} test start`);
       try {
@@ -2022,7 +2022,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0073', 0, async () => {
+    it('testNapiWorkerGC0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0073';
       console.info(`${caseName} test start`);
       try {
@@ -2049,7 +2049,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0074', 0, async () => {
+    it('testNapiWorkerGC0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0074';
       console.info(`${caseName} test start`);
       try {
@@ -2076,7 +2076,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerGC0075', 0, async () => {
+    it('testNapiWorkerGC0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerGC0075';
       console.info(`${caseName} test start`);
       try {
@@ -2103,7 +2103,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0001', 0, async () => {
+    it('testNapiWorkerSendableGC0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0001';
       console.info(`${caseName} test start`);
       try {
@@ -2130,7 +2130,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0002', 0, async () => {
+    it('testNapiWorkerSendableGC0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0002';
       console.info(`${caseName} test start`);
       try {
@@ -2157,7 +2157,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0003', 0, async () => {
+    it('testNapiWorkerSendableGC0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0003';
       console.info(`${caseName} test start`);
       try {
@@ -2184,7 +2184,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0004', 0, async () => {
+    it('testNapiWorkerSendableGC0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0004';
       console.info(`${caseName} test start`);
       try {
@@ -2211,7 +2211,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0005', 0, async () => {
+    it('testNapiWorkerSendableGC0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0005';
       console.info(`${caseName} test start`);
       try {
@@ -2238,7 +2238,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0006', 0, async () => {
+    it('testNapiWorkerSendableGC0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0006';
       console.info(`${caseName} test start`);
       try {
@@ -2265,7 +2265,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0007', 0, async () => {
+    it('testNapiWorkerSendableGC0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0007';
       console.info(`${caseName} test start`);
       try {
@@ -2293,7 +2293,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorkerSendableGC0008', 0, async () => {
+    it('testNapiWorkerSendableGC0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorkerSendableGC0008';
       console.info(`${caseName} test start`);
       try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import resource from 'libresourcendk.so'
 
@@ -32,7 +32,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetpriority001', 0, async (done: Function) => {
+    it('testMuslResourceSetpriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setpriority(-20);
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetpriority002', 0, async (done: Function) => {
+    it('testMuslResourceSetpriority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setpriority(-19);
       expect(result).assertEqual(0);
       done()
@@ -60,7 +60,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetrlimit001', 0, async (done: Function) => {
+    it('testMuslResourceSetrlimit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setrlimit(1);
       expect(result).assertEqual(-1);
       done()
@@ -74,7 +74,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetrlimit002', 0, async (done: Function) => {
+    it('testMuslResourceSetrlimit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setrlimit(0);
       expect(result).assertEqual(0);
       done()
@@ -88,7 +88,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetrlimit64001', 0, async (done: Function) => {
+    it('testMuslResourceSetrlimit64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setrlimit64(1);
       expect(result).assertEqual(-1);
       done()
@@ -102,7 +102,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResourceSetrlimit64002', 0, async (done: Function) => {
+    it('testMuslResourceSetrlimit64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.setrlimit64(0);
       expect(result).assertEqual(0);
       done()
@@ -116,7 +116,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetPriority001', 0, async (done: Function) => {
+    it('testMuslResourceGetPriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getPriority(0);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(1);
@@ -131,7 +131,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetPriority002', 0, async (done: Function) => {
+    it('testMuslResourceGetPriority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getPriority(1);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(1);
@@ -146,7 +146,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetPriority003', 0, async (done: Function) => {
+    it('testMuslResourceGetPriority003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getPriority(2);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(1);
@@ -161,7 +161,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRLimit001', 0, async (done: Function) => {
+    it('testMuslResourceGetRLimit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRLimit(0);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -176,7 +176,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRLimit002', 0, async (done: Function) => {
+    it('testMuslResourceGetRLimit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRLimit(3);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -191,7 +191,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRLimit003', 0, async (done: Function) => {
+    it('testMuslResourceGetRLimit003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRLimit(7);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -206,7 +206,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRUsage001', 0, async (done: Function) => {
+    it('testMuslResourceGetRUsage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRUsage(0);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -221,7 +221,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRUsage002', 0, async (done: Function) => {
+    it('testMuslResourceGetRUsage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRUsage(-1);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -236,7 +236,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceGetRUsage003', 0, async (done: Function) => {
+    it('testMuslResourceGetRUsage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getRUsage(1);
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -251,7 +251,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceprLimit001', 0, async (done: Function) => {
+    it('testMuslResourceprLimit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.prLimit();
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -266,7 +266,7 @@ export default function resourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslResourceprLimit64001', 0, async (done: Function) => {
+    it('testMuslResourceprLimit64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.prLimit64();
       console.info("Test NAPI data= " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -281,7 +281,7 @@ export default function resourceNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslResourceGetrlimit64001', 0, async (done: Function) => {
+    it('testMuslResourceGetrlimit64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = resource.getrlimit64();
       expect(result).assertEqual(0);
       done()

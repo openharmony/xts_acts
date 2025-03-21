@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformDataStruct from '@ohos.data.uniformDataStruct';
 import { BusinessError } from '@ohos.base';
@@ -43,7 +43,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0100', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0100 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -131,7 +131,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0200', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0200 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -219,7 +219,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0300', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0300 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -287,7 +287,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0400', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0400 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -338,7 +338,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0500', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0500 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -388,7 +388,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0600', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0600 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -434,7 +434,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0700', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0700 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -484,7 +484,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0800', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0800 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -529,7 +529,7 @@ export default function UDMFEntryTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0900', 0, async () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_0900 start');
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -607,7 +607,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1000', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1000 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -677,7 +677,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1100', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1100 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -732,7 +732,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1200', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1200 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -788,7 +788,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1300', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1300 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -843,7 +843,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1400', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1400 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -900,7 +900,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1500', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1500 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB
@@ -985,7 +985,7 @@ export default function UDMFEntryTest() {
        * @tc.type      : Function
        * @tc.level     : Level 2
        */
-      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1600', 0, async () => {
+      it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
         console.log('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_1600 start');
         let options: unifiedDataChannel.Options = {
           intention: unifiedDataChannel.Intention.DATA_HUB

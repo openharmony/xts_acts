@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 
 export default function dynamicImportSystem() {
   describe('ActImportSystem', () => {
@@ -26,7 +26,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportApp', 0, async () => {
+    it('constImportApp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       import ('@system.app').then((ns: ESObject) =>{console.log("constImportAppTest is successful: " + ns.default.terminate())});
     })
 
@@ -38,7 +38,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportRouter', 0, () => {
+    it('constImportRouter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       import ('@system.router').then((ns: ESObject) =>{console.log("constImportRouterTest is successful: " + ns.default.clear())});
     })
 
@@ -50,7 +50,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportCurves', 0, () => {
+    it('constImportCurves', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       import ('@ohos.curves').then(ns =>{console.log("constImportCurvesTest is successful: "+ns.default.springMotion(0.555,0.75,0.001))});
     })
 
@@ -62,7 +62,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportMatrix4', 0, () => {
+    it('constImportMatrix4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       import ('@ohos.matrix4').then(ns =>{console.log("constImportMatrix4Test is successful"+ns.default.identity())});
     })
 
@@ -74,7 +74,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportOhos', 0, async () => {
+    it('constImportOhos', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       import ('@ohos.hilog').then((ns: ESObject) =>{console.log("variableImportOhosTest is successful: " + ns.default.info(0x0000, 'testTag', '%{public}s', 'dynamicImport @ohos.hilog'))});
     })
 
@@ -86,7 +86,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('constImportNative', 0, async () => {
+    it('constImportNative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('libentry.so')
       expect(lib.default.add(2,3)).assertEqual(5)
     })
@@ -99,7 +99,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportApp', 0, () => {
+    it('variableImportApp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let packageName = '@system.app'
       import (packageName).then((ns: ESObject) => {console.log("variableImportAppTest is successful: " + ns.default.terminate())});
     })
@@ -112,7 +112,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportRouter', 0, () => {
+    it('variableImportRouter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let packageName = '@system.router'
       import (packageName).then((ns: ESObject) => {console.log("variableImportRouterTest is successful: " + ns.default.clear())});
     })
@@ -125,7 +125,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportCurves', 0, () => {
+    it('variableImportCurves', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let packageName = '@ohos.curves'
       import (packageName).then((ns: ESObject) => {console.log("variableImportCurvesTest is successful: " + ns.default.springMotion(0.555,0.75,0.001))});
     })
@@ -138,7 +138,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportMatrix4', 0, () => {
+    it('variableImportMatrix4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let packageName = '@ohos.matrix4'
       import (packageName).then((ns: ESObject) =>{console.log("variableImportMatrix4Test is successful: " + ns.default.identity())});
     })
@@ -151,7 +151,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportOhos', 0, async () => {
+    it('variableImportOhos', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let packageName = '@ohos.hilog'
       import (packageName).then((ns: ESObject) =>{console.log("variableImportOhosTest is successful: " + ns.default.info(0x0000, 'testTag', '%{public}s', 'dynamicImport @ohos.hilog'))});
 
@@ -165,7 +165,7 @@ export default function dynamicImportSystem() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableImportNative', 0, async () => {
+    it('variableImportNative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let packageName = 'libentry.so'
       let lib: ESObject = await import(packageName)
       expect(lib.default.add(2,3)).assertEqual(5)

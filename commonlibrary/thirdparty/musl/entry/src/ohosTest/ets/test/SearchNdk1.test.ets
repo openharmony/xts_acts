@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import search from 'libsearchndk1.so'
 
@@ -32,7 +32,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHcreate001', 0, async (done: Function) => {
+    it('testMuslSearchHcreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hcreate(0);
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHcreateR001', 0, async (done: Function) => {
+    it('testMuslSearchHcreateR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hcreateR(0);
       expect(result).assertEqual(0);
       done()
@@ -60,7 +60,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHdestroy001', 0, async (done: Function) => {
+    it('testMuslSearchHdestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hdestroy(0);
       expect(result).assertEqual(0);
       done()
@@ -74,7 +74,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHdestroyR001', 0, async (done: Function) => {
+    it('testMuslSearchHdestroyR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hdestroyR(0);
       expect(result).assertEqual(0);
       done()
@@ -88,7 +88,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearch001', 0, async (done: Function) => {
+    it('testMuslSearchHsearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearch(0);
       expect(result).assertEqual(0);
       done()
@@ -102,7 +102,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearch002', 0, async (done: Function) => {
+    it('testMuslSearchHsearch002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearch(-1);
       expect(result).assertEqual(-1);
       done()
@@ -116,7 +116,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearchR001', 0, async (done: Function) => {
+    it('testMuslSearchHsearchR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearchR(0);
       expect(result).assertEqual(0);
       done()
@@ -130,7 +130,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearchR002', 0, async (done: Function) => {
+    it('testMuslSearchHsearchR002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearchR(-1);
       expect(result).assertEqual(-1);
       done()
@@ -144,7 +144,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchInsque001', 0, async (done: Function) => {
+    it('testMuslSearchInsque001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.insque();
       expect(result).assertEqual(0);
       done()
@@ -158,7 +158,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchLfind001', 0, async (done: Function) => {
+    it('testMuslSearchLfind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.lfind(0);
       expect(result).assertEqual(0);
       done()
@@ -172,7 +172,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchLfind002', 0, async (done: Function) => {
+    it('testMuslSearchLfind002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.lfind(-1);
       expect(result).assertEqual(-1);
       done()
@@ -186,7 +186,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : level 1
      */
-    it('testMuslSearchSearch001', 0, async (done: Function) => {
+    it('testMuslSearchSearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number= search.lSearch(0);
       expect(result).assertEqual(0);
       done()
@@ -200,7 +200,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchRemque001', 0, async (done: Function) => {
+    it('testMuslSearchRemque001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.remque(0);
       expect(result).assertEqual(0);
       done()
@@ -214,7 +214,7 @@ export default function muslSearch1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTdelete001', 0, async (done: Function) => {
+    it('testMuslSearchTdelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tdelete(0);
       expect(result).assertEqual(0);
       done()
@@ -228,7 +228,7 @@ export default function muslSearch1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTdelete002', 0, async (done: Function) => {
+    it('testMuslSearchTdelete002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tdelete(-1);
       expect(result).assertEqual(-1);
       done()
@@ -242,7 +242,7 @@ export default function muslSearch1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTdestroy001', 0, async (done: Function) => {
+    it('testMuslSearchTdestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tdestroy();
       expect(result).assertEqual(0);
       done()
@@ -256,7 +256,7 @@ export default function muslSearch1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTfind001', 0, async (done: Function) => {
+    it('testMuslSearchTfind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tfind(0);
       expect(result).assertEqual(0);
       done()
@@ -270,7 +270,7 @@ export default function muslSearch1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTfind002', 0, async (done: Function) => {
+    it('testMuslSearchTfind002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tfind(-1);
       expect(result).assertEqual(-1);
       done()
@@ -284,7 +284,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchTsearch001', 0, async (done: Function) => {
+    it('testMuslSearchTsearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tsearch();
       expect(result).assertEqual(0);
       done()
@@ -298,7 +298,7 @@ export default function muslSearch1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchTwalk001', 0, async (done: Function) => {
+    it('testMuslSearchTwalk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.twalk();
       expect(result).assertEqual(0);
       done()

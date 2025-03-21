@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import select from 'libselectndk.so'
 
@@ -31,7 +31,7 @@ export default function selectNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSelectSelect001', 0, async (done: Function) => {
+    it('testMuslSelectSelect001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 0
       let result:number = select.select(testParam);
       expect(result).assertEqual(-1);
@@ -46,7 +46,7 @@ export default function selectNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSelectSelect002', 0, async (done: Function) => {
+    it('testMuslSelectSelect002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = select.select(1);
       expect(result).assertEqual(1);
       done()

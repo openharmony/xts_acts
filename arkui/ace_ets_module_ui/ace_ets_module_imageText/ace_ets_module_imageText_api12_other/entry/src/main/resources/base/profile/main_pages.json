@@ -4,6 +4,7 @@
   "MainAbility/pages/Text/textAreaInputTest",
   "MainAbility/pages/Text/TextDecorationStyleTest",
   "MainAbility/pages/TextInput/ContentType",
-  "MainAbility/pages/TextInput/fontFeature"
+  "MainAbility/pages/TextInput/fontFeature",
+  "MainAbility/pages/RichEditor/textShadowTest"
   ]
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import strings from 'libstringsndk.so'
 
@@ -32,7 +32,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmp001', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp(firstParam, secondParam);
@@ -48,7 +48,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmp002', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp(firstParam, secondParam);
@@ -64,7 +64,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmp003', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "efg"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp(firstParam, secondParam);
@@ -80,7 +80,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmpL001', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmpL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp_l(firstParam, secondParam);
@@ -96,7 +96,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmpL002', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmpL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp_l(firstParam, secondParam);
@@ -112,7 +112,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcasecmpL003', 0, async (done: Function) => {
+    it('testMuslStringsStrcasecmpL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "efg"
       let secondParam = "abcd"
       let result:number = strings.strcasecmp_l(firstParam, secondParam);
@@ -128,7 +128,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmp001', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp(firstParam, secondParam, 10);
@@ -144,7 +144,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmp002', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp(firstParam, secondParam, 10);
@@ -160,7 +160,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmp003', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp(firstParam, secondParam, 2);
@@ -176,7 +176,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmp004', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmp004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "efg"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp(firstParam, secondParam, 10);
@@ -192,7 +192,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmpL001', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmpL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "ABCD"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
@@ -208,7 +208,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmpL002', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmpL002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
@@ -224,7 +224,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmpL003', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmpL003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "AB"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp_l(firstParam, secondParam, 2, 0);
@@ -240,7 +240,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmpL004', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmpL004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "efg"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
@@ -256,7 +256,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrncasecmpL005', 0, async (done: Function) => {
+    it('testMuslStringsStrncasecmpL005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = "efg"
       let secondParam = "abcd"
       let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, -1);
@@ -273,7 +273,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsIndex001', 0, async (done:Function) => {
+    it('testMuslStringsIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
 
       let param = "ABCDE";
       let result:number = strings.index(param);
@@ -290,7 +290,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsIndex002', 0, async (done:Function) => {
+    it('testMuslStringsIndex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
 
       let param = "AB";
       let result:number = strings.index(param);
@@ -307,7 +307,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringsFfs001', 0, async (done: Function) => {
+    it('testMuslStringsFfs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 1;
       let result:number = strings.ffs(firstParam);
       expect(result).assertEqual(1);
@@ -322,7 +322,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringsFfsL001', 0, async (done: Function) => {
+    it('testMuslStringsFfsL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = 8;
       let result:number = strings.ffsl(firstParam);
       expect(result).assertEqual(4);
@@ -337,7 +337,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringsFfsLL001', 0, async (done: Function) => {
+    it('testMuslStringsFfsLL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let firstParam = -2;
       let result:number = strings.ffsll(firstParam);
       expect(result).assertEqual(2);
@@ -352,7 +352,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStringsBcmp001', 0, async (done: Function) => {
+    it('testMuslStringsBcmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultExcept = 0;
       let resultValue:number = strings.bcmp();
       expect(resultValue).assertEqual(resultExcept);
@@ -367,7 +367,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsBcopy001', 0, async (done: Function) => {
+    it('testMuslStringsBcopy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = strings.bcopy();
       expect(result).assertEqual(0);
       done()
@@ -381,7 +381,7 @@ export default function stringsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsBzero001', 0, async (done: Function) => {
+    it('testMuslStringsBzero001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = strings.bzero();
       expect(result).assertEqual(0);
       done()

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import display from '@ohos.display';
 import events_emitter from '@ohos.events.emitter';
@@ -54,10 +54,10 @@ export default function locationComponentTest() {
      * @tc.desc Test SecurityComponent Default parameters and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_0100', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0100] START====');
       let strJson = getInspectorByKey('keyLocation');
       let obj:ESObject = JSON.parse(strJson);
@@ -174,7 +174,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0200', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0200] START====');
       await Utils.sleep(1000);
       try {
@@ -276,7 +276,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0300', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0300] START====');
       await Utils.sleep(1000);
       try {
@@ -380,7 +380,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0400', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0400] START====');
       await Utils.sleep(1000);
       try {
@@ -484,7 +484,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0500', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0500] START====');
       await Utils.sleep(1000);
       try {
@@ -585,7 +585,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0600', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0600] START====');
       await Utils.sleep(1000);
       try {
@@ -686,7 +686,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0700', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0700] START====');
       await Utils.sleep(1000);
       try {
@@ -787,7 +787,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0800', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0800] START====');
       await Utils.sleep(1000);
       try {
@@ -888,7 +888,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_0900', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_0900] START====');
       await Utils.sleep(1000);
       try {
@@ -989,7 +989,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1000', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1000] START====');
       await Utils.sleep(1000);
       try {
@@ -1090,7 +1090,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1100', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1100] START====');
       await Utils.sleep(1000);
       try {
@@ -1194,7 +1194,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1200', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1200] START====');
       await Utils.sleep(1000);
       try {
@@ -1298,7 +1298,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1300', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1300] START====');
       await Utils.sleep(1000);
       try {
@@ -1402,7 +1402,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1400', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1400] START====');
       await Utils.sleep(1000);
       try {
@@ -1519,7 +1519,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1500', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1500] START====');
       await Utils.sleep(1000);
       try {
@@ -1634,7 +1634,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1600', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1600] START====');
       await Utils.sleep(1000);
       try {
@@ -1746,7 +1746,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1700', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1700] START====');
       await Utils.sleep(1000);
       try {
@@ -1849,7 +1849,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1800', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1800] START====');
       await Utils.sleep(1000);
       try {
@@ -1953,7 +1953,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_1900', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_1900] START====');
       await Utils.sleep(1000);
       try {
@@ -2056,7 +2056,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_2000', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2000] START====');
       await Utils.sleep(1000);
       try {
@@ -2157,7 +2157,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_2100', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2100] START====');
       await Utils.sleep(1000);
       try {
@@ -2258,7 +2258,7 @@ export default function locationComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Location_2200', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2200] START====');
       await Utils.sleep(1000);
       try {
