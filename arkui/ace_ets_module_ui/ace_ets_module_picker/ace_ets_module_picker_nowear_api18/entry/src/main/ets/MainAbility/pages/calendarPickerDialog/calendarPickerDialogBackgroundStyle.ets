@@ -59,13 +59,6 @@ struct CalendarPickerDialogOptions {
             backgroundColor: this.colors[this.colorIndex],
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
-            onDidAppear: () => {
-              let tree: ESObject = getInspectorTree();
-              let dialog: ESObject = tree.$children[1];
-              let column: ESObject = dialog.$children[0];
-              let backgroundColor: string = column.$attrs.backgroundColor;
-              console.info('calendar onDidAppear: ' + backgroundColor)
-            },
           })
           this.colorIndex += 1
           this.colorIndex = this.colorIndex % this.colors.length
@@ -78,13 +71,6 @@ struct CalendarPickerDialogOptions {
             backgroundColor: this.anomaliesColors[this.anomaliesIndex],
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
-            onDidAppear: () => {
-              let tree: ESObject = getInspectorTree();
-              let dialog: ESObject = tree.$children[1];
-              let column: ESObject = dialog.$children[0];
-              let backgroundColor: string = column.$attrs.backgroundColor;
-              console.info('calendar onDidAppear: ' + backgroundColor)
-            },
           })
           this.anomaliesIndex += 1
           this.anomaliesIndex = this.anomaliesIndex % this.anomaliesColors.length
@@ -96,13 +82,6 @@ struct CalendarPickerDialogOptions {
           console.info('CalendarDialog.show')
           CalendarPickerDialog.show({
             backgroundBlurStyle: this.bgStyles[this.bgStyleIndex],
-            onDidAppear: () => {
-              let tree: ESObject = getInspectorTree();
-              let dialog: ESObject = tree.$children[1];
-              let column: ESObject = dialog.$children[0];
-              let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-              console.info('calendar onDidAppear: ' + backgroundBlurStyle)
-            },
           })
           this.bgStyleIndex += 1
           this.bgStyleIndex = this.bgStyleIndex % this.bgStyles.length
@@ -114,13 +93,6 @@ struct CalendarPickerDialogOptions {
           console.info('CalendarDialog.show')
           CalendarPickerDialog.show({
             shadow: this.shadows[this.shadowIndex],
-            onDidAppear: () => {
-              let tree: ESObject = getInspectorTree();
-              let dialog: ESObject = tree.$children[1];
-              let column: ESObject = dialog.$children[0];
-              let shadow: string = column.$attrs.shadow;
-              console.info('calendar onDidAppear: ' + shadow)
-            },
           })
           this.shadowIndex += 1
           this.shadowIndex = this.shadowIndex % this.shadows.length

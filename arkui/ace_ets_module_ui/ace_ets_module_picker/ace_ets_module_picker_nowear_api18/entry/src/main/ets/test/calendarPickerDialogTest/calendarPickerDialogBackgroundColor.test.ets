@@ -161,7 +161,7 @@ export default function CalendarPickerDialogBackgroundColorTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundColor: string = column.$attrs.backgroundColor;
-      expect(backgroundColor).assertEqual('#00000000');
+      expect(backgroundColor).assertEqual('#FFFFFFFF');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -182,7 +182,7 @@ export default function CalendarPickerDialogBackgroundColorTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundColor: string = column.$attrs.backgroundColor;
-      expect(backgroundColor).assertEqual('#00000000');
+      expect(backgroundColor).assertEqual('#FFFFFFFF');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -203,7 +203,7 @@ export default function CalendarPickerDialogBackgroundColorTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundColor: string = column.$attrs.backgroundColor;
-      expect(backgroundColor).assertEqual('#00000000');
+      expect(backgroundColor).assertEqual('#FFFFFFFF');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
