@@ -238,6 +238,128 @@
             ]
           }
         ]
+      },
+      {
+        "name": "AbilityA",
+        "srcEntry": "./ets/abilitya/AbilityA.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable",
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.AbilityA.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AbilityB",
+        "srcEntry": "./ets/abilityb/AbilityB.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+              "ohos.want.action.viewData"
+            ],
+            "entities": [
+              "entity.system.home",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "https",
+                "host": "www.AbilityB.com"
+              }
+            ]
+          }
+        ],
+        "permissions": [
+          "ohos.permission.USE_BLUETOOTH",
+        ]
+      },
+      {
+        "name": "AbilityC",
+        "srcEntry": "./ets/abilityc/AbilityC.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AbilityD",
+        "srcEntry": "./ets/abilityd/AbilityD.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ],
+        "permissions": [
+          "ohos.permission.USE_BLUETOOTH",
+        ]
+      },
+      {
+        "name": "AbilityE",
+        "srcEntry": "./ets/abilitye/AbilityE.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": false,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
       }
     ],
     "extensionAbilities": [

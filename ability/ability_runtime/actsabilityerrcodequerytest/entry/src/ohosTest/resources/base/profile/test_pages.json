@@ -5,6 +5,11 @@
     "testability/pages/UIExtensionContentSession/extension",
     "testability/pages/UiAbility/UiAbility012",
     "testability/pages/MainAbility/MainAbility1_pages",
-    "testability/pages/MainAbility/MainAbility2_pages"
+    "testability/pages/MainAbility/MainAbility2_pages",
+    "abilitya/pages/IndexA",
+    "abilityb/pages/IndexB",
+    "abilityc/pages/IndexC",
+    "abilityd/pages/IndexD",
+    "abilitye/pages/IndexE"
   ]
 }
