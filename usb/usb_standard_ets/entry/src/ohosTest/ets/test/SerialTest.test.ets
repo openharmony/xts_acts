@@ -40,23 +40,6 @@ async function driveFn() {
   }
 }
 
-async function driveDecFn() {
-  console.info('**************driveDecFn**************');
-  try {
-    let driver = await UiDriver.create();
-    console.info(TAG, ` come in driveDecFn`);
-    console.info(TAG, `driver is ${JSON.stringify(driver)}`);
-    await sleep(1000);
-    let button = await driver.findComponent(BY.text('不允许'));
-    console.info(TAG, `button is ${JSON.stringify(button)}`);
-    await sleep(1000);
-    await button.click();
-  } catch (err) {
-    console.info(TAG, 'err is ' + err);
-    return;
-  }
-}
-
 async function checkDevice() {
   let portList: serial.SerialPort[] = serial.getPortList();
   if (portList && portList.length > 0) {
@@ -282,8 +265,8 @@ export default function SerialTest() {
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_ErrCode_0200
-     * @tc.name     : testRequestSerialRight002
-     * @tc.desc     : invalidPort requestSerialRight failed.
+     * @tc.name     : testRequestSerialRight003
+     * @tc.desc     : not exist portId requestSerialRight failed.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -295,7 +278,7 @@ export default function SerialTest() {
           done();
           return;
         }
-	let invalidPort: number = 100;
+	      let invalidPort: number = 100;
         await serial.requestSerialRight(invalidPort);
         expect().assertFail();
       } catch (error) {
@@ -529,6 +512,37 @@ export default function SerialTest() {
       }
     })
 
+        /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_setAttribute_ErrCode_0300
+     * @tc.name     : testSetAttribute004
+     * @tc.desc     : not exist PortId to setAttribute.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testSetAttribute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testSetAttribute004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let attribute: serial.SerialAttribute = {
+          baudRate: serial.BaudRates.BAUDRATE_9600,
+          dataBits: serial.DataBits.DATABIT_8,
+          parity: serial.Parity.PARITY_NONE,
+          stopBits: serial.StopBits.STOPBIT_1
+        };
+        let invalidInput: number = 100;
+        serial.setAttribute(invalidInput, attribute);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testSetAttribute004 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400003);
+        done();
+      }
+    })
+
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0100
      * @tc.name     : testGetAttribute001
@@ -606,6 +620,31 @@ export default function SerialTest() {
       } catch (error) {
         console.error(TAG, 'testGetAttribute003 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_ErrCode_0300
+     * @tc.name     : testGetAttribute004
+     * @tc.desc     : not exist portId to getAttribute.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetAttribute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testGetAttribute004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidInput: number = 100;
+        serial.getAttribute(invalidInput);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testGetAttribute004 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400003);
         done();
       }
     })
@@ -696,6 +735,87 @@ export default function SerialTest() {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_close_ErrCode_0300
+     * @tc.name     : testClose004
+     * @tc.desc     : not exist Port to close.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testClose004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testClose004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidPort: number = 100;
+        serial.open(openPortId);
+        serial.close(invalidPort);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testClose004 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400003);
+        serial.close(openPortId);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_read_ErrCode_0100
+     * @tc.name     : testRead001
+     * @tc.desc     : read timeout.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testRead001 start');
+        await sleep(1000);
+        serial.open(openPortId);
+        await sleep(1000);
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let readBuffer: Uint8Array = new Uint8Array(8192);
+        await serial.read(openPortId, readBuffer, 300);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testRead001 catch err name: ', error);
+        expect(error).assertEqual(31400006);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0100
+     * @tc.name     : testReadSync001
+     * @tc.desc     : read timeout.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testReadSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testReadSync001 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let readSyncBuffer: Uint8Array = new Uint8Array(8192);
+        let length: number = serial.readSync(openPortId, readSyncBuffer, 300);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testReadSync001 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400006);
+        serial.close(openPortId);
+        done();
+      }
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_writeSync_Func_0100
      * @tc.name     : testWriteSync001
      * @tc.desc     : writeSync successfully.
@@ -769,6 +889,32 @@ export default function SerialTest() {
       } catch (error) {
         console.error(TAG, 'testWriteSync003 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_writeSync_ErrCode_0300
+     * @tc.name     : testWriteSync004
+     * @tc.desc     : not exist PortId to writeSync.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testWriteSync004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testWriteSync004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidInput: number = 100;
+        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
+        serial.writeSync(invalidInput, writeSyncBuffer, 500);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testWriteSync004 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400003);
         done();
       }
     })
@@ -855,17 +1001,43 @@ export default function SerialTest() {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_write_ErrCode_0300
+     * @tc.name     : testWrite004
+     * @tc.desc     : not exist PortId to write.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testWrite004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try{
+        console.info(TAG, 'testWrite004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidport: number = 100;
+        let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
+        await serial.write(invalidport, writeBuffer, 500);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testWrite004 catch err name: ', error);
+        expect(error).assertEqual(31400003);
+        done();
+      };
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_Func_0100
-     * @tc.name     : testReadSync001
+     * @tc.name     : testReadSync002
      * @tc.desc     : readsync successfully.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('testReadSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testReadSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       try {
-        console.info(TAG, 'testReadSync001 start');
+        console.info(TAG, 'testReadSync002 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -873,28 +1045,28 @@ export default function SerialTest() {
         serial.open(openPortId);
         let readSyncBuffer: Uint8Array = new Uint8Array(8192);
         let length: number = serial.readSync(openPortId, readSyncBuffer, 500);
-        console.info(TAG, 'testReadSync001 length = ' + length);
+        console.info(TAG, 'testReadSync002 length = ' + length);
         expect(length >= 0).assertTrue();
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testReadSync001 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testReadSync002 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0100
-     * @tc.name     : testReadSync002
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0200
+     * @tc.name     : testReadSync003
      * @tc.desc     : port not open.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReadSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testReadSync003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await sleep(1000);
       try {
-        console.info(TAG, 'testReadSync002 start');
+        console.info(TAG, 'testReadSync003 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -903,23 +1075,23 @@ export default function SerialTest() {
         serial.readSync(openPortId, readSyncBuffer, 500);
         expect().assertFail();
       } catch (error) {
-        console.error(TAG, 'testReadSync002 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testReadSync003 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(31400005);
         done();
       }
     })
 
     /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0200
-     * @tc.name     : testReadSync003
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0300
+     * @tc.name     : testReadSync004
      * @tc.desc     : invalidport to open.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReadSync003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testReadSync004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
-        console.info(TAG, 'testReadSync003 start');
+        console.info(TAG, 'testReadSync004 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -929,23 +1101,49 @@ export default function SerialTest() {
         let length: number = serial.readSync(invalid, readSyncBuffer, 500);
         expect().assertFail();
       } catch (error) {
-        console.error(TAG, 'testReadSync003 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testReadSync004 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(401);
         done();
       }
     })
 
     /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_readSync_ErrCode_0400
+     * @tc.name     : testReadSync005
+     * @tc.desc     : invalidport to open.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testReadSync005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testReadSync005 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalid: number = 100;
+        let readSyncBuffer: Uint8Array = new Uint8Array(8192);
+        let length: number = serial.readSync(invalid, readSyncBuffer, 500);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testReadSync005 catch err code: ', error.code, ', message: ', error.message);
+        expect(error.code).assertEqual(31400003);
+        done();
+      }
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_read_Func_0100
-     * @tc.name     : testRead001
+     * @tc.name     : testRead002
      * @tc.desc     : read successfully.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('testRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      await sleep(1000);
-      console.info(TAG, 'testRead001 start');
+    it('testRead002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info(TAG, 'testRead002 start');
+      await sleep(3000);
       if (await checkDevice() === false) {
         done();
         return;
@@ -954,43 +1152,15 @@ export default function SerialTest() {
       serial.open(openPortId);
       serial.read(openPortId, readBuffer, 1000)
         .then((length: number) => {
-          console.info(TAG, 'testRead001 length = ' + length);
+          console.info(TAG, 'testRead002 length = ' + length);
           expect(length >= 0).assertTrue();
           serial.close(openPortId);
           done();
         })
         .catch((error: Error) => {
-          console.error(TAG, 'testRead001 catch err name: ', error.name, ', message: ', error.message);
+          console.error(TAG, 'testRead002 catch err name: ', error.name, ', message: ', error.message);
           expect().assertFail();
         });
-    })
-
-    /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_read_ErrCode_0100
-     * @tc.name     : testRead002
-     * @tc.desc     : read buffer overflow.
-     * @tc.size     : MediumTest
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('testRead002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {   
-      await sleep(1000);
-      try {
-        console.info(TAG, 'testRead002 start');
-        if (await checkDevice() === false) {
-          done();
-          return;
-        }
-        let readBuffer: Uint8Array = new Uint8Array(1);
-        serial.open(openPortId);
-        await serial.read(openPortId, readBuffer, 1000);
-        expect().assertFail();
-      } catch (error) {
-        console.error(TAG, 'testRead002 catch err name: ', error);
-        expect(error).assertEqual(31400007);
-        serial.close(openPortId);
-        done();
-      }
     })
 
     /**
@@ -1043,6 +1213,32 @@ export default function SerialTest() {
       } catch (error) {
         console.error(TAG, 'testRead004 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_read_ErrCode_0400
+     * @tc.name     : testRead005
+     * @tc.desc     : not exist to read.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testRead005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testRead004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let readBuffer: Uint8Array = new Uint8Array(8192);
+        let invalid: number = 100;
+        await serial.read(invalid, readBuffer, 1000);
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testRead005 catch err name: ', error);
+        expect(error).assertEqual(31400003);
         done();
       }
     })
