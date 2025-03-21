@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import {
   ENTINFO1,
   SELFWANT,
@@ -41,7 +41,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -62,7 +62,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
@@ -83,7 +83,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -104,7 +104,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
@@ -125,7 +125,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -146,7 +146,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT);
@@ -167,7 +167,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAutoStartApps_001", 0, async (done: Function) => {
+    it("test_addAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -189,7 +189,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAutoStartApps_001", 0, async (done: Function) => {
+    it("test_removeAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -211,7 +211,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAutoStartApps_001", 0, async (done: Function) => {
+    it("test_getAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getAutoStartApps(SELFWANT);
@@ -232,7 +232,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -254,7 +254,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_removeKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -276,7 +276,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_getKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);

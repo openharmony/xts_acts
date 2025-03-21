@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFHAPNAME, SELFWANT } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -33,7 +33,7 @@ export default function deviceSettingsTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_device_settings_get_value_0100", 0, async (done: Function) => {
+    it("test_device_settings_get_value_0100", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         deviceSettings.getValue(SELFWANT, ITEM_SCREEN_OFF);
@@ -54,7 +54,7 @@ export default function deviceSettingsTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_device_settings_set_value_0100", 0, async (done: Function) => {
+    it("test_device_settings_set_value_0100", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         deviceSettings.setValue(SELFWANT, ITEM_SCREEN_OFF, '30000');
