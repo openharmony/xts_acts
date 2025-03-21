@@ -8345,10 +8345,10 @@ export default function imagePicture() {
       done();
     })
 
-    /**
+     /**
      * @tc.number    : testImageCreatePremultipliedPixelMap0100
      * @tc.name      : SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0100
-     * @tc.desc      : 501
+     * @tc.desc      : 62980248
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -8383,7 +8383,7 @@ export default function imagePicture() {
     /**
      * @tc.number    : testImageCreatePremultipliedPixelMap0200
      * @tc.name      : SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0200
-     * @tc.desc      : 501
+     * @tc.desc      : 62980248
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -8416,7 +8416,7 @@ export default function imagePicture() {
     /**
      * @tc.number    : testImageCreateUnpremultipliedPixelMap0100
      * @tc.name      : SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0100
-     * @tc.desc      : 501
+     * @tc.desc      : 62980248
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -8445,7 +8445,7 @@ export default function imagePicture() {
     /**
      * @tc.number    : testImageCreateUnpremultipliedPixelMap0200
      * @tc.name      : SUB_MULTIMEDIA_CREATE_UNPREMULTIPLIED_PIXEL_MAP_0200
-     * @tc.desc      : 501
+     * @tc.desc      : 62980248
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -8497,6 +8497,7 @@ export default function imagePicture() {
       let property_height: image.FragmentMapPropertyKey = image.FragmentMapPropertyKey.HEIGHT;
       expect(property_height == 'FragmentImageHeight').assertTrue();
       console.info(tag + ' X_IN_ORIGINAL is equal to FragmentImageHeight. ')
+      done();
     })
 
     /**
@@ -8704,6 +8705,136 @@ export default function imagePicture() {
         expect(Number(error.code) == 62980116).assertTrue();
         done();
       }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageSourceGetColorSpace0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100"
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap = image.createPixelMapSync(color, opts);
+      try {
+        let csm = await pixelMap.getColorSpace();
+        console.info(tag + ' Succeeded in getting ColorSpace. csm is ' + csm);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
+        expect(error.code == 62980103).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageGetDelayTimeList0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0100"
+      let fileName = 'FragmentMap.dat'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      imageSourceApi.getDelayTimeList().then((delayTimes: Array<number>) => {
+        console.info(tag + 'Succeeded in getting delay time list.');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.info(tag + ` Failed to get delay time list. code is ${error.code}`);
+        expect(error.code == 62980137).assertTrue();
+        done();
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageGetDelayTimeList0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0200
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_GET_DELAY_TIME_LIST_0200"
+      let fileName = 'FragmentMap.dat'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      await imageSourceApi.getDelayTimeList((error: BusinessError, delayTimes: Array<number>) => {
+        if (error) {
+          console.error(tag + ` Failed to get delayTimes object.code is ${error.code}`);
+          expect(error.code == 62980137).assertTrue();
+          done();
+        } else {
+          console.info(tag + ' Succeeded in getting delayTimes object.');
+          expect().assertFail();
+          done();
+        }
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageGetImageProperty0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_PROPERTY_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PROPERTY_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_PROPERTY_0100"
+      let options: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' }
+      let fileName = 'FragmentMap.dat'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      imageSourceApi.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options).then((data: string) => {
+        console.info(tag + ' Succeeded in getting the value of the specified attribute key of the image.');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(tag + ' Failed to get the value of the specified attribute key of the image.');
+        expect(error.code == 62980137).assertTrue();
+        done();
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageGetImageProperties0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_PROPERTIES_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PROPERTIES_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_PROPERTIES_0100"
+      let fileName = 'FragmentMap.dat'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+      imageSourceApi.getImageProperties(key).then((data) => {
+        console.info(tag + ' Succeeded in getting the value of the specified attribute key of the image.');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(tag + ' Failed to get the value of the specified attribute key of the image.');
+        expect(error.code == 62980137).assertTrue();
+        done();
+      })
       done();
     })
     
