@@ -11253,7 +11253,7 @@ static napi_value NapiCreateStringUtf16Test(napi_env env, napi_callback_info inf
 
     size_t length = 0;
     napi_value result = nullptr;
-    const char16_t* str;
+    const char16_t str[] = u"napi_generic_failure";
 
     //undefined
     napi_value undefined = nullptr;
