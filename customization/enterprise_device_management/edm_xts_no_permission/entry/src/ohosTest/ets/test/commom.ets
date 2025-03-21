@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import osAccount from '@ohos.account.osAccount';
 import Want from '@ohos.app.ability.Want'
 import { BusinessError } from '@ohos.base';
 import installer from '@ohos.bundle.installer';
@@ -138,6 +139,21 @@ function getPixelMap() {
   })
 }
 
+function getCurrentUserId() {
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountLocalId((err: BusinessError, localId: number) => {
+      if (err) {
+        console.log('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+      } else {
+        CURRENT_USER_ID = localId;
+      }
+    });
+  } catch (err) {
+    console.log('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  }
+}
+let CURRENT_USER_ID: number = 100;
 let PIXEL_MAP: image.PixelMap;
 const WATERMARK_BUNDLE_NAME = "testBundleName";
 
@@ -164,5 +180,6 @@ export {
   APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE,
   INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
   PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS,
-  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND, DEFAULT_ACCOUNT_ID, INVALID_ACCOUNT_ID
+  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND, DEFAULT_ACCOUNT_ID, INVALID_ACCOUNT_ID,CURRENT_USER_ID,
+  getCurrentUserId
 }
