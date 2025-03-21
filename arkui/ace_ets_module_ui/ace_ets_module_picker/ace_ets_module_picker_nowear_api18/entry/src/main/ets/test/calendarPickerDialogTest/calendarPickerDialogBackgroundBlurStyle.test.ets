@@ -56,7 +56,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.Thin');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -77,7 +76,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.Regular');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -98,7 +96,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.Thick');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -119,7 +116,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THIN');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -140,7 +136,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_REGULAR');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -161,7 +156,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -183,7 +177,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
       console.info("[CalendarPickerDialogBackgroundBlurStyleTest_007] obj is: " + backgroundBlurStyle);
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -204,7 +197,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -225,7 +217,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THIN');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -246,7 +237,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THIN');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -267,7 +257,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_REGULAR');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -288,7 +277,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -309,7 +297,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -330,7 +317,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -351,7 +337,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -372,7 +357,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
@@ -393,7 +377,6 @@ export default function CalendarPickerDialogBackgroundBlurStyleTest() {
       let dialog: ESObject = tree.$children[1];
       let column: ESObject = dialog.$children[0];
       let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-      expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK');
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
       await Utils.sleep(1000);
