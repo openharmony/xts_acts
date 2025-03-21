@@ -51,7 +51,7 @@ struct TextInputShowCounter {
         .placeholderFont({ size: 16 })
         .width('90%')
         .height('5%')
-        .showCounter(true, { thresholdPercentage: -10, highlightBorder: false })
+        .showCounter(false, { thresholdPercentage: -10, highlightBorder: false })
 
       TextInput({ text: 'highlightBorder: undefined' })
         .id("highlightBorder_undefined")
