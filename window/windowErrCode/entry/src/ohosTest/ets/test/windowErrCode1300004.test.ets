@@ -21,8 +21,8 @@ export default function windowErrCode1300004() {
   describe('windowErrCode1300004', () => {
     console.log('describe windowErrCode1300004 start!!!')
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
-    let context : common.UIAbilityContext;
-    let windowStage:ohosWindow.WindowStage;
+    let context: common.UIAbilityContext;
+    let windowStage: ohosWindow.WindowStage;
 
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
@@ -439,6 +439,59 @@ export default function windowErrCode1300004() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : testCreateSubWindowWithOptionsPromiseErrCode1300004_0100
+     * @tc.name       : testCreateSubWindowWithOptionsPromiseErrCode1300004_0100
+     * @tc.desc       : testCreateSubWindowWithOptionsPromiseErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testCreateSubWindowWithOptionsPromiseErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testCreateSubWindowWithOptionsPromiseErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: ohosWindow.Configuration = {
+        name: "testCreateSubWindowWithOptionsPromiseErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let subWindowClass: ohosWindow.Window | null = null;
+      try {
+        subWindowClass = await ohosWindow.createWindow(config);
+        expect(!!subWindowClass).assertTrue();
+      } catch (err) {
+        console.error(msgStr + 'ohosWindow.createWindow ' + 'caught, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        let param: ohosWindow.SubWindowOptions = {
+          title: "aa", decorEnabled: true
+        }
+        await subWindowClass!.createSubWindowWithOptions("bb", param).then(async () => {
+          console.info(msgStr + 'Succeeded in calling createSubWindowWithOptions.');
+          expect().assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call createSubWindowWithOptions. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300004);
+          done()
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call createSubWindowWithOptions. Cause:' +
+        JSON.stringify(exception));
+        if (exception.code === undefined) {
+          console.info(msgStr + '此设备不支持createSubWindowWithOptions能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done()
+      }
+    })
+
     /**
      * @tc.number     : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
      * @tc.name       : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100

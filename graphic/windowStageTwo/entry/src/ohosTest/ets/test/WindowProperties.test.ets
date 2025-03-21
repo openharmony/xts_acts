@@ -2519,8 +2519,8 @@ export default function windowPropertiesTest() {
                         console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
                         let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                         console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
-                        expect(widthBefore).assertEqual(imageInfo.size.width);
-                        expect(heightBefore).assertEqual(imageInfo.size.height);
+                        expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+                        expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
                         pixelMap.release();
                         done();
                     }

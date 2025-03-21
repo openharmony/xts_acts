@@ -2589,6 +2589,302 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         done();
       }
     })
+
+    /**
+     * @tc.number     : testUpdateContentSizeErrCode401_0100
+     * @tc.name       : testUpdateContentSizeErrCode401_0100
+     * @tc.desc       : testUpdateContentSizeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testUpdateContentSizeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testUpdateContentSizeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.updateContentSize(null, null);
+          console.error(message + 'Succeeded in calling updateContentSize.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call updateContentSize. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持updateContentSize能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call updateContentSize. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持updateContentSize能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.name       : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.desc       : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testUpdatePiPControlStatusErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testUpdatePiPControlStatusErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.updatePiPControlStatus(null, null);
+          console.error(message + 'Succeeded in calling updatePiPControlStatus.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call updatePiPControlStatus. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持updatePiPControlStatus能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call updatePiPControlStatus. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持updatePiPControlStatus能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testSetPiPControlEnabledErrCode401_0100
+     * @tc.name       : testSetPiPControlEnabledErrCode401_0100
+     * @tc.desc       : testSetPiPControlEnabledErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetPiPControlEnabledErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testSetPiPControlEnabledErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.setPiPControlEnabled(null, null);
+          console.error(message + 'Succeeded in calling setPiPControlEnabled.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call setPiPControlEnabled. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持setPiPControlEnabled能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call setPiPControlEnabled. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持setPiPControlEnabled能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.name       : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.desc       : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testOnPipWindowSizeChangeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          const callback = (res: pipWindow.PiPWindowSize) => {}
+          pipController.on(null, callback);
+          console.error(message + 'Succeeded in calling on_pipWindowSizeChange.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call on_pipWindowSizeChange. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call on_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.name       : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.desc       : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOffPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testOffPipWindowSizeChangeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          const callback = (res: pipWindow.PiPWindowSize) => {}
+          pipController.off(null, callback);
+          console.error(message + 'Succeeded in calling off_pipWindowSizeChange.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call off_pipWindowSizeChange. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call off_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.name       : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.desc       : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testGetPiPWindowInfoErrCode1300014_0100', 2, async (done: Function) => {
+      const message = 'testGetPiPWindowInfoErrCode1300014_0100';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
+      let pipController: pipWindow.PiPController | null = null;
+      try {
+        pipController = await pipWindow.create(config)
+        pipController!.getPiPWindowInfo().then(async () => {
+          console.error(`${message} Succeeded to getPiPWindowInfo.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          if (err.code == 801) {
+            console.info(`${message} The current device type does not support to getPiPWindowInfo`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.error(`${message} Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+            expect(err.code).assertEqual(1300014);
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code == 801) {
+          console.info(`${message} The current device type does not support to getPiPWindowInfo`);
+          expect(true).assertTrue();
+          done();
+        } else {
+          console.info(`${message} Failed2 to getPiPWindowInfo. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+        done();
+      }
+    })
+
   })
 }
 

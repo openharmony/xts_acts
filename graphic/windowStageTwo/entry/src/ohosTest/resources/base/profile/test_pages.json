@@ -17,6 +17,7 @@
     "testability/pages/WindowTest/extensionRect",
     "testability/pages/WindowTest/EmbeddedComponentRectPage",
     "testability/pages/shiftAppWindow/subWindow",
-    "testability/pages/shiftAppWindow/mainWindow"
+    "testability/pages/shiftAppWindow/mainWindow",
+    "testability/pages/WindowTest/LoadContentByName"
   ]
 }
