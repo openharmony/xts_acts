@@ -564,7 +564,7 @@ export default function FivePointOne_i18nStageTest() {
         i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale);
       } catch (e) {
         console.log('I18N_test_getUnicodeWrappedFilePath_0100 type_one:' + e.code);
-        expect(e.code).assertTrue('890001');
+        expect(e.code).assertEqual('890001');
       }
     })
 
