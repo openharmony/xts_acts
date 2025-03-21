@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeDisplaySoloistNdk from 'libnativeDisplaySoloistNdk.so';
 
 export default function displaySoloistTest() {
@@ -26,7 +26,7 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistCreate001', 0, async (done: Function) => {
+    it('testOHDisplaySoloistCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistCreate001();
       expect(result).assertEqual(0);
       done();
@@ -40,7 +40,7 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistStart001', 0, async (done: Function) => {
+    it('testOHDisplaySoloistStart001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistStart001();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +54,7 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistStart002', 0, async (done: Function) => {
+    it('testOHDisplaySoloistStart002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistStart002();
       expect(result).assertEqual(0);
       done();
@@ -68,7 +68,8 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistSetExpectedFrameRateRange001', 0, async (done: Function) => {
+    it('testOHDisplaySoloistSetExpectedFrameRateRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistSetExpectedFrameRateRange001();
       expect(result).assertEqual(0);
       done();
@@ -82,7 +83,8 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistSetExpectedFrameRateRange002', 0, async (done: Function) => {
+    it('testOHDisplaySoloistSetExpectedFrameRateRange002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistSetExpectedFrameRateRange002();
       expect(result).assertEqual(0);
       done();
@@ -96,7 +98,8 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistSetExpectedFrameRateRange003', 0, async (done: Function) => {
+    it('testOHDisplaySoloistSetExpectedFrameRateRange003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistSetExpectedFrameRateRange003();
       expect(result).assertEqual(0);
       done();
@@ -110,7 +113,7 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistStop001', 0, async (done: Function) => {
+    it('testOHDisplaySoloistStop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistStop001();
       expect(result).assertEqual(0);
       done();
@@ -124,7 +127,7 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistStop002', 0, async (done: Function) => {
+    it('testOHDisplaySoloistStop002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL10, async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistStop002();
       expect(result).assertEqual(0);
       done();
@@ -138,7 +141,8 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistDestroy001', 0, async (done: Function) => {
+    it('testOHDisplaySoloistDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistDestroy001();
       expect(result).assertEqual(0);
       done();
@@ -152,7 +156,8 @@ export default function displaySoloistTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDisplaySoloistDestroy002', 0, async (done: Function) => {
+    it('testOHDisplaySoloistDestroy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeDisplaySoloistNdk.oHDisplaySoloistDestroy002();
       expect(result).assertEqual(0);
       done();
