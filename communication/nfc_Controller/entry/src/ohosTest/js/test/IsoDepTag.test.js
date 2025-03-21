@@ -347,9 +347,9 @@ export default function nfcIsoDepTagTest() {
                 }
             };
             let hceElementName = {
-                bundleName: "com.example.myapplication",
-                abilityName: "EntryAbility",
-                moduleName: "EntrymoduleName"
+                bundleName: "ohos.acts.communication.nfc.nfcdevice",
+                abilityName: ".TestAbility",
+                moduleName: "nfc_standard_test"
             }
             let aidList = ["A0000000031010", "A0000000031011"]
             try {
