@@ -15,6 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit';
 import {
@@ -155,5 +156,62 @@ export default function getBurstAssetsTest () {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTO_ACCESS_SENDABLE_ERROR_GET_BURST_0000
+     * @tc.name      : sendable_error_get_burst_assets_invalid_fetchColumns_000
+     * @tc.desc      : getBurstAssets with invalid fetchColumns
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("sendable_error_get_burst_assets_invalid_fetchColumns_000", 0, async (done: Function) => {
+      const testNum = "sendable_error_get_burst_assets_invalid_fetchColumns_000";
+      try {
+        let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
+        let burstKey = await getBurstKey(testNum, fetchOps);
+        let ops: photoAccessHelper.FetchOptions = {
+          fetchColumns: ["sdfaf"],
+          predicates: new dataSharePredicates.DataSharePredicates()
+        };
+        let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getBurstAssets(burstKey, ops);
+        console.log(`${testNum} :: getBurstAssets success, fetchResult is undefined :: ${fetchResult === undefined}`);
+        if (fetchResult !== undefined) {
+          expect(false).assertTrue();
+          done();
+        }
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: getBurstAssets failed, error is ${error}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_PHOTO_ACCESS_SENDABLE_ERROR_GET_BURST_0100
+     * @tc.name      : sendable_error_get_burst_assets_invalid_fetchColumns_001
+     * @tc.desc      : getBurstAssets with invalid null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("sendable_error_get_burst_assets_invalid_fetchColumns_001", 0, async (done: Function) => {
+      const testNum = "sendable_error_get_burst_assets_invalid_fetchColumns_001";
+      try {
+        let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
+        let burstKey = await getBurstKey(testNum, fetchOps);
+        let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getBurstAssets(burstKey, undefined as ESObject);
+        console.log(`${testNum} :: getBurstAssets success, fetchResult is undefined :: ${fetchResult === undefined}`);
+        if (fetchResult !== undefined) {
+          expect(false).assertTrue();
+          done();
+        }
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: getBurstAssets failed, error is ${error}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
   });
 }
