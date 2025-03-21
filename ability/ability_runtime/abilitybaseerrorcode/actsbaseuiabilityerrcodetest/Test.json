@@ -13,8 +13,8 @@
             "test-file-name": [
                 "ActsBaseUIabilityErrorCodeTest.hap",
                 "ActsErrcodeAssitHap.hap",
-                "ActsErrcodeAssitHap2.hap",
-                "ActsErrcodeAssitHap3.hap"
+                "ActsErrcodeAssitHapTwo.hap",
+                "ActsErrcodeAssitHapThree.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

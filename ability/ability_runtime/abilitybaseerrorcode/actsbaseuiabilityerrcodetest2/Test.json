@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBaseUIabilityErrorCodeTest2.hap",
+                "ActsBaseUIabilityErrorCodeTestTwo.hap",
                 "ActsErrcodeAssitHap.hap"
             ],
             "type": "AppInstallKit",
