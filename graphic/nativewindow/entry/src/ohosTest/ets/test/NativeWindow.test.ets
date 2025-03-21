@@ -16,6 +16,27 @@
 import { describe, expect, it } from '@ohos/hypium'
 import nativeWindow from 'libnativewindow.so'
 import { BusinessError } from '@kit.BasicServicesKit'
+import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
+function sendToWorker(message: string) {
+  return new Promise<number>((resolve, reject) => {
+    const workerInstance = new worker.ThreadWorker("./workers/worker.ets");
+
+    workerInstance.postMessage(message);
+
+    workerInstance.onmessage = (e: MessageEvents): void => {
+      if (e.data.error) {
+        reject(e.data.error);
+      } else {
+        resolve(e.data);
+      }
+    };
+
+    workerInstance.onerror = (e: ErrorEvent): void => {
+        reject(e);
+    };
+  });
+}
 
 export default function nativeWindowTest() {
   describe('NativeWindowTest', () => {
@@ -1464,6 +1485,141 @@ export default function nativeWindowTest() {
     it('testNativeWindowNativeWindowSetTunnelHandle', 3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetTunnelHandle();
       expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2000
+     * @tc.name       : testNativeWindowCleanCacheBeforeBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheBeforeBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheBeforeBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheBeforeBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2001
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2002
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferFlushed
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferFlushed
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferFlushed', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferFlushed();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2003
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferAcquired', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferAcquired();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2004
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferReleased', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferReleased();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2005
+     * @tc.name       : testNativeWindowCleanCacheLoopProduceBuffer
+     * @tc.desc       : testNativeWindowCleanCacheLoopProduceBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopProduceBuffer', 3, async (done: Function) => {
+      let task1 = sendToWorker("001");
+      let task2 = sendToWorker("002");
+
+      const results = await Promise.all([task1, task2]);
+
+      expect(results[0]).assertEqual(0);
+      expect(results[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2006
+     * @tc.name       : testNativeWindowCleanCacheLoopWhenBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheLoopWhenBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopWhenBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2007
+     * @tc.name       : testNativeWindowCleanCacheLoopWhenBufferFlushed
+     * @tc.desc       : testNativeWindowCleanCacheLoopWhenBufferFlushed
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopWhenBufferFlushed', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferFlushed();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2008
+     * @tc.name       : testNativeWindowCleanCacheLoopBufferCirculation
+     * @tc.desc       : testNativeWindowCleanCacheLoopBufferCirculation
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopBufferCirculation', 3, async (done: Function) => {
+      let t1 = sendToWorker("003");
+      let t2 = sendToWorker("004");
+
+      const results = await Promise.all([t1, t2])
+      expect(results[0]).assertEqual(0);
+      expect(results[1]).assertEqual(0);
       done();
     });
   })

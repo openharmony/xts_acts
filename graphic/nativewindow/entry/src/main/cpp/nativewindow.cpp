@@ -242,7 +242,29 @@ napi_property_descriptor desc[] = {
     {"testNativeWindowNativeWindowSetMetaDataSet", nullptr, testNativeWindowNativeWindowSetMetaDataSet, nullptr,
      nullptr, nullptr, napi_default, nullptr},
     {"testNativeWindowNativeWindowSetTunnelHandle", nullptr, testNativeWindowNativeWindowSetTunnelHandle, nullptr,
-     nullptr, nullptr, napi_default, nullptr}};
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheBeforeBufferRequested", nullptr, testNativeWindowCleanCacheBeforeBufferRequested,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheWhenBufferRequested", nullptr, testNativeWindowCleanCacheWhenBufferRequested, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheWhenBufferFlushed", nullptr, testNativeWindowCleanCacheWhenBufferFlushed, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheWhenBufferAcquired", nullptr, testNativeWindowCleanCacheWhenBufferAcquired, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheWhenBufferReleased", nullptr, testNativeWindowCleanCacheWhenBufferReleased, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopProduceBuffer_1", nullptr, testNativeWindowCleanCacheLoopProduceBuffer_1, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopProduceBuffer_2", nullptr, testNativeWindowCleanCacheLoopProduceBuffer_2, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopWhenBufferRequested", nullptr, testNativeWindowCleanCacheLoopWhenBufferRequested,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopWhenBufferFlushed", nullptr, testNativeWindowCleanCacheLoopWhenBufferFlushed,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopBufferCirculation_1", nullptr, testNativeWindowCleanCacheLoopBufferCirculation_1,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCleanCacheLoopBufferCirculation_2", nullptr, testNativeWindowCleanCacheLoopBufferCirculation_2,
+     nullptr, nullptr, nullptr, napi_default, nullptr}};
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
