@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "600000",
-        "testcases-timeout": 70000,
+        "testcase-timeout": 70000,
         "bundle-name": "ohos.acts.distributedKvStore",
         "module-name": "entry_test"
     },
