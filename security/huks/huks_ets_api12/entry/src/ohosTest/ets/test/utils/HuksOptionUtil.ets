@@ -23,20 +23,27 @@ export function GenParam(paramTag: huks.HuksTag, paramValue: boolean | number | 
   } as huks.HuksParam;
 }
 
-export function SetParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
+export function SetParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksOptions {
   let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
   DeleteParam(huksOption, paramTag);
   properties.push(GenParam(paramTag, paramValue));
+  return huksOption;
 }
 
-export function DeleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): void {
+export function AddParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksOptions {
   let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
-  for (let i = 0; i < properties.length; i++) {
+  properties.push(GenParam(paramTag, paramValue));
+  return huksOption;
+}
+
+export function DeleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): huks.HuksOptions {
+  let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
+  for (let i = properties.length - 1; i >= 0; i--) {
     if (properties[i].tag == paramTag) {
       properties.splice(i, 1);
-      break;
     }
   }
+  return huksOption;
 }
 
 export function GetDataBySize(size: number): string {
