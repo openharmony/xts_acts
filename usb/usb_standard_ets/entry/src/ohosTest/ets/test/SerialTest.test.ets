@@ -40,6 +40,23 @@ async function driveFn() {
   }
 }
 
+async function driveDecFn() {
+  console.info('**************driveDecFn**************');
+  try {
+    let driver = await UiDriver.create();
+    console.info(TAG, ` come in driveDecFn`);
+    console.info(TAG, `driver is ${JSON.stringify(driver)}`);
+    await sleep(1000);
+    let button = await driver.findComponent(BY.text('不允许'));
+    console.info(TAG, `button is ${JSON.stringify(button)}`);
+    await sleep(1000);
+    await button.click();
+  } catch (err) {
+    console.info(TAG, 'err is ' + err);
+    return;
+  }
+}
+
 async function checkDevice() {
   let portList: serial.SerialPort[] = serial.getPortList();
   if (portList && portList.length > 0) {
