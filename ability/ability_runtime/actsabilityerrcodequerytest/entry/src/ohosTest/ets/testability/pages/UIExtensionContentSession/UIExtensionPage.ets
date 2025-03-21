@@ -45,7 +45,7 @@ struct UIExtensionPage {
 
         UIExtensionComponent(
           {
-            bundleName: 'ohos.example.myapplication',
+            bundleName: 'com.test.actsabilityerrcodequerytest',
             abilityName: 'UIExtensionProvider',
             moduleName: 'entry_test',
             action:this.params,
