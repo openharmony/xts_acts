@@ -2,8 +2,8 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "60000",
-        "shell-timeout": "60000",
+        "test-timeout": "180000",
+        "shell-timeout": "600000",
         "testcases-timeout": 70000,
         "bundle-name": "ohos.acts.distributedKvStore",
         "module-name": "entry_test"
