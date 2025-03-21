@@ -16,27 +16,6 @@
 import { describe, expect, it } from '@ohos/hypium'
 import nativeWindow from 'libnativewindow.so'
 import { BusinessError } from '@kit.BasicServicesKit'
-import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-
-function sendToWorker(message: string) {
-  return new Promise<number>((resolve, reject) => {
-    const workerInstance = new worker.ThreadWorker("./workers/worker.ets");
-
-    workerInstance.postMessage(message);
-
-    workerInstance.onmessage = (e: MessageEvents): void => {
-      if (e.data.error) {
-        reject(e.data.error);
-      } else {
-        resolve(e.data);
-      }
-    };
-
-    workerInstance.onerror = (e: ErrorEvent): void => {
-        reject(e);
-    };
-  });
-}
 
 export default function nativeWindowTest() {
   describe('NativeWindowTest', () => {

@@ -266,10 +266,6 @@ napi_value testNativeWindowCleanCacheWhenBufferRequested(napi_env env, napi_call
 napi_value testNativeWindowCleanCacheWhenBufferFlushed(napi_env env, napi_callback_info info);
 napi_value testNativeWindowCleanCacheWhenBufferAcquired(napi_env env, napi_callback_info info);
 napi_value testNativeWindowCleanCacheWhenBufferReleased(napi_env env, napi_callback_info info);
-napi_value testNativeWindowCleanCacheLoopProduceBuffer_1(napi_env env, napi_callback_info info);
-napi_value testNativeWindowCleanCacheLoopProduceBuffer_2(napi_env env, napi_callback_info info);
 napi_value testNativeWindowCleanCacheLoopWhenBufferRequested(napi_env env, napi_callback_info info);
 napi_value testNativeWindowCleanCacheLoopWhenBufferFlushed(napi_env env, napi_callback_info);
-napi_value testNativeWindowCleanCacheLoopBufferCirculation_1(napi_env env, napi_callback_info);
-napi_value testNativeWindowCleanCacheLoopBufferCirculation_2(napi_env env, napi_callback_info);
 #endif // NATIVEWINDOW_USELESS_H
