@@ -1,4 +1,4 @@
-import { describe, it, expect, Level } from '@ohos/hypium'
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
@@ -43,12 +43,13 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_getBundleName_17000002
    * @tc.desc: setPoint 17000002 test.
    */
-    it('test_UiWindow_getBundleName_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_getBundleName_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getBundleName_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getBundleName();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getBundleName_17000002 error is: ${JSON.stringify(e)}`);
@@ -63,7 +64,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_getBundleName_17000004
    * @tc.desc: setPoint 17000004 test.
    */
-    it('test_UiWindow_getBundleName_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_getBundleName_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getBundleName_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -89,12 +90,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_getBundleName_17000002
     * @tc.desc: getBounds 17000002 test.
     */
-    it('test_UiWindow_getBounds_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_getBounds_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getBounds_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getBounds();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getBounds_17000002 error is: ${JSON.stringify(e)}`);
@@ -109,7 +111,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_getBundleName_17000004
    * @tc.desc: getBounds 17000004 test.
    */
-    it('test_UiWindow_getBounds_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_getBounds_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getBounds_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -134,12 +136,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_getTitle_17000002
     * @tc.desc: getTitle 17000002 test.
     */
-    it('test_UiWindow_getTitle_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_getTitle_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getTitle_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getTitle();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getTitle_17000002 error is: ${JSON.stringify(e)}`);
@@ -154,7 +157,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_getBundleName_17000004
    * @tc.desc: getTitle 17000004 test.
    */
-    it('test_UiWindow_getTitle_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_getTitle_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getBundleName_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -179,12 +182,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_getWindowMode_17000002
     * @tc.desc: getWindowMode 17000002 test.
     */
-    it('test_UiWindow_getWindowMode_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_getWindowMode_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getWindowMode_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.getWindowMode();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_getWindowMode_17000002 error is: ${JSON.stringify(e)}`);
@@ -199,7 +203,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_getBundleName_17000004
    * @tc.desc: getWindowMode 17000004 test.
    */
-    it('test_UiWindow_getWindowMode_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_getWindowMode_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_getWindowMode_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -224,12 +228,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_isFocused_17000002
     * @tc.desc: isFocused 17000002 test.
     */
-    it('test_UiWindow_isFocused_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_isFocused_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_isFocused_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.isFocused();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_isFocused_17000002 error is: ${JSON.stringify(e)}`);
@@ -244,7 +249,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_isFocused_17000004
    * @tc.desc: isFocused 17000004 test.
    */
-    it('test_UiWindow_isFocused_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_isFocused_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_isFocused_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -267,14 +272,15 @@ export default function uitestUiWindowErrorTest() {
     /*
     * @tc.number: uitestUiWindowErrorTest_011
     * @tc.name: test_UiWindow_isActive_17000002
-    * @tc.desc: isActived 17000002 test.
+    * @tc.desc: isActive 17000002 test.
     */
-    it('test_UiWindow_isActive_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_isActive_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_isActive_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.isActive();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_isActive_17000002 error is: ${JSON.stringify(e)}`);
@@ -289,7 +295,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_isActive_17000004
    * @tc.desc: isActive 17000004 test.
    */
-    it('test_UiWindow_isActive_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_isActive_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_isActive_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -309,17 +315,65 @@ export default function uitestUiWindowErrorTest() {
       console.log(`${TestTag}, test_UiWindow_isActive_17000004 end`);
     })
 
+
+    /*
+    * @tc.number: uitestUiWindowErrorTest_011
+    * @tc.name: test_UiWindow_isActived_17000002
+    * @tc.desc: isActived 17000002 test.
+    */
+    it('test_UiWindow_isActived_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiWindow_isActive_17000002 start`);
+      try {
+        let driver:Driver = Driver.create();
+        let window = await driver.findWindow({actived: true});
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await window.isActived();
+      }catch (e) {
+        console.log(`${TestTag}, test_UiWindow_isActive_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_UiWindow_isActive_17000002 end`);
+    })
+
+    /*
+   * @tc.number: uitestUiWindowErrorTest_012
+   * @tc.name: test_UiWindow_isActived_17000004
+   * @tc.desc: isActived 17000004 test.
+   */
+    it('test_UiWindow_isActived_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiWindow_isActive_17000004 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'});
+        await driver.delayMs(waitUiReadyMs);
+        await stopApplication('com.uitestScene.acts');
+        await driver.delayMs(waitUiReadyMs);
+        await window.isActived();
+        await driver.delayMs(waitUiReadyMs);
+      }catch (e) {
+        console.log(`${TestTag}, test_UiWindow_isActive_17000004 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(InvisibleErrorCode);
+      }
+      await sleep(waitUiReadyMs);
+      console.log(`${TestTag}, test_UiWindow_isActive_17000004 end`);
+    })
+
     /*
     * @tc.number: uitestUiWindowErrorTest_013
     * @tc.name: test_UiWindow_isActive_17000002
     * @tc.desc: focus 17000002 test.
     */
-    it('test_UiWindow_focus_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_focus_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_focus_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.focus();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_focus_17000002 error is: ${JSON.stringify(e)}`);
@@ -334,7 +388,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_isActive_17000004
    * @tc.desc: focus 17000004 test.
    */
-    it('test_UiWindow_focus_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_focus_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_focus_17000004 start`);
       try {
         let driver: Driver = Driver.create();
@@ -359,12 +413,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_isActive_17000002
     * @tc.desc: moveTo 17000002 test.
     */
-    it('test_UiWindow_moveTo_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_moveTo_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_moveTo_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.moveTo(100, 100)
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_moveTo_17000002 error is: ${JSON.stringify(e)}`);
@@ -379,7 +434,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_moveTo_17000004
    * @tc.desc: moveTo 17000004 test.
    */
-    it('test_UiWindow_moveTo_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_moveTo_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_moveTo_17000004 start`);
       let isSupport = false;
       try {
@@ -408,8 +463,6 @@ export default function uitestUiWindowErrorTest() {
           expect(e.code).assertEqual(InvisibleErrorCode);
         }
       }
-
-
       await sleep(waitUiReadyMs);
       console.log(`${TestTag}, test_UiWindow_moveTo_17000004 end`);
     })
@@ -419,7 +472,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_moveTo_17000005
   * @tc.desc: moveTo 17000005 test.
   */
-    it('test_UiWindow_moveTo_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_moveTo_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_moveTo_17000005 start`);
       try {
         let driver = Driver.create();
@@ -438,12 +491,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_resize_17000002
     * @tc.desc: resize 17000002 test.
     */
-    it('test_UiWindow_resize_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_resize_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resize_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.resize(100, 100, ResizeDirection.LEFT);
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_resize_17000002 error is: ${JSON.stringify(e)}`);
@@ -458,7 +512,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_resize_17000004
    * @tc.desc: resize 17000004 test.
    */
-    it('test_UiWindow_resize_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_resize_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resize_17000004 start`);
       let isSupportResize = true;
       try {
@@ -498,7 +552,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_resize_17000005
   * @tc.desc: resize 17000005 test.
   */
-    it('test_UiWindow_resize_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_resize_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resize_17000005 start`);
       try {
         let driver = Driver.create();
@@ -517,12 +571,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_resize_17000002
     * @tc.desc: split 17000002 test.
     */
-    it('test_UiWindow_split_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_split_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_split_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.split();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_split_17000002 error is: ${JSON.stringify(e)}`);
@@ -537,7 +592,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_resize_17000004
    * @tc.desc: split 17000004 test.
    */
-    it('test_UiWindow_split_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_split_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_split_17000004 start`);
       let isSupportSpilt = true;
       try {
@@ -577,7 +632,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_split_17000005
   * @tc.desc: split 17000005 test.
   */
-    it('test_UiWindow_split_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_split_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_split_17000005 start`);
       try {
         let driver = Driver.create();
@@ -597,12 +652,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_resize_17000002
     * @tc.desc: maximize 17000002 test.
     */
-    it('test_UiWindow_maximize_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_maximize_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_maximize_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.maximize();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_maximize_17000002 error is: ${JSON.stringify(e)}`);
@@ -617,7 +673,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_maximize_17000004
    * @tc.desc: maximize 17000004 test.
    */
-    it('test_UiWindow_maximize_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_maximize_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_maximize_17000004 start`);
       let isSupportMaximize = true;
       try {
@@ -656,7 +712,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_maximize_17000005
   * @tc.desc: maximize 17000005 test.
   */
-    it('test_UiWindow_maximize_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_maximize_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_maximize_17000005 start`);
       try {
         let driver = Driver.create();
@@ -675,12 +731,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_minimize_17000002
     * @tc.desc: minimize 17000002 test.
     */
-    it('test_UiWindow_minimize_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_minimize_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_minimize_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.minimize();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_minimize_17000002 error is: ${JSON.stringify(e)}`);
@@ -695,7 +752,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_minimize_17000004
    * @tc.desc: minimize 17000004 test.
    */
-    it('test_UiWindow_minimize_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_minimize_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_minimize_17000004 start`);
       let isSupportMinimize = false;
       try {
@@ -733,7 +790,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_minimize_17000005
   * @tc.desc: minimize 17000005 test.
   */
-    it('test_UiWindow_minimize_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_minimize_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_minimize_17000005 start`);
       try {
         let driver = Driver.create();
@@ -752,12 +809,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_minimize_17000002
     * @tc.desc: resume 17000002 test.
     */
-    it('test_UiWindow_resume_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_resume_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resume_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.resume();
         await driver.delayMs(waitUiReadyMs);
       }catch (e) {
@@ -773,7 +831,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_resume_17000004
    * @tc.desc: resume 17000004 test.
    */
-    it('test_UiWindow_resume_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_resume_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resume_17000004 start`);
       let isSupportResume = true;
       try {
@@ -812,7 +870,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_resume_17000005
   * @tc.desc: resume 17000005 test.
   */
-    it('test_UiWindow_resume_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_resume_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_resume_17000005 start`);
       try {
         let driver = Driver.create();
@@ -831,12 +889,13 @@ export default function uitestUiWindowErrorTest() {
     * @tc.name: test_UiWindow_close_17000002
     * @tc.desc: close 17000002 test.
     */
-    it('test_UiWindow_close_17000002', Level.LEVEL3, async () => {
+    it('test_UiWindow_close_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_close_17000002 start`);
       try {
         let driver:Driver = Driver.create();
         let window = await driver.findWindow({actived: true});
         driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
         await window.close();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_close_17000002 error is: ${JSON.stringify(e)}`);
@@ -851,7 +910,7 @@ export default function uitestUiWindowErrorTest() {
    * @tc.name: test_UiWindow_resume_17000004
    * @tc.desc: close 17000004 test.
    */
-    it('test_UiWindow_close_17000004', Level.LEVEL3, async () => {
+    it('test_UiWindow_close_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_close_17000004 start`);
       let isSupportClose = true;
       try {
@@ -890,7 +949,7 @@ export default function uitestUiWindowErrorTest() {
   * @tc.name: test_UiWindow_close_17000005
   * @tc.desc: close 17000005 test.
   */
-    it('test_UiWindow_close_17000005', Level.LEVEL3, async () => {
+    it('test_UiWindow_close_17000005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_close_17000005 start`);
       try {
         let driver = Driver.create();
