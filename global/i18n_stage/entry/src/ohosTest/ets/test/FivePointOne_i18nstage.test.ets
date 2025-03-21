@@ -694,7 +694,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.level    : Level 2
      */
     it('I18N_test_getSimpleNumberFormatBySkeleton_0200', Level.LEVEL2, () => {
-      let skeletonFormatter: i18n.SimpleDateTimeFormat =
+      let skeletonFormatter: i18n.SimpleNumberFormat =
         i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always");
       let numberFormatted: string = skeletonFormatter.format(1230000);
       expect(numberFormatted == "1.23E+6").assertTrue();
