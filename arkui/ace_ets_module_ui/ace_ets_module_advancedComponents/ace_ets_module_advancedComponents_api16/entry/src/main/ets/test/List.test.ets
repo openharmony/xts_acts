@@ -29,6 +29,8 @@ import toolBarV2AccessibilityTest from './toolBarV2/ToolBarV2AccessibilityPage.t
 import tipsDialogTest from './dialogV2/tipsDialogTest.test';
 import selectDialogTest from './dialogV2/selectDialogTest.test';
 import confirmDialogTest from './dialogV2/confirmDialogTest.test';
+import composeListItemAccessibilityPageTest from './composeListItem/composeListItemAccessibilityPage.test';
+import exceptionPromptSymbolStyleTest from './exceptionPrompt/exceptionPromptSymbolStyle.test'
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -47,4 +49,6 @@ export default function testsuite() {
   tipsDialogTest();
   selectDialogTest();
   confirmDialogTest();
+  composeListItemAccessibilityPageTest();
+  exceptionPromptSymbolStyleTest();
 }
