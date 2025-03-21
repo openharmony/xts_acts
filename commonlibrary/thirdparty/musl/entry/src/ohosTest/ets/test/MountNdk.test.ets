@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import mount from 'libmountndk.so'
 
@@ -32,7 +32,7 @@ export default function mountNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMountUmount001', 0, async (done: Function) => {
+    it('testMuslMountUmount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = mount.umount();
       console.info("Test result= " + result);
       expect(result).assertEqual(0);
@@ -47,7 +47,7 @@ export default function mountNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMountUmount2001', 0, async (done: Function) => {
+    it('testMuslMountUmount2001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = mount.umount2();
       console.info("Test result= " + result);
       expect(result).assertEqual(0);

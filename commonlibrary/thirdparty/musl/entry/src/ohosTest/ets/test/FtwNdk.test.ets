@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import ftw from 'libftwndk.so'
 
@@ -32,7 +32,7 @@ export default function ftwNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFtwFtw001', 0, async (done: Function) => {
+    it('testMuslFtwFtw001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = ftw.ftw();
       expect(result).assertEqual(resultTrue);
@@ -47,7 +47,7 @@ export default function ftwNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFtwFtw64001', 0, async (done: Function) => {
+    it('testMuslFtwFtw64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = ftw.ftw64();
       expect(result).assertEqual(resultTrue);
@@ -61,7 +61,7 @@ export default function ftwNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFtwNftw001', 0, async (done: Function) => {
+    it('testMuslFtwNftw001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = ftw.nftw();
       expect(a).assertEqual(0);
       done()
@@ -74,7 +74,7 @@ export default function ftwNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFtwNftw64001', 0, async (done: Function) => {
+    it('testMuslFtwNftw64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = ftw.nftw64();
       expect(a).assertEqual(0);
       done()

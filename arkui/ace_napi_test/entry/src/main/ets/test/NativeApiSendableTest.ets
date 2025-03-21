@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 import utils from '@arkts.utils';
@@ -33,7 +33,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest003
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest003', 0, async (done: Function) => {
+    it('napiSendableTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest003 START');
       console.info(`napiSendableTest003 napitest:${napitest}`);
       let value: ESObject = napitest.NapiCreateSendableObject();
@@ -47,7 +47,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest012
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest012', 0, async (done: Function) => {
+    it('napiSendableTest012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest012 START');
       let lockName = "queryTestLock";
       let lock = utils.locks.AsyncLock.request(lockName);
@@ -69,7 +69,7 @@ export default function nativeApiSendableJsunit() {
      * @tc.name napiSendableTest013
      * @tc.desc aceNapiEtsTest
      */
-    it('napiSendableTest013', 0, async (done: Function) => {
+    it('napiSendableTest013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiSendableTest013 START');
       let lock = new utils.locks.AsyncLock;
       let s: utils.locks.AbortSignal<string> = { aborted: false, reason: "Aborted" };

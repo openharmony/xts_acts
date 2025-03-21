@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import semaphore from 'libsemaphorendk1.so'
 
@@ -34,7 +34,7 @@ export default function semaphoreNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    //it('testMuslSemaphoreSemUnlink001', 0, async (done: Function) => {
+    //it('testMuslSemaphoreSemUnlink001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     //  expect(semaphore.sem_unlink()).assertEqual(0);
     //  done()
     //});

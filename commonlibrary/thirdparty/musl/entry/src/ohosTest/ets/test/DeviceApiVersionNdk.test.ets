@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import deviceApiVersion from 'libdeviceApiVersionndk.so'
 
@@ -32,7 +32,7 @@ export default function muslDeviceApiVersionNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslDeviceApiVersionGetDeviceApiVersion001', 0, async (done: Function) => {
+    it('testMuslDeviceApiVersionGetDeviceApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = deviceApiVersion.getDeviceApiVersion();
       expect(a).assertEqual(0);
       done()

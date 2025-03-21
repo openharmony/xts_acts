@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import locale from 'liblocale1ndk.so'
 
@@ -32,7 +32,7 @@ export default function locale1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslLocaleNewlocale002', 0, async (done: Function) => {
+    it('testMuslLocaleNewlocale002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = locale.newlocale();
       expect(result).assertEqual(-1)
       done()
@@ -46,7 +46,7 @@ export default function locale1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslLocaleSetlocale002', 0, async (done: Function) => {
+    it('testMuslLocaleSetlocale002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = locale.setlocale();
       expect(result).assertEqual(-1);
       done()

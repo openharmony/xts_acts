@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import sendfile from 'libsendfilendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function sendfileNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslSendfileSendfile001', 0, async (done: Function) => {
+    it('testMuslSendfileSendfile001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -62,7 +62,7 @@ export default function sendfileNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 2
        */
-      it('testMuslSendfileSendfile002', 0, async (done: Function) => {
+      it('testMuslSendfileSendfile002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let result:number = sendfile.sendfile(0);
         expect(result).assertEqual(1);
         done()
@@ -76,7 +76,7 @@ export default function sendfileNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslSendfileSendfile64001', 0, async (done: Function) => {
+    it('testMuslSendfileSendfile64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = sendfile.sendfile64(1);
       expect(result).assertEqual(-1);
       done()
@@ -90,7 +90,7 @@ export default function sendfileNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslSendfileSendfile64002', 0, async (done: Function) => {
+    it('testMuslSendfileSendfile64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = sendfile.sendfile64(0);
       expect(result).assertEqual(1);
       done()

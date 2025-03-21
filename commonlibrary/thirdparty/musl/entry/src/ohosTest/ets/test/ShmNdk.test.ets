@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import shm from 'libshmndk.so'
 
@@ -32,7 +32,7 @@ export default function shmNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslShmShmget001', 0, async (done: Function) => {
+    it('testMuslShmShmget001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a : number = shm.shmget();
       expect(a).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function shmNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslShmShmctl001', 0, async (done: Function) => {
+    it('testMuslShmShmctl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a : number = shm.shmctl();
       expect(a).assertEqual(0);
       done()
@@ -59,7 +59,7 @@ export default function shmNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslShmShmat001', 0, async (done: Function) => {
+    it('testMuslShmShmat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a : number = shm.shmat();
       expect(a).assertEqual(0);
       done()
@@ -72,7 +72,7 @@ export default function shmNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslShmShmdt001', 0, async (done: Function) => {
+    it('testMuslShmShmdt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a : number = shm.shmdt();
       expect(a).assertEqual(0);
       done()

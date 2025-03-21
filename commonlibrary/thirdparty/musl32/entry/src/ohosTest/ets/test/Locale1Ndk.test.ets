@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import locale from 'liblocalendk32.so'
 
@@ -32,7 +32,7 @@ export default function locale1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMusLocaleLocalTime64002', 0, async (done: Function) => {
+    it('testMusLocaleLocalTime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(locale.__localtime64()).assertEqual(-1);
       done()
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import iconv from 'libiconvndk.so'
 
@@ -32,7 +32,7 @@ export default function muslIconvNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslIconvIconv001', 0, async (done: Function) => {
+    it('testMuslIconvIconv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = iconv.iconv();
       expect(result).assertEqual(0)
       done()
@@ -46,7 +46,7 @@ export default function muslIconvNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslIconvIconvOpen001', 0, async (done: Function) => {
+    it('testMuslIconvIconvOpen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = iconv.iconvOpen();
       expect(result).assertEqual(0)
       done()
@@ -60,7 +60,7 @@ export default function muslIconvNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslIconvIconvClose001', 0, async (done: Function) => {
+    it('testMuslIconvIconvClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = iconv.iconvClose();
       expect(result).assertEqual(0)
       done()

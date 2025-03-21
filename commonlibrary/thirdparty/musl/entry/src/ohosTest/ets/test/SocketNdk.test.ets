@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import socket from 'libsocketndk.so'
 
@@ -32,7 +32,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSocket001', 0, async (done: Function) => {
+    it('testMuslSocketSocket001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = socket.socket();
       expect(c).assertLarger(0);
       done()
@@ -46,7 +46,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSocketpair001', 0, async (done: Function) => {
+    it('testMuslSocketSocketpair001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = socket.socketpair();
       expect(c).assertEqual(-1);
       done()
@@ -59,7 +59,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSendmsg001', 0, async (done: Function) => {
+    it('testMuslSocketSendmsg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.sendmsg();
       expect(a).assertEqual(0);
       done()
@@ -73,7 +73,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSocketSend001', 0, async (done: Function) => {
+    it('testMuslSocketSend001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.send();
       expect(a).assertLarger(0);
       done()
@@ -87,7 +87,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSendto001', 0, async (done: Function) => {
+    it('testMuslSocketSendto001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.sendto();
       expect(a).assertLarger(0);
       done()
@@ -101,7 +101,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSendmmsg001', 0, async (done: Function) => {
+    it('testMuslSocketSendmmsg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.sendmmsg();
       expect(a).assertLarger(0);
       done()
@@ -115,7 +115,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketSetsockopt001', 0, async (done: Function) => {
+    it('testMuslSocketSetsockopt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.setsockopt();
       expect(a).assertEqual(0);
       done()
@@ -129,7 +129,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketShutdown001', 0, async (done: Function) => {
+    it('testMuslSocketShutdown001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = socket.shutdown();
       expect(a).assertEqual(0);
       done()
@@ -143,7 +143,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecv001', 0, async (done: Function) => {
+    it('testMuslSocketRecv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = socket.recv(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -159,7 +159,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecv002', 0, async (done: Function) => {
+    it('testMuslSocketRecv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = socket.recv(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -175,7 +175,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketConnect001', 0, async (done: Function) => {
+    it('testMuslSocketConnect001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(socket.connect()).assertEqual(0);
       done()
     });
@@ -188,7 +188,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSocketBind001', 0, async (done: Function) => {
+    it('testMuslSocketBind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = socket.bind();
       expect(result).assertEqual(resultTrue);
@@ -202,7 +202,7 @@ export default function SocketNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSocketListen001', 0, async (done: Function) => {
+    it('testMuslSocketListen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = socket.listen();
       expect(result).assertEqual(0)
       done()
@@ -215,7 +215,7 @@ export default function SocketNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSocketGetpeername001', 0, async (done: Function) => {
+    it('testMuslSocketGetpeername001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = socket.getpeername();
       expect(result).assertEqual(0)
       done()
@@ -229,7 +229,7 @@ export default function SocketNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSocketGetsockname001', 0, async (done: Function) => {
+    it('testMuslSocketGetsockname001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = socket.getsockname();
       expect(result).assertEqual(0)
       done()
@@ -243,7 +243,7 @@ export default function SocketNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSocketGetsockopt001', 0, async (done: Function) => {
+    it('testMuslSocketGetsockopt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = socket.getsockopt();
       expect(result).assertEqual(0)
       done()
@@ -257,7 +257,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecvfrom001', 0, async (done: Function) => {
+    it('testMuslSocketRecvfrom001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = socket.recvfrom(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -273,7 +273,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecvmsg001', 0, async (done: Function) => {
+    it('testMuslSocketRecvmsg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = socket.recvmsg(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -289,7 +289,7 @@ export default function SocketNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketRecvmmsg001', 0, async (done: Function) => {
+    it('testMuslSocketRecvmmsg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = socket.recvmmsg(param);
       console.info("Test result = " + JSON.stringify(result));

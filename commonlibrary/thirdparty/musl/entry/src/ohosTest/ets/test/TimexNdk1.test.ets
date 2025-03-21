@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import timex1 from 'libtimexndk1.so'
 
@@ -32,7 +32,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimexAdjtimexTime64001', 0, async (done: Function) => {
+    it('testMuslTimexAdjtimexTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.AdjTimex_time64_One()).assertEqual(1);
       done()
     });
@@ -45,7 +45,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimexAdjtimexTime64002', 0, async (done: Function) => {
+    it('testMuslTimexAdjtimexTime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.AdjTimex_time64_Two()).assertEqual(1);
       done()
     });
@@ -58,7 +58,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimexAdjtimex001', 0, async (done: Function) => {
+    it('testMuslTimexAdjtimex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.AdjTimex_One()).assertEqual(1);
       done()
     });
@@ -71,7 +71,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimexAdjtimex002', 0, async (done: Function) => {
+    it('testMuslTimexAdjtimex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.AdjTimex_Two()).assertEqual(1);
       done()
     });
@@ -84,7 +84,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockAdjtime64001', 0, async (done: Function) => {
+    it('testMuslTimeClockAdjtime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.Clock_adjTime64_One()).assertEqual(1);
       done()
     });
@@ -97,7 +97,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockAdjtime64002', 0, async (done: Function) => {
+    it('testMuslTimeClockAdjtime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.Clock_adjTime64_Two()).assertEqual(1);
       done()
     });
@@ -110,7 +110,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockAdjtime64003', 0, async (done: Function) => {
+    it('testMuslTimeClockAdjtime64003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
      expect(timex1.Clock_adjTime64_Three()).assertEqual(1);
       done()
     });
@@ -123,7 +123,7 @@ export default function timexNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockAdjtime64004', 0, async (done: Function) => {
+    it('testMuslTimeClockAdjtime64004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(timex1.Clock_adjTime64_Four()).assertEqual(1);
       done()
     });
