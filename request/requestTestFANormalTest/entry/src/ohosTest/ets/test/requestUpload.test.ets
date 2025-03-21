@@ -91,7 +91,7 @@ export default function requestUploadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_UploadManagement_0002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_UploadManagement_0002', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_0002 is starting-----------------------");
       try {
         await request.upload(uploadConfig);
@@ -114,7 +114,7 @@ export default function requestUploadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_UploadManagement_Callback_0002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_UploadManagement_Callback_0002', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0002 is starting-----------------------");
       request.upload(uploadConfig, (err, uploadTask)=>{
         try {

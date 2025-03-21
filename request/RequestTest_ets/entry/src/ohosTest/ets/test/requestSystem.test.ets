@@ -53,7 +53,7 @@ export default function requestSystemJSUnit() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_REQUESTSYSTEM_UPLOAD_API_0001', 0, async (done: Function) => {
+    it('SUB_REQUESTSYSTEM_UPLOAD_API_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 start-----------------------");
       let headers: ESObject = {
         RequestMethod: 'POST',
@@ -111,7 +111,7 @@ export default function requestSystemJSUnit() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_REQUESTSYSTEM_UPLOAD_API_0002', 0, async (done: Function) => {
+    it('SUB_REQUESTSYSTEM_UPLOAD_API_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0002 start-----------------------");
       let files: Array<ESObject> = [
         {
@@ -163,7 +163,7 @@ export default function requestSystemJSUnit() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001', 0, async (done: Function) => {
+    it('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 start-----------------------");
       let DownloadResponse: ESObject = {
         token: "Hm_lpvt_1d6c34c1bc067f5746a5fca18d1c24ab"
@@ -203,7 +203,7 @@ export default function requestSystemJSUnit() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001', 0, async (done: Function) => {
+    it('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 start-----------------------");
       let OnDownloadCompleteResponse: ESObject = {
         uri: "http://www.path.com"

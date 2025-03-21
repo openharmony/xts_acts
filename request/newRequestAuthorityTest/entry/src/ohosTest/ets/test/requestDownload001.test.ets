@@ -60,7 +60,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0140", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_create_Callback_0140", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -118,7 +118,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0140", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0140", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -171,7 +171,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0160", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_create_Callback_0160", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -216,7 +216,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0160", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0160", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -257,7 +257,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0170", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_create_Callback_0170", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -315,7 +315,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0170", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0170", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -369,7 +369,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0180", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_create_Callback_0180", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -412,7 +412,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0180", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0180", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
@@ -451,7 +451,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0090", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_create_Callback_0090", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -509,7 +509,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0090", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0090", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -565,7 +565,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Callback_0050', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Download_Callback_0050', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Callback_0050 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -616,7 +616,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0050', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0050', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0050 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -651,7 +651,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------SUB_Misc_REQUEST_Remove_Download_Promise_0060 is starting-------------------");
       try {
         console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0060 remove");
@@ -673,7 +673,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060', 0, async (done: Function) => {
+    it('SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060 is starting-----------------------");
       request.agent.remove('abc', (err) => {
         try {
@@ -700,7 +700,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0030", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0030", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: '//gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
@@ -746,7 +746,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0040", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0040", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: 3,
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -792,7 +792,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0130", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0130", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -836,7 +836,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0060", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Callback_0060", Level.LEVEL2, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -881,7 +881,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0070", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Callback_0070", Level.LEVEL2, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 8174; i++){
         urls += 'x';
@@ -921,7 +921,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0070", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0070", Level.LEVEL2, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 8174; i++){
         urls += 'x';
@@ -959,7 +959,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0080", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Callback_0080", Level.LEVEL2, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 8175; i++){
         urls += 'x';
@@ -1002,7 +1002,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0080", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0080", Level.LEVEL2, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 8175; i++){
         urls += 'x';
@@ -1038,7 +1038,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0110", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0110", Level.LEVEL2, async (done: Function) => {
       let des = 'x';
       for (let i = 0; i < 1025; i++){
         des += 'x';
@@ -1074,7 +1074,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0110", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Callback_0110", Level.LEVEL2, async (done: Function) => {
       let des = 'x';
       for (let i = 0; i < 1025; i++){
         des += 'x';
@@ -1117,7 +1117,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0150", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Promise_0150", Level.LEVEL2, async (done: Function) => {
       let tit = 'x';
       for (let i = 0; i < 257; i++){
         tit += 'x';
@@ -1154,7 +1154,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0150", 0, async (done: Function) => {
+    it("SUB_Misc_REQUEST_Create_Callback_0150", Level.LEVEL2, async (done: Function) => {
       let tit = 'x';
       for (let i = 0; i < 257; i++){
         tit += 'x';

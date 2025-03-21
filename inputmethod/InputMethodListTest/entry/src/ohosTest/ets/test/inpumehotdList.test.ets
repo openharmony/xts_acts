@@ -53,7 +53,7 @@ export default function inputMethodListJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_InputMethod_IME_inputMethodList_001', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_inputMethodList_001', Level.LEVEL2, async (done: Function) => {
       try {
         console.info("====>SUB_InputMethod_IME_inputMethodList_001 start");
         await driver.delayMs(2000);

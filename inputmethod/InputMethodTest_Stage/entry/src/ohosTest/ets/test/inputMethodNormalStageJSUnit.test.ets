@@ -53,7 +53,7 @@ export default function inputMethodNormalStageJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_001', 0, async (done: Function) => {
+    it('inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -107,7 +107,7 @@ export default function inputMethodNormalStageJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_002', 0, async (done: Function) => {
+    it('inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -156,7 +156,7 @@ export default function inputMethodNormalStageJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethodNormalStage_test_switchCurrentInputMethodSubtype_001', 0, async (done: Function) => {
+    it('inputMethodNormalStage_test_switchCurrentInputMethodSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethodNormalStage_test_switchCurrentInputMethodSubtype_001 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
       console.info("inputMethodNormalStage_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
@@ -198,7 +198,7 @@ export default function inputMethodNormalStageJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethodNormalStage_test_switchCurrentInputMethodSubtype_002', 0, async (done: Function) => {
+    it('inputMethodNormalStage_test_switchCurrentInputMethodSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethodNormalStage_test_switchCurrentInputMethodSubtype_002 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
       console.info("inputMethodNormalStage_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));

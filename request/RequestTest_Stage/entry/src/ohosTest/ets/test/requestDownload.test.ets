@@ -93,7 +93,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`)
@@ -131,7 +131,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`)
@@ -173,9 +173,9 @@ export default function requestDownloadJSUnit() {
      * @tc.desc Delete the download task.
      * @tc.size      MEDIUMTEST
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0001', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_delete_0001 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`)
@@ -227,9 +227,9 @@ export default function requestDownloadJSUnit() {
      * @tc.desc Delete the download task.
      * @tc.size      MEDIUMTEST
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0002', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`)
@@ -280,7 +280,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`)
@@ -332,7 +332,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`)
@@ -379,7 +379,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`)
@@ -431,7 +431,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 is starting-----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`)
@@ -481,7 +481,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`)
@@ -534,7 +534,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 is starting----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`)
@@ -584,7 +584,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`)
@@ -660,7 +660,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 is starting----------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`)
@@ -719,7 +719,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_Notice_Task_001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_Notice_Task_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_Notice_Task_001 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_001.txt`)
@@ -773,7 +773,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_Notice_Task_002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_Notice_Task_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_Notice_Task_002 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_002.txt`);
@@ -828,7 +828,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_Notice_Task_003', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_Notice_Task_003', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_Notice_Task_003 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_003.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_Download_Notice_Task_003.txt`);
@@ -883,7 +883,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_0003', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0003', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0003 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_DownloadManagement_0003.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_DownloadManagement_0003.txt`);
@@ -923,7 +923,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_0004', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0004', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0004 is starting---------------------");
       let downloadFilePath = `/data/app/el2/100/base/com.example.myapplication/haps/entry_test/cache/SUB_Misc_Request_DownloadManagement_0004.txt`
       console.info("====>downloadFileConfig: " + `${downloadFilePath}`);
@@ -957,7 +957,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_0005', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0005', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Misc_Request_DownloadManagement_0005 is starting");
       let downloadFileConfig: request.DownloadConfig = {
         url: '/downloadTest/releases/download/v1.0/test.apk',
@@ -986,7 +986,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_001 is starting---------------------");
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -1037,7 +1037,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002.txt`);
@@ -1092,7 +1092,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001.txt`);
@@ -1151,7 +1151,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Download_Promise_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Download_Promise_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Misc_REQUEST_Download_Promise_0030 is starting");
       let downloadFileConfig: request.DownloadConfig = {
         url: 'xxxxxxx.xxx',
@@ -1180,7 +1180,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_0400', 0, async (done: Function) => {
+    it('Download_Test_0400', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------Download_Test_0400 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_0400.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0400.txt`)
@@ -1234,7 +1234,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_0600', 0, async (done: Function) => {
+    it('Download_Test_0600', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------Download_Test_0600 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_0600.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0600.txt`);
@@ -1293,7 +1293,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_0700', 0, async (done: Function) => {
+    it('Download_Test_0700', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------Download_Test_0700 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_0700.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0700.txt`);
@@ -1364,7 +1364,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_1100', 0, async (done: Function) => {
+    it('Download_Test_1100', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------Download_Test_1100 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_1100.txt`
       let downloadFilePath1 = `${baseContext.tempDir}/Download_Test1_1100.txt`
@@ -1424,7 +1424,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_0100', 0, async (done: Function) => {
+    it('Download_Test_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>Download_Test_0100 is starting");
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://mirror.bjtu.edu.cn/kernel/linux/devel/binutils/biniutils-2.11.90.0.23-2.11.90.0.24.sign',
@@ -1454,7 +1454,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DownloadManagement_Download_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_DownloadManagement_Download_0500', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0500 is starting-----------------------');
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`;
       console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`);
@@ -1503,7 +1503,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DownloadManagement_Download_0300', 0, async (done: Function) => {
+    it('SUB_REQUEST_DownloadManagement_Download_0300', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0300 is starting-----------------------');
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`;
       console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`);
@@ -1564,7 +1564,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DownloadManagement_Download_0310', 0, async (done: Function) => {
+    it('SUB_REQUEST_DownloadManagement_Download_0310', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0310 is starting-----------------------');
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0310.txt`;
       console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0310.txt`);
@@ -1625,7 +1625,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_DownloadManagement_DownloadSuccess_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_DownloadManagement_DownloadSuccess_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 is starting-----------------------');
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`;
       console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`);
@@ -1672,7 +1672,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_SupportSystem_DownloadMultitask_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_SupportSystem_DownloadMultitask_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_SupportSystem_DownloadMultitask_0100 is starting-----------------------');
       let downloadFilePath1 = `${baseContext.tempDir}/downloadFilePath1.txt`;
       let downloadFilePath2 = `${baseContext.tempDir}/downloadFilePath2.txt`;
@@ -1737,7 +1737,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_SupportSystem_DownloadSuccess_0300', 0, async (done: Function) => {
+    it('SUB_REQUEST_SupportSystem_DownloadSuccess_0300', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_SupportSystem_DownloadSuccess_0300 is starting-----------------------');
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_SupportSystem_DownloadSuccess_0300.txt`
       console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_SupportSystem_DownloadSuccess_0300.txt`)
@@ -1788,7 +1788,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_download_Default_0100', 0, async (done: Function) => {
+    it('SUB_Request_download_Default_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_Request_download_Default_0100 is starting-----------------------');
       let downloadFilePath = `${baseContext.cacheDir}/test.hap`
       console.info('====>downloadFileConfig:' + `${baseContext.cacheDir}/test.hap`)

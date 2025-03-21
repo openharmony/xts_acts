@@ -95,7 +95,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0100 is starting-----------------------");
       let config:request.agent.Config = uploadConfig;
       config.data = [{
@@ -132,7 +132,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0200 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -169,7 +169,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0300', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0300 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -206,7 +206,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0400', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0400', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0400 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -243,7 +243,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0100 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -280,7 +280,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0600', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0600', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0600 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -317,7 +317,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0700', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0700', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0700 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -354,7 +354,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0800', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0800', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0800 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -391,7 +391,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_0900', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_0900', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_0900 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -428,7 +428,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1000', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1000', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1000 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -465,7 +465,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1100 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -502,7 +502,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1200 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -539,7 +539,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1300', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1300', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0100 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -576,7 +576,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1400', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1400', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1400 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -613,7 +613,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1500', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1500 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -650,7 +650,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1600', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1600', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1600 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -687,7 +687,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1800', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1800', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1800 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -724,7 +724,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_UploadConfig_1900', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1900', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1900 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -761,7 +761,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_contentType_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_contentType_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_contentType_0100 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{
@@ -810,7 +810,7 @@ export default function requestUploadConfigTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_REQUEST_Agent_contentType_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_contentType_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_contentType_0200 is starting-----------------------");
       let config = uploadConfig;
       config.data = [{

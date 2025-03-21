@@ -18,7 +18,7 @@ import systemTime from "@ohos.systemTime";
 import { BusinessError } from '@ohos.base';
 
 export default function systemTimeAuthorityJsunit() {
-  describe('systemTimeAuthorityTest', () => {
+  describe('systemTimeCommonEventTest', () => {
     console.info('====>---------------systemTimeAuthorityTest start-----------------------');
 
     /**
@@ -55,7 +55,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0100', 0, async (done: Function) => {
+    it('SUB_systemTime_setTime_JS_API_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0100 start");
       let currentTime = new Date().getTime() + 2000;
       systemTime.setTime(currentTime, (err) => {
@@ -83,7 +83,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0200', 0, async (done: Function) => {
+    it('SUB_systemTime_setTime_JS_API_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0200 start");
       systemTime.setTime(15222).then(() => {
         console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime fail')
@@ -105,7 +105,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0300', 0, async (done: Function) => {
+    it('SUB_systemTime_setTime_JS_API_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0300 start");
       let currentTime = new Date().getTime() + 2000;
       await systemTime.setTime(currentTime).then(() => {
@@ -128,7 +128,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0400', 0, async (done: Function) => {
+    it('SUB_systemTime_setTime_JS_API_0400', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0400 start");
       systemTime.setTime(18, (err) => {
         try {
@@ -150,7 +150,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0200', 0, async (done: Function) => {
+    it('SUB_systemTime_setDate_JS_API_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0200 start");
       systemTime.setDate(new Date(0)).then( () => {
         console.info("====>SUB_systemTime_setDate_JS_API_0200 setDate fail ");
@@ -171,7 +171,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0400', 0, async (done: Function) => {
+    it('SUB_systemTime_setDate_JS_API_0400', Level.LEVEL0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0400 start");
       let currentTime = new Date().getTime();
       let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
@@ -209,7 +209,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0500', 0, async (done: Function) => {
+    it('SUB_systemTime_setDate_JS_API_0500', Level.LEVEL0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0500 start");
       let currentTime = new Date().getTime();
       let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
@@ -243,7 +243,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0100', 0, async (done: Function) => {
+    it('SUB_systemTime_setTimezone_JS_API_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0100 start");
       systemTime.setTimezone('Asia, Shanghai').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0100 setTimezone fail");
@@ -264,7 +264,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0200', 0, async (done: Function) => {
+    it('SUB_systemTime_setTimezone_JS_API_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0200 start");
       systemTime.setTimezone('Beijing,China').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0200 fail");
@@ -285,7 +285,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0300', 0, async (done: Function) => {
+    it('SUB_systemTime_setTimezone_JS_API_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0300 start");
       systemTime.setTimezone('Baker Island, U.S.A.').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0300 data fail");
@@ -306,7 +306,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0400', 0, (done: Function) => {
+    it('SUB_systemTime_setTimezone_JS_API_0400', Level.LEVEL0, (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0400 start");
       systemTime.setTimezone('Asia/Jakarta',async (err) => {
         try{
@@ -344,7 +344,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0500', 0, async (done: Function) => {
+    it('SUB_systemTime_setTimezone_JS_API_0500', Level.LEVEL0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0500 start");
       try{
         await systemTime.setTimezone('Europe/Moscow').then(() => {
@@ -383,7 +383,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0010', 0, async (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setDate_0010 start");
       let currentTime = new Date().getTime();
       let date = new Date(2023,1,28);
@@ -414,7 +414,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0020', 0, async (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setDate_0020 start");
       let currentTime = new Date().getTime();
       let date = new Date(2024,1,29);
@@ -446,7 +446,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010 start");
       systemTime.setTimezone('America/Mexico_City',async (err) => {
         try{
@@ -474,7 +474,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020 start");
       systemTime.setTimezone('Asia/Kuala_Lumpur',async (err) => {
         try{
@@ -502,7 +502,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030 start");
       systemTime.setTimezone('Pacific/Auckland',async (err) => {
         try{
@@ -530,7 +530,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040 start");
       systemTime.setTimezone('Pacific/Tahiti',async (err) => {
         try{
@@ -558,7 +558,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050 start");
       systemTime.setTimezone('Pacific/Port_Moresby',async (err) => {
         try{
@@ -586,7 +586,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060 start");
       systemTime.setTimezone('Asia/Gaza',async (err) => {
         try{
@@ -614,7 +614,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070 start");
       systemTime.setTimezone('Europe/Lisbon',async (err) => {
         try{
@@ -642,7 +642,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080 start");
       systemTime.setTimezone('Europe/Moscow',async (err) => {
         try{
@@ -670,7 +670,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090 start");
       systemTime.setTimezone('Europe/Kiev',async (err) => {
         try{
@@ -698,7 +698,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100 start");
       systemTime.setTimezone('Pacific/Wake',async (err) => {
         try{
@@ -726,7 +726,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110 start");
       systemTime.setTimezone('America/New_York',async (err) => {
         try{
@@ -754,7 +754,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120 start");
       systemTime.setTimezone('Asia/Tashkent',async (err) => {
         try{
@@ -782,7 +782,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130 start");
       systemTime.setTimezone('Beijing/China',async (err) => {
         try{
@@ -809,7 +809,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140', 0, (done: Function) => {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140', Level.LEVEL2, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140 start");
       systemTime.setTimezone('Shanghai/Asia',async (err) => {
         try{
@@ -836,7 +836,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test1', 0, async (done: Function) => {
+    it('systemTime_setDate_test1', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test1 start");
       let date = new Date();
       systemTime.setDate(date,async (err) => {
@@ -863,7 +863,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test2', 0, async (done: Function) => {
+    it('systemTime_setDate_test2', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test2 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,1);
@@ -894,7 +894,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test3', 0, async (done: Function) => {
+    it('systemTime_setDate_test3', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test3 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,15);
@@ -925,7 +925,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test4', 0, async (done: Function) => {
+    it('systemTime_setDate_test4', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test4 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,31);
@@ -956,7 +956,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test5', 0, async (done: Function) => {
+    it('systemTime_setDate_test5', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test5 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,32);
@@ -987,7 +987,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test6', 0, async (done: Function) => {
+    it('systemTime_setDate_test6', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test6 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,29);
@@ -1018,7 +1018,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test8', 0, async (done: Function) => {
+    it('systemTime_setDate_test8', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test8 start");
       let currentTime = new Date().getTime();
       let date = new Date(2024,1,30);
@@ -1049,7 +1049,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test9', 0, async (done: Function) => {
+    it('systemTime_setDate_test9', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test9 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,5,30);
@@ -1080,7 +1080,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test10', 0, async (done: Function) => {
+    it('systemTime_setDate_test10', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test10 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,5,31);
@@ -1111,7 +1111,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test11', 0, async (done: Function) => {
+    it('systemTime_setDate_test11', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setDate_test11 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,11,31);
@@ -1142,7 +1142,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test1', 0, (done: Function) => {
+    it('systemTime_setTimezone_test1', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test1 start");
       systemTime.setTimezone('Antarctica/McMurdo',async (err) => {
         try{
@@ -1170,7 +1170,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test2', 0, (done: Function) => {
+    it('systemTime_setTimezone_test2', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test2 start");
       systemTime.setTimezone('Europe/Madrid',async (err) => {
         try{
@@ -1198,7 +1198,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test7', 0, (done: Function) => {
+    it('systemTime_setTimezone_test7', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test7 start");
       systemTime.setTimezone('Asia/Ulaanbaatar',async (err) => {
         try{
@@ -1226,7 +1226,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test10', 0, (done: Function) => {
+    it('systemTime_setTimezone_test10', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test10 start");
       systemTime.setTimezone('America/Argentina/Buenos_Aires',async (err) => {
         try{
@@ -1254,7 +1254,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test11', 0, (done: Function) => {
+    it('systemTime_setTimezone_test11', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test11 start");
       systemTime.setTimezone('Australia/Sydney',async (err) => {
         try{
@@ -1282,7 +1282,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test12', 0, (done: Function) => {
+    it('systemTime_setTimezone_test12', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test12 start");
       systemTime.setTimezone('America/Noronha',async (err) => {
         try{
@@ -1310,7 +1310,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test13', 0, (done: Function) => {
+    it('systemTime_setTimezone_test13', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test13 start");
       systemTime.setTimezone('America/St_Johns',async (err) => {
         try{
@@ -1338,7 +1338,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test14', 0, (done: Function) => {
+    it('systemTime_setTimezone_test14', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test14 start");
       systemTime.setTimezone('Africa/Kinshasa',async (err) => {
         try{
@@ -1366,7 +1366,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test15', 0, (done: Function) => {
+    it('systemTime_setTimezone_test15', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test15 start");
       systemTime.setTimezone('America/Santiago',async (err) => {
         try{
@@ -1394,7 +1394,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test16', 0, (done: Function) => {
+    it('systemTime_setTimezone_test16', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test16 start");
       systemTime.setTimezone('Asia/Shanghai',async (err) => {
         try{
@@ -1422,7 +1422,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test17', 0, (done: Function) => {
+    it('systemTime_setTimezone_test17', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test17 start");
       systemTime.setTimezone('Asia/Nicosia',async (err) => {
         try{
@@ -1450,7 +1450,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test18', 0, (done: Function) => {
+    it('systemTime_setTimezone_test18', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test18 start");
       systemTime.setTimezone('Europe/Berlin',async (err) => {
         try{
@@ -1478,7 +1478,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test19', 0, (done: Function) => {
+    it('systemTime_setTimezone_test19', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test19 start");
       systemTime.setTimezone('America/Guayaquil',async (err) => {
         try{
@@ -1506,7 +1506,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test20', 0, (done: Function) => {
+    it('systemTime_setTimezone_test20', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test20 start");
       systemTime.setTimezone('Pacific/Pohnpei',async (err) => {
         try{
@@ -1534,7 +1534,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test22', 0, (done: Function) => {
+    it('systemTime_setTimezone_test22', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test22 start");
       systemTime.setTimezone('America/Godthab',async (err) => {
         try{
@@ -1562,7 +1562,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test23', 0, (done: Function) => {
+    it('systemTime_setTimezone_test23', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test23 start");
       systemTime.setTimezone('Asia/Jakarta',async (err) => {
         try{
@@ -1590,7 +1590,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test24', 0, (done: Function) => {
+    it('systemTime_setTimezone_test24', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test24 start");
       systemTime.setTimezone('Pacific/Tarawa',async (err) => {
         try{
@@ -1618,7 +1618,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test25', 0, (done: Function) => {
+    it('systemTime_setTimezone_test25', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test25 start");
       systemTime.setTimezone('Asia/Almaty',async (err) => {
         try{
@@ -1646,7 +1646,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test26', 0, (done: Function) => {
+    it('systemTime_setTimezone_test26', Level.LEVEL2, (done: Function) => {
       console.info("====>systemTime_setTimezone_test26 start");
       systemTime.setTimezone('Pacific/Majuro',async (err) => {
         try{
@@ -1674,7 +1674,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test1', 0, async (done: Function) => {
+    it('systemTime_setTime_test1', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setTime_test1 start");
       systemTime.setTime(0, (err) => {
         try {
@@ -1702,7 +1702,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test2', 0, async (done: Function) => {
+    it('systemTime_setTime_test2', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setTime_test2 start");
       systemTime.setTime(2, (err) => {
         try {
@@ -1730,7 +1730,7 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test3', 0, async (done: Function) => {
+    it('systemTime_setTime_test3', Level.LEVEL2, async (done: Function) => {
       console.info("====>systemTime_setTime_test3 start");
       systemTime.setTime(Number.MAX_VALUE / 2, (err) => {
         console.info("====>systemTime_setTime_test3 Number.MAX_VALUE / 2" + Number.MAX_VALUE / 2);

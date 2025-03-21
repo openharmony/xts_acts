@@ -183,7 +183,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0300', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0300', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0300 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       uploadConfig1.files = [{
@@ -236,7 +236,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0400', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0400', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0400 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_UploadTaskCreation_0400 uploadFile: ' + uploadTask);
@@ -277,7 +277,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0500', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0500 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       uploadConfig1.files = [{
@@ -356,7 +356,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0700', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_UploadTaskCreation_0700', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0700 is starting-----------------------');
       let complete1: boolean = false;
       let complete2: boolean = false;
@@ -403,7 +403,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_other_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_other_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_other_0100 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       uploadConfig1.method = 'GET'
@@ -445,7 +445,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_post_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_post_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_post_0100 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = uploadConfig;
       uploadConfig1.method = 'POST';
@@ -487,7 +487,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_OnSuccess_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_OnSuccess_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_OnSuccess_0100 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_OnSuccess_0100 uploadFile: ' + uploadTask);
@@ -527,7 +527,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_MonitoringProgress_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_MonitoringProgress_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_MonitoringProgress_0100 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0100 uploadFile: ' + uploadTask);
@@ -567,7 +567,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_MonitoringProgress_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_MonitoringProgress_0200', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_MonitoringProgress_0200 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0200 uploadFile: ' + uploadTask);
@@ -605,7 +605,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_MonitoringProgress_0300', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_MonitoringProgress_0300', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_MonitoringProgress_0300 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0300 uploadFile: ' + uploadTask);
@@ -646,7 +646,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_MonitoringProgress_0400', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_MonitoringProgress_0400', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_MonitoringProgress_0400 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0400 uploadFile: ' + uploadTask);
@@ -684,7 +684,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_MonitoringProgress_0600', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_MonitoringProgress_0600', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_MonitoringProgress_0600 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0600 uploadFile: ' + uploadTask);
@@ -722,7 +722,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_OnFail_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_OnFail_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_OnFail_0100 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = {
         url: 'http://127.1.1.1:808',
@@ -773,7 +773,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_OffFail_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_OffFail_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_OffFail_0100 is starting-----------------------');
       let uploadConfig1: request.UploadConfig = {
         url: 'http://127.1.1.1:808',
@@ -820,7 +820,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_offSuccess_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_offSuccess_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_offSuccess_0100 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_offSuccess_0100 uploadFile: ' + uploadTask);
@@ -858,7 +858,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_DeletingTask_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_DeletingTask_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_DeletingTask_0100 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_FileUpload_DeletingTask_0100 uploadFile: ' + uploadTask);
@@ -887,7 +887,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_ResponseBody_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_ResponseBody_0100', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
       let filePath = pathDir + '/test9.txt';
@@ -941,7 +941,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_FileUpload_ResponseBody_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_FileUpload_ResponseBody_0200', Level.LEVEL2, async (done: Function) => {
       if (deviceinfo.deviceType === 'wearable') {
         console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 deviceType is: ' + JSON.stringify(deviceinfo.deviceType));
         done();
@@ -1000,7 +1000,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0100', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0100', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = undefined;
       config_multi.begins = undefined;
@@ -1041,7 +1041,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0200', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0200', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 0;
@@ -1082,7 +1082,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0300', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0300', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 99;
@@ -1122,7 +1122,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0700', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0700', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 30;
@@ -1162,7 +1162,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0800', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0800', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 1025;
@@ -1202,7 +1202,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_0900', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_0900', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 60;
@@ -1242,7 +1242,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1000', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1000', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 60;
@@ -1282,7 +1282,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1100', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1100', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.index = 0;
       config_multi.begins = 0;
@@ -1322,7 +1322,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1200', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1200', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.files = File5;
       config_multi.index = 1;
@@ -1363,7 +1363,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1300', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1300', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.files = File5;
       config_multi.index = 1;
@@ -1404,7 +1404,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1400', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1400', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.files = File5;
       config_multi.index = 0;
@@ -1445,7 +1445,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_UpLoadFile_Multipart_Supported_1500', 0, async (done: Function) => {
+    it('SUB_Request_UpLoadFile_Multipart_Supported_1500', Level.LEVEL2, async (done: Function) => {
       let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       config_multi.files = File5;
       config_multi.index = 0;
@@ -1486,7 +1486,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
       try {
         let uploadConfig_: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
@@ -1534,7 +1534,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       try{
         request.uploadFile(baseContext, uploadConfig).then(uploadTask => {
@@ -1566,7 +1566,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
       request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         try{
@@ -1603,7 +1603,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
       request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
@@ -1633,7 +1633,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_FileUpload_Default_0100', 0, async (done: Function) => {
+    it('SUB_Request_FileUpload_Default_0100', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = {
         url: 'http://127.0.0.1:8080',
         header: { 'Accept': '*/*' },
@@ -1679,7 +1679,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_REQUEST_upload_headerReceive_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_upload_headerReceive_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_upload_headerReceive_0100 is starting-----------------------');
       request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
         console.info('====>SUB_REQUEST_upload_headerReceive_0100 uploadFile: ' + uploadTask);
@@ -1720,7 +1720,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_Agent_MultipleFiles_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_MultipleFiles_0100', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_Request_Agent_MultipleFiles_0100 is starting-----------------------');
       let config: request.agent.Config = {
         action:request.agent.Action.UPLOAD,
@@ -1774,7 +1774,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_Agent_MultipleFiles_0200', 0, async (done: Function) => {
+    it('SUB_Request_Agent_MultipleFiles_0200', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_Request_Agent_MultipleFiles_0200 is starting-----------------------');
       let config: request.agent.Config = {
         action:request.agent.Action.UPLOAD,
@@ -1828,7 +1828,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_Agent_MultipleFiles_0300', 0, async (done: Function) => {
+    it('SUB_Request_Agent_MultipleFiles_0300', Level.LEVEL2, async (done: Function) => {
       console.info('-----------------------SUB_Request_Agent_MultipleFiles_0300 is starting-----------------------');
       let config: request.agent.Config = {
         action:request.agent.Action.UPLOAD,
@@ -1882,7 +1882,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_FileUpload_ErrorCode_0100', 0, async (done: Function) => {
+    it('SUB_Request_FileUpload_ErrorCode_0100', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = {
         url: 'http://127.0.0.1:8080',
         header: { 'Accept': '*/*' },
@@ -1917,7 +1917,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_FileUpload_ErrorCode_0200', 0, async (done: Function) => {
+    it('SUB_Request_FileUpload_ErrorCode_0200', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = {
         url: 'http://127.0.0.1:8080',
         header: { 'Accept': '*/*' },
@@ -1946,7 +1946,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_FileUpload_ErrorCode_0300', 0, async (done: Function) => {
+    it('SUB_Request_FileUpload_ErrorCode_0300', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = {
         url: 'upload',
         header: { 'Accept': '*/*' },
@@ -1981,7 +1981,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      Function
      * @tc.level     Level 2
      */
-    it('SUB_Request_FileUpload_ErrorCode_0400', 0, async (done: Function) => {
+    it('SUB_Request_FileUpload_ErrorCode_0400', Level.LEVEL2, async (done: Function) => {
       let config: request.UploadConfig = {
         url: 'upload',
         header: { 'Accept': '*/*' },

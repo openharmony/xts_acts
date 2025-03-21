@@ -92,9 +92,9 @@ export default function inputMethodAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level1
     */
-    it('inputMethodEngine_test_001', 0, async (done: Function) => {
+    it('inputMethodEngine_test_001', Level.LEVEL1, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED;
       console.info("====>inputMethodEngine_test_001 result:" + keyType);
       expect(keyType).assertEqual(0);
@@ -107,9 +107,9 @@ export default function inputMethodAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level0
     */
-    it('inputMethodEngine_test_002', 0, async (done: Function) => {
+    it('inputMethodEngine_test_002', Level.LEVEL0, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_GO;
       console.info("====>inputMethodEngine_test_002 result:" + keyType);
       expect(keyType).assertEqual(2);
@@ -122,9 +122,9 @@ export default function inputMethodAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level0
     */
-    it('inputMethodEngine_test_003', 0, async (done: Function) => {
+    it('inputMethodEngine_test_003', Level.LEVEL0, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEARCH;
       console.info("====>inputMethodEngine_test_003 result:" + keyType);
       expect(keyType).assertEqual(3);
@@ -139,7 +139,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_004', 0, async (done: Function) => {
+    it('inputMethodEngine_test_004', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEND;
       console.info("====>inputMethodEngine_test_004 result:" + keyType);
       expect(keyType).assertEqual(4);
@@ -154,7 +154,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_005', 0, async (done: Function) => {
+    it('inputMethodEngine_test_005', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_NEXT;
       console.info("====>inputMethodEngine_test_005 result:" + keyType);
       expect(keyType).assertEqual(5);
@@ -169,7 +169,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_006', 0, async (done: Function) => {
+    it('inputMethodEngine_test_006', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_DONE;
       console.info("====>inputMethodEngine_test_006 result:" + keyType);
       expect(keyType).assertEqual(6);
@@ -184,7 +184,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_007', 0, async (done: Function) => {
+    it('inputMethodEngine_test_007', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS;
       console.info("====>inputMethodEngine_test_007 result:" + keyType);
       expect(keyType).assertEqual(7);
@@ -199,7 +199,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_008', 0, async (done: Function) => {
+    it('inputMethodEngine_test_008', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_NULL;
       console.info("====>inputMethodEngine_test_008 result:" + keyType);
       expect(keyType).assertEqual(-1);
@@ -214,7 +214,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_009', 0, async (done: Function) => {
+    it('inputMethodEngine_test_009', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_TEXT;
       console.info("====>inputMethodEngine_test_009 result:" + keyType);
       expect(keyType).assertEqual(0);
@@ -229,7 +229,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_010', 0, async (done: Function) => {
+    it('inputMethodEngine_test_010', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_NUMBER;
       console.info("====>inputMethodEngine_test_010 result:" + keyType);
       expect(keyType).assertEqual(2);
@@ -244,7 +244,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_011', 0, async (done: Function) => {
+    it('inputMethodEngine_test_011', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_PHONE;
       console.info("====>inputMethodEngine_test_011 result:" + keyType);
       expect(keyType).assertEqual(3);
@@ -259,7 +259,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_012', 0, async (done: Function) => {
+    it('inputMethodEngine_test_012', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_DATETIME;
       console.info("====>inputMethodEngine_test_012 result:" + keyType);
       expect(keyType).assertEqual(4);
@@ -274,7 +274,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_013', 0, async (done: Function) => {
+    it('inputMethodEngine_test_013', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_EMAIL;
       console.info("====>inputMethodEngine_test_013 result:" + keyType);
       expect(keyType).assertEqual(5);
@@ -289,7 +289,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_014', 0, async (done: Function) => {
+    it('inputMethodEngine_test_014', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_URI;
       console.info("====>inputMethodEngine_test_014 result:" + keyType);
       expect(keyType).assertEqual(6);
@@ -304,7 +304,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_015', 0, async (done: Function) => {
+    it('inputMethodEngine_test_015', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_PASSWORD;
       console.info("====>inputMethodEngine_test_015 result:" + keyType);
       expect(keyType).assertEqual(7);
@@ -319,7 +319,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_016', 0, async (done: Function) => {
+    it('inputMethodEngine_test_016', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.FLAG_SELECTING;
       console.info("====>inputMethodEngine_test_016 result:" + keyType);
       expect(keyType).assertEqual(2);
@@ -334,7 +334,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_017', 0, async (done: Function) => {
+    it('inputMethodEngine_test_017', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.FLAG_SINGLE_LINE;
       console.info("====>inputMethodEngine_test_017 result:" + keyType);
       expect(keyType).assertEqual(1);
@@ -349,7 +349,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_018', 0, async (done: Function) => {
+    it('inputMethodEngine_test_018', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.DISPLAY_MODE_PART;
       console.info("====>inputMethodEngine_test_018 result:" + keyType);
       expect(keyType).assertEqual(0);
@@ -364,7 +364,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_019', 0, async (done: Function) => {
+    it('inputMethodEngine_test_019', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.DISPLAY_MODE_FULL;
       console.info("====>inputMethodEngine_test_019 result:" + keyType);
       expect(keyType).assertEqual(1);
@@ -379,7 +379,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_020', 0, async (done: Function) => {
+    it('inputMethodEngine_test_020', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_ASCII;
       console.info("====>inputMethodEngine_test_020 result:" + keyType);
       expect(keyType).assertEqual(20);
@@ -394,7 +394,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_021', 0, async (done: Function) => {
+    it('inputMethodEngine_test_021', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_NONE;
       console.info("====>inputMethodEngine_test_021 result:" + keyType);
       expect(keyType).assertEqual(0);
@@ -409,7 +409,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_022', 0, async (done: Function) => {
+    it('inputMethodEngine_test_022', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_CHARACTERS;
       console.info("====>inputMethodEngine_test_022 result:" + keyType);
       expect(keyType).assertEqual(2);
@@ -424,7 +424,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_023', 0, async (done: Function) => {
+    it('inputMethodEngine_test_023', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_SENTENCES;
       console.info("====>inputMethodEngine_test_023 result:" + keyType);
       expect(keyType).assertEqual(8);
@@ -439,7 +439,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_024', 0, async (done: Function) => {
+    it('inputMethodEngine_test_024', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_AUTO_WORDS;
       console.info("====>inputMethodEngine_test_024 result:" + keyType);
       expect(keyType).assertEqual(4);
@@ -454,7 +454,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_025', 0, async (done: Function) => {
+    it('inputMethodEngine_test_025', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_MULTI_LINE;
       console.info("====>inputMethodEngine_test_025 result:" + keyType);
       expect(keyType).assertEqual(1);
@@ -469,7 +469,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_026', 0, async (done: Function) => {
+    it('inputMethodEngine_test_026', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.OPTION_NO_FULLSCREEN;
       console.info("====>inputMethodEngine_test_026 result:" + keyType);
       expect(keyType).assertEqual(10);
@@ -484,7 +484,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_027', 0, async (done: Function) => {
+    it('inputMethodEngine_test_027', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_PASSWORD_SCREEN_LOCK;
       console.info("====>inputMethodEngine_test_027 result:" + keyType);
       expect(keyType).assertEqual(9);
@@ -499,7 +499,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_028', 0, async (done: Function) => {
+    it('inputMethodEngine_test_028', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.PATTERN_PASSWORD_NUMBER;
       console.info("====>inputMethodEngine_test_028 result:" + keyType);
       expect(keyType).assertEqual(8);
@@ -514,7 +514,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_029', 0, async (done: Function) => {
+    it('inputMethodEngine_test_029', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_NEWLINE;
       console.info("====>inputMethodEngine_test_029 result:" + keyType);
       expect(keyType).assertEqual(8);
@@ -529,7 +529,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_ExtendAction_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_ExtendAction_0100', Level.LEVEL2, async (done: Function) => {
       let select_all = inputMethodEngine.ExtendAction.SELECT_ALL;
       console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 select_all:" + select_all);
       expect(select_all).assertEqual(0);
@@ -562,7 +562,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_getInputMethodAbility_001', 0, async (done: Function) => {
+    it('inputMethodAbility_test_getInputMethodAbility_001', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_getInputMethodAbility_001 unSubscriberCallback start");
@@ -636,7 +636,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_getKeyboardDelegate_001', 0, async (done: Function) => {
+    it('inputMethodAbility_test_getKeyboardDelegate_001', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 unSubscriberCallback start");
@@ -709,7 +709,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_028', 0, async (done: Function) => {
+    it('inputMethodAbility_test_028', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_028 unSubscriberCallback start");
@@ -781,7 +781,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_029', 0, async (done: Function) => {
+    it('inputMethodAbility_test_029', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_029 unSubscriberCallback start");
@@ -853,7 +853,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_030', 0, async (done: Function) => {
+    it('inputMethodAbility_test_030', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_030 unSubscriberCallback start");
@@ -925,7 +925,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_031', 0, async (done: Function) => {
+    it('inputMethodAbility_test_031', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_031 unSubscriberCallback start");
@@ -997,7 +997,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_032', 0, async (done: Function) => {
+    it('inputMethodAbility_test_032', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_032 unSubscriberCallback start");
@@ -1069,7 +1069,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_033', 0, async (done: Function) => {
+    it('inputMethodAbility_test_033', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_033 unSubscriberCallback start");
@@ -1141,7 +1141,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_034', 0, async (done: Function) => {
+    it('inputMethodAbility_test_034', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_034 unSubscriberCallback start");
@@ -1213,7 +1213,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_035', 0, async (done: Function) => {
+    it('inputMethodAbility_test_035', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_035 unSubscriberCallback start");
@@ -1285,7 +1285,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_036', 0, async (done: Function) => {
+    it('inputMethodAbility_test_036', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_036 unSubscriberCallback start");
@@ -1357,7 +1357,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_037', 0, async (done: Function) => {
+    it('inputMethodAbility_test_037', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_037 unSubscriberCallback start");
@@ -1429,7 +1429,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_038', 0, async (done: Function) => {
+    it('inputMethodAbility_test_038', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_038 unSubscriberCallback start");
@@ -1501,7 +1501,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_039', 0, async (done: Function) => {
+    it('inputMethodAbility_test_039', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_039 unSubscriberCallback start");
@@ -1573,7 +1573,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_040', 0, async (done: Function) => {
+    it('inputMethodAbility_test_040', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_040 unSubscriberCallback start");
@@ -1645,7 +1645,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_041', 0, async (done: Function) => {
+    it('inputMethodAbility_test_041', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_041 unSubscriberCallback start");
@@ -1717,7 +1717,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_042', 0, async (done: Function) => {
+    it('inputMethodAbility_test_042', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_042 unSubscriberCallback start");
@@ -1789,7 +1789,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_043', 0, async (done: Function) => {
+    it('inputMethodAbility_test_043', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_043 unSubscriberCallback start");
@@ -1861,7 +1861,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_044', 0, async (done: Function) => {
+    it('inputMethodEngine_test_044', Level.LEVEL2, async (done: Function) => {
       let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
       console.info("====>inputMethodEngine_test_044 result:" + keyType);
       expect(keyType).assertEqual(2105);
@@ -1876,7 +1876,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_045', 0, async (done: Function) => {
+    it('inputMethodAbility_test_045', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_045 unSubscriberCallback start");
@@ -1948,7 +1948,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_046', 0, async (done: Function) => {
+    it('inputMethodAbility_test_046', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_046 unSubscriberCallback start");
@@ -2020,7 +2020,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_047', 0, async (done: Function) => {
+    it('inputMethodAbility_test_047', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_047 unSubscriberCallback start");
@@ -2092,7 +2092,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_048', 0, async (done: Function) => {
+    it('inputMethodAbility_test_048', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_048 unSubscriberCallback start");
@@ -2164,7 +2164,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_049', 0, async (done: Function) => {
+    it('inputMethodAbility_test_049', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_049 unSubscriberCallback start");
@@ -2236,7 +2236,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_050', 0, async (done: Function) => {
+    it('inputMethodAbility_test_050', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_050 unSubscriberCallback start");
@@ -2308,7 +2308,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_070', 0, async (done: Function) => {
+    it('inputMethodAbility_test_070', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_070 unSubscriberCallback start");
@@ -2385,7 +2385,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_071', 0, async (done: Function) => {
+    it('inputMethodAbility_test_071', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_071 unSubscriberCallback start");
@@ -2462,7 +2462,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_072', 0, async (done: Function) => {
+    it('inputMethodAbility_test_072', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_072 unSubscriberCallback start");
@@ -2539,7 +2539,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_073', 0, async (done: Function) => {
+    it('inputMethodAbility_test_073', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_073 unSubscriberCallback start");
@@ -2617,7 +2617,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_074', 0, async (done: Function) => {
+    it('inputMethodAbility_test_074', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_074 unSubscriberCallback start");
@@ -2696,7 +2696,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_101', 0, async (done: Function) => {
+    it('inputMethodAbility_test_101', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_101 unSubscriberCallback start");
@@ -2768,7 +2768,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_102', 0, async (done: Function) => {
+    it('inputMethodAbility_test_102', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_102 unSubscriberCallback start");
@@ -2840,7 +2840,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_103', 0, async (done: Function) => {
+    it('inputMethodAbility_test_103', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_103 unSubscriberCallback start");
@@ -2912,7 +2912,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_104', 0, async (done: Function) => {
+    it('inputMethodAbility_test_104', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_104 unSubscriberCallback start");
@@ -2984,7 +2984,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_105', 0, async (done: Function) => {
+    it('inputMethodAbility_test_105', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_105 unSubscriberCallback start");
@@ -3056,7 +3056,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_106', 0, async (done: Function) => {
+    it('inputMethodAbility_test_106', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodAbility_test_106 unSubscriberCallback start");
@@ -3128,7 +3128,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_onSelectByRange_0110', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_onSelectByRange_0110', Level.LEVEL2, async (done: Function) => {
 
       let publishCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback start");
@@ -3166,7 +3166,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_onSelectByMovement_0120', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_onSelectByMovement_0120', Level.LEVEL2, async (done: Function) => {
 
       let publishCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback start");
@@ -3205,7 +3205,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_offSelectByRange_0130', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_offSelectByRange_0130', Level.LEVEL2, async (done: Function) => {
 
       let publishCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback start");
@@ -3251,7 +3251,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_offSelectByMovement_0140', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_offSelectByMovement_0140', Level.LEVEL2, async (done: Function) => {
 
       let publishCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback start");
@@ -3299,7 +3299,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_onImeChange_0150', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_onImeChange_0150', Level.LEVEL2, async (done: Function) => {
       let inputMethodSetting = inputMethod.getSetting();
       let inputStageService: subtype = {
         id: 'inputStageService',
@@ -3351,7 +3351,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_offImeChange_0160', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_offImeChange_0160', Level.LEVEL2, async (done: Function) => {
       let count = 0;
       let inputMethodSetting = inputMethod.getSetting();
       let inputStageService: subtype = {
@@ -3413,7 +3413,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodAbility_test_091', 0, async (done: Function) => {
+    it('inputMethodAbility_test_091', Level.LEVEL2, async (done: Function) => {
       let flag = true;
 
       let unSubscriberCallback = (err: BusinessError) => {
@@ -3492,7 +3492,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_sendExtendAction_0170', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_sendExtendAction_0170', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 unSubscriberCallback start");
@@ -3563,7 +3563,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_sendExtendAction_0180', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_sendExtendAction_0180', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 unSubscriberCallback start");
@@ -3635,7 +3635,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getForward_sync_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getForward_sync_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 unSubscriberCallback start");
@@ -3707,7 +3707,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getForward_sync_0201', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getForward_sync_0201', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 unSubscriberCallback start");
@@ -3779,7 +3779,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getBackward_sync_0210', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getBackward_sync_0210', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 unSubscriberCallback start");
@@ -3851,7 +3851,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getBackward_sync_0211', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getBackward_sync_0211', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 unSubscriberCallback start");
@@ -3923,7 +3923,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 unSubscriberCallback start");
@@ -3997,7 +3997,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 unSubscriberCallback start");
@@ -4071,7 +4071,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0230', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0230', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 unSubscriberCallback start");
@@ -4145,7 +4145,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0231', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0231', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 unSubscriberCallback start");
@@ -4219,7 +4219,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0233', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0233', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 unSubscriberCallback start");
         if (err) {
@@ -4292,7 +4292,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_moveCursor_sync_0240', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_moveCursor_sync_0240', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 unSubscriberCallback start");
@@ -4364,7 +4364,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_moveCursor_sync_0241', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_moveCursor_sync_0241', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 unSubscriberCallback start");
@@ -4436,7 +4436,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_deleteForward_sync_0250', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_deleteForward_sync_0250', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 unSubscriberCallback start");
@@ -4509,7 +4509,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_deleteForward_sync_0251', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_deleteForward_sync_0251', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 unSubscriberCallback start");
@@ -4582,7 +4582,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_deleteBackward_sync_0260', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_deleteBackward_sync_0260', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 unSubscriberCallback start");
@@ -4655,7 +4655,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_deleteBackward_sync_0261', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_deleteBackward_sync_0261', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 unSubscriberCallback start");
@@ -4728,7 +4728,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_insertText_sync_0270', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_insertText_sync_0270', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 unSubscriberCallback start");
@@ -4801,7 +4801,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_insertText_sync_0271', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_insertText_sync_0271', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 unSubscriberCallback start");
@@ -4873,7 +4873,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_selectByRange_sync_0280', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_selectByRange_sync_0280', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 unSubscriberCallback start");
@@ -4946,7 +4946,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_selectByRange_sync_0281', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_selectByRange_sync_0281', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 unSubscriberCallback start");
@@ -5019,7 +5019,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_selectByMovement_sync_0290', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_selectByMovement_sync_0290', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 unSubscriberCallback start");
@@ -5092,7 +5092,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethod_selectByMovement_sync_0291', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_selectByMovement_sync_0291', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 unSubscriberCallback start");
@@ -5165,7 +5165,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_Request_InputMethod_selectContext_0400', 0, async (done: Function) => {
+    it('Sub_Misc_Request_InputMethod_selectContext_0400', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 unSubscriberCallback start");
@@ -5240,7 +5240,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_Request_InputMethod_selectContext_0500', 0, async (done: Function) => {
+    it('Sub_Misc_Request_InputMethod_selectContext_0500', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 unSubscriberCallback start");
@@ -5314,7 +5314,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_Request_InputMethod_selectContext_0600', 0, async (done: Function) => {
+    it('Sub_Misc_Request_InputMethod_selectContext_0600', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 unSubscriberCallback start");
@@ -5389,7 +5389,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IsTextPreviewSupport_0100', 0, async (done: Function) => {
+    it('SUB_InputMethod_IsTextPreviewSupport_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 unSubscriberCallback start");
@@ -5465,7 +5465,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IsTextPreviewSupport_0200', 0, async (done: Function) => {
+    it('SUB_InputMethod_IsTextPreviewSupport_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 unSubscriberCallback start");
@@ -5537,7 +5537,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IsTextPreviewSupport_0300', 0, async (done: Function) => {
+    it('SUB_InputMethod_IsTextPreviewSupport_0300', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 unSubscriberCallback start");
@@ -5609,7 +5609,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IsTextPreviewSupport_0400', 0, async (done: Function) => {
+    it('SUB_InputMethod_IsTextPreviewSupport_0400', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 unSubscriberCallback start");
@@ -5681,7 +5681,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IME_PrivateDateTransferred_0500', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_PrivateDateTransferred_0500', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 unSubscriberCallback start");
@@ -5754,7 +5754,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IME_PrivateDateTransferred_0600', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_PrivateDateTransferred_0600', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 unSubscriberCallback start");
@@ -5827,7 +5827,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IME_PrivateDateTransferred_1100', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_PrivateDateTransferred_1100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 unSubscriberCallback start");
@@ -5900,7 +5900,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IME_onoffsecurityModeChanged_0100', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_onoffsecurityModeChanged_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IME_onoffsecurityModeChanged_0100 unSubscriberCallback start");
@@ -5973,7 +5973,7 @@ export default function inputMethodAbility() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IME_onoffsecurityModeChanged_0200', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_onoffsecurityModeChanged_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_InputMethod_IME_onoffsecurityModeChanged_0200 unSubscriberCallback start");

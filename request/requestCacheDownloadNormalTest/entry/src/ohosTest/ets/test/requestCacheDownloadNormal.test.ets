@@ -29,7 +29,7 @@ export default function requestCacheDownloadNormalUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownloadNormal_0100', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownloadNormal_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownloadNormal_0100 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}

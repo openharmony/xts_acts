@@ -1706,11 +1706,9 @@ export class KeyboardController {
         onTerminated(): void {
           console.info(TAG +'====>Sub_InputMethod_IME_Custom_0900 onTerminated');
         },
-        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 onMessage msgId: ' + msgId + ', msgParam: ' +
-          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
-          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
-            that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
+        onMessage(msgId: string): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 onMessage msgId: ' + msgId );
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length );
           if (msgId === 'Sub_InputMethod_IME_Custom_0900') {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))

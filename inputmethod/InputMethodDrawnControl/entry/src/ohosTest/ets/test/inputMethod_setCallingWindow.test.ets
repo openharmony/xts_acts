@@ -88,7 +88,7 @@ export default function inputMethodTest() {
      * @tc.name When calling the setCallingWindow interface in Async mode, the parameter windowId=5 must be passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Async_0100';
       const WINDOW_ID: ESObject = 5;
       let CallBack = (error: BusinessError, data: ESObject) => {
@@ -118,7 +118,7 @@ export default function inputMethodTest() {
      * @tc.name When calling the setCallingWindow interface in Async mode, the parameter windowId=0 must be passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Async_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Async_0200';
       const WINDOW_ID: ESObject = 0;
       let CallBack = (error: BusinessError, data: ESObject) => {
@@ -148,7 +148,7 @@ export default function inputMethodTest() {
      *             passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Async_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Async_0300';
       const WINDOW_ID: ESObject = '5';
       let CallBack = (error: BusinessError, data: ESObject) => {
@@ -179,7 +179,7 @@ export default function inputMethodTest() {
      * @tc.name The input method keyboard is not bound, and the setCallingWindow interface is called in Async mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Async_0600', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Async_0600', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Async_0600';
       const WINDOW_ID: ESObject = 5;
       let CallBack = (error: BusinessError, data: ESObject) => {
@@ -220,7 +220,7 @@ export default function inputMethodTest() {
      *             windowId=5 must be passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Promise_0100';
       const WINDOW_ID: ESObject = 5;
       try {
@@ -242,7 +242,7 @@ export default function inputMethodTest() {
      *             passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Promise_0200';
       const WINDOW_ID: ESObject = 0;
       try {
@@ -264,7 +264,7 @@ export default function inputMethodTest() {
      *             passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Promise_0300';
       const WINDOW_ID: ESObject = '5';
       try {
@@ -286,7 +286,7 @@ export default function inputMethodTest() {
      * @tc.name The input method keyboard is not bound, and the setCallingWindow interface is called in Promise mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0600', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0600', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Promise_0600';
       const WINDOW_ID: ESObject = 5;
       try {
@@ -317,7 +317,7 @@ export default function inputMethodTest() {
      * @tc.name Call setCallingWindow interface in Promise mode, and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0700', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_setCallingWindow_Promise_0700', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_setCallingWindow_Promise_0700';
       const WINDOW_ID: ESObject = 5;
       try {

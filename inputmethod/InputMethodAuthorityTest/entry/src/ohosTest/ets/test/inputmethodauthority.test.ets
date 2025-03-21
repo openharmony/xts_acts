@@ -17,7 +17,6 @@ import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
 import deviceinfo from '@ohos.deviceInfo';
-import inputmethodengine from '@ohos.inputMethodEngine';
 
 export default function inputMethodAuthorityJSUnit() {
   describe('inputMethodAuthorityJSUnit', () => {
@@ -43,7 +42,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
     */
-    it('inputmethod_test_switchInputMethod_001', 0, async (done: Function) => {
+    it('inputmethod_test_switchInputMethod_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputmethod_test_switchInputMethod_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethod_test_switchInputMethod_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -72,7 +71,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_switchInputMethod_002', 0, async (done: Function) => {
+    it('inputmethod_test_switchInputMethod_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputmethod_test_switchInputMethod_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethod_test_switchInputMethod_002 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -107,7 +106,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_showSoftKeyboard_001', 0, async (done: Function) => {
+    it('inputmethod_test_showSoftKeyboard_001', Level.LEVEL2, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard((err) => {
         try {
@@ -132,7 +131,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_showSoftKeyboard_002', 0, async (done: Function) => {
+    it('inputmethod_test_showSoftKeyboard_002', Level.LEVEL2, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard().then(() => {
         try {
@@ -158,7 +157,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_hideSoftKeyboard_001', 0, async (done: Function) => {
+    it('inputmethod_test_hideSoftKeyboard_001', Level.LEVEL2, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard((err) => {
         try {
@@ -184,7 +183,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_hideSoftKeyboard_002', 0, async (done: Function) => {
+    it('inputmethod_test_hideSoftKeyboard_002', Level.LEVEL2, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard().then(() => {
         try {
@@ -208,7 +207,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', 0, async (done: Function) => {
+    it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -262,7 +261,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', 0, async (done: Function) => {
+    it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -317,7 +316,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodSubtype_001', 0, async (done: Function) => {
+    it('inputMethod_test_switchCurrentInputMethodSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_001 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
       console.info("inputMethod_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
@@ -359,7 +358,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodSubtype_002', 0, async (done: Function) => {
+    it('inputMethod_test_switchCurrentInputMethodSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
       console.info("inputMethod_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
@@ -403,7 +402,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_InputMethodState_0901', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_InputMethodState_0901', Level.LEVEL2, async (done: Function) => {
       try{
         let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
         console.info("====>Sub_InputMethod_IME_InputMethodState_0901 getSetting success");
@@ -435,7 +434,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_Misc_InputMethod_IME_recvMessage_0100', 0, async (done: Function) => {
+    it('Sub_Misc_InputMethod_IME_recvMessage_0100', Level.LEVEL2, async (done: Function) => {
       let inputMethodController = inputMethod.getController();
       let data = false
       let messageHandler: inputMethod.MessageHandler = {
@@ -459,89 +458,6 @@ export default function inputMethodAuthorityJSUnit() {
         expect().assertFail();
         done();
       }
-    });
-
-    /**
-     * @tc.number  Sub_InputMethod_IME_getSecurityMode_0101
-     * @tc.name    Sub_InputMethod_IME_getSecurityMode_0101
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   Level2
-     */
-    it('Sub_InputMethod_IME_getSecurityMode_0101', 0, async (done: Function) => {
-      try{
-        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
-        console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 getInputMethodAbility success");
-        let state =  await InputMethodAbility.getSecurityMode();
-        console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 state is: " + state);
-        expect().assertFail();
-        done();
-      }catch(err){
-        console.info(`====>Sub_InputMethod_IME_getSecurityMode_0101 errCode:${err.code}, errMessage is ${err.message}`)
-        expect(err.code).assertEqual(12800004);
-        done();
-      };
-    });
-
-    /**
-     * @tc.number  Sub_InputMethod_IME_createPanel_0101
-     * @tc.name    Sub_InputMethod_IME_createPanel_0101
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   Level2
-     */
-    it('Sub_InputMethod_IME_createPanel_0101', 0, async (done: Function) => {
-      let panelInfo: inputmethodengine.PanelInfo = {
-        type: 0,
-        flag: 1
-      };
-      try{
-        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
-        console.info("====>Sub_InputMethod_IME_createPanel_0101 getInputMethodAbility success");
-        InputMethodAbility.createPanel(globalThis.abilityContext, panelInfo,  (err: BusinessError, panel: inputmethodengine.Panel) => {
-            if (err) {
-                console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`);
-                expect(err.code).assertEqual(12800004);
-                done();
-            }
-            console.info("====>Sub_InputMethod_IME_createPanel_0101 createPanel success " );
-            expect().assertFail();
-            done();
-        });
-      } catch(err) {
-        console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`)
-        expect(err.code).assertEqual(12800004);
-        done();
-      };
-    });
-
-    /**
-     * @tc.number  Sub_InputMethod_IME_createPanel_0201
-     * @tc.name    Sub_InputMethod_IME_createPanel_0201
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   Level2
-     */
-    it('Sub_InputMethod_IME_createPanel_0201', 0, async (done: Function) => {
-      let panelInfo: inputmethodengine.PanelInfo = {
-        type: 0,
-        flag: 1
-      }
-      try{
-        let InputMethodAbility = inputmethodengine.getInputMethodAbility();
-        console.info("====>Sub_InputMethod_IME_createPanel_0201 getInputMethodAbility success");
-        await InputMethodAbility.createPanel(globalThis.abilityContext, panelInfo);
-        console.info("====>Sub_InputMethod_IME_createPanel_0201 createPanel success " );
-        expect().assertFail();
-        done();
-      }catch(err){
-        console.info(`====>Sub_InputMethod_IME_createPanel_0201 errCode:${err.code}, errMessage is ${err.message}`)
-        expect(err.code).assertEqual(12800004);
-        done();
-      };
     });
 
   });

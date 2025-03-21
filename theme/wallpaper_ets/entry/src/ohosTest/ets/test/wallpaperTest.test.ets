@@ -31,9 +31,9 @@ export default function wallpaperJSUnit() {
         * @tc.desc    Function test
         * @tc.size    : MediumTest
         * @tc.type    : Function
-        * @tc.level   0
+        * @tc.level   1
         */
-        it('testWALLPAPER_SYSTEM', 0, async (done: Function) => {
+        it('testWALLPAPER_SYSTEM', Level.LEVEL1, async (done: Function) => {
             console.info('--------------testWALLPAPER_SYSTEM start-----------------');
             console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' +
             JSON.stringify(wallpaper.WallpaperType.WALLPAPER_SYSTEM));
@@ -48,9 +48,9 @@ export default function wallpaperJSUnit() {
         * @tc.desc    Function test
         * @tc.size    : MediumTest
         * @tc.type    : Function
-        * @tc.level   0
+        * @tc.level   1
         */
-        it('testWALLPAPER_LOCKSCREEN', 0, async (done: Function) => {
+        it('testWALLPAPER_LOCKSCREEN', Level.LEVEL1, async (done: Function) => {
             console.info('--------------testWALLPAPER_LOCKSCREEN start-----------------');
             console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' +
             JSON.stringify(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN));
@@ -67,7 +67,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetIdCallbackSystem101', 0, async (done: Function) => {
+        it('testGetIdCallbackSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetIdCallbackSystem101 start-----------------');
             wallpaper.getId(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -95,7 +95,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetIdPromiseSystem101', 0, async (done: Function) => {
+        it('testGetIdPromiseSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetIdCallbackSystem101 start-----------------');
             await wallpaper.getId(WALLPAPER_SYSTEM).then((data) => {
                 console.info('====>testGetIdCallbackSystem101 data : ' + JSON.stringify(data));
@@ -117,7 +117,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetIdCallbackLock102', 0, async (done: Function) => {
+        it('testGetIdCallbackLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetIdCallbackLock102 start-----------------');
             wallpaper.getId(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -145,7 +145,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetIdPromiseLock102', 0, async (done: Function) => {
+        it('testGetIdPromiseLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetIdPromiseLock102 start-----------------');
             await wallpaper.getId(WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testGetIdPromiseLock102 data : ' + JSON.stringify(data));
@@ -169,7 +169,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetMinHeightCallback101', 0, async (done: Function) => {
+        it('testGetMinHeightCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetMinHeightCallback101 start-----------------');
             wallpaper.getMinHeight((err, data) => {
                 try {
@@ -197,7 +197,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetMinHeightPromise101', 0, async (done: Function) => {
+        it('testGetMinHeightPromise101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetMinHeightPromise101 start-----------------');
             await wallpaper.getMinHeight().then((data) => {
                 console.info('====>testGetMinHeightPromise101 successful data : ' + JSON.stringify(data));
@@ -219,7 +219,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetMinWidthCallback101', 0, async (done: Function) => {
+        it('testGetMinWidthCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetMinWidthCallback101 start-----------------');
             wallpaper.getMinWidth((err, data) => {
                 try {
@@ -247,7 +247,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetMinWidthPromise101', 0, async (done: Function) => {
+        it('testGetMinWidthPromise101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetMinWidthPromise101 start-----------------');
             await wallpaper.getMinWidth().then((data) => {
                 console.info('====>testGetMinWidthPromise101 successful data : ' + JSON.stringify(data));
@@ -270,7 +270,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testIsChangePermittedCallback101', 0, async (done: Function) => {
+        it('testIsChangePermittedCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testIsChangePermittedCallback101 start-----------------');
             wallpaper.isChangePermitted((err, data) => {
                 try {
@@ -299,7 +299,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testIsChangePermittedPromise101', 0, async (done: Function) => {
+        it('testIsChangePermittedPromise101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testIsChangePermittedPromise101 start-----------------');
             await wallpaper.isChangePermitted().then((data) => {
                 console.info('====>testIsChangePermittedPromise101 successful data : ' + JSON.stringify(data));
@@ -321,7 +321,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testIsOperationAllowedCallback101', 0, async (done: Function) => {
+        it('testIsOperationAllowedCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testIsOperationAllowedCallback101 start-----------------');
             wallpaper.isOperationAllowed((err, data) => {
                 try {
@@ -349,7 +349,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testIsOperationAllowedPromise101', 0, async (done: Function) => {
+        it('testIsOperationAllowedPromise101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testIsOperationAllowedPromise101 start-----------------');
             await wallpaper.isOperationAllowed().then((data) => {
                 console.info('====>testIsOperationAllowedPromise101 successful data : ' + JSON.stringify(data));

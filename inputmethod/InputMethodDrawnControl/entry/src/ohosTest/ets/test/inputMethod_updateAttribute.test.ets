@@ -88,7 +88,7 @@ export default function inputMethodTest() {
      *             {textInputType: 0, enterKeyType: 0} must be passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0100';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -120,7 +120,7 @@ export default function inputMethodTest() {
      *             attribute={textInputType: 0, enterKeyType: 0} must be passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0100';
       try {
         let data = await inputMethod.getController().updateAttribute({
@@ -142,7 +142,7 @@ export default function inputMethodTest() {
      * @tc.name Call the updateAttribute interface in Promise mode, and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0700', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0700', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0700';
       try {
         let data = await inputMethod.getController().updateAttribute({

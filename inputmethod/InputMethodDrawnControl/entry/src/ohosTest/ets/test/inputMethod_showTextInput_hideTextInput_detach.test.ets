@@ -86,7 +86,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls the showTextInput interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_showTextInput_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_showTextInput_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Async_0100';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -115,7 +115,7 @@ export default function inputMethodTest() {
      * @tc.name Do not bind the input method keyboard, and call the showTextInput interface in Async mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_showTextInput_Async_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_showTextInput_Async_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Async_0400';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -154,7 +154,7 @@ export default function inputMethodTest() {
      * @tc.name Promise mode calls the showTextInput interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_showTextInput_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_showTextInput_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Promise_0100';
       try {
         let data = await inputMethod.getController().showTextInput();
@@ -174,7 +174,7 @@ export default function inputMethodTest() {
      * @tc.name Do not bind the input method keyboard, and call the showTextInput interface in Promise mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_showTextInput_Promise_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_showTextInput_Promise_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Promise_0400';
       try {
         let data = await inputMethod.getController().detach();
@@ -204,7 +204,7 @@ export default function inputMethodTest() {
      * @tc.name Call the showTextInput interface in Promise mode, and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_showTextInput_Promise_0500', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_showTextInput_Promise_0500', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Promise_0500';
       try {
         await inputMethod.getController().showTextInput(env.INVALID_TYPE_STRING_A);
@@ -224,7 +224,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls the hideTextInput interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_hideTextInput_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_hideTextInput_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Async_0100';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -253,7 +253,7 @@ export default function inputMethodTest() {
      * @tc.name The input method keyboard is not bound, and the hideTextInput interface is called in Async mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_hideTextInput_Async_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_hideTextInput_Async_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Async_0400';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -292,7 +292,7 @@ export default function inputMethodTest() {
      * @tc.name Promise mode calls the hideTextInput interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_hideTextInput_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_hideTextInput_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Promise_0100';
       try {
         await inputMethod.getController().hideTextInput();
@@ -320,7 +320,7 @@ export default function inputMethodTest() {
      * @tc.name The input method keyboard is not bound, and the hideTextInput interface is called in Promise mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_hideTextInput_Promise_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_hideTextInput_Promise_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Promise_0400';
       try {
         let data = await inputMethod.getController().detach();
@@ -350,7 +350,7 @@ export default function inputMethodTest() {
      * @tc.name Call the hideTextInput interface in Promise mode, and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_hideTextInput_Promise_0500', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_hideTextInput_Promise_0500', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Promise_0500';
       try {
         await inputMethod.getController().hideTextInput(env.INVALID_TYPE_STRING_A);
@@ -370,7 +370,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls the detach interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_detach_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_detach_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_detach_Async_0100';
       let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
@@ -399,7 +399,7 @@ export default function inputMethodTest() {
      * @tc.name Promise mode calls the detach interface without input parameters
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_detach_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_detach_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_detach_Promise_0100';
       try {
         let data = await inputMethod.getController().detach();
@@ -419,7 +419,7 @@ export default function inputMethodTest() {
      * @tc.name Call the detach interface in Promise mode, and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_detach_Promise_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_detach_Promise_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_detach_Promise_0400';
       try {
         await inputMethod.getController().detach(env.INVALID_TYPE_STRING_A);
