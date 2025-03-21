@@ -15,7 +15,7 @@
 
 
 import tag from '@ohos.nfc.tag';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -71,9 +71,9 @@ export default function nfcMifareUltralightTag() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_mifareUltralight_0100', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareUltralight_0100', Level.LEVEL0, async function (done) {
             if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
                 let pageIndex = 1;
                 await MifareUltralightTag.readMultiplePages(pageIndex).then((data) => {
@@ -99,9 +99,9 @@ export default function nfcMifareUltralightTag() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_mifareUltralight_0200', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareUltralight_0200', Level.LEVEL0, async function (done) {
             if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
                 let pageIndex = 1;
                 MifareUltralightTag.readMultiplePages(pageIndex, (err, data)=> {
@@ -129,9 +129,9 @@ export default function nfcMifareUltralightTag() {
          * @tc.size MEDIUM
          * @ since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_mifareUltralight_0300', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareUltralight_0300', Level.LEVEL0, async function (done) {
             if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
                 let pageIndex = 1;
                 let rawData = [0x01, 0x02];
@@ -158,9 +158,9 @@ export default function nfcMifareUltralightTag() {
          * @tc.size MEDIUM
          * @ since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_mifareUltralight_0400', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareUltralight_0400', Level.LEVEL0, async function (done) {
             if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
                 let pageIndex = 1;
                 let rawData = [0x01, 0x02];
@@ -189,9 +189,9 @@ export default function nfcMifareUltralightTag() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_mifareUltralight_0500', 0, function ()  {
+        it('SUB_Communication_NFC_mifareUltralight_0500', Level.LEVEL0, function ()  {
             if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
                 let getType = MifareUltralightTag.getType();
                 console.info("[NFC_test] mifareUltralight5 getType: " + getType);
