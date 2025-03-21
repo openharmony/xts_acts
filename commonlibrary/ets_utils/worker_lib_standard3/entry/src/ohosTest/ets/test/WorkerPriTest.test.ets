@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level} from '@ohos/hypium'
 import worker, { ErrorEvent, MessageEvents, ThreadWorkerPriority } from '@ohos.worker'
 
 const asyncSleep: Function = (time: number): Promise<Object> => {
@@ -84,7 +84,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10100', 0, async (done: Function) => {
+    it('testWorkerError10100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10100';
       console.info(`${caseName} test start`);
       await sleep(4000);
@@ -124,7 +124,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10200', 0, async (done: Function) => {
+    it('testWorkerError10200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10200';
       console.info(`${caseName} test start`);
       await sleep(4000);
@@ -152,7 +152,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10300', 0, async (done: Function) => {
+    it('testWorkerError10300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10300';
       console.info(`${caseName} test start`);
       try {
@@ -179,7 +179,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10400', 0, async (done: Function) => {
+    it('testWorkerError10400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10400';
       console.info(`${caseName} test start`);
       try {
@@ -206,7 +206,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10500', 0, async (done: Function) => {
+    it('testWorkerError10500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10500';
       console.info(`${caseName} test start`);
       try {
@@ -233,7 +233,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10600', 0, async (done: Function) => {
+    it('testWorkerError10600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10600';
       console.info(`${caseName} test start`);
       try {
@@ -260,7 +260,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10700', 0, async (done: Function) => {
+    it('testWorkerError10700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10700';
       console.info(`${caseName} test start`);
       try {
@@ -289,7 +289,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10800', 0, async (done: Function) => {
+    it('testWorkerError10800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10800';
       console.info(`${caseName} test start`);
       try {
@@ -315,7 +315,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError10900', 0, async (done: Function) => {
+    it('testWorkerError10900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError10900';
       console.info(`${caseName} test start`);
       try {
@@ -352,7 +352,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11000', 0, async (done: Function) => {
+    it('testWorkerError11000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11000';
       console.info(`${caseName} test start`);
       try {
@@ -389,7 +389,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11100', 0, async (done: Function) => {
+    it('testWorkerError11100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11100';
       console.info(`${caseName} test start`);
       try {
@@ -426,7 +426,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11200', 0, async (done: Function) => {
+    it('testWorkerError11200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11200';
       console.info(`${caseName} test start`);
       try {
@@ -463,7 +463,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11300', 0, async (done: Function) => {
+    it('testWorkerError11300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11300';
       console.info(`${caseName} test start`);
       try {
@@ -505,7 +505,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11400', 0, async (done: Function) => {
+    it('testWorkerError11400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11400';
       console.info(`${caseName} test start`);
       try {
@@ -547,7 +547,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11500', 0, async (done: Function) => {
+    it('testWorkerError11500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11500';
       console.info(`${caseName} test start`);
       try {
@@ -589,7 +589,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11600', 0, async (done: Function) => {
+    it('testWorkerError11600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11600';
       console.info(`${caseName} test start`);
       try {
@@ -631,7 +631,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11700', 0, async (done: Function) => {
+    it('testWorkerError11700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11700';
       console.info(`${caseName} test start`);
       try {
@@ -667,7 +667,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11800', 0, async (done: Function) => {
+    it('testWorkerError11800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11800';
       console.info(`${caseName} test start`);
       try {
@@ -703,7 +703,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError11900', 0, async (done: Function) => {
+    it('testWorkerError11900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError11900';
       console.info(`${caseName} test start`);
       try {
@@ -740,7 +740,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12000', 0, async (done: Function) => {
+    it('testWorkerError12000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12000';
       console.info(`${caseName} test start`);
       try {
@@ -775,7 +775,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12100', 0, async (done: Function) => {
+    it('testWorkerError12100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12100';
       console.info(`${caseName} test start`);
       try {
@@ -811,7 +811,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12200', 0, async (done: Function) => {
+    it('testWorkerError12200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12200';
       console.info(`${caseName} test start`);
       try {
@@ -845,7 +845,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12300', 0, async (done: Function) => {
+    it('testWorkerError12300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12300';
       console.info(`${caseName} test start`);
       try {
@@ -881,7 +881,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12400', 0, async (done: Function) => {
+    it('testWorkerError12400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12400';
       console.info(`${caseName} test start`);
       try {
@@ -918,7 +918,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12500', 0, async (done: Function) => {
+    it('testWorkerError12500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12500';
       console.info(`${caseName} test start`);
       try {
@@ -954,7 +954,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12600', 0, async (done: Function) => {
+    it('testWorkerError12600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12600';
       console.info(`${caseName} test start`);
       try {
@@ -994,7 +994,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12700', 0, async (done: Function) => {
+    it('testWorkerError12700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12700';
       console.info(`${caseName} test start`);
       try {
@@ -1036,7 +1036,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12800', 0, async (done: Function) => {
+    it('testWorkerError12800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12800';
       console.info(`${caseName} test start`);
       try {
@@ -1091,7 +1091,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError12900', 0, async (done: Function) => {
+    it('testWorkerError12900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError12900';
       console.info(`${caseName} test start`);
       try {
@@ -1136,7 +1136,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError13000', 0, async (done: Function) => {
+    it('testWorkerError13000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13000';
       console.info(`${caseName} test start`);
       try {
@@ -1188,7 +1188,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError13100', 0, async (done: Function) => {
+    it('testWorkerError13100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13100';
       console.info(`${caseName} test start`);
       try {
@@ -1243,7 +1243,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerError13200', 0, async (done: Function) => {
+    it('testWorkerError13200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13200';
       console.info(`${caseName} test start`);
       try {
@@ -1268,7 +1268,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerError13300', 0, async (done: Function) => {
+    it('testWorkerError13300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13300';
       console.info(`${caseName} test start`);
       try {
@@ -1293,7 +1293,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerError13400', 0, async (done: Function) => {
+    it('testWorkerError13400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13400';
       console.info(`${caseName} test start`);
       try {
@@ -1318,7 +1318,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerError13500', 0, async (done: Function) => {
+    it('testWorkerError13500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError13500';
       console.info(`${caseName} test start`);
       try {
@@ -1343,7 +1343,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor1100', 0, async (done: Function) => {
+    it('testWorkerConstructor1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor1100';
       console.info(`${caseName} test start`);
       try {
@@ -1398,7 +1398,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor1200', 0, async (done: Function) => {
+    it('testWorkerConstructor1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor1200';
       console.info(`${caseName} test start`);
       try {
@@ -1453,7 +1453,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor1300', 0, async (done: Function) => {
+    it('testWorkerConstructor1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor1300';
       console.info(`${caseName} test start`);
       try {
@@ -1512,7 +1512,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor1400', 0, async (done: Function) => {
+    it('testWorkerConstructor1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor1400';
       console.info(`${caseName} test start`);
       try {
@@ -1571,7 +1571,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1100', 0, async (done: Function) => {
+    it('testWorkerPostMessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -1626,7 +1626,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1200', 0, async (done: Function) => {
+    it('testWorkerPostMessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1200';
       console.info(`${caseName} test start`);
       try {
@@ -1681,7 +1681,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1300', 0, async (done: Function) => {
+    it('testWorkerPostMessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1300';
       console.info(`${caseName} test start`);
       try {
@@ -1736,7 +1736,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1400', 0, async (done: Function) => {
+    it('testWorkerPostMessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1400';
       console.info(`${caseName} test start`);
       try {
@@ -1791,7 +1791,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1500', 0, async (done: Function) => {
+    it('testWorkerPostMessage1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1500';
       console.info(`${caseName} test start`);
       try {
@@ -1848,7 +1848,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1600', 0, async (done: Function) => {
+    it('testWorkerPostMessage1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1600';
       console.info(`${caseName} test start`);
       try {
@@ -1905,7 +1905,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1700', 0, async (done: Function) => {
+    it('testWorkerPostMessage1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1700';
       console.info(`${caseName} test start`);
       try {
@@ -1962,7 +1962,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1800', 0, async (done: Function) => {
+    it('testWorkerPostMessage1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1800';
       console.info(`${caseName} test start`);
       try {
@@ -2019,7 +2019,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage1900', 0, async (done: Function) => {
+    it('testWorkerPostMessage1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage1900';
       console.info(`${caseName} test start`);
       try {
@@ -2076,7 +2076,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2000', 0, async (done: Function) => {
+    it('testWorkerPostMessage2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2000';
       console.info(`${caseName} test start`);
       try {
@@ -2133,7 +2133,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2100', 0, async (done: Function) => {
+    it('testWorkerPostMessage2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2100';
       console.info(`${caseName} test start`);
       try {
@@ -2190,7 +2190,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2200', 0, async (done: Function) => {
+    it('testWorkerPostMessage2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2200';
       console.info(`${caseName} test start`);
       try {
@@ -2247,7 +2247,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2300', 0, async (done: Function) => {
+    it('testWorkerPostMessage2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2300';
       console.info(`${caseName} test start`);
       try {
@@ -2304,7 +2304,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2400', 0, async (done: Function) => {
+    it('testWorkerPostMessage2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2400';
       console.info(`${caseName} test start`);
       try {
@@ -2361,7 +2361,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2500', 0, async (done: Function) => {
+    it('testWorkerPostMessage2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2500';
       console.info(`${caseName} test start`);
       try {
@@ -2422,7 +2422,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2600', 0, async (done: Function) => {
+    it('testWorkerPostMessage2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2600';
       console.info(`${caseName} test start`);
       try {
@@ -2483,7 +2483,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2700', 0, async (done: Function) => {
+    it('testWorkerPostMessage2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2700';
       console.info(`${caseName} test start`);
       try {
@@ -2540,7 +2540,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2800', 0, async (done: Function) => {
+    it('testWorkerPostMessage2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2800';
       console.info(`${caseName} test start`);
       try {
@@ -2597,7 +2597,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage2900', 0, async (done: Function) => {
+    it('testWorkerPostMessage2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage2900';
       console.info(`${caseName} test start`);
       try {
@@ -2654,7 +2654,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage3000', 0, async (done: Function) => {
+    it('testWorkerPostMessage3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage3000';
       console.info(`${caseName} test start`);
       try {
@@ -2711,7 +2711,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage3100', 0, async (done: Function) => {
+    it('testWorkerPostMessage3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage3100';
       console.info(`${caseName} test start`);
       try {
@@ -2778,7 +2778,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOn1100', 0, async (done: Function) => {
+    it('testWorkerOn1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn1100';
       console.info(`${caseName} test start`);
       try {
@@ -2841,7 +2841,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOn1200', 0, async (done: Function) => {
+    it('testWorkerOn1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn1200';
       console.info(`${caseName} test start`);
       try {
@@ -2903,7 +2903,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnce1100', 0, async (done: Function) => {
+    it('testWorkerOnce1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce1100';
       console.info(`${caseName} test start`);
       try {
@@ -2968,7 +2968,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnce1200', 0, async (done: Function) => {
+    it('testWorkerOnce1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce1200';
       console.info(`${caseName} test start`);
       try {
@@ -3034,7 +3034,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOff1100', 0, async (done: Function) => {
+    it('testWorkerOff1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff1100';
       console.info(`${caseName} test start`);
       try {
@@ -3108,7 +3108,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOff1200', 0, async (done: Function) => {
+    it('testWorkerOff1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff1200';
       console.info(`${caseName} test start`);
       try {
@@ -3174,7 +3174,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRegisterGlobalCallObject1100', 0, async (done: Function) => {
+    it('testWorkerRegisterGlobalCallObject1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject1100';
       console.info(`${caseName} test start`);
       try {
@@ -3233,7 +3233,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRegisterGlobalCallObject1200', 0, async (done: Function) => {
+    it('testWorkerRegisterGlobalCallObject1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject1200';
       console.info(`${caseName} test start`);
       try {
@@ -3292,7 +3292,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerUnregisterGlobalCallObject1100', 0, async (done: Function) => {
+    it('testWorkerUnregisterGlobalCallObject1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject1100';
       console.info(`${caseName} test start`);
       try {
@@ -3344,7 +3344,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerUnregisterGlobalCallObject1200', 0, async (done: Function) => {
+    it('testWorkerUnregisterGlobalCallObject1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject1200';
       console.info(`${caseName} test start`);
       try {
@@ -3396,7 +3396,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit1100', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit1100';
       console.info(`${caseName} test start`);
       try {
@@ -3436,7 +3436,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit1200', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit1200';
       console.info(`${caseName} test start`);
       try {
@@ -3476,7 +3476,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit1300', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit1300';
       console.info(`${caseName} test start`);
       try {
@@ -3503,7 +3503,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit1400', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit1400';
       console.info(`${caseName} test start`);
       try {
@@ -3533,7 +3533,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnerror1100', 0, async (done: Function) => {
+    it('testWorkerOnerror1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror1100';
       console.info(`${caseName} test start`);
       try {
@@ -3579,7 +3579,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnerror1200', 0, async (done: Function) => {
+    it('testWorkerOnerror1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror1200';
       console.info(`${caseName} test start`);
       try {
@@ -3625,7 +3625,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage1100', 0, async (done: Function) => {
+    it('testWorkerOnmessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -3680,7 +3680,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage1200', 0, async (done: Function) => {
+    it('testWorkerOnmessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage1200';
       console.info(`${caseName} test start`);
       try {
@@ -3741,7 +3741,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage1300', 0, async (done: Function) => {
+    it('testWorkerOnmessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage1300';
       console.info(`${caseName} test start`);
       try {
@@ -3802,7 +3802,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage1400', 0, async (done: Function) => {
+    it('testWorkerOnmessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage1400';
       console.info(`${caseName} test start`);
       try {
@@ -3864,7 +3864,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessageerror1100', 0, async (done: Function) => {
+    it('testWorkerOnmessageerror1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror1100';
       console.info(`${caseName} test start`);
       try {
@@ -3937,7 +3937,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessageerror1200', 0, async (done: Function) => {
+    it('testWorkerOnmessageerror1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror1200';
       console.info(`${caseName} test start`);
       try {
@@ -4010,7 +4010,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerAddEventListener1100', 0, async (done: Function) => {
+    it('testWorkerAddEventListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -4073,7 +4073,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerAddEventListener1200', 0, async (done: Function) => {
+    it('testWorkerAddEventListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -4135,7 +4135,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveEventListener1100', 0, async (done: Function) => {
+    it('testWorkerRemoveEventListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -4209,7 +4209,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveEventListener1200', 0, async (done: Function) => {
+    it('testWorkerRemoveEventListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -4278,7 +4278,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent1100', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent1100';
       console.info(`${caseName} test start`);
       try {
@@ -4345,7 +4345,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent1200', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent1200';
       console.info(`${caseName} test start`);
       try {
@@ -4411,7 +4411,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent1300', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent1300';
       console.info(`${caseName} test start`);
       try {
@@ -4478,7 +4478,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent1400', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent1400';
       console.info(`${caseName} test start`);
       try {
@@ -4544,7 +4544,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveAllListener1100', 0, async (done: Function) => {
+    it('testWorkerRemoveAllListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -4642,7 +4642,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveAllListener1200', 0, async (done: Function) => {
+    it('testWorkerRemoveAllListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -4728,7 +4728,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetAddEventListener1100', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetAddEventListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -4791,7 +4791,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetAddEventListener1200', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetAddEventListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -4853,7 +4853,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveEventListener1100', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveEventListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -4927,7 +4927,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveEventListener1200', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveEventListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -4993,7 +4993,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent1100', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent1100';
       console.info(`${caseName} test start`);
       try {
@@ -5060,7 +5060,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent1200', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent1200';
       console.info(`${caseName} test start`);
       try {
@@ -5126,7 +5126,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent1300', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent1300';
       console.info(`${caseName} test start`);
       try {
@@ -5193,7 +5193,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent1400', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent1400';
       console.info(`${caseName} test start`);
       try {
@@ -5259,7 +5259,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveAllListener1100', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveAllListener1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener1100';
       console.info(`${caseName} test start`);
       try {
@@ -5357,7 +5357,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveAllListener1200', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveAllListener1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener1200';
       console.info(`${caseName} test start`);
       try {
@@ -5442,7 +5442,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1100', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -5497,7 +5497,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1200', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1200';
       console.info(`${caseName} test start`);
       try {
@@ -5552,7 +5552,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1300', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1300';
       console.info(`${caseName} test start`);
       try {
@@ -5607,7 +5607,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1400', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1400';
       console.info(`${caseName} test start`);
       try {
@@ -5663,7 +5663,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1500', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1500';
       console.info(`${caseName} test start`);
       try {
@@ -5718,7 +5718,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1600', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1600';
       console.info(`${caseName} test start`);
       try {
@@ -5773,7 +5773,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1700', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1700';
       console.info(`${caseName} test start`);
       try {
@@ -5828,7 +5828,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1800', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1800';
       console.info(`${caseName} test start`);
       try {
@@ -5883,7 +5883,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage1900', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage1900';
       console.info(`${caseName} test start`);
       try {
@@ -5938,7 +5938,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2000', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2000';
       console.info(`${caseName} test start`);
       try {
@@ -5993,7 +5993,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2100', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2100';
       console.info(`${caseName} test start`);
       try {
@@ -6048,7 +6048,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2200', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2200';
       console.info(`${caseName} test start`);
       try {
@@ -6103,7 +6103,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2300', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2300';
       console.info(`${caseName} test start`);
       try {
@@ -6158,7 +6158,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2400', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2400';
       console.info(`${caseName} test start`);
       try {
@@ -6213,7 +6213,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2500', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2500';
       console.info(`${caseName} test start`);
       try {
@@ -6268,7 +6268,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2600', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2600';
       console.info(`${caseName} test start`);
       try {
@@ -6323,7 +6323,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2700', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2700';
       console.info(`${caseName} test start`);
       try {
@@ -6378,7 +6378,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2800', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2800';
       console.info(`${caseName} test start`);
       try {
@@ -6439,7 +6439,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage2900', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage2900';
       console.info(`${caseName} test start`);
       try {
@@ -6504,7 +6504,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage3000', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage3000';
       console.info(`${caseName} test start`);
       try {
@@ -6563,7 +6563,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage3100', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage3100';
       console.info(`${caseName} test start`);
       try {
@@ -6622,7 +6622,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage3200', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage3200';
       console.info(`${caseName} test start`);
       try {
@@ -6681,7 +6681,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage3300', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage3300';
       console.info(`${caseName} test start`);
       try {
@@ -6740,7 +6740,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage3400', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage3400';
       console.info(`${caseName} test start`);
       try {
@@ -6803,7 +6803,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerCallGlobalCallObjectMethod1100', 0, async (done: Function) => {
+    it('testWorkerCallGlobalCallObjectMethod1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod1100';
       console.info(`${caseName} test start`);
       try {
@@ -6866,7 +6866,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerCallGlobalCallObjectMethod1200', 0, async (done: Function) => {
+    it('testWorkerCallGlobalCallObjectMethod1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod1200';
       console.info(`${caseName} test start`);
       try {
@@ -6929,7 +6929,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerClose1100', 0, async (done: Function) => {
+    it('testWorkerClose1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose1100';
       console.info(`${caseName} test start`);
       try {
@@ -6973,7 +6973,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerClose1200', 0, async (done: Function) => {
+    it('testWorkerClose1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose1200';
       console.info(`${caseName} test start`);
       try {
@@ -7017,7 +7017,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage1100', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -7076,7 +7076,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage1200', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage1200';
       console.info(`${caseName} test start`);
       try {
@@ -7135,7 +7135,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage1300', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage1300';
       console.info(`${caseName} test start`);
       try {
@@ -7200,7 +7200,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage1400', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage1400';
       console.info(`${caseName} test start`);
       try {
@@ -7265,7 +7265,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessageerror1100', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessageerror1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror1100';
       console.info(`${caseName} test start`);
       try {
@@ -7324,7 +7324,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessageerror1200', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessageerror1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror1200';
       console.info(`${caseName} test start`);
       try {
@@ -7383,7 +7383,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerGlobalScopeOnerror1100', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeOnerror1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror1100';
       console.info(`${caseName} test start`);
       try {
@@ -7439,7 +7439,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerGlobalScopeOnerror1200', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeOnerror1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror1200';
       console.info(`${caseName} test start`);
       try {
@@ -7495,7 +7495,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerGlobalScopeAndErrorEvent1100', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeAndErrorEvent1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeAndErrorEvent1100';
       console.info(`${caseName} test start`);
       try {
@@ -7548,7 +7548,7 @@ export default function workerPriTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerGlobalScopeAndErrorEvent1200', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeAndErrorEvent1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeAndErrorEvent1200';
       console.info(`${caseName} test start`);
       try {

@@ -77,7 +77,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLengthSpecial0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLengthSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferByteLengthSpecial0002";
       try {
         let str = specChars;
@@ -97,7 +97,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsBufferSpecial0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIsBufferSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsBufferSpecial0003";
       try {
         let result = buffer.isBuffer(specChars);
@@ -117,7 +117,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncodingSpecial0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIsEncodingSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncodingSpecial0004";
       try {
         let result = buffer.isEncoding(specChars).toString();
@@ -137,7 +137,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFillSpecial0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferFillSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferFillSpecial0005";
       try {
         let b = buffer.allocUninitializedFromPool(2).fill(specChars);
@@ -157,7 +157,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIncludesSpecial0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIncludesSpecial0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIncludesSpecial0006";
       try {
         let buf = buffer.from(specChars);
@@ -179,7 +179,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIndexOfSpecial0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIndexOfSpecial0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfSpecial0007";
       try {
         let buf = buffer.from(specChars);
@@ -201,7 +201,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferlastIndexOfSpecial0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferlastIndexOfSpecial0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferlastIndexOfSpecial0008";
       try {
         let buf = buffer.from(specChars);
@@ -223,7 +223,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferToJSONSpecial0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferToJSONSpecial0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferToJSONSpecial0009";
       try {
         let buf1 = buffer.from(specChars);
@@ -244,7 +244,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferToStringSpecial0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferToStringSpecial0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferToStringSpecial0010";
       try {
         let buf = buffer.from(specChars);
@@ -264,7 +264,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferWriteSpecial0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferWriteSpecial0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferWriteSpecial0011";
       try {
         let buf = buffer.alloc(97);
@@ -285,7 +285,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferTextSpecial0012', 0, async () => {
+    it('testBufferTextSpecial0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testBufferTextSpecial0012";
       try {
         let blob1: buffer.Blob = new buffer.Blob([specChars]);
@@ -306,7 +306,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringConstructorSpecial0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringConstructorSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringConstructorSpecial0001";
       try {
         const strFunctionResult = String(specChars);
@@ -328,7 +328,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringRawSpecial0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringRawSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringRawSpecial0002";
       try {
         const rawString = String.raw` ！"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_abcdefghijklmnopqrstuvwxyz{|}~`;
@@ -349,7 +349,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeCharAtSpecial0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeCharAtSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeCharAtSpecial0003";
       try {
         const index = 5;
@@ -369,7 +369,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeCharCodeAtSpecial0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeCharCodeAtSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeCharCodeAtSpecial0004";
       try {
         const index = 5;
@@ -389,7 +389,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeCharCodeAtSpecial0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeCharCodeAtSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeCharCodeAtSpecial0005";
       try {
         const index = 5;
@@ -409,7 +409,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeConcatSpecial0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeConcatSpecial0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeConcatSpecial0006";
       try {
         const result = specChars.concat("Hello World");
@@ -428,7 +428,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeEndsWithSpecial0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeEndsWithSpecial0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeEndsWithSpecial0007";
       try {
         const result = specChars.endsWith("~");
@@ -447,7 +447,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeIncludesSpecial0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeIncludesSpecial0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeIncludesSpecial0008";
       try {
         const result = specChars.includes("~");
@@ -466,7 +466,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeIndexOfSpecial0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeIndexOfSpecial0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeIndexOfSpecial0009";
       try {
         const result = specChars.indexOf("~");
@@ -484,7 +484,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringLastIndexOfSpecial0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringLastIndexOfSpecial0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringLastIndexOfSpecial0011";
       try {
         const result = specChars.lastIndexOf("~");
@@ -503,7 +503,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringMatchSpecial0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringMatchSpecial0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringMatchSpecial0012";
       try {
         const regex = /[A-Z]/g;
@@ -523,7 +523,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeNormalizeSpecial0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeNormalizeSpecial0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeNormalizeSpecial0013";
       try {
         const result = specChars.normalize();
@@ -542,7 +542,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypePadEndSpecial0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypePadEndSpecial0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypePadEndSpecial0014";
       try {
         const result = specChars.padEnd(100, "*");
@@ -561,7 +561,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypePadStartSpecial0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypePadStartSpecial0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypePadStartSpecial0015";
       try {
         const result = specChars.padStart(100, "*");
@@ -580,7 +580,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeRepeatSpecial0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeRepeatSpecial0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeRepeatSpecial0016";
       try {
         const result = specChars.repeat(1);
@@ -599,7 +599,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeReplaceSpecial0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeReplaceSpecial0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeReplaceSpecial0017";
       try {
         const result = specChars.replace("！", "?").toString();
@@ -618,7 +618,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeSearchSpecial0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeSearchSpecial0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeSearchSpecial0018";
       try {
         const regex = /[^\w\s']/g;
@@ -638,7 +638,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeSliceSpecial0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeSliceSpecial0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeSliceSpecial0019";
       try {
         const result = specChars.slice(0,96);
@@ -657,7 +657,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeStartsWithSpecial0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeStartsWithSpecial0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeStartsWithSpecial0020";
       try {
         const result = specChars.startsWith('Sat');
@@ -676,7 +676,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeSubstringSpecial0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeSubstringSpecial0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeSubstringSpecial0021";
       try {
         const result = specChars.substring(1, 3);
@@ -695,16 +695,18 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeToLocaleLowerCaseSpecial0022',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = "testBuilintsStringPrototypeToLocaleLowerCaseSpecial0022";
-      try {
-        const result = specChars.toLocaleLowerCase('en-US');
-        expect(result).assertEqual(" ！\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+    it('testBuilintsStringPrototypeToLocaleLowerCaseSpecial0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testBuilintsStringPrototypeToLocaleLowerCaseSpecial0022";
+        try {
+          const result = specChars.toLocaleLowerCase('en-US');
+          expect(result)
+            .assertEqual(" ！\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
+        }
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUILINTS_SPECIAL_2300
@@ -714,16 +716,18 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeToLocaleUpperCaseSpecial0023',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = "testBuilintsStringPrototypeToLocaleUpperCaseSpecial0023";
-      try {
-        const result = specChars.toLocaleUpperCase('en-US');
-        expect(result).assertEqual(" ！\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~");
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+    it('testBuilintsStringPrototypeToLocaleUpperCaseSpecial0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testBuilintsStringPrototypeToLocaleUpperCaseSpecial0023";
+        try {
+          const result = specChars.toLocaleUpperCase('en-US');
+          expect(result)
+            .assertEqual(" ！\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~");
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
+        }
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUILINTS_SPECIAL_2400
@@ -733,7 +737,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeToLowerCaseSpecial0024',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeToLowerCaseSpecial0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeToLowerCaseSpecial0024";
       try {
         const result = specChars.toLowerCase();
@@ -752,7 +756,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeToStringSpecial0025',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeToStringSpecial0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeToStringSpecial0025";
       try {
         const result = specChars.toString();
@@ -771,7 +775,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeToUpperCaseSpecial0026',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeToUpperCaseSpecial0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeToUpperCaseSpecial0026";
       try {
         const result = specChars.toUpperCase();
@@ -790,7 +794,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeTrimSpecial0027',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeTrimSpecial0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeTrimSpecial0027";
       try {
         const result = specChars.trim();
@@ -809,7 +813,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeTrimEndSpecial0028',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeTrimEndSpecial0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeTrimEndSpecial0028";
       try {
         const result = specChars.trimEnd();
@@ -828,7 +832,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeTrimStartSpecial0029',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeTrimStartSpecial0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeTrimStartSpecial0029";
       try {
         const result = specChars.trimStart();
@@ -848,7 +852,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringPrototypeValueOfSpecial0030',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBuilintsStringPrototypeValueOfSpecial0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringPrototypeValueOfSpecial0030";
       try {
         const result = specChars.valueOf();
@@ -866,7 +870,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilJsonParseSpecial0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilJsonParseSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonParseSpecial0001";
       try {
         let specChars =' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -887,7 +891,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilJsonStringifySpecial0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilJsonStringifySpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonStringifySpecial0002";
       try {
         let specChars =' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -907,7 +911,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilJsonStringifySpecial0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilJsonStringifySpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonStringifySpecial0003";
       try {
         let specChars =' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -927,7 +931,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilJsonHasSpecial0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilJsonHasSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasSpecial0004";
       try {
         let specChars =' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -948,7 +952,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilJsonRemoveSpecial0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilJsonRemoveSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveSpecial0005";
       try {
         let util1: GeneratedObjectLiteralInterface_1={' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~':"123"};
@@ -968,7 +972,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilsRequestSpecial0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilsRequestSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilsRequestSpecial0001";
       try {
         const lock1 = ArkTSUtils.locks.AsyncLock.request(specChars);
@@ -988,7 +992,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilsQuerySpecial0002', 0, async () => {
+    it('testUtilsQuerySpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testUtilsQuerySpecial0002";
       let lock = ArkTSUtils.locks.AsyncLock.request(specChars);
       try {
@@ -1011,7 +1015,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlXmlSerializerConstructorSpecial0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlXmlSerializerConstructorSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlXmlSerializerConstructorSpecial0001";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1032,7 +1036,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetAttributesSpecial0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributesSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlSetAttributesSpecial0002";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1058,7 +1062,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlAddEmptyElementSpecial0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlAddEmptyElementSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlAddEmptyElementSpecial0003";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1082,7 +1086,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlStartElementSpecial0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlStartElementSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlStartElementSpecial0004";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1109,7 +1113,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCommentSpecial0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetCommentSpecial0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlSetCommentSpecial0006";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1133,7 +1137,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetCDATASpecial0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetCDATASpecial0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlSetCDATASpecial0007";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1157,7 +1161,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetTextSpecial0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetTextSpecial0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlSetTextSpecial0008";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1184,7 +1188,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlSetDocTypeSpecial0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetDocTypeSpecial0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlSetDocTypeSpecial0009";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -1208,7 +1212,7 @@ export default function SpecialCharTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXmlXmlPullParserConstructorSpecial0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlXmlPullParserConstructorSpecial0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testXmlXmlPullParserConstructorSpecial0010";
       try {
         const specChars = ' ！"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';

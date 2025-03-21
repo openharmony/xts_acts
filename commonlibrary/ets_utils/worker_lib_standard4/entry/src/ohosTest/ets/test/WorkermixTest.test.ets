@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
@@ -45,7 +45,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-      it('testWorkerMix001', 0, async (done: Function) => {
+      it('testWorkerMix001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         await abilityDelegator.startAbility({
           bundleName: PUBLISH_BUNDLE_NAME,
           abilityName: 'EntryAbility'
