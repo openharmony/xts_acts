@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function WeakMapTest() {
   describe('weakMapTest', () => {
@@ -24,7 +24,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMap0001', 0, () => {
+    it('testWeakMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMap0001";
       try {
         let weakMap: WeakMap<object, number> = new WeakMap();
@@ -45,7 +45,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMap0002', 0, () => {
+    it('testWeakMap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMap0002";
       try {
         let arr = [1, 2, 3];
@@ -67,7 +67,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapDelete0001', 0, () => {
+    it('testWeakMapDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapDelete0001";
       try {
         const weakMap1 = new WeakMap<Object, number>();
@@ -87,7 +87,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapDelete0002', 0, () => {
+    it('testWeakMapDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapDelete0002";
       try {
         const weakMap1 = new WeakMap<Object, number>();
@@ -108,7 +108,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapDelete0005', 0, () => {
+    it('testWeakMapDelete0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapDelete0005";
       try {
         const weakMap: WeakMap<object, number> = new WeakMap();
@@ -134,7 +134,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0001', 0, () => {
+    it('testWeakMapGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0001";
       try {
         let weakMap = new WeakMap<object, string>();
@@ -157,7 +157,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0002', 0, () => {
+    it('testWeakMapGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0002";
       try {
         let weakMap = new WeakMap<object, string>();
@@ -181,7 +181,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0003', 0, () => {
+    it('testWeakMapGet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0003";
       try {
         let weakMap = new WeakMap<Object, string>();
@@ -219,7 +219,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0005', 0, () => {
+    it('testWeakMapGet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0005";
       try {
         let result: WeakMap<object, string> = new WeakMap();
@@ -238,7 +238,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0006', 0, () => {
+    it('testWeakMapGet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0006";
       try {
         let result: WeakMap<object, string> = new WeakMap();
@@ -258,7 +258,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0007', 0, () => {
+    it('testWeakMapGet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0007";
       try {
         let result: WeakMap<object, string> = new WeakMap();
@@ -284,7 +284,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapGet0008', 0, () => {
+    it('testWeakMapGet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapGet0008";
       try {
         let result: WeakMap<Object, string> = new WeakMap();
@@ -304,7 +304,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapHas0001', 0, () => {
+    it('testWeakMapHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testWeakMapHas0001';
       try {
         let weakMap: WeakMap<object, string> = new WeakMap();
@@ -323,7 +323,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapHas0002', 0, () => {
+    it('testWeakMapHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testWeakMapHas0002';
       try {
         let weakMap: WeakMap<object, string> = new WeakMap();
@@ -344,7 +344,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapHas0003', 0, () => {
+    it('testWeakMapHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testWeakMapHas0003';
       try {
         let weakMap: WeakMap<object, string> = new WeakMap();
@@ -373,7 +373,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapHas0004', 0, () => {
+    it('testWeakMapHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testWeakMapHas0004';
       try {
         let weakMap: WeakMap<object, string> = new WeakMap();
@@ -397,7 +397,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapHas0006', 0, () => {
+    it('testWeakMapHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapHas0006";
       try {
         const weakMap1 = new WeakMap<object, string>();
@@ -420,7 +420,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapSet0001', 0, () => {
+    it('testWeakMapSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapSet0001";
       try {
         const weakMap1: WeakMap<object, String> = new WeakMap();
@@ -443,7 +443,7 @@ export default function WeakMapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakMapSet0004', 0, () => {
+    it('testWeakMapSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMapSet0004";
       try {
         const weakMap1 = new WeakMap<object, string>();
