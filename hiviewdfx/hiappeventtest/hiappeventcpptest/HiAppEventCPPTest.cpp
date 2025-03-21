@@ -1404,16 +1404,16 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4200, Function |
 
 HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4300, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4300 start" << endl;
-    const char *  validname = "test_processor";
+    const char * validname = "test_processor";
     HiAppEvent_Processor * processor0= OH_HiAppEvent_CreateProcessor (validname);
     ASSERT_EQ(OH_HiAppEvent_SetReportRoute(processor0, "com.example.app", "https://hiappevents.com/test"), -200);
     ASSERT_EQ(OH_HiAppEvent_SetReportPolicy(processor0, 10, 5, true, false), -200);
     ASSERT_EQ(OH_HiAppEvent_SetReportEvent(processor0, "OS", "ADDRESS_SANITIZER", true), -200);
     ASSERT_EQ(OH_HiAppEvent_SetCustomConfig(processor0, "test", "test"), -200);
     ASSERT_EQ(OH_HiAppEvent_SetConfigId(processor0, 123), -200);
-    const char* User[] = {"testprocessor", "processor2", "processor3"};
-    ASSERT_EQ(OH_HiAppEvent_SetReportUserId(processor0, User, 1), -200);
-    ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, User, 1), -200);
+    const char * g_userList[] = {"testprocessor", "processor2", "processor3"};
+    ASSERT_EQ(OH_HiAppEvent_SetReportUserId(processor0, g_userList, 1), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, g_userList, 1), -200);
     ASSERT_EQ(OH_HiAppEvent_AddProcessor(processor0), -200);
     ASSERT_EQ(OH_HiAppEvent_RemoveProcessor(123), -200);
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4300 end" << endl;
