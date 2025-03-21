@@ -1731,43 +1731,43 @@ export default function windowImmersiveTest() {
         done();
       }
     })
-    // ------分界线------
-    // /**
-    //  * @tc.number    : SUB_BASIC_WMS_SET_SPECIFIC_SYSTEMBAR_ENABLE_0100
-    //  * @tc.name      : test_setSpecificSystemBarEnabled_enableAnimation
-    //  * @tc.desc      : test_setSpecificSystemBarEnabled_enableAnimation
-    //  * @tc.size      : MediumTest
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level3
-    //  */
-    // it('test_setSpecificSystemBarEnabled_enableAnimation', 0, async (done: Function) => {
-    //   let caseName = 'test_setSpecificSystemBarEnabled_enableAnimation';
-    //   try {
-    //     let windowClass = windowStage.getMainWindowSync();
-    //     await windowClass.setFullScreen(true);
-    //     console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
-    //     windowClass.setSpecificSystemBarEnabled('status', false, true).then(async () => {
-    //       console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
-    //       done();
-    //     }).catch((error: BusinessError) => {
-    //       console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
-    //       expect().assertFail();
-    //       done();
-    //     });
-    //     windowClass.setSpecificSystemBarEnabled('status', true, false).then(async () => {
-    //       console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
-    //       done();
-    //     }).catch((error: BusinessError) => {
-    //       console.log(`${caseName} Failed to set the status bar to be visible. Cause: ${JSON.stringify(error)}`);
-    //       expect().assertFail();
-    //       done();
-    //     });
-    //   } catch (exception) {
-    //     console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
-    //     expect().assertFail();
-    //     done();
-    //   }
-    // })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_SPECIFIC_SYSTEMBAR_ENABLE_0100
+     * @tc.name      : test_setSpecificSystemBarEnabled_enableAnimation
+     * @tc.desc      : test_setSpecificSystemBarEnabled_enableAnimation
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSpecificSystemBarEnabled_enableAnimation', 0, async (done: Function) => {
+      let caseName = 'test_setSpecificSystemBarEnabled_enableAnimation';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setFullScreen(true);
+        console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
+        windowClass.setSpecificSystemBarEnabled('status', false, true).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
+          done();
+        }).catch((error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        windowClass.setSpecificSystemBarEnabled('status', true, false).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
+          done();
+        }).catch((error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be visible. Cause: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
 
