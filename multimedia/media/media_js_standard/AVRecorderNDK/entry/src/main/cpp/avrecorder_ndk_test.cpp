@@ -149,6 +149,7 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
     GetInt32Property(env, arg, "videoCodec", &videoCodec);
     int32_t fileFormat = -1;
     GetInt32Property(env, arg, "fileFormat", &fileFormat);
+    const int VIDEO_BITRATE_20KHZ = 20000;
     switch (fileFormat) {
         case AVRECORDER_CFT_MPEG_4:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
@@ -174,7 +175,6 @@ static bool parseSetConfigOps(napi_env env, napi_value arg, struct OH_AVRecorder
             } else if (fileGenerationMode == AVRECORDER_AUTO_CREATE_CAMERA_SCENE) {
                 config.fileGenerationMode = AVRECORDER_AUTO_CREATE_CAMERA_SCENE;
             }
-            const int VIDEO_BITRATE_20KHZ = 20000;
             config.profile.videoBitrate = VIDEO_BITRATE_20KHZ;
             GetInt32Property(env, arg, "videoFrameWidth", &(config.profile.videoFrameWidth));
             GetInt32Property(env, arg, "videoFrameHeight", &(config.profile.videoFrameHeight));
