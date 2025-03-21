@@ -16,12 +16,12 @@ import("//test/xts/tools/build/suite.gni")
 group("abilitybaseerrorcode") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
-        "actsassitabilityerrcodehap:ActsErrcodeAssitHap",
-        "actsassitabilityerrcodehap2:ActsErrcodeAssitHap2",
-        "actsassitabilityerrcodehap3:ActsErrcodeAssitHap3",
-        "actsbaseuiabilityerrcodetest:ActsBaseUIabilityErrorCodeTest",
-        "actsbaseuiabilityerrcodetest2:ActsBaseUIabilityErrorCodeTest2",      
-      ]
+    deps = [
+      "actsassitabilityerrcodehap:ActsErrcodeAssitHap",
+      "actsassitabilityerrcodehap2:ActsErrcodeAssitHap2",
+      "actsassitabilityerrcodehap3:ActsErrcodeAssitHap3",
+      "actsbaseuiabilityerrcodetest:ActsBaseUIabilityErrorCodeTest",
+      "actsbaseuiabilityerrcodetest2:ActsBaseUIabilityErrorCodeTest2",
+    ]
   }
 }

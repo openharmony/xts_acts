@@ -28,11 +28,9 @@ import {Driver,ON, Component} from '@ohos.UiTest'
 let sub:commonEventManager.CommonEventSubscriber;
 export default function errorCodeTest() {
   describe('errorCodeTest', () => {
-
     let TAG = 'errorCodeTest ===>';
     let mpEnable: string;
     let mpExtensionEnable: string;
-
     beforeAll(()=> {
       try {
         mpEnable = systemParameterEnhance.getSync('const.abilityms.support_multi_instance');
@@ -43,31 +41,30 @@ export default function errorCodeTest() {
         mpEnable = 'fail';
         mpExtensionEnable = 'fail';
       }
-
     })
 
     afterEach( async ()=> {
-      await Utils.sleep(1800)
-      let driver = await Driver.create();
-      let text1:Component = await driver.findComponent(ON.text('暂无可用打开方式'));
-      if (text1 != null || text1 != undefined) {
+       await Utils.sleep(1800)
+       let driver = await Driver.create();
+       let text1:Component = await driver.findComponent(ON.text('暂无可用打开方式'));
+       if (text1 != null || text1 != undefined) {
          // close the system dialog
-         await driver.triggerKey(2070);
-         await Utils.sleep(500)
-      }
-      console.info("errorCodeTest after");
+          await driver.triggerKey(2070);
+          await Utils.sleep(500)
+       }
+        console.info("errorCodeTest after");
 
     })
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0100
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0001
      * @tc.name   : To verify the errcode 16000001 when The specified ability does not exist
      * @tc.desc   : Expect: the errcode 16000001
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0100', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0100 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0001', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0001 start');
 
       let want: Want = {
         bundleName: 'com.acts.ability.errcode',
@@ -102,23 +99,21 @@ export default function errorCodeTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_getCurrentAppCloneIndex_010
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0002
      * @tc.name   : To verify the errcode 16000071 when The App clone is not supported.
      * @tc.desc   : Expect: the errcode 16000071
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_getCurrentAppCloneIndex_0100', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0100 start');
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0002', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0002 start');
       // test errcode
       try {
         let appCloneIndex = AppStorage.get<common.ApplicationContext>("ApplicationContext")!.getApplicationContext().getCurrentAppCloneIndex();
         console.info("the app clone is " + appCloneIndex);
         expect().assertFail();
         done();
-
       } catch(err) {
         // 处理入参错误异常
         let code = (err as BusinessError).code;
@@ -130,15 +125,15 @@ export default function errorCodeTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_run_010
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0003
      * @tc.name   : To verify the errcode 28800001 when The Startup task or its dependency not found.
      * @tc.desc   : Expect: the errcode 28800001
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_run_010', Level.LEVEL0, async (done: Function)=> {
-      console.info('SUB_Ability_AbilityBase_run_010 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0003', Level.LEVEL0, async (done: Function)=> {
+      console.info('SUB_Ability_AbilityBase_ErrorCode_0003 start');
       let startParams = ["StartupTask_001"];
       // test errcode
       try {
@@ -150,7 +145,6 @@ export default function errorCodeTest() {
           console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
           console.info("StartupTest promise catch error, startParams = "
             + JSON.stringify(startParams));
-          //expect(error.code).assertEqual(28800001);
           expect().assertFail();
           done();
         })
@@ -160,22 +154,21 @@ export default function errorCodeTest() {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(TAG + `startAbility failed, code is ${code}, message is ${message}`);
-
         expect(err.code).assertEqual(28800001);
         done();
       }
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_connectServiceExtensionAbility_010
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0004
      * @tc.name   : To verify the errcode 16000001 when The specified ability does not exist.
      * @tc.desc   : Expect: the errcode 16000001
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_connectServiceExtensionAbility_0100', Level.LEVEL0, async (done: Function)=> {
-      console.info('SUB_Ability_AbilityBase_connectServiceExtensionAbility_0100 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0004', Level.LEVEL0, async (done: Function)=> {
+      console.info('SUB_Ability_AbilityBase_ErrorCode_0004 start');
       let connection: number;
       let want: Want = {
         deviceId: '',
@@ -211,15 +204,15 @@ export default function errorCodeTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_connectServiceExtensionAbility_020
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0005
      * @tc.name   : To verify the errcode 16000002 when Incorrect ability type.
      * @tc.desc   : Expect: the errcode 16000002
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_connectServiceExtensionAbility_0200', Level.LEVEL0, async (done: Function)=> {
-      console.info('SUB_Ability_AbilityBase_connectServiceExtensionAbility_0200 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0005', Level.LEVEL0, async (done: Function)=> {
+      console.info('SUB_Ability_AbilityBase_ErrorCode_0005 start');
       let connection: number;
       let want: Want = {
         deviceId: '',
@@ -255,17 +248,15 @@ export default function errorCodeTest() {
       }
     })
 
-
     /**
-     * @tc.number    : SUB_Ability_AbilityRuntime_backToCallerAbilityWithResult_16000074
+     * @tc.number    : SUB_Ability_AbilityBase_ErrorCode_0006
      * @tc.name      : Test very the code 16000074 when requestCode is not correct & The caller does not exist.
      * @tc.desc      :  Expect: the errcode 16000074
      * @tc.level     : Level 0
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_backToCallerAbilityWithResult_16000074', Level.LEVEL0, async (done: Function) => {
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0006', Level.LEVEL0, async (done: Function) => {
       let callerRequestCode: string = 'xxxxxx';
       let want: Want = {};
       let resultCode = 100;
@@ -283,35 +274,31 @@ export default function errorCodeTest() {
           done();
         });
       } catch (err) {
-        console.error(TAG +  `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
+        console.error(TAG + `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
         expect(err.code).assertFail();
         done();
       };
 
     });
 
-
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0200
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0007
      * @tc.name   : To verify the errcode 16000050 when the parameters: ' { 'keyFd': { 'type': 'FD', 'value': -1 }'
      * @tc.desc   : Expect: the errcode 16000050
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0200', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0200 start');
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0007', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0007 start');
       let want: Want = {
         bundleName: 'com.acts.ability.errcode',
         abilityName: 'NewAbility',
         parameters:  { 'keyFd': { 'type': 'FD', 'value': -1}}
       };
-
       let options: StartOptions = {
         displayId: 0
       };
-
       try {
         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
           .then(() => {
@@ -333,29 +320,25 @@ export default function errorCodeTest() {
         expect().assertFail();
         done();
       }
-
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0300
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0008
      * @tc.name   : To verify the errcode 16000004 when assithap "export:false" with ability
      * @tc.desc   : Expect: the errcode 16000004
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0300', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0300 start');
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0008', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0008 start');
       let want: Want = {
         bundleName: 'com.ability.errcode.assist',
         abilityName: 'EntryAbility'
       };
-
       let options: StartOptions = {
         displayId: 0
       };
-
       try {
         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
           .then(() => {
@@ -377,21 +360,18 @@ export default function errorCodeTest() {
         expect().assertFail();
         done();
       }
-
     })
 
-
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0400
-     * @tc.name   : To verify the errcode   16000078 when assithap "multiAppMode" with ability & parameters with APP_INSTANCE_KEY ："app_instance_100"
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0009
+     * @tc.name   : To verify the errcode 16000078 when assithap "multiAppMode" with ability & parameters with APP_INSTANCE_KEY ："app_instance_100"
      * @tc.desc   : Expect: the errcode 16000078
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0400', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0400 start');
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0009', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0009 start');
       let want: Want = {
         bundleName: 'com.ability.errcode.assist3',
         abilityName: 'EntryAbility',
@@ -399,11 +379,9 @@ export default function errorCodeTest() {
           [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_0",
         }
       };
-
       let options: StartOptions = {
         displayId: 0
       };
-
       try {
         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
           .then(() => {
@@ -429,16 +407,15 @@ export default function errorCodeTest() {
     })
 
     /*
-    * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0500
+    * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0010
     * @tc.name   : To verify the errcode   16000073 when assithap "multiAppMode" with ability & parameters with APP_CLONE_INDEX_KEY > 1000
     * @tc.desc   : Expect: the errcode 16000073
     * @tc.type   : Function
     * @tc.size   : MediumTest
     * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0500', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0500 start');
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0010', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0010 start');
       let want: Want = {
         bundleName: 'com.ability.errcode.assist',
         abilityName: 'EntryAbility',
@@ -446,11 +423,9 @@ export default function errorCodeTest() {
           [wantConstant.Params.APP_CLONE_INDEX_KEY]: 1001,
         }
       };
-
       let options: StartOptions = {
         displayId: 0
       };
-
       try {
         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
           .then(() => {
@@ -472,19 +447,18 @@ export default function errorCodeTest() {
         expect().assertFail();
         done();
       }
-
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0700
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0011
      * @tc.name   : To verify the errcode 16000072 when assithap not config "multiAppMode"
      * @tc.desc   : Expect: the errcode 16000072
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0700', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0700 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0011', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0011 start');
       if (mpEnable == 'true') {
         let want: Want = {
           bundleName: 'com.acts.ability.errcode',
@@ -493,7 +467,6 @@ export default function errorCodeTest() {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_0",
           }
         };
-
         let options: StartOptions = {
           displayId: 0
         };
@@ -518,25 +491,22 @@ export default function errorCodeTest() {
           done();
         }
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0700 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0011 error, current device not support feature.`);
         done();
       }
-
-
-
     })
 
 
     /*
-    * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0800
+    * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0012
     * @tc.name   : To verify the errcode 16000067 when processMode "NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM"
     * @tc.desc   : Expect: the errcode 16000067
     * @tc.type   : Function
     * @tc.size   : MediumTest
     * @tc.level  : 0
    */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0800', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0800 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0012', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0012 start');
       if (mpEnable == 'true') {
         let want: Want = {
           bundleName: 'com.acts.ability.errcode',
@@ -545,7 +515,6 @@ export default function errorCodeTest() {
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,
           }
         };
-
         let options: StartOptions = {
           displayId: 0,
           processMode:contextConstant.ProcessMode.ATTACH_TO_STATUS_BAR_ITEM,
@@ -562,7 +531,6 @@ export default function errorCodeTest() {
               expect(err.code).assertEqual(16000067);
               done();
             });
-
         } catch(err) {
           // 处理入参错误异常
           let code = (err as BusinessError).code;
@@ -572,112 +540,102 @@ export default function errorCodeTest() {
           done();
         }
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0800 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0012 error, current device not support feature.`);
         done();
       }
-
-
-
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0900
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0013
      * @tc.name   : To verify the errcode 16000068 when The ability is already running.
      * @tc.desc   : Expect: the errcode 16000068
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0900', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0900 start');
-     if (mpEnable == 'true') {
-       let want: Want = {
-         bundleName: 'com.acts.ability.errcode',
-         abilityName: 'NewAbility',
-       };
-       let options: StartOptions = {
-         displayId: 0,
-         processMode:contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
-         startupVisibility:contextConstant.StartupVisibility.STARTUP_HIDE
-       };
-       let options1: StartOptions = {
-         displayId: 0,
-         processMode:contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
-         startupVisibility:contextConstant.StartupVisibility.STARTUP_HIDE
-
-       };
-       // test errorcode
-       try {
-         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
-           .then(() => {
-             console.info(TAG + 'startAbility0900 succeed');
-           }).catch((err: BusinessError) => {
-             // 处理业务逻辑错误
-             console.error(TAG + `startAbility0900 failed, code is ${err.code}, message is ${err.message}`);
-             expect().assertFail();
-           });
-
-       } catch(err) {
-         // 处理入参错误异常
-         let code = (err as BusinessError).code;
-         let message = (err as BusinessError).message;
-         console.error(TAG + `startAbility0900failed, code is ${code}, message is ${message}`);
-         expect().assertFail();
-       }
-       await Utils.sleep(2500)
-       // start again
-       try {
-         await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options1)
-           .then(() => {
-             console.info(TAG + 'startAbility0900 succeed');
-             expect().assertFail();
-             done();
-           }).catch((err: BusinessError) => {
-             // 处理业务逻辑错误
-             console.error(TAG + `startAbility0900 failed, code is ${err.code}, message is ${err.message}`);
-             expect(err.code).assertEqual(16000068);
-             done();
-           });
-
-       } catch(err) {
-         // 处理入参错误异常
-         let code = (err as BusinessError).code;
-         let message = (err as BusinessError).message;
-         console.error(TAG + `failed, code is ${code}, message is ${message}`);
-         expect().assertFail();
-         done();
-       }
-     } else {
-       console.error(`${TAG} SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_0900 error, current device not support feature.`);
-       done();
-     }
-
-
+    it('SUB_Ability_AbilityBase_ErrorCode_0013', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0013 start');
+      if (mpEnable == 'true') {
+        let want: Want = {
+          bundleName: 'com.acts.ability.errcode',
+          abilityName: 'NewAbility',
+        };
+        let options: StartOptions = {
+          displayId: 0,
+          processMode:contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
+          startupVisibility:contextConstant.StartupVisibility.STARTUP_HIDE
+        };
+        let options1: StartOptions = {
+          displayId: 0,
+          processMode:contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
+          startupVisibility:contextConstant.StartupVisibility.STARTUP_HIDE
+        };
+        // test errorcode
+        try {
+          await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
+            .then(() => {
+              console.info(TAG + 'SUB_Ability_AbilityBase_ErrorCode_0013 succeed');
+            }).catch((err: BusinessError) => {
+              // 处理业务逻辑错误
+              console.error(TAG + `SUB_Ability_AbilityBase_ErrorCode_00130 failed, code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+            });
+        } catch(err) {
+          // 处理入参错误异常
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(TAG + `SUB_Ability_AbilityBase_ErrorCode_0013failed, code is ${code}, message is ${message}`);
+          expect().assertFail();
+        }
+        await Utils.sleep(2500)
+        // start again
+        try {
+          await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options1)
+            .then(() => {
+              console.info(TAG + 'SUB_Ability_AbilityBase_ErrorCode_0013 succeed');
+              expect().assertFail();
+              done();
+            }).catch((err: BusinessError) => {
+              // 处理业务逻辑错误
+              console.error(TAG + `startAbility0900 failed, code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(16000068);
+              done();
+            });
+        } catch(err) {
+          // 处理入参错误异常
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(TAG + `failed, code is ${code}, message is ${message}`);
+          expect().assertFail();
+          done();
+        }
+      } else {
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0013 error, current device not support feature.`);
+        done();
+      }
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_1200
+     * @tc.number : SUB_Ability_AbilityBase_ErrorCode_0014
      * @tc.name   : To verify the errcode 16000080 when The APP_INSTANCE_KEY is invalid.
      * @tc.desc   : Expect: the errcode 16000080
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_1200', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_1200 start');
+    it('SUB_Ability_AbilityBase_ErrorCode_0014', Level.LEVEL0, async (done: Function)=> {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0014 start');
       if (mpEnable == 'true') {
         let want: Want = {
           bundleName: 'com.ability.errcode.assist',
           abilityName: 'EntryAbility',
           parameters: {
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,
-
           }
         };
         let options: StartOptions = {
           displayId: 0
         };
-
         // start
         try {
           await AppStorage.get<common.UIAbilityContext>("errocode")!.startAbility(want, options)
@@ -691,7 +649,6 @@ export default function errorCodeTest() {
               expect(err.code).assertEqual(16000080);
               done();
             });
-
         } catch(err) {
           // 处理入参错误异常
           let code = (err as BusinessError).code;
@@ -700,25 +657,23 @@ export default function errorCodeTest() {
           expect().assertFail();
           done();
         }
-
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_startAbilityPromiseErrorCode_1200 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0014 error, current device not support feature.`);
         done();
       }
-
     })
 
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000001
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0015
      * @tc.name: To verify the errcode 16000001 when The specified ability does not exist
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000001.
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000001', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_ErrorCode_0015', Level.LEVEL0, async (done: Function) => {
       if (mpExtensionEnable == 'true') {
-        let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000001';
+        let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0015';
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
         };
@@ -747,7 +702,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack1600001",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -756,26 +710,23 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000001 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0015 error, current device not support feature.`);
         done();
       }
-
-
     })
-    //
 
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000050
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0016
     * @tc.name: To verify the errcode 16000050  when the parameters: ' { 'keyFd': { 'type': 'FD', 'value': -1 }'
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000050 .
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000050', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_ErrorCode_0016', Level.LEVEL0, async (done: Function) => {
       if (mpExtensionEnable == 'true') {
         await Utils.sleep(1500)
-        let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000050';
+        let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0016';
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
         };
@@ -804,7 +755,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000050",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -812,25 +762,22 @@ export default function errorCodeTest() {
           expect().assertFail();
           done();
         })
-
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000050 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0016 error, current device not support feature.`);
         done();
       }
-
-
     })
 
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000004
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0017
      * @tc.name:  To verify the errcode 16000004 when assithap "export:false" with ability
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000004 .
      * @tc.size: MediumTest
      * @tc.type: Function
     * @tc.level: Level 0
      */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000004', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000004';
+    it('UB_Ability_AbilityBase_ErrorCode_0017', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0017';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -860,7 +807,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000004",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -869,24 +815,22 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000004 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0017 error, current device not support feature.`);
         done();
       }
-
-
     })
 
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000019
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0018
     * @tc.name: To verify the errcode 16000001 when The specified ability does not exist
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000019.
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000019', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_ErrorCode_0018', Level.LEVEL0, async (done: Function) => {
       if (mpExtensionEnable == 'true') {
-        let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000019';
+        let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0018';
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
         };
@@ -915,7 +859,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000019",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -924,24 +867,21 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000019 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0018 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000072
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0019
      * @tc.name:  To verify the errcode 16000072 when  verify the errcode 16000072 when assithap not config "multiAppMode"
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000072 .
      * @tc.size: MediumTest
      * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000072', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000072';
+    it('SUB_Ability_AbilityBase_ErrorCode_0019', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0019';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -971,7 +911,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000072",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -980,24 +919,21 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000072 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0019 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000078
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0020
     * @tc.name:  To verify the errcode 16000078 when assithap "multiAppMode" with ability & parameters with APP_INSTANCE_KEY ："app_instance_100"
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000078 .
     * @tc.size: MediumTest
     * @tc.type: Function
    * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000078', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000078';
+    it('SUB_Ability_AbilityBase_ErrorCode_0020', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0020';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1032,7 +968,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000078",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1041,26 +976,22 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000078 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0020 error, current device not support feature.`);
         done();
       }
-
-
-
     })
 
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000073
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0021
     * @tc.name:  To verify the errcode  16000073 when assithap "multiAppMode" with ability & parameters with APP_CLONE_INDEX_KEY > 1000
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000073 .
     * @tc.size: MediumTest
     * @tc.type: Function
    * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000073', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000073';
+    it('SUB_Ability_AbilityBase_ErrorCode_0021', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0020';
       if (mpExtensionEnable == 'true') {
-
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
         };
@@ -1080,7 +1011,6 @@ export default function errorCodeTest() {
                 AppStorage.get<common.UIAbilityContext>("errocode1")!.terminateSelf();
                 expect().assertFail();
               }
-
             } catch {
             }
             commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -1095,7 +1025,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000073",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1104,24 +1033,21 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000073 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0021 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0022
      * @tc.name:  To verify the errcode 16000080 when The APP_INSTANCE_KEY is invalid.
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000080 .
      * @tc.size: MediumTest
      * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080', Level.LEVEL0, async (done: Function) =>{
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080';
+    it('SUB_Ability_AbilityBase_ErrorCode_0022', Level.LEVEL0, async (done: Function) =>{
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0022';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1142,7 +1068,6 @@ export default function errorCodeTest() {
                 AppStorage.get<common.UIAbilityContext>("errocode1")!.terminateSelf();
                 expect().assertFail()
               }
-
             } catch {
             }
             commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -1157,7 +1082,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBack16000080",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1167,26 +1091,21 @@ export default function errorCodeTest() {
         })
 
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0022 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
-
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000050
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0023
     * @tc.name: To verify the errcode 16000050  when the parameters: ' { 'keyFd': { 'type': 'FD', 'value': -1 }'
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000050 .
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000050', Level.LEVEL0, async (done: Function) => {
-
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000050';
+    it('SUB_Ability_AbilityBase_ErrorCode_0023', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0023';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1207,7 +1126,6 @@ export default function errorCodeTest() {
                 AppStorage.get<common.UIAbilityContext>("errocode1")!.terminateSelf();
                 expect().assertFail()
               }
-
             } catch {
             }
             commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -1222,7 +1140,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000050",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1231,26 +1148,21 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000050 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0023 error, current device not support feature.`);
         done();
-
       }
-
-
-
-
     })
 
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000004
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0024
      * @tc.name:  To verify the errcode 16000004 when assithap "export:false" with ability
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000004 .
      * @tc.size: MediumTest
      * @tc.type: Function
     * @tc.level: Level 0
      */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000004', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000004';
+    it('SUB_Ability_AbilityBase_ErrorCode_0024', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0024';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1285,7 +1197,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000004",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1294,24 +1205,21 @@ export default function errorCodeTest() {
           done();
         })
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000004 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0024 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000078
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0025
     * @tc.name:  To verify the errcode 16000078 when assithap "multiAppMode" with ability & parameters with APP_INSTANCE_KEY ："app_instance_100"
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000078 .
     * @tc.size: MediumTest
     * @tc.type: Function
    * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000078', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000078';
+    it(' SUB_Ability_AbilityBase_ErrorCode_0025', Level.LEVEL0, async (done: Function) => {
+      let tag:string = ' SUB_Ability_AbilityBase_ErrorCode_0025';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1346,34 +1254,29 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000078",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
           console.info(TAG + "start ability Error");
           expect().assertFail();
-          done();
-        })
+          done();})
 
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000078 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0025 error, current device not support feature.`);
         done();
       }
-
-
-
     })
 
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000073
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0026
     * @tc.name:  To verify the errcode  16000073 when assithap "multiAppMode" with ability & parameters with APP_CLONE_INDEX_KEY > 1000
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000073 .
     * @tc.size: MediumTest
     * @tc.type: Function
    * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackErrorCodeOptions_16000073', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000073';
+    it('SUB_Ability_AbilityBase_ErrorCode_0026', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0026';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1408,7 +1311,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000073",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1416,26 +1318,22 @@ export default function errorCodeTest() {
           expect().assertFail();
           done();
         })
-
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000073 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0026 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-     * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000080
+     * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0027
      * @tc.name:  To verify the errcode 16000080 when The APP_INSTANCE_KEY is invalid.
      * @tc.desc: When StartAbility In UIExtension, an error code is 16000080 .
      * @tc.size: MediumTest
      * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000080', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080';
+    it('SUB_Ability_AbilityBase_ErrorCode_0027', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0027';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1470,7 +1368,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000080",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1478,24 +1375,22 @@ export default function errorCodeTest() {
           expect().assertFail();
           done();
         })
-
       } else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000080 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0027 error, current device not support feature.`);
         done();
       }
-
     })
 
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000072
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0028
     * @tc.name:  To verify the errcode 16000072 when  verify the errcode 16000072 when assithap not config "multiAppMode"
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000072 .
     * @tc.size: MediumTest
     * @tc.type: Function
    * @tc.level: Level 0
    */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000072', Level.LEVEL0, async (done: Function) => {
-      let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000072';
+    it('SUB_Ability_AbilityBase_ErrorCode_0028', Level.LEVEL0, async (done: Function) => {
+      let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0028';
       if (mpExtensionEnable == 'true') {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
@@ -1530,7 +1425,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000072",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1539,25 +1433,22 @@ export default function errorCodeTest() {
           done();
         })
       }  else {
-        console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCode_16000072 error, current device not support feature.`);
+        console.error(`${TAG} SUB_Ability_AbilityBase_ErrorCode_0028 error, current device not support feature.`);
         done();
       }
-
-
     })
 
-
     /*
-    * @tc.number: SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000019
+    * @tc.number: SUB_Ability_AbilityBase_ErrorCode_0029
     * @tc.name: To verify the errcode 16000001 when The specified ability does not exist
     * @tc.desc: When StartAbility In UIExtension, an error code is 16000019.
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000019', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_ErrorCode_0029', Level.LEVEL0, async (done: Function) => {
       if (mpExtensionEnable == 'true') {
-        let tag:string = 'SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000019';
+        let tag:string = 'SUB_Ability_AbilityBase_ErrorCode_0029';
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [tag]
         };
@@ -1591,7 +1482,6 @@ export default function errorCodeTest() {
             "case":"startErrorCodeCallBackOptions16000019",
             "caseName":tag
           }
-
         }).then(()=>{
           console.info(TAG + "start ability success");
         }).catch((err: BusinessError)=>{
@@ -1603,13 +1493,7 @@ export default function errorCodeTest() {
         console.error(`${TAG} SUB_Ability_AbilityBase_UIExtensionStartAbilityCallBackCodeOptions_16000019 error, current device not support feature.`);
         done();
       }
-
-
     })
-
-
-
-
   })
 }
 
