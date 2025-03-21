@@ -280,10 +280,11 @@ export default function graphicDisplaySyncInterfaceTest() {
           max:120
         };
         backDisplaySync?.setExpectedFrameRateRange(range)
+        expect().assertFail();
         done();     
       } catch (err) {
         console.error(msg + 'Failed to onoff. Cause:' + err.code);
-        expect(401).assertEqual(err.code);
+        expect(err.code == 401).assertTrue();
         done();
       }
     })
