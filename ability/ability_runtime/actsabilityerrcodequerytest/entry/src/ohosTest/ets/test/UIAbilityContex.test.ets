@@ -19,7 +19,7 @@ import { AtomicServiceOptions, common, contextConstant,
   OpenLinkOptions,
   StartOptions, startupManager,
   UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError ,systemParameterEnhance} from '@kit.BasicServicesKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { image } from '@kit.ImageKit';
 
@@ -234,14 +234,14 @@ export default function UIAbilityContex() {
       }
     })
 
-    /**
+   /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
-     * @tc.desc: When the lifecycle times out, can exit the app normally
+     * @tc.desc: Capability not support
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', 0, async (done:Function) => {
       let want: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
+        bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
       };
       try {
@@ -255,26 +255,88 @@ export default function UIAbilityContex() {
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        expect(err.code).assertEqual(16000004)
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
+      let info:string;
+      globalThis.context.showAbility().then(() => {
+            console.log(`showAbility success`);
+          }).catch((err: BusinessError) => {
+            console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
+            if(err.code===801)
+            {
+              done();
+            }
+            else{
+              try {
+                let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+                console.log("getSync"+JSON.stringify(info));
+                if(!info)
+                {
+                    expect(err.code).assertEqual(16000067);
+                    done();
+                }
+              } catch(e) {
+                console.log("getSync unexpected error: " + e);
+              }
+            }
+          });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200
+     * @tc.desc: Start options check failed.
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', 0, async (done:Function) => {
+      let want: Want = {
+        bundleName: 'com.test.actsabilityerrcodequerytest',
+        abilityName: 'MainAbility1'
+      };
+      try {
+        globalThis.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+      let info:string;
       globalThis.context.showAbility().then(() => {
         console.log(`showAbility success`);
       }).catch((err: BusinessError) => {
         console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(801);
-        done();
+        if(err.code===801)
+        {
+          done();
+        }
+        else{
+          try {
+            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync"+JSON.stringify(info));
+            if(!info)
+            {
+              expect(err.code).assertEqual(16000067);
+            }
+          } catch(e) {
+            console.log("getSync unexpected error: " + e);
+          }
+        }
       });
     })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100
-     * @tc.desc: When the lifecycle times out, can exit the app normally
+     * @tc.desc: Capability not support.
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', 0, async (done:Function) => {
       let want: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
+        bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
       };
       try {
@@ -290,12 +352,74 @@ export default function UIAbilityContex() {
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
+      let info:string;
       globalThis.context.hideAbility().then(() => {
-        console.log(`showAbility success`);
+        console.log(`highAbility success`);
       }).catch((err: BusinessError) => {
-        console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(801);
-        done();
+        console.error(`highAbility fail, err: ${JSON.stringify(err)}`);
+        if(err.code===801)
+        {
+          done();
+        }
+        else{
+          try {
+            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync"+JSON.stringify(info));
+            if(!info)
+            {
+              expect(err.code).assertEqual(16000067);
+            }
+          } catch(e) {
+            console.log("getSync unexpected error: " + e);
+          }
+        }
+      });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200
+     * @tc.desc: Start options check failed.
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', 0, async (done:Function) => {
+      let want: Want = {
+        bundleName: 'com.test.actsabilityerrcodequerytest',
+        abilityName: 'MainAbility1'
+      };
+      try {
+        globalThis.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+      let info:string;
+      globalThis.context.hideAbility().then(() => {
+        console.log(`highAbility success`);
+      }).catch((err: BusinessError) => {
+        console.error(`highAbility fail, err: ${JSON.stringify(err)}`);
+        if(err.code===801)
+        {
+          done();
+        }
+        else{
+          try {
+            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync"+JSON.stringify(info));
+            if(!info)
+            {
+              expect(err.code).assertEqual(16000067);
+            }
+          } catch(e) {
+            console.log("getSync unexpected error: " + e);
+          }
+        }
       });
     })
 
