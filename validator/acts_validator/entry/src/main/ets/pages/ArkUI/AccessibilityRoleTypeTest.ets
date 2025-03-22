@@ -16,7 +16,7 @@ let params = LocalStorage.getShared();
 @Component
 struct AccessibilityRoleTypeTest {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'AccessibilityThirdFramework00';
+  @State name: string = 'AccessibilityRoleTypeTest';
   @State StepTips: string = '测试目的：验证accessibilityRole接口每个枚举值是否都能设置成功\n' +
     '\n' +
     '操作步骤：安装hdc，使用命令：hdc shell "hidumper -s WindowManagerService -a \'-w $\{winId} -inspector $\{elementId}\'"，$\{winId}替换为当前页面winId，$\{elementId}替换为AccessibilityRole:0~124 Text组件的id值。\n' +
