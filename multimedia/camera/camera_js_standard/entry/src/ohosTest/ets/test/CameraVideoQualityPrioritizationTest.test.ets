@@ -629,5 +629,42 @@ export default function CameraVideoQualityPrioritizationTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300
+     * @tc.name      : test set quality prioritization api with error code 7400101
+     * @tc.desc      : test set quality prioritization api with error code 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300--------------");
+
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        for (let i = 0; i < mCameraNum; i++) {
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300 start for camera[" +
+            i + "]");
+            
+          await startCameraSession(i);
+          try {
+            mCameraSession.setQualityPrioritization(null);
+          } catch (err) {
+            console.info(TAG +
+              `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300 error: ${err}, ${err.code}, ${err.message}`);
+            expect(err.code == 401 || err.code == 7400101).assertTrue();
+            done();
+          }
+        }
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300 ends here");
+        done();
+      }
+    })
   })
 }
