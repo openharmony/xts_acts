@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import display from '@ohos.display'
 
@@ -38,7 +38,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testJsAsyncAwait0100', 0, async function (done) {
+        it('testJsAsyncAwait0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let res1 = await asyncTest()
             expect(res1).assertEqual(1)
             let testClass = new TestClass()
@@ -55,7 +55,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testJsES50100', 0, async function (done) {
+        it('testJsES50100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             // ES5
             var array = [1, 2, 3, 4, 5, 6]
             expect(Array.isArray(array)).assertTrue()
@@ -112,7 +112,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testJsES60100', 0, async function (done) {
+        it('testJsES60100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const num1 = 1
             let num2 = 1
             expect(num1).assertEqual(num2)
@@ -155,7 +155,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testJsStrictMode0100', 0, async function (done) {
+        it('testJsStrictMode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             expect(this).assertUndefined()
             done()
         })
@@ -168,7 +168,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testWeblikeAccessPath0100', 0, async function (done) {
+        it('testWeblikeAccessPath0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let driver = Driver.create()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.id('absolutionPathImageCompleted'))
@@ -195,7 +195,7 @@ export default function softwareJsTest() {
          * @tc.type: Function
          * @tc.level: Level 0
          */
-        it('testWeblikePrivateDirectoryPath0100', 0, async function (done) {
+        it('testWeblikePrivateDirectoryPath0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let driver = Driver.create()
             await driver.delayMs(5000)
             let text = await driver.findComponent(ON.id('fileText1'))
