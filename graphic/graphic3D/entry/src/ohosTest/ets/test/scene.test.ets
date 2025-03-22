@@ -347,6 +347,9 @@ export default function sceneTest() {
         customGeom.normals = [{x: -1, y: 1, z: 0}, {x: 1, y: -1, z: 0}, {x: 1, y: 1, z: 0}, {x: 1, y: 1, z: 1}];
         expect(customGeom.normals[0].x).assertEqual(-1);
         console.info(msg + " Succeed in customGeom.normals ");
+        customGeom.colors = [{r: 1, g: 0, b: 0, a:1}, {r: 0, g: 1, b: 0, a:1}, {r: 0, g: 0, b: 1, a:1}, {r: 1, g: 0, b: 1, a:1}];
+        expect(customGeom.colors[0].r).assertEqual(1);
+        console.info(msg + " Succeed in customGeom.colors ");
         done();
       } catch (err) {
         console.info(msg + " Failed in testCustomGeometry " + JSON.stringify(err));
