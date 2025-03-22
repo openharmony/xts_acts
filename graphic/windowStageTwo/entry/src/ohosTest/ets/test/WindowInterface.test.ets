@@ -3478,8 +3478,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       const message = 'test_on_windowWillClose_executeAfterOff'
       let result: boolean = true;
       const callback = async () => {
+        console.log(`${message} enter callback`)
         await sleep(3000);
         return new Promise<boolean>((resolve, reject) => {
+          console.log(`${message} callback return`)
           result = false;
           resolve(result);
         })
@@ -3491,9 +3493,11 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         let driver: Driver = Driver.create()
         let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
         await button.click();
+        await sleep(1000);
         let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
         AppStorage.setOrCreate('startNum', startNum - 1);
         windowClassStart.off('windowWillClose', callback);
+        console.log(`${message} succeed off listen`)
         expect().assertFail();
         done();
       } catch (err) {
@@ -3797,6 +3801,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'))
           await button.click()
+          await sleep(1000);
           try {
             window.findWindow('subwindow0');
             console.info(`subwindow0 is existing`);
@@ -3864,7 +3869,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           subWindowClass.on('windowWillClose', callback);
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
-          await button.click()
+          await button.click();
+          await sleep(1000);
           subWindowClass.off('windowWillClose', callback);
           try {
             window.findWindow('subwindow0');
@@ -3931,7 +3937,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           subWindowClass.on('windowWillClose', callback);
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
-          await button.click()
+          await button.click();
+          await sleep(1000);
           try {
             window.findWindow('subwindow0');
             console.info(`subwindow0 is existing`);
@@ -4063,6 +4070,256 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       ;
     });
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_MOVE_CONFIGURATION_0100
+     * @tc.name       : test_MoveConfiguration
+     * @tc.desc       : 验证moveWindowToAsync参数MoveConfiguration
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_MoveConfiguration', 3, async (done: Function) => {
+      if (deviceType != "2in1" && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_MoveConfiguration!'
+        try {
+          let windowStageStart = await startAbility(message, context);
+          let windowClassStart = windowStageStart.getMainWindowSync();
+          let displayId = windowClassStart.getWindowProperties().displayId
+          let moveConfiguration: window.MoveConfiguration = {
+            displayId: displayId
+          }
+          let promise = windowClassStart.moveWindowToAsync(300, 300, moveConfiguration);
+          promise.then(() => {
+            console.info(`${message} succeed in moveWindowToAsync`);
+          }).catch(async (err: BusinessError) => {
+            console.error(`${message} promise Failed to moveWindowToAsync, Cause code ${err.code}, message ${err.message} `);
+          })
+          await sleep(1000)
+          let rect = windowClassStart.getWindowProperties().windowRect;
+          console.info(`${message} windowRect:${JSON.stringify(rect)}`);
+          expect(rect.left).assertEqual(300);
+          expect(rect.top).assertEqual(300);
+          done();
+        } catch (err) {
+          console.log(`${message} Failed to test MoveConfiguration.errcode:${err.code}, Cause: ${err.message}`)
+          expect().assertFail();
+          done();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_MOVE_GLOBAL_0100
+     * @tc.name       : test_moveWindowToGlobal_moveConfiguration
+     * @tc.desc       : 验证moveWindowToGlobal参数MoveConfiguration
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_moveWindowToGlobal_moveConfiguration', 3, async (done: Function) => {
+      const message = 'test_moveWindowToGlobal_moveConfiguration!'
+      let options: window.SubWindowOptions = {
+        title: message,
+        decorEnabled: true,
+      };
+      try {
+        let promise = context.windowStage.createSubWindowWithOptions(message, options)
+        promise.then(async (data) => {
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          let displayId = subWindowClass.getWindowProperties().displayId;
+          let moveConfiguration: window.MoveConfiguration = {
+            displayId: displayId
+          }
+          let promise = subWindowClass.moveWindowToGlobal(300, 300, moveConfiguration);
+          promise.then(async () => {
+            console.info(`${message} succeed in moveWindowToGlobal`);
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise Failed to moveWindowToGlobal, Cause code ${err.code}, message ${err.message} `);
+            expect().assertFail();
+            done();
+          });
+          await sleep(1000);
+          let rect = subWindowClass.getWindowProperties().windowRect;
+          console.info(`${message} after moving windowRect:${JSON.stringify(rect)}`);
+          expect(rect.left).assertEqual(300);
+          expect(rect.top).assertEqual(300);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to test MoveConfiguration, Cause code ${err.code}, message ${err.message} `);
+          if (err.code == 1300002){
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.log(`${message} Failed to test MoveConfiguration.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_SUB_WINDOW_CLOSE_0100
+     * @tc.name       : test_on_subWindowClose
+     * @tc.desc       : 验证test_on_subWindowClose，result为false
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_on_subWindowClose', 3, async (done: Function) => {
+      if (deviceType != "2in1" && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_on_subWindowClose!'
+        let result: boolean = true;
+        let windowStageStart = await startAbility(message, context);
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: true,
+        };
+        const callback = () => {
+          result = false;
+          return result
+        }
+        try {
+          let promise = windowStageStart.createSubWindowWithOptions('subwindow0', options);
+          promise.then(async (data) => {
+            const subWindowClass = data;
+            subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+            subWindowClass.showWindow();
+            await sleep(1000);
+            subWindowClass.on("subWindowClose", callback);
+            let driver: Driver = Driver.create();
+            let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+            await button.click();
+            await sleep(1000);
+            if(result){
+              expect().assertFail();
+              done();
+            }
+            try {
+              window.findWindow('subwindow0')
+              console.error(`subwindow0 is existing`);
+              subWindowClass.off('subWindowClose', callback);
+              expect().assertFail();
+            } catch (exception) {
+              console.info(`subwindow0 is not existing`);
+              expect(true).assertTrue();
+            }
+            ;
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message}`);
+            try {
+              const windowClassFind = window.findWindow('subwindow0')
+              console.error(`The window ${windowClassFind} still exist`);
+              windowClassFind.off('subWindowClose', callback);
+            } catch (err) {
+              console.info(`The window does not exist`);
+            }
+            if (err.code == 801 || err.code == 1300002) {
+              expect(true).assertTrue();
+              console.error(`The device not support on(subWindowClose)`);
+            } else {
+              expect().assertFail();
+            }
+            ;
+            done();
+          })
+        } catch (err) {
+          console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_SUB_WINDOW_CLOSE_0200
+     * @tc.name       : test_off_subWindowClose
+     * @tc.desc       :  验证test_off_subWindowClose，result为true
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_off_subWindowClose', 3, async (done: Function) => {
+      if (deviceType != "2in1" && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_off_subWindowClose!'
+        let result: boolean = false;
+        let windowStageStart = await startAbility(message, context);
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: true,
+        };
+        const callback = () => {
+          result = true;
+          return result
+        }
+        try {
+          let promise = windowStageStart.createSubWindowWithOptions('subwindow0', options);
+          promise.then(async (data) => {
+            const subWindowClass = data;
+            subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+            subWindowClass.showWindow();
+            await sleep(1000);
+            subWindowClass.on("subWindowClose", callback);
+            let driver: Driver = Driver.create();
+            let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+            await button.click();
+            await sleep(1000);
+            if(!result){
+              expect().assertFail();
+              done();
+            }
+            try {
+              window.findWindow('subwindow0');
+              console.info(`subwindow0 is still existing`);
+              subWindowClass.off('windowWillClose');
+              expect(true).assertTrue();
+            } catch (exception) {
+              console.error(`subwindow0 is not existing`);
+              expect().assertFail();
+            }
+            ;
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message}`);
+            try {
+              const windowClassFind = window.findWindow('subwindow0')
+              console.info(`The window ${windowClassFind} still exist`);
+              windowClassFind.off('subWindowClose');
+            } catch (err) {
+              console.info(`The window does not exist`);
+            }
+            if (err.code == 801 || err.code == 1300002) {
+              expect(true).assertTrue();
+              console.error(`The device not support on(subWindowClose)`);
+            } else {
+              expect().assertFail();
+            }
+            ;
+            done();
+          })
+        } catch (err) {
+          console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
 
 
   })
