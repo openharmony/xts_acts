@@ -51,8 +51,8 @@ struct CustomLayout {
 
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
     let prev = 0;
-    children.forEach((child, child_index) => {
-      AppStorage.setOrCreate('CustomLayoutUniqueid_onPlaceChildren_UniqueId_' + child_index, child.uniqueId)
+    children.forEach((child, index) => {
+      AppStorage.setOrCreate('CustomLayoutUniqueid_onPlaceChildren_UniqueId_' + index, child.uniqueId)
       let pos = prev + 10;
       prev = pos + child.measureResult.width
       child.layout({ x: pos, y: 0 })
@@ -61,15 +61,15 @@ struct CustomLayout {
 
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
-    children.forEach((child, child_index) => {
-      AppStorage.setOrCreate('CustomLayoutUniqueid_onMeasureSize_UniqueId_' + child_index, child.uniqueId)
+    children.forEach((child, index) => {
+      AppStorage.setOrCreate('CustomLayoutUniqueid_onMeasureSize_UniqueId_' + index, child.uniqueId)
       const uiContext = this.getUIContext()
-      const nodeContainerFrameNode = uiContext.getFrameNodeById('CustomLayoutUniqueid_NodeContainer_' + child_index)
-      AppStorage.setOrCreate('CustomLayoutUniqueid_onMeasureSize_FrameNode_UniqueId_' + child_index, child.uniqueId)
+      const nodeContainerFrameNode = uiContext.getFrameNodeById('CustomLayoutUniqueid_NodeContainer_' + index)
+      AppStorage.setOrCreate('CustomLayoutUniqueid_onMeasureSize_FrameNode_UniqueId_' + index, child.uniqueId)
       if (uiContext) {
         let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(child.uniqueId) // 获取NodeContainer组件的FrameNode
         if (node) {
-          node.getChild(0)!.commonAttribute.id('CustomLayoutUniqueid_Child_' + child_index)
+          node.getChild(0)!.commonAttribute.id('CustomLayoutUniqueid_Child_' + index)
           node.getChild(0)!.commonAttribute.width(100)
           node.getChild(0)!.commonAttribute.height(100)
           node.getChild(0)!.commonAttribute.backgroundColor(Color.Pink) // 修改FrameNode的尺寸与背景颜色
