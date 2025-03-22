@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function WeakRefTest() {
   describe('weakRefTest', () => {
@@ -24,7 +24,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0001', 0, () => {
+    it('testWeakRef0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0001";
       try {
         let ret = new WeakRef(Object);
@@ -42,7 +42,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0002', 0, () => {
+    it('testWeakRef0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0002";
       try {
         let ret = new WeakRef(new Object);
@@ -61,7 +61,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0003', 0, () => {
+    it('testWeakRef0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0003";
       try {
         interface Interface_1 {
@@ -89,7 +89,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0004', 0, () => {
+    it('testWeakRef0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0004";
       try {
         class Person {
@@ -118,7 +118,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0005', 0, () => {
+    it('testWeakRef0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0005";
       try {
         class Person {
@@ -148,7 +148,7 @@ export default function WeakRefTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakRef0006', 0, () => {
+    it('testWeakRef0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0006";
       try {
         let weakRefObj = new WeakRef(new Object);

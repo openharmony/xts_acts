@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function WeakSetTest() {
   describe('weakSetTest', () => {
@@ -24,7 +24,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSet0001', 0, () => {
+    it('testWeakSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSet0001";
       try {
         const ws = new WeakSet();
@@ -43,7 +43,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSet0002', 0, () => {
+    it('testWeakSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSet0002";
       try {
         const map = new Map<string, number>();
@@ -63,7 +63,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSet0003', 0, () => {
+    it('testWeakSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSet0003";
       try {
         const ws = new WeakSet(null);
@@ -82,7 +82,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSet0004', 0, () => {
+    it('testWeakSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSet0004";
       try {
         const ws = new WeakSet(undefined);
@@ -101,7 +101,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeAdd0001', 0, () => {
+    it('testWeakSetPrototypeAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeAdd0001";
       try {
         interface GeneratedObjectLiteralInterface_1 {}
@@ -124,7 +124,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeAdd0002', 0, () => {
+    it('testWeakSetPrototypeAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeAdd0002";
       try {
         class Person {
@@ -154,7 +154,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeAdd0003', 0, () => {
+    it('testWeakSetPrototypeAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeAdd0003";
       try {
         class Person {
@@ -184,7 +184,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeAdd0004', 0, () => {
+    it('testWeakSetPrototypeAdd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeAdd0004";
       try {
         const weakset = new WeakSet();
@@ -204,7 +204,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeAdd0005', 0, () => {
+    it('testWeakSetPrototypeAdd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeAdd0005";
       try {
         const weakset = new WeakSet();
@@ -224,7 +224,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeHas0001', 0, () => {
+    it('testWeakSetPrototypeHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeHas0001";
       try {
         interface Generated0bjectliteralInterface_1 {}
@@ -247,7 +247,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeHas0002', 0, () => {
+    it('testWeakSetPrototypeHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeHas0002";
       try {
         class Person {
@@ -277,7 +277,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeHas0003', 0, () => {
+    it('testWeakSetPrototypeHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeHas0003";
       try {
         class Person {
@@ -308,7 +308,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeHas0004', 0, () => {
+    it('testWeakSetPrototypeHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeHas0004";
       try {
         const weakset = new WeakSet();
@@ -327,7 +327,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWeakSetPrototypeHas0005', 0, () => {
+    it('testWeakSetPrototypeHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakSetPrototypeHas0005";
       try {
         const weakset = new WeakSet();
@@ -347,7 +347,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeHas0001', 0, () => {
+    it('testPrototypeHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeHas0001";
       try {
         interface GeneratedObjectLiteralInterface_1 {}
@@ -371,7 +371,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeHas0002', 0, () => {
+    it('testPrototypeHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeHas0002";
       try {
         class Person {
@@ -402,7 +402,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeHas0003', 0, () => {
+    it('testPrototypeHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeHas0003";
       try {
         class Person {
@@ -434,7 +434,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeHas0004', 0, () => {
+    it('testPrototypeHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeHas0004";
       try {
         const weakset = new WeakSet();
@@ -456,7 +456,7 @@ export default function WeakSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeHas0005', 0, () => {
+    it('testPrototypeHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeHas0005";
       try {
         const weakset = new WeakSet();

@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { collections } from '@kit.ArkTS';
 
 export default function BitVectorTest() {
@@ -31,7 +31,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0001', 0, () => {
+    it('testBitVectorConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorConstructor0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(-1);
@@ -40,6 +40,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0200
@@ -49,7 +50,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0002', 0, () => {
+    it('testBitVectorConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorConstructor0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -58,6 +59,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0300
@@ -67,7 +69,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0003', 0, () => {
+    it('testBitVectorConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorConstructor0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(10);
@@ -76,6 +78,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0400
@@ -85,7 +88,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0004', 0, () => {
+    it('testBitVectorConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorConstructor0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(100000);
@@ -94,6 +97,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0500
@@ -103,7 +107,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0001', 0, () => {
+    it('testBitVectorPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -114,6 +118,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0600
@@ -123,7 +128,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0002', 0, () => {
+    it('testBitVectorPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -134,6 +139,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0700
@@ -143,7 +149,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0003', 0, () => {
+    it('testBitVectorPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -154,6 +160,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0800
@@ -163,7 +170,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0004', 0, () => {
+    it('testBitVectorPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -174,6 +181,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0900
@@ -183,7 +191,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0005', 0, () => {
+    it('testBitVectorPush0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -194,6 +202,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1000
@@ -203,7 +212,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0006', 0, () => {
+    it('testBitVectorPush0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -214,6 +223,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1100
@@ -223,7 +233,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0007', 0, () => {
+    it('testBitVectorPush0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0007";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -237,6 +247,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1200
@@ -246,7 +257,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0008', 0, () => {
+    it('testBitVectorPush0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPush0008";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -261,6 +272,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1300
@@ -270,7 +282,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0001', 0, () => {
+    it('testBitVectorPop0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPop0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -286,6 +298,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1400
@@ -295,7 +308,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0002', 0, () => {
+    it('testBitVectorPop0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPop0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(100000);
@@ -308,6 +321,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1500
@@ -317,7 +331,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0003', 0, () => {
+    it('testBitVectorPop0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPop0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -336,6 +350,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1600
@@ -345,7 +360,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0004', 0, () => {
+    it('testBitVectorPop0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPop0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -366,6 +381,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1700
@@ -375,7 +391,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0005', 0, () => {
+    it('testBitVectorPop0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorPop0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -387,6 +403,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1800
@@ -396,7 +413,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0001', 0, () => {
+    it('testBitVectorHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -416,6 +433,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1900
@@ -425,7 +443,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0002', 0, () => {
+    it('testBitVectorHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -445,6 +463,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2000
@@ -454,7 +473,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0003', 0, () => {
+    it('testBitVectorHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -474,6 +493,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2100
@@ -483,7 +503,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0004', 0, () => {
+    it('testBitVectorHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -503,6 +523,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2200
@@ -512,7 +533,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0005', 0, () => {
+    it('testBitVectorHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -532,6 +553,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2300
@@ -541,7 +563,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0006', 0, () => {
+    it('testBitVectorHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -561,6 +583,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2400
@@ -570,7 +593,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0007', 0, () => {
+    it('testBitVectorHas0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0007";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -590,6 +613,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2500
@@ -599,7 +623,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0008', 0, () => {
+    it('testBitVectorHas0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorHas0008";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -619,6 +643,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2600
@@ -628,7 +653,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0001', 0, () => {
+    it('testBitVectorSetBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -642,6 +667,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2700
@@ -651,7 +677,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0002', 0, () => {
+    it('testBitVectorSetBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -665,6 +691,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2800
@@ -674,7 +701,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0003', 0, () => {
+    it('testBitVectorSetBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -688,6 +715,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2900
@@ -697,7 +725,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0004', 0, () => {
+    it('testBitVectorSetBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -711,6 +739,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3000
@@ -720,7 +749,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0005', 0, () => {
+    it('testBitVectorSetBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -734,6 +763,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3100
@@ -743,7 +773,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0006', 0, () => {
+    it('testBitVectorSetBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -757,6 +787,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3200
@@ -766,7 +797,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0007', 0, () => {
+    it('testBitVectorSetBitsByRange0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0007";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -780,6 +811,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3300
@@ -789,7 +821,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0008', 0, () => {
+    it('testBitVectorSetBitsByRange0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0008";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -803,6 +835,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3400
@@ -812,7 +845,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0009', 0, () => {
+    it('testBitVectorSetBitsByRange0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetBitsByRange0009";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -841,6 +874,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3500
@@ -850,7 +884,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0001', 0, () => {
+    it('testBitVectorSetAllBits0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetAllBits0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -869,6 +903,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3600
@@ -878,7 +913,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0002', 0, () => {
+    it('testBitVectorSetAllBits0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetAllBits0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -897,6 +932,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3700
@@ -906,7 +942,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0003', 0, () => {
+    it('testBitVectorSetAllBits0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetAllBits0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -925,6 +961,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3800
@@ -934,7 +971,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0004', 0, () => {
+    it('testBitVectorSetAllBits0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetAllBits0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -953,6 +990,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3900
@@ -962,7 +1000,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0005', 0, () => {
+    it('testBitVectorSetAllBits0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorSetAllBits0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -981,6 +1019,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4000
@@ -990,7 +1029,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0001', 0, () => {
+    it('testBitVectorGetBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1013,6 +1052,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4100
@@ -1022,7 +1062,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0002', 0, () => {
+    it('testBitVectorGetBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1045,6 +1085,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4200
@@ -1054,7 +1095,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0003', 0, () => {
+    it('testBitVectorGetBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1070,6 +1111,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4300
@@ -1079,7 +1121,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0004', 0, () => {
+    it('testBitVectorGetBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1095,6 +1137,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4400
@@ -1104,7 +1147,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0005', 0, () => {
+    it('testBitVectorGetBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1120,6 +1163,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4500
@@ -1129,7 +1173,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0006', 0, () => {
+    it('testBitVectorGetBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitsByRange0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1145,6 +1189,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4600
@@ -1154,7 +1199,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0001', 0, () => {
+    it('testBitVectorResize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorResize0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1167,6 +1212,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"length\" is out of range. It must be >= 0. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4700
@@ -1176,7 +1222,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0002', 0, () => {
+    it('testBitVectorResize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorResize0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1194,6 +1240,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4800
@@ -1203,7 +1250,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0003', 0, () => {
+    it('testBitVectorResize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorResize0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1217,6 +1264,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4900
@@ -1226,7 +1274,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0001', 0, () => {
+    it('testBitVectorGetBitCountByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1243,6 +1291,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5000
@@ -1252,7 +1301,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0002', 0, () => {
+    it('testBitVectorGetBitCountByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1269,6 +1318,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5100
@@ -1278,7 +1328,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0003', 0, () => {
+    it('testBitVectorGetBitCountByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1294,6 +1344,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5200
@@ -1303,7 +1354,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0004', 0, () => {
+    it('testBitVectorGetBitCountByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1319,6 +1370,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5300
@@ -1328,7 +1380,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0005', 0, () => {
+    it('testBitVectorGetBitCountByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1344,6 +1396,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5400
@@ -1353,7 +1406,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0006', 0, () => {
+    it('testBitVectorGetBitCountByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetBitCountByRange0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1369,6 +1422,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5500
@@ -1378,7 +1432,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0001', 0, () => {
+    it('testBitVectorGetIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1395,6 +1449,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5600
@@ -1404,7 +1459,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0002', 0, () => {
+    it('testBitVectorGetIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1421,6 +1476,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5700
@@ -1430,7 +1486,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0003', 0, () => {
+    it('testBitVectorGetIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1447,6 +1503,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5800
@@ -1456,7 +1513,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0004', 0, () => {
+    it('testBitVectorGetIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1473,6 +1530,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5900
@@ -1482,7 +1540,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0005', 0, () => {
+    it('testBitVectorGetIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1499,6 +1557,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6000
@@ -1508,7 +1567,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0006', 0, () => {
+    it('testBitVectorGetIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1525,6 +1584,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6100
@@ -1534,7 +1594,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0007', 0, () => {
+    it('testBitVectorGetIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0007";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1551,6 +1611,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6200
@@ -1560,7 +1621,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0008', 0, () => {
+    it('testBitVectorGetIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetIndexOf0008";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1577,6 +1638,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6300
@@ -1586,7 +1648,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0001', 0, () => {
+    it('testBitVectorGetLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1603,6 +1665,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6400
@@ -1612,7 +1675,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0002', 0, () => {
+    it('testBitVectorGetLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1629,6 +1692,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6500
@@ -1638,7 +1702,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0003', 0, () => {
+    it('testBitVectorGetLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1655,6 +1719,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6600
@@ -1664,7 +1729,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0004', 0, () => {
+    it('testBitVectorGetLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1681,6 +1746,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6700
@@ -1690,7 +1756,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0005', 0, () => {
+    it('testBitVectorGetLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1707,6 +1773,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6800
@@ -1716,7 +1783,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0006', 0, () => {
+    it('testBitVectorGetLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1733,6 +1800,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6900
@@ -1742,7 +1810,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0007', 0, () => {
+    it('testBitVectorGetLastIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0007";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1759,6 +1827,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7000
@@ -1768,7 +1837,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0008', 0, () => {
+    it('testBitVectorGetLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorGetLastIndexOf0008";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1785,6 +1854,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7100
@@ -1794,7 +1864,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0001', 0, () => {
+    it('testBitVectorFlipBitByIndex0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitByIndex0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1809,6 +1879,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7200
@@ -1818,7 +1889,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0002', 0, () => {
+    it('testBitVectorFlipBitByIndex0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitByIndex0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1831,6 +1902,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7300
@@ -1840,7 +1912,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0003', 0, () => {
+    it('testBitVectorFlipBitByIndex0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitByIndex0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1853,6 +1925,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7400
@@ -1862,7 +1935,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0001', 0, () => {
+    it('testBitVectorFlipBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1882,6 +1955,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7500
@@ -1891,7 +1965,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0002', 0, () => {
+    it('testBitVectorFlipBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1911,6 +1985,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7600
@@ -1920,7 +1995,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0003', 0, () => {
+    it('testBitVectorFlipBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1936,6 +2011,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7700
@@ -1945,7 +2021,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0004', 0, () => {
+    it('testBitVectorFlipBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0004";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1961,6 +2037,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7800
@@ -1970,7 +2047,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0005', 0, () => {
+    it('testBitVectorFlipBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0005";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -1986,6 +2063,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7900
@@ -1995,7 +2073,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0006', 0, () => {
+    it('testBitVectorFlipBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorFlipBitsByRange0006";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -2011,6 +2089,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(`${err.message}`).assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8000
@@ -2020,7 +2099,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0001', 0, () => {
+    it('testBitVectorValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorValues0001";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -2030,6 +2109,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8100
@@ -2039,7 +2119,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0002', 0, () => {
+    it('testBitVectorValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorValues0002";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -2056,6 +2136,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8200
@@ -2065,7 +2146,7 @@ export default function BitVectorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0003', 0, () => {
+    it('testBitVectorValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testBitVectorValues0003";
       try {
         let bitVectorList: collections.BitVector = new collections.BitVector(0);
@@ -2085,6 +2166,7 @@ export default function BitVectorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
+      done()
     });
   })
 }

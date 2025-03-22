@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import { Sleep } from '../utils/utils';
 import {
@@ -42,7 +42,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQueryAll0001', 0, () => {
+    it('testTaskLocksQueryAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQueryAll0001';
       try {
         let states: ArkTSUtils.locks.AsyncLockState[] = ArkTSUtils.locks.AsyncLock.queryAll();
@@ -51,6 +51,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -62,7 +63,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQueryAll0002', 0, () => {
+    it('testTaskLocksQueryAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQueryAll0002';
       try {
         let states: ArkTSUtils.locks.AsyncLockState[] = ArkTSUtils.locks.AsyncLock.queryAll();
@@ -71,6 +72,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -82,7 +84,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQueryAll0003', 0, () => {
+    it('testTaskLocksQueryAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQueryAll0003';
       try {
         ArkTSUtils.locks.AsyncLock.request("name1");
@@ -95,6 +97,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -106,7 +109,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksConstructor0001', 0, () => {
+    it('testTaskLocksConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksConstructor0001';
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -115,6 +118,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -125,7 +129,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQuery0001', 0, () => {
+    it('testTaskLocksQuery0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQuery0001';
       try {
         const lockName = "";
@@ -134,6 +138,7 @@ export default function arkTSUtilsTest() {
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
       }
+      done()
     })
 
     /**
@@ -144,7 +149,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQuery0005', 0, () => {
+    it('testTaskLocksQuery0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQuery0005';
       try {
         const lockName = "name";
@@ -153,6 +158,7 @@ export default function arkTSUtilsTest() {
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
       }
+      done()
     })
 
     /**
@@ -164,7 +170,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksRequest0001', 0, () => {
+    it('testTaskLocksRequest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksRequest0001';
       try {
         const lockName = "";
@@ -174,6 +180,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -185,7 +192,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksRequest0002', 0, () => {
+    it('testTaskLocksRequest0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksRequest0002';
       try {
         const lockName = "";
@@ -196,6 +203,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -207,7 +215,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksRequest0003', 0, () => {
+    it('testTaskLocksRequest0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksRequest0003';
       try {
         const lockName = "name";
@@ -217,6 +225,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -228,7 +237,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksRequest0004', 0, () => {
+    it('testTaskLocksRequest0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksRequest0004';
       try {
         const lockName = "name";
@@ -239,6 +248,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -251,7 +261,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksRequest0005', 0, () => {
+    it('testTaskLocksRequest0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksRequest0005';
       try {
         const lockName = "name";
@@ -263,6 +273,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -274,7 +285,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQuery0002', 0, () => {
+    it('testTaskLocksQuery0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQuery0002';
       try {
         const lockName = "";
@@ -288,6 +299,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -299,7 +311,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQuery0003', 0, () => {
+    it('testTaskLocksQuery0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQuery0003';
       try {
         const lockName = "name";
@@ -313,6 +325,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -324,7 +337,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskLocksQuery0004', 0, () => {
+    it('testTaskLocksQuery0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testTaskLocksQuery0004';
       try {
         const lockName = "name";
@@ -335,6 +348,7 @@ export default function arkTSUtilsTest() {
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
       }
+      done()
     })
 
     /**
@@ -345,7 +359,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0001', 0, () => {
+    it('testLockAsync0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0001";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -356,6 +370,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: code => ${err.code} message => ${err.message}`);
       }
+      done()
     })
 
     /**
@@ -366,7 +381,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0006', 0, async () => {
+    it('testLockAsync0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0006";
       try {
         let result = '';
@@ -396,6 +411,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -406,7 +422,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0007', 0, async () => {
+    it('testLockAsync0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0007";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -424,6 +440,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -434,7 +451,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0008', 0, async () => {
+    it('testLockAsync0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0008";
       try {
         let result = '';
@@ -458,6 +475,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -468,7 +486,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0009', 0, async () => {
+    it('testLockAsync0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0009";
       try {
         let result = '';
@@ -500,6 +518,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -510,7 +529,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0010', 0, async () => {
+    it('testLockAsync0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0010";
       try {
         let result = '';
@@ -529,6 +548,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -539,7 +559,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0011', 0, async () => {
+    it('testLockAsync0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0011";
       try {
         let result = '';
@@ -557,6 +577,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -567,7 +588,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0012', 0, async () => {
+    it('testLockAsync0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0012";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -587,6 +608,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -598,7 +620,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLockAsync0013', 0, async () => {
+    it('testLockAsync0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testLockAsync0013';
       try {
         let res = '';
@@ -628,6 +650,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -639,7 +662,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLockAsync0014', 0, async () => {
+    it('testLockAsync0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testLockAsync0014';
       try {
         let res = '';
@@ -669,6 +692,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -680,7 +704,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLockAsync0015', 0, async () => {
+    it('testLockAsync0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testLockAsync0015';
       try {
         let res = '';
@@ -710,6 +734,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -721,7 +746,7 @@ export default function arkTSUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLockAsync0016', 0, async () => {
+    it('testLockAsync0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG: string = 'testLockAsync0016';
       try {
         let res = '';
@@ -751,6 +776,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} catch error: ${error}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -761,7 +787,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0017', 0, async () => {
+    it('testLockAsync0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0017";
       try {
         let l1_start = 0;
@@ -794,6 +820,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -804,7 +831,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0018', 0, async () => {
+    it('testLockAsync0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0018";
       try {
         const lockName = 'name';
@@ -835,6 +862,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -845,7 +873,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0019', 0, async () => {
+    it('testLockAsync0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0019";
       try {
         const lockName = 'name';
@@ -876,6 +904,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -886,7 +915,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0020', 0, async () => {
+    it('testLockAsync0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0020";
       try {
         let res = "";
@@ -911,6 +940,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -921,7 +951,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0021', 0, async () => {
+    it('testLockAsync0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0021";
       try {
         let l1_start = 0;
@@ -955,6 +985,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -965,7 +996,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0022', 0, async () => {
+    it('testLockAsync0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0022";
       try {
         let res = '';
@@ -983,6 +1014,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -993,7 +1025,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0023', 0, async () => {
+    it('testLockAsync0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0023";
       try {
         let res = '';
@@ -1019,6 +1051,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1029,7 +1062,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0024', 0, async () => {
+    it('testLockAsync0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testLockAsync0024";
       try {
         let res = '';
@@ -1055,6 +1088,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1065,7 +1099,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockMode0001', 0, async () => {
+    it('testAsyncLockMode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockMode0001";
       try {
         let res = '';
@@ -1091,6 +1125,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1101,7 +1136,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockMode0002', 0, async () => {
+    it('testAsyncLockMode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockMode0002";
       try {
         let res = '';
@@ -1130,6 +1165,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1140,7 +1176,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0001', 0, async () => {
+    it('testAsyncLockOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0001";
       try {
         let options = new ArkTSUtils.locks.AsyncLockOptions<string>();
@@ -1152,6 +1188,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1162,7 +1199,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0002', 0, async () => {
+    it('testAsyncLockOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0002";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1184,6 +1221,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1194,7 +1232,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0003', 0, async () => {
+    it('testAsyncLockOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0003";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1210,6 +1248,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1220,7 +1259,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0004', 0, async () => {
+    it('testAsyncLockOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0004";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1236,6 +1275,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1246,7 +1286,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0005', 0, async () => {
+    it('testAsyncLockOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0005";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1264,6 +1304,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1274,7 +1315,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0006', 0, async () => {
+    it('testAsyncLockOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0006";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1292,6 +1333,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1302,7 +1344,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0007', 0, async () => {
+    it('testAsyncLockOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0007";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1318,6 +1360,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1328,7 +1371,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockOptions0008', 0, async () => {
+    it('testAsyncLockOptions0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockOptions0008";
       try {
         let lock = new ArkTSUtils.locks.AsyncLock();
@@ -1344,6 +1387,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1354,7 +1398,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0001', 0, async () => {
+    it('testAsyncLockState0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0001";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1374,6 +1418,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1384,7 +1429,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0002', 0, async () => {
+    it('testAsyncLockState0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0002";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1404,6 +1449,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1414,7 +1460,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0003', 0, async () => {
+    it('testAsyncLockState0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0003";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1434,6 +1480,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1444,7 +1491,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0004', 0, async () => {
+    it('testAsyncLockState0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0004";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1464,6 +1511,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1474,7 +1522,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0005', 0, async () => {
+    it('testAsyncLockState0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0005";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1496,6 +1544,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1506,7 +1555,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0006', 0, async () => {
+    it('testAsyncLockState0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0006";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1528,6 +1577,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1538,7 +1588,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0007', 0, async () => {
+    it('testAsyncLockState0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0007";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1560,6 +1610,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1570,7 +1621,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockState0008', 0, async () => {
+    it('testAsyncLockState0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockState0008";
       try {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
@@ -1592,6 +1643,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
 
@@ -1603,7 +1655,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testISendable0001', 0, () => {
+    it('testISendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testISendable0001";
       try {
         type ISendable = lang.ISendable;
@@ -1614,6 +1666,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1624,7 +1677,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTransformer0001', 0, () => {
+    it('testTransformer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testTransformer0001";
       try {
         type ISendable = lang.ISendable;
@@ -1639,6 +1692,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1649,7 +1703,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockParseOptions0001', 0, () => {
+    it('testAsyncLockParseOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockParseOptions0001";
       try {
         type ISendable = lang.ISendable;
@@ -1664,6 +1718,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -1674,7 +1729,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockParseOptions0002', 0, () => {
+    it('testAsyncLockParseOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockParseOptions0002";
       try {
         type ISendable = lang.ISendable;
@@ -1690,6 +1745,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1700,7 +1756,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockParseOptions0003', 0, () => {
+    it('testAsyncLockParseOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockParseOptions0003";
       try {
         type ISendable = lang.ISendable;
@@ -1716,6 +1772,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1726,7 +1783,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAsyncLockParseOptions0004', 0, () => {
+    it('testAsyncLockParseOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testAsyncLockParseOptions0004";
       try {
         let options: ArkTSUtils.ASON.ParseOptions = {
@@ -1742,6 +1799,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1752,7 +1810,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0001", 0, () => {
+    it("testParse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0001";
       try {
         type ISendable = lang.ISendable;
@@ -1762,6 +1820,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -1772,7 +1831,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0002", 0, () => {
+    it("testParse0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0002";
       try {
         type ISendable = lang.ISendable;
@@ -1782,6 +1841,7 @@ export default function arkTSUtilsTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
       }
+      done()
     })
 
     /**
@@ -1792,7 +1852,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0003", 0, () => {
+    it("testParse0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0003";
       try {
         type ISendable = lang.ISendable;
@@ -1804,6 +1864,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1814,7 +1875,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0004", 0, () => {
+    it("testParse0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0004";
       try {
         type ISendable = lang.ISendable;
@@ -1826,6 +1887,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1836,7 +1898,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0005", 0, () => {
+    it("testParse0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0005";
       try {
         type ISendable = lang.ISendable;
@@ -1853,6 +1915,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1863,7 +1926,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0006", 0, () => {
+    it("testParse0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0006";
       try {
         type ISendable = lang.ISendable;
@@ -1880,6 +1943,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1890,7 +1954,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParse0007", 0, () => {
+    it("testParse0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testParse0007";
       try {
         type ISendable = lang.ISendable;
@@ -1907,6 +1971,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -1917,7 +1982,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0001", 0, () => {
+    it("testStringify0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0001";
       try {
         let str = ArkTSUtils.ASON.stringify(null);
@@ -1926,6 +1991,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_ARK_TS_UTILS_6700
@@ -1935,7 +2001,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0002", 0, () => {
+    it("testStringify0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0002";
       try {
         let str = ArkTSUtils.ASON.stringify(undefined);
@@ -1944,6 +2010,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_ARK_TS_UTILS_6800
@@ -1953,7 +2020,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0003", 0, () => {
+    it("testStringify0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0003";
       try {
         let str = ArkTSUtils.ASON.stringify(4);
@@ -1962,6 +2029,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_ARK_TS_UTILS_6900
@@ -1971,7 +2039,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0004", 0, () => {
+    it("testStringify0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0004";
       try {
         let str = ArkTSUtils.ASON.stringify(true);
@@ -1980,6 +2048,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
     /**
      * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_ARK_TS_UTILS_7000
@@ -1989,7 +2058,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0005", 0, () => {
+    it("testStringify0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0005";
       try {
         let num: bigint = 123456789012345123456789012345n;
@@ -2000,6 +2069,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2010,7 +2080,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0006", 0, () => {
+    it("testStringify0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0006";
       try {
         let str = ArkTSUtils.ASON.stringify('testStringify0009');
@@ -2019,6 +2089,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2029,7 +2100,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0007", 0, () => {
+    it("testStringify0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0007";
       try {
         type ISendable = lang.ISendable;
@@ -2042,6 +2113,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2052,7 +2124,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0008", 0, () => {
+    it("testStringify0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0008";
       try {
         let lock1 = new ArkTSUtils.locks.AsyncLock();
@@ -2062,6 +2134,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2072,7 +2145,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0009", 0, () => {
+    it("testStringify0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0009";
       try {
         let value = new collections.BitVector(1);
@@ -2082,6 +2155,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2092,7 +2166,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0011", 0, () => {
+    it("testStringify0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0011";
       try {
         let value = new collections.Map<string, string>();
@@ -2102,6 +2176,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2112,7 +2187,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0012", 0, () => {
+    it("testStringify0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0012";
       try {
         let value = new collections.Array<number>(1, 2, 3);
@@ -2122,6 +2197,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2132,7 +2208,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringify0013", 0, () => {
+    it("testStringify0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testStringify0013";
       try {
         let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
@@ -2142,6 +2218,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2152,7 +2229,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0001', 0, () => {
+    it('testIsSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0001";
       try {
         let value: [] = [];
@@ -2161,6 +2238,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2171,7 +2249,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0002', 0, () => {
+    it('testIsSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0002";
       try {
         let value = null;
@@ -2180,6 +2258,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2190,7 +2269,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0003', 0, () => {
+    it('testIsSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0003";
       try {
         let value = undefined;
@@ -2199,6 +2278,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2209,7 +2289,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0004', 0, () => {
+    it('testIsSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0004";
       try {
         let value: number = 1;
@@ -2218,6 +2298,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2228,7 +2309,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0005', 0, () => {
+    it('testIsSendable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0005";
       try {
         let value: boolean = false;
@@ -2237,6 +2318,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2247,7 +2329,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0006', 0, () => {
+    it('testIsSendable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0006";
       try {
         let value: bigint = 1n;
@@ -2256,6 +2338,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2266,7 +2349,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0007', 0, () => {
+    it('testIsSendable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0007";
       try {
         let value: Date = new Date();
@@ -2275,6 +2358,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2285,7 +2369,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0008', 0, () => {
+    it('testIsSendable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0008";
       try {
         let value: String = '1';
@@ -2294,6 +2378,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2304,7 +2389,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0009', 0, () => {
+    it('testIsSendable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0009";
       try {
         let value: RegExp = /1/g;
@@ -2313,6 +2398,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2323,7 +2409,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0010', 0, () => {
+    it('testIsSendable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0010";
       try {
         let value: Array<string> = new Array()
@@ -2332,6 +2418,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2342,7 +2429,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0011', 0, () => {
+    it('testIsSendable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0011";
       try {
         let value: Map<string, string> = new Map()
@@ -2351,6 +2438,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2361,7 +2449,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0012', 0, () => {
+    it('testIsSendable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0012";
       try {
         let value: Set<string> = new Set();
@@ -2370,6 +2458,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2380,7 +2469,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0013', 0, () => {
+    it('testIsSendable0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0013";
       try {
         interface Object {
@@ -2395,6 +2484,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2405,7 +2495,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0014', 0, () => {
+    it('testIsSendable0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0014";
       try {
         let value: Object = new Object();
@@ -2414,6 +2504,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2424,7 +2515,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0015', 0, () => {
+    it('testIsSendable0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0015";
       try {
         let value: ArrayBuffer = new ArrayBuffer(1);
@@ -2433,6 +2524,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2443,7 +2535,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0016', 0, () => {
+    it('testIsSendable0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0016";
       try {
         let value: Int8Array = new Int8Array();
@@ -2452,6 +2544,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2462,7 +2555,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0017', 0, () => {
+    it('testIsSendable0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0017";
       try {
         let value: Uint8Array = new Uint8Array();
@@ -2471,6 +2564,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2481,7 +2575,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0018', 0, () => {
+    it('testIsSendable0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0018";
       try {
         let value: Uint8ClampedArray = new Uint8ClampedArray();
@@ -2490,6 +2584,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2500,7 +2595,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0019', 0, () => {
+    it('testIsSendable0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0019";
       try {
         let value: Int16Array = new Int16Array();
@@ -2509,6 +2604,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2519,7 +2615,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0020', 0, () => {
+    it('testIsSendable0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0020";
       try {
         let value: Uint16Array = new Uint16Array()
@@ -2528,6 +2624,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2538,7 +2635,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0021', 0, () => {
+    it('testIsSendable0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0021";
       try {
         let value: Int32Array = new Int32Array();
@@ -2547,6 +2644,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2557,7 +2655,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0022', 0, () => {
+    it('testIsSendable0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0022";
       try {
         let value: Uint32Array = new Uint32Array();
@@ -2566,6 +2664,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2576,7 +2675,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0023', 0, () => {
+    it('testIsSendable0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0023";
       try {
         let value: Float32Array = new Float32Array();
@@ -2585,6 +2684,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2595,7 +2695,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0024', 0, () => {
+    it('testIsSendable0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0024";
       try {
         let value: Float64Array = new Float64Array();
@@ -2604,6 +2704,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2614,7 +2715,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0025', 0, () => {
+    it('testIsSendable0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0025";
       try {
         let value: Function = () => {
@@ -2624,6 +2725,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2634,7 +2736,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0026', 0, () => {
+    it('testIsSendable0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0026";
       try {
         let value = new NumClass()
@@ -2643,6 +2745,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail()
       }
+      done()
     })
 
     /**
@@ -2653,7 +2756,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0027', 0, () => {
+    it('testIsSendable0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0027";
       try {
         let value = new NumClass();
@@ -2662,6 +2765,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2672,7 +2776,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0028', 0, () => {
+    it('testIsSendable0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0028";
       try {
         expect(ArkTSUtils.isSendable(NumClass.GetB())).assertEqual(true);
@@ -2680,6 +2784,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2690,7 +2795,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0029', 0, () => {
+    it('testIsSendable0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0029";
       try {
         expect(ArkTSUtils.isSendable(NumClass.b)).assertEqual(true);
@@ -2698,6 +2803,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2708,7 +2814,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0030', 0, () => {
+    it('testIsSendable0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0030";
       try {
         let value: collections.ConcatArray<string> = new collections.Array();
@@ -2717,6 +2823,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2727,7 +2834,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0031', 0, () => {
+    it('testIsSendable0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0031";
       try {
         let value: collections.Array<string> = new collections.Array();
@@ -2736,6 +2843,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2746,7 +2854,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0032', 0, () => {
+    it('testIsSendable0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0032";
       try {
         let value: collections.Map<string, string> = new collections.Map();
@@ -2755,6 +2863,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2765,7 +2874,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0033', 0, () => {
+    it('testIsSendable0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0033";
       try {
         let value: collections.Set<string> = new collections.Set();
@@ -2774,6 +2883,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2784,7 +2894,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0034', 0, () => {
+    it('testIsSendable0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0034";
       try {
         let value: collections.BitVector = new collections.BitVector(1);
@@ -2793,6 +2903,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2803,7 +2914,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0035', 0, () => {
+    it('testIsSendable0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0035";
       try {
         let value: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
@@ -2812,6 +2923,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2822,7 +2934,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0036', 0, () => {
+    it('testIsSendable0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0036";
       try {
         let sendableClass: SendableClass = new SendableClass();
@@ -2831,6 +2943,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2841,7 +2954,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0037', 0, () => {
+    it('testIsSendable0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0037";
       try {
         let sendableClass: SendableClass = new SendableClass();
@@ -2850,6 +2963,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2860,7 +2974,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0038', 0, () => {
+    it('testIsSendable0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0038";
       try {
         let sendableClass: SendableClass = new SendableClass();
@@ -2869,6 +2983,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2879,7 +2994,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0039', 0, () => {
+    it('testIsSendable0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0039";
       try {
         let sendableClass: SendableClass = new SendableClass();
@@ -2888,6 +3003,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2898,7 +3014,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0040', 0, () => {
+    it('testIsSendable0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0040";
       try {
         expect(ArkTSUtils.isSendable(SendableClass.count)).assertEqual(true);
@@ -2906,6 +3022,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2916,7 +3033,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0041', 0, () => {
+    it('testIsSendable0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0041";
       try {
         expect(ArkTSUtils.isSendable(SendableClass.getCount())).assertEqual(true);
@@ -2925,6 +3042,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2935,7 +3053,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0042', 0, () => {
+    it('testIsSendable0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0042";
       try {
         type ISendable = lang.ISendable;
@@ -2946,6 +3064,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
 
     /**
@@ -2956,7 +3075,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsSendable0043', 0, () => {
+    it('testIsSendable0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const TAG = "testIsSendable0043";
       try {
         expect(ArkTSUtils.isSendable(sendableFunction)).assertEqual(true);
@@ -2964,6 +3083,7 @@ export default function arkTSUtilsTest() {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
       }
+      done()
     })
   })
 }
