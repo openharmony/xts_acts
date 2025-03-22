@@ -21,7 +21,7 @@ class MyRouterParam {
   constructor(from: string) {
     this.fromPage = from;
   }
-  fromPage: string = "";
+  public fromPage: string = "";
 }
 @Entry
 @Component
