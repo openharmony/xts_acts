@@ -13,22 +13,18 @@
  * limitations under the License.
  */
 
-import webview from '@ohos.web.webview';
+/**
+ * 响应码：成功
+ */
+export const RSP_OK = 0;
 
-export default class MyController extends webview.WebviewController {
+/**
+ * 响应码：错误
+ */
+export const RSP_ERROR = 1;
 
+export class RspBean {
+  errorReason?: string = void 0;
 
-  constructor(webTag?: string) {
-    super();
-  }
-
-  refresh(): void {
-    throw new Error
-  }
-
-
-  deleteJavaScriptRegister(): void {
-    throw new Error
-  }
-
+  responseCode?: number = -1;
 }
