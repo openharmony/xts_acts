@@ -5443,6 +5443,22 @@ export default function globalStageTest() {
       }
     })
 
+    /**
+     * @tc.number   : isRawDir_test_0100
+     * @tc.name     : isRawDir_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('isRawDir_test_0100', Level.LEVEL3, () => {
+      try {
+        res.isRawDir('invalidPath');
+      } catch (err) {
+        console.log('isRawDir_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }

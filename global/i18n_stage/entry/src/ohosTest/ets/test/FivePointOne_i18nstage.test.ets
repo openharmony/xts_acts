@@ -506,6 +506,201 @@ export default function FivePointOne_i18nStageTest() {
       expect(dateFormatted == "2024/12/13 上午6:30:25").assertTrue();
     })
 
+    /**
+     * @tc.number   : I18N_test_getSimplifiedLanguage_01_1010
+     * @tc.name     : I18N_test_getSimplifiedLanguage_01_1010
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimplifiedLanguage_01_1010', Level.LEVEL2, () => {
+      let type_one = i18n.System.getSimplifiedLanguage();
+      console.log('I18N_test_getSimplifiedLanguage_01_1010 type_one:' + type_one);
+      expect(type_one != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getTemperatureType_0100
+     * @tc.name     : I18N_test_getTemperatureType_0100
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getTemperatureType_0100', Level.LEVEL2, () => {
+      let type: i18n.TemperatureType = i18n.System.getTemperatureType();
+      console.log('I18N_test_getTemperatureType_0100 type_one:' + type);
+      expect(type != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getFirstDayOfWeek_0100
+     * @tc.name     : I18N_test_getFirstDayOfWeek_0100
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getFirstDayOfWeek_0100', Level.LEVEL2, () => {
+      let type: i18n.WeekDay = i18n.System.getFirstDayOfWeek();
+      console.log('I18N_test_getFirstDayOfWeek_0100 type_one:' + type);
+      expect(type != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0100
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0100
+     * @tc.desc     : 890001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0100', Level.LEVEL3, () => {
+      try {
+        let path: string = "error";
+        let delimiter: string = "error";
+        let locale: intl.Locale = new intl.Locale("ug");
+        i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale);
+      } catch (e) {
+        console.log('I18N_test_getUnicodeWrappedFilePath_0100 type_one:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0200
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0200
+     * @tc.desc     : path & delimiter
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0200', Level.LEVEL2, () => {
+      let path: string = "/data/out/tmp";
+      let delimiter: string = "/";
+      let mirrorPath: string = i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter);
+      console.log('I18N_test_getUnicodeWrappedFilePath_0200:' + mirrorPath);
+      expect(mirrorPath != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0300
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0300
+     * @tc.desc     : path
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0300', Level.LEVEL2, () => {
+      let path: string = "/data/out/tmp";
+      let mirrorPath: string = i18n.I18NUtil.getUnicodeWrappedFilePath(path);
+      console.log('I18N_test_getUnicodeWrappedFilePath_0300:' + mirrorPath);
+      expect(mirrorPath != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatByPattern_0100
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatByPattern_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleDateTimeFormatByPattern_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleDateTimeFormatByPattern('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleDateTimeFormatByPattern_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatByPattern_0200
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatByPattern_0200
+     * @tc.desc     : only date
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleDateTimeFormatByPattern_0200', Level.LEVEL2, () => {
+      let date: Date = new Date(2024, 11, 13, 6, 30, 25);
+      let formatter: i18n.SimpleDateTimeFormat =
+        i18n.getSimpleDateTimeFormatByPattern("'time('y'/'M'/'d'/'h':'m':'s')'");
+      let dateFormatted: string = formatter.format(date);
+      console.log('I18N_test_getSimpleDateTimeFormatByPattern_0200 dateFormatted:' + dateFormatted);
+      expect(dateFormatted != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatBySkeleton_0100
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatBySkeleton_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleDateTimeFormatBySkeleton_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleDateTimeFormatBySkeleton('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleDateTimeFormatBySkeleton_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatBySkeleton_0200
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatBySkeleton_0200
+     * @tc.desc     : only date
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleDateTimeFormatBySkeleton_0200', Level.LEVEL2, () => {
+      let date: Date = new Date(2024, 11, 13, 6, 30, 25);
+      let skeletonFormatter: i18n.SimpleDateTimeFormat =
+        i18n.getSimpleDateTimeFormatBySkeleton("yMdhms");
+      let dateFormatted: string = skeletonFormatter.format(date);
+      expect(dateFormatted != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleNumberFormatBySkeleton_0100
+     * @tc.name     : I18N_test_getSimpleNumberFormatBySkeleton_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleNumberFormatBySkeleton_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleNumberFormatBySkeleton('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleNumberFormatBySkeleton_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleNumberFormatBySkeleton_0200
+     * @tc.name     : I18N_test_getSimpleNumberFormatBySkeleton_0200
+     * @tc.desc     : only skeletonFormatter
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleNumberFormatBySkeleton_0200', Level.LEVEL2, () => {
+      let skeletonFormatter: i18n.SimpleNumberFormat =
+        i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always");
+      let numberFormatted: string = skeletonFormatter.format(1230000);
+      expect(numberFormatted == "1.23E+6").assertTrue();
+    })
+
     console.log('*************end FivePointOne_i18nStageTest*************');
   })
 }

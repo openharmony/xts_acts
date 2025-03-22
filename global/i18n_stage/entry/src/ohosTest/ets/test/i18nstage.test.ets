@@ -1134,6 +1134,20 @@ export default function i18nStageTest() {
       console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + I18n.getPreferredLanguageList());
     })
 
+    /**
+     * @tc.number   : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.name     : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.desc     : hour=[21,5],at night
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0800', Level.LEVEL2, () => {
+      let value = I18n.I18NUtil.getTimePeriodName(5);
+      console.log('SUB_GLOBAL_I18N_SR000IFGMS_0800:' + value);
+      expect(value != null).assertTrue();
+    })
+
     console.log('*************end i18nStageTest*************');
   })
 }
