@@ -44,8 +44,8 @@ export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
   //无权限优先执行
   CameraNoPermissionErrorCodeTest()
-  CameraVideoQualityPrioritizationTest()
   cameraTorchTest()
+  CameraVideoQualityPrioritizationTest()
   cameraInputTest()
   cameraVideoSuperStabilizationTest()
   cameraJSUnitOutput()
