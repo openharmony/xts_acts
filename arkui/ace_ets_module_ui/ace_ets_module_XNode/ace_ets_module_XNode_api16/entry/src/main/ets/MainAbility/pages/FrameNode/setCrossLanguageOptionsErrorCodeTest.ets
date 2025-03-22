@@ -19,7 +19,7 @@ const TEST_TAG: string = 'FrameNode '
 
 class MyNodeController extends NodeController {
   public frameNode: FrameNode | null = null;
-  public childList: Array<FrameNode> = new Array<FrameNode>();
+  public childList: FrameNode[] = [];
   private rootNode: FrameNode | null = null;
   private uiContext: UIContext | null = null;
   private childrenCount: number = 0;
