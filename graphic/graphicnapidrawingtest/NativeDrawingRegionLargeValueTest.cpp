@@ -44,7 +44,7 @@ void NativeDrawingRegionLargeValueTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRegionLargeValueTest, NativeDrawingRegionSetRectTest_region002, TestSize.Level1)
+HWTEST_F(NativeDrawingRegionLargeValueTest, NativeDrawingRegionSetRectTest_region002, Function | MediumTest | Level1)
 {
     OH_Drawing_Region* region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect* rect=OH_Drawing_RectCreate(0.0f, 0.0f, 2160.0f, 4096.0f);
