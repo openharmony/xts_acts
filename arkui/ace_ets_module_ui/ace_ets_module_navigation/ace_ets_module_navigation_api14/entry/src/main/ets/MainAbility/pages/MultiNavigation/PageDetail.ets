@@ -19,8 +19,6 @@ import { MultiNavPathStack } from '@ohos.arkui.advanced.MultiNavigation';
 export struct PageDetail {
   @State message: string = 'PageDetail';
   @Consume('pageStack') pageStack: MultiNavPathStack;
-  text: String = '';
-  param: {} = {};
 
   build() {
     NavDestination() {
