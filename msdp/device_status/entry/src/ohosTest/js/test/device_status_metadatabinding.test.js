@@ -54,7 +54,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.submitMetadata is failed' + JSON.stringify(error))
         expect().assertFail()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0100 is end---------------")
       done();
     })
@@ -77,7 +76,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.submitMetadata is failed' + JSON.stringify(error))
         expect(error.code == 401).assertTrue()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0200 is end---------------")
       done();
     })
@@ -100,7 +98,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.on is failed catch' + JSON.stringify(error))
         expect().assertFail()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0300 is end---------------")
       done();
     })
@@ -123,7 +120,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.off is failed' + JSON.stringify(error))
         expect().assertFail()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0400 is end---------------")
       done();
     })
@@ -147,7 +143,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.on is failed catch' + JSON.stringify(error))
         expect(error.code == 401).assertTrue()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0500 is end---------------")
       done();
     })
@@ -171,7 +166,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.off is failed catch' + JSON.stringify(error))
         expect(error.code == 401).assertTrue()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0600 is end---------------")
       done();
     })
@@ -193,7 +187,6 @@ export default function DeviceStatusMetadataBindingTest() {
         console.log('metadataBinding.off is failed' + JSON.stringify(error))
         expect().assertFail()
       }
-      await sleep(1000)
       console.info("---------------SUB_MSDP_DeviceStatus_API_MetadataBinding_0700 is end---------------")
       done();
     })
