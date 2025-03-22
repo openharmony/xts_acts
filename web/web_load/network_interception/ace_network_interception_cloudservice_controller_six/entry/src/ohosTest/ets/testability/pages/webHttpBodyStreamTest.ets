@@ -36,7 +36,7 @@ struct webHttpBodyStreamTest {
   @State databaseAccess: boolean = true;
   requests: webview.WebSchemeHandlerRequest[] = []
 
-  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+  htmlData: string = '<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>';
 
   @State isComplete: number = -1;
   @State testRead: number = -1;
@@ -99,7 +99,7 @@ struct webHttpBodyStreamTest {
               try {
                 this.schemeHandler.onRequestStart(
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-                    console.log("[schemeHandler] onRequestStart");
+                    console.log('[schemeHandler] onRequestStart');
 
                     try {
                       console.log(request.getRequestUrl())
@@ -111,9 +111,9 @@ struct webHttpBodyStreamTest {
 
                         response.setNetErrorCode(WebNetErrorList.NET_OK);
                         response.setStatus(200);
-                        response.setStatusText("OK");
-                        response.setMimeType("text/html");
-                        response.setEncoding("utf-8");
+                        response.setStatusText('OK');
+                        response.setMimeType('text/html');
+                        response.setEncoding('utf-8');
                         response.setHeaderByName('Access-Control-Allow-Methods', 'POST, GET, OPTIONS', true);
                         response.setHeaderByName('Access-Control-Allow-Origin', '*' ,true)
                         response.setHeaderByName('Access-Control-Allow-Headers',
@@ -135,11 +135,11 @@ struct webHttpBodyStreamTest {
                           if (!stream) {
                             return;
                           }
-                          console.log("[schemeHandler] onRequestStart postDataStream size:" + stream.getSize());
-                          console.log("[schemeHandler] onRequestStart postDataStream position:" + stream.getPosition());
-                          console.log("[schemeHandler] onRequestStart postDataStream isChunked:" + stream.isChunked());
-                          console.log("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
-                          console.log("[schemeHandler] onRequestStart postDataStream isInMemory:"
+                          console.log('[schemeHandler] onRequestStart postDataStream size:' + stream.getSize());
+                          console.log('[schemeHandler] onRequestStart postDataStream position:' + stream.getPosition());
+                          console.log('[schemeHandler] onRequestStart postDataStream isChunked:' + stream.isChunked());
+                          console.log('[schemeHandler] onRequestStart postDataStream isEof:' + stream.isEof());
+                          console.log('[schemeHandler] onRequestStart postDataStream isInMemory:'
                             + stream.isInMemory());
                           stream.read(stream.getSize()).then((buffer) => {
                             console.log("[schemeHandler] onRequestStart postDataStream read:" + buffer.byteLength);
@@ -149,9 +149,9 @@ struct webHttpBodyStreamTest {
                             }
                             console.log("[schemeHandler] onRequestStart postDataStream readlength:"
                               + buffer.byteLength);
-                            console.log("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
-                            console.log("[schemeHandler] onRequestStart postDataStream position:"
-                              + stream.getPosition());
+                            console.log('[schemeHandler] onRequestStart postDataStream isEof:' + stream.isEof());
+                            console.log('[schemeHandler] onRequestStart postDataStream position:' + 
+                            stream.getPosition());
                           }).catch((error: BusinessError) => {
                             console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                           })
@@ -159,7 +159,7 @@ struct webHttpBodyStreamTest {
                           console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                         })
                       } else {
-                        console.log("[schemeHandler] onRequestStart has no http body stream");
+                        console.log('[schemeHandler] onRequestStart has no http body stream');
                       }
                     } catch (error) {
                       console.error(`ErrorCode: ${(error as BusinessError).code}`);

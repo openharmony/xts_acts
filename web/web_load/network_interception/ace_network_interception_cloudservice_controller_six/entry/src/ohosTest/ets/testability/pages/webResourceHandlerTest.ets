@@ -38,7 +38,7 @@ struct webResourceHandlerTest {
   @State isMainFrameUrl: boolean = false;
   @State isLoadUrlFrameUrl: boolean = false;
   @State isSubFrameUrl: boolean = false;
-  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+  htmlData: string = '<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>';
 
   @State testDidReceiveResponse: number= -1;
   @State testDidReceiveResponseBody: number= -1;
@@ -159,7 +159,7 @@ struct webResourceHandlerTest {
               }
             })
           }
-          Web({ src: "https://www.example.com", controller: this.controller })
+          Web({ src: 'https://www.example.com', controller: this.controller })
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
             .imageAccess(this.imageAccess)
@@ -180,10 +180,10 @@ struct webResourceHandlerTest {
                     try {
                       response.setNetErrorCode(WebNetErrorList.NET_OK);
                       response.setStatus(200);
-                      response.setStatusText("OK");
-                      response.setMimeType("text/html");
-                      response.setEncoding("utf-8");
-                      response.setHeaderByName("header1", "value1", false);
+                      response.setStatusText('OK');
+                      response.setMimeType('text/html');
+                      response.setEncoding('utf-8');
+                      response.setHeaderByName('header1', 'value1', false);
                     } catch (error) {
                       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code}`);
                     }
@@ -192,12 +192,12 @@ struct webResourceHandlerTest {
                     let buf = buffer.from(this.htmlData)
                     try {
                       if (buf.length == 0) {
-                        console.log("[schemeHandler] length 0");
+                        console.log('[schemeHandler] length 0');
                         resourceHandler.didReceiveResponse(response);
                         // 如果认为buf.length为0是正常情况，则调用resourceHandler.didFinish，否则调用resourceHandler.didFail
                         resourceHandler.didFail(WebNetErrorList.ERR_FAILED);
                       } else {
-                        console.log("[schemeHandler] length 1");
+                        console.log('[schemeHandler] length 1');
                         resourceHandler.didReceiveResponse(response);
                         resourceHandler.didReceiveResponseBody(buf.buffer);
                         resourceHandler.didFinish();
