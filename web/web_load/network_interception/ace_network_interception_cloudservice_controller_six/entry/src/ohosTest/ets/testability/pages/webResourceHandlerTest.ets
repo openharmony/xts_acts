@@ -76,7 +76,7 @@ struct webResourceHandlerTest {
               console.info('key==>' + this.emitKey)
               switch (this.emitKey) {
                 case 'emitWebView_didReceiveResponse_INVAILD': {
-                  this.controller.loadUrl('https://www.example.com');
+                  this.controller.loadUrl(URL);
                   let check = (v1: number, v2: number): boolean => {
                     return v1 == v2 ? true:false;
                   }
@@ -84,7 +84,7 @@ struct webResourceHandlerTest {
                   break;
                 }
                 case 'emitWebView_didReceiveResponseBody_INVALID': {
-                  this.controller.loadUrl('https://www.example.com');
+                  this.controller.loadUrl(URL);
                   let check = (v1: number, v2: number): boolean => {
                     return v1 == v2 ? true:false;
                   }
@@ -92,7 +92,7 @@ struct webResourceHandlerTest {
                   break;
                 }
                 case 'emitWebView_didFinish_INVALID': {
-                  this.controller.loadUrl('https://www.example.com');
+                  this.controller.loadUrl(URL);
                   let check = (v1: number, v2: number): boolean => {
                     return v1 == v2 ? true:false;
                   }
@@ -100,7 +100,7 @@ struct webResourceHandlerTest {
                   break;
                 }
                 case 'emitWebView_didFail_INVALID': {
-                  this.controller.loadUrl('https://www.example.com');
+                  this.controller.loadUrl(URL);
                   let check = (v1: number, v2: number): boolean => {
                     return v1 == v2 ? true:false;
                   }
@@ -126,7 +126,7 @@ struct webResourceHandlerTest {
                 case 'testWebNavigationType002': {
                   try {
                     let result = false;
-                    this.controller.loadUrl('https://www.example.com');
+                    this.controller.loadUrl(URL);
                     await Utils.sleep(3000);
                     this.controller.backward();
                     await Utils.sleep(3000)
