@@ -46,6 +46,7 @@ import RelationalStoreCustom from './RelationalStoreCustom.test';
 import RelationalStoreNoneTokenizer from './RelationalStoreNoneTokenizer.test'
 import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test'
 import relationalStoreInterfaceTest from './relationalstore.test'
+import error14800014Test from './error_14800014.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -82,5 +83,6 @@ export default function testsuite() {
   RelationalStoreNoneTokenizer()
   RelationalStoreSetDistributedTables()
   relationalStoreInterfaceTest()
+  error14800014Test()
 }
 
