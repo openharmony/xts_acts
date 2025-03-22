@@ -16,7 +16,7 @@
 import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import featureAbility from '@ohos.ability.featureAbility';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium";
 
 export default function requestUploadJSUnit() {
   describe('requestUploadTest', () => {
@@ -97,7 +97,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0001 request.NETWORK_MOBILE:" + request.NETWORK_MOBILE);
@@ -124,7 +124,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0002', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0002 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0002 request.ERROR_FILE_ALREADY_EXISTS:" + request.ERROR_FILE_ALREADY_EXISTS);
@@ -151,7 +151,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0003', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0003', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0003 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0003 request.ERROR_TOO_MANY_REDIRECTS:" + request.ERROR_TOO_MANY_REDIRECTS);
@@ -178,7 +178,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0004', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0004', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0004 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.PAUSED_UNKNOWN:" + request.PAUSED_UNKNOWN);
@@ -205,7 +205,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0005', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0005', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0005 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_FAILED:" + request.SESSION_FAILED);
@@ -234,7 +234,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0006', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0006', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0006 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_PERMISSION:" + request.EXCEPTION_PERMISSION);
@@ -271,7 +271,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_UPLOAD_API_CALLBACK_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_CALLBACK_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 uploadConfig = " + JSON.stringify(uploadConfig));
@@ -307,7 +307,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_UPLOAD_API_PROMISE_0001', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_PROMISE_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 UploadConfig = " + JSON.stringify(uploadConfig));
@@ -343,7 +343,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_UPLOAD_API_0007', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0007', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0007 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0007 UploadConfig = " + JSON.stringify(uploadConfig));
@@ -380,7 +380,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_UPLOAD_API_0008', 0, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0008', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0008 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0008 UploadConfig = " + JSON.stringify(uploadConfig));

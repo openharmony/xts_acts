@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import systemDateTime from "@ohos.systemDateTime";
 
 export default function timeNdkTest() {
@@ -54,7 +54,7 @@ export default function timeNdkTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_Time_TimeManagement_Obtaining_5700', 0, async (done: Function) => {
+    it('SUB_Time_TimeManagement_Obtaining_5700', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Time_TimeManagement_Obtaining_5700 start");
       let result: number = testNapi.getTimezone_0100();
       console.info('====>SUB_Time_TimeManagement_Obtaining_5700 result: ' + result);
@@ -70,7 +70,7 @@ export default function timeNdkTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_Time_TimeManagement_Obtaining_5500', 0, async (done: Function) => {
+    it('SUB_Time_TimeManagement_Obtaining_5500', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Time_TimeManagement_Obtaining_5500 start");
       let result: number = testNapi.getTimezone_0200();
       console.info('====>SUB_Time_TimeManagement_Obtaining_5500 result: ' + result);
@@ -86,7 +86,7 @@ export default function timeNdkTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_Time_TimeManagement_Obtaining_5800', 0, async (done: Function) => {
+    it('SUB_Time_TimeManagement_Obtaining_5800', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Time_TimeManagement_Obtaining_5800 start");
       let result: string = testNapi.getTimezone_0300();
       console.info('====>SUB_Time_TimeManagement_Obtaining_5800 result: ' + result);
@@ -102,7 +102,7 @@ export default function timeNdkTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_Time_TimeManagement_Obtaining_5600', 0, async (done: Function) => {
+    it('SUB_Time_TimeManagement_Obtaining_5600', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_Time_TimeManagement_Obtaining_5600 start");
       let result: string = testNapi.getTimezone_0400();
       console.info('====>SUB_Time_TimeManagement_Obtaining_5600 result: ' + result);

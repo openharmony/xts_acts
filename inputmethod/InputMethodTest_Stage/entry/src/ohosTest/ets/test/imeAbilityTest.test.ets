@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod'
 import { BusinessError } from '@ohos.base'
 import deviceinfo from '@ohos.deviceInfo';
@@ -92,7 +92,7 @@ export default function imeAbilityTest() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IMEAbility_0001', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMEAbility_0001', Level.LEVEL2, async (done: Function) => {
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
       let imExtAbilityProperty: inputMethod.InputMethodProperty = {
         packageName: "com.acts.imeability.test",
@@ -124,7 +124,7 @@ export default function imeAbilityTest() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IMEAbility_0002', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMEAbility_0002', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------SUB_InputMethod_IMEAbility_0002 start-------------');
 
       let imExtAbilityProperty: inputMethod.InputMethodProperty = {

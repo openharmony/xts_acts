@@ -14,7 +14,7 @@
  */
 import wallpaper from '@ohos.wallpaper';
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
@@ -32,7 +32,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackSystemNoPermission101', 0, async (done: Function) => {
+        it('testResetCallbackSystemNoPermission101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetCallbackSystemNoPermission101 start-----------------');
             wallpaper.reset(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -61,7 +61,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseSystemNoPermission101', 0, async (done: Function) => {
+        it('testResetPromiseSystemNoPermission101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetPromiseSystemNoPermission101 start-----------------');
             try{
                 console.info('====>testResetPromiseSystemNoPermission101 NoPermission check');
@@ -85,7 +85,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackLockNoPermission102', 0, async (done: Function) => {
+        it('testResetCallbackLockNoPermission102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetCallbackLockNoPermission102 start-----------------');
             wallpaper.reset(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -114,7 +114,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseLockNoPermission102', 0, async (done: Function) => {
+        it('testResetPromiseLockNoPermission102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetPromiseLockNoPermission102 start-----------------');
             try{
                 console.info('====>testResetPromiseLockNoPermission102 NoPermission check');
@@ -139,7 +139,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseLockNoPermission104', 0, async (done: Function) => {
+        it('testSetWallpaperURLPromiseLockNoPermission104', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseLockNoPermission104 start------------------' );
             try{
                 console.info('====>testSetWallpaperURLPromiseLockNoPermission104 NoPermission check');
@@ -164,7 +164,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackSystemNoPermission103', 0, async (done: Function) => {
+        it('testSetWallpaperURLCallbackSystemNoPermission103', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackSystemNoPermission103 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_SYSTEM, (err, data) => {
                 try{
@@ -194,7 +194,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseSystemNoPermission103', 0, async (done: Function) => {
+        it('testSetWallpaperURLPromiseSystemNoPermission103', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseSystemNoPermission103 start------------------' );
             try{
                 console.info('====>testSetWallpaperURLPromiseSystemNoPermission103 NoPermission check');
@@ -219,7 +219,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackLockNoPermission104', 0, async (done: Function) => {
+        it('testSetWallpaperURLCallbackLockNoPermission104', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackLockNoPermission104 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_LOCKSCREEN, (err, data) => {
                 try{
@@ -248,7 +248,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFileCallbackNoPermission101', 0, async (done: Function) => {
+        it('testGetFileCallbackNoPermission101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFileCallbackNoPermission101 start-----------------');
             wallpaper.getFile(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -277,7 +277,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFilePromiseNoPermission101', 0, async (done: Function) => {
+        it('testGetFilePromiseNoPermission101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFilePromiseNoPermission101 start-----------------');
             try{
                 console.info('====>testGetFilePromiseNoPermission101 NoPermission check');
@@ -301,7 +301,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFileCallbackNoPermission102', 0, async (done: Function) => {
+        it('testGetFileCallbackNoPermission102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFileCallbackNoPermission102 start-----------------');
             wallpaper.getFile(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -330,7 +330,7 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFilePromiseNoPermission102', 0, async (done: Function) => {
+        it('testGetFilePromiseNoPermission102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFilePromiseNoPermission102 start-----------------');
             try{
                 console.info('====>testGetFilePromiseNoPermission102 NoPermission check');
