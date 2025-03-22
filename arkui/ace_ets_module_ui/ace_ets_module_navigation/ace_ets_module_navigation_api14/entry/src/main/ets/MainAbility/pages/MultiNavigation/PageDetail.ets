@@ -20,7 +20,7 @@ export struct PageDetail {
   @State message: string = 'PageDetail';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   text: String = '';
-  param: Object = new Object();
+  param: {} = {};
 
   build() {
     NavDestination() {
