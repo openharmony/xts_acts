@@ -211,6 +211,7 @@ export default function SerialTest() {
         done();
       }
     })
+
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_Func_0100
      * @tc.name     : testRequestSerialRight001
@@ -1281,6 +1282,116 @@ export default function SerialTest() {
       } catch (err) {
         console.error(TAG, 'testOpen005 catch err code: ', err.code, ', message: ', err.message);
         expect(err.code).assertEqual(31400002);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_cancelSerialRight_Func_0100
+     * @tc.name     : testCancelSerialRight001
+     * @tc.desc     : cancelSerialRight successfully.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 0
+     */
+    it('testCancelSerialRight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        console.info(TAG, 'testCancelSerialRight001 start, openPortId: ', openPortId);
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        console.info(TAG, 'it requestSerialRight start');
+        let futureRes: Promise<boolean> = serial.requestSerialRight(openPortId);
+        await driveFn();
+        try {
+          let hasRight: boolean = await futureRes;
+          await sleep(500);
+          console.info(TAG, 'getPermission isAgree: ', hasRight);
+          serial.cancelSerialRight(openPortId);
+          await sleep(500);
+          expect(serial.hasSerialRight(openPortId)).assertFalse();
+          done();
+        } catch (err) {
+          console.error(TAG, 'cancelSerialRight catch err name: ', err.name, ', message: ', err.message);
+          expect().assertFail();
+        }
+      } catch (err) {
+        console.error(TAG, 'testCancelSerialRight001 catch err code: ', err.code, ', message: ', err.message);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_cancelSerialRight_ErrCode_0100
+     * @tc.name     : testCancelSerialRight002
+     * @tc.desc     : invalid portId to cancelSerialRight.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 0
+     */
+    it('testCancelSerialRight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testCancelSerialRight002 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidInput: number = -1;
+        serial.cancelSerialRight(invalidInput);
+        expect().assertFail();
+      } catch (error) {
+        expect(error.code).assertEqual(401);
+        console.error(TAG, 'testCancelSerialRight002 catch err code: ', error.code, ', message: ', error.message);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_cancelSerialRight_ErrCode_0200
+     * @tc.name     : testCancelSerialRight003
+     * @tc.desc     : not exist portId to cancelSerialRight.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 0
+     */
+    it('testCancelSerialRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testCancelSerialRight003 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidPort: number = 100;
+        serial.cancelSerialRight(invalidPort);
+        console.info(TAG, 'testCancelSerialRight003');
+      } catch (error) {
+        expect(error.code).assertEqual(31400003);
+        console.error(TAG, 'testCancelSerialRight003 catch err code: ', error.code, ', message: ', error.message);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_cancelSerialRight_ErrCode_0300
+     * @tc.name     : testCancelSerialRight004
+     * @tc.desc     : no permission to cancelSerialRight.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 0
+     */
+    it('testCancelSerialRight004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testCancelSerialRight004 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        serial.cancelSerialRight(openPortId);
+        console.info(TAG, 'testCancelSerialRight004');
+      } catch (error) {
+        expect(error.code).assertEqual(31400002);
+        console.error(TAG, 'testCancelSerialRight004 catch err code: ', error.code, ', message: ', error.message);
         done();
       }
     })
