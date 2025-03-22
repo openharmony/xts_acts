@@ -29,7 +29,7 @@ struct WebCookieManagerConfigCookie {
   responseWeb: WebResourceResponse = new WebResourceResponse()
   @State str: string = ''
   @State javaScriptAccess: boolean = true;
-  no_error: string = 'no error happened'
+
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
