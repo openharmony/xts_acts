@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
-import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
-import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
-
-export default function testsuite() {
-  OhAVRecorderNDKM4aTest();
-  OhAVRecorderNDKMp3Test();
-  OhAVRecorderNDKM4aErrTest();
+{
+  "app": {
+    "bundleName": "com.avrecorderndk.avrecorderndktest",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
 }

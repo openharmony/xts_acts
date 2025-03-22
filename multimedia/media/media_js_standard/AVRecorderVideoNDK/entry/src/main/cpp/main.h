@@ -1,10 +1,10 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,13 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef AVRECORDER_MAIN_H
+#define AVRECORDER_MAIN_H
 
-import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
-import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
-import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
+#include "hilog/log.h"
+#include <multimedia/player_framework/avrecorder_base.h>
+#include <multimedia/player_framework/avrecorder.h>
 
-export default function testsuite() {
-  OhAVRecorderNDKM4aTest();
-  OhAVRecorderNDKMp3Test();
-  OhAVRecorderNDKM4aErrTest();
-}
+struct OH_AVRecorder *g_avRecorder = {};
+OH_AVRecorder *InitRecorder();
+void StartRecording(OH_AVRecorder *ohAvRecorder);
+#endif // AVRECORDER_MAIN_H
