@@ -32,28 +32,6 @@ export default function imeAbilityTest() {
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
     beforeAll((done: Function) => {
-      if(deviceinfo.deviceType === 'wearable'){
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info('====> getSetting success!')
-        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-          let t = setTimeout(async ()=>{
-            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
-            const ATTRIBUTE: inputMethod.TextConfig = {
-              inputAttribute: {
-                textInputType: 0, enterKeyType: 0
-              }
-            }
-            try {
-              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
-              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
-            } catch (error) {
-              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
-            }
-            clearTimeout(t);
-            done();
-          }, 3000)
-        });
-      } else {
         let inputM = inputMethod.getCurrentInputMethod()
         console.info("====>beforeAll: switchInputMethod to: " + JSON.stringify(inputM));
         prop.packageName = inputM.packageName;
@@ -61,7 +39,6 @@ export default function imeAbilityTest() {
         prop.name = inputM.packageName;
         prop.id = inputM.methodId;
         done();
-      }
     });
 
     /**
