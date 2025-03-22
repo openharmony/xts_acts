@@ -620,8 +620,8 @@ export default function CameraMirrorTest() {
               expect().assertFail();
             }
           } else {
-            console.info(TAG +
-              "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with mirror not support");
+              console.info(TAG +
+                "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with mirror not support");
           }
 
           await sleep(1000);
@@ -670,7 +670,7 @@ export default function CameraMirrorTest() {
       } catch (err) {
         console.info(TAG +
           "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0200 FAILED err : " + JSON.stringify(err));
-        expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+          expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
       }
       stopCameraSession()
       done()
@@ -704,7 +704,7 @@ export default function CameraMirrorTest() {
       } catch (err) {
         console.info(TAG +
           "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0300 FAILED err : " + JSON.stringify(err));
-        expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+          expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
       }
       done()
     })
