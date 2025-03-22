@@ -48,8 +48,6 @@
 #include <thread>
 
 using namespace std;
-using namespace OHOS_CAMERA_SAMPLE;
-static NDKCamera *gndkCamera = nullptr;
 
 static OH_AVRecorder_Config *config;
 // 设置状态回调
@@ -557,7 +555,6 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameWidth : %{public}d", videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameHeight : %{public}d", videoFrameHeight);
 
-    gndkCamera = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
     int result = 6;
     napi_value res;
     napi_create_int32(env, result, &res);
