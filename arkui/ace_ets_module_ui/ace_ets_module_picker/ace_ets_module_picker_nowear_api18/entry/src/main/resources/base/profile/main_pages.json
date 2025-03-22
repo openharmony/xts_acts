@@ -17,6 +17,12 @@
     "MainAbility/pages/calendarPickerDialog/calendarPickerDialogBackgroundStyle",
     "MainAbility/pages/datePickerDialog/datePickerDialogBGBlurStyle",
     "MainAbility/pages/datePickerDialog/datePickerDialogBGColor",
-    "MainAbility/pages/datePickerDialog/datePickerDialogShadow"
+    "MainAbility/pages/datePickerDialog/datePickerDialogShadow",
+    "MainAbility/pages/textPickerDialog/textPickerDialogBGBlurStyle",
+    "MainAbility/pages/textPickerDialog/textPickerDialogBgColor",
+    "MainAbility/pages/textPickerDialog/textPickerDialogShadow",
+    "MainAbility/pages/timePickerDialog/timePickerDialogBGBlurStyle",
+    "MainAbility/pages/timePickerDialog/timePickerDialogBGColor",
+    "MainAbility/pages/timePickerDialog/timePickerDialogShadow"
   ]
 }

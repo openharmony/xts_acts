@@ -1,3 +1,17 @@
+/**
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import { Driver, ON, Component } from '@kit.TestKit';
@@ -9,7 +23,7 @@ export default function TimePickerDialogBGColorTest() {
     beforeAll(async () => {
       console.info("TimePickerDialogBGColorTest beforeEach start");
       let options: router.RouterOptions = {
-        url:'MainAbility/pages/timePickerDialog/TimePickerDialogBGColor',
+        url:'MainAbility/pages/timePickerDialog/timePickerDialogBGColor',
       }
       try {
         router.clear();
@@ -25,9 +39,14 @@ export default function TimePickerDialogBGColorTest() {
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("textAreaInputTest after each called");
+      console.info("TimePickerDialogBGColor after each called");
     });
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_001
+     * @tc.name  : TimePickerDialogBGColorTest_001
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor Color.White
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_001',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('ColorWhiteID'));
@@ -42,7 +61,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_002
+     * @tc.name  : TimePickerDialogBGColorTest_002
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_002',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('rgb(255, 100, 255)ID'));
@@ -57,7 +81,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_003
+     * @tc.name  : TimePickerDialogBGColorTest_003
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_003',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('0x008080ID'));
@@ -72,7 +101,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_004
+     * @tc.name  : TimePickerDialogBGColorTest_004
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_004',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('00FFFFID'));
@@ -87,7 +121,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_005
+     * @tc.name  : TimePickerDialogBGColorTest_005
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_005',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('colorBlueID'));
@@ -102,7 +141,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_006
+     * @tc.name  : TimePickerDialogBGColorTest_006
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_006',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('nullID'));
@@ -117,7 +161,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_007
+     * @tc.name  : TimePickerDialogBGColorTest_007
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_007',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('undefinedID'));
@@ -132,7 +181,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_008
+     * @tc.name  : TimePickerDialogBGColorTest_008
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_008',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('xxxID'));
@@ -147,7 +201,12 @@ export default function TimePickerDialogBGColorTest() {
       await btn1?.click();
       done();
     })
-
+    /* *
+     * @tc.number: TimePickerDialogBGColorTest_009
+     * @tc.name  : TimePickerDialogBGColorTest_009
+     * @tc.desc  : To test the TimePickerDialog BackgroundColor
+     * @tc.level : Level 0
+     */
     it('TimePickerDialogBGColorTest_009',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('-100ID'));
