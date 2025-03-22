@@ -386,7 +386,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
         for (let i = 0; i < mCameraNum; i++) {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_OFF_0100 start for camera[" + i + "]");
-          await createInput(i);
+                    await createInput(i);
           createOutput(i);
           try {
             mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
@@ -452,7 +452,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
         for (let i = 0; i < mCameraNum; i++) {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 start for camera[" + i + "]");
-          await createInput(i);
+                    await createInput(i);
           createOutput(i);
           try {
             mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
@@ -477,13 +477,13 @@ export default function cameraSessionAutoDeviceSwitchTest() {
           await mCameraSession.commitConfig();
           let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 end for camera[" +
-            i + "] isSupported == "+ isSupported);
+          i + "] isSupported == "+ isSupported);
           if (!isSupported) {
             try {
               mCameraSession.enableAutoDeviceSwitch(true);
             } catch (err) {
               console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 end for camera[" +
-                i + "] err.code == "+ err.code);
+              i + "] err.code == "+ err.code);
               expect(err.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
             }
           }
