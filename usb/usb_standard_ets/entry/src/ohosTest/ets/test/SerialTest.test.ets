@@ -1262,6 +1262,35 @@ export default function SerialTest() {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_read_ErrCode_0500
+     * @tc.name     : testRead006
+     * @tc.desc     : read buffer overflow.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testRead006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {   
+      await sleep(1000);
+      try {
+        console.info(TAG, 'testRead006 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let readBuffer: Uint8Array = new Uint8Array(1);
+        serial.open(openPortId);
+        await serial.read(openPortId, readBuffer, 1000);
+        serial.close(openPortId);        
+        expect().assertFail();
+      } catch (error) {
+        console.error(TAG, 'testRead006 catch err name: ', error);
+        expect(error).assertEqual(31400007);
+        serial.close(openPortId);
+        done();
+      }
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_open_Func_0400
      * @tc.name     : testOpen005
      * @tc.desc     : open failed.
