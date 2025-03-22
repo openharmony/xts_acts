@@ -31,8 +31,8 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSendableColorSpaceManagerCreate_Standard', 0, async (done: Function) => {
-
+    it('testSendableColorSpaceManagerCreate_Standard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let msg = "====testSendableColorSpaceManagerCreate_Standard===="
       console.log(msg + ' begin')
       try {
@@ -56,8 +56,8 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSendableColorSpaceManagerCreate_UserDefined', 0, async (done: Function) => {
-
+    it('testSendableColorSpaceManagerCreate_UserDefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let msg = "====testSendableColorSpaceManagerCreate_UserDefined===="
       console.log(msg + ' begin')
       try {
@@ -92,8 +92,8 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetColorSpaceName_Standard', 0, async (done: Function) => {
-
+    it('testGetColorSpaceName_Standard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let msg = "====testGetColorSpaceName_Standard===="
       console.log(msg + ' begin')
       try {
@@ -120,8 +120,7 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWhitePoint_Standard', 0, async (done: Function) => {
-
+    it('testGetWhitePoint_Standard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testGetWhitePoint_Standard===="
       console.log(msg + ' begin')
       try {
@@ -148,8 +147,7 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetGamma_Standard', 0, async (done: Function) => {
-
+    it('testGetGamma_Standard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testGetGamma_Standard===="
       console.log(msg + ' begin')
       try {
@@ -176,8 +174,8 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetColorSpaceName_UserDefined', 0, async (done: Function) => {
-
+    it('testGetColorSpaceName_UserDefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let msg = "====testGetColorSpaceName_UserDefined===="
       console.log(msg + ' begin')
       try {
@@ -215,8 +213,7 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWhitePoint_UserDefined', 0, async (done: Function) => {
-
+    it('testGetWhitePoint_UserDefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testGetWhitePoint_UserDefined===="
       console.log(msg + ' begin')
       try {
@@ -254,8 +251,7 @@ export default function sendableColorSpaceManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetGamma_UserDefined', 0, async (done: Function) => {
-
+    it('testGetGamma_UserDefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testGetGamma_UserDefined===="
       console.log(msg + ' begin')
       try {

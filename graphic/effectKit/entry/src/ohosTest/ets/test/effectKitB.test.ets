@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import image from '@ohos.multimedia.image';
 import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
@@ -30,7 +30,7 @@ export default function effectKitBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetTopProportionColors', 0, (done: Function) => {
+    it('testGetTopProportionColors', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let msgStr = 'testGetTopProportionColors'
       console.log(msgStr + ' begin');
       const color = new ArrayBuffer(96);
@@ -83,7 +83,7 @@ export default function effectKitBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testInvert', 0, (done: Function) => {
+    it('testInvert', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let msgStr = 'testInvert'
       console.log(msgStr + ' begin');
       const color = new ArrayBuffer(96);
@@ -136,7 +136,7 @@ export default function effectKitBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetColorMatrix', 0, (done: Function) => {
+    it('testSetColorMatrix', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let msgStr = 'testSetColorMatrix'
       console.log(msgStr + ' begin');
       const color = new ArrayBuffer(96);
@@ -195,7 +195,7 @@ export default function effectKitBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTileMode', 0, (done: Function) => {
+    it('testTileMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let msg = 'testTileMode'
       console.log(msg + ' begin')
       expect(effectKit.TileMode.CLAMP).assertEqual(0)
@@ -213,7 +213,7 @@ export default function effectKitBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testBlurTileMode', 0, (done: Function) => {
+    it('testBlurTileMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let msgStr = 'testBlurTileMode'
       console.log(msgStr + ' begin');
       const color = new ArrayBuffer(96);
