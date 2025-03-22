@@ -22,6 +22,7 @@
 
 #include "container.h"
 
+
 namespace NativeXComponentSample {
     namespace {
         void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window) {

@@ -40,6 +40,7 @@
 #include "manager.h"
 
 
+
 namespace NativeXComponentSample {
 Manager Manager::manager_;
 ArkUI_NodeHandle refresh;

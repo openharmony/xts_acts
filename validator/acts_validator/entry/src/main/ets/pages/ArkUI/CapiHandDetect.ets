@@ -25,6 +25,7 @@ const TAG = '[CapiHandDetect]';
 struct CapiHandDetect {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CapiHandDetect';
+  
   @State StepTips: string =  '操作步骤：1、左手拿手机，左手长按‘单一手势+onTouch’按钮\n'+'\n'+
     '预期结果：打印1“\n'+
     '操作步骤：左手拿手机，右手长按‘单一手势+onTouch’按钮\n' + '预期结果：打印2“\n' +
