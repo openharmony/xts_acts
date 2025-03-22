@@ -15,7 +15,7 @@
 
 
 import secureElement from '@ohos.secureElement';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -83,9 +83,9 @@ export default function newSEServicetest() {
          * @tc.name Test isConnected
          * @tc.desc Check whether the SE service is connected.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0600', 0, function () {
+        it('SUB_Communication_NFC_secureElement_js_0600', Level.LEVEL0, function () {
             try {
                 let nfcisConnected = Service.isConnected();
                 console.info("[NFC_test]6 SEService The connection status is: " + nfcisConnected);
@@ -101,9 +101,9 @@ export default function newSEServicetest() {
          * @tc.name Test getVersion
          * @tc.desc Returns the version number of the OMA specification.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0700', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0700', Level.LEVEL0, function ()  {
             try {
                 let getSEVersion = Service.getVersion();
                 console.info("[NFC_test]7 OMA The version number is: " + getSEVersion);
@@ -119,9 +119,9 @@ export default function newSEServicetest() {
          * @tc.name Test getName
          * @tc.desc Returns the name of this reader.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0800', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0800', Level.LEVEL0, function ()  {
             try {
                 let nfcOmaReaderList = Service.getReaders();
                 console.info("[nfc_test]8 Result of getReaders:" + nfcOmaReaderList );
@@ -147,9 +147,9 @@ export default function newSEServicetest() {
          * @tc.name Test isSecureElementPresent
          * @tc.desc Indicates whether the corresponding secure element is available.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0900', 0, async function (done)  {
+        it('SUB_Communication_NFC_secureElement_js_0900', Level.LEVEL0, async function (done)  {
             try {
                     let nfcOmaReaderList2 = [];
                     getReader = Service.getReaders();  
@@ -192,8 +192,8 @@ export default function newSEServicetest() {
                     expect(closeSession2).assertTrue();
                 }
             } catch (error) {
-                console.info("[NFC_test]9 isSecureElementPresent occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]9 isSecureElementPresent occurs exception:" + error + "/" + error.code);
+                expect(801).assertEqual(error.code);
             }
             done();
         })
@@ -203,9 +203,9 @@ export default function newSEServicetest() {
          * @tc.name Test shutdown
          * @tc.desc Release all SE resources allocated to the service.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1000', 0, async function (done)  {
+        it('SUB_Communication_NFC_secureElement_js_1000', Level.LEVEL0, async function (done)  {
             try {
                 Service.shutdown();
                 console.info('[NFC_test]10 eseshutdown pass');
@@ -241,15 +241,15 @@ export default function newSEServicetest() {
          * @tc.name Test omapi.on and omapi.off
          * @tc.desc Close a single omapi.on and omapi.off
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1400', 0, function (){
+        it('SUB_Communication_NFC_secureElement_js_1400', Level.LEVEL0, function (){
             try{
                 let getOmapiOnData = secureElement.on('stateChanged', seStateOnCb);
                 console.info("[NFC_test]14 getOmapiOnData is " + getOmapiOnData);
             }catch(error){
                 console.info("[NFC_test]14 omapi on error catch Code: " + error.code + "/" +error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
 
             try{
@@ -258,7 +258,7 @@ export default function newSEServicetest() {
                 console.info("[NFC_test]14 getOmapiOffData is " + getOmapiOffData);
             }catch(error){
                 console.info("[NFC_test]14 omapi off error catch Code: " + error.code + "/" +error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
         })
 
@@ -267,9 +267,9 @@ export default function newSEServicetest() {
          * @tc.name Test omapi.on and omapi.off
          * @tc.desc Close a single omapi.on and omapi.off
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1500', 0, function (){
+        it('SUB_Communication_NFC_secureElement_js_1500', Level.LEVEL0, function (){
             try{
                 let getOmapiOnData = secureElement.on(null, seStateOnCb);
                 console.info("[NFC_test]15 stateChanged=null omapi on getOmapiOnData is " + getOmapiOnData);
@@ -312,9 +312,9 @@ export default function newSEServicetest() {
          * @tc.name Test omapi.on and omapi.off
          * @tc.desc Close a single omapi.on and omapi.off
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1600', 0, function (){
+        it('SUB_Communication_NFC_secureElement_js_1600', Level.LEVEL0, function (){
             try{
                 let getOmapiOnData = secureElement.on('stateChanged', seStateOnCb);
                 console.info("[NFC_test]16 getOmapiOnData is " + getOmapiOnData);

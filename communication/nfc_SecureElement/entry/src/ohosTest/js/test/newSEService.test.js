@@ -15,7 +15,7 @@
 
 
 import secureElement from '@ohos.secureElement';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -76,16 +76,16 @@ export default function newSEServicetest() {
          * @tc.name Test isConnected
          * @tc.desc Check whether the SE service is connected.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0100', 0, function () {
+        it('SUB_Communication_NFC_secureElement_js_0100', Level.LEVEL0, function () {
             try {
                 let nfcisConnected = Service.isConnected();
                 console.info("[NFC_test]1 SEService The connection status is: " + nfcisConnected);
                 expect(nfcisConnected).assertTrue();
             } catch (error) {
-                console.info("[NFC_test]1 exception occurred when checking the connection status.:" + error)
-                expect().assertFail();
+                console.info("[NFC_test]1 exception occurred when checking the connection status.:" + error + "/" + "error.code");
+                expect(801).assertEqual(error.code);
             }
         })
 
@@ -94,16 +94,16 @@ export default function newSEServicetest() {
          * @tc.name Test getVersion
          * @tc.desc Returns the version number of the OMA specification.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0200', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0200', Level.LEVEL0, function ()  {
             try {
                 let getSEVersion = Service.getVersion();
                 console.info("[NFC_test]2 OMA The version number is: " + getSEVersion);
                 expect(typeof (getSEVersion)).assertEqual('string');
             } catch (error) {
-                console.info("[NFC_test]2 Failed to obtain the version.:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]2 Failed to obtain the version.:" + error + "/" + "error.code");
+                expect(801).assertEqual(error.code);
             }
         })
 
@@ -112,9 +112,9 @@ export default function newSEServicetest() {
          * @tc.name Test getName
          * @tc.desc Returns the name of this reader.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0300', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0300', Level.LEVEL0, function ()  {
             try {
                 let nfcOmaReaderList = Service.getReaders();
                 console.info("[nfc_test]3 Result of getReaders:" + nfcOmaReaderList );
@@ -130,8 +130,8 @@ export default function newSEServicetest() {
                     expect(typeof (getNfcname)).assertEqual('string');
                 }
             } catch (error) {
-                console.info("[NFC_test]3 getName occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]3 getName occurs exception:" + error + "/" + "error.code");
+                expect(801).assertEqual(error.code);
             }
         })
 
@@ -140,9 +140,9 @@ export default function newSEServicetest() {
          * @tc.name Test isSecureElementPresent
          * @tc.desc Indicates whether the corresponding secure element is available.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0400', 0, async function (done)  {
+        it('SUB_Communication_NFC_secureElement_js_0400', Level.LEVEL0, async function (done)  {
             try {
                         let nfcOmaReaderList2 = [];
                         getReader = Service.getReaders();  
@@ -196,9 +196,9 @@ export default function newSEServicetest() {
          * @tc.name Test shutdown
          * @tc.desc Release all SE resources allocated to the service.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0500', 0, async function (done)  {
+        it('SUB_Communication_NFC_secureElement_js_0500', Level.LEVEL0, async function (done)  {
             try {
                 Service.shutdown();
                 console.info('[NFC_test] 05 eseshutdown pass');
@@ -223,8 +223,8 @@ export default function newSEServicetest() {
                     console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
                 })
             } catch (error) {
-                console.info("[NFC_test]5 getReaders occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]5 getReaders occurs exception:" + error + "/" + "error.code");
+                expect(801).assertEqual(error.code);
             }
             done();
         })
