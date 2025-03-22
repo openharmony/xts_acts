@@ -12,13 +12,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
-import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
-import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
-
-export default function testsuite() {
-  OhAVRecorderNDKM4aTest();
-  OhAVRecorderNDKMp3Test();
-  OhAVRecorderNDKM4aErrTest();
-}
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';
