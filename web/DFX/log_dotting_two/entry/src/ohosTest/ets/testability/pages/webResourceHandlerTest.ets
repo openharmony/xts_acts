@@ -115,7 +115,7 @@ struct webResourceHandlerTest {
                     let check = (v1: boolean, v2: boolean): boolean => {
                       return v1 === v2 ? true: false;
                     }
-                    result = this.webNavigationType === WebNavigationType.MAIN_FRAME_NEW_ENTRY ? true : false;
+                    result = this.webNavigationType === 1 ? true : false;
                     await waitForAssert(()=>result, check, true, 202503212, this.emitKey);
                   } catch (error) {
                     let e: business_error.BusinessError = error as business_error.BusinessError;
@@ -133,7 +133,7 @@ struct webResourceHandlerTest {
                     let check = (v1: boolean, v2: boolean): boolean => {
                       return v1 === v2 ? true: false;
                     }
-                    result = this.webNavigationType === WebNavigationType.MAIN_FRAME_EXISTING_ENTRY ? true : false;
+                    result = this.webNavigationType === 2 ? true : false;
                     await waitForAssert(()=>result, check, true, 202503213, this.emitKey);
                   } catch (error) {
                     let e: business_error.BusinessError = error as business_error.BusinessError;
@@ -149,7 +149,7 @@ struct webResourceHandlerTest {
                     let check = (v1: boolean, v2: boolean): boolean => {
                       return v1 === v2 ? true: false;
                     }
-                    result = this.webNavigationType === WebNavigationType.NAVIGATION_TYPE_NEW_SUBFRAME ? true : false;
+                    result = this.webNavigationType === 4 ? true : false;
                     await waitForAssert(()=>result, check, true, 202503214, this.emitKey);
                   } catch (error) {
                     let e: business_error.BusinessError = error as business_error.BusinessError;
