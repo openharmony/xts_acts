@@ -35,7 +35,6 @@
 #include <multimedia/player_framework/native_averrors.h>
 #include "native_image/native_image.h"
 #include "native_window/external_window.h"
-#include "camera_manager.h"
 #include "GLES3/gl32.h"
 #include <typeinfo>
 #include <fcntl.h>
