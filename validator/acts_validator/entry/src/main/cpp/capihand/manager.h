@@ -24,7 +24,6 @@
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include <napi/native_api.h>
 
-
 #include "container.h"
 namespace NativeXComponentSample {
     class Manager {
