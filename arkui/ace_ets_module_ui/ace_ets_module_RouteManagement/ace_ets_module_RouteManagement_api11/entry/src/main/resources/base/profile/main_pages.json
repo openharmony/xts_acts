@@ -39,6 +39,8 @@
         "MainAbility/pages/ohosRouter/router",
 	"MainAbility/pages/Router/ohosRouterA",
         "MainAbility/pages/Router/ohosRouterB"
-
+        "MainAbility/pages/back_router/RouterBackAlert",
+        "MainAbility/pages/back_router/DisableAlertBeforeBackPage",
+        "MainAbility/pages/back_router/EnableAlertBeforeBackPage"
     ]
 }
