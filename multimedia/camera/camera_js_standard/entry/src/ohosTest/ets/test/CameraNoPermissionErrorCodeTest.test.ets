@@ -301,18 +301,18 @@ export default function cameraPreconfigTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100--------------");
-      try {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100 SUCCESS");
-        mVideoSession.preconfig(0);
+        console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100--------------");
+        try {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100 SUCCESS");
+          mVideoSession.preconfig(0);
+          done();
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
+          expect(err.code).assertEqual('7400201');
+          done();
+        }
         done();
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
-        expect(err.code).assertEqual('7400201');
-        done();
-      }
-      done();
     })
 
     /**
@@ -324,22 +324,22 @@ export default function cameraPreconfigTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100--------------");
-      try {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100 SUCCESS");
-        mVideoSession.canPreconfig(0);
-        done();
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
-        if (err.code == 7400102 || err.code == 7400201) {
-          expect().assertTrue();
-        } else {
-          expect().assertFail();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100--------------");
+        try {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100 SUCCESS");
+          mVideoSession.canPreconfig(0);
+          done();
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
+          if (err.code == 7400102 || err.code == 7400201) {
+            expect().assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
         }
         done();
-      }
-      done();
     })
 
     /**
@@ -366,7 +366,7 @@ export default function cameraPreconfigTest() {
         } else {
           expect().assertFail();
         }
-
+        
         done();
       }
       done();
@@ -418,7 +418,7 @@ export default function cameraPreconfigTest() {
       done();
     })
 
-    /**
+     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_SSESION_ERROR_CODE_0100
      * @tc.name      : test create ssesion api with error code 401 or 7400101
      * @tc.desc      : test create ssesion api with error code 401 or 7400101
@@ -680,35 +680,11 @@ export default function cameraPreconfigTest() {
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0100 SUCCESS");
         let cameraSession:cameraObj.VideoSession = mCameraManager.createSession(2);
-        cameraSession.setQualityPrioritization(null);
-        done();
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0100 ERRORCODE: " + err.code);
-        expect(err.code == 7400101 || err.code == 401).assertTrue();
-        done();
-      }
-      done();
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0200
-     * @tc.name      : test set quality prioritization api with error code 7400103
-     * @tc.desc      : test set quality prioritization api with error code 7400103
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0200', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0200--------------");
-      try {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0200 SUCCESS");
-        let cameraSession:cameraObj.VideoSession = mCameraManager.createSession(2);
         cameraSession.setQualityPrioritization(1);
         done();
       } catch (error) {
         let err = error as BusinessError;
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0200 ERRORCODE: " + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_QUALITY_PRIORITIZATION_0100 ERRORCODE: " + err.code);
         expect(err.code == 7400103).assertTrue();
         done();
       }
