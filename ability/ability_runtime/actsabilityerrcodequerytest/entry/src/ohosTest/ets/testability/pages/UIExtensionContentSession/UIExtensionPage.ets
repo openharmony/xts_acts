@@ -21,7 +21,7 @@ class MyRouterParam {
   constructor(from: string) {
     this.fromPage = from;
   }
-  fromPage: string = "";
+  public fromPage: string = '';
 }
 @Entry
 @Component
@@ -85,8 +85,8 @@ struct UIExtensionPage {
           })
           .onClick(() => {
             this.myProxy?.send({
-              "data": 123456,
-              "message": "data from component"
+              'data': 123456,
+              'message': 'data from component'
             })
           })
       }

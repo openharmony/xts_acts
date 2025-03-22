@@ -19,15 +19,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // AbilityB：配置了Promission权限的测试用ability，也能被link方式启动，无返回结果
 export default class AbilityB extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam):void {
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onCreate');
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -40,12 +40,12 @@ export default class AbilityB extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void{
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onForeground');
     try {
@@ -65,7 +65,7 @@ export default class AbilityB extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag AbilityB', '%{public}s', 'Ability onBackground');
   }

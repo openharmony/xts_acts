@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { AbilityConstant, UIAbility,common, Want } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -23,7 +23,7 @@ export default class AbilityD extends UIAbility {
     hilog.info(0x0000, 'testTag AbilityD', '%{public}s', 'Ability onCreate');
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag AbilityD', '%{public}s', 'Ability onDestroy');
   }
 
@@ -40,19 +40,19 @@ export default class AbilityD extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag AbilityD', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag AbilityD', '%{public}s', 'Ability onForeground');
     let resultCode = 100;
     let want: Want = {
       bundleName: 'com.test.actsabilityerrcodequerytest',
       abilityName: 'AbilityD'
-    }
+    };
     let abilityResult: common.AbilityResult = {
       want,
       resultCode
@@ -74,7 +74,7 @@ export default class AbilityD extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag AbilityD', '%{public}s', 'Ability onBackground');
   }
