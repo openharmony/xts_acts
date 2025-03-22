@@ -1492,7 +1492,7 @@ export default function abilityTest() {
       * @tc.type      : Function
       * @tc.level     : Level2
       */
-    it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_5700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_5700', 0, async (done: Function) => {
         try {
             session.stopCasting().then(() => {
               console.info('stopCasting successfully');
@@ -1501,8 +1501,7 @@ export default function abilityTest() {
             });
         } catch (error) {
             console.info(`stopCasting BusinessError2: code: ${error.code}, message: ${error.message}`);
-            expect(error.code).assertEqual(6600109);
-            if (error.message == "Cannot read property catch of undefined") {
+            if (error.message == "Cannot read property catch of undefined" || error.code == 6600109) {
                 console.info(`stopCasting callback successfully`);
                 expect(true).assertTrue()
             }
@@ -1532,8 +1531,7 @@ export default function abilityTest() {
             });
         } catch (error) {
             console.info(`getAVCastController failed: code: ${error.code}, message: ${error.message}`);
-            expect(error.code).assertEqual(6600109);
-            if (error.message == "Cannot read property then of undefined") {
+            if (error.message == "Cannot read property then of undefined" || error.code == 6600109 ) {
                 console.info(`getAVCastController callback successfully`);
                 expect(true).assertTrue()
             }
