@@ -107,6 +107,8 @@ import textTextDecorationTest from './textTest/textTextDecoration.test';
 import searchTest from './SearchTest/SearchJsunit1.test';
 import TextAreaTypeTest from "./TextAreaTest/TextAreaType.test";
 import SearchTypeTest from "./SearchTest/SearchType.test";
+import UIFontAliasInfo from './fontTest/UIFontAliasInfo.test'
+import measureOptionsTest from './textTest/measureOptionsTest.test';
 
 
 export default function testsuite() {
@@ -205,4 +207,6 @@ export default function testsuite() {
   textInputTest()
   TextAreaTypeTest();
   SearchTypeTest();
+  UIFontAliasInfo();
+  measureOptionsTest();
 }
