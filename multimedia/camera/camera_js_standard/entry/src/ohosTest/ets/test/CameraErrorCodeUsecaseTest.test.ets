@@ -1074,7 +1074,7 @@ export default function CameraErrorCodeUsecaseTest() {
       done();
     })
 
-    /**
+    /**错误码抛出异常，已提单等待回归
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
      * @tc.name      : removeOutput api
      * @tc.desc      : removeOutput api
