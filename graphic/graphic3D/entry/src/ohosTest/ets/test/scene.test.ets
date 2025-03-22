@@ -248,9 +248,11 @@ export default function sceneTest() {
         sphereGeom.segmentCount = Math.floor(26);
         expect(sphereGeom.segmentCount).assertEqual(26);
         console.info(msg + " Succeed in sphereGeom.segmentCount ");
-        let meshRes3 = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
+        let meshRes3: scene3d.MeshResource = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
         expect(meshRes3 != null).assertTrue();
         console.info(msg + " Succeed in createMesh ");
+        expect(meshRes3.resourceType).assertEqual(SceneResourceType.MESH_RESOURCE)
+        console.info(msg + " meshRes3.resourceType is SceneResourceType.MESH_RESOURCE ");
         let geometry3 = await rf.createGeometry({name: "balluro"}, meshRes3);
         expect(geometry3 != null).assertTrue();
         console.info(msg + " Succeed in createGeometry ");
