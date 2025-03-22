@@ -1,7 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webResourceHandlerTest",
-    "testability/pages/webHttpBodyStreamTest"
-  ]
-}

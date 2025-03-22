@@ -89,7 +89,7 @@ struct webHttpBodyStreamTest {
               }
             })
           }
-          Web({ src: $rawfile('post_data.html'), controller: this.controller })
+          Web({ src: $rawfile("post_data.html"), controller: this.controller })
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
             .imageAccess(this.imageAccess)
@@ -105,7 +105,7 @@ struct webHttpBodyStreamTest {
                     try {
                       console.log(request.getRequestUrl())
                       console.log(request.getRequestMethod())
-                      if (request.getRequestMethod() == 'OPTIONS') {
+                      if (request.getRequestMethod() == "OPTIONS") {
 
                         let response = new webview.WebSchemeHandlerResponse();
                         let buf = buffer.from(this.htmlData)
@@ -126,6 +126,8 @@ struct webHttpBodyStreamTest {
 
                         return true;
                       }
+                      console.log(request.getHeader() + "");
+                      console.log(request.getRequestResourceType() + "");
 
                       let stream = request.getHttpBodyStream();
 
@@ -138,10 +140,10 @@ struct webHttpBodyStreamTest {
                           console.log('[schemeHandler] onRequestStart postDataStream position:' + stream.getPosition());
                           console.log('[schemeHandler] onRequestStart postDataStream isChunked:' + stream.isChunked());
                           console.log('[schemeHandler] onRequestStart postDataStream isEof:' + stream.isEof());
-                          console.log('[schemeHandler] onRequestStart postDataStream isInMemory:' + 
-                          stream.isInMemory());
+                          console.log('[schemeHandler] onRequestStart postDataStream isInMemory:'
+                            + stream.isInMemory());
                           stream.read(stream.getSize()).then((buffer) => {
-                            console.log('[schemeHandler] onRequestStart postDataStream read:' + buffer.byteLength);
+                            console.log("[schemeHandler] onRequestStart postDataStream read:" + buffer.byteLength);
                             this.testRead = 0
                             if (!stream) {
                               return;

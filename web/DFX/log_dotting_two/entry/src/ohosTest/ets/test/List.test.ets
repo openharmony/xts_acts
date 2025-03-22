@@ -23,6 +23,8 @@ import webErrorCode from './WebErrorCode.test'
 import webViewControllerPostUrlErrorCode from './WebViewControllerPostUrlErrorCode.test'
 import webDownloadErrorCode from './WebDownloadErrorCode.test'
 import webViewControllerErrorCodeSecond from './WebViewControllerErrorCodeSecond.test'
+import webResourceHandlerTest from './webResourceHandlerTest.test'
+import webHttpBodyStreamTest from './webHttpBodyStreamTest.test'
 
 export default function testsuite() {
   webErrorCode()
@@ -36,4 +38,6 @@ export default function testsuite() {
   webViewControllerPostUrlErrorCode()
   webDownloadErrorCode()
   webViewControllerErrorCodeSecond()
+  webResourceHandlerTest()
+  webHttpBodyStreamTest()
 }
