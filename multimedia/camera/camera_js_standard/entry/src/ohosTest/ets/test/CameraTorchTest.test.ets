@@ -580,7 +580,7 @@ export default function cameraTorchTest() {
           let isTorchSupportedStatus = mCameraManager.isTorchSupported();
           console.info(`${TAG} isTorchSupportedStatus: ${isTorchSupportedStatus}`);
           if (isTorchSupportedStatus) {
-            mCameraManager.setTorchMode(4);
+              mCameraManager.setTorchMode(4);
           }
         } catch (error) {
           console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_ERRORCODE_0100 err` + error.code);
