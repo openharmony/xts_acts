@@ -486,7 +486,7 @@ export default function cameraSecureSessionTest() {
 
       // 打开监听
       mCameraSession.on('error', (err) => {
-        console.error(`Secure session error code: ${err.code}`)
+          console.error(`Secure session error code: ${err.code}`)
       })
 
       // 关闭监听
@@ -553,7 +553,7 @@ export default function cameraSecureSessionTest() {
 
       // 打开监听
       mCameraSession.on('focusStateChange', (err) => {
-        console.error(`Secure session error code: ${err.code}`)
+          console.error(`Secure session error code: ${err.code}`)
       })
 
       // 关闭监听
@@ -593,7 +593,7 @@ export default function cameraSecureSessionTest() {
         createSecureSessionInstance();
         await createInput(1);
         await createOutput(1);
-
+    
         if (!isEmpty(mCameraInput)) {
           console.info(TAG + "Start to addInput");
           mCameraSession.addInput(mCameraInput);
@@ -639,7 +639,7 @@ export default function cameraSecureSessionTest() {
         createSecureSessionInstance();
         await createInput(1);
         await createOutput(1);
-
+    
         if (!isEmpty(mCameraInput)) {
           console.info(TAG + "Start to addInput");
           mCameraSession.addInput(mCameraInput);
