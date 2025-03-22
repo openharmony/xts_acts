@@ -28,6 +28,10 @@ import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/te
 import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
 import calendarPickerDialogBackgroundColorTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundColor.test';
 import calendarPickerDialogBackgroundShadowTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundShadow.test';
+import datePickerDialogBGBlurStyleTest from './datePickerDialogTest/datePickerDialogBGBlurStyle.test';
+import datePickerDialogBGColorTest from './datePickerDialogTest/datePickerDialogBGColor.test';
+import datePickerDialogShadowTest from './datePickerDialogTest/datePickerDialogShadow.test';
+
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
     calendarPickerStartEndTest()
@@ -45,4 +49,7 @@ export default function testsuite() {
     calendarPickerDialogBackgroundBlurStyleTest();
     calendarPickerDialogBackgroundColorTest();
     calendarPickerDialogBackgroundShadowTest();
+    datePickerDialogBGBlurStyleTest();
+    datePickerDialogBGColorTest();
+    datePickerDialogShadowTest();
 }
