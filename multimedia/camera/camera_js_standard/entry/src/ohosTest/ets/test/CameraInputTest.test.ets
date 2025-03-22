@@ -345,7 +345,7 @@ export default function CameraInputTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100', 0, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100--------------");
-
+   
       if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 FAILED with NoCamera");
         expect().assertFail();
@@ -354,7 +354,7 @@ export default function CameraInputTest() {
         for (let i = 0; i < mCameraNum; i++) {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 start for camera[" + i + "]");
           await startCameraSession(i);
-
+   
           mCameraInput.on('error', mCameraDevicesArray[i], async (err: BusinessError) => {
             if (isEmpty(err)) {
               console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 err == null || undefined");
@@ -398,16 +398,16 @@ export default function CameraInputTest() {
         done();
       } else {
         //for (let i = 0; i < mCameraNum; i++) {
-        //console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 start for camera[" + i + "]");
-        //await startCameraSession(i);
-        mCameraSession.release( async (err: BusinessError) => {
-          if (err) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 callback err.code:"+err.code);
-            console.info('Promise returned to indicate that the CaptureSession instance is released successfully.');
-          }
-          await sleep(1);
-        })
-        //console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 end for camera[" + i + "]");
+          //console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 start for camera[" + i + "]");
+          //await startCameraSession(i);
+          mCameraSession.release( async (err: BusinessError) => {
+            if (err) {
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 callback err.code:"+err.code);
+              console.info('Promise returned to indicate that the CaptureSession instance is released successfully.');
+            }
+            await sleep(1);
+          })
+          //console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 end for camera[" + i + "]");
         //}
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 ends here");
         done();
@@ -490,13 +490,13 @@ export default function CameraInputTest() {
           let cameraInput = mCameraManager.createCameraInput(camerasArray[i]);
           let cameraInput2 = mCameraManager.createCameraInput(camerasArray[i]);
           expect(isEmpty(cameraInput)).assertFalse();
-          try{
+          try {
             await cameraInput.open();
             console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN__ERRORCODE_0100 open cameraInput" )
             await sleep(5000);
             await cameraInput2.open();
             console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN__ERRORCODE_0100 open cameraInput2" )
-          }catch(err){
+          } catch(err) {
             console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN__ERRORCODE_0100 open FAILED: " +
             err.code);
             expect(err.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
@@ -569,5 +569,6 @@ export default function CameraInputTest() {
       console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 ends here");
       done();
     });
+
   })
 }
