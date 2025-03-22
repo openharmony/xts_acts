@@ -39,6 +39,7 @@ struct promptKeyboard {
   @State modal: boolean = true
   @State mode: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT
   @State keyboardAvoidDistance: LengthMetrics = LengthMetrics.vp(20)
+  @State distance: LengthMetrics = LengthMetrics.vp(0)
   @State modeIndex: number = 0
   @State showInSub: boolean = false
   @State heigh: Dimension = 200
@@ -162,6 +163,41 @@ struct promptKeyboard {
               isModal: this.modal,
               keyboardAvoidMode: this.mode,
               keyboardAvoidDistance: undefined,
+              height: this.heigh,
+              maskRect: {
+                x: 0,
+                y: 0,
+                width: '100%',
+                height: '100%'
+              },
+              maskColor: Color.Pink,
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
+                console.log('dialog onWillDismiss')
+                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss()
+                }
+                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss()
+                }
+              }
+            }).then((dialogId: number) => {
+              this.customDialogComponentId = dialogId
+            })
+          })
+        Button('0')
+          .margin({ top: 10 })
+          .id('btn4')
+          .fontSize(30)
+          .onClick(() => {
+            promptAction.openCustomDialog({
+              builder: () => {
+                this.customDialogComponent(new Tmp(this.keyBoardHeight))
+              },
+              showInSubWindow: this.showInSub,
+              isModal: this.modal,
+              keyboardAvoidMode: this.mode,
+              keyboardAvoidDistance: this.distance,
               height: this.heigh,
               maskRect: {
                 x: 0,
