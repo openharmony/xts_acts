@@ -23,11 +23,11 @@ struct MultiEntry {
   @Provide('pageStack') pageStack: MultiNavPathStack = new MultiNavPathStack();
 
   @Builder
-  PageMap(name: string, param?: object) {
+  PageMap(name: string) {
     if (name === 'PageHome') {
       PageHome()
     } if (name === 'PageDetail') {
-      PageDetail({ param: param })
+      PageDetail()
     }
   }
 
