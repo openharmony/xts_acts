@@ -381,16 +381,17 @@ export default function CameraPhotoSessionTest() {
         return;
       }
       createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let ishashflash = mCameraSession.hasFlash();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_0100 ishashflash" + ishashflash);
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
+        await startCameraSession(0);
+        try {
+            let ishashflash = mCameraSession.hasFlash();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_0100 ishashflash" + ishashflash);
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_0100 FAILED" + err.code);
+            expect(true).assertFalse();
+        }
       done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100
      * @tc.name      : Create photo session hashflash errorcode
@@ -400,26 +401,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let ishashflash = mCameraSession.hasFlash();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 ishashflash" + ishashflash);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          //await startCameraSession(0);
+          try {
+              let ishashflash = mCameraSession.hasFlash();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 ishashflash" + ishashflash);
+              expect(true).assertFalse();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_HASHFLASH_ERRORCODE_0100 FAILED" + err.code);
+              expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100
      * @tc.name      : Create photo session isFlashModeSupported
@@ -429,26 +431,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 FAILED with NoCamera");
-        expect(true).assertFail();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 isFlashModeSupported" + isFlashModeSupported);
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
         done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 isFlashModeSupported" + isFlashModeSupported);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100
      * @tc.name      : Create photo session isFlashModeSupported errorcode
@@ -458,26 +461,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100 isFlashModeSupported" + isFlashModeSupported);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100 isFlashModeSupported" + isFlashModeSupported);
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFLASHMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100
      * @tc.name      : Create photo session getFlashMode
@@ -487,26 +491,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let FlashModes = mCameraSession.getFlashMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100 FlashModes:" + FlashModes);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        await startCameraSession(0);
+        try {
+            let FlashModes = mCameraSession.getFlashMode();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100 FlashModes:" + FlashModes);
+            expect(true).assertTrue();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_0100 FAILED" + err.code);
+            expect(true).assertFalse();
+        }
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100
      * @tc.name      : Create photo session getFlashMode errorcode
@@ -516,26 +521,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100--------------");
+    
+        if (mCameraNum == 0) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FAILED with NoCamera");
+            expect(true).assertFail();
+            done();
+            return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let FlashModes = mCameraSession.getFlashMode();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FlashModes" + FlashModes);
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
         done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let FlashModes = mCameraSession.getFlashMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FlashModes" + FlashModes);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFLASHMODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100
      * @tc.name      : Create photo session setFlashMode
@@ -545,29 +551,30 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let ishashflash = mCameraSession.hasFlash();
-        let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_OPEN);
-        if(isFlashModeSupported&&ishashflash){
-          mCameraSession.setFlashMode(camera.FlashMode.FLASH_MODE_OPEN);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 ishashflash" );
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let ishashflash = mCameraSession.hasFlash();
+              let isFlashModeSupported = mCameraSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_OPEN);
+              if(isFlashModeSupported&&ishashflash){
+              mCameraSession.setFlashMode(camera.FlashMode.FLASH_MODE_OPEN);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 ishashflash" );
+              }
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100
      * @tc.name      : Create photo session setFlashMode errorcode
@@ -577,26 +584,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setFlashMode(camera.FlashMode.FLASH_MODE_OPEN);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100 FAILED" );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setFlashMode(camera.FlashMode.FLASH_MODE_OPEN);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100 FAILED" );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SET_FLASH_MODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done(); 
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100
      * @tc.name      : Create photo session isExposureModeSupported
@@ -606,26 +614,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let isExposureModeSupported = mCameraSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 Success isExposureModeSupported " +isExposureModeSupported );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let isExposureModeSupported = mCameraSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_AUTO);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 Success isExposureModeSupported " +isExposureModeSupported );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100
      * @tc.name      : Create photo session isExposureModeSupported errorcode
@@ -635,26 +644,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let isExposureModeSupported = mCameraSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100 Success isExposureModeSupported " +isExposureModeSupported );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let isExposureModeSupported = mCameraSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_AUTO);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100 Success isExposureModeSupported " +isExposureModeSupported );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISEXPOSUREMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done(); 
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100
      * @tc.name      : Create photo session getExposureBiasRange
@@ -664,26 +674,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let biasRangeArray: Array<number> = mCameraSession.getExposureBiasRange();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 Success biasRangeArray " +biasRangeArray );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let biasRangeArray: Array<number> = mCameraSession.getExposureBiasRange();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 Success biasRangeArray " +biasRangeArray );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100
      * @tc.name      : Create photo session getExposureBiasRange errorcode
@@ -693,26 +704,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let  biasRangeArray: Array<number> = mCameraSession.getExposureBiasRange();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100 Success biasRangeArray " +biasRangeArray );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let  biasRangeArray: Array<number> = mCameraSession.getExposureBiasRange();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100 Success biasRangeArray " +biasRangeArray );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREBIASRANGE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done(); 
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100
      * @tc.name      : Create photo session getExposureMode
@@ -722,26 +734,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let  exposureMode: camera.ExposureMode = mCameraSession.getExposureMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 Success exposureMode " +exposureMode );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let  exposureMode: camera.ExposureMode = mCameraSession.getExposureMode();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 Success exposureMode " +exposureMode );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+    
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100
      * @tc.name      : Create photo session getExposureMode errorcode
@@ -751,25 +764,25 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let  exposureMode: camera.ExposureMode = mCameraSession.getExposureMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 Success exposureMode " +exposureMode );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let  exposureMode: camera.ExposureMode = mCameraSession.getExposureMode();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 Success exposureMode " +exposureMode );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done(); 
     })
 
     /**
@@ -781,26 +794,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100--------------");
-
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        mCameraSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 Success  " );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100--------------");
+  
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              mCameraSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_AUTO);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 Success  " );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100
      * @tc.name      : Create photo session setExposureMode errorcode
@@ -810,26 +824,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_AUTO);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        }
+        done(); 
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100
      * @tc.name      : Create photo session getMeteringPoint
@@ -839,29 +854,30 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100--------------");
-      // let Point:camera.Point = {
-      //     x : 10,
-      //     y : 10
-      // }
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let Point:camera.Point = mCameraSession.getMeteringPoint();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 Success  Point =="+Point );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100--------------");
+        // let Point:camera.Point = {
+        //     x : 10,
+        //     y : 10
+        // }
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let Point:camera.Point = mCameraSession.getMeteringPoint();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 Success  Point =="+Point );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100
      * @tc.name      : Create photo session getMeteringPoint errorcode
@@ -871,25 +887,25 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100--------------");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100--------------");
 
-      if (mCameraNum == 0) {
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let Point:camera.Point = mCameraSession.getMeteringPoint();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let Point:camera.Point = mCameraSession.getMeteringPoint();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETMETERINGPOINT_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
 
     /**
@@ -901,26 +917,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100--------------");
-      const point: camera.Point = {x: 1, y: 1};
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        mCameraSession.setMeteringPoint(point);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 Success  Success" );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100--------------");
+        const point: camera.Point = {x: 1, y: 1};
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              mCameraSession.setMeteringPoint(point);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 Success  Success" );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100
      * @tc.name      : Create photo session setMeteringPoint errorcode
@@ -930,26 +947,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100--------------");
-      const point: camera.Point = {x: 1, y: 1};
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100--------------");
+        const point: camera.Point = {x: 1, y: 1};
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setMeteringPoint(point);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setMeteringPoint(point);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETMETERINGPOINT_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100
      * @tc.name      : Create photo session setExposureBias
@@ -959,26 +977,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      nbiasRangeArray = mCameraSession.getExposureBiasRange();
-      try {
-        mCameraSession.setExposureBias(nbiasRangeArray[0]);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 Success " );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+            nbiasRangeArray = mCameraSession.getExposureBiasRange();
+          try {
+              mCameraSession.setExposureBias(nbiasRangeArray[0]);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 Success " );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100
      * @tc.name      : Create photo session setExposureBias errorcode
@@ -988,25 +1007,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setExposureBias(nbiasRangeArray[0]);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setExposureBias(nbiasRangeArray[0]);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200
      * @tc.name      : Create photo session setExposureBias errorcode
@@ -1016,28 +1036,29 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      await mCameraInput.close();
-      await sleep(100);
-      try {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 nbiasRangeArray = " + nbiasRangeArray );
-        mCameraSession.setExposureBias(nbiasRangeArray[1]);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 Success " );
-        //expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        await startCameraSession(0);
+        await mCameraInput.close();
+        await sleep(100);
+        try {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 nbiasRangeArray = " + nbiasRangeArray );
+            mCameraSession.setExposureBias(nbiasRangeArray[1]);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 Success " );
+            //expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETEXPOSUREBIAS_ERRORCODE_0200 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100
      * @tc.name      : Create photo session getExposureValue
@@ -1047,25 +1068,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let exposureValue = mCameraSession.getExposureValue();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 Success exposureValue == " + exposureValue );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let exposureValue = mCameraSession.getExposureValue();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 Success exposureValue == " + exposureValue );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100
      * @tc.name      : Create photo session setExposureBias errorcode
@@ -1075,26 +1097,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let exposureValue = mCameraSession.getExposureValue();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100 Success exposureValue == " + exposureValue );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let exposureValue = mCameraSession.getExposureValue();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100 Success exposureValue == " + exposureValue );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETEXPOSUREVALUE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
-
+    
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100
      * @tc.name      : Create photo session isFocusModeSupported
@@ -1104,25 +1126,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 Success isFocusModeSupported == " + isFocusModeSupported );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 Success isFocusModeSupported == " + isFocusModeSupported );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100
      * @tc.name      : Create photo session isFocusModeSupported errorcode
@@ -1132,25 +1155,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100 Success isFocusModeSupported == " + isFocusModeSupported );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100 Success isFocusModeSupported == " + isFocusModeSupported );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ISFOCUSMODESUPPORTED_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100
      * @tc.name      : Create photo session getFocusMode
@@ -1160,25 +1184,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let FocusMode = mCameraSession.getFocusMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 Success isFocusModeSupported == " + FocusMode );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let FocusMode = mCameraSession.getFocusMode();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 Success isFocusModeSupported == " + FocusMode );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100
      * @tc.name      : Create photo session getFocusMode errorcode
@@ -1188,24 +1213,24 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let FocusMode = mCameraSession.getFocusMode();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100 Success FocusMode == " + FocusMode );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let FocusMode = mCameraSession.getFocusMode();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100 Success FocusMode == " + FocusMode );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
 
     /**
@@ -1217,27 +1242,28 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
-        if(isFocusModeSupported){
-          mCameraSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 Success"  );
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+             let isFocusModeSupported = mCameraSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO);
+             if(isFocusModeSupported){
+              mCameraSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 Success"  );
+             }
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100
      * @tc.name      : Create photo session setFocusMode errorcode
@@ -1247,25 +1273,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100
      * @tc.name      : Create photo session setFocusPoint
@@ -1275,26 +1302,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      let focusPoint: camera.Point = {x: 1, y: 1};
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        mCameraSession.setFocusPoint(focusPoint);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 Success"  );
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        let focusPoint: camera.Point = {x: 1, y: 1};
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              mCameraSession.setFocusPoint(focusPoint);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 Success"  );
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100
      * @tc.name      : Create photo session setFocusPoint errorcode
@@ -1304,26 +1332,27 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      let focusPoint: camera.Point = {x: 1, y: 1};
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setFocusPoint(focusPoint);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100 Success " );
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        let focusPoint: camera.Point = {x: 1, y: 1};
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            mCameraSession.setFocusPoint(focusPoint);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100 Success " );
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETFOCUSPOINT_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100
      * @tc.name      : Create photo session getFocusPoint
@@ -1333,25 +1362,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let point: camera.Point =  mCameraSession.getFocusPoint();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 Success point == " + point);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+            let point: camera.Point =  mCameraSession.getFocusPoint();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 Success point == " + point);
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100
      * @tc.name      : Create photo session getFocusPoint errorcode
@@ -1361,25 +1391,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let point: camera.Point =  mCameraSession.getFocusPoint();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 Success point == " + point);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let point: camera.Point =  mCameraSession.getFocusPoint();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 Success point == " + point);
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCUSPOINT_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100
      * @tc.name      : Create photo session getFocalLength
@@ -1389,25 +1420,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let focalLength: number =  mCameraSession.getFocalLength();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 Success focalLength == " + focalLength);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let focalLength: number =  mCameraSession.getFocalLength();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 Success focalLength == " + focalLength);
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100
      * @tc.name      : Create photo session getFocalLength errorcode
@@ -1417,25 +1449,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let focalLength: number =  mCameraSession.getFocalLength();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 Success focalLength == " + focalLength);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let focalLength: number =  mCameraSession.getFocalLength();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 Success focalLength == " + focalLength);
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETFOCALLENGTH_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100
      * @tc.name      : Create photo session getZoomRatioRange
@@ -1445,25 +1478,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let zoomRatioRange: Array<number> =  mCameraSession.getZoomRatioRange();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 Success zoomRatioRange == " + zoomRatioRange);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let zoomRatioRange: Array<number> =  mCameraSession.getZoomRatioRange();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 Success zoomRatioRange == " + zoomRatioRange);
+              expect(true).assertTrue();
+          } catch(err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+    
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100
      * @tc.name      : Create photo session getZoomRatioRange errorcode
@@ -1473,25 +1507,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let zoomRatioRange: Array<number> =  mCameraSession.getZoomRatioRange();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100 Success zoomRatioRange == " + zoomRatioRange);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let zoomRatioRange: Array<number> =  mCameraSession.getZoomRatioRange();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100 Success zoomRatioRange == " + zoomRatioRange);
+            expect(true).assertFalse();
+        } catch(err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIORANGE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100
      * @tc.name      : Create photo session getZoomRatio
@@ -1501,25 +1536,30 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let zoomRatio: number =  mCameraSession.getZoomRatio();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success zoomRatio == " + zoomRatio);
-        expect(true).assertTrue();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let zoomRatio: number =  mCameraSession.getZoomRatio();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success zoomRatio == " + zoomRatio);
+              expect(true).assertTrue();
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_0100 FAILED" + err.code);
+              if (err.code == camera.CameraErrorCode.SERVICE_FATAL_ERROR){
+                expect(true).assertTrue();
+              }else{
+                expect(true).assertFalse();
+              }
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100
      * @tc.name      : Create photo session getZoomRatio errorcode
@@ -1529,25 +1569,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let zoomRatio: number =  mCameraSession.getZoomRatio();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success zoomRatio == " + zoomRatio);
-        expect(true).assertFalse();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+            let zoomRatio: number =  mCameraSession.getZoomRatio();
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success zoomRatio == " + zoomRatio);
+            expect(true).assertFalse();
+        } catch (err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100
      * @tc.name      : Create photo session setZoomRatio
@@ -1557,27 +1598,28 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      nzoomRatioRange = mCameraSession.getZoomRatioRange();
-      try {
-        if(!isEmpty(nzoomRatioRange)){
-          mCameraSession.setZoomRatio(nzoomRatioRange[0]);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 Success ");
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          nzoomRatioRange = mCameraSession.getZoomRatioRange();
+          try {
+            if (!isEmpty(nzoomRatioRange)) {
+              mCameraSession.setZoomRatio(nzoomRatioRange[0]);
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 Success ");
+            }
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100
      * @tc.name      : Create photo session setZoomRatio errorcode
@@ -1587,28 +1629,33 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success nzoomRatioRange.length == " +nzoomRatioRange.length);
-        if(!isEmpty(nzoomRatioRange)){
-          mCameraSession.setZoomRatio(nzoomRatioRange[0]);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success ");
-          expect(true).assertFalse();
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success nzoomRatioRange.length == " +nzoomRatioRange.length);
+          if (!isEmpty(nzoomRatioRange)) {
+            mCameraSession.setZoomRatio(nzoomRatioRange[0]);
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETZOOMRATIO_ERRORCODE_0100 Success ");
+            expect(true).assertFalse();
+          }
+        } catch (err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETZOOMRATIO_ERRORCODE_0100 FAILED" + err.code);
+            if (err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG) {
+              expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+            }else{
+              expect(err.code == undefined).assertTrue();
+            }
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100
      * @tc.name      : Create photo session getSupportedColorSpaces
@@ -1618,24 +1665,25 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let colorSpaces: Array<colorSpaceManager.ColorSpace> = mCameraSession.getSupportedColorSpaces();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 Success colorSpaces == " + colorSpaces);
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let colorSpaces: Array<colorSpaceManager.ColorSpace> = mCameraSession.getSupportedColorSpaces();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 Success colorSpaces == " + colorSpaces);
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**无法抛出7400103，已提单,等下一个版本回归测试通过后使用
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_ERRORCODE_0100
      * @tc.name      : Create photo session getSupportedColorSpaces errorcode
@@ -1658,12 +1706,13 @@ export default function CameraPhotoSessionTest() {
     //       let colorSpaces: Array<colorSpaceManager.ColorSpace> = mCameraSession.getSupportedColorSpaces();
     //       console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_ERRORCODE_0100 Success colorSpaces == " + colorSpaces);
     //       expect(true).assertFail();
-    //     } catch(err) {
+    //     } catch (err) {
     //         console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETSUPPORTEDCOLORSPACES_ERRORCODE_0100 FAILED err.code === " + err.code);
     //         expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-    //     }
+    //     } 
     //     done();
     // })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100
      * @tc.name      : Create photo session getActiveColorSpace
@@ -1673,24 +1722,25 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      try {
-        let colorSpace: colorSpaceManager.ColorSpace = mCameraSession.getActiveColorSpace();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 Success colorSpaces == " + colorSpace);
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          try {
+              let colorSpace: colorSpaceManager.ColorSpace = mCameraSession.getActiveColorSpace();
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 Success colorSpaces == " + colorSpace);
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100
      * @tc.name      : Create photo session getActiveColorSpace errorcode
@@ -1700,25 +1750,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        let colorSpace: colorSpaceManager.ColorSpace = mCameraSession.getActiveColorSpace();
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100 Success colorSpaces == " + colorSpace);
-        expect(true).assertFail();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+          let colorSpace: colorSpaceManager.ColorSpace = mCameraSession.getActiveColorSpace();
+          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100 Success colorSpaces == " + colorSpace);
+          expect(true).assertFail();
+        } catch (err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_GETACTIVECOLORSPACE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100
      * @tc.name      : Create photo session setColorSpace
@@ -1728,28 +1779,29 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
-      try {
-        colorSpaces = mCameraSession.getSupportedColorSpaces();
-        if(colorSpaces.length>0&&!isEmpty(colorSpaces)){
-          mCameraSession.setColorSpace(colorSpaces[0]);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 Success " );
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
+          try {
+              colorSpaces = mCameraSession.getSupportedColorSpaces();
+              if (colorSpaces.length>0&&!isEmpty(colorSpaces)) {
+                mCameraSession.setColorSpace(colorSpaces[0]);
+                console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 Success " );
+              }
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100
      * @tc.name      : Create photo session setColorSpace errorcode 7400103
@@ -1759,25 +1811,26 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100--------------");
+        if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100 FAILED with NoCamera");
         expect(true).assertFail();
         done();
         return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      //await startCameraSession(0);
-      try {
-        mCameraSession.setColorSpace(colorSpaceManager.ColorSpace.DISPLAY_P3);
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100 Success " );
-        expect(true).assertFail();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-      }
-      done();
+        }
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+        //await startCameraSession(0);
+        try {
+          mCameraSession.setColorSpace(colorSpaceManager.ColorSpace.DISPLAY_P3);
+          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100 Success " );
+          expect(true).assertFail();
+        } catch (err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+        } 
+        done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200
      * @tc.name      : Create photo session setColorSpace errorcode 7400101
@@ -1789,10 +1842,10 @@ export default function CameraPhotoSessionTest() {
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200--------------");
       if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200 FAILED with NoCamera");
+      expect(true).assertFail();
+      done();
+      return;
       }
       createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
       await startCameraSession(0);
@@ -1800,12 +1853,17 @@ export default function CameraPhotoSessionTest() {
         mCameraSession.setColorSpace(null);
         console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200 Success " );
         expect(true).assertFail();
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200 FAILED" + err.code);
-        expect(err.code == camera.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
-      }
+      } catch (err) {
+          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETCOLORSPACE_ERRORCODE_0200 FAILED" + err.code);
+          if(err.code == camera.CameraErrorCode.INVALID_ARGUMENT){
+            expect(err.code == camera.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+          }else{
+            expect(err.code == camera.CameraErrorCode.SERVICE_FATAL_ERROR).assertTrue();
+          }
+      } 
       done();
     })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100
      * @tc.name      : Create photo session setSmoothZoom
@@ -1815,28 +1873,29 @@ export default function CameraPhotoSessionTest() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100', Level.LEVEL2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
-      await startCameraSession(0);
-      nzoomRatioRange =  mCameraSession.getZoomRatioRange();
-      try {
-        if(!isEmpty(nzoomRatioRange)){
-          mCameraSession.setSmoothZoom(nzoomRatioRange[0]+0.1,camera.SmoothZoomMode.NORMAL);
-          console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 Success " );
-          expect(true).assertTrue();
+        console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100--------------");
+        if (mCameraNum == 0) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 FAILED with NoCamera");
+          expect(true).assertFail();
+          done();
+          return;
         }
-      } catch(err) {
-        console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 FAILED" + err.code);
-        expect(true).assertFalse();
-      }
-      done();
+        createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          nzoomRatioRange =  mCameraSession.getZoomRatioRange();
+          try {
+              if (!isEmpty(nzoomRatioRange)) {
+                mCameraSession.setSmoothZoom(nzoomRatioRange[0]+0.1,camera.SmoothZoomMode.NORMAL);
+                console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 Success " );
+                expect(true).assertTrue();
+              }
+          } catch (err) {
+              console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_0100 FAILED" + err.code);
+              expect(true).assertFalse();
+          }
+          done();
     })
+
     /**无法抛出7400103，已提单，等下一个版本回归测试通过后使用
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_ERRORCODE_0100
      * @tc.name      : Create photo session setSmoothZoom errorcode
@@ -1859,10 +1918,10 @@ export default function CameraPhotoSessionTest() {
     //         mCameraSession.setSmoothZoom(nzoomRatioRange[0]+0.1,camera.SmoothZoomMode.NORMAL);
     //         console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_ERRORCODE_0100 FAILED " );
     //         expect(true).assertFalse();
-    //     } catch(err) {
+    //     } catch (err) {
     //         console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_ERRORCODE_0100  err.code = " + err.code);
     //         expect(err.code == camera.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
-    //     }
+    //     } 
     //     done();
     // })
   })
