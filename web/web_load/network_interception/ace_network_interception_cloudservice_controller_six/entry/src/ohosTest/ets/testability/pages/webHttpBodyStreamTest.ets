@@ -19,6 +19,7 @@ import { waitForAssert, waitForExist } from '../../test/WaitTest';
 import business_error, { BusinessError } from '@ohos.base'
 import { buffer } from '@kit.ArkTS';
 import { WebNetErrorList } from '@kit.ArkWeb';
+import { URL } from '../../test/Config';
 
 
 @Entry
@@ -74,7 +75,7 @@ struct webHttpBodyStreamTest {
                   await waitForExist(()=>this.isComplete, this.emitKey, 0);
                   try {
                     let postData = buffer.from(this.htmlData);
-                    this.controller.postUrl('https://www.example.com', postData.buffer);
+                    this.controller.postUrl(URL, postData.buffer);
                   } catch (error) {
                     console.error(`postUrl ErrorCode: ${(error as BusinessError).code},
                        postUrl Message: ${(error as BusinessError).message}`);
@@ -147,8 +148,8 @@ struct webHttpBodyStreamTest {
                             if (!stream) {
                               return;
                             }
-                            console.log("[schemeHandler] onRequestStart postDataStream readlength:"
-                              + buffer.byteLength);
+                            console.log('[schemeHandler] onRequestStart postDataStream readlength:' + 
+                            buffer.byteLength);
                             console.log('[schemeHandler] onRequestStart postDataStream isEof:' + stream.isEof());
                             console.log('[schemeHandler] onRequestStart postDataStream position:' + 
                             stream.getPosition());

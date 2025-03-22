@@ -18,7 +18,8 @@ import Utils from '../../test/Utils'
 import { waitForAssert } from '../../test/WaitTest';
 import business_error, { BusinessError } from '@ohos.base'
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { WebNetErrorList } from '@ohos.web.netErrorList';
+import { URL } from '../../test/Config';
 
 
 @Entry
@@ -159,7 +160,7 @@ struct webResourceHandlerTest {
               }
             })
           }
-          Web({ src: 'https://www.example.com', controller: this.controller })
+          Web({ src: URL, controller: this.controller })
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
             .imageAccess(this.imageAccess)
