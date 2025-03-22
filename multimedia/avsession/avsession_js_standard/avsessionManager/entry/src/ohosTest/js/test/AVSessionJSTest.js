@@ -365,6 +365,12 @@ export default function AVSessionJsTest() {
                 try {
                     session.on('castDisplayChange', (display) => {
                         if (display.state === avSession.CastDisplayState.STATE_ON) {
+							let castDisplay = display
+							if (typeof castDisplay.id === 'number'){
+								console.info('castDisplay id type ture')
+							} else {
+								console.info(`castDisplay id type false`);
+							}
                             console.info('castDisplayChange display : ${display.id} ON');
                         } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
                             console.info('castDisplayChange display : ${display.id} OFF');
@@ -380,5 +386,117 @@ export default function AVSessionJsTest() {
                 done();
             }
         })
+
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0200
+         * @tc.name      : session castDisplayChange
+         * @tc.desc      : Testing call session castDisplayChange()
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level0
+         */
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0200", 0, async function (done) {
+            const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+            if (isExtendedDisplayCast) {
+                try {
+                    session.on('castDisplayChange', (display) => {
+                        if (display.state === avSession.CastDisplayState.STATE_ON) {
+							let castDisplay = display
+							if (typeof castDisplay.name === 'string'){
+								console.info('castDisplay name type ture')
+							} else {
+								console.info(`castDisplay name type false`);
+							}
+                            console.info('castDisplayChange display : ${display.id} ON');
+                        } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
+                            console.info('castDisplayChange display : ${display.id} OFF');
+                        }
+                    });
+                } catch (err) {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
+                }
+                done();
+            } else {
+                console.info(`canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast') false`);
+                done();
+            }
+        })
+		
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0300
+         * @tc.name      : session castDisplayChange
+         * @tc.desc      : Testing call session castDisplayChange()
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level0
+         */
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0300", 0, async function (done) {
+            const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+            if (isExtendedDisplayCast) {
+                try {
+                    session.on('castDisplayChange', (display) => {
+                        if (display.state === avSession.CastDisplayState.STATE_ON) {
+							let castDisplay = display
+							if (typeof castDisplay.width === 'number'){
+								console.info('castDisplay width type ture')
+							} else {
+								console.info(`castDisplay width type false`);
+							}
+                            console.info('castDisplayChange display : ${display.id} ON');
+                        } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
+                            console.info('castDisplayChange display : ${display.id} OFF');
+                        }
+                    });
+                } catch (err) {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
+                }
+                done();
+            } else {
+                console.info(`canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast') false`);
+                done();
+            }
+        })
+		
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0400
+         * @tc.name      : session castDisplayChange
+         * @tc.desc      : Testing call session castDisplayChange()
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level0
+         */
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0400", 0, async function (done) {
+            const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+            if (isExtendedDisplayCast) {
+                try {
+                    session.on('castDisplayChange', (display) => {
+                        if (display.state === avSession.CastDisplayState.STATE_ON) {
+							let castDisplay = display
+							if (typeof castDisplay.height === 'number'){
+								console.info('castDisplay height type ture')
+							} else {
+								console.info(`castDisplay height type false`);
+							}
+                            console.info('castDisplayChange display : ${display.id} ON');
+                        } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
+                            console.info('castDisplayChange display : ${display.id} OFF');
+                        }
+                    });
+                } catch (err) {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
+                }
+                done();
+            } else {
+                console.info(`canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast') false`);
+                done();
+            }
+        })
+		
+
+
 	})
 }

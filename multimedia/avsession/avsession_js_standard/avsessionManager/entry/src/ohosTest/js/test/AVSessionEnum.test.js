@@ -195,6 +195,10 @@ export default function AVSessionEnum() {
             console.info(`AVCastPickerColorMode DARK is ${AVCastPickerColorMode.DARK}`);
             expect(AVCastPickerColorMode.DARK).assertEqual(1);
             done();
+
+            console.info(`AVCastPickerColorMode LIGHT is ${AVCastPickerColorMode.LIGHT}`);
+            expect(AVCastPickerColorMode.LIGHT).assertEqual(2);
+            done();
         })
 
     })
