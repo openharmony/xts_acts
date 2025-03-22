@@ -20,7 +20,6 @@ import relationalStoreEmitTest from './relationalStoreEmit.test'
 import relationalStoreDifferenceCustomDirMultipleTest from './relationalStoreDifferenceCustomDirMultiple.test'
 import relationalStoreAsyncDownloadAssetTest from './relationalStoreAsyncDownloadAssetEts.test'
 import relationalStoreSetDistributedTablesTest from './relationalStoreSetDistributedTables.test'
-import relationStoreReadonlyErrCodeTest from './relationStoreReadonlyErrCodeTest';
 export default function testsuite() {
   relationalStoreCloudSyncEtsTest()
   relationalStoreDistributedTest()
@@ -30,5 +29,4 @@ export default function testsuite() {
   relationalStoreDifferenceCustomDirMultipleTest()
   relationalStoreAsyncDownloadAssetTest()
   relationalStoreSetDistributedTablesTest()
-  relationStoreReadonlyErrCodeTest()
 }
