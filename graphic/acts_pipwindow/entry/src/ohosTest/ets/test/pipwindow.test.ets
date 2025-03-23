@@ -2898,10 +2898,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_pipWindowSizeChange', 3, async (done: Function) => {
       const message = 'test_pipWindowSizeChange!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -2918,7 +2914,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.info(`${message} success in callback, size: ${size}`)
         pipSize = size
       }
-      // let config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY)
       try {
         let promise = pipWindow.create(config);
         promise.then(async (data) => {
@@ -2939,11 +2934,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
           expect(pipSize.width).assertEqual(pipInfoSize.width);
           expect(pipSize.height).assertEqual(pipInfoSize.height);
-          // expect(pipSize.scale).assertEqual(pipInfoSize.scale);
-          // expect(Math.abs(pipSize.width-pipInfoSize.width)).assertLessOrEqual(1)
-          // expect(Math.abs(pipSize.height-pipInfoSize.height)).assertLessOrEqual(1)
           expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
-
           pipController.off('pipWindowSizeChange', callback);
           await pipController.stopPiP();
           await sleep(1000);
@@ -2975,14 +2966,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_videoCallControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
       const message = 'test_videoCallControlGroup_MUTE_SWITCH!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
-      let pipSize: pipWindow.PiPWindowSize;
       let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
@@ -3040,14 +3026,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_VideoMeetingControlGroup_MICROPHONE_SWITCH', 3, async (done: Function) => {
       const message = 'test_VideoMeetingControlGroup_MICROPHONE_SWITCH!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
-      let pipSize: pipWindow.PiPWindowSize;
       let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
@@ -3105,14 +3086,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
-      let pipSize: pipWindow.PiPWindowSize;
       let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
@@ -3170,14 +3146,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_VideoLiveControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_MUTE_SWITCH!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
-      let pipSize: pipWindow.PiPWindowSize;
       let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
@@ -3235,14 +3206,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
-      let pipSize: pipWindow.PiPWindowSize;
       let config: pipWindow.PiPConfiguration = {
         context: context1,
         componentController: mXComponentController,
@@ -3300,10 +3266,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('test_on_controlEvent', 3, async (done: Function) => {
       const message = 'test_on_controlEvent!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -3321,7 +3283,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         controlParam = control
       }
       let driver: Driver =
-        Driver.create(); //------------------------------------------------------------------------------import
+        Driver.create();
       try {
         let promise = pipWindow.create(config);
         promise.then(async (data) => {
@@ -3373,17 +3335,13 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     /**
      * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_ON_CONTROLEVENT_0200
      * @tc.name       : test_off_controlEvent
-     * @tc.desc       : 验证off_controlEvent
+     * @tc.desc       : 验证on_controlEvent
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('test_off_controlEvent', 3, async (done: Function) => {
       const message = 'test_off_controlEvent!'
-      if (deviceType == "2in1" || isAutoWindow == 'true') {
-        expect(true).assertTrue();
-        done();
-      }
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -3401,7 +3359,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         controlParam = control
       }
       let driver: Driver =
-        Driver.create(); //------------------------------------------------------------------------------import
+        Driver.create();
       try {
         let promise = pipWindow.create(config);
         promise.then(async (data) => {

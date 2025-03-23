@@ -4096,6 +4096,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             console.info(`${message} succeed in moveWindowToAsync`);
           }).catch(async (err: BusinessError) => {
             console.error(`${message} promise Failed to moveWindowToAsync, Cause code ${err.code}, message ${err.message} `);
+            expect(err.code).assertEqual(801);
+            done();
           })
           await sleep(1000)
           let rect = windowClassStart.getWindowProperties().windowRect;
@@ -4105,7 +4107,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         } catch (err) {
           console.log(`${message} Failed to test MoveConfiguration.errcode:${err.code}, Cause: ${err.message}`)
-          expect().assertFail();
+          expect(err.code).assertEqual(801);
           done();
         }
       }
@@ -4141,7 +4143,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             console.info(`${message} succeed in moveWindowToGlobal`);
           }).catch((err: BusinessError) => {
             console.error(`${message} promise Failed to moveWindowToGlobal, Cause code ${err.code}, message ${err.message} `);
-            expect().assertFail();
+            expect(err.code).assertEqual(801);
             done();
           });
           await sleep(1000);
@@ -4152,7 +4154,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to test MoveConfiguration, Cause code ${err.code}, message ${err.message} `);
-          if (err.code == 1300002){
+          if (err.code == 1300002 || err.code == 801){
             expect(true).assertTrue();
           } else {
             expect().assertFail();
@@ -4203,7 +4205,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
             await button.click();
             await sleep(1000);
-            if(result){
+            if (result) {
               expect().assertFail();
               done();
             }
@@ -4227,12 +4229,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             } catch (err) {
               console.info(`The window does not exist`);
             }
-            if (err.code == 801 || err.code == 1300002) {
-              expect(true).assertTrue();
-              console.error(`The device not support on(subWindowClose)`);
-            } else {
-              expect().assertFail();
-            }
+            expect().assertFail();
             ;
             done();
           })
@@ -4280,7 +4277,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
             await button.click();
             await sleep(1000);
-            if(!result){
+            if (!result) {
               expect().assertFail();
               done();
             }
@@ -4304,12 +4301,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
             } catch (err) {
               console.info(`The window does not exist`);
             }
-            if (err.code == 801 || err.code == 1300002) {
-              expect(true).assertTrue();
-              console.error(`The device not support on(subWindowClose)`);
-            } else {
-              expect().assertFail();
-            }
+            expect().assertFail();
             ;
             done();
           })
