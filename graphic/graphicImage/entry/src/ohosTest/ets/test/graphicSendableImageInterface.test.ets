@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import image from '@ohos.multimedia.image';
 import sendableImage from '@ohos.multimedia.sendableImage'
@@ -545,6 +545,48 @@ export default function graphicSendableImageInterfaceTest() {
         done()
       }
     })
+
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      sendableImagePixelMapErrorCode_0100
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it("sendablePixelMapError_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+      let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+      sendableImage.createPixelMapFromSurface('11111111', region).then(() => {
+        console.info('www data Succeeded in creating pixelmap from SurfaceData');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(`www data Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect(Number(error) == 62980178).assertTrue();
+        done();
+      });
+    });
+
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      sendableImagePixelMapErrorCode_0200
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+      let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+      sendableImage.createPixelMapFromSurface('11111111', null!).then(() => {
+        console.info('www data Succeeded in creating pixelmap from SurfaceData');
+        expect().assertFail();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(`www data Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect(error.code == 62980105).assertTrue();
+        done();
+      });
+    });
 
   })
 }
