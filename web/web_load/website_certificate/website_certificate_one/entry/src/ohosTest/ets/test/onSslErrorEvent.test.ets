@@ -62,7 +62,7 @@ export default function onSslErrorEvent() {
     it('testonSslErrorEvent001', 0, async (done: Function) => {
       Utils.emitEvent("emitonSslErrorEvent", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testonSslErrorEvent001", 'https://expired.badssl.com/', 2025321, done);
+      Utils.registerEvent("testonSslErrorEvent001", 1, 2025321, done);
       sendEventByKey('WebonSslErrorEventButton', 10, '');
     })
 

@@ -34,6 +34,7 @@ struct onCreateNativeMediaPlayer {
   @State mediaPlayGestureAccess: boolean = true;
   @State statusResult: string = '';
   @State url: string = ''
+  mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -66,13 +67,7 @@ struct onCreateNativeMediaPlayer {
             case "emitonSslErrorEvent": {
               try {
                 await Utils.sleep(1000);
-                let driver: Driver = Driver.create();
-                let buttontwo = await driver.findComponent(ON.text('confirm'));
-                await buttontwo.click();
-                await Utils.sleep(1000);
-                console.log('pbbttt' + buttontwo)
-                Utils.emitEvent(this.url, 2025321)
-
+                Utils.emitEvent(WebLayoutMode.FIT_CONTENT, 2025321)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -88,6 +83,7 @@ struct onCreateNativeMediaPlayer {
           console.log('onFaviconReceived');
           this.icon = event.favicon;
         })
+        .layoutMode(this.mode)
         .onSslErrorEvent((event: SslErrorEvent) => {
           this.url = event.url
           console.log("onSslErrorEvent url: " + event.url);
@@ -96,25 +92,6 @@ struct onCreateNativeMediaPlayer {
           console.log("onSslErrorEvent referrer: " + event.referrer);
           console.log("onSslErrorEvent isFatalError: " + event.isFatalError);
           console.log("onSslErrorEvent isMainFrame: " + event.isMainFrame);
-          AlertDialog.show({
-            title: 'onSslErrorEvent',
-            message: 'text',
-            primaryButton: {
-              value: 'confirm',
-              action: () => {
-                event.handler.handleConfirm();
-              }
-            },
-            secondaryButton: {
-              value: 'cancel',
-              action: () => {
-                event.handler.handleCancel();
-              }
-            },
-            cancel: () => {
-              event.handler.handleCancel();
-            }
-          })
         })
     }
   }
