@@ -274,7 +274,7 @@ export default function UsbCoreEtsTest() {
       if (gPipe == null) {
         return
       } else {
-        let tmpPipe = JSON.parse(JSON.stringify(gPipe));
+        let tmpPipe:ESObject = JSON.parse(JSON.stringify(gPipe));
         tmpPipe.busNum = -23;
         console.info(TAG, 'usb case testClosePipe002 param: ' + JSON.stringify(tmpPipe));
         let isPipClose = usbMgr.closePipe(tmpPipe);
@@ -300,7 +300,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testClosePipe003');
-      let tmpPipe = JSON.parse(JSON.stringify(gPipe));
+      let tmpPipe:ESObject = JSON.parse(JSON.stringify(gPipe));
       tmpPipe.devAddress = -23;
       console.info(TAG, 'usb case testClosePipe003 param: ' + JSON.stringify(tmpPipe));
       let isPipClose = usbMgr.closePipe(tmpPipe);
@@ -325,7 +325,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testClosePipe004');
-      let tmpPipe = JSON.parse(JSON.stringify(gPipe));
+      let tmpPipe:ESObject = JSON.parse(JSON.stringify(gPipe));
       tmpPipe.devAddress = -23;
       tmpPipe.busNum = -23;
       console.info(TAG, 'usb case testClosePipe004 param: ' + JSON.stringify(tmpPipe));
@@ -395,7 +395,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testGetFileDescriptor002');
-      let tempPipe = {busNum : 255, devAddress : 255};
+      let tempPipe:ESObject = {busNum : 255, devAddress : 255};
       console.info(TAG, 'usb case testGetFileDescriptor002 param: ' + JSON.stringify(tempPipe));
       let fileDescriptor = usbMgr.getFileDescriptor(tempPipe);
       console.info(TAG, 'usb case testGetFileDescriptor002 ret: ' + fileDescriptor);
@@ -419,7 +419,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testGetFileDescriptor003');
-      let tempPipe = {busNum : 255, devAddress : gPipe.devAddress};
+      let tempPipe:ESObject = {busNum : 255, devAddress : gPipe?.devAddress};
       console.info(TAG, 'usb case testGetFileDescriptor003 param: ' + JSON.stringify(tempPipe));
       let fileDescriptor = usbMgr.getFileDescriptor(tempPipe);
       console.info(TAG, 'usb case testGetFileDescriptor003 ret: ' + fileDescriptor);
@@ -443,7 +443,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testGetFileDescriptor004');
-      let tempPipe = {busNum : gPipe.busNum, devAddress : 255};
+      let tempPipe:ESObject = {busNum : gPipe?.busNum, devAddress : 255};
       console.info(TAG, 'usb case testGetFileDescriptor004 param: ' + JSON.stringify(tempPipe));
       let fileDescriptor = usbMgr.getFileDescriptor(tempPipe);
       expect(fileDescriptor).assertEqual(-1);
@@ -467,7 +467,7 @@ export default function UsbCoreEtsTest() {
       }
 
       try {
-        let maskCode = usbMgr.getFileDescriptor("invalid");
+        let maskCode = usbMgr.getFileDescriptor(undefined);
         console.info(TAG, 'usb testGetFileDescriptor005 case getFileDescriptor return: ' + maskCode);
         expect(maskCode !== null).assertFalse();
       } catch (err) {
@@ -492,7 +492,7 @@ export default function UsbCoreEtsTest() {
       }
 
       try {
-        let maskCode = usbMgr.getFileDescriptor();
+        let maskCode = usbMgr.getFileDescriptor(null);
         console.info(TAG, 'usb testGetFileDescriptor006 case getFileDescriptor return: ' + maskCode);
         expect(maskCode !== null).assertFalse();
       } catch (err) {
