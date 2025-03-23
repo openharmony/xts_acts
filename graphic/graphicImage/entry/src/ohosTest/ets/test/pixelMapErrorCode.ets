@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base';
 import { image } from '@kit.ImageKit';
 import { taskpoolTest } from '../MainAbility/utils/taskpool'
 
-export default function imagePixelMapTest() {
+export default function imagePixelMapErrorCodeTest() {
   describe('imagePixelMapTest', ()=> {
     beforeAll(async (done:Function)=> {
       console.info("imagePixelMapTest error code beforeEach start");
