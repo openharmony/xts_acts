@@ -144,6 +144,7 @@ export default function UsbApiBulkTransferTest() {
                 console.info('callBackData = ' + JSON.stringify(callBackData));
                 console.info('testUsbSubmitTransfer001 transfer success, result = ' + transferParams.buffer.toString());
                 expect(callBackData.status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertTrue();
+                expect(callBackData.actualLength).assertEqual(transferParams.buffer.length);
                 usbMgr.closePipe(devices);
                 done()
             }
