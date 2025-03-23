@@ -161,5 +161,47 @@ export default function displayAndWindowRefactorInterfaceTest() {
         done();
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_CREATE_VIRTUALSCREEN_ERRORCODE_0200
+     * @tc.name      : test_CreateVirtualScreen_ErrorCode201
+     * @tc.desc      : test_CreateVirtualScreen_ErrorCode201 when without permissions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_CreateVirtualScreen_ErrorCode201', 0, async (done: Function) => {
+      let caseName: string = 'test_CreateVirtualScreen_ErrorCode201 ';
+      class VirtualScreenOptions {
+        name: string = '';
+        width: number = 0;
+        height: number = 0;
+        density: number = 0;
+        surfaceId: string = '';
+      }
+      let option: VirtualScreenOptions = {
+        name: 'screen01',
+        width: 1,
+        height: 2340,
+        density: 2,
+        surfaceId: ''
+      }
+      try {
+        display.createVirtualScreen(option).then((screenId: number) => {
+          console.info(caseName + 'succeeded in create virtual screen, data : ' + JSON.stringify(screenId));
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(caseName + 'failed to create the virtual screen, err : ' + JSON.stringify(err));
+          expect(err.code == 201).assertTrue();
+          done();
+        })
+      } catch (err) {
+        console.log(caseName + 'error in createVirtualScreen, err : ' + JSON.stringify(err));
+        if (err.code != 801) {
+          expect().assertFail();
+        }
+        done();
+      }
+    });
   })
 }
