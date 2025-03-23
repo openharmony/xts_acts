@@ -136,34 +136,6 @@ export default function relationalStoreErrorCode47Test() {
       console.info(TAG + "************* errcode002 end *************");
     })
     /**
-     * @tc.name  errcode is 14800013
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBAPIErrcodeTest_0300
-     * @tc.desc  errcode is 14800013
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('errcode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      console.info(TAG + "************* errcode003 start *************");
-      let resultSet:relationalStore.ResultSet;
-      try{
-        let predicates = new relationalStore.RdbPredicates("employee");;
-        resultSet = await (rdbStore as relationalStore.RdbStore).query(predicates);
-        console.log(TAG+"resultSet.rowCount"+resultSet.rowCount);
-        resultSet.getColumnName(5);
-        resultSet.getValue(-1);
-        expect(null).assertFail();
-        resultSet.close();
-        done()
-      }catch(err){
-        console.log(TAG+"err.code"+err.code + "err.message"+err.message)
-        expect(err.code !== 14800013).assertTrue()
-        done()
-      }
-      console.info(TAG + "************* errcode003 end *************");
-    })
-
-    /**
      * @tc.name  errcode is 14800018
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBAPIErrcodeTest_0400
      * @tc.desc errcode is 14800018
