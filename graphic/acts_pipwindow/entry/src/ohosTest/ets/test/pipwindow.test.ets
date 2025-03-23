@@ -3405,6 +3405,230 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       }
     });
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_ErrorCode_0100
+     * @tc.name       : test_updateContentNode_ErrorCode_401
+     * @tc.desc       : updateContentNode验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode_ErrorCode_401', 3, async (done: Function) => {
+      const message = 'test_updateContentNode_ErrorCode_401!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.updateContentNode(null);
+            console.log(`${message} Succeeded updateContentNode`);
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code == 401).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_ErrorCode_0200
+     * @tc.name       : test_updateContentNode_ErrorCode_801
+     * @tc.desc       : 验证updateContentNode接口801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode_ErrorCode_801', 3, async (done: Function) => {
+      const message = 'test_updateContentNode_ErrorCode_801!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent')
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.startPiP();
+            console.log(`${message} Succeeded startPiP`);
+            await sleep(1000);
+            await pipController.updateContentNode(contentNode);
+            console.log(`${message} Succeeded updateContentNode`);
+            expect(true).assertTrue();
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_0200
+     * @tc.name       : test_updateContentNode2
+     * @tc.desc       : 验证先startPIP后updateContentNode
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode2', 3, async (done: Function) => {
+      const message = 'test_updateContentNode2!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent');
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.startPiP();
+            await sleep(1000);
+            console.log(`${message} Succeeded startPiP`);
+            await pipController.updateContentNode(contentNode);
+            console.log(`${message} Succeeded updateContentNode`);
+            expect(true).assertTrue();
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentSize_0100
+     * @tc.name       : test_updateContentSize_401
+     * @tc.desc       : 验证updateContentSize接口401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentSize_401', 3, async (done: Function) => {
+      const message = 'test_updateContentSize_401!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let controlParam: pipWindow.ControlEventParam;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            pipController.updateContentSize(null, null);
+            console.log(`${message} Succeeded updateContentSize`);
+            expect().assertFail();
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code == 401).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
 
