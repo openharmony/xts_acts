@@ -150,8 +150,8 @@ export default function relationalStoreErrorCode47Test() {
         let predicates = new relationalStore.RdbPredicates("employee");;
         resultSet = await (rdbStore as relationalStore.RdbStore).query(predicates);
         console.log(TAG+"resultSet.rowCount"+resultSet.rowCount);
-        resultSet.getColumnName(5);
         resultSet.getValue(-1);
+        resultSet.getColumnName(5);
         expect(null).assertFail();
         resultSet.close();
         done()
