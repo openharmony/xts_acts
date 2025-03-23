@@ -741,6 +741,49 @@ export default function ActsDisplayNdkApi14Test() {
       }
     })
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_capture_0100
+     * @tc.name       : testcapture
+     * @tc.desc       : testcapture
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testcapture', 0, (done:Function) => {
+      let caseName = 'testcapture';
+      try{
+          let captureOption: screenshot.CaptureOption = {
+            "displayId": 0
+          };
+          let promise = screenshot.capture();
+          promise.then((PixelMap: image.PixelMap) => {
+            console.log(caseName + 'Succeeded in saving screenshot. Pixel bytes number: ' + PixelMap.getPixelBytesNumber());
+            PixelMap.getImageInfo().then((imageInfo:image.ImageInfo)=>{
+              let PixelMapWidth = imageInfo.size.width;
+              let PixelMapHeight = imageInfo.size.height;
+              console.log(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
+              expect(PixelMapWidth).assertLarger(0);
+              expect(PixelMapHeight).assertLarger(0);
+              PixelMap.release(); // PixelMap使用完后及时释放内存
+              done();
+            })
+          }).catch((err: BusinessError) => {
+            console.log(caseName +'Failed to save screenshot. Code: ' + JSON.stringify(err));
+            if(err.code == 801){
+              done();
+            }else{
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+
 
   })
 }

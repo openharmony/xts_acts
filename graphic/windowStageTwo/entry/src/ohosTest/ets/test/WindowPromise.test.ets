@@ -2645,11 +2645,11 @@ export default function windowPromiseTest() {
           subWindowClass = data;
           console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
           await subWindowClass.destroyWindow();
-          subWindowClass.setWindowTitleMoveEnabled(true);
+          subWindowClass.getWindowDecorVisible();
           expect(false).assertTrue();
           done();
         }).catch(async (err: BusinessError) => {
-          console.error(msgStr + `Failed to setWindowTitleMoveEnabled. Cause code: ${err.code}, message: ${err.message}`);
+          console.error(msgStr + `Failed to getWindowDecorVisible. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.log(msgStr + '此设备不支持');
             done();
@@ -2669,5 +2669,619 @@ export default function windowPromiseTest() {
         done();
       }
     })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_401_0100
+     * @tc.name       : testOnWindowWillClose401
+     * @tc.desc       : testOnWindowWillClose401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnWindowWillClose401', 0, async (done: Function) => {
+      let caseName = "testOnWindowWillClose401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.on(null, callback);
+        console.log(msgStr  + 'Succeeded on windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_401_0200
+     * @tc.name       : testOffWindowWillClose401
+     * @tc.desc       : testOffWindowWillClose401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOffWindowWillClose401', 0, async (done: Function) => {
+      let caseName = "testOffWindowWillClose401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.off(null, callback);
+        console.log(msgStr  + 'Succeeded off windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_1300004_0300
+     * @tc.name       : testonWindowWillClose1300004
+     * @tc.desc       : testonWindowWillClose1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testonWindowWillClose1300004', 0, async (done: Function) => {
+      let caseName = "testonWindowWillClose1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: ohosWindow.Configuration = {
+        name: "test",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await ohosWindow.createWindow(config);
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        windowClass.on('windowWillClose', callback);
+        console.log(msgStr  + 'Succeeded on windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await windowClass.destroyWindow();
+        if(e.code == 801){
+          done();
+        }else {
+          expect(e.code).assertEqual(1300004);
+          done()
+        }
+      }
+
+    })
+
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_401_0100
+     * @tc.name       : testOnwindowHighlightChange401
+     * @tc.desc       : testOnwindowHighlightChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnwindowHighlightChange401', 0, async (done: Function) => {
+      let caseName = "testOnwindowHighlightChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.on(null, (data: boolean) => {
+          console.info(`Window highlight Change: ${data}`);
+        });
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_401_0200
+     * @tc.name       : testoffwindowHighlightChange401
+     * @tc.desc       : testoffwindowHighlightChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffwindowHighlightChange401', 0, async (done: Function) => {
+      let caseName = "testoffwindowHighlightChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.off(null)
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_1300002_0300
+     * @tc.name       : testoffwindowHighlightChange1300002
+     * @tc.desc       : testoffwindowHighlightChange1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffwindowHighlightChange1300002', 0, async (done: Function) => {
+      let caseName = "testoffwindowHighlightChange1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = (data: boolean) => {
+      }
+      try {
+        let windowClass = await windowStage.createSubWindow('testoffwindowHighlightChange1300002');
+        await windowClass.destroyWindow();
+        windowClass.off('windowHighlightChange',callback);
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300002);
+          done()
+        }
+
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_401_0100
+     * @tc.name       : testsetExclusivelyHighlighted401
+     * @tc.desc       : testsetExclusivelyHighlighted401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted401', 0, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.setExclusivelyHighlighted(null);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertFail();
+          done()
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_1300004_0200
+     * @tc.name       : testsetExclusivelyHighlighted_1300004
+     * @tc.desc       : testsetExclusivelyHighlighted_1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted_1300004', 0, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted_1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.setExclusivelyHighlighted(true);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect(err.code).assertEqual(1300004);
+            done()
+          }
+          
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(false).assertFail();
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_1300002_0300
+     * @tc.name       : testsetExclusivelyHighlighted_1300002
+     * @tc.desc       : testsetExclusivelyHighlighted_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted_1300002', 0, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: ohosWindow.Configuration = {
+        name: "test",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await ohosWindow.createWindow(config);
+      try {
+        await windowClass.destroyWindow();
+        let promise = windowClass.setExclusivelyHighlighted(true);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect(err.code).assertEqual(1300002);
+            done()
+          }
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(false).assertFail();
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_startMoving_401_0100
+     * @tc.name       : teststartMoving401
+     * @tc.desc       : teststartMoving401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('teststartMoving401', 0, async (done: Function) => {
+      let caseName = "teststartMoving401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.startMoving(null,null);
+        promise.then(() => {
+          console.info('Succeeded startMoving.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to startMoving. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertFail();
+          done()
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_stopMoving_1300002_0100
+     * @tc.name       : teststopMoving1300002
+     * @tc.desc       : teststopMoving1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('teststopMoving1300002', 0, async (done: Function) => {
+      let caseName = "teststopMoving1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = await windowStage.createSubWindow('teststopMoving1300002');
+        await windowClass.destroyWindow();
+        windowClass.stopMoving().then(() => {
+          console.info(msgStr +'Succeeded in stopping moving window.')
+          expect(false).assertFail();
+          done();
+        }).catch((e: BusinessError) => {
+          console.error(msgStr +`Failed to stop moving. Cause code: ${e.code}, message: ${e.message}`);
+          if(e.code == 801){
+            done();
+          }else{
+            expect(e.code).assertEqual(1300002);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300002);
+          done()
+        }
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setParentWindow_401_0200
+     * @tc.name       : testsetParentWindow401
+     * @tc.desc       : testsetParentWindow401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetParentWindow401', 0, async (done: Function) => {
+      let caseName = "testsetParentWindow401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = await windowStage.getMainWindowSync();
+        windowClass.setParentWindow(null).then(() => {
+          console.info(msgStr +'Succeeded in  setParentWindow window.')
+          expect(false).assertFail();
+          done();
+        }).catch(async(e: BusinessError) => {
+          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
+          expect(false).assertFail();
+          done();
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(401);
+          done()
+        }
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setParentWindow_1300002_0200
+     * @tc.name       : testsetParentWindow1300002
+     * @tc.desc       : testsetParentWindow1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetParentWindow1300002', 0, async (done: Function) => {
+      let caseName = "testsetParentWindow1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      try {
+        let windowClass = await windowStage.createSubWindow('testsetParentWindow1300002');
+        await windowClass.destroyWindow();
+        windowClass.setParentWindow(windowId).then(() => {
+          console.info(msgStr +'Succeeded in  setParentWindow window.')
+          expect(false).assertFail();
+          done();
+        }).catch(async(e: BusinessError) => {
+          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
+
+          if(e.code == 801){
+            done();
+          }else{
+            expect(e.code).assertEqual(1300002);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(false).assertFail();
+        done();
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setParentWindow_1300004_0300
+     * @tc.name       : testsetParentWindow1300004
+     * @tc.desc       : testsetParentWindow1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetParentWindow1300004', 0, async (done: Function) => {
+      let caseName = "testsetParentWindow1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      try {
+        let config: ohosWindow.Configuration = {
+          name: "testsetParentWindow1300004",
+          windowType: ohosWindow.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await ohosWindow.createWindow(config);
+        windowClass.setParentWindow(windowId).then(() => {
+          console.info(msgStr +'Succeeded in setParentWindow .')
+          expect(false).assertFail();
+          done();
+        }).catch(async(e: BusinessError) => {
+          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
+          await windowClass.destroyWindow();
+          if(e.code == 801){
+            done();
+          }else{
+            expect(e.code).assertEqual(1300004);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300004);
+          done()
+        }
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setParentWindow_1300009_0400
+     * @tc.name       : testsetParentWindow1300009
+     * @tc.desc       : testsetParentWindow1300009
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetParentWindow1300009', 0, async (done: Function) => {
+      let caseName = "testsetParentWindow1300009";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      try {
+        let windowClass = await windowStage.createSubWindow('testsetParentWindow1300009');
+        windowClass.setParentWindow(100000).then(() => {
+          console.info(msgStr +'Succeeded in setParentWindow .')
+          expect(false).assertFail();
+          done();
+        }).catch(async(e: BusinessError) => {
+          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
+          await windowClass.destroyWindow();
+          if(e.code == 801){
+            done();
+          }else{
+            expect(e.code).assertEqual(1300009);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300009);
+          done()
+        }
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_getParentWindow_1300002_0100
+     * @tc.name       : testgetParentWindow1300002
+     * @tc.desc       : testgetParentWindow1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testgetParentWindow1300002', 0, async (done: Function) => {
+      let caseName = "testgetParentWindow1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      try {
+        let windowClass = await windowStage.createSubWindow('testgetParentWindow1300002');
+        await windowClass.destroyWindow();
+        windowClass.getParentWindow();
+          console.info(msgStr +'Succeeded in  getParentWindow window.')
+          expect(false).assertFail();
+          done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300002);
+          done()
+        }
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_getParentWindow_1300004_0200
+     * @tc.name       : testgetParentWindow1300004
+     * @tc.desc       : testgetParentWindow1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testgetParentWindow1300004', 0, async (done: Function) => {
+      let caseName = "testgetParentWindow1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      let config: ohosWindow.Configuration = {
+        name: "testgetParentWindow1300004",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await ohosWindow.createWindow(config);
+      try {
+        windowClass.getParentWindow()
+          console.info(msgStr +'Succeeded in setParentWindow .')
+          expect(false).assertFail();
+          done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await windowClass.destroyWindow();
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300004);
+          done()
+        }
+      }
+
+    })
+
+
   })
 }
