@@ -15,11 +15,11 @@
 
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 let TagFrmwk: string = "getAudioSceneApi12";
-let AUDIO_SCENE_RINGING: number = 1; //响铃模式。
-let AUDIO_SCENE_PHONE_CALL: number = 2; //电话模式。
+let AudioSceneRinging: audio.AudioScene = audio.AudioScene.AUDIO_SCENE_RINGING;
+let AudioScenePhoneCall: audio.AudioScene = audio.AudioScene.AUDIO_SCENE_PHONE_CALL;
 let audioManager: audio.AudioManager;
 
 async function getAudioManager() {
@@ -67,7 +67,7 @@ export default function getAudioSceneApi12() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0100
-     * @tc.name      : mute - AudioScene - AsyncCallback - AUDIO_SCENE_RINGING - 1 响铃模式, AUDIO_SCENE_PHONE_CALL - 2 电话模式。
+     * @tc.name      : mute - AudioScene - AsyncCallback - AudioSceneRinging - 1 响铃模式, AudioScenePhoneCall - 2 电话模式。
      * @tc.desc      : mute - AudioScene - AsyncCallback - AudioScene
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -80,9 +80,9 @@ export default function getAudioSceneApi12() {
             console.error(`Failed to obtain the audio scene mode. ${err}`);
             return;
           }
-          if (getValue === AUDIO_SCENE_RINGING) {
+          if (getValue === AudioSceneRinging) {
             console.info(`${TagFrmwk} Callback invoked to indicate that the audio scene mode is obtained ${getValue}.`);
-          } else if (getValue === AUDIO_SCENE_RINGING) {
+          } else if (getValue === AudioScenePhoneCall) {
             console.info(`${TagFrmwk} Callback invoked to indicate that the audio scene mode is obtained ${getValue}.`);
           }
           done();
@@ -96,7 +96,7 @@ export default function getAudioSceneApi12() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0200
-     * @tc.name      : mute - AudioScene - Promise - AUDIO_SCENE_RINGING - 1 响铃模式, AUDIO_SCENE_PHONE_CALL - 2 电话模式。
+     * @tc.name      : mute - AudioScene - Promise - AudioSceneRinging - 1 响铃模式, AudioScenePhoneCall - 2 电话模式。
      * @tc.desc      : mute - AudioScene - Promise - AudioScene
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -105,9 +105,9 @@ export default function getAudioSceneApi12() {
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0200', 2, async (done: Function) => {
       try {
         let value = await audioManager.getAudioScene();
-        if (value === AUDIO_SCENE_RINGING) {
+        if (value === AudioSceneRinging) {
           console.info(`${TagFrmwk} Promise invoked to indicate that the audio scene mode is obtained ${value}.`);
-        } else if (value === AUDIO_SCENE_RINGING) {
+        } else if (value === AudioScenePhoneCall) {
           console.info(`${TagFrmwk} Promise invoked to indicate that the audio scene mode is obtained ${value}.`);
         }
         done();
@@ -120,7 +120,7 @@ export default function getAudioSceneApi12() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0300
-     * @tc.name      : mute - AudioScene - AUDIO_SCENE_RINGING - 1 响铃模式, AUDIO_SCENE_PHONE_CALL - 2 电话模式。
+     * @tc.name      : mute - AudioScene - AudioSceneRinging - 1 响铃模式, AudioScenePhoneCall - 2 电话模式。
      * @tc.desc      : mute - AudioScene - getAudioSceneSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -129,9 +129,9 @@ export default function getAudioSceneApi12() {
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0300', 3, (done: Function) => {
       try {
         let value = audioManager.getAudioSceneSync();
-        if (value === AUDIO_SCENE_RINGING) {
+        if (value === AudioSceneRinging) {
           console.info(`${TagFrmwk} Promise invoked to indicate that the audio scene mode is obtained ${value}.`);
-        } else if (value === AUDIO_SCENE_RINGING) {
+        } else if (value === AudioScenePhoneCall) {
           console.info(`${TagFrmwk} Promise invoked to indicate that the audio scene mode is obtained ${value}.`);
         }
         done();
