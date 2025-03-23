@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
@@ -85,7 +85,7 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0100', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -110,7 +110,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -121,8 +121,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0200', 0, async (Done: Function) => {
-      // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
+    it('taskPoolTaskGroupTask0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
       
       let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
@@ -148,7 +148,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -159,9 +159,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0300', 0, async (Done: Function) => {
-      
-      let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
+    it('taskPoolTaskGroupTask0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+     let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs1, 1);
       ;
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -205,7 +204,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -216,7 +215,7 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0400', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
@@ -261,7 +260,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -272,7 +271,7 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0500', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
@@ -322,7 +321,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -333,8 +332,7 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0600', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -379,7 +377,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -390,7 +388,7 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0700', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
       let task1: taskpool.Task = new taskpool.Task(printArgs5, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs5, 2);
@@ -436,7 +434,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -447,8 +445,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0800', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs3, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -479,7 +477,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -490,8 +488,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0900', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -524,7 +522,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -535,8 +533,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1000', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -571,7 +569,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
 
@@ -583,8 +581,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1100', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       await sleep(5000)
       let task1: taskpool.Task = new taskpool.Task(printArgsLock1);
       let task2: taskpool.Task = new taskpool.Task(printArgsLock1);
@@ -612,7 +610,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -623,8 +621,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1200', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsLock3);
       let task2: taskpool.Task = new taskpool.Task(printArgsLock3);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -651,7 +649,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -662,8 +660,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1300', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsLock5);
       let task2: taskpool.Task = new taskpool.Task(printArgsLock5);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -690,7 +688,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -701,8 +699,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1400', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsLock7);
       let task2: taskpool.Task = new taskpool.Task(printArgsLock7);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -729,7 +727,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -740,8 +738,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1500', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise1);
       let task2: taskpool.Task = new taskpool.Task(printArgsPromise1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -768,7 +766,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -779,8 +777,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1600', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise3);
       let task2: taskpool.Task = new taskpool.Task(printArgsPromise3);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -807,7 +805,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -818,8 +816,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1700', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise5);
       let task2: taskpool.Task = new taskpool.Task(printArgsPromise5);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -846,7 +844,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -857,8 +855,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1800', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise7);
       let task2: taskpool.Task = new taskpool.Task(printArgsPromise7);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -885,7 +883,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -896,8 +894,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1900', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsSettimeout1);
       let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -924,7 +922,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -935,8 +933,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2000', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsSettimeout3);
       let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout3);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -963,7 +961,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -974,8 +972,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2100', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let asyncLockTest = new AsyncLockTest()
       let task1: taskpool.Task = new taskpool.Task(printArgsWait, asyncLockTest);
       let task2: taskpool.Task = new taskpool.Task(printArgsWait, asyncLockTest);
@@ -1001,7 +999,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1012,8 +1010,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2200', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let asyncLockTest = new AsyncLockTest1()
       let task1: taskpool.Task = new taskpool.Task(printArgsWait1, asyncLockTest);
       let task2: taskpool.Task = new taskpool.Task(printArgsWait1, asyncLockTest);
@@ -1039,7 +1037,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1050,8 +1048,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2300', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let asyncLockTest = new AsyncLockTest1()
       let task1: taskpool.Task = new taskpool.Task(printArgsWait2, asyncLockTest);
       let task2: taskpool.Task = new taskpool.Task(printArgsWait2, asyncLockTest);
@@ -1077,7 +1075,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1088,8 +1086,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2400', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let asyncLockTest = new AsyncLockTest1()
       let task1: taskpool.Task = new taskpool.Task(printArgsWait3, asyncLockTest);
       let task2: taskpool.Task = new taskpool.Task(printArgsWait3, asyncLockTest);
@@ -1117,7 +1115,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1128,8 +1126,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2500', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1159,7 +1157,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1170,8 +1168,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2600', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1202,7 +1200,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1213,8 +1211,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2700', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsTaskpool, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgsTaskpool, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1239,7 +1237,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1250,8 +1248,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2800', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsTaskpool1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgsTaskpool1, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1276,7 +1274,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1287,8 +1285,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2900', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsTaskpool2, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgsTaskpool2, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1313,7 +1311,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
 
     /**
@@ -1324,8 +1322,8 @@ export default function taskPoolTaskGroup() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask3000', 0, async (Done: Function) => {
-      
+    it('taskPoolTaskGroupTask3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       let task1: taskpool.Task = new taskpool.Task(printArgsTaskpool3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgsTaskpool3, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1350,7 +1348,7 @@ export default function taskPoolTaskGroup() {
       expect(10).assertEqual(Count2)
       Count1 = 0
       Count2 = 0
-      Done()
+      done()
     })
   })
 }

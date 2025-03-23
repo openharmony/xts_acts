@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -38,7 +38,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0001', 0, async () => {
+    it('testCollectionsArrayBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -57,6 +57,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0200
@@ -66,7 +67,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0002', 0, async () => {
+    it('testCollectionsArrayBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -85,6 +86,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0300
@@ -94,7 +96,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0003', 0, async () => {
+    it('testCollectionsArrayBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -113,6 +115,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0400
@@ -122,7 +125,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0004', 0, async () => {
+    it('testCollectionsArrayBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -141,6 +144,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0500
@@ -150,7 +154,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0005', 0, async () => {
+    it('testCollectionsArrayBuffer0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -169,6 +173,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0600
@@ -178,7 +183,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0006', 0, async () => {
+    it('testCollectionsArrayBuffer0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testCollectionsArrayBuffer0006";
       console.info(`${caseName} test start`);
       let num = 0;
@@ -197,6 +202,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0700
@@ -206,7 +212,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0007', 0, async () => {
+    it('testCollectionsArrayBuffer0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testCollectionsArrayBuffer0007";
       console.info(`${caseName} test start`);
       let num = 0;
@@ -225,6 +231,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0800
@@ -234,7 +241,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0008', 0, async () => {
+    it('testCollectionsArrayBuffer0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testCollectionsArrayBuffer0008";
       console.info(`${caseName} test start`);
       let num = 0;
@@ -253,6 +260,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_0900
@@ -262,7 +270,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0009', 0, async () => {
+    it('testCollectionsArrayBuffer0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = "testCollectionsArrayBuffer0009";
       console.info(`${caseName} test start`);
       let num = 0;
@@ -281,6 +289,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYBUFFER_1000
@@ -290,7 +299,7 @@ export default function ArrayBufferTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsArrayBuffer0010', 0, async () => {
+    it('testCollectionsArrayBuffer0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsArrayBuffer0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -309,6 +318,7 @@ export default function ArrayBufferTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }

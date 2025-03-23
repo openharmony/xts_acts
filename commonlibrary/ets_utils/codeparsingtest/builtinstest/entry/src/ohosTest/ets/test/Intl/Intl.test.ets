@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 function sleep(ms: number): Promise<void> {
   return new Promise<void>((resolve: () => void) => {
@@ -76,7 +76,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0001', 0, () => {
+    it('testIntlConstructorNoNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0001';
       try {
         let intl = Intl.Collator();
@@ -94,7 +94,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0002', 0, () => {
+    it('testIntlConstructorNoNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0002';
       try {
         let locales = "de";
@@ -113,7 +113,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0003', 0, () => {
+    it('testIntlConstructorNoNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0003';
       try {
         let locales = [];
@@ -132,7 +132,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0004', 0, () => {
+    it('testIntlConstructorNoNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0004';
       try {
         let locales = ["de", "en-US"];
@@ -151,7 +151,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0005', 0, () => {
+    it('testIntlConstructorNoNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0005';
       try {
         let locales = "de";
@@ -173,7 +173,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0006', 0, () => {
+    it('testIntlConstructorNoNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0006';
       try {
         let locales = "de";
@@ -195,7 +195,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0007', 0, () => {
+    it('testIntlConstructorNoNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0007';
       try {
         let locales = "de";
@@ -218,7 +218,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0008', 0, () => {
+    it('testIntlConstructorNoNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0008';
       try {
         let locales = "de";
@@ -240,7 +240,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0009', 0, () => {
+    it('testIntlConstructorNoNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0009';
       try {
         let locales = "de";
@@ -262,7 +262,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0010', 0, () => {
+    it('testIntlConstructorNoNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0010';
       try {
         let locales = "de";
@@ -284,7 +284,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0011', 0, () => {
+    it('testIntlConstructorNoNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0011';
       try {
         let locales = "de";
@@ -306,7 +306,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0012', 0, () => {
+    it('testIntlConstructorNoNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0012';
       try {
         let locales = "de";
@@ -328,7 +328,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0013', 0, () => {
+    it('testIntlConstructorNoNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0013';
       try {
         let locales = "de";
@@ -351,7 +351,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0014', 0, () => {
+    it('testIntlConstructorNoNew0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0014';
       try {
         let locales = "de";
@@ -373,7 +373,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0015', 0, () => {
+    it('testIntlConstructorNoNew0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0015';
       try {
         let locales = "de";
@@ -395,7 +395,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0016', 0, () => {
+    it('testIntlConstructorNoNew0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0016';
       try {
         let locales = "de";
@@ -417,7 +417,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0017', 0, () => {
+    it('testIntlConstructorNoNew0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0017';
       try {
         let locales = "de";
@@ -439,7 +439,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0018', 0, () => {
+    it('testIntlConstructorNoNew0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0018';
       try {
         let locales = "de";
@@ -459,7 +459,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0019', 0, () => {
+    it('testIntlConstructorNoNew0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0019';
       try {
         let locales = "de";
@@ -486,7 +486,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0020', 0, () => {
+    it('testIntlConstructorNoNew0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0019';
       try {
         let locales = "de";
@@ -508,7 +508,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0021', 0, () => {
+    it('testIntlConstructorNoNew0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0021';
       try {
         let locales = "de";
@@ -530,7 +530,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0022', 0, () => {
+    it('testIntlConstructorNoNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0022';
       try {
         let locales = "de";
@@ -552,7 +552,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0023', 0, () => {
+    it('testIntlConstructorNoNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0023';
       try {
         let locales = "de";
@@ -574,7 +574,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0024', 0, () => {
+    it('testIntlConstructorNoNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0024';
       try {
         let locales = "de";
@@ -596,7 +596,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0025', 0, () => {
+    it('testIntlConstructorNoNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0025';
       try {
         let locales = "de";
@@ -618,7 +618,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0026', 0, () => {
+    it('testIntlConstructorNoNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0026';
       try {
         let locales: string | undefined = undefined;
@@ -637,7 +637,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0027', 0, () => {
+    it('testIntlConstructorNoNew0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0027';
       try {
         let locales: string | undefined = undefined;
@@ -656,7 +656,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0028', 0, () => {
+    it('testIntlConstructorNoNew0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0028';
       try {
         let locales = "de";
@@ -679,7 +679,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0029', 0, () => {
+    it('testIntlConstructorNoNew0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0029';
       try {
         let locales = "de";
@@ -701,7 +701,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0030', 0, () => {
+    it('testIntlConstructorNoNew0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0030';
       try {
         let locales = "de";
@@ -723,7 +723,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNoNew0031', 0, () => {
+    it('testIntlConstructorNoNew0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNoNew0031';
       try {
         let locales = "de";
@@ -745,7 +745,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNew0001', 0, () => {
+    it('testIntlConstructorNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNew0001';
       try {
         let intl: Intl.Collator = new Intl.Collator();
@@ -764,7 +764,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNew0002', 0, () => {
+    it('testIntlConstructorNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNew0002';
       try {
         let locales = "de";
@@ -783,7 +783,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNew0003', 0, () => {
+    it('testIntlConstructorNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNew0003';
       try {
         let locales = [];
@@ -802,7 +802,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNew0004', 0, () => {
+    it('testIntlConstructorNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNew0004';
       try {
         let locales = ["de", "en-US"];
@@ -821,7 +821,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlConstructorNew0005', 0, () => {
+    it('testIntlConstructorNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlConstructorNew0005';
       try {
         let locales = "de";
@@ -843,7 +843,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0006", 0, () => {
+    it("testIntlConstructorNew0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0006";
       try {
         let intl = Intl.Collator("de", {
@@ -863,7 +863,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0007", 0, () => {
+    it("testIntlConstructorNew0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0007";
       try {
         let intl = Intl.Collator("de", {
@@ -883,7 +883,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0008", 0, () => {
+    it("testIntlConstructorNew0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0008";
       try {
         let intl = Intl.Collator("de", {
@@ -903,7 +903,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0009", 0, () => {
+    it("testIntlConstructorNew0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0009";
       try {
         let intl = Intl.Collator("de", {
@@ -923,7 +923,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0010", 0, () => {
+    it("testIntlConstructorNew0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0010";
       try {
         let intl = Intl.Collator("de", {
@@ -943,7 +943,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0011", 0, () => {
+    it("testIntlConstructorNew0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0011";
       try {
         let intl = Intl.Collator("de", {
@@ -963,7 +963,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0012", 0, () => {
+    it("testIntlConstructorNew0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0012";
       try {
         let intl = Intl.Collator("de", {
@@ -983,7 +983,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0013", 0, () => {
+    it("testIntlConstructorNew0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0013";
       try {
         let intl = Intl.Collator("de", {
@@ -1003,7 +1003,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0014", 0, () => {
+    it("testIntlConstructorNew0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0014";
       try {
         let intl = Intl.Collator("de", {
@@ -1023,7 +1023,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0015", 0, () => {
+    it("testIntlConstructorNew0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0015";
       try {
         let intl = Intl.Collator("de", {
@@ -1043,7 +1043,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0016", 0, () => {
+    it("testIntlConstructorNew0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0016";
       try {
         let intl = Intl.Collator("de", {
@@ -1063,7 +1063,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0017", 0, () => {
+    it("testIntlConstructorNew0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0017";
       try {
         let intl = Intl.Collator("de", {
@@ -1083,7 +1083,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0018", 0, () => {
+    it("testIntlConstructorNew0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0018";
       try {
         let intl = Intl.Collator("de", {});
@@ -1101,7 +1101,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0019", 0, () => {
+    it("testIntlConstructorNew0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0019";
       try {
         let intl = Intl.Collator("de", {
@@ -1126,7 +1126,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0020", 0, () => {
+    it("testIntlConstructorNew0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0020";
       try {
         let intl = Intl.Collator("de", {
@@ -1146,7 +1146,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0021", 0, () => {
+    it("testIntlConstructorNew0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0021";
       try {
         let intl = Intl.Collator("de", {
@@ -1166,7 +1166,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0022", 0, () => {
+    it("testIntlConstructorNew0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0022";
       try {
         let intl = Intl.Collator("de", {
@@ -1186,7 +1186,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0023", 0, () => {
+    it("testIntlConstructorNew0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0023";
       try {
         const locales = "de";
@@ -1211,7 +1211,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0024", 0, () => {
+    it("testIntlConstructorNew0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0024";
       try {
         const locales = "de";
@@ -1236,7 +1236,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0025", 0, () => {
+    it("testIntlConstructorNew0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0025";
       try {
         const locales = "de";
@@ -1261,7 +1261,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0026", 0, () => {
+    it("testIntlConstructorNew0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0026";
       try {
         const intl = new Intl.Collator(undefined, undefined);
@@ -1281,7 +1281,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0027", 0, () => {
+    it("testIntlConstructorNew0027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0027";
       try {
         const intl = new Intl.Collator(undefined);
@@ -1301,7 +1301,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0028", 0, () => {
+    it("testIntlConstructorNew0028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0028";
       try {
         const locales = "de";
@@ -1326,7 +1326,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0029", 0, () => {
+    it("testIntlConstructorNew0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0029";
       try {
         const locales = "de";
@@ -1351,7 +1351,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0030", 0, () => {
+    it("testIntlConstructorNew0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0030";
       try {
         const locales = "de";
@@ -1376,7 +1376,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlConstructorNew0031", 0, () => {
+    it("testIntlConstructorNew0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlConstructorNew0031";
       try {
         const locales = "de";
@@ -1401,7 +1401,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0001", 0, () => {
+    it("testIntlCompare0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0001";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1421,7 +1421,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0002", 0, () => {
+    it("testIntlCompare0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0002";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1441,7 +1441,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0003", 0, () => {
+    it("testIntlCompare0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0003";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1461,7 +1461,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0004", 0, () => {
+    it("testIntlCompare0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0004";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1481,7 +1481,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0005", 0, () => {
+    it("testIntlCompare0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0005";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1501,7 +1501,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0006", 0, () => {
+    it("testIntlCompare0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0006";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1521,7 +1521,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0007", 0, () => {
+    it("testIntlCompare0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0007";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1541,7 +1541,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlCompare0008", 0, () => {
+    it("testIntlCompare0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0008";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1560,7 +1560,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlCompare0009', 0, () => {
+    it('testIntlCompare0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlCompare0009";
       try {
         const enCollator = new Intl.Collator('en');
@@ -1579,7 +1579,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0001', 0, () => {
+    it('testIntlResolvedOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0001";
       try {
         const collator = new Intl.Collator();
@@ -1600,7 +1600,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0002', 0, () => {
+    it('testIntlResolvedOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0002";
       try {
         const collator = new Intl.Collator("de");
@@ -1619,7 +1619,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0003', 0, () => {
+    it('testIntlResolvedOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0003";
       try {
         const collator = new Intl.Collator("de", {
@@ -1641,7 +1641,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0004', 0, () => {
+    it('testIntlResolvedOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0004";
       try {
         const collator = new Intl.Collator("de", {
@@ -1662,7 +1662,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0005', 0, () => {
+    it('testIntlResolvedOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0005";
       try {
         const collator = new Intl.Collator("de", {
@@ -1683,7 +1683,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0006', 0, () => {
+    it('testIntlResolvedOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0006";
       try {
         const collator = new Intl.Collator("de", {
@@ -1704,7 +1704,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0007', 0, () => {
+    it('testIntlResolvedOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0007";
       try {
         const collator = new Intl.Collator("de", {
@@ -1725,7 +1725,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0008', 0, () => {
+    it('testIntlResolvedOptions0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0008";
       try {
         let options = Intl.DateTimeFormat().resolvedOptions();
@@ -1756,7 +1756,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0009', 0, () => {
+    it('testIntlResolvedOptions0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0009";
       try {
         let options = Intl.DateTimeFormat("zh").resolvedOptions();
@@ -1775,7 +1775,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0010', 0, () => {
+    it('testIntlResolvedOptions0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0010";
       try {
         const options = Intl.DateTimeFormat("en-US", {
@@ -1796,7 +1796,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0011', 0, () => {
+    it('testIntlResolvedOptions0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0011";
       try {
         const options = Intl.DateTimeFormat("en-US", {
@@ -1817,7 +1817,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0012', 0, () => {
+    it('testIntlResolvedOptions0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0012";
       try {
         let options = Intl.DateTimeFormat("en-US", {
@@ -1838,7 +1838,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0013', 0, () => {
+    it('testIntlResolvedOptions0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0013";
       try {
         const options = Intl.DateTimeFormat("en-US", {
@@ -1859,7 +1859,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0014', 0, () => {
+    it('testIntlResolvedOptions0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0014";
       try {
         let options = Intl.DateTimeFormat("en-US", {
@@ -1880,7 +1880,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlResolvedOptions0015', 0, () => {
+    it('testIntlResolvedOptions0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlResolvedOptions0015";
       try {
         let options = Intl.DateTimeFormat("en-US", {
@@ -1901,7 +1901,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0001', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0001";
       try {
         let intl = new Intl.DateTimeFormat();
@@ -1921,7 +1921,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0002', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0002";
       try {
         let locales = "de";
@@ -1940,7 +1940,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0003', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0003";
       try {
         let locales = [];
@@ -1960,7 +1960,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0004', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0004";
       try {
         let locales = ["de", "en-US"];
@@ -1982,7 +1982,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0005', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0005";
       try {
         let intl = new Intl.DateTimeFormat(undefined);
@@ -2000,7 +2000,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0006', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0006";
       try {
         let intl = new Intl.DateTimeFormat(undefined, undefined);
@@ -2018,7 +2018,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0007', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0007";
       try {
         let locales = "de";
@@ -2041,7 +2041,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0008', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0008";
       try {
         let locales = "de";
@@ -2063,7 +2063,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0009', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatConstructorNoNew0009";
       try {
         let locales = "de";
@@ -2085,7 +2085,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0010', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0010';
       try {
         let locales = "de";
@@ -2107,7 +2107,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0011', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0011';
       try {
         let locales = "de";
@@ -2129,7 +2129,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0012', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0012';
       try {
         let locales = "de";
@@ -2151,7 +2151,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0013', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0013';
       try {
         let locales = "de";
@@ -2173,7 +2173,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0014', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0014';
       try {
         let locales = "de";
@@ -2195,7 +2195,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0015', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0015';
       try {
         let locales = "de";
@@ -2217,7 +2217,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0016', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0016';
       try {
         let locales = "de";
@@ -2239,7 +2239,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0017', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0017';
       try {
         let locales = "de";
@@ -2261,7 +2261,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0018', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0018';
       try {
         let locales = "de";
@@ -2283,7 +2283,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0019', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0019';
       try {
         let locales = "de";
@@ -2305,7 +2305,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0020', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0020';
       try {
         let locales = "de";
@@ -2327,7 +2327,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0021', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0021';
       try {
         let locales = "de";
@@ -2349,7 +2349,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0022', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0022';
       try {
         let locales = "de";
@@ -2371,7 +2371,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0023', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0023';
       try {
         let locales = "de";
@@ -2393,7 +2393,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0024', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0024';
       try {
         let locales = "de";
@@ -2415,7 +2415,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0025', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0025';
       try {
         let locales = "de";
@@ -2437,7 +2437,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorNoNew0026', 0, () => {
+    it('testIntlDateTimeFormatConstructorNoNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlDateTimeFormatConstructorNoNew0026';
       try {
         let locales = "de";
@@ -2459,7 +2459,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewNumeric0001', 0, () => {
+    it('testIntlWithoutNewNumeric0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewNumeric0001";
       try {
         let locales = "de";
@@ -2482,7 +2482,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewNumeric0002', 0, () => {
+    it('testIntlWithoutNewNumeric0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewNumeric0002";
       try {
         let locales = "de";
@@ -2504,7 +2504,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewNumeric0003', 0, () => {
+    it('testIntlWithoutNewNumeric0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewNumeric0003";
       try {
         let locales = "de";
@@ -2526,7 +2526,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewDigit0001', 0, () => {
+    it('testIntlWithoutNewDigit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewDigit0001";
       try {
         let locales = "de";
@@ -2548,7 +2548,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewDigit0002', 0, () => {
+    it('testIntlWithoutNewDigit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewDigit0002";
       try {
         let locales = "de";
@@ -2570,7 +2570,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewDigit0003', 0, () => {
+    it('testIntlWithoutNewDigit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewDigit0003";
       try {
         let locales = "de";
@@ -2592,7 +2592,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewUndefined0001', 0, () => {
+    it('testIntlWithoutNewUndefined0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewUndefined0001";
       try {
         let locales = "de";
@@ -2615,7 +2615,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewUndefined0002', 0, () => {
+    it('testIntlWithoutNewUndefined0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewUndefined0002";
       try {
         let locales = "de";
@@ -2638,7 +2638,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewUndefined0003', 0, () => {
+    it('testIntlWithoutNewUndefined0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewUndefined0003";
       try {
         let locales = "de";
@@ -2660,7 +2660,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewUndefined0004', 0, () => {
+    it('testIntlWithoutNewUndefined0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewUndefined0004";
       try {
         let locales = "de";
@@ -2683,7 +2683,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewShort0001', 0, () => {
+    it('testIntlWithoutNewShort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewShort0001";
       try {
         let locales = "de";
@@ -2706,7 +2706,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewLong0001', 0, () => {
+    it('testIntlWithoutNewLong0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewLong0001";
       try {
         let locales = "de";
@@ -2729,7 +2729,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewShortOffset0001', 0, () => {
+    it('testIntlWithoutNewShortOffset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewShortOffset0001";
       try {
         let locales = "de";
@@ -2752,7 +2752,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewLongOffset0001', 0, () => {
+    it('testIntlWithoutNewLongOffset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewLongOffset0001";
       try {
         let locales = "de";
@@ -2775,7 +2775,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewShortGeneric0001', 0, () => {
+    it('testIntlWithoutNewShortGeneric0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewShortGeneric0001";
       try {
         let locales = "de";
@@ -2798,7 +2798,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewLongGeneric0001', 0, () => {
+    it('testIntlWithoutNewLongGeneric0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewLongGeneric0001";
       try {
         let locales = "de";
@@ -2821,7 +2821,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewBestFit0001', 0, () => {
+    it('testIntlWithoutNewBestFit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewBestFit0001";
       try {
         let locales = "de";
@@ -2844,7 +2844,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlWithoutNewBasic0001', 0, () => {
+    it('testIntlWithoutNewBasic0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlWithoutNewBasic0001";
       try {
         let locales = "de";
@@ -2867,20 +2867,21 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatConstructorWithUndefinedFormatMatcher0001', 0, () => {
-      const TAG = "testIntlDateTimeFormatConstructorWithUndefinedFormatMatcher0001";
-      try {
-        let locales = "de";
-        let options: Intl.DateTimeFormatOptions = {
-          formatMatcher: undefined
+    it('testIntlDateTimeFormatConstructorWithUndefinedFormatMatcher0001',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+        const TAG = "testIntlDateTimeFormatConstructorWithUndefinedFormatMatcher0001";
+        try {
+          let locales = "de";
+          let options: Intl.DateTimeFormatOptions = {
+            formatMatcher: undefined
+          }
+          let intl = Intl.DateTimeFormat(locales, options);
+          expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
         }
-        let intl = Intl.DateTimeFormat(locales, options);
-        expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INTL_13200
@@ -2890,7 +2891,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNew0001', 0, () => {
+    it('testIntlDateTimeFormatWithoutNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatWithoutNew0001";
       try {
         const locales = "de";
@@ -2913,7 +2914,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewHour12False0001', 0, () => {
+    it('testIntlDateTimeFormatWithoutNewHour12False0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatWithoutNewHour12False0001";
       try {
         const locales = "de";
@@ -2935,20 +2936,21 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewHour12Undefined0001', 0, () => {
-      const TAG = "testIntlDateTimeFormatWithoutNewHour12Undefined0001";
-      try {
-        const locales = "de";
-        const options: Intl.DateTimeFormatOptions = {
-          hour12: undefined
+    it('testIntlDateTimeFormatWithoutNewHour12Undefined0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testIntlDateTimeFormatWithoutNewHour12Undefined0001";
+        try {
+          const locales = "de";
+          const options: Intl.DateTimeFormatOptions = {
+            hour12: undefined
+          }
+          const intl = Intl.DateTimeFormat(locales, options);
+          expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
         }
-        const intl = Intl.DateTimeFormat(locales, options);
-        expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INTL_13500
@@ -2958,20 +2960,21 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewTimeZoneShanghai0001', 0, () => {
-      const TAG = "testIntlDateTimeFormatWithoutNewTimeZoneShanghai0001";
-      try {
-        const locales = "de";
-        const options: Intl.DateTimeFormatOptions = {
-          timeZone: "Asia/Shanghai"
+    it('testIntlDateTimeFormatWithoutNewTimeZoneShanghai0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testIntlDateTimeFormatWithoutNewTimeZoneShanghai0001";
+        try {
+          const locales = "de";
+          const options: Intl.DateTimeFormatOptions = {
+            timeZone: "Asia/Shanghai"
+          }
+          const intl = Intl.DateTimeFormat(locales, options);
+          expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
         }
-        const intl = Intl.DateTimeFormat(locales, options);
-        expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INTL_13600
@@ -2981,20 +2984,21 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewTimeZoneUndefined0001', 0, () => {
-      const TAG = "testIntlDateTimeFormatWithoutNewTimeZoneUndefined0001";
-      try {
-        const locales = "de";
-        const options: Intl.DateTimeFormatOptions = {
-          timeZone: undefined
+    it('testIntlDateTimeFormatWithoutNewTimeZoneUndefined0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testIntlDateTimeFormatWithoutNewTimeZoneUndefined0001";
+        try {
+          const locales = "de";
+          const options: Intl.DateTimeFormatOptions = {
+            timeZone: undefined
+          }
+          const intl = Intl.DateTimeFormat(locales, options);
+          expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
         }
-        const intl = Intl.DateTimeFormat(locales, options);
-        expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INTL_13700
@@ -3004,7 +3008,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewEmptyOptions0001', 0, () => {
+    it('testIntlDateTimeFormatWithoutNewEmptyOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlDateTimeFormatWithoutNewEmptyOptions0001";
       try {
         const locales = "de";
@@ -3025,32 +3029,33 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlDateTimeFormatWithoutNewDetailedOptions0001', 0, () => {
-      const TAG = "testIntlDateTimeFormatWithoutNewDetailedOptions0001";
-      try {
-        const locales = "de";
-        const options: Intl.DateTimeFormatOptions = {
-          localeMatcher: "best fit",
-          weekday: "long",
-          era: "long",
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-          hour: "numeric",
-          minute: "2-digit",
-          second: "numeric",
-          timeZoneName: "short",
-          formatMatcher: "best fit",
-          hour12: false,
-          timeZone: "UTC"
+    it('testIntlDateTimeFormatWithoutNewDetailedOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      () => {
+        const TAG = "testIntlDateTimeFormatWithoutNewDetailedOptions0001";
+        try {
+          const locales = "de";
+          const options: Intl.DateTimeFormatOptions = {
+            localeMatcher: "best fit",
+            weekday: "long",
+            era: "long",
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            second: "numeric",
+            timeZoneName: "short",
+            formatMatcher: "best fit",
+            hour12: false,
+            timeZone: "UTC"
+          }
+          const intl = Intl.DateTimeFormat(locales, options);
+          expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.message}`);
+          expect().assertFail();
         }
-        const intl = Intl.DateTimeFormat(locales, options);
-        expect(intl instanceof Intl.DateTimeFormat).assertEqual(true);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
+      })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INTL_13900
@@ -3060,7 +3065,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlWithoutNew0001', 0, () => {
+    it('textIntlWithoutNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlWithoutNew0001';
       try {
         let locales = "de";
@@ -3082,7 +3087,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0001', 0, () => {
+    it('textIntlNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0001';
       try {
         let intl = new Intl.DateTimeFormat();
@@ -3100,7 +3105,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0002', 0, () => {
+    it('textIntlNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0002';
       try {
         let locales = "de";
@@ -3119,7 +3124,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0003', 0, () => {
+    it('textIntlNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0003';
       try {
         let locales = [];
@@ -3138,7 +3143,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0004', 0, () => {
+    it('textIntlNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0004';
       try {
         let locales = ["de", "en-US"];
@@ -3157,7 +3162,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0005', 0, () => {
+    it('textIntlNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0005';
       try {
         let intl = new Intl.DateTimeFormat(undefined);
@@ -3175,7 +3180,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0006', 0, () => {
+    it('textIntlNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0006';
       try {
         let intl = new Intl.DateTimeFormat(undefined, undefined);
@@ -3193,7 +3198,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0007', 0, () => {
+    it('textIntlNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0007';
       try {
         let locales = "de";
@@ -3215,7 +3220,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0008', 0, () => {
+    it('textIntlNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0008';
       try {
         let locales = "de";
@@ -3237,7 +3242,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0009', 0, () => {
+    it('textIntlNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0009';
       try {
         let locales = "de";
@@ -3259,7 +3264,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0010', 0, () => {
+    it('textIntlNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0010';
       try {
         let locales = "de";
@@ -3281,7 +3286,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0011', 0, () => {
+    it('textIntlNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0011';
       try {
         let locales = "de";
@@ -3303,7 +3308,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0012', 0, () => {
+    it('textIntlNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0012';
       try {
         let locales = "de";
@@ -3325,7 +3330,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textIntlNew0013', 0, () => {
+    it('textIntlNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textIntlNew0013';
       try {
         let locales = "de";
@@ -3348,7 +3353,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewLong0001', 0, () => {
+    it('testIntlNewLong0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewLong0001";
       try {
         let locales = "de";
@@ -3373,7 +3378,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewLong0002', 0, () => {
+    it('testIntlNewLong0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewLong0002";
       try {
         let locales = "en";
@@ -3397,7 +3402,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewLong0003', 0, () => {
+    it('testIntlNewLong0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewLong0003";
       try {
 
@@ -3425,7 +3430,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewShort0001', 0, () => {
+    it('testIntlNewShort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewShort0001";
       try {
         let locales = "de";
@@ -3451,7 +3456,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewShort0002', 0, () => {
+    it('testIntlNewShort0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewShort0002";
       try {
         let locales = "de";
@@ -3476,7 +3481,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewShort0003', 0, () => {
+    it('testIntlNewShort0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewShort0003";
       try {
         let locales = "de";
@@ -3503,7 +3508,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNarrow0001', 0, () => {
+    it('testIntlNewNarrow0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNarrow0001";
       try {
         let locales = "de";
@@ -3529,7 +3534,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNarrow0002', 0, () => {
+    it('testIntlNewNarrow0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNarrow0002";
       try {
         let locales = "de";
@@ -3554,7 +3559,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNarrow0003', 0, () => {
+    it('testIntlNewNarrow0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNarrow0003";
       try {
         let locales = "de";
@@ -3581,7 +3586,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0001', 0, () => {
+    it('testIntlNewUndefined0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0001";
       try {
         let locales = "de";
@@ -3607,7 +3612,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0002', 0, () => {
+    it('testIntlNewUndefined0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0002";
       try {
         let locales = "de";
@@ -3633,7 +3638,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0003', 0, () => {
+    it('testIntlNewUndefined0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0003";
       try {
         let locales = "de";
@@ -3659,7 +3664,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0004', 0, () => {
+    it('testIntlNewUndefined0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0004";
       try {
         let locales = "de";
@@ -3685,7 +3690,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0005', 0, () => {
+    it('testIntlNewUndefined0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0005";
       try {
         let locales = "de";
@@ -3712,7 +3717,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewUndefined0006', 0, () => {
+    it('testIntlNewUndefined0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewUndefined0006";
       try {
         let locales = "de";
@@ -3737,7 +3742,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewDigit0001', 0, () => {
+    it('testIntlNewDigit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewDigit0001";
       try {
         let locales = "de";
@@ -3762,7 +3767,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewDigit0002', 0, () => {
+    it('testIntlNewDigit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewDigit0002";
       try {
         let locales = "de";
@@ -3787,7 +3792,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewDigit0003', 0, () => {
+    it('testIntlNewDigit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewDigit0003";
       try {
         let locales = "de";
@@ -3814,7 +3819,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewDigit0004', 0, () => {
+    it('testIntlNewDigit0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewDigit0004";
       try {
         let locales = "de";
@@ -3841,7 +3846,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0001', 0, () => {
+    it('testIntlNewNumeric0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0001";
       try {
         let locales = "de";
@@ -3866,7 +3871,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0002', 0, () => {
+    it('testIntlNewNumeric0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0002";
       try {
         let locales = "de";
@@ -3891,7 +3896,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0003', 0, () => {
+    it('testIntlNewNumeric0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0003";
       try {
         let locales = "de";
@@ -3918,7 +3923,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0004', 0, () => {
+    it('testIntlNewNumeric0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0004";
       try {
         let locales = "de";
@@ -3945,7 +3950,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0005', 0, () => {
+    it('testIntlNewNumeric0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0005";
       try {
         let locales: string = "de";
@@ -3971,7 +3976,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0006', 0, () => {
+    it('testIntlNewNumeric0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0006";
       try {
         let locales: string = "de";
@@ -3997,7 +4002,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0007', 0, () => {
+    it('testIntlNewNumeric0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0007";
       try {
         let locales: string = "de";
@@ -4023,7 +4028,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0008', 0, () => {
+    it('testIntlNewNumeric0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0008";
       try {
         let locales: string = "de";
@@ -4049,7 +4054,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0009', 0, () => {
+    it('testIntlNewNumeric0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0009";
       try {
         let locales: string = "de";
@@ -4075,7 +4080,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0010', 0, () => {
+    it('testIntlNewNumeric0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0010";
       try {
         let locales: string = "de";
@@ -4101,7 +4106,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0011', 0, () => {
+    it('testIntlNewNumeric0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0011";
       try {
         let locales: string = "de";
@@ -4127,7 +4132,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0012', 0, () => {
+    it('testIntlNewNumeric0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0012";
       try {
         let locales: string = "de";
@@ -4153,7 +4158,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0013', 0, () => {
+    it('testIntlNewNumeric0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0013";
       try {
         let locales: string = "de";
@@ -4179,7 +4184,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0014', 0, () => {
+    it('testIntlNewNumeric0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0014";
       try {
         let locales: string = "de";
@@ -4205,7 +4210,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0015', 0, () => {
+    it('testIntlNewNumeric0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0015";
       try {
         let locales: string = "de";
@@ -4231,7 +4236,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0016', 0, () => {
+    it('testIntlNewNumeric0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0016";
       try {
         let locales: string = "de";
@@ -4257,7 +4262,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0017', 0, () => {
+    it('testIntlNewNumeric0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0017";
       try {
         let locales: string = "de";
@@ -4283,7 +4288,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0018', 0, () => {
+    it('testIntlNewNumeric0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0018";
       try {
         let locales: string = "de";
@@ -4309,7 +4314,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0019', 0, () => {
+    it('testIntlNewNumeric0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0019";
       try {
         let locales: string = "de";
@@ -4335,7 +4340,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0020', 0, () => {
+    it('testIntlNewNumeric0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0020";
       try {
         let locales: string = "de";
@@ -4361,7 +4366,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0021', 0, () => {
+    it('testIntlNewNumeric0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0021";
       try {
         let locales: string = "de";
@@ -4388,7 +4393,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0022', 0, () => {
+    it('testIntlNewNumeric0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlNewNumeric0022";
       try {
         let locales = "de";
@@ -4415,7 +4420,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0023', 0, async () => {
+    it('testIntlNewNumeric0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testIntlNewNumeric0023";
       try {
         let locales = "de";
@@ -4455,7 +4460,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlNewNumeric0024', 0, async () => {
+    it('testIntlNewNumeric0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const TAG = "testIntlNewNumeric0024";
       try {
         let locales = "de";
@@ -4477,7 +4482,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFormat0001', 0, () => {
+    it('testFormat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testFormat0001';
       try {
         let now = new Date(2021, 0, 2);
@@ -4500,7 +4505,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFormat0003', 0, () => {
+    it('testFormat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testFormat0003';
       try {
         let timeStamp = 2;
@@ -4519,7 +4524,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFormat0004', 0, () => {
+    it('testFormat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testFormat0004';
       try {
         let timeStamp = -1;
@@ -4538,7 +4543,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFormat0005', 0, () => {
+    it('testFormat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testFormat0005';
       try {
         let date: Date = new Date("2022-01-22 02:30:30");
@@ -4575,7 +4580,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testFormat0006", 0, () => {
+    it("testFormat0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFormat0006";
       try {
         let date = new Date(2022 - 1 - 22);
@@ -4594,7 +4599,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testFormat0007", 0, () => {
+    it("testFormat0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFormat0007";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4629,7 +4634,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testFormat0008", 0, () => {
+    it("testFormat0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFormat0008";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4664,7 +4669,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testFormat0009", 0, () => {
+    it("testFormat0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFormat0009";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4699,7 +4704,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testFormat0010", 0, () => {
+    it("testFormat0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFormat0010";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4735,7 +4740,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0001', 0, () => {
+    it('testIntlFormatToParts0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0001";
       try {
         let date = new Date();
@@ -4758,7 +4763,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0002', 0, () => {
+    it('testIntlFormatToParts0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0002";
       try {
         let date = new Date(2022, 0, 22);
@@ -4781,7 +4786,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0003', 0, () => {
+    it('testIntlFormatToParts0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0003";
       try {
         let timeStamp = 2;
@@ -4803,7 +4808,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0004', 0, () => {
+    it('testIntlFormatToParts0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0004";
       try {
         let timeStamp = -1;
@@ -4825,7 +4830,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0005', 0, () => {
+    it('testIntlFormatToParts0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0005";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4863,7 +4868,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0006', 0, () => {
+    it('testIntlFormatToParts0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0006";
       try {
         let date = new Date(2022, 0, 22);
@@ -4885,7 +4890,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0007', 0, () => {
+    it('testIntlFormatToParts0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0007";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4922,7 +4927,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0008', 0, () => {
+    it('testIntlFormatToParts0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0008";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4960,7 +4965,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0009', 0, () => {
+    it('testIntlFormatToParts0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0009";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -4996,7 +5001,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlFormatToParts0010', 0, () => {
+    it('testIntlFormatToParts0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlFormatToParts0010";
       try {
         let date = new Date("2022-01-22 02:30:30");
@@ -5032,7 +5037,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0001", 0, () => {
+    it("testNumberFormatConstructorNew0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0001";
       try {
         let numberFormat = new Intl.NumberFormat();
@@ -5051,7 +5056,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0002", 0, () => {
+    it("testNumberFormatConstructorNew0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0002";
       try {
         let locales = "zh";
@@ -5071,7 +5076,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0003", 0, () => {
+    it("testNumberFormatConstructorNew0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0003";
       try {
         let locales = "";
@@ -5091,7 +5096,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0004", 0, () => {
+    it("testNumberFormatConstructorNew0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0004";
       try {
         let locales = "test";
@@ -5111,7 +5116,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0005", 0, () => {
+    it("testNumberFormatConstructorNew0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0005";
       try {
         let locales = [];
@@ -5131,7 +5136,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0006", 0, () => {
+    it("testNumberFormatConstructorNew0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0006";
       try {
         let locales = ["zh"];
@@ -5151,7 +5156,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0007", 0, () => {
+    it("testNumberFormatConstructorNew0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0007";
       try {
         let locales = ["zh", "en-US", "de"];
@@ -5171,7 +5176,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0008", 0, () => {
+    it("testNumberFormatConstructorNew0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0008";
       try {
         let locales = ["zh", "en-US", "de", "test"];
@@ -5191,7 +5196,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0009", 0, () => {
+    it("testNumberFormatConstructorNew0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0009";
       try {
         let locales = "zh";
@@ -5214,7 +5219,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0010", 0, () => {
+    it("testNumberFormatConstructorNew0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0010";
       try {
         let locales = "zh";
@@ -5237,7 +5242,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0011", 0, () => {
+    it("testNumberFormatConstructorNew0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0011";
       try {
         let locales = "zh";
@@ -5260,7 +5265,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0012", 0, () => {
+    it("testNumberFormatConstructorNew0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0012";
       try {
         let locales = "zh";
@@ -5283,7 +5288,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0013", 0, () => {
+    it("testNumberFormatConstructorNew0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0013";
       try {
         let locales = "zh";
@@ -5306,7 +5311,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0014", 0, () => {
+    it("testNumberFormatConstructorNew0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0014";
       try {
         let locales = "zh";
@@ -5329,7 +5334,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0015", 0, () => {
+    it("testNumberFormatConstructorNew0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0015";
       try {
         let locales = "zh";
@@ -5353,7 +5358,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0016", 0, () => {
+    it("testNumberFormatConstructorNew0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0016";
       try {
         let locales = "zh";
@@ -5376,7 +5381,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0017", 0, () => {
+    it("testNumberFormatConstructorNew0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0017";
       try {
         let locales = "zh";
@@ -5400,7 +5405,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0018", 0, () => {
+    it("testNumberFormatConstructorNew0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0018";
       try {
         let locales = "zh";
@@ -5423,7 +5428,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0019", 0, () => {
+    it("testNumberFormatConstructorNew0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0019";
       try {
         let locales = "zh";
@@ -5446,7 +5451,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFormatConstructorNew0020", 0, () => {
+    it("testNumberFormatConstructorNew0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0020";
       try {
         let locales = "zh";
@@ -5468,7 +5473,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0021', 0, () => {
+    it('testNumberFormatConstructorNew0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0021";
       try {
         let locales = "zh";
@@ -5492,7 +5497,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0022', 0, () => {
+    it('testNumberFormatConstructorNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0022";
       try {
         let locales = "zh";
@@ -5516,7 +5521,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0023', 0, () => {
+    it('testNumberFormatConstructorNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0023";
       try {
         let locales = "zh";
@@ -5542,7 +5547,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0024', 0, () => {
+    it('testNumberFormatConstructorNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0024";
       try {
         let locales = "zh";
@@ -5566,7 +5571,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0025', 0, () => {
+    it('testNumberFormatConstructorNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0025";
       try {
         let locales = "zh";
@@ -5590,7 +5595,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0026', 0, () => {
+    it('testNumberFormatConstructorNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0026";
       try {
         let locales = "zh";
@@ -5614,7 +5619,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0027', 0, () => {
+    it('testNumberFormatConstructorNew0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0027";
       try {
         let locales = "zh";
@@ -5638,7 +5643,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0028', 0, () => {
+    it('testNumberFormatConstructorNew0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0028";
       try {
         let locales = "zh";
@@ -5662,7 +5667,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0029', 0, () => {
+    it('testNumberFormatConstructorNew0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0029";
       try {
         let locales = "zh";
@@ -5686,7 +5691,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0030', 0, () => {
+    it('testNumberFormatConstructorNew0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0030";
       try {
         let locales = "zh";
@@ -5710,7 +5715,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0031', 0, () => {
+    it('testNumberFormatConstructorNew0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0031";
       try {
         let locales = "zh";
@@ -5734,7 +5739,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0032', 0, () => {
+    it('testNumberFormatConstructorNew0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0032";
       try {
         let locales = "zh";
@@ -5758,7 +5763,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0033', 0, () => {
+    it('testNumberFormatConstructorNew0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0033";
       try {
         let locales = "zh";
@@ -5781,7 +5786,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0034', 0, () => {
+    it('testNumberFormatConstructorNew0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0034";
       try {
         let locales = "zh";
@@ -5804,7 +5809,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0035', 0, () => {
+    it('testNumberFormatConstructorNew0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0035";
       try {
         let locales = "zh";
@@ -5827,7 +5832,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0036', 0, () => {
+    it('testNumberFormatConstructorNew0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0036";
       try {
         let locales = "zh";
@@ -5850,7 +5855,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0037', 0, () => {
+    it('testNumberFormatConstructorNew0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0037";
       try {
         let locales = "zh";
@@ -5873,7 +5878,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0038', 0, () => {
+    it('testNumberFormatConstructorNew0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0038";
       try {
         let locales = "zh";
@@ -5897,7 +5902,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0039', 0, () => {
+    it('testNumberFormatConstructorNew0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0039";
       try {
         let locales = "zh";
@@ -5920,7 +5925,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0040', 0, () => {
+    it('testNumberFormatConstructorNew0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorNew0040";
       try {
         let locales = "zh";
@@ -5942,7 +5947,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0041', 0, () => {
+    it('testNumberFormatConstructorNew0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0041';
       try {
         let locales = "zh";
@@ -5964,7 +5969,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0042', 0, () => {
+    it('testNumberFormatConstructorNew0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0042';
       try {
         let locales = "zh";
@@ -5986,7 +5991,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0043', 0, () => {
+    it('testNumberFormatConstructorNew0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0043';
       try {
         let locales = "zh";
@@ -6008,7 +6013,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0044', 0, () => {
+    it('testNumberFormatConstructorNew0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0044';
       try {
         let locales = "zh";
@@ -6030,7 +6035,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0045', 0, () => {
+    it('testNumberFormatConstructorNew0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0045';
       try {
         let locales = "zh";
@@ -6052,7 +6057,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0046', 0, () => {
+    it('testNumberFormatConstructorNew0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0046';
       try {
         let locales = "zh";
@@ -6074,7 +6079,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0047', 0, () => {
+    it('testNumberFormatConstructorNew0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0047';
       try {
         let locales = "zh";
@@ -6096,7 +6101,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0048', 0, () => {
+    it('testNumberFormatConstructorNew0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0048';
       try {
         let locales = "zh";
@@ -6118,7 +6123,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0049', 0, () => {
+    it('testNumberFormatConstructorNew0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0049';
       try {
         let locales = "zh";
@@ -6140,7 +6145,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0050', 0, () => {
+    it('testNumberFormatConstructorNew0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0050';
       try {
         let locales = "zh";
@@ -6162,7 +6167,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0051', 0, () => {
+    it('testNumberFormatConstructorNew0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0051';
       try {
         let locales = "zh";
@@ -6184,7 +6189,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0052', 0, () => {
+    it('testNumberFormatConstructorNew0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0052';
       try {
         let locales = "zh";
@@ -6206,7 +6211,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0053', 0, () => {
+    it('testNumberFormatConstructorNew0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0053';
       try {
         let locales = "zh";
@@ -6228,7 +6233,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0054', 0, () => {
+    it('testNumberFormatConstructorNew0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0054';
       try {
         let locales = "zh";
@@ -6250,7 +6255,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0055', 0, () => {
+    it('testNumberFormatConstructorNew0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0055';
       try {
         let locales = "zh";
@@ -6272,7 +6277,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0056', 0, () => {
+    it('testNumberFormatConstructorNew0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0056';
       try {
         let locales = "zh";
@@ -6295,7 +6300,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0057', 0, () => {
+    it('testNumberFormatConstructorNew0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0057';
       try {
         let locales = "zh";
@@ -6317,7 +6322,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0058', 0, () => {
+    it('testNumberFormatConstructorNew0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0058';
       try {
         let locales = "zh";
@@ -6339,7 +6344,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0059', 0, () => {
+    it('testNumberFormatConstructorNew0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0059';
       try {
         let numberFormat = new Intl.NumberFormat(undefined);
@@ -6357,7 +6362,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorNew0060', 0, () => {
+    it('testNumberFormatConstructorNew0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testNumberFormatConstructorNew0060';
       try {
         let numberFormat = new Intl.NumberFormat(undefined, undefined);
@@ -6376,7 +6381,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0001', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0001";
       try {
         let numberFormat = Intl.NumberFormat();
@@ -6395,7 +6400,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0002', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0002";
       try {
         let locales = "zh";
@@ -6415,7 +6420,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0003', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0003";
       try {
         let locales = "";
@@ -6435,7 +6440,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0004', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0004";
       try {
         let locales = "test";
@@ -6455,7 +6460,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0005', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0005";
       try {
         let locales = [];
@@ -6475,7 +6480,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0006', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0006";
       try {
         let locales = ["zh"];
@@ -6495,7 +6500,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0007', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0007";
       try {
         let locales = ["zh", "en-US", "de"];
@@ -6515,7 +6520,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0008', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0008";
       try {
         let locales = ["zh", "en-US", "de", "test"];
@@ -6535,7 +6540,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0009', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0009";
       try {
         let locales = "zh";
@@ -6558,7 +6563,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0010', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0010";
       try {
         let locales = "zh";
@@ -6581,7 +6586,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0011', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0011";
       try {
         let locales = "zh";
@@ -6604,7 +6609,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0012', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0012";
       try {
         let locales = "zh";
@@ -6627,7 +6632,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0013', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0013";
       try {
         let locales = "zh";
@@ -6650,7 +6655,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0014', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0014";
       try {
         let locales = "zh";
@@ -6673,7 +6678,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0015', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0015";
       try {
         let locales = "zh";
@@ -6696,7 +6701,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0016', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0016";
       try {
         let locales = "zh";
@@ -6719,7 +6724,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0018', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0018";
       try {
         let locales = "zh";
@@ -6742,7 +6747,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0019', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0019";
       try {
         let locales = "zh";
@@ -6765,7 +6770,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0020', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0020";
       try {
         let locales = "zh";
@@ -6788,7 +6793,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0022', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0022";
       try {
         let locales = "zh";
@@ -6811,7 +6816,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0023', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0023";
       try {
         let locales = "zh";
@@ -6834,7 +6839,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0024', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0024";
       try {
         let locales = "zh";
@@ -6857,7 +6862,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0025', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0025";
       try {
         let locales = "zh";
@@ -6880,7 +6885,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0026', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0026";
       try {
         let locales = "zh";
@@ -6903,7 +6908,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0027', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0027";
       try {
         let locales = "zh";
@@ -6925,7 +6930,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0028', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0028";
       try {
         let locales = "zh";
@@ -6947,7 +6952,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0029', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0029";
       try {
         let locales = "zh";
@@ -6969,7 +6974,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0030', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0030";
       try {
         let locales = "zh";
@@ -6991,7 +6996,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0031', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0031";
       try {
         let locales = "zh";
@@ -7013,7 +7018,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0032', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0032";
       try {
         let locales = "zh";
@@ -7035,7 +7040,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0033', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0033";
       try {
         let locales = "zh";
@@ -7057,7 +7062,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0034', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0034";
       try {
         let locales = "zh";
@@ -7079,7 +7084,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0035', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0035";
       try {
         let locales = "zh";
@@ -7101,7 +7106,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0036', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0036";
       try {
         let locales = "zh";
@@ -7124,7 +7129,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0038', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0038";
       try {
         let locales = "zh";
@@ -7147,7 +7152,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0041', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0041";
       try {
         let locales = "zh";
@@ -7170,7 +7175,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0044', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0044";
       try {
         let locales = "zh";
@@ -7193,7 +7198,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0047', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0047";
       try {
         let locales = "zh";
@@ -7216,7 +7221,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0048', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0048";
       try {
         let locales = "zh";
@@ -7239,7 +7244,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0049', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0049";
       try {
         let locales = "zh";
@@ -7261,7 +7266,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0050', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0050";
       try {
         let locales = "zh";
@@ -7283,7 +7288,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0051', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0051";
       try {
         let locales = "zh";
@@ -7305,7 +7310,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0052', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0052";
       try {
         let locales = "zh";
@@ -7327,7 +7332,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0053', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0053";
       try {
         let locales = "zh";
@@ -7349,7 +7354,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0054', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0054";
       try {
         let locales = "zh";
@@ -7371,7 +7376,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0055', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0055";
       try {
         let locales = "zh";
@@ -7393,7 +7398,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0056', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0056";
       try {
         let locales = "zh";
@@ -7415,7 +7420,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0057', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0057";
       try {
         let locales = "zh";
@@ -7437,7 +7442,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0058', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0058";
       try {
         let locales = "zh";
@@ -7459,7 +7464,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0059', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0059";
       try {
         let numberFormat = Intl.NumberFormat(undefined);
@@ -7477,7 +7482,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatConstructorWithoutNew0060', 0, () => {
+    it('testNumberFormatConstructorWithoutNew0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatConstructorWithoutNew0060";
       try {
         let numberFormat = Intl.NumberFormat(undefined, undefined);
@@ -7496,7 +7501,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0001', 0, () => {
+    it('testSupportedLocalesOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0001';
       try {
         let locales = 'de-ID';
@@ -7516,7 +7521,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0002', 0, () => {
+    it('testSupportedLocalesOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0002';
       try {
         let locales = ''
@@ -7536,7 +7541,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0003', 0, () => {
+    it('testSupportedLocalesOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0003';
       try {
         let locales = 'test';
@@ -7555,7 +7560,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0004', 0, () => {
+    it('testSupportedLocalesOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0004';
       try {
         let locales = [];
@@ -7575,7 +7580,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0005', 0, () => {
+    it('testSupportedLocalesOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0005';
       try {
         let locales = ['id-u-co-pinyin'];
@@ -7595,7 +7600,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0006', 0, () => {
+    it('testSupportedLocalesOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0006';
       try {
         let locales = ['id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -7615,7 +7620,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0007', 0, () => {
+    it('testSupportedLocalesOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0007';
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -7634,7 +7639,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0008', 0, () => {
+    it('testSupportedLocalesOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0008';
       try {
         let locales = ['ban', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -7654,7 +7659,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSupportedLocalesOf0010', 0, () => {
+    it('testSupportedLocalesOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testSupportedLocalesOf0010';
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US']
@@ -7678,7 +7683,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0001', 0, () => {
+    it('testResolvedOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0001';
       try {
         let options = Intl.NumberFormat().resolvedOptions();
@@ -7704,7 +7709,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0002', 0, () => {
+    it('testResolvedOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0002';
       try {
         let options = Intl.NumberFormat("de").resolvedOptions();
@@ -7722,7 +7727,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0003', 0, () => {
+    it('testResolvedOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0003';
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7754,7 +7759,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0004', 0, () => {
+    it('testResolvedOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0004';
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7783,7 +7788,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0005', 0, () => {
+    it('testResolvedOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0005';
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7815,7 +7820,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0006', 0, () => {
+    it('testResolvedOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0006';
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7844,7 +7849,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResolvedOptions0007', 0, () => {
+    it('testResolvedOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testResolvedOptions0007';
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7866,7 +7871,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0001', 0, () => {
+    it('testNumberFormat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0001";
       try {
         let format = Intl.NumberFormat().format(100);
@@ -7885,7 +7890,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0002', 0, () => {
+    it('testNumberFormat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0002";
       try {
         let format = Intl.NumberFormat("de").format(100);
@@ -7904,7 +7909,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0003', 0, () => {
+    it('testNumberFormat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0003";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7926,7 +7931,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0004', 0, () => {
+    it('testNumberFormat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0004";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7948,7 +7953,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0005', 0, () => {
+    it('testNumberFormat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0005";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7970,7 +7975,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormat0006', 0, () => {
+    it('testNumberFormat0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormat0006";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -7992,7 +7997,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatFormatToParts0001', 0, () => {
+    it('testNumberFormatFormatToParts0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatFormatToParts0001";
       try {
         let formatToParts = Intl.NumberFormat().formatToParts();
@@ -8014,7 +8019,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatFormatToParts0002', 0, () => {
+    it('testNumberFormatFormatToParts0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatFormatToParts0002";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -8041,7 +8046,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatFormatToParts0003', 0, () => {
+    it('testNumberFormatFormatToParts0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatFormatToParts0003";
       try {
         let formatToParts = Intl.NumberFormat("de").formatToParts(100);
@@ -8063,7 +8068,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatFormatToParts0004', 0, () => {
+    it('testNumberFormatFormatToParts0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatFormatToParts0004";
       try {
         let options: Intl.NumberFormatOptions = {
@@ -8094,7 +8099,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFormatFormatToParts0005', 0, () => {
+    it('testNumberFormatFormatToParts0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFormatFormatToParts0005";
       try {
         const options: Intl.NumberFormatOptions = {
@@ -8119,7 +8124,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0001', 0, () => {
+    it('testPluralRulesConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0001';
       try {
         let pluralRules = Intl.PluralRules();
@@ -8137,7 +8142,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0002', 0, () => {
+    it('testPluralRulesConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0002';
       try {
         let pluralRules = new Intl.PluralRules();
@@ -8155,7 +8160,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0003', 0, () => {
+    it('testPluralRulesConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0003';
       try {
         let locales = "en-US";
@@ -8174,7 +8179,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0004', 0, () => {
+    it('testPluralRulesConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0004';
       try {
         let locales = "";
@@ -8193,7 +8198,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0005', 0, () => {
+    it('testPluralRulesConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0005';
       try {
         let locales = "test";
@@ -8212,7 +8217,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0006', 0, () => {
+    it('testPluralRulesConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0006';
       try {
         let locales = [];
@@ -8231,7 +8236,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0007', 0, () => {
+    it('testPluralRulesConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0007';
       try {
         let locales = ["zh"];
@@ -8250,7 +8255,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0008', 0, () => {
+    it('testPluralRulesConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0008';
       try {
         let locales = ["zh", "de", "en-US"];
@@ -8269,7 +8274,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0009', 0, () => {
+    it('testPluralRulesConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0009';
       try {
         let locales = ["test", "de", "en-US"];
@@ -8288,7 +8293,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0010', 0, () => {
+    it('testPluralRulesConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0010';
       try {
         let locales = ["zh"];
@@ -8310,7 +8315,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0011', 0, () => {
+    it('testPluralRulesConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0011';
       try {
         let locales = ["zh"];
@@ -8332,7 +8337,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0012', 0, () => {
+    it('testPluralRulesConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0012';
       try {
         let locales = ["zh"]
@@ -8354,7 +8359,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0013', 0, () => {
+    it('testPluralRulesConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0013';
       try {
         let locales = ["zh"];
@@ -8376,7 +8381,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0014', 0, () => {
+    it('testPluralRulesConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0014';
       try {
         let locales = ["zh"];
@@ -8398,7 +8403,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0015', 0, () => {
+    it('testPluralRulesConstructor0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0015';
       try {
         let locales = ["zh"];
@@ -8420,7 +8425,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0016', 0, () => {
+    it('testPluralRulesConstructor0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0016';
       try {
         let locales = ["zh"];
@@ -8442,7 +8447,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0017', 0, () => {
+    it('testPluralRulesConstructor0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0017';
       try {
         let locales = ["zh"];
@@ -8464,7 +8469,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0018', 0, () => {
+    it('testPluralRulesConstructor0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0018';
       try {
         let locales = ["zh"];
@@ -8486,7 +8491,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0019', 0, () => {
+    it('testPluralRulesConstructor0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0019';
       try {
         let locales = ["zh"];
@@ -8508,7 +8513,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0020', 0, () => {
+    it('testPluralRulesConstructor0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0020';
       try {
         let locales = ["zh"];
@@ -8537,7 +8542,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0021', 0, () => {
+    it('testPluralRulesConstructor0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0021';
       try {
         let locales = ["zh"];
@@ -8565,7 +8570,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesConstructor0022', 0, () => {
+    it('testPluralRulesConstructor0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesConstructor0022';
       try {
         let locales = ["zh"];
@@ -8587,7 +8592,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0023", 0, () => {
+    it("testPluralRulesConstructor0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0023";
       try {
         let locales = ["zh"];
@@ -8608,7 +8613,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0024", 0, () => {
+    it("testPluralRulesConstructor0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0024";
       try {
         let locales = ["zh"];
@@ -8629,7 +8634,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0025", 0, () => {
+    it("testPluralRulesConstructor0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0025";
       try {
         let locales = ["zh"];
@@ -8650,7 +8655,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0026", 0, () => {
+    it("testPluralRulesConstructor0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0026";
       try {
         let locales = ["zh"];
@@ -8673,7 +8678,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0027", 0, () => {
+    it("testPluralRulesConstructor0027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0027";
       try {
         let locales = ["zh"];
@@ -8694,7 +8699,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0028", 0, () => {
+    it("testPluralRulesConstructor0028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0028";
       try {
         let locales = ["zh"];
@@ -8715,7 +8720,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0029", 0, () => {
+    it("testPluralRulesConstructor0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0029";
       try {
         let locales = ["zh"];
@@ -8736,7 +8741,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0030", 0, () => {
+    it("testPluralRulesConstructor0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0030";
       try {
         let locales = ["zh"];
@@ -8757,7 +8762,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0031", 0, () => {
+    it("testPluralRulesConstructor0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0031";
       try {
         let locales = ["zh"];
@@ -8778,7 +8783,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0032", 0, () => {
+    it("testPluralRulesConstructor0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0032";
       try {
         let locales = ["zh"];
@@ -8799,7 +8804,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0033", 0, () => {
+    it("testPluralRulesConstructor0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0033";
       try {
         let locales = ["zh"];
@@ -8820,7 +8825,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0034", 0, () => {
+    it("testPluralRulesConstructor0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0034";
       try {
         let locales = ["zh"];
@@ -8841,7 +8846,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0035", 0, () => {
+    it("testPluralRulesConstructor0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0035";
       try {
         let locales = ["zh"];
@@ -8862,7 +8867,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0036", 0, () => {
+    it("testPluralRulesConstructor0036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0036";
       try {
         let locales = ["zh"];
@@ -8883,7 +8888,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0037", 0, () => {
+    it("testPluralRulesConstructor0037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0037";
       try {
         let locales = ["zh"];
@@ -8904,7 +8909,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0038", 0, () => {
+    it("testPluralRulesConstructor0038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0038";
       try {
         let locales = ["zh"];
@@ -8925,7 +8930,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0039", 0, () => {
+    it("testPluralRulesConstructor0039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0039";
       try {
         let locales = ["zh"];
@@ -8946,7 +8951,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0040", 0, () => {
+    it("testPluralRulesConstructor0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0040";
       try {
         let locales = ["zh"];
@@ -8967,7 +8972,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0041", 0, () => {
+    it("testPluralRulesConstructor0041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0041";
       try {
         let locales = ["zh"];
@@ -8988,7 +8993,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0042", 0, () => {
+    it("testPluralRulesConstructor0042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0042";
       try {
         let locales = ["zh"];
@@ -9009,7 +9014,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0043", 0, () => {
+    it("testPluralRulesConstructor0043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0043";
       try {
         let locales = ["zh"];
@@ -9030,7 +9035,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPluralRulesConstructor0044", 0, () => {
+    it("testPluralRulesConstructor0044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPluralRulesConstructor0044";
       try {
         let locales = ["zh"];
@@ -9051,7 +9056,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0001', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRules-supportedLocalesOf0001";
       try {
         let locales = 'de-ID';
@@ -9072,7 +9077,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0002', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0002";
       try {
         let locales = '';
@@ -9092,7 +9097,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0003', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0003";
       try {
         let locales = 'test';
@@ -9112,7 +9117,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0004', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0004";
       try {
         let locales = [];
@@ -9133,7 +9138,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0005', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0005";
       try {
         let locales = ['id-u-co-pinyin'];
@@ -9154,7 +9159,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0006', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0006";
       try {
         let locales = ['id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9175,7 +9180,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0007', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0007";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9195,7 +9200,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0008', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0008";
       try {
         let locales = ['ban', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9216,7 +9221,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0009', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0009";
       try {
         let locales = 'de-ID';
@@ -9240,7 +9245,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSupportedLocalesOf0010', 0, () => {
+    it('testIntlPluralRulesSupportedLocalesOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSupportedLocalesOf0010";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9263,7 +9268,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0001', 0, () => {
+    it('testIntlPluralRulesSelect0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0001";
       try {
         const pr = new Intl.PluralRules("ar-EG");
@@ -9283,7 +9288,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0002', 0, () => {
+    it('testIntlPluralRulesSelect0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0002";
       try {
         const pr = new Intl.PluralRules("ar-EG");
@@ -9303,7 +9308,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0003', 0, () => {
+    it('testIntlPluralRulesSelect0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0003";
       try {
         const pr = new Intl.PluralRules("ar-EG");
@@ -9323,7 +9328,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0004', 0, () => {
+    it('testIntlPluralRulesSelect0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0004";
       try {
         const pr = new Intl.PluralRules("ar-EG");
@@ -9343,7 +9348,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0005', 0, () => {
+    it('testIntlPluralRulesSelect0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0005";
       try {
         const pr = new Intl.PluralRules("ar-EG");
@@ -9363,7 +9368,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0006', 0, () => {
+    it('testIntlPluralRulesSelect0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0006";
       try {
         const pr = new Intl.PluralRules("en");
@@ -9383,7 +9388,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0007', 0, () => {
+    it('testIntlPluralRulesSelect0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0007";
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9406,7 +9411,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0008', 0, () => {
+    it('testIntlPluralRulesSelect0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0008";
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9429,7 +9434,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlPluralRulesSelect0009', 0, () => {
+    it('testIntlPluralRulesSelect0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlPluralRulesSelect0009";
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9453,7 +9458,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0001', 0, () => {
+    it('testPluralRulesResolvedOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0001';
       try {
         let getOptions = new Intl.PluralRules().resolvedOptions();
@@ -9477,7 +9482,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0002', 0, () => {
+    it('testPluralRulesResolvedOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0002';
       try {
         let getOptions = new Intl.PluralRules("de").resolvedOptions();
@@ -9501,7 +9506,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0003', 0, () => {
+    it('testPluralRulesResolvedOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0003';
       try {
         let getOptions = new Intl.PluralRules("ar-EG").resolvedOptions();
@@ -9526,7 +9531,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0004', 0, () => {
+    it('testPluralRulesResolvedOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0004';
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9553,7 +9558,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0005', 0, () => {
+    it('testPluralRulesResolvedOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0005';
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9581,7 +9586,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0006', 0, () => {
+    it('testPluralRulesResolvedOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0006';
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9609,7 +9614,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0007', 0, () => {
+    it('testPluralRulesResolvedOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0007';
       try {
         let options: Intl.PluralRulesOptions = {
@@ -9637,7 +9642,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPluralRulesResolvedOptions0008', 0, () => {
+    it('testPluralRulesResolvedOptions0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testPluralRulesResolvedOptions0008';
       try {
 
@@ -9666,7 +9671,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0001', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0001";
       try {
         let locales = 'de-ID';
@@ -9687,7 +9692,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0002', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0002";
       try {
         let locales = "";
@@ -9707,7 +9712,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0003', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0003";
       try {
         let locales = "test";
@@ -9727,7 +9732,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0004', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0004";
       try {
         let locales = [];
@@ -9748,7 +9753,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0005', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0005";
       try {
         let locales = ['id-u-co-pinyin'];
@@ -9769,7 +9774,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0006', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0006";
       try {
         let locales = ['id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9790,7 +9795,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0007', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0007";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9810,7 +9815,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0008', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0008";
       try {
         let locales = ['ban', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9831,7 +9836,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0009', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0009";
       try {
         let locales = 'de-ID';
@@ -9855,7 +9860,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatResolvedOptions0010', 0, () => {
+    it('testIntlRelativeTimeFormatResolvedOptions0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatResolvedOptions0010";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9878,7 +9883,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0001', 0, () => {
+    it('testCollatorSupportedLocalesOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0001";
       try {
         let locales = 'de-ID';
@@ -9898,7 +9903,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0002', 0, () => {
+    it('testCollatorSupportedLocalesOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0002";
       try {
         let locales = '';
@@ -9917,7 +9922,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0003', 0, () => {
+    it('testCollatorSupportedLocalesOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0003";
       try {
         let locales = 'test';
@@ -9936,7 +9941,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0004', 0, () => {
+    it('testCollatorSupportedLocalesOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0004";
       try {
         let locales = [];
@@ -9956,7 +9961,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0005', 0, () => {
+    it('testCollatorSupportedLocalesOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0005";
       try {
         let locales = ['id-u-co-pinyin'];
@@ -9976,7 +9981,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0006', 0, () => {
+    it('testCollatorSupportedLocalesOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0006";
       try {
         let locales = ['id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -9996,7 +10001,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0007', 0, () => {
+    it('testCollatorSupportedLocalesOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0007";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -10015,7 +10020,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0008', 0, () => {
+    it('testCollatorSupportedLocalesOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0008";
       try {
         let locales = ['ban', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -10035,7 +10040,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0009', 0, () => {
+    it('testCollatorSupportedLocalesOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0009";
       try {
         let locales = 'de-ID';
@@ -10058,7 +10063,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollatorSupportedLocalesOf0010', 0, () => {
+    it('testCollatorSupportedLocalesOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCollatorSupportedLocalesOf0010";
       try {
         let locales = ['test', 'id-u-co-pinyin', 'de-ID', 'en-US'];
@@ -10081,7 +10086,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0001', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0001";
       try {
         const locales = "";
@@ -10101,7 +10106,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it(' testIntlRelativeTimeFormatConstructor0002', 0, () => {
+    it(' testIntlRelativeTimeFormatConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = " testIntlRelativeTimeFormatConstructor0002";
       try {
         const locales = "test";
@@ -10120,7 +10125,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0003', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0003";
       try {
         const locales = "de";
@@ -10139,7 +10144,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0004', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0004";
       try {
         const locales = [];
@@ -10159,7 +10164,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0006', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0006";
       try {
         const locales = ["test", "en-US", "zh"];
@@ -10178,7 +10183,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0007', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0007";
       try {
         const locales = "de";
@@ -10200,7 +10205,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0008', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0008";
       try {
         const locales = "de";
@@ -10223,7 +10228,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0011', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0011";
       try {
         const locales = "de";
@@ -10246,7 +10251,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0012', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0012";
       try {
         const locales = "de";
@@ -10269,7 +10274,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatConstructor0013', 0, () => {
+    it('testIntlRelativeTimeFormatConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatConstructor0013";
       try {
         const locales = "de";
@@ -10291,7 +10296,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0001', 0, () => {
+    it('testIntlRelativeTimeFormat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0001';
       try {
         let locales = "en";
@@ -10314,7 +10319,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0002', 0, () => {
+    it('testIntlRelativeTimeFormat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0002';
       try {
         let locales = "en";
@@ -10337,7 +10342,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0003', 0, () => {
+    it('testIntlRelativeTimeFormat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0003';
       try {
         let locales = "en";
@@ -10360,7 +10365,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0004', 0, () => {
+    it('testIntlRelativeTimeFormat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0004';
       try {
         let locales = "en";
@@ -10383,7 +10388,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0005', 0, () => {
+    it('testIntlRelativeTimeFormat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0005';
       try {
         let locales = "en";
@@ -10406,7 +10411,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0006', 0, () => {
+    it('testIntlRelativeTimeFormat0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testIntlRelativeTimeFormat0006';
       try {
         let locales = "en";
@@ -10429,7 +10434,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0007", 0, () => {
+    it("testIntlRelativeTimeFormat0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0007";
       try {
         let locales = "en";
@@ -10452,7 +10457,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0008", 0, () => {
+    it("testIntlRelativeTimeFormat0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0008";
       try {
         let locales = "en";
@@ -10475,7 +10480,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0009", 0, () => {
+    it("testIntlRelativeTimeFormat0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0009";
       try {
         let locales = "en";
@@ -10498,7 +10503,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0010", 0, () => {
+    it("testIntlRelativeTimeFormat0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0010";
       try {
         let locales = "en";
@@ -10522,7 +10527,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0011", 0, () => {
+    it("testIntlRelativeTimeFormat0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0011";
       try {
         let locales = "en";
@@ -10546,7 +10551,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testIntlRelativeTimeFormat0012", 0, () => {
+    it("testIntlRelativeTimeFormat0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0012";
       try {
         let locales = "en";
@@ -10569,7 +10574,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0013', 0, () => {
+    it('testIntlRelativeTimeFormat0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0013";
       try {
         let locales = "en";
@@ -10597,7 +10602,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0014', 0, () => {
+    it('testIntlRelativeTimeFormat0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0014";
       try {
         let locales = "en";
@@ -10625,7 +10630,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0015', 0, () => {
+    it('testIntlRelativeTimeFormat0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0015";
       try {
         let locales = "en";
@@ -10653,7 +10658,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0016', 0, () => {
+    it('testIntlRelativeTimeFormat0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0016";
       try {
         let locales = "zh";
@@ -10680,7 +10685,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0017', 0, () => {
+    it('testIntlRelativeTimeFormat0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0017";
       try {
         let rtf = new Intl.RelativeTimeFormat();
@@ -10701,7 +10706,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormat0018', 0, () => {
+    it('testIntlRelativeTimeFormat0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormat0018";
       try {
         let rtf = new Intl.RelativeTimeFormat("de");
@@ -10721,7 +10726,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0001', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0001";
       try {
         let locales: string = "en";
@@ -10748,7 +10753,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0002', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0002";
       try {
         let locales: string = "en";
@@ -10776,7 +10781,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0003', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0003";
       try {
         let locales: string = "en";
@@ -10804,7 +10809,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0004', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0004";
       try {
         let locales: string = "en";
@@ -10832,7 +10837,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0005', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0005";
       try {
         let locales: string = "en";
@@ -10860,7 +10865,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0006', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0006";
       try {
         let locales: string = "en";
@@ -10888,7 +10893,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0007', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0007";
       try {
         let locales: string = "en";
@@ -10914,7 +10919,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0008', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0008";
       try {
         let locales: string = "en";
@@ -10941,7 +10946,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0009', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0009";
       try {
         let locales: string = "en";
@@ -10968,7 +10973,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0010', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0010";
       try {
         let locales: string = "en";
@@ -10995,7 +11000,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0011', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0011";
       try {
         let locales: string = "en";
@@ -11023,7 +11028,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0012', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0012";
       try {
         let locales: string = "en";
@@ -11051,7 +11056,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0013', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0013";
       try {
         let locales: string = "en";
@@ -11079,7 +11084,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0014', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0014";
       try {
         let locales: string = "en";
@@ -11107,7 +11112,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0015', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0015";
       try {
         let locales: string = "zh";
@@ -11135,7 +11140,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0016', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0016";
       try {
         let locales: string = "zh";
@@ -11163,7 +11168,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0017', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0017";
       try {
         let rtf: Intl.RelativeTimeFormat = new Intl.RelativeTimeFormat();
@@ -11187,7 +11192,7 @@ export default function IntlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIntlRelativeTimeFormatFormatToParts0018', 0, () => {
+    it('testIntlRelativeTimeFormatFormatToParts0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIntlRelativeTimeFormatFormatToParts0018";
       try {
         let rtf: Intl.RelativeTimeFormat = new Intl.RelativeTimeFormat("de");

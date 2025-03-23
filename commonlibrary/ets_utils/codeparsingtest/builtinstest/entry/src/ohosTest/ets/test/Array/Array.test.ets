@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function ArrayTest() {
   describe('ArrayTest', () => {
@@ -24,7 +24,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0001', 0, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0001";
       try {
         let element0 = 'app';
@@ -44,7 +44,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0002', 0, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0002";
       try {
         let element0 = 'app';
@@ -64,7 +64,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0003', 0, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0003";
       try {
         let element0 = 'app0';
@@ -85,7 +85,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0004', 0, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0004";
       try {
         let element0 = 'app0';
@@ -106,7 +106,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFrom0001', 0, () => {
+    it('testFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0001";
       try {
         const set = new Set(["foo", "bar", "baz", "foo"]);
@@ -126,7 +126,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFrom0002', 0, () => {
+    it('testFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0002";
       try {
         let obj = Array.from('ABC');
@@ -145,7 +145,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFrom0003', 0, () => {
+    it('testFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0003";
       try {
         const map = new Map([
@@ -169,7 +169,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0001', 0, () => {
+    it('testIsArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0001";
       try {
         let result = Array.isArray([]);
@@ -188,7 +188,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0002', 0, () => {
+    it('testIsArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0002";
       try {
         let result = Array.isArray([1]);
@@ -207,7 +207,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0003', 0, () => {
+    it('testIsArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0003";
       try {
         let result = Array.isArray(new Array());
@@ -226,7 +226,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0004', 0, () => {
+    it('testIsArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0004";
       try {
         let result = Array.isArray(new Array("a", "b", "c", "d"));
@@ -245,7 +245,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0005', 0, () => {
+    it('testIsArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0005";
       try {
         let result = Array.isArray(new Array(3));
@@ -264,7 +264,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0006', 0, () => {
+    it('testIsArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0006";
       try {
         let result = Array.isArray(Array);
@@ -283,7 +283,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0008', 0, () => {
+    it('testIsArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0008";
       try {
         let result = Array.isArray({});
@@ -302,7 +302,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0009', 0, () => {
+    it('testIsArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0009";
       try {
         let result = Array.isArray(null);
@@ -321,7 +321,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0010', 0, () => {
+    it('testIsArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0010";
       try {
         let result = Array.isArray(undefined);
@@ -340,7 +340,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0011', 0, () => {
+    it('testIsArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0011";
       try {
         let result = Array.isArray(17);
@@ -359,7 +359,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0012', 0, () => {
+    it('testIsArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0012";
       try {
         let result = Array.isArray("Array");
@@ -378,7 +378,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0013', 0, () => {
+    it('testIsArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0013";
       try {
         let result = Array.isArray(true);
@@ -397,7 +397,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0014', 0, () => {
+    it('testIsArray0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0014";
       try {
         let result = Array.isArray(false);
@@ -416,7 +416,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0015', 0, () => {
+    it('testIsArray0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0015";
       try {
         let result = Array.isArray(new Uint8Array(32));
@@ -435,7 +435,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsArray0016', 0, () => {
+    it('testIsArray0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0016";
       try {
         let result = Array.isArray({
@@ -457,7 +457,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOf0001', 0, () => {
+    it('testOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOf0001";
       try {
         let result = Array.of(1);
@@ -475,7 +475,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOf0002', 0, () => {
+    it('testOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOf0002";
       try {
         let result = Array.of(1, 2, 3);
@@ -493,7 +493,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOf0003', 0, () => {
+    it('testOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOf0003";
       try {
         let result = Array.of(undefined);
@@ -511,7 +511,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOf0004', 0, () => {
+    it('testOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOf0004";
       try {
         let result = Array.of(null);
@@ -529,7 +529,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0001', 0, () => {
+    it('testPrototypeConcat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0001";
       try {
         const letters1 = ["a", "b", "c"];
@@ -550,7 +550,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0002', 0, () => {
+    it('testPrototypeConcat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0002";
       try {
         const letters1 = ["a", "b", "c"];
@@ -571,7 +571,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0003', 0, () => {
+    it('testPrototypeConcat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0003";
       try {
         const letters1 = ["a", "b", "c"];
@@ -592,7 +592,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0004', 0, () => {
+    it('testPrototypeConcat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0004";
       try {
         const num1 = [1, 2, 3];
@@ -614,7 +614,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0005', 0, () => {
+    it('testPrototypeConcat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0005";
       try {
         const letters = ["a", "b", "c"];
@@ -634,7 +634,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0006', 0, () => {
+    it('testPrototypeConcat0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0006";
       try {
         const num1 = [[1]];
@@ -655,7 +655,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0007', 0, () => {
+    it('testPrototypeConcat0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0007";
       try {
         const num1 = [1, , 3];
@@ -676,7 +676,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeConcat0008', 0, () => {
+    it('testPrototypeConcat0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeConcat0008";
       try {
         const num1 = [1, 2];
@@ -697,7 +697,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeCopyWithin0001', 0, () => {
+    it('testPrototypeCopyWithin0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeCopyWithin0001";
       try {
         let arr1 = [1, 2, 3, 4, 5];
@@ -717,7 +717,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeCopyWithin0002', 0, () => {
+    it('testPrototypeCopyWithin0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeCopyWithin0002";
       try {
         let arr1 = [1, 2, 3, 4, 5];
@@ -737,7 +737,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeCopyWithin0003', 0, () => {
+    it('testPrototypeCopyWithin0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeCopyWithin0003";
       try {
         let arr1 = [1, 2, 3, 4, 5];
@@ -757,7 +757,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeCopyWithin0004', 0, () => {
+    it('testPrototypeCopyWithin0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeCopyWithin0004";
       try {
         let arr1 = [1, 2, 3, 4, 5];
@@ -777,7 +777,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0001', 0, () => {
+    it('testPrototypeFill0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0001";
       try {
         let arr = [1, 2, 3];
@@ -797,7 +797,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0002', 0, () => {
+    it('testPrototypeFill0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0002";
       try {
         let arr = [1, 2, 3];
@@ -817,7 +817,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0003', 0, () => {
+    it('testPrototypeFill0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0003";
       try {
         let arr = [1, 2, 3];
@@ -837,7 +837,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0004', 0, () => {
+    it('testPrototypeFill0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0004";
       try {
         let arr = [1, 2, 3];
@@ -857,7 +857,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0005', 0, () => {
+    it('testPrototypeFill0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0005";
       try {
         let arr = [1, 2, 3];
@@ -877,7 +877,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0006', 0, () => {
+    it('testPrototypeFill0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0006";
       try {
         let arr = [1, 2, 3];
@@ -897,7 +897,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0007', 0, () => {
+    it('testPrototypeFill0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0007";
       try {
         let arr = [1, 2, 3];
@@ -917,7 +917,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0008', 0, () => {
+    it('testPrototypeFill0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0008";
       try {
         let arr = [1, 2, 3];
@@ -937,7 +937,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0009', 0, () => {
+    it('testPrototypeFill0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0009";
       try {
         let arr = [3];
@@ -957,7 +957,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFill0010', 0, () => {
+    it('testPrototypeFill0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFill0010";
       try {
         let arr = [1, 2, 3];
@@ -977,7 +977,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFind0001', 0, () => {
+    it('testPrototypeFind0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0001";
       try {
         const array1 = [11, 12];
@@ -997,7 +997,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFind0002', 0, () => {
+    it('testPrototypeFind0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0002";
       try {
         const array1 = [10, 12, 14];
@@ -1017,7 +1017,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFind0003', 0, () => {
+    it('testPrototypeFind0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0003";
       try {
         const array1 = [10, 12, 14, 255];
@@ -1037,7 +1037,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0001', 0, () => {
+    it('testPrototypeFlat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0001";
       try {
         const arr1 = [0, 1, 2, [3, 4]];
@@ -1057,7 +1057,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0002', 0, () => {
+    it('testPrototypeFlat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0002";
       try {
         const arr2 = [1, 2, [3, 4, [5, 6]]];
@@ -1077,7 +1077,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0003', 0, () => {
+    it('testPrototypeFlat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0003";
       try {
         const arr3 = [1, 2, [3, 4, [5, 6]]];
@@ -1097,7 +1097,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0004', 0, () => {
+    it('testPrototypeFlat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0004";
       try {
         const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
@@ -1117,7 +1117,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0005', 0, () => {
+    it('testPrototypeFlat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0005";
       try {
         const arr5 = [1, 2, , 4, 5];
@@ -1137,7 +1137,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0006', 0, () => {
+    it('testPrototypeFlat0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0006";
       try {
         const arr5 = [1, , 3, ["a", , "c"]];
@@ -1157,7 +1157,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0007', 0, () => {
+    it('testPrototypeFlat0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0007";
       try {
         const array2 = [1, , 3, ["a", , ["d", , "e"]]];
@@ -1177,7 +1177,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0008', 0, () => {
+    it('testPrototypeFlat0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0008";
       try {
         const array2 = [1, , 3, ["a", , ["d", , "e"]]];
@@ -1197,7 +1197,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0009', 0, () => {
+    it('testPrototypeFlat0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0009";
       try {
         const array2 = [1, undefined, 3];
@@ -1217,7 +1217,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlat0010', 0, () => {
+    it('testPrototypeFlat0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlat0010";
       try {
         const array2 = [undefined, undefined, undefined];
@@ -1237,7 +1237,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlatMap0001', 0, () => {
+    it('testPrototypeFlatMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlatMap0001";
       try {
         const arr1 = [1, 2, 1];
@@ -1256,7 +1256,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlatMap0002', 0, () => {
+    it('testPrototypeFlatMap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlatMap0002";
       try {
         const arr1 = [1, , 1];
@@ -1275,7 +1275,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeFlatMap0003', 0, () => {
+    it('testPrototypeFlatMap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFlatMap0003";
       try {
         const arr1 = [1, undefined, 1];
@@ -1294,7 +1294,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0001', 0, () => {
+    it('testPrototypeIncludes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0001";
       try {
         const array1 = [1, 2, 3];
@@ -1314,7 +1314,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0002', 0, () => {
+    it('testPrototypeIncludes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0002";
       try {
         let array1 = [1, 2, 3];
@@ -1334,7 +1334,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0003', 0, () => {
+    it('testPrototypeIncludes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0003";
       try {
         let array1 = [1, 2, 3];
@@ -1354,7 +1354,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0004', 0, () => {
+    it('testPrototypeIncludes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0004";
       try {
         let array1 = [1, 2, 3];
@@ -1374,7 +1374,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0005', 0, () => {
+    it('testPrototypeIncludes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0005";
       try {
         let array1 = [1, 2, 3];
@@ -1394,7 +1394,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0006', 0, () => {
+    it('testPrototypeIncludes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0006";
       try {
         let array1 = [1, 2, NaN];
@@ -1414,7 +1414,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0007', 0, () => {
+    it('testPrototypeIncludes0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0007";
       try {
         let array1 = ['1', '2', '3'];
@@ -1434,7 +1434,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0008', 0, () => {
+    it('testPrototypeIncludes0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0008";
       try {
         const arr = ["a", "b", "c"];
@@ -1454,7 +1454,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0009', 0, () => {
+    it('testPrototypeIncludes0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0009";
       try {
         const arr = ["a", "b", "c"];
@@ -1474,7 +1474,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0010', 0, () => {
+    it('testPrototypeIncludes0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0010";
       try {
         const arr = ["a", "b", "c"];
@@ -1494,7 +1494,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0011', 0, () => {
+    it('testPrototypeIncludes0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0011";
       try {
         const arr = ["a", "b", "c"];
@@ -1514,7 +1514,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0012', 0, () => {
+    it('testPrototypeIncludes0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0012";
       try {
         const arr = ["a", "b", "c"];
@@ -1534,7 +1534,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0013', 0, () => {
+    it('testPrototypeIncludes0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0013";
       try {
         const arr = ["a", "b", "c"];
@@ -1554,7 +1554,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0014', 0, () => {
+    it('testPrototypeIncludes0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0014";
       try {
         const arr = ["a", "b", "c"];
@@ -1574,7 +1574,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIncludes0015', 0, () => {
+    it('testPrototypeIncludes0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0015";
       try {
         const arr = ["a", "b", "c"];
@@ -1594,7 +1594,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0001', 0, () => {
+    it('testPrototypeIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0001";
       try {
         const array = [2, 9, 9];
@@ -1614,7 +1614,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0002', 0, () => {
+    it('testPrototypeIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0002";
       try {
         const array = [2, 9, 9];
@@ -1634,7 +1634,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0003', 0, () => {
+    it('testPrototypeIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0003";
       try {
         const array = [2, 9, 9];
@@ -1654,7 +1654,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0004', 0, () => {
+    it('testPrototypeIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0004";
       try {
         const array = [2, 9, 9];
@@ -1674,7 +1674,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0005', 0, () => {
+    it('testPrototypeIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0005";
       try {
         const array = [2, 9, 9];
@@ -1694,7 +1694,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0006', 0, () => {
+    it('testPrototypeIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0006";
       try {
         const array = [NaN];
@@ -1714,7 +1714,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0007', 0, () => {
+    it('testPrototypeIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0007";
       try {
         const array = ['apple', 'banana', 'cat'];
@@ -1734,7 +1734,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0008', 0, () => {
+    it('testPrototypeIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0008";
       try {
         const array = ['apple', 'banana', 'cat'];
@@ -1754,7 +1754,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0009', 0, () => {
+    it('testPrototypeIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0009";
       try {
         const array = ['apple', 'banana', 'cat'];
@@ -1774,7 +1774,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0010', 0, () => {
+    it('testPrototypeIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0010";
       try {
         const array = ['apple', 'banana', 'cat'];
@@ -1794,7 +1794,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeIndexOf0011', 0, () => {
+    it('testPrototypeIndexOf0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0011";
       try {
         const array = ['apple', 'banana', 'cat'];
@@ -1814,7 +1814,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0001', 0, () => {
+    it('testPrototypeJoin0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0001";
       try {
         const array = ["Wind", "Water", "Fire"];
@@ -1834,7 +1834,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0002', 0, () => {
+    it('testPrototypeJoin0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0002";
       try {
         const array = ["Wind", "Water", "Fire"];
@@ -1854,7 +1854,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0003', 0, () => {
+    it('testPrototypeJoin0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0003";
       try {
         const array = ["Wind", "Water", "Fire"];
@@ -1874,7 +1874,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0004', 0, () => {
+    it('testPrototypeJoin0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0004";
       try {
         const array = ["Wind", "Water", "Fire"];
@@ -1894,7 +1894,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0005', 0, () => {
+    it('testPrototypeJoin0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0005";
       try {
         const array = [1, 2, 3];
@@ -1914,7 +1914,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0006', 0, () => {
+    it('testPrototypeJoin0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0006";
       try {
         const array = [1, 2, 3];
@@ -1934,7 +1934,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0007', 0, () => {
+    it('testPrototypeJoin0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0007";
       try {
         const array = [1, 2, 3];
@@ -1954,7 +1954,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0008', 0, () => {
+    it('testPrototypeJoin0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0008";
       try {
         const array = [1, 2, 3];
@@ -1974,7 +1974,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeJoin0009', 0, () => {
+    it('testPrototypeJoin0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0009";
       try {
         const array = [1, undefined, 3];
@@ -1994,7 +1994,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeKeys0001', 0, () => {
+    it('testPrototypeKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0001";
       try {
         const arr = ["a", "b", "c"];
@@ -2014,7 +2014,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeKeys0002', 0, () => {
+    it('testPrototypeKeys0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0002";
       try {
         const arr = ["a", "", "c"];
@@ -2034,7 +2034,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeKeys0003', 0, () => {
+    it('testPrototypeKeys0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0003";
       try {
         const arr = ["a", , "c"];
@@ -2054,7 +2054,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeKeys0004', 0, () => {
+    it('testPrototypeKeys0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0004";
       try {
         const arr = ["a", undefined, "c"];
@@ -2074,7 +2074,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0001', 0, () => {
+    it('testPrototypeLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0001";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2094,7 +2094,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0002', 0, () => {
+    it('testPrototypeLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0002";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2114,7 +2114,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0003', 0, () => {
+    it('testPrototypeLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0003";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2134,7 +2134,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0004', 0, () => {
+    it('testPrototypeLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0004";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2154,7 +2154,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0005', 0, () => {
+    it('testPrototypeLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0005";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2174,7 +2174,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0006', 0, () => {
+    it('testPrototypeLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0006";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2194,7 +2194,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0008', 0, () => {
+    it('testPrototypeLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0008";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2214,7 +2214,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0009', 0, () => {
+    it('testPrototypeLastIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0009";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2234,7 +2234,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeLastIndexOf0010', 0, () => {
+    it('testPrototypeLastIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0010";
       try {
         const numbers = [2, 5, 9, 2];
@@ -2254,7 +2254,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeMap0001', 0, () => {
+    it('testPrototypeMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeMap0001";
       try {
         const numbers = [1, 4, 9];
@@ -2274,7 +2274,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeMap0002', 0, () => {
+    it('testPrototypeMap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeMap0002";
       try {
         let roots = ["1", "2", "3"].map(parseInt);
@@ -2294,7 +2294,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeMap0003', 0, () => {
+    it('testPrototypeMap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeMap0003";
       try {
         const strings = ["10", "10", "10"];
@@ -2314,7 +2314,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePop0001', 0, () => {
+    it('testPrototypePop0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePop0001";
       try {
         const myFish = ["app", "banana", "cat", "duck"];
@@ -2335,7 +2335,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePop0002', 0, () => {
+    it('testPrototypePop0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePop0002";
       try {
         const myFish = ["app", , "cat", "duck"];
@@ -2356,7 +2356,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePop0003', 0, () => {
+    it('testPrototypePop0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePop0003";
       try {
         const myFish = ["app", "", "cat", "duck"];
@@ -2377,7 +2377,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePop0004', 0, () => {
+    it('testPrototypePop0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePop0004";
       try {
         const myFish = ["app", "banana", "cat", ""];
@@ -2398,7 +2398,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePop0005', 0, () => {
+    it('testPrototypePop0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePop0005";
       try {
         const myFish = ["app", "banana", "cat", undefined];
@@ -2419,7 +2419,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePush0001', 0, () => {
+    it('testPrototypePush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePush0001";
       try {
         const sports = ["soccer", "baseball"];
@@ -2440,7 +2440,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypePush0002', 0, () => {
+    it('testPrototypePush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypePush0002";
       try {
         const sports = ["soccer", "baseball"];
@@ -2461,7 +2461,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReduce0001', 0, () => {
+    it('testPrototypeReduce0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduce0001";
       try {
         const flattened = [
@@ -2484,7 +2484,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReduceRight0001', 0, () => {
+    it('testPrototypeReduceRight0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduceRight0001";
       try {
         const array1 = [
@@ -2513,7 +2513,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReduceRight0002', 0, () => {
+    it('testPrototypeReduceRight0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduceRight0002";
       try {
         const sum = [0, 1, 2, 3].reduceRight((a, b) => a + b);
@@ -2532,7 +2532,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReverse0001', 0, () => {
+    it('testPrototypeReverse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReverse0001";
       try {
         const items = [1, 2, 3];
@@ -2551,7 +2551,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReverse0002', 0, () => {
+    it('testPrototypeReverse0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReverse0002";
       try {
         const items = [1, 2, undefined];
@@ -2570,7 +2570,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeReverse0003', 0, () => {
+    it('testPrototypeReverse0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReverse0003";
       try {
         const items = [1, , 3];
@@ -2589,7 +2589,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0001', 0, () => {
+    it('testPrototypeShift0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0001";
       try {
         const array1 = [1, 2, 3];
@@ -2610,7 +2610,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0002', 0, () => {
+    it('testPrototypeShift0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0002";
       try {
         const array1 = [null, 2, 3];
@@ -2631,7 +2631,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0003', 0, () => {
+    it('testPrototypeShift0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0003";
       try {
         const array1 = [1, null, 3];
@@ -2652,7 +2652,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0004', 0, () => {
+    it('testPrototypeShift0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0004";
       try {
         const array1 = [null];
@@ -2673,7 +2673,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0005', 0, () => {
+    it('testPrototypeShift0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0005";
       try {
         const array1 = [];
@@ -2694,7 +2694,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeShift0006', 0, () => {
+    it('testPrototypeShift0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeShift0006";
       try {
         const array1 = [undefined];
@@ -2715,7 +2715,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0001', 0, () => {
+    it('testPrototypeSlice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0001";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2734,7 +2734,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0002', 0, () => {
+    it('testPrototypeSlice0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0002";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2753,7 +2753,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0003', 0, () => {
+    it('testPrototypeSlice0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0003";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2772,7 +2772,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0004', 0, () => {
+    it('testPrototypeSlice0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0004";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2791,7 +2791,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0005', 0, () => {
+    it('testPrototypeSlice0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0005";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2810,7 +2810,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0006', 0, () => {
+    it('testPrototypeSlice0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0006";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2829,7 +2829,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0007', 0, () => {
+    it('testPrototypeSlice0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0007";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2848,7 +2848,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0008', 0, () => {
+    it('testPrototypeSlice0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0008";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2867,7 +2867,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0009', 0, () => {
+    it('testPrototypeSlice0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0009";
       try {
         const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -2886,7 +2886,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0010', 0, () => {
+    it('testPrototypeSlice0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0010";
       try {
         const fruits = ["Banana", "Orange", "", "Apple", "Mango"];
@@ -2905,7 +2905,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0011', 0, () => {
+    it('testPrototypeSlice0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0011";
       try {
         const fruits = ["Banana", "Orange", "", "Apple", "Mango"];
@@ -2924,7 +2924,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0012', 0, () => {
+    it('testPrototypeSlice0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0012";
       try {
         const fruits = ["Banana", "Orange", "", "Apple", "Mango"];
@@ -2943,7 +2943,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0013', 0, () => {
+    it('testPrototypeSlice0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0013";
       try {
         const fruits = ["Banana", "Orange", "", "Apple", "Mango"];
@@ -2962,7 +2962,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0014', 0, () => {
+    it('testPrototypeSlice0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0014";
       try {
         const fruits = ["Banana", "Orange", "", "Apple", "Mango"];
@@ -2981,7 +2981,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0015', 0, () => {
+    it('testPrototypeSlice0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0015";
       try {
         const fruits = ["Banana", "Orange", undefined, "Apple", "Mango"];
@@ -3000,7 +3000,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0016', 0, () => {
+    it('testPrototypeSlice0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0016";
       try {
         const fruits = ["Banana", "Orange", undefined, "Apple", "Mango"];
@@ -3019,7 +3019,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0017', 0, () => {
+    it('testPrototypeSlice0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0017";
       try {
         const fruits = ["Banana", "Orange", undefined, "Apple", "Mango"];
@@ -3038,7 +3038,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0018', 0, () => {
+    it('testPrototypeSlice0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0018";
       try {
         const fruits = ["Banana", "Orange", undefined, "Apple", "Mango"];
@@ -3057,7 +3057,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0019', 0, () => {
+    it('testPrototypeSlice0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0019";
       try {
         const fruits = ["Banana", "Orange", undefined, "Apple", "Mango"];
@@ -3076,7 +3076,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0020', 0, () => {
+    it('testPrototypeSlice0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0020";
       try {
         const fruits = [, "Orange", "Lemon", "Apple", "Mango"]
@@ -3096,7 +3096,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0021', 0, () => {
+    it('testPrototypeSlice0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0021";
       try {
         const fruits = [, "Orange", "Lemon", "Apple", "Mango"]
@@ -3116,7 +3116,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0022', 0, () => {
+    it('testPrototypeSlice0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0022";
       try {
         const fruits = [, "Orange", "Lemon", "Apple", "Mango"]
@@ -3136,7 +3136,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0023', 0, () => {
+    it('testPrototypeSlice0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0023";
       try {
         const fruits = [, "Orange", "Lemon", "Apple", "Mango"]
@@ -3156,7 +3156,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSlice0024', 0, () => {
+    it('testPrototypeSlice0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0024";
       try {
         const fruits = [, "Orange", "Lemon", "Apple", "Mango"]
@@ -3176,7 +3176,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0001', 0, () => {
+    it('testPrototypeSome0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0001";
       try {
         let array = [1, 2, 3]
@@ -3197,7 +3197,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0002', 0, () => {
+    it('testPrototypeSome0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0002";
       try {
         let array = [1, 2, 3]
@@ -3218,7 +3218,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0003', 0, () => {
+    it('testPrototypeSome0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0003";
       try {
         let array = [1, 2, 3]
@@ -3239,7 +3239,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0004', 0, () => {
+    it('testPrototypeSome0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0004";
       try {
         let array = [1, , 3];
@@ -3259,7 +3259,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0005', 0, () => {
+    it('testPrototypeSome0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0005";
       try {
         let array = [1, , 3];
@@ -3279,7 +3279,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0006', 0, () => {
+    it('testPrototypeSome0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0006";
       try {
         let array = [1, , 3];
@@ -3299,7 +3299,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0007', 0, () => {
+    it('testPrototypeSome0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0007";
       try {
         let array = [1, '2', 3]
@@ -3320,7 +3320,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0008', 0, () => {
+    it('testPrototypeSome0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0008";
       try {
         let array = [1, '2', 3]
@@ -3341,7 +3341,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0009', 0, () => {
+    it('testPrototypeSome0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0009";
       try {
         let array = [1, '2', 3]
@@ -3362,7 +3362,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0010', 0, () => {
+    it('testPrototypeSome0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0010";
       try {
         let array = [1, 2, undefined]
@@ -3383,7 +3383,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0011', 0, () => {
+    it('testPrototypeSome0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0011";
       try {
         let array = [1, 2, undefined]
@@ -3404,7 +3404,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSome0012', 0, () => {
+    it('testPrototypeSome0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0012";
       try {
         let array = [1, 2, undefined]
@@ -3425,7 +3425,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSort0001', 0, () => {
+    it('testPrototypeSort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0001";
       try {
         const value = ['Cat', 'Duck', 'Zoo', 'Apple', 'Desk'];
@@ -3444,7 +3444,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSort0002', 0, () => {
+    it('testPrototypeSort0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0002";
       try {
         const value = ['Cat', '', 'Zoo', 'Apple', 'Desk'];
@@ -3463,7 +3463,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSort0003', 0, () => {
+    it('testPrototypeSort0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0003";
       try {
         const value = ['Cat', undefined, 'Zoo', 'Apple', 'Desk'];
@@ -3482,7 +3482,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSort0004', 0, () => {
+    it('testPrototypeSort0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0004";
       try {
         const value = ['Cat', , 'Zoo', 'Apple', 'Desk'];
@@ -3501,7 +3501,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0001', 0, () => {
+    it('testPrototypeSplice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0001";
       try {
         const months = ['Jan', 'March', 'April', 'June'];
@@ -3521,7 +3521,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0002', 0, () => {
+    it('testPrototypeSplice0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0002";
       try {
         const months = ['Jan', 'March', 'April', 'June'];
@@ -3541,7 +3541,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0003', 0, () => {
+    it('testPrototypeSplice0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0003";
       try {
         const myFish = ["angel", "clown", "mandarin", "sturgeon"];
@@ -3561,7 +3561,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0004', 0, () => {
+    it('testPrototypeSplice0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0004";
       try {
         const myFish = ["angel", "clown", "mandarin", "sturgeon"];
@@ -3581,7 +3581,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0005', 0, () => {
+    it('testPrototypeSplice0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0005";
       try {
         const myFish = ["clown", "mandarin", "sturgeon"]
@@ -3602,7 +3602,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0006', 0, () => {
+    it('testPrototypeSplice0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0006";
       try {
         const myFish = ["angel", "clown", "mandarin"];
@@ -3622,7 +3622,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0007', 0, () => {
+    it('testPrototypeSplice0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0007";
       try {
         const myFish = ["angel", "clown", "drum", "mandarin", "sturgeon"];
@@ -3642,7 +3642,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0008', 0, () => {
+    it('testPrototypeSplice0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0008";
       try {
         const myFish = ["angel", "clown", "drum", "sturgeon"];
@@ -3662,7 +3662,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0009', 0, () => {
+    it('testPrototypeSplice0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0009";
       try {
         const myFish = ["angel", "clown", "trumpet", "sturgeon"];
@@ -3682,7 +3682,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0010', 0, () => {
+    it('testPrototypeSplice0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0010";
       try {
         const myFish = ["parrot", "anemone", "blue", "trumpet", "sturgeon"];
@@ -3702,7 +3702,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0011', 0, () => {
+    it('testPrototypeSplice0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0011";
       try {
         const myFish = ["angel", "clown", "mandarin", "sturgeon"];
@@ -3722,7 +3722,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0012', 0, () => {
+    it('testPrototypeSplice0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0012";
       try {
         const myFish = ["angel", "clown", "mandarin", "sturgeon"];
@@ -3742,7 +3742,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSplice0013', 0, () => {
+    it('testPrototypeSplice0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSplice0013";
       try {
         const arr = [1, , 3, 4, , 6];
@@ -3762,7 +3762,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeSymboliterator0001', 0, () => {
+    it('testPrototypeSymboliterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSymboliterator0001";
       try {
         const array1 = ['a', 'b', 'c'];
@@ -3781,7 +3781,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToLocaleString0002', 0, () => {
+    it('testPrototypeToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToLocaleString0002";
       try {
         const array1 = [];
@@ -3801,7 +3801,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToLocaleString0003', 0, () => {
+    it('testPrototypeToLocaleString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToLocaleString0003";
       try {
         const array1 = [undefined];
@@ -3821,7 +3821,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToLocaleString0004', 0, () => {
+    it('testPrototypeToLocaleString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToLocaleString0004";
       try {
         const array1 = [null];
@@ -3841,7 +3841,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToLocaleString0005', 0, () => {
+    it('testPrototypeToLocaleString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToLocaleString0005";
       try {
         const array1 = [1];
@@ -3861,7 +3861,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToLocaleString0006', 0, () => {
+    it('testPrototypeToLocaleString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToLocaleString0006";
       try {
         const array1 = ['Test'];
@@ -3881,7 +3881,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToString0001', 0, () => {
+    it('testPrototypeToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToString0001";
       try {
         const array1 = [1, 2, 'a', '1a'];
@@ -3901,7 +3901,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToString0002', 0, () => {
+    it('testPrototypeToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToString0002";
       try {
         const array1 = ['1a'];
@@ -3921,7 +3921,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToString0003', 0, () => {
+    it('testPrototypeToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToString0003";
       try {
         const array1 = [''];
@@ -3941,7 +3941,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToString0004', 0, () => {
+    it('testPrototypeToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToString0004";
       try {
         const array1 = [null];
@@ -3961,7 +3961,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeToString0005', 0, () => {
+    it('testPrototypeToString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeToString0005";
       try {
         const array1 = [undefined];
@@ -3981,7 +3981,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeUnshift0001', 0, () => {
+    it('testPrototypeUnshift0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeUnshift0001";
       try {
         let arr = [4, 5, 6];
@@ -4002,7 +4002,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeUnshift0002', 0, () => {
+    it('testPrototypeUnshift0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeUnshift0002";
       try {
         const arr = [1, 2];
@@ -4023,7 +4023,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeUnshift0003', 0, () => {
+    it('testPrototypeUnshift0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeUnshift0003";
       try {
         const arr = [1, 2];
@@ -4044,7 +4044,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeValues0001', 0, () => {
+    it('testPrototypeValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeValues0001";
       try {
         const arr = ["a", "b", "c", "d", "e"];
@@ -4072,7 +4072,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeValues0002', 0, () => {
+    it('testPrototypeValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeValues0002";
       try {
         const arr = ["a", undefined, "c", "d", "e"];
@@ -4100,7 +4100,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeValues0003', 0, () => {
+    it('testPrototypeValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeValues0003";
       try {
         const arr = ["a", null];
@@ -4122,7 +4122,7 @@ export default function ArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPrototypeValues0004', 0, () => {
+    it('testPrototypeValues0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeValues0004";
       try {
         const arr = [];

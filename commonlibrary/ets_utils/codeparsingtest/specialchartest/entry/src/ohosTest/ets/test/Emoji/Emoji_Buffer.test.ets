@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { buffer } from '@kit.ArkTS';
 
 export default function EmojiBufferTest() {
@@ -45,7 +45,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0001', 0, () => {
+    it('testBufferAllocEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -69,7 +69,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0002', 0, () => {
+    it('testBufferAllocEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -92,7 +92,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0003', 0, () => {
+    it('testBufferAllocEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -115,7 +115,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0004', 0, () => {
+    it('testBufferAllocEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0004";
       try {
         const emoji = '\u260e';
@@ -138,7 +138,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0005', 0, () => {
+    it('testBufferAllocEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -161,7 +161,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0006', 0, () => {
+    it('testBufferAllocEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -184,7 +184,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0007', 0, () => {
+    it('testBufferAllocEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -207,7 +207,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0008', 0, () => {
+    it('testBufferAllocEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -230,7 +230,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0009', 0, () => {
+    it('testBufferAllocEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -253,7 +253,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0010', 0, () => {
+    it('testBufferAllocEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0010";
       try {
         const emoji = '\u2666';
@@ -276,7 +276,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0011', 0, () => {
+    it('testBufferAllocEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -299,7 +299,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0012', 0, () => {
+    it('testBufferAllocEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0012";
       try {
         // 定义填充用的表情符号，13个字节
@@ -329,7 +329,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0001', 0, () => {
+    it('testBufferByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferByteLength0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -348,7 +348,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0002', 0, () => {
+    it('testBufferByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -367,7 +367,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0003', 0, () => {
+    it('testBufferByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -386,7 +386,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0004', 0, () => {
+    it('testBufferByteLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0004";
       try {
         const emoji = '\u260e';
@@ -405,7 +405,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0005', 0, () => {
+    it('testBufferByteLength0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -424,7 +424,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0006', 0, () => {
+    it('testBufferByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0006";
       try {
         const emoji = '\ud83d\udc79';
@@ -443,7 +443,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0007', 0, () => {
+    it('testBufferByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0007";
       try {
         const emoji = '\ud83d\udc79';
@@ -462,7 +462,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0008', 0, () => {
+    it('testBufferByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -481,7 +481,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength0009', 0, () => {
+    it('testBufferByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -500,7 +500,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength00010', 0, () => {
+    it('testBufferByteLength00010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji00010";
       try {
         const emoji = '\u2666';
@@ -519,7 +519,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength00011', 0, () => {
+    it('testBufferByteLength00011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji00011";
       try {
         const emoji = '\ud83d\udc48';
@@ -538,7 +538,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferByteLength00012', 0, () => {
+    it('testBufferByteLength00012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji00012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -557,11 +557,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferIsEncoding0001', 0, () => {
+    it('testBufferIsEncoding0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0001";
       try {
         const emoji = '\ud83d\ude0a';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -576,11 +576,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBufferIsEncoding0002', 0, () => {
+    it('testBufferIsEncoding0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0002";
       try {
         const emoji = '\ud83d\udc64';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -595,11 +595,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testBufferIsEncoding0003', 0, () => {
+    it('testBufferIsEncoding0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0003";
       try {
         const emoji = '\ud83d\udc6b';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -614,11 +614,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testBufferIsEncoding0004', 0, () => {
+    it('testBufferIsEncoding0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0004";
       try {
         const emoji = '\u260e';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -633,11 +633,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 5
      */
-    it('testBufferIsEncoding0005', 0, () => {
+    it('testBufferIsEncoding0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0005";
       try {
         const emoji = '\ud83d\udc79';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -652,11 +652,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 6
      */
-    it('testBufferIsEncoding0006', 0, () => {
+    it('testBufferIsEncoding0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0006";
       try {
         const emoji = '\ud83d\udd5b';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -671,11 +671,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 7
      */
-    it('testBufferIsEncoding0007', 0, () => {
+    it('testBufferIsEncoding0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0007";
       try {
         const emoji = '\ud83c\udf4f';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -690,11 +690,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 8
      */
-    it('testBufferIsEncoding0008', 0, () => {
+    it('testBufferIsEncoding0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0008";
       try {
         const emoji = '\ud83d\udd03';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -709,11 +709,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 9
      */
-    it('testBufferIsEncoding0009', 0, () => {
+    it('testBufferIsEncoding0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding0009";
       try {
         const emoji = '\ud83c\udf41';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -728,11 +728,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 10
      */
-    it('testBufferIsEncoding00010', 0, () => {
+    it('testBufferIsEncoding00010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding00010";
       try {
         const emoji = '\u2666';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -747,11 +747,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 11
      */
-    it('testBufferIsEncoding00011', 0, () => {
+    it('testBufferIsEncoding00011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding00011";
       try {
         const emoji = '\ud83d\udc48';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -766,11 +766,11 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 12
      */
-    it('testBufferIsEncoding00012', 0, () => {
+    it('testBufferIsEncoding00012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIsEncoding00012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
-        let flag:boolean = buffer.isEncoding(emoji);
+        let flag: boolean = buffer.isEncoding(emoji);
         expect(flag).assertEqual(false)
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -785,7 +785,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0001", 0, () => {
+    it("testfillEmoji_0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -808,7 +808,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0002", 0, () => {
+    it("testfillEmoji_0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -831,7 +831,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0003", 0, () => {
+    it("testfillEmoji_0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -854,7 +854,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0004", 0, () => {
+    it("testfillEmoji_0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0004";
       try {
         const emoji = '\u260e';
@@ -877,7 +877,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0005", 0, () => {
+    it("testfillEmoji_0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -900,7 +900,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0006", 0, () => {
+    it("testfillEmoji_0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -923,7 +923,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0007", 0, () => {
+    it("testfillEmoji_0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -946,7 +946,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0008", 0, () => {
+    it("testfillEmoji_0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -969,7 +969,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0009", 0, () => {
+    it("testfillEmoji_0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -992,7 +992,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0010", 0, () => {
+    it("testfillEmoji_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0010";
       try {
         const emoji = '\u2666';
@@ -1015,7 +1015,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0011", 0, () => {
+    it("testfillEmoji_0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -1038,7 +1038,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testfillEmoji_0012", 0, () => {
+    it("testfillEmoji_0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testfillEmoji_0012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -1061,7 +1061,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0001", 0, () => {
+    it("testincludesEmoji_0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -1081,7 +1081,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0002", 0, () => {
+    it("testincludesEmoji_0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -1101,7 +1101,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0003", 0, () => {
+    it("testincludesEmoji_0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -1121,7 +1121,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0004", 0, () => {
+    it("testincludesEmoji_0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0004";
       try {
         const emoji = '\u260e';
@@ -1141,7 +1141,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0005", 0, () => {
+    it("testincludesEmoji_0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -1161,7 +1161,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0006", 0, () => {
+    it("testincludesEmoji_0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -1181,7 +1181,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0007", 0, () => {
+    it("testincludesEmoji_0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -1201,7 +1201,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0008", 0, () => {
+    it("testincludesEmoji_0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -1221,7 +1221,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0009", 0, () => {
+    it("testincludesEmoji_0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -1241,7 +1241,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0010", 0, () => {
+    it("testincludesEmoji_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0010";
       try {
         const emoji = '\u2666';
@@ -1261,7 +1261,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0011", 0, () => {
+    it("testincludesEmoji_0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -1281,7 +1281,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testincludesEmoji_0012", 0, () => {
+    it("testincludesEmoji_0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testincludesEmoji_0012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -1301,7 +1301,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0001", 0, () => {
+    it("testBufferIndexOfEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -1322,7 +1322,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0002", 0, () => {
+    it("testBufferIndexOfEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -1343,7 +1343,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0003", 0, () => {
+    it("testBufferIndexOfEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -1364,7 +1364,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0004", 0, () => {
+    it("testBufferIndexOfEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0004";
       try {
         const emoji = '\u260e';
@@ -1385,7 +1385,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0005", 0, () => {
+    it("testBufferIndexOfEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -1406,7 +1406,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0006", 0, () => {
+    it("testBufferIndexOfEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -1427,7 +1427,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0007", 0, () => {
+    it("testBufferIndexOfEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -1448,7 +1448,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0008", 0, () => {
+    it("testBufferIndexOfEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -1469,7 +1469,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0009", 0, () => {
+    it("testBufferIndexOfEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -1490,7 +1490,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0010", 0, () => {
+    it("testBufferIndexOfEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0010";
       try {
         const emoji = '\u2666';
@@ -1511,7 +1511,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0011", 0, () => {
+    it("testBufferIndexOfEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -1532,7 +1532,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferIndexOfEmoji0012", 0, () => {
+    it("testBufferIndexOfEmoji0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferIndexOfEmoji0012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -1552,7 +1552,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0001", 0, () => {
+    it("testBufferLastIndexOfEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -1573,7 +1573,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0002", 0, () => {
+    it("testBufferLastIndexOfEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -1594,7 +1594,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0003", 0, () => {
+    it("testBufferLastIndexOfEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -1615,7 +1615,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0004", 0, () => {
+    it("testBufferLastIndexOfEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0004";
       try {
         const emoji = '\u260e';
@@ -1636,7 +1636,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOffEmoji0005", 0, () => {
+    it("testBufferLastIndexOffEmoji0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -1657,7 +1657,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0006", 0, () => {
+    it("testBufferLastIndexOfEmoji0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -1678,7 +1678,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0007", 0, () => {
+    it("testBufferLastIndexOfEmoji0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -1699,7 +1699,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0008", 0, () => {
+    it("testBufferLastIndexOfEmoji0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -1720,7 +1720,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0009", 0, () => {
+    it("testBufferLastIndexOfEmoji0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -1741,7 +1741,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0010", 0, () => {
+    it("testBufferLastIndexOfEmoji0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0010";
       try {
         const emoji = '\u2666';
@@ -1762,7 +1762,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0011", 0, () => {
+    it("testBufferLastIndexOfEmoji0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0011";
       try {
         const emoji = '\ud83d\udc48';
@@ -1783,7 +1783,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testBufferLastIndexOfEmoji0012", 0, () => {
+    it("testBufferLastIndexOfEmoji0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferLastIndexOfEmoji0012";
       try {
         const emoji = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -1803,10 +1803,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0001', 0, () => {
+    it('testBuffertoJSONEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0001";
       try {
-        let buf1 = buffer.from([0xF0 ,0x9F, 0x98 ,0x8A]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x98, 0x8A]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,152,138]}");
       } catch (err) {
@@ -1823,10 +1823,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0002', 0, () => {
+    it('testBuffertoJSONEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0002";
       try {
-        let buf1 = buffer.from([0xF0, 0x9F, 0x91 ,0x94]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x91, 0x94]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,145,148]}");
 
@@ -1844,10 +1844,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0003', 0, () => {
+    it('testBuffertoJSONEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0003";
       try {
-        let buf1 = buffer.from([0xF0, 0x9F ,0x91, 0xAB]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x91, 0xAB]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,145,171]}");
 
@@ -1865,7 +1865,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0004', 0, () => {
+    it('testBuffertoJSONEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0004";
       try {
         let buf1 = buffer.from([0xE2, 0x98, 0x8E]);
@@ -1886,10 +1886,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0005', 0, () => {
+    it('testBuffertoJSONEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0005";
       try {
-        let buf1 = buffer.from([0xF0 ,0x9F ,0x91 ,0xB9]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x91, 0xB9]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,145,185]}");
       } catch (err) {
@@ -1906,10 +1906,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0006', 0, () => {
+    it('testBuffertoJSONEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0006";
       try {
-        let buf1 = buffer.from([0xF0 ,0x9F, 0x95, 0xBB]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x95, 0xBB]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,149,187]}");
 
@@ -1927,12 +1927,13 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0007', 0, () => {
+    it('testBuffertoJSONEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0007";
       try {
         let buf1 = buffer.from([0xF0, 0x9F, 0x8D, 0x8F]);
         let obj = buf1.toJSON();
-        expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,141,143]}");;
+        expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,141,143]}");
+        ;
 
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -1948,10 +1949,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0008', 0, () => {
+    it('testBuffertoJSONEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0008";
       try {
-        let buf1 = buffer.from([0xF0, 0x9F, 0x94 ,0x83]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x94, 0x83]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,148,131]}");
 
@@ -1969,10 +1970,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0009', 0, () => {
+    it('testBuffertoJSONEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0009";
       try {
-        let buf1 = buffer.from([0xF0 ,0x9F ,0x8D ,0x81]);
+        let buf1 = buffer.from([0xF0, 0x9F, 0x8D, 0x81]);
         let obj = buf1.toJSON();
         expect(JSON.stringify(obj)).assertEqual("{\"type\":\"Buffer\",\"data\":[240,159,141,129]}");
 
@@ -1991,7 +1992,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0010', 0, () => {
+    it('testBuffertoJSONEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0010";
       try {
         let buf1 = buffer.from([0xE2, 0x99, 0xA6]);
@@ -2013,7 +2014,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0011', 0, () => {
+    it('testBuffertoJSONEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0011";
       try {
         let buf1 = buffer.from([0xf0, 0x9f, 0x91, 0x88]);
@@ -2034,7 +2035,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoJSONEmoji0012', 0, () => {
+    it('testBuffertoJSONEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoJSONEmoji0012";
       try {
 
@@ -2058,7 +2059,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0001', 0, () => {
+    it('testBuffertoStringEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0001";
       try {
 
@@ -2079,7 +2080,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0002', 0, () => {
+    it('testBuffertoStringEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0002";
       try {
 
@@ -2100,7 +2101,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0003', 0, () => {
+    it('testBuffertoStringEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0003";
       try {
 
@@ -2121,7 +2122,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0004', 0, () => {
+    it('testBuffertoStringEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0004";
       try {
 
@@ -2142,7 +2143,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0005', 0, () => {
+    it('testBuffertoStringEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0005";
       try {
 
@@ -2163,7 +2164,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0006', 0, () => {
+    it('testBuffertoStringEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0006";
       try {
 
@@ -2184,7 +2185,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0007', 0, () => {
+    it('testBuffertoStringEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0007";
       try {
 
@@ -2205,7 +2206,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0008', 0, () => {
+    it('testBuffertoStringEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0008";
       try {
 
@@ -2226,7 +2227,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0009', 0, () => {
+    it('testBuffertoStringEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0009";
       try {
 
@@ -2247,7 +2248,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0010', 0, () => {
+    it('testBuffertoStringEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0010";
       try {
 
@@ -2268,7 +2269,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0011', 0, () => {
+    it('testBuffertoStringEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0011";
       try {
 
@@ -2289,7 +2290,7 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertoStringEmoji0012', 0, () => {
+    it('testBuffertoStringEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertoStringEmoji0012";
       try {
 
@@ -2309,12 +2310,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0001', 0, () => {
+    it('testBufferwriteEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0001";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\ude0a'
-        let length1 = buf.write('😊',0);
+        let length1 = buf.write('😊', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2329,12 +2330,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0002', 0, () => {
+    it('testBufferwriteEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0002";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udc64'
-        let length1 = buf.write('👤',0);
+        let length1 = buf.write('👤', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2349,12 +2350,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0003', 0, () => {
+    it('testBufferwriteEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0003";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udc6b'
-        let length1 = buf.write('👫',0);
+        let length1 = buf.write('👫', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2369,12 +2370,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0004', 0, () => {
+    it('testBufferwriteEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0004";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\u260e'
-        let length1 = buf.write('☎',0);
+        let length1 = buf.write('☎', 0);
         expect(length1).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2389,12 +2390,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0005', 0, () => {
+    it('testBufferwriteEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0005";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udc79 '
-        let length1 = buf.write('👹',0);
+        let length1 = buf.write('👹', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2409,12 +2410,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0006', 0, () => {
+    it('testBufferwriteEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0006";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udd5b '
-        let length1 = buf.write('🕛',0);
+        let length1 = buf.write('🕛', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2429,12 +2430,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0007', 0, () => {
+    it('testBufferwriteEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0007";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83c\udf4f'
-        let length1 = buf.write('🍏',0);
+        let length1 = buf.write('🍏', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2449,12 +2450,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0008', 0, () => {
+    it('testBufferwriteEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0008";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udd03'
-        let length1 = buf.write('🔃',0);
+        let length1 = buf.write('🔃', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2469,12 +2470,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0009', 0, () => {
+    it('testBufferwriteEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0009";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83c\udf41'
-        let length1 = buf.write('🍁',0);
+        let length1 = buf.write('🍁', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2489,12 +2490,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0010', 0, () => {
+    it('testBufferwriteEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0010";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\u2666'
-        let length1 = buf.write('♦',0);
+        let length1 = buf.write('♦', 0);
         expect(length1).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2509,12 +2510,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0011', 0, () => {
+    it('testBufferwriteEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0011";
       try {
         let buf = buffer.alloc(256);
         const emoji = '\ud83d\udc48'
-        let length1 = buf.write('👈',0);
+        let length1 = buf.write('👈', 0);
         expect(length1).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2529,12 +2530,12 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferwriteEmoji0012', 0, () => {
+    it('testBufferwriteEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferwriteEmoji0012";
       try {
         let buf = buffer.alloc(256);
         const emoji = ' \ud83e\udd3c\u200d\u2642\ufe0f'
-        let length1 = buf.write('🤼‍♂️',0);
+        let length1 = buf.write('🤼‍♂️', 0);
         expect(length1).assertEqual(13);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -2549,10 +2550,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0001', 0, () => {
+    it('testBuffertextEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0001";
       try {
-        let blob= new buffer.Blob(['😊']);
+        let blob = new buffer.Blob(['😊']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '😊',got'${val}'`);
@@ -2571,10 +2572,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0002', 0, () => {
+    it('testBuffertextEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0002";
       try {
-        let blob= new buffer.Blob(['👤']);
+        let blob = new buffer.Blob(['👤']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '👤',got'${val}'`);
@@ -2593,10 +2594,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0003', 0, () => {
+    it('testBuffertextEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0003";
       try {
-        let blob= new buffer.Blob(['👫']);
+        let blob = new buffer.Blob(['👫']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '👫',got'${val}'`);
@@ -2615,10 +2616,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0004', 0, () => {
+    it('testBuffertextEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0004";
       try {
-        let blob= new buffer.Blob(['☎']);
+        let blob = new buffer.Blob(['☎']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '☎',got'${val}'`);
@@ -2637,10 +2638,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0005', 0, () => {
+    it('testBuffertextEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0005";
       try {
-        let blob= new buffer.Blob(['👹']);
+        let blob = new buffer.Blob(['👹']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '👹',got'${val}'`);
@@ -2659,10 +2660,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0006', 0, () => {
+    it('testBuffertextEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0006";
       try {
-        let blob= new buffer.Blob(['🕛']);
+        let blob = new buffer.Blob(['🕛']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '🕛',got'${val}'`);
@@ -2681,10 +2682,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0007', 0, () => {
+    it('testBuffertextEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0007";
       try {
-        let blob= new buffer.Blob(['🍏']);
+        let blob = new buffer.Blob(['🍏']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '🍏',got'${val}'`);
@@ -2703,10 +2704,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0008', 0, () => {
+    it('testBuffertextEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0008";
       try {
-        let blob= new buffer.Blob(['🔃']);
+        let blob = new buffer.Blob(['🔃']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '🔃',got'${val}'`);
@@ -2725,10 +2726,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0009', 0, () => {
+    it('testBuffertextEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0009";
       try {
-        let blob= new buffer.Blob(['🍁']);
+        let blob = new buffer.Blob(['🍁']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '🍁',got'${val}'`);
@@ -2747,10 +2748,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0010', 0, () => {
+    it('testBuffertextEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0010";
       try {
-        let blob= new buffer.Blob(['♦']);
+        let blob = new buffer.Blob(['♦']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '♦',got'${val}'`);
@@ -2769,10 +2770,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0011', 0, () => {
+    it('testBuffertextEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0011";
       try {
-        let blob= new buffer.Blob(['👈']);
+        let blob = new buffer.Blob(['👈']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '👈',got'${val}'`);
@@ -2791,10 +2792,10 @@ export default function EmojiBufferTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuffertextEmoji0012', 0, () => {
+    it('testBuffertextEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuffertextEmoji0012";
       try {
-        let blob= new buffer.Blob(['🤼‍♂️']);
+        let blob = new buffer.Blob(['🤼‍♂️']);
         let pro = blob.text();
         pro.then((val: string) => {
           console.log(`Test case : Expected '🤼‍♂️',got'${val}'`);

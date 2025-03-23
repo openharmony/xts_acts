@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 function expo(x: number, f: number) {
   return Number(x).toExponential(f);
@@ -54,7 +54,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0001', 0, () => {
+    it('testNumberExpo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0001";
       try {
         const result: string = expo(123456, 2);
@@ -72,7 +72,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0002', 0, () => {
+    it('testNumberExpo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0002";
       try {
         const result: string = expo(123543, 2);
@@ -90,7 +90,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0003', 0, () => {
+    it('testNumberExpo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0003";
       try {
         const result: string = expo(123456, 2.5);
@@ -108,7 +108,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0004', 0, () => {
+    it('testNumberExpo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0004";
       try {
         const result: string = expo(123456, -1);
@@ -126,7 +126,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0005', 0, () => {
+    it('testNumberExpo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0005";
       try {
         const result: string = expo(123456, 101);
@@ -144,7 +144,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0006', 0, () => {
+    it('testNumberExpo0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0006";
       try {
         const result: string = expo(123456, 0);
@@ -162,7 +162,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0007', 0, () => {
+    it('testNumberExpo0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0007";
       try {
         const result: string = expo(123456, 100);
@@ -181,7 +181,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0008', 0, () => {
+    it('testNumberExpo0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0008";
       try {
         const result: string = expo1(123456);
@@ -199,7 +199,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0009', 0, () => {
+    it('testNumberExpo0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0009";
       try {
         const result: string = expo2('123456');
@@ -217,7 +217,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0010', 0, () => {
+    it('testNumberExpo0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0010";
       try {
         const result: string = expo1(0);
@@ -235,7 +235,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0011', 0, () => {
+    it('testNumberExpo0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0011";
       try {
         const result: string = expo1(100);
@@ -253,7 +253,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberExpo0012', 0, () => {
+    it('testNumberExpo0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberExpo0012";
       try {
         const result: string = expo2('oink');
@@ -271,7 +271,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0001', 0, () => {
+    it('testNumberFinancial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0001";
       try {
         const result01 = financial1(123.456, 2);
@@ -290,7 +290,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0002', 0, () => {
+    it('testNumberFinancial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0002";
       try {
         const result02 = financial1(0.004, 2);
@@ -309,7 +309,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0003', 0, () => {
+    it('testNumberFinancial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0003";
       try {
         const result03 = financial1('1.23e+5', 2);
@@ -328,7 +328,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0004', 0, () => {
+    it('testNumberFinancial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0004";
       try {
         const result04 = financial('ww');
@@ -347,7 +347,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0005', 0, () => {
+    it('testNumberFinancial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0005";
       try {
         const result = financial('1.23e+5');
@@ -366,7 +366,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0006', 0, () => {
+    it('testNumberFinancial0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0006";
       try {
         const result06 = financial1('1.23e+5', 0);
@@ -385,7 +385,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0007', 0, () => {
+    it('testNumberFinancial0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0007";
       try {
         const result: string = financial1('1.23e+5', 100);
@@ -404,7 +404,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0008', 0, () => {
+    it('testNumberFinancial0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0008";
       try {
         const result: string = financial1('1.23e+5', 1.9);
@@ -422,7 +422,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0009', 0, () => {
+    it('testNumberFinancial0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0009";
       try {
         const result: string = financial1('1.23e+5', -1);
@@ -440,7 +440,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0010', 0, () => {
+    it('testNumberFinancial0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0010";
       try {
         const result: string = financial1('1.23e+5', 101);
@@ -458,7 +458,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0011', 0, () => {
+    it('testNumberFinancial0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0011";
       try {
         const result: string = financial(0);
@@ -476,7 +476,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberFinancial0012', 0, () => {
+    it('testNumberFinancial0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0012";
       try {
         const result = financial(100);
@@ -494,7 +494,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFinancial0013", 0, () => {
+    it("testNumberFinancial0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0013";
       try {
         const result = financial1(0.3, 50);
@@ -512,7 +512,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFinancial0014", 0, () => {
+    it("testNumberFinancial0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0014";
       try {
         const result = financial1(2.55, 1);
@@ -530,7 +530,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNumberFinancial0015", 0, () => {
+    it("testNumberFinancial0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberFinancial0015";
       try {
         const result = financial1(6.02 * 10**23, 50);
@@ -548,7 +548,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNUMBER0001", 0, () => {
+    it("testNUMBER0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNUMBER0001";
       try {
         expect(2.34.toFixed(1)).assertEqual('2.3');
@@ -565,7 +565,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNUMBER0002", 0, () => {
+    it("testNUMBER0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNUMBER0002";
       const num = -2.34;
       try {
@@ -583,7 +583,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNUMBER0003", 0, () => {
+    it("testNUMBER0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNUMBER0003";
       try {
         expect((-2.34).toFixed(1)).assertEqual('-2.3');
@@ -600,7 +600,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberArabic0001', 0, () => {
+    it('testNumberArabic0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberArabic0001'
       try {
         const str: String = "١٢٣٬٤٥٦٫٧٨٩"
@@ -619,7 +619,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberArabic0002', 0, () => {
+    it('testNumberArabic0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberArabic0002';
       try {
         const str: string = "123456.789"
@@ -637,7 +637,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberArabic0003', 0, () => {
+    it('testNumberArabic0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberArabic0003';
       try {
         expect(eArabic(NaN)).assertEqual("ليس رقم")
@@ -654,7 +654,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberArabic0004', 0, () => {
+    it('testNumberArabic0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberArabic0004'
       try {
         const str: String = "٠"
@@ -672,7 +672,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0001', 0, () => {
+    it('testNumberToLocaleString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToLocaleString0001';
       try {
         const number = 123456.789;
@@ -690,7 +690,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0002', 0, () => {
+    it('testNumberToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToLocaleString0002';
       try {
         const str = '123456.789';
@@ -708,7 +708,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0004', 0, () => {
+    it('testNumberToLocaleString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToLocaleString0004';
       try {
         const str = '-123456.789';
@@ -726,7 +726,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0005', 0, () => {
+    it('testNumberToLocaleString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToLocaleString0005';
       try {
         const number = -123.789;
@@ -744,7 +744,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0006', 0, () => {
+    it('testNumberToLocaleString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToLocaleString0006';
       try {
         const number = 123.456;
@@ -763,7 +763,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0008', 0, () => {
+    it('testNumberToLocaleString0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0008";
       try {
         const number = 123456.789;
@@ -782,7 +782,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0009', 0, () => {
+    it('testNumberToLocaleString0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0009";
       try {
         const number = 123456.789;
@@ -801,7 +801,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0010', 0, () => {
+    it('testNumberToLocaleString0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0010";
       try {
         const number = 123456.789;
@@ -820,7 +820,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0011', 0, () => {
+    it('testNumberToLocaleString0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0011";
       try {
         const number = 123456.789;
@@ -841,7 +841,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0012', 0, () => {
+    it('testNumberToLocaleString0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0012";
       try {
         const number = 123456.789;
@@ -862,7 +862,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToLocaleString0013', 0, () => {
+    it('testNumberToLocaleString0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToLocaleString0013";
       try {
         const number = 123456.789;
@@ -883,7 +883,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0001', 0, () => {
+    it('testNumbertoPrecision0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0001';
       try {
         const precise = (x: number): string => {
@@ -903,7 +903,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0002', 0, () => {
+    it('testNumbertoPrecision0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0002';
       try {
         const precise = (x: number): string => {
@@ -923,7 +923,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0003', 0, () => {
+    it('testNumbertoPrecision0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0003';
       try {
         const precise = (x: number): string => {
@@ -943,7 +943,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0004', 0, () => {
+    it('testNumbertoPrecision0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0004';
       try {
         const precise = (x: number): string => {
@@ -963,7 +963,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0005', 0, () => {
+    it('testNumbertoPrecision0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0005';
       try {
         const precise = (x: number): string => {
@@ -983,7 +983,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumbertoPrecision0006', 0, () => {
+    it('testNumbertoPrecision0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumbertoPrecision0006';
       try {
         const precise = (x: number): string => {
@@ -1003,7 +1003,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0007', 0, () => {
+    it('testNumberToPrecision0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0007';
       try {
         const precise = (x: number): string => {
@@ -1024,7 +1024,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0008', 0, () => {
+    it('testNumberToPrecision0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0008';
       try {
         const precise = (x: number): string => {
@@ -1044,7 +1044,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0009', 0, () => {
+    it('testNumberToPrecision0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0009';
       try {
         const precise = (x: number): string => {
@@ -1065,7 +1065,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0010', 0, () => {
+    it('testNumberToPrecision0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0010';
       try {
         const precise = (x: number): string => {
@@ -1086,7 +1086,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0011', 0, () => {
+    it('testNumberToPrecision0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0011';
       try {
         const precise = (x: number): string => {
@@ -1106,7 +1106,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToPrecision0012', 0, () => {
+    it('testNumberToPrecision0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToPrecision0012';
       try {
         const precise = (x: number): string => {
@@ -1126,7 +1126,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0001', 0, () => {
+    it('testNumberToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testNumberToString0001';
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1149,7 +1149,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0002', 0, () => {
+    it('testNumberToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0002";
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1173,7 +1173,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0003', 0, () => {
+    it('testNumberToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0003";
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1197,7 +1197,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0004', 0, () => {
+    it('testNumberToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0004";
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1221,7 +1221,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0005', 0, () => {
+    it('testNumberToString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0005";
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1245,7 +1245,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0006', 0, () => {
+    it('testNumberToString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0006";
       try {
         const hexColour = (c: number, radix: number): string | number => {
@@ -1269,7 +1269,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0007', 0, () => {
+    it('testNumberToString0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0007";
       try {
         const num = 10**21.5;
@@ -1288,7 +1288,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0008', 0, () => {
+    it('testNumberToString0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0008";
       try {
         const num = 10**21.5;
@@ -1307,7 +1307,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0010', 0, () => {
+    it('testNumberToString0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0010";
       try {
         const x = 6;
@@ -1326,7 +1326,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0011', 0, () => {
+    it('testNumberToString0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0011";
       try {
         const result = (254).toString(16);
@@ -1344,7 +1344,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0012', 0, () => {
+    it('testNumberToString0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0012";
       try {
         const result = (-10).toString(2);
@@ -1362,7 +1362,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0013', 0, () => {
+    it('testNumberToString0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0013";
       try {
         const result = (-0xff).toString(2);
@@ -1380,7 +1380,7 @@ export default function NumberTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNumberToString0014', 0, () => {
+    it('testNumberToString0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNumberToString0014";
       try {
         const hex = "CAFEBABE";

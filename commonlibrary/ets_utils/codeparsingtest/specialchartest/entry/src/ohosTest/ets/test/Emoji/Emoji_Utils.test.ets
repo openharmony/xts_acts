@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { ArkTSUtils } from '@kit.ArkTS'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { ArkTSUtils } from '@kit.ArkTS';
+
 export default function EmojiUtilsTest() {
   describe('EmojiUtilsTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -45,7 +45,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilsRequest_0001', 0, () => {
+    it('testUtilsRequest_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0001';
       try {
         let lockName = '\ud83d\ude0a';
@@ -63,7 +63,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUtilsRequest_0002', 0, () => {
+    it('testUtilsRequest_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0002';
       try {
         let lockName = '\ud83d\udc64';
@@ -81,7 +81,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testUtilsRequest_0003', 0, () => {
+    it('testUtilsRequest_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0003';
       try {
         let lockName = '\ud83d\udc6b';
@@ -99,7 +99,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testUtilsRequest_0004', 0, () => {
+    it('testUtilsRequest_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0004';
       try {
         let lockName = '\u260e';
@@ -117,7 +117,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 5
      */
-    it('testUtilsRequest_0005', 0, () => {
+    it('testUtilsRequest_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0005';
       try {
         let lockName = '\ud83d\udc79';
@@ -135,7 +135,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 6
      */
-    it('testUtilsRequest_0006', 0, () => {
+    it('testUtilsRequest_0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0006';
       try {
         let lockName = '\ud83d\udd5b';
@@ -153,7 +153,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 7
      */
-    it('testUtilsRequest_0007', 0, () => {
+    it('testUtilsRequest_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0007';
       try {
         let lockName = '\ud83c\udf4f';
@@ -171,7 +171,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 8
      */
-    it('testUtilsRequest_0008', 0, () => {
+    it('testUtilsRequest_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0008';
       try {
         let lockName = '\ud83d\udd03';
@@ -189,7 +189,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 9
      */
-    it('testUtilsRequest_0009', 0, () => {
+    it('testUtilsRequest_0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0009';
       try {
         let lockName = '\ud83c\udf41';
@@ -207,7 +207,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 10
      */
-    it('testUtilsRequest_00010', 0, () => {
+    it('testUtilsRequest_00010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_00010';
       try {
         let lockName = '\u2666';
@@ -225,7 +225,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 11
      */
-    it('testUtilsRequest_00011', 0, () => {
+    it('testUtilsRequest_00011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_00011';
       try {
         let lockName = '\ud83d\udc48';
@@ -243,7 +243,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 12
      */
-    it('testUtilsRequest_00012', 0, () => {
+    it('testUtilsRequest_00012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_00012';
       try {
         let lockName = '\ud83e\udd3c\u200d\u2642\ufe0f';
@@ -261,7 +261,7 @@ export default function EmojiUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUtilsQuery_0001', 0, () => {
+    it('testUtilsQuery_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsQuery_0001';
       try {
         let lockName = '\ud83d\ude0a';

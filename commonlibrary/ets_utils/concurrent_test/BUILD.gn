@@ -20,6 +20,8 @@ group("concurrent_test") {
       "collectionstaskpooltest:ActsCollectionsTaskPoolTest",
       "collectionstest:ActsCollectionsTest",
       "concurrentlibtest:ActsConcurrentLibTest",
+      "taskpoolexecutedelayedtest:ActsTaskPoolExecuteDelayedTest",
+      "taskpoolsequencerunnertest:ActsTaskPoolSequenceRunnerTest",
       "taskpooltaskgrouptest:ActsTaskPoolTaskGroupTest",
     ]
   }
