@@ -61,12 +61,12 @@ struct Extension {
           let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
           let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
           try {
-            extensionWindow?.occupyEvents(uiExtension.EventFlag.EVENT_CLICK
-              | uiExtension.EventFlag.EVENT_LONG_PRESS
-              | uiExtension.EventFlag.EVENT_PAN_GESTURE_LEFT
-              | uiExtension.EventFlag.EVENT_PAN_GESTURE_RIGHT
-              | uiExtension.EventFlag.EVENT_PAN_GESTURE_DOWN
-              | uiExtension.EventFlag.EVENT_PAN_GESTURE_UP
+            extensionWindow?.occupyEvents(uiExtension.EventFlag.EVENT_CLICK |
+              uiExtension.EventFlag.EVENT_LONG_PRESS |
+              uiExtension.EventFlag.EVENT_PAN_GESTURE_LEFT |
+              uiExtension.EventFlag.EVENT_PAN_GESTURE_RIGHT |
+              uiExtension.EventFlag.EVENT_PAN_GESTURE_DOWN |
+              uiExtension.EventFlag.EVENT_PAN_GESTURE_UP
             )
           } catch (err) {
             console.log('testUIExtensionHostOccupyEvents err in page, err : ' + JSON.stringify(err))
