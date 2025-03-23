@@ -5804,5 +5804,74 @@ export default function audioFramework() {
         done();
       }
     })
+    
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0100
+     * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0100', 2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      try {
+        let para: ESObject = '123';
+        volumeManager.on('volumeChange', para);
+      } catch (error) {
+        console.info(`on('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_VOLUMECHANGE_0100
+     * @tc.name      : AudioCaptruerChange
+     * @tc.desc      : OFF_VOLUMECHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_VOLUMECHANGE_0100', 2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb1: Callback<audio.VolumeEvent> = (volumeEvent: audio.VolumeEvent) => {};
+      volumeManager.on('volumeChange', cb1);
+      try {
+        let para: ESObject = '123';
+        volumeManager.off(para);
+      } catch (error) {
+        console.info(`off('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GETSPATIALIZATIONMANAGER_0100
+     * @tc.name      : AudioCaptruerChange
+     * @tc.desc      : OFF_VOLUMECHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GETSPATIALIZATIONMANAGER_0100', 2, (done: Function) => {
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audio.getAudioManager().getSpatializationManager();
+        let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+        console.info(`AudioSpatializationManager isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+      } catch (error) {
+        console.info(`Fail, error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(false).assertTrue();
+      }
+      expect(true).assertTrue();
+      done();
+    })
   })
 }
