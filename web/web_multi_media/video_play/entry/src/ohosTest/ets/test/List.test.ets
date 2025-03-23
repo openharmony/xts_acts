@@ -14,10 +14,12 @@
  */
 
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test'
+import rectEvent from './rectEvent.test'
 
 
 export default function testsuite() {
     webViewControllerVideoMedia()
+	rectEvent()
 
 
 }
