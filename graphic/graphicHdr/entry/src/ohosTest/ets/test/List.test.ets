@@ -12,16 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.test'
-import graphicImagePixelMapTest from './graphicImagePixelMap.test'
-import graphicImageInterfaceTest from './graphicImageInterface.test'
-import imagePixelMapTest from './pixelMap'
-import imagePixelMapTestErrorCode from './pixelMapErrorCode'
+import graphicHdrInterfaceTest from './graphicHdrInterface.test'
 
 export default function testsuite() {
-  imagePixelMapTest()
-  graphicSendableImageInterfaceTest()
-  graphicImagePixelMapTest()
-  graphicImageInterfaceTest()
-  imagePixelMapTestErrorCode()
+  graphicHdrInterfaceTest()
 }

@@ -12,16 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.test'
-import graphicImagePixelMapTest from './graphicImagePixelMap.test'
-import graphicImageInterfaceTest from './graphicImageInterface.test'
-import imagePixelMapTest from './pixelMap'
-import imagePixelMapTestErrorCode from './pixelMapErrorCode'
 
-export default function testsuite() {
-  imagePixelMapTest()
-  graphicSendableImageInterfaceTest()
-  graphicImagePixelMapTest()
-  graphicImageInterfaceTest()
-  imagePixelMapTestErrorCode()
+export const entryName: string = 'Index1';
+
+@Entry({ routeName: entryName })
+@Component
+export struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }
