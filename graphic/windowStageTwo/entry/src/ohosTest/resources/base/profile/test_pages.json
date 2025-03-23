@@ -16,6 +16,10 @@
     "testability/pages/WindowTest/EmbeddedComponentPage",
     "testability/pages/WindowTest/extensionRect",
     "testability/pages/WindowTest/EmbeddedComponentRectPage",
+    "testability/pages/WindowTest/extensionOccupy",
+    "testability/pages/WindowTest/EmbeddedComponentOccupyPage",
+    "testability/pages/WindowTest/extensionErrorCode",
+    "testability/pages/WindowTest/EmbeddedComponentErrorCodePage",
     "testability/pages/shiftAppWindow/subWindow",
     "testability/pages/shiftAppWindow/mainWindow",
     "testability/pages/WindowTest/LoadContentByName"
