@@ -106,7 +106,7 @@ export default function relationalStoreErrorCode47Test() {
       let resultSet:relationalStore.ResultSet;
       let predicates = await new relationalStore.RdbPredicates("employee");
       resultSet = await (rdbStore as relationalStore.RdbStore).query(predicates)
-      console.log(TAG+"resultSet.rowCount"+resultSet.rowCount)//结果是0
+      console.log(TAG+"resultSet.rowCount"+resultSet.rowCount)
       try{
         resultSet.goTo(980);
         resultSet.goToRow(980);
