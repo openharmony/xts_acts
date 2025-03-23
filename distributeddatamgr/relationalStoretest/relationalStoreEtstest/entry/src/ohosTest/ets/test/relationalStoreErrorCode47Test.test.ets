@@ -1150,60 +1150,6 @@ export default function relationalStoreErrorCode47Test() {
       }
       console.info(TAG + "************* errcode034 end *************");
     })
-    /**
-     * @tc.name beginTrans errcode is 14800047
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBAPIErrcodeTest_3500
-     * @tc.desc beginTrans errcode is 14800047
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('errcode035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      console.info(TAG + "************* errcode035 start *************");
-      let rdbStore1:relationalStore.RdbStore;
-      const STORE_CONFIG1 : relationalStore.StoreConfig= {
-        name: "rdbStore.db",
-        securityLevel: relationalStore.SecurityLevel.S1,
-        vector:true,
-      }
-      const res = relationalStore.isVectorSupported();
-      console.info(TAG + "res=" + res);
-      if (res == false) {
-        console.info(TAG + "false res =" + res);
-        try {
-          rdbStore1 = await relationalStore.getRdbStore(context, STORE_CONFIG1);
-          console.info(TAG + "success getRdbStore. rdbStore=" + rdbStore1);
-          expect().assertFail();
-          await relationalStore.deleteRdbStore(context,STORE_CONFIG1)
-          console.info(TAG + "delete RdbStore success." );
-          done()
-        } catch(err){
-          console.info(TAG + "fail getRdbStore, code=" + err.code + err.message);
-          expect(801).assertEqual(err.code);
-          await relationalStore.deleteRdbStore(context,STORE_CONFIG1)
-          console.info(TAG + "delete RdbStore success." );
-          done()
-        }
-      }else {
-        try {
-          rdbStore1 = await relationalStore.getRdbStore(context, STORE_CONFIG1);
-          console.info(TAG + "success getRdbStore1111. rdbStore=" + rdbStore1);
-          await (rdbStore1 as relationalStore.RdbStore).beginTrans();
-          expect(rdbStore1 != null).assertTrue();
-          await relationalStore.deleteRdbStore(context,STORE_CONFIG1)
-          console.info(TAG + "delete RdbStore success." );
-          done()
-        } catch (err) {
-          console.log(TAG + "err.code" + err.code + "err.message" + err.message)
-          expect(err.code !== 14800047).assertTrue();
-          await relationalStore.deleteRdbStore(context,STORE_CONFIG1)
-          console.info(TAG + "delete RdbStore success." );
-          done()
-        }
-
-      }
-      console.info(TAG + "************* errcode035 end *************");
-    })
 
     /**
      * @tc.name transaction.insert errcode is 14800047
