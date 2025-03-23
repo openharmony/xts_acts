@@ -73,7 +73,7 @@ export default function webViewSrollableJsunit() {
      */
     it('scrollByTo01',0,async  (done: Function) =>{
       emitKey="scrollByTo01";
-      Utils.registerEvent("scrollByTo01",true,20250322,done);
+      Utils.registerEvent("scrollByTo01",0,20250322,done);
       sendEventByKey('scrollByToButton',10,'');
     })
 

@@ -69,9 +69,7 @@ struct WebComponent {
               await Utils.sleep(1000);
               await driver.swipe(X, Y, X, Y + this.controllerY);
               await Utils.sleep(2000);
-              if(this.controllerY == 0 || this.controllerY > 0) {
-                Utils.emitEvent(true , 20250322)
-              }
+              Utils.emitEvent(webview.ScrollType.EVENT , 20250322)
               await Utils.sleep(2000);
               break;
             }
@@ -79,21 +77,10 @@ struct WebComponent {
         })
       }
 
-      Row() {
-        Text(this.testTitle)
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .margin(5)
-      }
-      Column() {
-        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
-      }
-      .margin({ top: 10, bottom: 10 })
-
       Button('setScrollable').key('setScrollableButton')
         .onClick(() => {
           try {
-            this.controller.setScrollable(true);
+            this.controller.setScrollable(true,webview.ScrollType.EVENT);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
