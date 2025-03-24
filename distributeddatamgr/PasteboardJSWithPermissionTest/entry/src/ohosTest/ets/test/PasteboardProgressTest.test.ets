@@ -734,23 +734,23 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+     it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1700 start ************')
       const fileNames = ['test17_1.txt', 'test17_2.txt', 'test17_3.txt', 'test17_4.txt'];
       fileNames.forEach(name => {
-        let fileFullName = '${filePath}/${name}';
+        let fileFullName = `${filePath}/${name}`;
         console.info(TAG + 'The fileFullName ofstr is:' + fileFullName);
         let file = fs.openSync(fileFullName,fs.OpenMode.READ_WRITE|fs.OpenMode.CREATE);
         let writeLen = fs.writeSync(file.fd,VALUE_TEST_STRING_ELEMENT_BIG);
-        console.info(TAG + 'The size of${name} is: ${writeLen}');
+        console.info(TAG + `The size of${name} is: ${writeLen}`);
         fs.closeSync(file);
       });
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
-      let firstFullName = '${filePath}/${fileNames[0]}';
+      let firstFullName = `${filePath}/${fileNames[0]}`;
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(firstFullName));
       fileNames.slice(1).forEach(name => {
-        let fileFullName = '${filePath}/${name}';
+        let fileFullName = `${filePath}/${name}`;
         pasteData.addRecord(pasteboard.MIMETYPE_TEXT_URI, fileFullName);
       });
       console.info(TAG + 'recordCount:' + pasteData.getRecordCount());
@@ -758,7 +758,7 @@ export default function PasteboardProgressTest() {
       let signal = new pasteboard.ProgressSignal;
       let isCanceled = false;
       let ProgressListener = (progress: pasteboard.ProgressInfo) => {
-        console.log(TAG + 'progressListener success, progress:' + progress.progress);
+        console.info(TAG + 'progressListener success, progress:' + progress.progress);
         if(!isCanceled){
           isCanceled = true;
           signal.cancel();
@@ -775,7 +775,7 @@ export default function PasteboardProgressTest() {
       const getExistFilesCount = () =>{
         let count =0;
         fileNames.forEach(name =>{
-          let pastePath = '${dstDir}/${name}';
+          let pastePath = `${dstDir}/${name}`;
           if(fs.accessSync(pastePath)){
             count++;
           }
@@ -795,7 +795,7 @@ export default function PasteboardProgressTest() {
           expect().assertFail();
         })
       }catch(err){
-        console.info(TAG + 'getDataWithProgress fail,err:' + err.code + ',message:' + err.message);
+        console.info(TAG + 'getDataWithProgress fail,err: ' + err.code + ',message:' + err.message);
         expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1700 end ************')
