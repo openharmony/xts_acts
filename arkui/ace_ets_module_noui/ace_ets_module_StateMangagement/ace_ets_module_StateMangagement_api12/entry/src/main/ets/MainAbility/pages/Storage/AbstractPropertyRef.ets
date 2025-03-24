@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-AppStorage.setAndRef("AbstractPropertyRefTest", 52)
+AppStorage.setAndRef('AbstractPropertyRefTest', 52)
 
 @Entry
 @Component
 struct AbstractPropertyRef {
-  @State refA1Value?: AbstractProperty<number> = AppStorage.ref("AbstractPropertyRefTest")
+  @State refA1Value?: AbstractProperty<number> = AppStorage.ref('AbstractPropertyRefTest')
 
   build() {
     Column() {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-AppStorage.setOrCreate("SubAbstractPropertyLinkTest", 52)
+AppStorage.setOrCreate('SubAbstractPropertyLinkTest', 52)
 
 @Preview({
   title: 'SubAbstractPropertyLink',
