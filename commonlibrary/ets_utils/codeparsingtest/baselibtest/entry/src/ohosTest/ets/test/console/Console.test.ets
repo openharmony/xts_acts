@@ -2404,5 +2404,847 @@ export default function ConsoleTest() {
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_6400
+     * @tc.name       : testTimeEnd0016
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0016';
+      try {
+        const str = '\t';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_6500
+     * @tc.name       : testTimeEnd0017
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0017';
+      try {
+        const str = '\v';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_6700
+     * @tc.name       : testTimeEnd0018
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0018';
+      try {
+        const str = '\\';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_6800
+     * @tc.name       : testTimeEnd0019
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0019';
+      try {
+        const str = '\'';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_6900
+     * @tc.name       : testTimeEnd0020
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0020';
+      try {
+        const str = '\"';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7000
+     * @tc.name       : testTimeEnd0021
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0021';
+      try {
+        const str = '\?';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7100
+     * @tc.name       : testTimeEnd0022
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0022';
+      try {
+        const str = '\0';
+        console.time(str);
+        console.timeEnd(str);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.message)
+          .assertEqual('Parameter error. The input parameters are invalid, Timer or Counter name must be not null.');
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7200
+     * @tc.name       : testTimeEnd0023
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0023';
+      try {
+        const str = '\d72';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7300
+     * @tc.name       : testTimeEnd0024
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0024';
+      try {
+        const str = '\x85';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7400
+     * @tc.name       : testTimeEnd0025
+     * @tc.desc       : Test the function of the interface TimeEnd.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeEnd0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeEnd0025';
+      try {
+        const str = '\ud83d';
+        console.time(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7500
+     * @tc.name       : testTimeLog0001
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0001';
+      try {
+        const str = 'testTimeLog0001';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7600
+     * @tc.name       : testTimeLog0002
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0002';
+      try {
+        console.time();
+        console.timeLog();
+        console.timeEnd();
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7700
+     * @tc.name       : testTimeLog0003
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0003';
+      try {
+        const str = 'default';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7800
+     * @tc.name       : testTimeLog0004
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0004';
+      try {
+        const str = 'abc';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_7900
+     * @tc.name       : testTimeLog0005
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0005';
+      try {
+        const str = 'NaN';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8000
+     * @tc.name       : testTimeLog0006
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0006';
+      try {
+        const str = null;
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8100
+     * @tc.name       : testTimeLog0007
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0007';
+      try {
+        const str = undefined;
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8200
+     * @tc.name       : testTimeLog0008
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0008';
+      try {
+        const str = '!!\\"\\"##$$%%&&\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\\\\\]]^^__``{{||}}~~';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8300
+     * @tc.name       : testTimeLog0009
+     * @tc.desc       : Test the function of the interface Time.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0008';
+      try {
+        const str = '!!\\"\\"##$$%%&&\'\'(())**++,,--..//::;;<<==>>??@@[[\\\\\\\\]]^^__``{{||}}~~';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8400
+     * @tc.name       : testTimeLog0010
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0010';
+      try {
+        const str = '\a';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8500
+     * @tc.name       : testTimeLog0011
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0011';
+      try {
+        const str = '\b';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8600
+     * @tc.name       : testTimeLog0012
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0012';
+      try {
+        const str = '\f';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8700
+     * @tc.name       : testTimeLog0013
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0013';
+      try {
+        const str = '\n';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8800
+     * @tc.name       : testTimeLog0014
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0014';
+      try {
+        const str = '\t';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_8900
+     * @tc.name       : testTimeLog0015
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0015';
+      try {
+        const str = '\r';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9000
+     * @tc.name       : testTimeLog0016
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0016';
+      try {
+        const str = '\t';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9100
+     * @tc.name       : testTimeLog0017
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0017';
+      try {
+        const str = '\v';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9200
+     * @tc.name       : testTimeLog0018
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0018';
+      try {
+        const str = '\\';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9300
+     * @tc.name       : testTimeLog0019
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0019';
+      try {
+        const str = '\'';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9500
+     * @tc.name       : testTimeLog0020
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0020';
+      try {
+        const str = '\"';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9600
+     * @tc.name       : testTimeLog0021
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0021';
+      try {
+        const str = '\?';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9700
+     * @tc.name       : testTimeLog0022
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0022';
+      try {
+        const str = '\0';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.message)
+          .assertEqual('Parameter error. The input parameters are invalid, Timer or Counter name must be not null.');
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9800
+     * @tc.name       : testTimeLog0023
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0023';
+      try {
+        const str = '\d72';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_9900
+     * @tc.name       : testTimeLog0024
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0024';
+      try {
+        const str = '\x85';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1000
+     * @tc.name       : testTimeLog0025
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0025';
+      try {
+        const str = '\ud83d';
+        console.time(str);
+        console.timeLog(str);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1010
+     * @tc.name       : testTimeLog0026
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0026';
+      try {
+
+        class bar {
+          TestLog: number = 1;
+        }
+
+        let TestLog: bar = new bar();
+        const str = '太好了';
+        console.time(str);
+        console.timeLog(str, TestLog);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1020
+     * @tc.name       : testTimeLog0027
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0027';
+      try {
+        let TestLog: ArrayBuffer = new ArrayBuffer(10);
+        const str = '太好了';
+        console.time(str);
+        console.timeLog(str, TestLog);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1030
+     * @tc.name       : testTimeLog0028
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0028';
+      try {
+
+        let TestLog: ArrayList<string> = new ArrayList();
+        const str = '太好了';
+        console.time(str);
+        console.timeLog(str, TestLog);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1040
+     * @tc.name       : testTimeLog0029
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0029';
+      try {
+        let TestLog: number = 1;
+        const str = '太好了';
+        console.time(str);
+        console.timeLog(str, TestLog);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONSOLE_1050
+     * @tc.name       : testTimeLog0030
+     * @tc.desc       : Test the function of the interface TimeLog.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTimeLog0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTimeLog0030';
+      try {
+        let TestLog: string = '陈隆庭！';
+        const str = '加油';
+        console.time(str);
+        console.timeLog(str, TestLog);
+        console.timeEnd(str);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
   })
 }
