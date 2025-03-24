@@ -22,7 +22,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { ChildProcessOptions } from '@ohos.app.ability.ChildProcessOptions';
 import testNapi from 'libentry.so';
 import util from '@ohos.util';
-
+import { BusinessError } from '@kit.BasicServicesKit';
 export default function nativeProcessTest() {
   describe('StartNativeChildProcessTest', () => {
     let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
