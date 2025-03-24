@@ -1181,7 +1181,58 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_show_2', 2, async (done: Functi
   }
 })
 
-
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1600
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_status
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_status
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_status', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_status';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(false);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
 
 
 
