@@ -15,7 +15,7 @@
 import app from '@system.app'
 import worker from "@ohos.worker"
 import taskpool from '@ohos.taskpool';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 
 @Concurrent
 function taskDateFunction(input: Date): Date {
@@ -40,7 +40,7 @@ export default function ConcurrencyBaseTest() {
          * @tc.type: Function
          * @tc.level: Level 1
          */
-        it('testSendableDateSimple001', 0, async (done: Function) => {
+        it('testSendableDateSimple001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
           let input: Date = new Date();
 
           let task = new taskpool.Task(taskDateFunction, input);
