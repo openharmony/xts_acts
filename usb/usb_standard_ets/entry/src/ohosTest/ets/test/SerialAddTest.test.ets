@@ -18,7 +18,7 @@ import { UiDriver, BY } from '@ohos.UiTest';
 import { JSON } from '@kit.ArkTS';
 import { bundleManager } from "@kit.AbilityKit";
 import { buffer } from '@kit.ArkTS';
-import { serial } from '@ohos.usbManager.serial';
+import serial from '@ohos.usbManager.serial';
 
 const TAG: string = "[SerialAddTest]";
 
@@ -29,7 +29,7 @@ function sleep(ms: number): Promise<void> {
 async function getPermission(gPortList: Readonly<serial.SerialPort>[]) {
   console.info('**************getPermission**************');
   try {
-    serial.requestSerialRight(gPortList[0].portId).then(hasRight => {
+    serial.requestSerialRight(gPortList[0].portId).then((hasRight:boolean) => {
       console.info(TAG, `usb requestRight success, hasRight: ${hasRight}`);
     });
   } catch (err) {
