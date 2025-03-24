@@ -2217,6 +2217,155 @@ export default function urlTest() {
         expect().assertFail();
       }
     });
-
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0100
+     * @tc.name       : testForeach0001
+     * @tc.desc       : Test the function of the interface foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testForeach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testForeach0001';
+      try {
+        const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+        myURLObject.params.forEach((value, name, searchParams) => {
+          console.log(name, value, myURLObject.params === searchParams);
+        });
+        expect(myURLObject.params.get('fod')).assertEqual('1');
+        expect(myURLObject.params.get('bard')).assertEqual('2');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0200
+     * @tc.name       : testForeach0002
+     * @tc.desc       : Test the function of the interface foreach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testForeach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testForeach0002';
+      try {
+        const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+        let names: string[] = ['Alice', 'Bob', 'Carol'];
+        myURLObject.params.forEach((value, name, searchParams) => {
+        }, names);
+        expect(myURLObject.params.get('fod')).assertEqual('1');
+        expect(myURLObject.params.get('bard')).assertEqual('2');
+        console.log(JSON.stringify(names));
+        expect(names.toString()).assertEqual('Alice,Bob,Carol');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0300
+     * @tc.name       : testSymbol.iterator0001
+     * @tc.desc       : Test the function of the interface Symbol.iterator.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSymbol.iterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSymbol.iterator0001';
+      try {
+        const paramsObject = new url.URLParams('fod=bay&edg=bap');
+        let iter: Iterable<Object[]> = paramsObject[Symbol.iterator]();
+        let pairs = Array.from(iter);
+        for (let pair of pairs) {
+          console.log(pair[0] + ', ' + pair[1]);
+        }
+        expect(pairs.toString()).assertEqual('fod,bay,edg,bap');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0400
+     * @tc.name       : testParseURL90001
+     * @tc.desc       : Test the function of the interface parseURL9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testParseURL90001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testParseURL90001';
+      try {
+        let mm = 'https://username:password@host:8080/test/test1/test3';
+        let urlObject = url.URL.parseURL(mm);
+        let result = urlObject.toString();
+        expect(result).assertEqual('https://username:password@host:8080/test/test1/test3');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0500
+     * @tc.name       : testParseURL90002
+     * @tc.desc       : Test the function of the interface parseURL9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testParseURL90002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testParseURL90002';
+      try {
+        let url1 = url.URL.parseURL('path2/path3', 'https://www.example.com/test/test1');
+        console.log(`${TAG}+url+${url1.toString()}`)
+        let url2 = url.URL.parseURL('/path1/path2', 'https://www.example.com/test/test1');
+        expect(url1.toString())
+          .assertEqual('https://www.example.com/test/path2/path3');
+        expect(url2.toString()).assertEqual('https://www.example.com/path1/path2');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0600
+     * @tc.name       : testParseURL90003
+     * @tc.desc       : Test the function of the interface parseURL9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testParseURL90003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testParseURL90003';
+      try {
+        let baseURL = url.URL.parseURL('https://www.example.com/test/test1');
+        let url3 = url.URL.parseURL('path2/path3', baseURL);
+        expect(url3.toString()).assertEqual('https://www.example.com/test/path2/path3');
+        let url4 = url.URL.parseURL('/path1/path2', baseURL);
+        expect(url4.toString()).assertEqual('https://www.example.com/path1/path2');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URL_0700
+     * @tc.name       : testParseURL90004
+     * @tc.desc       : Test the function of the interface parseURL9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testParseURL90004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testParseURL90004';
+      try {
+        let url5 = url.URL.parseURL('https://www.example.com/test/test1', '');
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect(e.message).assertEqual('Parameter error. The type of  must be string');
+      }
+    });
   })
 }
