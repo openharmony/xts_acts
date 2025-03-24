@@ -225,15 +225,15 @@ export default function UsbApiIsochronousTransferTest() {
       }
       let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
       let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-      let endprint  = getEndprint(devices, 128, type)
-      if (endprint === undefined || endprint.usbInterface === undefined || endprint.usbEndprint === undefined) {
+      let endpoint  = getEndpoint(devices, 128, type)
+      if (endpoint === undefined || endpoint.usbInterface === undefined || endpoint.usbEndpoint === undefined) {
         return
       }
-      let usbInterface = endprint.usbInterface;
-      let usbEndprint = endprint.usbEndprint;
-      console.info('usbEndprint.address = ' + JSON.stringify(usbEndprint.address));
+      let usbInterface = endpoint.usbInterface;
+      let usbEndpoint = endpoint.usbEndpoint;
+      console.info('usbEndpoint.address = ' + JSON.stringify(usbEndpoint.address));
 
-      let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, usbEndprint.address, type, 2000);
+      let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, usbEndpoint.address, type, 2000);
       if (usbMgr.claimInterface(gPipe, usbInterface, true) !== 0) {
         console.info(TAG, 'claimInterface error');
       }
