@@ -32,6 +32,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { Driver } from '@ohos.UiTest';
+import DemoProcess from '../process/AProcess';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;

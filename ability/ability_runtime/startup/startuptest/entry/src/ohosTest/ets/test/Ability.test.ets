@@ -17,6 +17,7 @@ import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
 let driver = Driver.create();
 const DELY_TIME = 5000;
@@ -1009,5 +1010,96 @@ export default function abilityTest() {
         }
       }
     })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_StartUp_2800
+     * @tc.name: the testing startup framework errorCode is 28800002
+     * @tc.desc: The startup tasks have circular dependencies.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('SUB_Ability_AbilityRuntime_StartUp_2800', Level.LEVEL0, async (done: Function) => {
+      TAG = "SUB_Ability_AbilityRuntime_StartUp_2800";
+      console.log(TAG + " start");
+      context.startAbilityForResult({
+        bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility100',
+      }, (err, result: ability.AbilityResult) => {
+        console.log(TAG + " error = " + JSON.stringify(err))
+        console.log(TAG + " result = " + JSON.stringify(result))
+        delegator.printSync(TAG + " result = " + JSON.stringify(result))
+        let apiResult: Array<number> = (result.want?.parameters?.apiResult) as Array<number>
+        expect(apiResult[0]).assertEqual(28800002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_StartUp_2900
+     * @tc.name: the testing startup framework errorCode is 28800003
+     * @tc.desc: An error occurred while running the startup tasks.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('SUB_Ability_AbilityRuntime_StartUp_2900', Level.LEVEL0, async (done: Function) => {
+      TAG = "SUB_Ability_AbilityRuntime_StartUp_2900";
+      console.log(TAG + " start");
+      context.startAbilityForResult({
+        bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility102',
+      }, (err, result: ability.AbilityResult) => {
+        console.log(TAG + " error = " + JSON.stringify(err))
+        console.log(TAG + " result = " + JSON.stringify(result))
+        delegator.printSync(TAG + " result = " + JSON.stringify(result))
+        let apiResult: Array<number> = (result.want?.parameters?.apiResult) as Array<number>
+        expect(apiResult[0]).assertEqual(28800003);
+        done();
+      })
+    })
+    
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_StartUp_3000
+     * @tc.name: the testing startup framework errorCode is 28800004
+     * @tc.desc: Running startup tasks timeout.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('SUB_Ability_AbilityRuntime_StartUp_3000', Level.LEVEL0, async (done: Function) => {
+      TAG = "SUB_Ability_AbilityRuntime_StartUp_3000";
+      console.log(TAG + " start");
+      let sub:commonEventManager.CommonEventSubscriber;
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["Sample_103_init"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        sub = subscriber;
+        console.info("createSubscriber success");
+        commonEventManager.subscribe(sub, (err, commonEventData) => {
+          console.info("the erris " + JSON.stringify(err))
+          console.info("the data " + JSON.stringify(commonEventData))
+          try {
+            expect(commonEventData.parameters?.result).assertEqual(28800004);
+          } catch {
+          }
+          commonEventManager.unsubscribe(subscriber, (err, data) => {
+            done();
+          });
+        });
+      });
+
+      context.startAbilityForResult({
+        bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility103',
+      }, (err, result: ability.AbilityResult) => {
+        console.log(TAG + " error = " + JSON.stringify(err))
+        console.log(TAG + " result = " + JSON.stringify(result))
+      })
+    })
+    
+
+
   })
 }
