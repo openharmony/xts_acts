@@ -748,21 +748,35 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+     it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1700 start ************')
-      let fileFullName = filePath + '/test17.txt';
-      console.info(TAG + 'The fileFullName of str is:' + fileFullName);
-      let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let writeLen = fs.writeSync(file.fd, VALUE_TEST_STRING_ELEMENT_BIG);
-      console.info(TAG + 'The size of str is: ' + writeLen);
-      fs.closeSync(file);
-      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
+      const fileNames = ['test17_1.txt', 'test17_2.txt', 'test17_3.txt', 'test17_4.txt'];
+      fileNames.forEach(name => {
+        let fileFullName = `${filePath}/${name}`;
+        console.info(TAG + 'The fileFullName ofstr is:' + fileFullName);
+        let file = fs.openSync(fileFullName,fs.OpenMode.READ_WRITE|fs.OpenMode.CREATE);
+        let writeLen = fs.writeSync(file.fd,VALUE_TEST_STRING_ELEMENT_BIG);
+        console.info(TAG + `The size of${name} is: ${writeLen}`);
+        fs.closeSync(file);
+      });
+
       let systemPasteboard = pasteboard.getSystemPasteboard();
+      let firstFullName = `${filePath}/${fileNames[0]}`;
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(firstFullName));
+      fileNames.slice(1).forEach(name => {
+        let fileFullName = `${filePath}/${name}`;
+        pasteData.addRecord(pasteboard.MIMETYPE_TEXT_URI, fileFullName);
+      });
+      console.info(TAG + 'recordCount:' + pasteData.getRecordCount());
       await systemPasteboard.setData(pasteData);
       let signal = new pasteboard.ProgressSignal;
+      let isCanceled = false;
       let ProgressListener = (progress: pasteboard.ProgressInfo) => {
-        console.log('progressListener success, progress:' + progress.progress);
-        signal.cancel();
+        console.info(TAG + 'progressListener success, progress:' + progress.progress);
+        if(!isCanceled){
+          isCanceled = true;
+          signal.cancel();
+        }
       }
 
       let dstUri: string = fileUri.getUriFromPath(dstDir);
@@ -772,18 +786,30 @@ export default function PasteboardProgressTest() {
         progressIndicator: 0,
         progressListener: ProgressListener
       };
-      try {
-        await systemPasteboard.getDataWithProgress(params).then((data) => {
+      const getExistFilesCount = () =>{
+        let count =0;
+        fileNames.forEach(name =>{
+          let pastePath = `${dstDir}/${name}`;
+          if(fs.accessSync(pastePath)){
+            count++;
+          }
+        });
+        return count;
+      };
+      try{
+        await systemPasteboard.getDataWithProgress(params).then((data) =>
+        {
           console.info(TAG + 'getDataWithProgress start');
-          let pastePath = dstDir + '/test17.txt';
-          expect(fs.accessSync(pastePath)).assertEqual(false);
+          const existCount = getExistFilesCount();
+          console.info(TAG + 'existCount:' + existCount);
+          expect(existCount !== fileNames.length).assertEqual(true);
           console.info(TAG + 'getDataWithProgress success');
-        }).catch((error: BusinessError) => {
-          console.info(TAG + 'getDataWithProgress failed,error: ' + JSON.stringify(error));
+        }).catch((error: BusinessError) =>{
+          console.info(TAG + 'getDataWithProgress failed,error:' + JSON.stringify(error));
           expect().assertFail();
         })
-      } catch (err) {
-        console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
+      }catch(err){
+        console.info(TAG + 'getDataWithProgress fail,err: ' + err.code + ',message:' + err.message);
         expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1700 end ************')
