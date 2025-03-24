@@ -25,7 +25,7 @@ import { BusinessError } from '@ohos.base';
 import web_webview from '@ohos.web.webview';
 import { resourceConfigs } from "./Resource";
 
-async function getData() {
+async function getData(url?: Array<string>) {
   const resourceMapArr: Array<web_webview.OfflineResourceMap> = [];
   // 读取配置，从rawfile目录中读取文件内容
   for (let config of resourceConfigs) {
@@ -34,7 +34,7 @@ async function getData() {
       buf = await readRawFile(config.localPath);
     }
     resourceMapArr.push({
-      urlList: config.urlList,
+      urlList: url ? url : config.urlList,
       resource: buf,
       responseHeaders: config.responseHeaders,
       type: config.type,
@@ -74,6 +74,7 @@ class TestObj {
 @Component
 struct injectOfflineResourcesTest {
   controller: webView.WebviewController = new webView.WebviewController();
+  controllerNull: webView.WebviewController = new webView.WebviewController();
   message: webView.WebMessageExt = new webView.WebMessageExt();
   @State str: string = ""
   @State javaScriptAccess: boolean = true;
@@ -133,6 +134,26 @@ struct injectOfflineResourcesTest {
               } catch (err) {
                 console.error(msg + "injectOfflineResources error: " + err.code + " message " + err.message);
                 Utils.emitEvent(err.code, 20003)
+              }
+              break;
+            }
+            case "testInjectOfflineResources004": {
+              let msg = "testInjectOfflineResources004"
+              try {
+                this.controller.injectOfflineResources(await getData(['xxxx']));
+              } catch (err) {
+                console.error(msg + "injectOfflineResources error: " + err.code + " message " + err.message);
+                Utils.emitEvent(err.code, 20004)
+              }
+              break;
+            }
+            case "testInjectOfflineResources005": {
+              let msg = "testInjectOfflineResources005"
+              try {
+                this.controllerNull.injectOfflineResources(await getData ());
+              } catch (err) {
+                console.error(msg + "injectOfflineResources error: " + err.code + " message " + err.message);
+                Utils.emitEvent(err.code, 20005)
               }
               break;
             }
