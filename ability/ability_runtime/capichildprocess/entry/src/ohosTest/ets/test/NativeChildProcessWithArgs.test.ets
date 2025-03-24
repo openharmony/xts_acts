@@ -284,6 +284,36 @@ export default function nativeProcessTest() {
       }
     });
 
+    /*
+    * @tc.number : SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700
+    * @tc.name   : Call StartNativeChildProcess to create a child process, give param correct entryPoint, args
+    *              and isolationMode true
+    * @tc.desc   : Expect: 1.Return child pid 2.read Result: 'SUCC'
+    * @tc.type   : Function
+    * @tc.size   : MediumTest
+    * @tc.level  : 0
+    */
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700`;
+      console.log(`${tag} it begin`);
+      try {
+        childProcessManager.startNativeChildProcess("libentry.so:Main", null)
+          .then((pid) => {
+            console.info(`SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700 success, pid: ${pid}`);
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700 business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            expect(err.code).assertEqual(401);
+            done();
+          })
+      } catch (err) {
+        console.error(`SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700 error, errorCode: ${err.code}, errorMsg:${err.message}`);
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
   });
 }
 

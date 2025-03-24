@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { commonEventManager } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 let timeout : number = 1000;
@@ -25,6 +25,30 @@ export default class EntryAbility1 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'EntryAbility1 onCreate');
     AppStorage.setOrCreate<Want>('TestAbilityWant', want);
+    if (want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3800') {
+      try {
+        this.context.openAtomicService(null)
+          .then((result: common.AbilityResult) => {
+            // 执行正常业务
+            console.info('openAtomicService succeed');
+          })
+          .catch((err: BusinessError) => {
+            // 处理业务逻辑错误
+            console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (err) {
+        console.log('SUB_Ability_AbilityRuntime_UIExtensionContext_3800' + `openAtomicService catch failed, code is ${err}`);
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': err?.code,
+          }
+        }
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3800_event', commonEventData, (result) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+          this.context.terminateSelf()
+        });
+      }
+    };
   }
 
   onDestroy(): void {
