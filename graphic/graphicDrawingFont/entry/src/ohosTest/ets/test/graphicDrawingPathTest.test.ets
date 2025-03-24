@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -41,7 +41,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathIteratorVerb', 1, async (done:Function)=> {
+    it('testPathIteratorVerb', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathIteratorVerb==== "
       try {
         console.info(msg + ' Succeeded in PathIteratorVerb.');
@@ -76,7 +76,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathDashStyle', 1, async (done:Function)=> {
+    it('testPathDashStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathDashStyle==== "
       try {
         console.info(msg + ' Succeeded in PathDashStyle.');
@@ -103,7 +103,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathIteratorNext', 1, async (done:Function)=> {
+    it('testPathIteratorNext', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathIteratorNext==== "
       try {
         let path: drawing.Path = new drawing.Path();
@@ -133,7 +133,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathIteratorPeek', 1, async (done:Function)=> {
+    it('testPathIteratorPeek', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathIteratorPeek==== "
       try {
         let path: drawing.Path = new drawing.Path();
@@ -158,7 +158,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathIteratorHasNext', 1, async (done:Function)=> {
+    it('testPathIteratorHasNext', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathIteratorHasNext==== "
       try {
         let path: drawing.Path = new drawing.Path();
@@ -183,7 +183,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathGetPathIterator', 1, async (done:Function)=> {
+    it('testPathGetPathIterator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPathGetPathIterator==== "
       try {
         let path: drawing.Path = new drawing.Path();
@@ -208,7 +208,8 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathEffectCreatePathDashEffect', 1, async (done:Function)=> {
+    it('testPathEffectCreatePathDashEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = " ====testPathEffectCreatePathDashEffect==== "
       const color = new ArrayBuffer(96);
       let opts : image.InitializationOptions = {
@@ -266,7 +267,8 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathEffectCreateSumPathEffect', 1, async (done:Function)=> {
+    it('testPathEffectCreateSumPathEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = " ====testPathEffectCreateSumPathEffect==== "
       const color = new ArrayBuffer(96);
       let opts : image.InitializationOptions = {
@@ -303,7 +305,8 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathEffectCreateDiscretePathEffect', 1, async (done:Function)=> {
+    it('testPathEffectCreateDiscretePathEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = " ====testPathEffectCreateDiscretePathEffect==== "
       const color = new ArrayBuffer(96);
       let opts : image.InitializationOptions = {
@@ -337,7 +340,8 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPathEffectCreateComposePathEffect', 1, async (done:Function)=> {
+    it('testPathEffectCreateComposePathEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = " ====testPathEffectCreateComposePathEffect==== "
       const color = new ArrayBuffer(96);
       let opts : image.InitializationOptions = {
@@ -372,7 +376,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenGetHexColor', 1, async (done:Function)=> {
+    it('testPenGetHexColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testPenGetHexColor==== "
       try {
         let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
@@ -398,7 +402,7 @@ export default function graphicDrawingPathTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushGetHexColor', 1, async (done:Function)=> {
+    it('testBrushGetHexColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testBrushGetHexColor==== "
       try {
         let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };

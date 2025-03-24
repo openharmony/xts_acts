@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON, } from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
@@ -48,7 +48,7 @@ export default function FontDescriptorTest1() {
      * @tc.type :
      * @tc.size :
      */
-    it('FontDescriptorTest1_0100', 0, async (done: Function) => {
+    it('FontDescriptorTest1_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('FontDescriptorTest1_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
