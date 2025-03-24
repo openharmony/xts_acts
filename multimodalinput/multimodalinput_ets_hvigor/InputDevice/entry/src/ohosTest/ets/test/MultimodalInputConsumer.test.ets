@@ -41,7 +41,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0100";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -81,7 +81,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0200";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -118,7 +118,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0300";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -155,7 +155,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0400";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -192,7 +192,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0500";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -229,7 +229,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0600";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -266,7 +266,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0700";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -303,7 +303,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0800", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0800";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -341,7 +341,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0900", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_0900";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -378,7 +378,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_1000", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_1000";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -417,7 +417,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_1100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOn_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOn_1100";
       try {
         let hotkeyOptions: inputConsumer.HotkeyOptions = {
@@ -454,7 +454,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0100";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -493,7 +493,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0200";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -532,7 +532,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0300";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -571,7 +571,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0400";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -610,7 +610,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0500";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -649,7 +649,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0600";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -688,7 +688,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0700";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -727,7 +727,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0800", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0800";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -766,7 +766,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0900", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_0900";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -805,7 +805,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1000", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1000";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -844,7 +844,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1100";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -883,7 +883,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1200";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -922,7 +922,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1300";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -960,7 +960,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1400";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -999,7 +999,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1500";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -1038,7 +1038,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1600";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
@@ -1075,7 +1075,7 @@ export default function MultimodalInputConsumerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_1700";
       try {
         let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
