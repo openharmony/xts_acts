@@ -1074,7 +1074,7 @@ export default function CameraErrorCodeUsecaseTest() {
       done();
     })
 
-    /**错误码抛出异常，已提单等待回归
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
      * @tc.name      : removeOutput api
      * @tc.desc      : removeOutput api
@@ -1082,21 +1082,21 @@ export default function CameraErrorCodeUsecaseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    // it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300', 0, async (done: Function) => {
-    //   console.info("--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300--------------");
-    //   await createInput(0);
-    //   mCameraSession = mCameraManager.createCaptureSession();
-    //   createOutput(0);
-    //   try {
-    //     mCameraSession.removeOutput(mPreviewOutput);
-    //   } catch (error) {
-    //     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
-    //     console.info(TAG + "ERRORCODE: " + error.code);
-    //     expect(error.code == 7400102).assertTrue();
-    //     expect(true).assertTrue();
-    //   }
-    //   done();
-    // })
+     it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300', 0, async (done: Function) => {
+       console.info("--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300--------------");
+       await createInput(0);
+       mCameraSession = mCameraManager.createCaptureSession();
+       createOutput(0);
+       try {
+         mCameraSession.removeOutput(mPreviewOutput);
+       } catch (error) {
+         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
+         console.info(TAG + "ERRORCODE: " + error.code);
+         expect(error.code == 7400102).assertTrue();
+         expect(true).assertTrue();
+       }
+       done();
+     })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0400
