@@ -21,13 +21,6 @@ struct TextPickerDialogBGBlurStyle {
       range: ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'],
       defaultPickerItemHeight: 40,
       backgroundBlurStyle: style,
-      onDidAppear: () => {
-        let tree: ESObject = getInspectorTree();
-        let dialog: ESObject = tree.$children[1];
-        let column: ESObject = dialog.$children[0];
-        let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-        console.log('onDidAppear: ' + backgroundBlurStyle);
-      }
     })
   }
   build() {

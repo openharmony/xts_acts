@@ -22,13 +22,6 @@ struct TimePickerDialogBGColor {
       dateTimeOptions: { hour: "numeric", minute: "2-digit" },
       backgroundColor: color,
       backgroundBlurStyle: BlurStyle.NONE,
-      onDidAppear: () => {
-        let tree: ESObject = getInspectorTree();
-        let dialog: ESObject = tree.$children[1];
-        let column: ESObject = dialog.$children[0];
-        let backgroundBlurStyle: string = column.$attrs.backgroundBlurStyle.value;
-        console.log('onDidAppear: ' + backgroundBlurStyle);
-      },
     })
 }
   build() {

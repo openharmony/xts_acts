@@ -21,13 +21,6 @@ struct DatePickerDialogShadow {
     end: new Date('2100-12-31'),
     shadow: shadow,
     dateTimeOptions: { hour: 'numeric', minute: '2-digit' },
-    onDidAppear: () => {
-      let tree: ESObject = getInspectorTree();
-      let dialog: ESObject = tree.$children[1];
-      let column: ESObject = dialog.$children[0];
-      let shadow: string = column.$attrs.shadow;
-      console.log('onDidAppear: ' + shadow);
-    }
   })
 }
   build() {

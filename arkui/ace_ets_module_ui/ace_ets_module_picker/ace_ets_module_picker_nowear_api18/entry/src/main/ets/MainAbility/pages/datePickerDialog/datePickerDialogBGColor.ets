@@ -22,13 +22,6 @@ struct DatePickerDialogBGColor {
     backgroundColor: color,
     backgroundBlurStyle: BlurStyle.NONE,
     dateTimeOptions: { hour: 'numeric', minute: '2-digit' },
-    onDidAppear: () => {
-      let tree: ESObject = getInspectorTree();
-      let dialog: ESObject = tree.$children[1];
-      let column: ESObject = dialog.$children[0];
-      let backgroundColor: string = column.$attrs.backgroundColor;
-      console.log('onDidAppear: ' + backgroundColor);
-    }
   })
 }
   build() {
