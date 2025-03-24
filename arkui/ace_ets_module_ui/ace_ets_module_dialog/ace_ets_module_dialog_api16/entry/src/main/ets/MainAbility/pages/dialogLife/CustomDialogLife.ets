@@ -24,7 +24,7 @@ struct CustomDialogExampleA {
     Column() {
       Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Button('confirm').key('CustomDialog')
+        Button('button').key('CustomDialog')
           .onClick(() => {
             if (this.controller != undefined) {
               this.controller.close()

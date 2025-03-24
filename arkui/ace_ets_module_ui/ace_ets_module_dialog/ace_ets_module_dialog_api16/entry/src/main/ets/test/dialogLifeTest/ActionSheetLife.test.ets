@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { Driver } from '@ohos.UiTest';
+import { Driver, ON, Component } from '@ohos.UiTest';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,8 @@ export default function ActionSheetLifeTest() {
       let actionSheetFlag2 = getInspectorByKey('actionSheetFlag2');
       expect(JSON.parse(actionSheetFlag2).$attrs.content).assertEqual('true');
       let driver: Driver = Driver.create();
-      await driver.click(50,80);
+      let button: Component = await driver.findComponent(ON.text('button'));
+      await button.click();
       await CommonFunc.sleep(2000);
       let actionSheetFlag3 = getInspectorByKey('actionSheetFlag3');
       expect(JSON.parse(actionSheetFlag3).$attrs.content).assertEqual('true');
