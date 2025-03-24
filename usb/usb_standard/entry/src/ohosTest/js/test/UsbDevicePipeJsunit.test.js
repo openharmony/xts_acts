@@ -367,6 +367,55 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibilityErr_0500
+   * @tc.name     : testBulkTransfer801Err001
+   * @tc.desc     : Null option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 3
+   */
+  it('testBulkTransfer801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+    console.info(TAG, 'usb testBulkTransfer801Err001 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+    let testParam = getTransferTestParam();
+    if (testParam.interface == null || testParam.outEndpoint == null) {
+      expect(testParam.interface == null).assertFalse();
+      expect(testParam.outEndpoint == null).assertFalse();
+      return
+    }
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    testParam.sendData = 'send default';
+    try {
+      testParam.sendData = parameter.getSync('test_usb', 'default');
+      console.log('usb testBulkTransfer801Err001 parameter ' + JSON.stringify(testParam.sendData));
+    } catch (e) {
+      console.log('usb testBulkTransfer801Err001 parameter getSync unexpected error: ' + e);
+    }
+    try {
+    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+    await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, null).then(data => {
+      console.info(TAG, 'usb case testBulkTransfer801Err001 ret: ' + data);
+      console.info(TAG, 'usb case testBulkTransfer801Err001 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
+    }).catch (error => {
+      console.info(TAG, 'usb testBulkTransfer801Err001 write error : ' + JSON.stringify(error));
+      expect(error === null).assertTrue();
+    });
+    let isClaim = usbManager.releaseInterface(testParam.pip, testParam.interface);
+    console.info(TAG, 'usb case testBulkTransfer801Err001 isClaim: ' + isClaim);
+    expect(isClaim).assertEqual(0);
+   } catch (err) {
+    console.info(TAG, 'testBulkTransfer801Err001 catch err code: ', err);
+    expect(err.code).assertEqual(801);
+   }
+  })
+
+  /**
    * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0600
    * @tc.name     : testBulkTransfer005
    * @tc.desc     : Ignore option arguments, use default options.
@@ -886,6 +935,47 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb testControlTransfer005 controlTransfer error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibilityErr_0300
+   * @tc.name     : testControlTransfer801Err001
+   * @tc.desc     : Test the bulkTransfer interface. Ignore option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 3
+   */
+   it('testControlTransfer801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+    console.info(TAG, 'usb testControlTransfer801Err001 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    let testParam = getTransferTestParam();
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(testParam.inEndpoint == null).assertFalse();
+      expect(testParam.interface == null).assertFalse();
+      expect(testParam.outEndpoint == null).assertFalse();
+      return
+    }
+    try{
+      let controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
+        (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+        | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
+      await usbManager.controlTransfer(testParam.pip, controlParam).then(data => {
+        console.info(TAG, 'usb controlTransfer ret data : ', data, ' ', 'testControlTransfer801Err001 GetStatus');
+        console.info(TAG, 'usb controlTransfer controlParam.data buffer : ',
+          controlParam.data, ' ', 'testControlTransfer801Err001 GetStatus');
+        expect(data >= 0).assertTrue();
+      }).catch (error => {
+        console.info(TAG, 'usb testControlTransfer801Err001 controlTransfer error : ' + JSON.stringify(error));
+        expect(error === null).assertTrue();
+      });
+    }catch(err){
+      console.info(TAG, 'testControlTransfer801Err001 catch err code: ', err);
+            expect(err.code).assertEqual(801);
+    }
   })
 
   /**
