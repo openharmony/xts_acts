@@ -16955,5 +16955,1808 @@ export default function BufferTest() {
         expect().assertFail();
       }
     })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5000
+     * @tc.name       : testToString0050
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0050';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, -1, -1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5100
+     * @tc.name       : testToString0051
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0051';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, -1, Infinity);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5200
+     * @tc.name       : testToString0052
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0052';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, -1, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5300
+     * @tc.name       : testToString0053
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0053';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, -1, 1);
+        expect(res.length).assertEqual(1);
+        expect(res).assertEqual('h');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5400
+     * @tc.name       : testToString0054
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0054';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, undefined);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5500
+     * @tc.name       : testToString0055
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0055';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, 0);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5600
+     * @tc.name       : testToString0056
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0056';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, -1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5700
+     * @tc.name       : testToString0057
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0057';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5800
+     * @tc.name       : testToString0058
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0058';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_5900
+     * @tc.name       : testToString0059
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0059';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString(undefined, Infinity, 1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6000
+     * @tc.name       : testToString0060
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0060';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', undefined, undefined);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6100
+     * @tc.name       : testToString0061
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0061';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, undefined);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6200
+     * @tc.name       : testToString0062
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0062';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, 0);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6300
+     * @tc.name       : testToString0063
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0063';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, Infinity);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6400
+     * @tc.name       : testToString0064
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0064';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, 1);
+        expect(res.length).assertEqual(1);
+        expect(res).assertEqual('h');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6500
+     * @tc.name       : testToString0065
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0065';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6600
+     * @tc.name       : testToString0066
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0066';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 0, Infinity);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6700
+     * @tc.name       : testToString0067
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0067';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, undefined);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6800
+     * @tc.name       : testToString0068
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0068';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, 0);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_6900
+     * @tc.name       : testToString0069
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0069';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, -1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7000
+     * @tc.name       : testToString0070
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0070';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, Infinity);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7100
+     * @tc.name       : testToString0071
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0071';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7200
+     * @tc.name       : testToString0072
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0072';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -1, 1);
+        expect(res.length).assertEqual(1);
+        expect(res).assertEqual('h');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7300
+     * @tc.name       : testToString0073
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0073';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', Infinity, undefined);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7400
+     * @tc.name       : testToString0074
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0074';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', Infinity, 0);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7500
+     * @tc.name       : testToString0075
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0075';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', Infinity, -1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7600
+     * @tc.name       : testToString0076
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0076';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', Infinity, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7700
+     * @tc.name       : testToString0077
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0077';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', Infinity, 1);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7800
+     * @tc.name       : testToString0078
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0078';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -Infinity, undefined);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_7900
+     * @tc.name       : testToString0079
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0079';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', 1, -Infinity);
+        expect(res.length).assertEqual(0);
+        expect(res).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TO_STRING_8000
+     * @tc.name       : testToString0080
+     * @tc.desc       : Test the function of the interface toString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferToString0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testToString0080';
+      try {
+        const buf = buffer.from('hello');
+        const res = buf.toString('utf-8', -Infinity, Infinity);
+        expect(res.length).assertEqual(5);
+        expect(res).assertEqual('hello');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0100
+     * @tc.name       : testWrite0001
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0001';
+      try {
+        let buf = buffer.alloc(5);
+        let len = buf.write("abc");
+        expect(len).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0200
+     * @tc.name       : testWrite0002
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0002';
+      try {
+        let buf = buffer.alloc(5);
+        expect(buf.write("test", 0)).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0300
+     * @tc.name       : testWrite0003
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0003';
+      try {
+        let buf = buffer.alloc(5);
+        let len = buf.write("abcd", undefined);
+        expect(len).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0400
+     * @tc.name       : testWrite0004
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0004';
+      try {
+        let buf = buffer.alloc(5);
+        let len = buf.write("abcd", -1);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4. Received value is: -1');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0500
+     * @tc.name       : testWrite0005
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0005';
+      try {
+        let buf = buffer.alloc(10);
+        const result = buf.write("test", Infinity);
+        console.log(`${TAG} result: ${result}`);
+        expect(result).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 9. Received value is: Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0600
+     * @tc.name       : testWrite006
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0006';
+      try {
+        let buf = buffer.alloc(10);
+        const result = buf.write("test", -Infinity);
+        console.log(`${TAG} result: ${result}`);
+        expect(result).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 9. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0700
+     * @tc.name       : testWrite0007
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0007';
+      try {
+        let buf = buffer.alloc(5);
+        const result = buf.write("abc", 1)
+        console.log(`${TAG} result: ${result}`);
+        expect(result).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0800
+     * @tc.name       : testWrite0008
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0008';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", undefined);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(7);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0900
+     * @tc.name       : testWrite0009
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0009';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, 0);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1000
+     * @tc.name       : testWrite0010
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0010';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, -1);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "length" is out of range. It must be >= 0 and <= 10. Received value is: -1');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1100
+     * @tc.name       : testWrite0011
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0011';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, Infinity);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "length" is out of range. It must be >= 0 and <= 10. Received value is: Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1200
+     * @tc.name       : testWrite0012
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0012';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, -Infinity);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "length" is out of range. It must be >= 0 and <= 10. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1300
+     * @tc.name       : testWrite0013
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0013';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, 1);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1400
+     * @tc.name       : testWrite0014
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0014';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, undefined);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(7);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1500
+     * @tc.name       : testWrite0015
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0015';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 3, 1, 'base64');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1600
+     * @tc.name       : testWrite0016
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0016';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 4, 2, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1700
+     * @tc.name       : testWrite0017
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0017';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefg", 4, 2, undefined);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1800
+     * @tc.name       : testWrite0018
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0018';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("", 0, 0, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_1900
+     * @tc.name       : testWrite0019
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0019';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abcdefghijklmnopqrstuvwxyz", 0, 10, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(10);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2000
+     * @tc.name       : testWrite0020
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0020';
+      try {
+        let buf = buffer.alloc(5);
+        const res = buf.write("abc", 6, 1, 'utf8');
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4. Received value is: 6');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2100
+     * @tc.name       : testWrite0021
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0021';
+      try {
+        let buf = buffer.alloc(5);
+        const res = buf.write("abcdefg", 2, 5, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2200
+     * @tc.name       : testWrite0022
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0022';
+      try {
+        let buf = buffer.alloc(5);
+        const res = buf.write("abc", 0, 3, 'invalid_encoding');
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect(e.message)
+          .assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding invalid_encoding is unknown');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2300
+     * @tc.name       : testWrite0023
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0023';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abc", undefined, undefined, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2400
+     * @tc.name       : testWrite0024
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0024';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abc", Infinity, Infinity, 'utf8');
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 9. Received value is: Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2500
+     * @tc.name       : testWrite0025
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0025';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abc", 0, 0, 'utf8');
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2600
+     * @tc.name       : testWrite0026
+     * @tc.desc       : Test the function of the interface write.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWrite0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWrite0026';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.write("abc", -Infinity, -Infinity, 'utf8');
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 9. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2700
+     * @tc.name       : testWriteBigInt64BE0001
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0001';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        const res = buf.writeBigInt64BE(BigInt(0x1234567890abcdef), 0);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2800
+     * @tc.name       : testWriteBigInt64BE0002
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0002';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0x0304), 1);
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(9);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2900
+     * @tc.name       : testWriteBigInt64BE0003
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0003';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0x05060708));
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3000
+     * @tc.name       : testWriteBigInt64BE0004
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0004';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0xbeef));
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3100
+     * @tc.name       : testWriteBigInt64BE0005
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0005';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0x4));
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3200
+     * @tc.name       : testWriteBigInt64BE0006
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0006';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0xfeedface));
+
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual(8);
+        const result = buf.toString('hex')
+        console.log(`${TAG} result: ${result}`);
+        expect(result).assertEqual('00000000feedface0000');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3300
+     * @tc.name       : testWriteBigInt64BE0007
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0007';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(-2)).toString()
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual('8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3400
+     * @tc.name       : testWriteBigInt64BE0008
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0008';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(2)).toString()
+        console.log(`${TAG} res: ${res}`);
+        expect(res).assertEqual('8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3500
+     * @tc.name       : testWriteBigInt64BE0009
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0009';
+      try {
+        let buf = buffer.alloc(10);
+        const res = buf.writeBigInt64BE(BigInt(0xcafebabe))
+        console.log(`${TAG} res: ${res}`);
+        expect(res.toString()).assertEqual('8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3600
+     * @tc.name       : testWriteBigInt64BE0010
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0010';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        const res = buf.writeBigInt64BE(BigInt(123.456));
+        expect(res).assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message).assertEqual('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3700
+     * @tc.name       : testWriteBigInt64BE0011
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0011';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        const res = buf.writeBigInt64BE(BigInt(0xdecafafecacefade))
+        console.log(`${TAG} res: ${res}`);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "value" is out of range. It must be >= -(2n ** 63n) and <= 2n ** 63n. Received value is: 16053919793946753024');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3800
+     * @tc.name       : testWriteBigInt64BE0012
+     * @tc.desc       : Test the function of the interface writeBigInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64BE0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64BE0012';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        const res = buf.writeBigInt64BE(BigInt(0x0102030405060708n))
+        console.log(`${TAG} res: ${res}`);
+        expect(res.toString()).assertEqual('8');
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_3900
+     * @tc.name       : testWriteBigInt64LE0001
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0001';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0x0102030405060708), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4000
+     * @tc.name       : testWriteBigInt64LE0002
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0002';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0x03048), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4100
+     * @tc.name       : testWriteBigInt64LE0003
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0003';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0x05060708), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4200
+     * @tc.name       : testWriteBigInt64LE0004
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0004';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0xbeef), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4300
+     * @tc.name       : testWriteBigInt64LE0005
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0005';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0x4), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4400
+     * @tc.name       : testWriteBigInt64LE0006
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0006';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0xfeedface), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4500
+     * @tc.name       : testWriteBigInt64LE0007
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0007';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(-2), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4600
+     * @tc.name       : testWriteBigInt64LE0008
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0008';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(2), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4700
+     * @tc.name       : testWriteBigInt64LE0009
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0009';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigInt64LE(BigInt(0xcafebabe), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4800
+     * @tc.name       : testWriteBigInt64LE0010
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0010';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigInt64LE(BigInt(123.456), 0);
+
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message).assertEqual('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_4900
+     * @tc.name       : testWriteBigInt64LE0011
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0011';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigInt64LE(BigInt(0xdecafafecacefade), 0);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "value" is out of range. It must be >= -(2n ** 63n) and <= 2n ** 63n. Received value is: 16053919793946753024');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5000
+     * @tc.name       : testWriteBigInt64LE0012
+     * @tc.desc       : Test the function of the interface writeBigInt64LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigInt64LE0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigInt64LE0012';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        const result = buf.writeBigInt64LE(BigInt(0x0102030405060708n), 0);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5100
+     * @tc.name       : testWriteBigUInt64BE0001
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0001';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0x0304), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5200
+     * @tc.name       : testWriteBigUInt64BE0002
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0002';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0x05060708), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5300
+     * @tc.name       : testWriteBigUInt64BE0003
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0003';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0xbeef), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5400
+     * @tc.name       : testWriteBigUInt64BE0004
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0004';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0x4), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5500
+     * @tc.name       : testWriteBigUInt64BE0005
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0005';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0xfeedface), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5600
+     * @tc.name       : testWriteBigUInt64BE0006
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0006';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigUInt64BE(BigInt(-2), 0);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "value" is out of range. It must be >= 0 and <= 2n ** 64n - 1n. Received value is: -2');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5700
+     * @tc.name       : testWriteBigUInt64BE0007
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0007';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(2), 0);
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5800
+     * @tc.name       : testWriteBigUInt64BE0008
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0008';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(0xcafebabe));
+        console.info("result = " + result);
+        expect(result).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_5900
+     * @tc.name       : testWriteBigUInt64BE0009
+     * @tc.desc       : Test the function of the interface writeBigUInt64BE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteBigUInt64BE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteBigUInt64BE0009';
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        let result = buf.writeBigUInt64BE(BigInt(123.456));
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message).assertEqual('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    })
   })
 }
