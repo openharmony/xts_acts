@@ -19,8 +19,8 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function CalendarPickerDialogBGColorTest() {
-  describe('CalendarPickerDialogBGColorTest', async () => {
-    beforeEach(async (done: Function) => {
+  describe('CalendarPickerDialogBGColorTest', () => {
+    beforeAll(async () => {
       console.info('CalendarPickerDialogBGColorTest beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/calendarPickerDialog/calendarPickerDialogBGColor',
@@ -28,18 +28,18 @@ export default function CalendarPickerDialogBGColorTest() {
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get CalendarPickerDialogBGColorTest state pages:' + JSON.stringify(pages));
         if (!('calendarPickerDialogBGColor' == pages.name)) {
-          console.info('get CalendarPickerDialogBGColorTest pages.name:' + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
-          await Utils.sleep(2500);
-          console.info('push CalendarPickerDialogBGColorTest page result:' + JSON.stringify(result));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error('push CalendarPickerDialogBGColorTest page error:' + err);
+        console.error('push CalendarPickerDialogBGColorTest page error: ' + err);
       }
-      console.info('CalendarPickerDialogBGColorTest beforeEach end');
-      done();
+    });
+
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
+      console.info('CalendarPickerDialogBGColorTest after each called');
     });
 
     /* *

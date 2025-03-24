@@ -19,27 +19,27 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function CalendarPickerDialogShadowTest() {
-  describe('CalendarPickerDialogShadowTest', async () => {
-    beforeEach(async (done: Function) => {
+  describe('CalendarPickerDialogShadowTest', () => {
+    beforeAll(async () => {
       console.info('CalendarPickerDialogShadowTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/calendarPickerDialog/calendarPickerDialogShadow',
+        url:'MainAbility/pages/calendarPickerDialog/calendarPickerDialogShadow',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get CalendarPickerDialogShadowTest state pages:' + JSON.stringify(pages));
         if (!('calendarPickerDialogShadow' == pages.name)) {
-          console.info('get CalendarPickerDialogShadowTest pages.name:' + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
-          await Utils.sleep(2500);
-          console.info('push CalendarPickerDialogShadowTest page result:' + JSON.stringify(result));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error('push CalendarPickerDialogShadowTest page error:' + err);
+        console.error('push CalendarPickerDialogShadowTest page error: ' + err);
       }
-      console.info('CalendarPickerDialogShadowTest beforeEach end');
-      done();
+    });
+
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
+      console.info('CalendarPickerDialogShadowTest after each called');
     });
 
     /* *
