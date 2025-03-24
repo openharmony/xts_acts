@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium'
+import { expect, describe, it, afterEach, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest'
 import { Point } from '@ohos.UiTest';
 import Utils from '../common/Utils'
@@ -60,10 +60,10 @@ export default function DragTest(){
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
-    it('UDMFCaseTest001', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest1';
+    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        let PAGE_TAG:string = 'DragCaseTest1';
         await Utils.pushPage(`drag/${PAGE_TAG}`);
         await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
@@ -78,10 +78,10 @@ export default function DragTest(){
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
-    it('UDMFCaseTest002', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest2';
+    it('UDMFCaseTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        let PAGE_TAG:string = 'DragCaseTest2';
         await Utils.pushPage(`drag/${PAGE_TAG}`);
         await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
@@ -96,10 +96,10 @@ export default function DragTest(){
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
-    it('UDMFCaseTest003', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest3';
+    it('UDMFCaseTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        let PAGE_TAG:string = 'DragCaseTest3';
         await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
         console.log('UDMFCaseTest003', dataArray[0]);
