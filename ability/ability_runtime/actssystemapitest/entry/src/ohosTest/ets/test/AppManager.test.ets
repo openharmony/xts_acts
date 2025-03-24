@@ -622,9 +622,9 @@ export default function appManagerTest() {
      */
      it('System_API_Test_App_Manager_1700', 0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1700';
-      let bundleName = "com.ohos.application";
+      let bundleName = "com.ohos.applicationsss";
       try {
-        appManager.killProcessesByBundleName(bundleName, null).then((data) => {
+        appManager.killProcessesByBundleName(bundleName, false).then((data) => {
           console.log('System_API_Test_App_Manager_1700 killProcessesByBundleName success.');
           expect().assertFail();
           done();
