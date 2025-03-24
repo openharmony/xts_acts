@@ -340,7 +340,7 @@ export default function PasteboardErrTest() {
       try {
         let result: string = systemPasteboard.getDataSource();
         console.info(TAG + `Succeeded in checking the RemoteData. Result: ${result}`);
-        expect(result.toString()).assertEqual('label');
+        expect(result.toString()).assertEqual('test label');
       } catch (err) {
         console.error(TAG + `Failed to getDataSource. Cause: ${err.message + err.code}`);
         expect(err.code).assertEqual('12900005')
