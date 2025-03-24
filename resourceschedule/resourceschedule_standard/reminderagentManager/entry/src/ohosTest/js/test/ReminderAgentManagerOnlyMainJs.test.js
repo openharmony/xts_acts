@@ -26,6 +26,12 @@ export default function ReminderAgentManagerOnlyMainTest() {
              * @tc.setup: setup invoked before all testcases
              */
             console.info('beforeAll called')
+
+            reminderAgent.cancelAllReminders().then(() => {
+              console.info('beforeAll cancelAllReminders success');
+            }).catch((err) => {
+              console.error("beforeAll cancelAllReminders promise err code:" + err.code + " message:" + err.message);
+            });
         })
 
         afterAll(function () {
