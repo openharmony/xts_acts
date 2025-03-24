@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, ON } from '@ohos.UiTest'
@@ -52,10 +52,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The button style is a line and text describes the location selected and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2300', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2300] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation2');
@@ -117,10 +117,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the location selected and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2400', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2400] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation3');
@@ -180,10 +180,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes a shared location and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2500', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2500] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation4');
@@ -243,10 +243,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the location of the send and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2600', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2600] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation5');
@@ -308,10 +308,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes positioning and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2700', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2700] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation6');
@@ -373,10 +373,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the location and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2800', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2800] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation7');
@@ -438,10 +438,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the real-time location of the send and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_2900', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_2900] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation8');
@@ -503,10 +503,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes repositioning and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_3000', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_3000] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation9');
@@ -566,10 +566,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text description is punch card positioning and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_3100', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_3100] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation10');
@@ -629,10 +629,10 @@ export default function locationComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the location and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Location_3200', 0, async (done:Function) => {
+    it('Test_Security_Button_Location_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Location_3200] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation11');

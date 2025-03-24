@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 
@@ -25,7 +25,7 @@ export default function napiLifecycleTest() {
      * @tc.name createAsyncResource0001
      * @tc.desc aceNapiEtsTest
      */
-    it('createAsyncResource0001', 0, async (done: Function) => {
+    it('createAsyncResource0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('createAsyncResource start');
       let value = napitest.createAsyncResource({
         foo: 'bar'
@@ -40,7 +40,7 @@ export default function napiLifecycleTest() {
      * @tc.name destroyAsyncResource0002
      * @tc.desc aceNapiEtsTest
      */
-    it('destroyAsyncResource0002', 0, async (done: Function) => {
+    it('destroyAsyncResource0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('destroyAsyncResource start');
       let obj = napitest.createAsyncResource({
         foo: 'bar'
@@ -56,7 +56,7 @@ export default function napiLifecycleTest() {
      * @tc.name runInCallbackScope0003
      * @tc.desc aceNapiEtsTest
      */
-    it('runInCallbackScope0003', 0, async (done: Function) => {
+    it('runInCallbackScope0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('runInCallbackScope start');
       let value = napitest.runInCallbackScope({}, 'test-resource', () => 42);
       console.info('runInCallbackScope napiLifecycleTest result is: ' + value);
@@ -69,7 +69,7 @@ export default function napiLifecycleTest() {
      * @tc.name testResolveAsync0004
      * @tc.desc aceNapiEtsTest
      */
-    it('testResolveAsync0004', 0, async (done: Function) => {
+    it('testResolveAsync0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testResolveAsync start');
       let value = napitest.testResolveAsync();
       console.info('testResolveAsync END');
@@ -82,7 +82,7 @@ export default function napiLifecycleTest() {
      * @tc.name testSetInstanceData0005
      * @tc.desc aceNapiEtsTest
      */
-    it('testSetInstanceData0005', 0, async (done: Function) => {
+    it('testSetInstanceData0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let value = napitest.napiSetInstanceData();
       expect(value).assertEqual(1);
       done();
@@ -93,7 +93,7 @@ export default function napiLifecycleTest() {
      * @tc.name asyncWorkCallback0006
      * @tc.desc aceNapiEtsTest
      */
-    it('asyncWorkCallback0006', 0, async (done: Function) => {
+    it('asyncWorkCallback0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('asyncWorkCallback start');
 
       new Promise<void>((resolve) => {
@@ -109,7 +109,7 @@ export default function napiLifecycleTest() {
      * @tc.name napiAsyncCleanUpHook0007
      * @tc.desc aceNapiEtsTest
      */
-    it('napiAsyncCleanUpHook0007', 0, async (done: Function) => {
+    it('napiAsyncCleanUpHook0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiAsyncCleanUpHook start');
       let value = napitest.napiAsyncCleanUpHook();
       console.info('napiAsyncCleanUpHook napiLifecycleTest result is:  ' + value + "--" + JSON.stringify(value));
@@ -122,7 +122,7 @@ export default function napiLifecycleTest() {
      * @tc.name napiEnvCleanupHook0008
      * @tc.desc aceNapiEtsTest
      */
-    it('napiEnvCleanupHook0008', 0, async (done: Function) => {
+    it('napiEnvCleanupHook0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiEnvCleanUpHook start');
       let value = napitest.napiEnvCleanUpHook();
       console.info('napiEnvCleanUpHook napiLifecycleTest result is: ' + value + "--" + JSON.stringify(value));
@@ -135,7 +135,7 @@ export default function napiLifecycleTest() {
      * @tc.name napiGetModuleFileName0009
      * @tc.desc aceNapiEtsTest
      */
-    it('napiGetModuleFileName0009', 0, async (done: Function) => {
+    it('napiGetModuleFileName0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('napiGetModuleFileName start');
       let value = napitest.getModuleFileName().indexOf(".so");
       console.info('napiGetModuleFileName napiLifecycleTest result is: ' + value + "--" + JSON.stringify(value));

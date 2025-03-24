@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import vsync from 'libnativevsync.so'
 
 export default function nativeVsyncTest() {
@@ -27,7 +27,7 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeVSyncCreateNull', 0, async (done: Function) => {
+    it('testNativeVSyncCreateNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateNull();
       console.info("testNativeVSyncCreateNull result:" + result)
       expect(result).assertEqual(-1);
@@ -43,7 +43,7 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 3
      */
 
-    it('testNativeVSyncCreateNotEq', 0, async (done: Function) => {
+    it('testNativeVSyncCreateNotEq', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateNotEq();
       console.info("testNativeVSyncCreateNotEq result:" + result)
       expect(result).assertEqual(0);
@@ -59,7 +59,7 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 0
      */
 
-    it('testNativeVSyncCreateNormal', 0, async (done: Function) => {
+    it('testNativeVSyncCreateNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncCreateNormal();
       console.info("testNativeVSyncCreateNormal result:" + result)
       expect(result[0]).assertEqual(0);
@@ -77,7 +77,7 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 3
      */
 
-    it('testNativeVSyncCreateAbnormal', 0, async (done: Function) => {
+    it('testNativeVSyncCreateAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateAbnormal();
       console.info("testNativeVSyncCreateAbnormal result:" + result)
       expect(result).assertEqual(0);
@@ -93,7 +93,7 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 2
      */
 
-    it('testNativeVSyncCreateDifLenth', 0, async (done: Function) => {
+    it('testNativeVSyncCreateDifLenth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncCreateDifLenth();
       console.info("testNativeVSyncCreateDifLenth result:" + result)
       expect(result).assertEqual(0);
@@ -109,7 +109,7 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 0
      */
 
-    it('testNativeVSyncCreateMuch', 0, async (done: Function) => {
+    it('testNativeVSyncCreateMuch', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateMuch();
       console.info("testNativeVSyncCreateMuch result:" + result)
       expect(result).assertEqual(0);
@@ -125,7 +125,8 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 3
      */
 
-    it('testNativeVSyncGetPeriodNullptr', 0, async (done: Function) => {
+    it('testNativeVSyncGetPeriodNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL00,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncGetPeriodNullptr();
       console.info("testNativeVSyncGetPeriodNullptr result:" + result);
       expect(result).assertEqual(40001000);
@@ -141,7 +142,8 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 3
      */
 
-    it('testNativeVSyncRequestFrameNullptr', 0, async (done: Function) => {
+    it('testNativeVSyncRequestFrameNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameNullptr();
       console.info("testNativeVSyncRequestFrameNullptr result:" + result);
       expect(result).assertEqual(0);
@@ -157,7 +159,8 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 0
      */
 
-    it('testNativeVSyncRequestFrameNormal', 0, async (done: Function) => {
+    it('testNativeVSyncRequestFrameNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrameNormal();
       console.info("testNativeVSyncRequestFrameNormal result:" + result);
       expect(result).assertEqual(0);
@@ -173,14 +176,15 @@ export default function nativeVsyncTest() {
      * @tc.level      : Level 4
      */
 
-    it('testNativeVSyncRequestFrameParamErr', 0, async (done: Function) => {
+    it('testNativeVSyncRequestFrameParamErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrameParamErr();
       console.info("testNativeVSyncRequestFrameParamErr result:" + result);
       expect(result).assertEqual(0);
       done();
     });
 
-    it('testOHNativeVSyncCreate001', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreate();
       expect(result).assertEqual(0);
       done();
@@ -194,7 +198,7 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncCreate002', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateFOne();
       expect(result).assertEqual(0);
       done();
@@ -208,7 +212,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncRequestFrame001', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrame001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrame();
       expect(result).assertEqual(0);
       done();
@@ -222,7 +227,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncRequestFrame002', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrame002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrameFOne();
       expect(result).assertEqual(0);
       done();
@@ -236,7 +242,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncRequestFrame003', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrame003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrameFTwo();
       expect(result).assertEqual(0);
       done();
@@ -250,7 +257,7 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncGetPeriod001', 0, async (done: Function) => {
+    it('testOHNativeVSyncGetPeriod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncGetPeriod();
       expect(result).assertEqual(0);
       done();
@@ -264,7 +271,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncGetPeriod002', 0, async (done: Function) => {
+    it('testOHNativeVSyncGetPeriod002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL00,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncGetPeriodFOne();
       expect(result).assertEqual(0);
       done();
@@ -278,7 +286,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncCreateForAssociatedWindowNormal', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreateForAssociatedWindowNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowNormal();
       expect(result).assertEqual(0);
       done();
@@ -292,7 +301,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal01', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal01();
       console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
       expect(result[0]).assertEqual(-1);
@@ -308,7 +318,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal02();
       console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
       expect(result[0]).assertEqual(0);
@@ -325,7 +336,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal03', 0, async (done: Function) => {
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal03();
       console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
       expect(result).assertEqual(0);
@@ -340,7 +352,7 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncDVSyncSwitch', 0, async (done: Function) => {
+    it('testOHNativeVSyncDVSyncSwitch', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncDVSyncSwitch();
       expect(result).assertEqual(0);
       done();
@@ -354,7 +366,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncDVSyncSwitchNullptr', 0, async (done: Function) => {
+    it('testOHNativeVSyncDVSyncSwitchNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = vsync.oHNativeVSyncDVSyncSwitchNullptr();
       expect(result).assertEqual(0);
       done();
@@ -368,7 +381,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal();
       console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal result:" + result);
       expect(result[0]).assertEqual(0);
@@ -385,7 +399,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal01', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal01();
       console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal01 result:" + result);
       expect(result[0]).assertEqual(0);
@@ -401,7 +416,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal();
       console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal result:" + result);
       expect(result[0]).assertEqual(40001000);
@@ -418,7 +434,8 @@ export default function nativeVsyncTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01', 0, async (done: Function) => {
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01();
       console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01 result:" + result);
       expect(result[0]).assertEqual(40001000);

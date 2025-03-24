@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import fsuid from 'libfsuidndk.so'
 
@@ -32,7 +32,7 @@ export default function fsuidNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslFsuidSetfsgid001', 0, async (done: Function) => {
+    it('testMuslFsuidSetfsgid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = fsuid.setfsgid();
       expect(a).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function fsuidNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslFsuidSetfsuid001', 0, async (done: Function) => {
+    it('testMuslFsuidSetfsuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = fsuid.setfsuid();
       expect(a).assertEqual(0);
       done()

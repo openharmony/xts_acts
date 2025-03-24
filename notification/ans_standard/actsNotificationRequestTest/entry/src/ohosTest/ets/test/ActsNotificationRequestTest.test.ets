@@ -17,7 +17,7 @@ import notification from '@ohos.notification';
 
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY,MatchPattern,
   DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level } from '@ohos/hypium';
 import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 
 export default function ActsNotificationRequestTest() {
@@ -31,7 +31,7 @@ export default function ActsNotificationRequestTest() {
      * @tc.name      : function requestEnableNotification(callback): void
      * @tc.desc      : requestEnableNotification click allowed
      */
-    it('Sub_Notification_Ans_Publish_Publish_0900', 0, async (done: () => void) => {
+    it('Sub_Notification_Ans_Publish_Publish_0900', Level.LEVEL1, async (done: () => void) => {
       let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
         let exit = exitGenerator(TAG, reject);
         notification.requestEnableNotification(async (err) => {

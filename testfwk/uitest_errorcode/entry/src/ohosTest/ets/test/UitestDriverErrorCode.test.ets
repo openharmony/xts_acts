@@ -1,4 +1,4 @@
-import { describe, it, expect, Level } from '@ohos/hypium'
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
@@ -40,7 +40,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_delayMs_17000002
    * @tc.desc: delayMs 17000002 test.
    */
-    it('test_delayMs_17000002', Level.LEVEL3, async () => {
+    it('test_delayMs_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_delayMs_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -61,7 +61,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_findComponent_17000002
    * @tc.desc: findComponent 17000002 test.
    */
-    it('test_findComponent_17000002', Level.LEVEL3, async () => {
+    it('test_findComponent_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponent_17000002 start`);
       try {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
@@ -85,7 +85,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_findComponent_17000002
    * @tc.desc: findComponents 17000002 test.
    */
-    it('test_findComponents_17000002', Level.LEVEL3, async () => {
+    it('test_findComponents_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponents_17000002 start`);
       try {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
@@ -109,7 +109,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_findWindow_17000002
    * @tc.desc: findWindow 17000002 test.
    */
-    it('test_findWindow_17000002', Level.LEVEL3, async () => {
+    it('test_findWindow_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findWindow_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -131,7 +131,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_waitForComponent_17000002
    * @tc.desc: waitForComponent 17000002 test.
    */
-    it('test_waitForComponent_17000002', Level.LEVEL3, async () => {
+    it('test_waitForComponent_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_waitForComponent_17000002 start`);
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       try {
@@ -155,7 +155,7 @@ export default function uitestDriverErrorTest() {
        * @tc.name: test_assertComponentExist_17000002
        * @tc.desc: assertComponentExist 17000002 test.
        */
-    it('test_assertComponentExist_17000002', Level.LEVEL3, async () => {
+    it('test_assertComponentExist_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_assertComponentExist_17000002 start`);
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await sleep(waitUiReadyMs);
@@ -180,7 +180,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_assertComponentExist_17000003
    * @tc.desc: assertComponentExist 17000003 test.
    */
-    it('test_assertComponentExist_17000003', Level.LEVEL3, async () => {
+    it('test_assertComponentExist_17000003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_assertComponentExist_17000003 start`);
       try {
         let driver: Driver = Driver.create();
@@ -200,7 +200,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_pressBack_17000002
    * @tc.desc: delayMs 17000002 test.
    */
-    it('test_pressBack_17000002', Level.LEVEL3, async () => {
+    it('test_pressBack_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_pressBack_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -221,7 +221,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_triggerKey_17000002
    * @tc.desc: triggerKey 17000002 test.
    */
-    it('test_triggerKey_17000002', Level.LEVEL3, async () => {
+    it('test_triggerKey_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_triggerKey_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -242,7 +242,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_triggerCombineKeys_17000002
    * @tc.desc: triggerCombineKeys 17000002 test.
    */
-    it('test_triggerCombineKeys_17000002', Level.LEVEL3, async () => {
+    it('test_triggerCombineKeys_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_triggerCombineKeys_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -264,7 +264,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_click_17000002
    * @tc.desc: click 17000002 test.
    */
-    it('test_driver_click_17000002', Level.LEVEL3, async () => {
+    it('test_driver_click_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_click_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -285,7 +285,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_click_17000002
    * @tc.desc: doubleClick 17000002 test.
    */
-    it('test_driver_doubleClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_doubleClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_doubleClick_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -306,7 +306,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_longClick_17000002
    * @tc.desc: longClick 17000002 test.
    */
-    it('test_driver_longClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_longClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_longClick_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -328,7 +328,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_swipe_17000002
    * @tc.desc: swipe 17000002 test.
    */
-    it('test_driver_swipe_17000002', Level.LEVEL3, async () => {
+    it('test_driver_swipe_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_swipe_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -349,7 +349,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_drag_17000002
    * @tc.desc: drag 17000002 test.
    */
-    it('test_driver_drag_17000002', Level.LEVEL3, async () => {
+    it('test_driver_drag_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_drag_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -370,7 +370,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_screenCap_17000002
    * @tc.desc: screenCap 17000002 test.
    */
-    it('test_driver_screenCap_17000002', Level.LEVEL3, async () => {
+    it('test_driver_screenCap_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_drag_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -391,7 +391,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_setDisplayRotation_17000002
    * @tc.desc: setDisplayRotation 17000002 test.
    */
-    it('test_driver_setDisplayRotation_17000002', Level.LEVEL3, async () => {
+    it('test_driver_setDisplayRotation_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_setDisplayRotation_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -412,7 +412,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_getDisplayRotation_17000002
    * @tc.desc: setDisplayRotation 17000002 test.
    */
-    it('test_driver_getDisplayRotation_17000002', Level.LEVEL3, async () => {
+    it('test_driver_getDisplayRotation_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_getDisplayRotation_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -434,7 +434,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_setDisplayRotationEnabled_17000002
    * @tc.desc: setDisplayRotationEnabled 17000002 test.
    */
-    it('test_driver_setDisplayRotationEnabled_17000002', Level.LEVEL3, async () => {
+    it('test_driver_setDisplayRotationEnabled_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_setDisplayRotationEnabled_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -455,7 +455,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_getDisplaySize_17000002
    * @tc.desc: getDisplaySize 17000002 test.
    */
-    it('test_driver_getDisplaySize_17000002', Level.LEVEL3, async () => {
+    it('test_driver_getDisplaySize_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_getDisplaySize_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -476,7 +476,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_getDisplayDensity_17000002
    * @tc.desc: getDisplaySize 17000002 test.
    */
-    it('test_driver_getDisplayDensity_17000002', Level.LEVEL3, async () => {
+    it('test_driver_getDisplayDensity_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_getDisplayDensity_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -497,7 +497,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_wakeUpDisplay_17000002
    * @tc.desc: wakeUpDisplay 17000002 test.
    */
-    it('test_driver_wakeUpDisplay_17000002', Level.LEVEL3, async () => {
+    it('test_driver_wakeUpDisplay_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_wakeUpDisplay_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -518,7 +518,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_pressHome_17000002
    * @tc.desc: pressHome 17000002 test.
    */
-    it('test_driver_pressHome_17000002', Level.LEVEL3, async () => {
+    it('test_driver_pressHome_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_pressHome_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -539,7 +539,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_waitForIdle_17000002
    * @tc.desc: waitForIdle 17000002 test.
    */
-    it('test_driver_waitForIdle_17000002', Level.LEVEL3, async () => {
+    it('test_driver_waitForIdle_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_waitForIdle_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -560,7 +560,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_fling_17000002
    * @tc.desc: fling 17000002 test.
    */
-    it('test_driver_fling_17000002', Level.LEVEL3, async () => {
+    it('test_driver_fling_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_fling_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -582,7 +582,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_injectMultiPointerAction_17000002
    * @tc.desc: injectMultiPointerAction 17000002 test.
    */
-    it('test_driver_injectMultiPointerAction_17000002', Level.LEVEL3, async () => {
+    it('test_driver_injectMultiPointerAction_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_injectMultiPointerAction_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -614,7 +614,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_fling_U_17000002
    * @tc.desc: fling 17000002 test.
    */
-    it('test_driver_fling_U_17000002', Level.LEVEL3, async () => {
+    it('test_driver_fling_U_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_fling_U_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -635,7 +635,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_screenCapture_17000002
    * @tc.desc: screenCapture 17000002 test.
    */
-    it('test_driver_screenCapture_17000002', Level.LEVEL3, async () => {
+    it('test_driver_screenCapture_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_screenCapture_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -656,7 +656,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseClick_17000002
    * @tc.desc: mouseClick 17000002 test.
    */
-    it('test_driver_mouseClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseClick_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -677,7 +677,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseScroll_17000002
    * @tc.desc: mouseScroll 17000002 test.
    */
-    it('test_driver_mouseScroll_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseScroll_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseScroll_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -698,7 +698,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseMoveTo_17000002
    * @tc.desc: mouseMoveTo 17000002 test.
    */
-    it('test_driver_mouseMoveTo_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseMoveTo_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseMoveTo_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -719,7 +719,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_createUIEventObserver_17000002
    * @tc.desc: createUIEventObserver 17000002 test.
    */
-    it('test_driver_createUIEventObserver_17000002', Level.LEVEL3, async () => {
+    it('test_driver_createUIEventObserver_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_createUIEventObserver_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -740,7 +740,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseScroll_11_17000002
    * @tc.desc: mouseScroll 17000002 test.
    */
-    it('test_driver_mouseScroll_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseScroll_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseScroll_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -761,7 +761,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseDoubleClick_11_17000002
    * @tc.desc: mouseDoubleClick 17000002 test.
     */
-    it('test_driver_mouseDoubleClick_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseDoubleClick_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseDoubleClick_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -782,7 +782,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseLongClick_11_17000002
    * @tc.desc: mouseLongClick 17000002 test.
    */
-    it('test_driver_mouseLongClick_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseLongClick_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseLongClick_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -803,7 +803,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseMoveWithTrack_11_17000002
    * @tc.desc: mouseMoveWithTrack 17000002 test.
    */
-    it('test_driver_mouseMoveWithTrack_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseMoveWithTrack_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseMoveWithTrack_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -824,7 +824,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_mouseDrag_11_17000002
    * @tc.desc: mouseDrag 17000002 test.
    */
-    it('test_driver_mouseDrag_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_mouseDrag_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_mouseDrag_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -845,7 +845,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_inputText_11_17000002
    * @tc.desc: inputText 17000002 test.
    */
-    it('test_driver_inputText_11_17000002', Level.LEVEL3, async () => {
+    it('test_driver_inputText_11_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_inputText_11_17000002 start`);
       try {
         let driver: Driver = Driver.create();
@@ -866,7 +866,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_touchPadMultiFingerSwipe_17000002
    * @tc.desc: touchPadMultiFingerSwipe 17000002 test.
    */
-    it('test_driver_touchPadMultiFingerSwipe_17000002', Level.LEVEL3, async () => {
+    it('test_driver_touchPadMultiFingerSwipe_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_touchPadMultiFingerSwipe_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -887,7 +887,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_penClick_17000002
    * @tc.desc: penClick 17000002 test.
    */
-    it('test_driver_penClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_penClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_penClick_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -908,7 +908,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_penLongClick_17000002
    * @tc.desc: penLongClick 17000002 test.
    */
-    it('test_driver_penLongClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_penLongClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_penLongClick_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -929,7 +929,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_penDoubleClick_401
    * @tc.desc: penDoubleClick 17000002 test.
    */
-    it('test_driver_penDoubleClick_17000002', Level.LEVEL3, async () => {
+    it('test_driver_penDoubleClick_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_penDoubleClick_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -950,7 +950,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_penSwipe_17000002
    * @tc.desc: penSwipe 17000002 test.
    */
-    it('test_driver_penSwipe_17000002', Level.LEVEL3, async () => {
+    it('test_driver_penSwipe_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_penSwipe_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -971,7 +971,7 @@ export default function uitestDriverErrorTest() {
    * @tc.name: test_driver_injectPenPointerAction_17000002
    * @tc.desc: injectPenPointerAction 17000002 test.
    */
-    it('test_driver_injectPenPointerAction_17000002', Level.LEVEL3, async () => {
+    it('test_driver_injectPenPointerAction_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_injectPenPointerAction_17000002 start`);
       try {
         let driver:Driver = Driver.create();
@@ -989,6 +989,51 @@ export default function uitestDriverErrorTest() {
       }
       await sleep(waitUiReadyMs * 5);
       console.log(`${TestTag}, test_driver_injectPenPointerAction_17000002 end`);
+    })
+
+    /*
+       * @tc.number: uitestDriverErrorTest_080
+       * @tc.name: test_UiDriver_assertComponentExist_17000002
+       * @tc.desc: assertComponentExist 17000002 test.
+       */
+    it('test_UiDriver_assertComponentExist_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 start`);
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await sleep(waitUiReadyMs);
+      try {
+        let driver = UiDriver.create();
+        let by = BY.enabled(true);
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.assertComponentExist(by);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await stopApplication('com.uitestScene.acts');
+      await sleep(waitUiReadyMs * 8);
+      console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 end`);
+    })
+
+    /*
+   * @tc.number: uitestDriverErrorTest_081
+   * @tc.name: test_UiDriver_assertComponentExist_17000003
+   * @tc.desc: assertComponentExist 17000003 test.
+   */
+    it('test_UiDriver_assertComponentExist_17000003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000003 start`);
+      try {
+        let driver = UiDriver.create();
+        await driver.delayMs(waitUiReadyMs);
+        await driver.assertComponentExist(BY.text('NotTest'));
+        await driver.delayMs(waitUiReadyMs);
+      }catch (e) {
+        console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000003 error is: ${JSON.stringify(e)}`);
+        expect(e.code == 17000003 || e.code == 4).assertTrue();
+      }
+      await sleep(waitUiReadyMs);
+      console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000003 end`);
     })
   })
 }

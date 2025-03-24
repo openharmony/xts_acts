@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import otherstestndk from 'libotherstestndk32.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatFstatatTime64001', 0, async (done: Function) => {
+    it('testMuslStatFstatatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -53,7 +53,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAeabiatexit001', 0, async (done: Function) => {
+    it('testAeabiatexit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.aeabiatexit();
       expect(result).assertEqual(0);
       done();
@@ -67,7 +67,7 @@ export default function otherstestNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGnuunwindfindexidx001', 0, async (done: Function) => {
+    it('testGnuunwindfindexidx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = otherstestndk.gnuunwindfindexidx();
       expect(result).assertEqual(0);
       done();

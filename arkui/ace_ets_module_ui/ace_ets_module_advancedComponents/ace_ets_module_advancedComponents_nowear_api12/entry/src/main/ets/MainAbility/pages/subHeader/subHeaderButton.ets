@@ -22,7 +22,11 @@ struct SubHeaderExample {
   build() {
     Column() {
       SubHeader({
-        primaryTitle: '一级标题',
+        // 设置icon为symbol图标
+        icon: $r('sys.symbol.ohos_wifi'),
+        iconSymbolOptions: {
+          effectStrategy: SymbolEffectStrategy.HIERARCHICAL,
+        },
         secondaryTitle: '二级标题',
         operationType: OperationType.BUTTON,
         operationItem: [{

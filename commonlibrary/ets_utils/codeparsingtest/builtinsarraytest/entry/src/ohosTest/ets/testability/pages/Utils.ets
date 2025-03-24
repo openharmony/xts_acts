@@ -20,7 +20,68 @@ export interface MyObjects {
 export function sleep(time: number): Promise<void> {
   return new Promise((re, je) => {
     setTimeout(() => {
-      re()
-    }, time)
-  })
+      re();
+    }, time);
+  });
+}
+
+export class Person {
+  public name: string = 'zhang'
+}
+
+export function task(): number {
+  return 1 + 1
+}
+
+export function animal<T>(arg: T): T {
+  return arg
+}
+
+export function object(arg: string): object {
+  return Object(arg)
+}
+
+export function update(x: number): number {
+  return x + 5;
+}
+
+let count = 0;
+
+export function shouldContinue() {
+  count++;
+  return count <= 3;
+}
+
+export interface MyObject {
+  a: number;
+  b: number;
+  c: number;
+}
+
+export class MyClass {
+  public prop1: number = 10;
+  public prop2: number = 20;
+  public prop3: number = 30;
+}
+
+export enum MyColor {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3,
+}
+
+export function getNumber() {
+  let num = 5;
+  return () => {
+    if (num > 0) {
+      return num--;
+    }
+    return 0;
+  };
+}
+
+export interface myObject {
+  name: string;
+  age: number;
+  like: number[];
 }

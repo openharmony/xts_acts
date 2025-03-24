@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level} from '@ohos/hypium'
 import worker, { ErrorEvent, MessageEvents } from '@ohos.worker'
 
 const asyncSleep: Function = (time: number): Promise<Object> => {
@@ -75,7 +75,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError001', 0, async (done: Function) => {
+    it('testWorkerError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -121,7 +121,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError002', 0, async (done: Function) => {
+    it('testWorkerError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -148,7 +148,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError003', 0, async (done: Function) => {
+    it('testWorkerError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -185,7 +185,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError004', 0, async (done: Function) => {
+    it('testWorkerError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -227,7 +227,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError005', 0, async (done: Function) => {
+    it('testWorkerError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -263,7 +263,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError006', 0, async (done: Function) => {
+    it('testWorkerError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -299,7 +299,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError007', 0, async (done: Function) => {
+    it('testWorkerError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -336,7 +336,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError008', 0, async (done: Function) => {
+    it('testWorkerError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -371,7 +371,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError009', 0, async (done: Function) => {
+    it('testWorkerError009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -407,7 +407,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError010', 0, async (done: Function) => {
+    it('testWorkerError010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -441,7 +441,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError011', 0, async (done: Function) => {
+    it('testWorkerError011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -477,7 +477,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError012', 0, async (done: Function) => {
+    it('testWorkerError012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -514,7 +514,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError013', 0, async (done: Function) => {
+    it('testWorkerError013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -550,7 +550,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError014', 0, async (done: Function) => {
+    it('testWorkerError014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -590,7 +590,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError015', 0, async (done: Function) => {
+    it('testWorkerError015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -632,7 +632,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError016', 0, async (done: Function) => {
+    it('testWorkerError016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -687,7 +687,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError017', 0, async (done: Function) => {
+    it('testWorkerError017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -732,7 +732,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError018', 0, async (done: Function) => {
+    it('testWorkerError018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -784,7 +784,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerError019', 0, async (done: Function) => {
+    it('testWorkerError019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -839,7 +839,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor001', 0, async (done: Function) => {
+    it('testWorkerConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor001';
       console.info(`${caseName} test start`);
       try {
@@ -894,7 +894,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor002', 0, async (done: Function) => {
+    it('testWorkerConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor002';
       console.info(`${caseName} test start`);
       try {
@@ -953,7 +953,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerConstructor003', 0, async (done: Function) => {
+    it('testWorkerConstructor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor003';
       console.info(`${caseName} test start`);
       try {
@@ -978,7 +978,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage001', 0, async (done: Function) => {
+    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage001';
       console.info(`${caseName} test start`);
       try {
@@ -1033,7 +1033,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage002', 0, async (done: Function) => {
+    it('testWorkerPostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage002';
       console.info(`${caseName} test start`);
       try {
@@ -1088,7 +1088,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage003', 0, async (done: Function) => {
+    it('testWorkerPostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage003';
       console.info(`${caseName} test start`);
       try {
@@ -1143,7 +1143,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage004', 0, async (done: Function) => {
+    it('testWorkerPostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage004';
       console.info(`${caseName} test start`);
       try {
@@ -1198,7 +1198,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage005', 0, async (done: Function) => {
+    it('testWorkerPostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage005';
       console.info(`${caseName} test start`);
       try {
@@ -1255,7 +1255,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage006', 0, async (done: Function) => {
+    it('testWorkerPostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage006';
       console.info(`${caseName} test start`);
       try {
@@ -1312,7 +1312,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage007', 0, async (done: Function) => {
+    it('testWorkerPostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage007';
       console.info(`${caseName} test start`);
       try {
@@ -1369,7 +1369,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage008', 0, async (done: Function) => {
+    it('testWorkerPostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage008';
       console.info(`${caseName} test start`);
       try {
@@ -1426,7 +1426,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage009', 0, async (done: Function) => {
+    it('testWorkerPostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage009';
       console.info(`${caseName} test start`);
       try {
@@ -1483,7 +1483,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage010', 0, async (done: Function) => {
+    it('testWorkerPostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage010';
       console.info(`${caseName} test start`);
       try {
@@ -1540,7 +1540,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage011', 0, async (done: Function) => {
+    it('testWorkerPostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage011';
       console.info(`${caseName} test start`);
       try {
@@ -1597,7 +1597,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage012', 0, async (done: Function) => {
+    it('testWorkerPostMessage012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage012';
       console.info(`${caseName} test start`);
       try {
@@ -1654,7 +1654,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage013', 0, async (done: Function) => {
+    it('testWorkerPostMessage013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage013';
       console.info(`${caseName} test start`);
       try {
@@ -1711,7 +1711,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage014', 0, async (done: Function) => {
+    it('testWorkerPostMessage014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage014';
       console.info(`${caseName} test start`);
       try {
@@ -1768,7 +1768,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage015', 0, async (done: Function) => {
+    it('testWorkerPostMessage015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage015';
       console.info(`${caseName} test start`);
       try {
@@ -1829,7 +1829,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage016', 0, async (done: Function) => {
+    it('testWorkerPostMessage016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage016';
       console.info(`${caseName} test start`);
       try {
@@ -1890,7 +1890,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage017', 0, async (done: Function) => {
+    it('testWorkerPostMessage017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage017';
       console.info(`${caseName} test start`);
       try {
@@ -1947,7 +1947,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage018', 0, async (done: Function) => {
+    it('testWorkerPostMessage018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage018';
       console.info(`${caseName} test start`);
       try {
@@ -2004,7 +2004,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage019', 0, async (done: Function) => {
+    it('testWorkerPostMessage019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage019';
       console.info(`${caseName} test start`);
       try {
@@ -2061,7 +2061,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage020', 0, async (done: Function) => {
+    it('testWorkerPostMessage020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage020';
       console.info(`${caseName} test start`);
       try {
@@ -2118,7 +2118,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage021', 0, async (done: Function) => {
+    it('testWorkerPostMessage021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage021';
       console.info(`${caseName} test start`);
       try {
@@ -2185,7 +2185,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOn001', 0, async (done: Function) => {
+    it('testWorkerOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn001';
       console.info(`${caseName} test start`);
       try {
@@ -2248,7 +2248,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOn002', 0, async (done: Function) => {
+    it('testWorkerOn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn002';
       console.info(`${caseName} test start`);
       try {
@@ -2310,7 +2310,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnce001', 0, async (done: Function) => {
+    it('testWorkerOnce001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce001';
       console.info(`${caseName} test start`);
       try {
@@ -2375,7 +2375,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnce002', 0, async (done: Function) => {
+    it('testWorkerOnce002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce002';
       console.info(`${caseName} test start`);
       try {
@@ -2441,7 +2441,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOff001', 0, async (done: Function) => {
+    it('testWorkerOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff001';
       console.info(`${caseName} test start`);
       try {
@@ -2515,7 +2515,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOff002', 0, async (done: Function) => {
+    it('testWorkerOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff002';
       console.info(`${caseName} test start`);
       try {
@@ -2581,7 +2581,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRegisterGlobalCallObject001', 0, async (done: Function) => {
+    it('testWorkerRegisterGlobalCallObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject001';
       console.info(`${caseName} test start`);
       try {
@@ -2640,7 +2640,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRegisterGlobalCallObject002', 0, async (done: Function) => {
+    it('testWorkerRegisterGlobalCallObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject002';
       console.info(`${caseName} test start`);
       try {
@@ -2699,7 +2699,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerUnregisterGlobalCallObject001', 0, async (done: Function) => {
+    it('testWorkerUnregisterGlobalCallObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject001';
       console.info(`${caseName} test start`);
       try {
@@ -2751,7 +2751,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerUnregisterGlobalCallObject002', 0, async (done: Function) => {
+    it('testWorkerUnregisterGlobalCallObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject002';
       console.info(`${caseName} test start`);
       try {
@@ -2803,7 +2803,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit001', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit001';
       console.info(`${caseName} test start`);
       try {
@@ -2843,7 +2843,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit002', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit002';
       console.info(`${caseName} test start`);
       try {
@@ -2883,7 +2883,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit003', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit003';
       console.info(`${caseName} test start`);
       try {
@@ -2910,7 +2910,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerTerminateAndOnexit004', 0, async (done: Function) => {
+    it('testWorkerTerminateAndOnexit004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit004';
       console.info(`${caseName} test start`);
       try {
@@ -2940,7 +2940,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnerror001', 0, async (done: Function) => {
+    it('testWorkerOnerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror001';
       console.info(`${caseName} test start`);
       try {
@@ -2986,7 +2986,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnerror002', 0, async (done: Function) => {
+    it('testWorkerOnerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror002';
       console.info(`${caseName} test start`);
       try {
@@ -3032,7 +3032,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage001', 0, async (done: Function) => {
+    it('testWorkerOnmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage001';
       console.info(`${caseName} test start`);
       try {
@@ -3087,7 +3087,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessage002', 0, async (done: Function) => {
+    it('testWorkerOnmessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage002';
       console.info(`${caseName} test start`);
       try {
@@ -3148,7 +3148,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessageerror001', 0, async (done: Function) => {
+    it('testWorkerOnmessageerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror001';
       console.info(`${caseName} test start`);
       try {
@@ -3221,7 +3221,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerOnmessageerror002', 0, async (done: Function) => {
+    it('testWorkerOnmessageerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror002';
       console.info(`${caseName} test start`);
       try {
@@ -3294,7 +3294,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerAddEventListener001', 0, async (done: Function) => {
+    it('testWorkerAddEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener001';
       console.info(`${caseName} test start`);
       try {
@@ -3357,7 +3357,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerAddEventListener002', 0, async (done: Function) => {
+    it('testWorkerAddEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener002';
       console.info(`${caseName} test start`);
       try {
@@ -3419,7 +3419,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveEventListener001', 0, async (done: Function) => {
+    it('testWorkerRemoveEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener001';
       console.info(`${caseName} test start`);
       try {
@@ -3493,7 +3493,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveEventListener002', 0, async (done: Function) => {
+    it('testWorkerRemoveEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener002';
       console.info(`${caseName} test start`);
       try {
@@ -3562,7 +3562,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent001', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent001';
       console.info(`${caseName} test start`);
       try {
@@ -3629,7 +3629,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent002', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent002';
       console.info(`${caseName} test start`);
       try {
@@ -3695,7 +3695,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent003', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent003';
       console.info(`${caseName} test start`);
       try {
@@ -3762,7 +3762,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerDispatchEvent004', 0, async (done: Function) => {
+    it('testWorkerDispatchEvent004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent004';
       console.info(`${caseName} test start`);
       try {
@@ -3828,7 +3828,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveAllListener001', 0, async (done: Function) => {
+    it('testWorkerRemoveAllListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener001';
       console.info(`${caseName} test start`);
       try {
@@ -3926,7 +3926,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerRemoveAllListener002', 0, async (done: Function) => {
+    it('testWorkerRemoveAllListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener002';
       console.info(`${caseName} test start`);
       try {
@@ -4012,7 +4012,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetAddEventListener001', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetAddEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener001';
       console.info(`${caseName} test start`);
       try {
@@ -4075,7 +4075,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetAddEventListener002', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetAddEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener002';
       console.info(`${caseName} test start`);
       try {
@@ -4137,7 +4137,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveEventListener001', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener001';
       console.info(`${caseName} test start`);
       try {
@@ -4211,7 +4211,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveEventListener002', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener002';
       console.info(`${caseName} test start`);
       try {
@@ -4277,7 +4277,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent001', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent001';
       console.info(`${caseName} test start`);
       try {
@@ -4344,7 +4344,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent002', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent002';
       console.info(`${caseName} test start`);
       try {
@@ -4410,7 +4410,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent003', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent003';
       console.info(`${caseName} test start`);
       try {
@@ -4477,7 +4477,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetDispatchEvent004', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetDispatchEvent004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent004';
       console.info(`${caseName} test start`);
       try {
@@ -4543,7 +4543,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveAllListener001', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveAllListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener001';
       console.info(`${caseName} test start`);
       try {
@@ -4641,7 +4641,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerWorkerEventTargetRemoveAllListener002', 0, async (done: Function) => {
+    it('testWorkerWorkerEventTargetRemoveAllListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener002';
       console.info(`${caseName} test start`);
       try {
@@ -4726,7 +4726,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage001', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage001';
       console.info(`${caseName} test start`);
       try {
@@ -4781,7 +4781,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage002', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage002';
       console.info(`${caseName} test start`);
       try {
@@ -4836,7 +4836,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage003', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage003';
       console.info(`${caseName} test start`);
       try {
@@ -4891,7 +4891,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage004', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage004';
       console.info(`${caseName} test start`);
       try {
@@ -4946,7 +4946,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage005', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage005';
       console.info(`${caseName} test start`);
       try {
@@ -5001,7 +5001,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage006', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage006';
       console.info(`${caseName} test start`);
       try {
@@ -5056,7 +5056,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage007', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage007';
       console.info(`${caseName} test start`);
       try {
@@ -5111,7 +5111,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage008', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage008';
       console.info(`${caseName} test start`);
       try {
@@ -5166,7 +5166,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage009', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage009';
       console.info(`${caseName} test start`);
       try {
@@ -5221,7 +5221,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage010', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage010';
       console.info(`${caseName} test start`);
       try {
@@ -5276,7 +5276,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage011', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage011';
       console.info(`${caseName} test start`);
       try {
@@ -5331,7 +5331,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage012', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage012';
       console.info(`${caseName} test start`);
       try {
@@ -5386,7 +5386,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage013', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage013';
       console.info(`${caseName} test start`);
       try {
@@ -5441,7 +5441,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage014', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage014';
       console.info(`${caseName} test start`);
       try {
@@ -5496,7 +5496,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage015', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage015';
       console.info(`${caseName} test start`);
       try {
@@ -5557,7 +5557,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage016', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage016';
       console.info(`${caseName} test start`);
       try {
@@ -5618,7 +5618,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage017', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage017';
       console.info(`${caseName} test start`);
       try {
@@ -5673,7 +5673,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage018', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage018';
       console.info(`${caseName} test start`);
       try {
@@ -5728,7 +5728,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage019', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage019';
       console.info(`${caseName} test start`);
       try {
@@ -5783,7 +5783,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage020', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage020';
       console.info(`${caseName} test start`);
       try {
@@ -5838,7 +5838,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopePostMessage021', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopePostMessage021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage021';
       console.info(`${caseName} test start`);
       try {
@@ -5897,7 +5897,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerCallGlobalCallObjectMethod001', 0, async (done: Function) => {
+    it('testWorkerCallGlobalCallObjectMethod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod001';
       console.info(`${caseName} test start`);
       try {
@@ -5956,7 +5956,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerCallGlobalCallObjectMethod002', 0, async (done: Function) => {
+    it('testWorkerCallGlobalCallObjectMethod002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod002';
       console.info(`${caseName} test start`);
       try {
@@ -6015,7 +6015,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerClose001', 0, async (done: Function) => {
+    it('testWorkerClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose001';
       console.info(`${caseName} test start`);
       try {
@@ -6055,7 +6055,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerClose002', 0, async (done: Function) => {
+    it('testWorkerClose002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose002';
       console.info(`${caseName} test start`);
       try {
@@ -6095,7 +6095,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage001', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage001';
       console.info(`${caseName} test start`);
       try {
@@ -6150,7 +6150,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessage002', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage002';
       console.info(`${caseName} test start`);
       try {
@@ -6211,7 +6211,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessageerror001', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessageerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror001';
       console.info(`${caseName} test start`);
       try {
@@ -6266,7 +6266,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerThreadWorkerGlobalScopeOnmessageerror002', 0, async (done: Function) => {
+    it('testWorkerThreadWorkerGlobalScopeOnmessageerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror002';
       console.info(`${caseName} test start`);
       try {
@@ -6321,7 +6321,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerGlobalScopeOnerror001', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeOnerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror001';
       console.info(`${caseName} test start`);
       try {
@@ -6373,7 +6373,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerGlobalScopeOnerror002', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeOnerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror002';
       console.info(`${caseName} test start`);
       try {
@@ -6425,7 +6425,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testWorkerGlobalScopeAndErrorEvent001', 0, async (done: Function) => {
+    it('testWorkerGlobalScopeAndErrorEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeAndErrorEvent001';
       console.info(`${caseName} test start`);
       try {

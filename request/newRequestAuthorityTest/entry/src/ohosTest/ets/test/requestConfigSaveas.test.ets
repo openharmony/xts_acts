@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import request from '@ohos.request';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -67,9 +67,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_TaskSaveas_0100', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0100', Level.LEVEL1, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -133,9 +133,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_TaskSaveas_0200', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0200', Level.LEVEL1, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0200 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -202,7 +202,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0300', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0300', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0300 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -260,7 +260,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0400', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0400', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -318,7 +318,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0500', 0, async (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -347,9 +347,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_TaskSaveas_0600', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0600', Level.LEVEL1, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0600 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -407,7 +407,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0700', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0700', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0700 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -465,7 +465,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0800', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0800', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0800 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -526,7 +526,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_0900', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_0900', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0900 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -584,7 +584,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1000', 0, async (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1000', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1000 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -615,7 +615,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1100', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1100', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -673,7 +673,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1200', 0, async (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1200 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -704,7 +704,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1300', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1300', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1300 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -762,7 +762,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1400', 0, async (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1400', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1400 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -793,7 +793,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TaskSaveas_1500', 0, (done: Function) => {
+    it('SUB_Request_Agent_TaskSaveas_1500', Level.LEVEL2, (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1500 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -851,9 +851,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_onResponse_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0100', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -900,7 +900,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_onResponse_0200', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0200 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -942,9 +942,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_onResponse_0300', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0300', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0300 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -994,7 +994,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_onResponse_0400', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0400', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_onResponse_0400 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1056,7 +1056,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_onResponse_0500', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0500 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1109,9 +1109,9 @@ export default function requestConfigSavesTest() {
      * @tc.desc: request config saveas validate
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it('SUB_Request_Agent_onResponse_0600', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0600', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0600 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1148,7 +1148,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_onResponse_0700', 0, async (done: Function) => {
+    it('SUB_Request_Agent_onResponse_0700', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0700 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1209,7 +1209,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_proxy_0200', 0, async (done: Function) => {
+    it('SUB_Request_Agent_proxy_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_proxy_0200 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1242,7 +1242,7 @@ export default function requestConfigSavesTest() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('SUB_Request_Agent_proxy_0400', 0, async (done: Function) => {
+    it('SUB_Request_Agent_proxy_0400', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_proxy_0400 is starting-----------------------');
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1275,7 +1275,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_ErrorDetailed_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ErrorDetailed_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_ErrorDetailed_0100 is starting-----------------------');
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1317,7 +1317,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_TrafficStatistics_0200', 0, async (done: Function) => {
+    it('SUB_Request_Agent_TrafficStatistics_0200', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_TrafficStatistics_0200 is starting-----------------------');
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1388,7 +1388,7 @@ export default function requestConfigSavesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_Agent_ContinueDown_0300', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ContinueDown_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0300 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1441,7 +1441,7 @@ export default function requestConfigSavesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_Agent_ContinueDown_0500', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ContinueDown_0500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0500 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1495,7 +1495,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_PauseError_callback_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_PauseError_callback_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_PauseError_callback_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1540,7 +1540,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_PauseError_promise_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_PauseError_promise_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_PauseError_promise_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1577,7 +1577,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_ResumeError_callback_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ResumeError_callback_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ResumeError_callback_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1622,7 +1622,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_ResumeError_promise_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ResumeError_promise_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ResumeError_promise_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1659,7 +1659,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_StopError_callback_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_StopError_callback_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_StopError_callback_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1704,7 +1704,7 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_StopError_promise_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_StopError_promise_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_StopError_promise_0100 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,

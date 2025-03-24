@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import ipc from 'libipcndk.so'
 
@@ -32,7 +32,7 @@ export default function ipcNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslIpcFtok001', 0, async (done: Function) => {
+    it('testMuslIpcFtok001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: number = ipc.ftok();
       expect(result).assertEqual(resultTrue);

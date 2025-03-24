@@ -14,7 +14,7 @@
  */
 
 import tsan from 'libentry.so'
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect , TestType, Size, Level } from "@ohos/hypium";
 
 export default function abilityTest() {
 
@@ -28,7 +28,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanMutexCheck001', 0, () => {
+    it('testTsanMutexCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.doubleLockedMutex();
       expect(result).assertEqual(1);
     });

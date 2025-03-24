@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import utmp from 'libutmpndk.so'
 
@@ -32,7 +32,7 @@ export default function utmpNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUtmpSetutent001', 0, async (done: Function) => {
+    it('testMuslUtmpSetutent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = utmp.setutent();
       expect(a).assertEqual(0);
       done()

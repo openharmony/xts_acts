@@ -10,6 +10,7 @@
         "MainAbility/pages/FrameNode/RenderNodeDisposeTest",
         "MainAbility/pages/FrameNode/componentContentDisposeTest",
         "MainAbility/pages/FrameNode/blendColorErrorCodeTest",
-        "MainAbility/pages/FrameNode/resourceColorErrorCodeTest"
+        "MainAbility/pages/FrameNode/resourceColorErrorCodeTest",
+        "MainAbility/pages/FrameNode/setCrossLanguageOptionsErrorCodeTest"
     ]
 }

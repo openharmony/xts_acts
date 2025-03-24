@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import worker from '@ohos.worker'
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level, Size, TestType } from "@ohos/hypium"
 import {Sleep} from './Util'
 
 export default function workerImport() {
   describe("WorkerImportTest", () => {
-    it('importRelative', 0, async () => {
+    it('importRelative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportRelative = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportRelative')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -28,7 +28,7 @@ export default function workerImport() {
       await Sleep(2000)
       expect(workerImportRelative).assertEqual('success')
     })
-    it('importSystemNapi', 0, async () => {
+    it('importSystemNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportSystem = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportSystem')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -38,7 +38,7 @@ export default function workerImport() {
       await Sleep(2000)
       expect(workerImportSystem).assertEqual('success')
     })
-    it('importAppNapi', 0, async () => {
+    it('importAppNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportNapi = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportNapi')
       threadWorker.postMessage("ModuleTest host to worker")

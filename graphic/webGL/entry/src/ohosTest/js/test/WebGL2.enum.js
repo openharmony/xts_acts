@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -51,7 +51,7 @@ export default function webgl2_enum() {
          * @tc.name webgl2_test_enum
          * @tc.desc Test enum.
          */
-        it('webgl2_test_enum', 0, async function (done) {
+        it('webgl2_test_enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl2_test_enum] enum");
             console.info("webgltest gl.READ_BUFFER = ", gl.READ_BUFFER);
             expect(gl.READ_BUFFER).assertEqual(0x0C02);

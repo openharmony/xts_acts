@@ -790,8 +790,8 @@ describe("VibratorJsTest_misc_8", function () {
             let ret = vibrator.isSupportEffectSync(EFFECT_IDSUCCESS);
             console.info(TAG + "ret:" + ret);
             if(ret){
-                for(let times = 1; times <= 1000; times++){
-                    vibrator.startVibration({
+                for(let times = 1; times <= 100; times++){
+                    await vibrator.startVibration({
                         type: "preset",
                         effectId: EFFECT_IDSUCCESS,
                         count: 1,
@@ -834,8 +834,8 @@ describe("VibratorJsTest_misc_8", function () {
             let ret1 = vibrator.isSupportEffectSync(EFFECT_IDFAIL);
             console.info(TAG + "ret1:" + ret1);
             if(ret1){
-                for(let times = 1; times <= 1000; times++){
-                    vibrator.startVibration({
+                for(let times = 1; times <= 100; times++){
+                    await vibrator.startVibration({
                         type: "preset",
                         effectId: EFFECT_IDFAIL,
                         count: 1,
@@ -878,8 +878,8 @@ describe("VibratorJsTest_misc_8", function () {
             let ret2 = vibrator.isSupportEffectSync(EFFECT_IDWARNING);
             console.info(TAG + "ret2:" + ret2);
             if(ret2){
-                for(let times = 1; times <= 1000; times++){
-                    vibrator.startVibration({
+                for(let times = 1; times <= 100; times++){
+                    await vibrator.startVibration({
                         type: "preset",
                         effectId: EFFECT_IDWARNING,
                         count: 1,

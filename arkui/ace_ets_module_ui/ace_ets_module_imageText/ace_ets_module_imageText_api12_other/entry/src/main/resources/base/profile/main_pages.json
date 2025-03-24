@@ -2,6 +2,17 @@
   "src": [
   "MainAbility/pages/index/index",
   "MainAbility/pages/Text/textAreaInputTest",
-  "MainAbility/pages/Text/TextDecorationStyleTest"
+  "MainAbility/pages/Text/TextDecorationStyleTest",
+  "MainAbility/pages/RichEditor/textShadowTest",
+  "MainAbility/pages/TextInput/ContentType",
+  "MainAbility/pages/Search/SearchType",
+  "MainAbility/pages/TextInput/fontFeature",
+  "MainAbility/pages/ImageSpan/ImageLoadResult",
+  "MainAbility/pages/Modifier/SymbolSpanModifier",
+  "MainAbility/pages/Modifier/TextInputModifier",
+  "MainAbility/pages/Modifier/ImageSpanModifier",
+  "MainAbility/pages/Modifier/MarqueeModifier",
+  "MainAbility/pages/Modifier/RichEditorModifier",
+  "MainAbility/pages/Modifier/RichTextModifier"
   ]
 }

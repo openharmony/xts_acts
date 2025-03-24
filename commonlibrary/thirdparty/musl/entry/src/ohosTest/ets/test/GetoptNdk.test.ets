@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import getopt from 'libgetoptndk.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function muslGetoptNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslGetoptGetoptLongOnly001', 0, async (done: Function) => {
+    it('testMuslGetoptGetoptLongOnly001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = getopt.getoptLongOnly();
       expect(result).assertEqual(0)
       done()

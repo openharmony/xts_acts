@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 
 export default function LocaleTest() {
   describe('LocaleTest', () => {
@@ -43,7 +43,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0001', 0, async () => {
+    it('testLocaleConstructor0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0001";
       try {
         const us = new Intl.Locale("en-US");
@@ -64,7 +64,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0002', 0, async () => {
+    it('testLocaleConstructor0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0002";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -87,7 +87,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0003', 0, async () => {
+    it('testLocaleConstructor0003',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0003";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -110,7 +110,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0004', 0, async () => {
+    it('testLocaleConstructor0004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0004";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -133,7 +133,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0005', 0, async () => {
+    it('testLocaleConstructor0005',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0005";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -156,7 +156,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.toString0001', 0, async () => {
+    it('testLocale.prototype.toString0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.toString0001";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -179,7 +179,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.toString0002', 0, () => {
+    it('testLocale.prototype.toString0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLocale.prototype.toString0002";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -202,7 +202,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.toString0003', 0, async () => {
+    it('testLocale.prototype.toString0003',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.toString0003";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -225,7 +225,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.toString0004', 0, async () => {
+    it('testLocale.prototype.toString0004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.toString0004";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -248,7 +248,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.baseName0001', 0, async () => {
+    it('testLocale.prototype.baseName0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.baseName0001";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -271,7 +271,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.baseName0002', 0, async () => {
+    it('testLocale.prototype.baseName0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.baseName0002";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -294,7 +294,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.baseName0003', 0, async () => {
+    it('testLocale.prototype.baseName0003',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.baseName0003";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -317,7 +317,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.baseName0004', 0, async () => {
+    it('testLocale.prototype.baseName0004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.baseName0004";
       try {
         const myLocale = new Intl.Locale("fr-Latn-FR", {
@@ -340,7 +340,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.calendar0001', 0, async () => {
+    it('testLocale.prototype.calendar0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.calendar0001";
       try {
         const locale = new Intl.Locale("fr-FR-u-ca-buddhist");
@@ -361,7 +361,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.calendar0002', 0, async () => {
+    it('testLocale.prototype.calendar0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.calendar0002";
       try {
         const locale = new Intl.Locale("fr-FR", {
@@ -384,7 +384,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.caseFirst0001', 0, async () => {
+    it('testLocale.prototype.caseFirst0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.caseFirst0001";
       try {
         const locale = new Intl.Locale("fr-Latn-FR-u-kf-upper");
@@ -405,7 +405,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocale.prototype.caseFirst0002', 0, async () => {
+    it('testLocale.prototype.caseFirst0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocale.prototype.caseFirst0002";
       try {
         const locale = new Intl.Locale("en-Latn-US", {
@@ -428,7 +428,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeCollation0001', 0, async () => {
+    it('testLocalePrototypeCollation0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeCollation0001";
       try {
         const locale = new Intl.Locale("zh-Hant-u-co-zhuyin");
@@ -449,7 +449,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeCollation0002', 0, async () => {
+    it('testLocalePrototypeCollation0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeCollation0002";
       try {
         const locale = new Intl.Locale("zh-Hant", {
@@ -472,7 +472,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeHourCycle0001', 0, async () => {
+    it('testLocalePrototypeHourCycle0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeHourCycle0001";
       try {
         const locale = new Intl.Locale("fr-FR-u-hc-h23");
@@ -493,7 +493,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeHourCycle0002', 0, async () => {
+    it('testLocalePrototypeHourCycle0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeHourCycle0002";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -516,7 +516,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeLanguage0001', 0, async () => {
+    it('testLocalePrototypeLanguage0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeLanguage0001";
       try {
         const locale = new Intl.Locale("en-Latn-US");
@@ -537,7 +537,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeLanguage0002', 0, async () => {
+    it('testLocalePrototypeLanguage0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeLanguage0002";
       try {
         const locale = new Intl.Locale("en-Latn-US", {
@@ -560,7 +560,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeNumberingSystem0001', 0, async () => {
+    it('testLocalePrototypeNumberingSystem0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeNumberingSystem0001";
       try {
         const locale = new Intl.Locale("fr-Latn-FR-u-nu-mong");
@@ -581,7 +581,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeNumberingSystem0002', 0, async () => {
+    it('testLocalePrototypeNumberingSystem0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeNumberingSystem0002";
       try {
         const locale = new Intl.Locale("en-Latn-US", {
@@ -604,7 +604,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeNumeric0001', 0, async () => {
+    it('testLocalePrototypeNumeric0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeNumeric0001";
       try {
         const locale = new Intl.Locale("fr-Latn-FR-u-kn-false");
@@ -625,7 +625,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeNumeric0002', 0, async () => {
+    it('testLocalePrototypeNumeric0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeNumeric0002";
       try {
         const locale = new Intl.Locale("en-Latn-US", {
@@ -648,7 +648,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeRegion0001', 0, async () => {
+    it('testLocalePrototypeRegion0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeRegion0001";
       try {
         const locale = new Intl.Locale("en-Latn-US");
@@ -669,7 +669,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeRegion0002', 0, async () => {
+    it('testLocalePrototypeRegion0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeRegion0002";
       try {
         const locale = new Intl.Locale("fr-Latn", {
@@ -692,7 +692,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeScript0001', 0, async () => {
+    it('testLocalePrototypeScript0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeScript0001";
       try {
         const locale = new Intl.Locale("en-Latn-US");
@@ -713,7 +713,7 @@ export default function LocaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocalePrototypeScript0002', 0, async () => {
+    it('testLocalePrototypeScript0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocalePrototypeScript0002";
       try {
         const locale = new Intl.Locale("fr-FR", {

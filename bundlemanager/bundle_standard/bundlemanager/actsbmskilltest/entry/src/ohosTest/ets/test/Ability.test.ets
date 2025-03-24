@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import bundle from '@ohos.bundle.bundleManager';
 
 
@@ -28,7 +28,7 @@ export default function abilityTest() {
      * @tc.type  : Function
      * @tc.level : Level 2
      */
-    it('getBundleInfoForSelfSyncSkill', 0, async (done: Function) => {
+    it('getBundleInfoForSelfSyncSkill', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SKILL
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY

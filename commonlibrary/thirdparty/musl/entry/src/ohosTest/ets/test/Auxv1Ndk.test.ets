@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import auxv from 'libauxv1ndk.so'
 
@@ -32,7 +32,7 @@ export default function auxv1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAuxvGetauxval001', 0, async (done: Function) => {
+    it('testMuslAuxvGetauxval001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = auxv.getauxval(0);
       expect(result).assertEqual(1);
       done()
@@ -46,7 +46,7 @@ export default function auxv1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAuxvGetauxval002', 0, async (done: Function) => {
+    it('testMuslAuxvGetauxval002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = auxv.getauxval(-1);
       expect(result).assertEqual(-1);
       done()

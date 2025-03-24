@@ -14,7 +14,7 @@
  */
 
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { test2020_03_ans } from './test2020_03'
 import { test2020_04_ans } from './test2020_04'
 import { test2020_07_ans } from './test2020_07'
@@ -32,7 +32,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testDynamicImport', 0, async () => {
+    it('testDynamicImport', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let test2020_01_ans = 0;
       const module = await import("./testModule");
       test2020_01_ans = module.someFunction(test2020_01_ans);
@@ -46,7 +46,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImport.Meta', 0, () => {
+    it('testImport.Meta', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       // do not support import.meta
       expect(1).assertEqual(1);
     })
@@ -58,7 +58,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNameSpaceReExporting', 0, () => {
+    it('testNameSpaceReExporting', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2020_03_ans.someFunction(1)).assertEqual(2);
     })
     /**
@@ -69,7 +69,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testOptionalChaining', 0, () => {
+    it('testOptionalChaining', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2020_04_ans).assertEqual("Universityundefined1undefinedHelloTom");
     })
     /**
@@ -80,7 +80,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNullishCoalescingOperator', 0, () => {
+    it('testNullishCoalescingOperator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(false ?? "some truthy value").assertEqual(false);
       expect(undefined ?? "some truthy value").assertEqual("some truthy value");
       expect(null ?? "some truthy value").assertEqual("some truthy value");
@@ -94,7 +94,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBigInts', 0, () => {
+    it('testBigInts', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let oldNum = Number.MAX_SAFE_INTEGER;
       ++oldNum;
       expect(oldNum).assertEqual(9007199254740992);
@@ -149,7 +149,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testString.prototype.matchAll', 0, () => {
+    it('testString.prototype.matchAll', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2020_07_ans).assertEqual("foo,bar,baz");
     })
     /**
@@ -160,7 +160,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPromise.allSettled', 0, () => {
+    it('testPromise.allSettled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       Promise.allSettled([
         Promise.reject(1),
         Promise.resolve(0),
@@ -185,7 +185,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testGlobalThis', 0, () => {
+    it('testGlobalThis', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2020_09_ans).assertEqual("Hello world");
     })
     /**
@@ -196,7 +196,7 @@ export default function es2020Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test for...in', 0, () => {
+    it('test for...in', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2020_10_ans).assertDeepEquals(['1', '2', '3', 'x2', 'x1', '3XX'])
     })
   })

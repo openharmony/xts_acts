@@ -17,6 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import {
     fileIO, FILE_CONTENT, prepareFile, describe, it, expect, randomString, nextFileName
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOCopyDir() {
   describe('fileIO_fs_copyDir', function () {
@@ -1129,5 +1130,35 @@ export default function fileIOCopyDir() {
     }
   });
 
+  /**
+   * @tc.number SUB_DF_FILEIO_COPYDIR_ASYNC_1800
+   * @tc.name fileIO_test_copyDir_async_018
+   * @tc.desc Test copyDir() interface.Callback.
+   * There is no target folder(src) under path dest. ConflictFiles.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_copyDir_async_018', Level.LEVEL3, async function (done) {
+    let dpath = await readyFiles('fileIO_test_copyDir_async_018');
+
+    try {
+      let dirnet1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirnet1.length == 4).assertTrue();
+      fileIO.copyDir(dpath.srcDir, dpath.destDir, undefined, (ConflictFiles) => {
+        if (ConflictFiles && ConflictFiles.code == 13900015 && ConflictFiles.data?.length !== undefined) {
+          for (let i = 0; i < ConflictFiles.data.length; i++) {
+            console.error("copy directory failed with conflicting files: " + ConflictFiles.data[i].srcFile + " " + ConflictFiles.data[i].destFile);
+          }
+          expect(true).assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_copyDir_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
   });
   }

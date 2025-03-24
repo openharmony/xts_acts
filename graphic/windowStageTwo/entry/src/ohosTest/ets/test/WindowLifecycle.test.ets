@@ -764,6 +764,8 @@ export default function WindowLifecycle() {
           console.info(msgStr + 'Succeeded in creating the subwindow1. Data: ' + JSON.stringify(data));
           let id = subWindowClass1.getWindowProperties().id;
           console.info(msgStr + 'Succeeded in getting the window id. : ' + id);
+          let name = subWindowClass1.getWindowProperties().name;
+          console.info(msgStr + 'Succeeded in getting the window name. : ' + name);
           expect(!!subWindowClass1).assertTrue();
           await subWindowClass1.loadContent('testability/pages/First/index2', storage);
           await windowStage.createSubWindow('test_showWindow_subWindow_top_callback2').then(async (data) => {

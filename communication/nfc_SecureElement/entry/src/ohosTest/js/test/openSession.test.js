@@ -15,7 +15,7 @@
 
 
 import secureElement from '@ohos.secureElement';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -98,9 +98,9 @@ export default function openSessionTest() {
          * @tc.name Test getReader
          * @tc.desc Obtains the reader that provides the session.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0600', 0, function () {
+        it('SUB_Communication_NFC_secureElement_js_0600', Level.LEVEL0, function () {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]6 This function is not supported because the phone NFC chip is ST chip.");
@@ -120,9 +120,9 @@ export default function openSessionTest() {
          * @tc.name Test getATR
          * @tc.desc Obtain the ATR of the SE.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0700', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0700', Level.LEVEL0, function ()  {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]7 This function is not supported because the phone NFC chip is ST chip.");
@@ -133,8 +133,8 @@ export default function openSessionTest() {
                     console.info("[NFC_test]7 Get the ATR of this SE: " + nfcGetart);
                 }
             } catch (error) {
-                console.info("[NFC_test]7 Get the ATR of this SE occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]7 Get the ATR of this SE occurs exception:" + error + "/" + error.code);
+                expect(801).assertEqual(error.code);
             }
         })
 
@@ -143,9 +143,9 @@ export default function openSessionTest() {
          * @tc.name Test close Session
          * @tc.desc Close a single session.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_0800', 0, async function (done) {
+        it('SUB_Communication_NFC_secureElement_js_0800', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]8 This function is not supported because the phone NFC chip is ST chip.");
@@ -161,8 +161,8 @@ export default function openSessionTest() {
                     expect(iscloseSession).assertTrue();
                 }
             } catch (error) {
-                console.info("[NFC_test]8 0800 occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]8 0800 occurs exception:" + error + "/" + error.code);
+                expect(801).assertEqual(error.code);
             }
             done();
         })

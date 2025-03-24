@@ -35,7 +35,7 @@ class NativeDrawingRegisterFontTest : public testing::Test {
  * @tc.desc: test for register font
  * @tc.type: FUNC
  */
-HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest001, TestSize.Level1)
+HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest001, Function | MediumTest | Level1)
 {
     OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
     uint32_t errorCode = OH_Drawing_RegisterFont(fontCollection, g_fontFamily, g_fontPath);
@@ -54,7 +54,7 @@ HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest001, TestSi
  * @tc.desc: test for register font
  * @tc.type: FUNC
  */
-HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest002, TestSize.Level1)
+HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest002, Function | MediumTest | Level1)
 {
     OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
     uint32_t errorCode = OH_Drawing_RegisterFontBuffer(fontCollection, g_fontFamily, nullptr, 128);

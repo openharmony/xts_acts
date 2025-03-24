@@ -16,10 +16,12 @@ import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.t
 import graphicImagePixelMapTest from './graphicImagePixelMap.test'
 import graphicImageInterfaceTest from './graphicImageInterface.test'
 import imagePixelMapTest from './pixelMap'
+import imagePixelMapTestErrorCode from './pixelMapErrorCode'
 
 export default function testsuite() {
   imagePixelMapTest()
   graphicSendableImageInterfaceTest()
   graphicImagePixelMapTest()
   graphicImageInterfaceTest()
+  imagePixelMapTestErrorCode()
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import ArrayList from "@ohos.util.ArrayList";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function ArraylistTest() {
 describe("ArraylistTest", function () {
 
@@ -21,7 +21,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an ArrayList instance. For example: let arrayList = new ArrayList().
    */
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let arrayList = new ArrayList();
       expect(arrayList != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add a string type element to the end of the ArrayList instance. For example: arrayList.add("四").
    */
-  it("testAdd002", 0, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     let res = arrayList.has("四");
@@ -47,7 +47,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add a number type element to the end of the ArrayList instance. For example: arrayList.add(8).
    */ 
-  it("testAdd003", 0, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(8);
     let res = arrayList.has(8);
@@ -59,7 +59,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a object type element to the end of the ArrayList instance. 
    * For example: let a = {name: "lala", age: "13岁"}; arrayList.add(a).
    */
-  it("testAdd004 ", 0, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = {name: "lala", age: "13岁"};
     arrayList.add(a);
@@ -72,7 +72,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a array type element to the end of the ArrayList instance. 
    * For example: let a = [1, 2, 3, 4]; arrayList.add(a).
    */
-  it("testAdd005 ", 0, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = [1, 2, 3, 4];
     arrayList.add(a);
@@ -85,7 +85,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a boolean type element to the end of the ArrayList instance. 
    * For example: let a = true; arrayList.add(a).
    */
-  it("testAdd006 ", 0, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = true;
     arrayList.add(a);
@@ -97,7 +97,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testInsert007
    * @tc.desc: Insert an element into the middle of the ArrayList instance. For example: arrayList.insert(8, 2).
    */
-  it("testInsert007", 0, function () {
+  it("testInsert007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -118,7 +118,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testLength008
    * @tc.desc: Get the number of elements contained in the ArrayList instance. For example: arrayList.length.
    */
-  it("testLength008", 0, function () {
+  it("testLength008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -133,7 +133,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testHas009
    * @tc.desc: Check whether the ArrayList contains a specified element. For example: arrayList.has(8).
    */
-  it("testHas009", 0, function () {
+  it("testHas009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -149,7 +149,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. For example: arrayList.getIndexOf(1).
    */
-  it("testGetIndexOf010", 0, function () {
+  it("testGetIndexOf010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(1);
     arrayList.add("三");
@@ -165,7 +165,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, delete the element based on its index. 
    * For example: arrayList.removeByIndex(2).
    */
-  it("testRemoveByIndex011", 0, function () {
+  it("testRemoveByIndex011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -186,7 +186,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testRemove012
    * @tc.desc: Delete the specified element . For example: arrayList.remove("三").
    */
-  it("testRemove012", 0, function () {
+  it("testRemove012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -202,7 +202,7 @@ describe("ArraylistTest", function () {
    * @tc.desc:  In the ArrayList instance, find the index of a specified element from brack to front, 
    * and return the index found for the first time. If not found, return -1. For example: arrayList.add("四").
    */
-  it("testGetLastIndexOf013", 0, function () {
+  it("testGetLastIndexOf013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -219,7 +219,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: arrayList.removeByRange(1, 3).
    */
-  it("testRemoveByRange014", 0, function () {
+  it("testRemoveByRange014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -245,7 +245,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Perform some operation on the elements in the ArrayList instance and return the ArrayList instance 
    * after the operation. For example: arrayList.replaceAllElements((item, index) => {return (item = 2 * item);}).
    */
-  it("testReplaceAllElements015", 0, function () {
+  it("testReplaceAllElements015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -270,7 +270,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Traversing elements in an ArrayList instance. 
    * For example: arrayList.forEach((item, index) => {arr.push(item);}).
    */
-  it("testForEach016", 0, function () {
+  it("testForEach016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -292,7 +292,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: arrayList.subArrayList(2, 4).
    */
-  it("testSubArrayList017", 0, function () {
+  it("testSubArrayList017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -314,7 +314,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testClear018
    * @tc.desc: Clear all elements in the ArrayList instance. For example: arrayList.clear().
    */
-  it("testClear018", 0, function () {
+  it("testClear018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -330,7 +330,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testConvertToArray19
    * @tc.desc: Convert an ArrayList instance to an array. For example: arrayList.convertToArray().
    */
-  it("testConvertToArray19", 0, function () {
+  it("testConvertToArray19", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -348,7 +348,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testClone020
    * @tc.desc: Clone an ArrayList instance. For example: arrayList.clone().
    */
-  it("testClone020", 0, function () {
+  it("testClone020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -370,7 +370,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testGetCapacity021
    * @tc.desc: Get the capacity of ArrayList instance. For example: arrayList.getCapacity().
    */
-  it("testGetCapacity021", 0, function () {
+  it("testGetCapacity021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -386,7 +386,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Get the capacity of the ArrayList instance after capacity expansion. 
    * For example: arrayList.getCapacity().
    */
-  it("testGetCapacity022", 0, function () {
+  it("testGetCapacity022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -409,7 +409,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Expand the ArrayList instance capacity to the specified value. 
    * For example: arrayList.increaseCapacityTo(8).
    */
-  it("testIncreaseCapacityTo023", 0, function () {
+  it("testIncreaseCapacityTo023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -426,7 +426,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Limit the ArrayList instance capacity to the length of the ArrayList instance. 
    * For example: arrayList.trimToCurrentLength().
    */
-  it("testTrimToCurrentLength024", 0, function () {
+  it("testTrimToCurrentLength024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -443,7 +443,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Iterates over all elements in an ArrayList instance. 
    * For example: for (let item of arrayList) {arr.push(item);}.
    */
-  it("testIterator025", 0, function () {
+  it("testIterator025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(8);
     arrayList.add("一");
@@ -469,7 +469,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Arrange the elements in the ArrayList instance in descending order.
    * For example: arrayList.sort((a, b) => a - b).
    */
-  it("testSort026", 0, function () {
+  it("testSort026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -492,7 +492,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Inserting an element with an index less than 0 will throw an exception. 
    * For example: arrayList.insert(8, -1).
    */
-  it("testInsert0027", 0, function () {
+  it("testInsert0027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -513,7 +513,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Inserting an element with an index greater than or equal to the length of
    * the ArrayList instance will throw an exception. For example: arrayList.insert(8, 10).
    */
-  it("testInsert028", 0, function () {
+  it("testInsert028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -534,7 +534,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Inserting an element with an index greater than or equal to the length of
    * the ArrayList instance will throw an exception. For example: arrayList.insert(8, 11).
    */
-  it("testInsert029", 0, function () {
+  it("testInsert029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -554,7 +554,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testIsEmpty030
    * @tc.desc: Determine whether the ArrayList instance is empty. For example: arrayList.isEmpty().
    */
-  it("testIsEmpty030", 0, function () {
+  it("testIsEmpty030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -570,7 +570,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testIsEmpty031
    * @tc.desc: Determine whether the ArrayList instance is empty. For example: arrayList.isEmpty().
    */
-  it("testIsEmpty031", 0, function () {
+  it("testIsEmpty031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -585,7 +585,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testHas032
    * @tc.desc: Check whether the ArrayList contains a specified element. For example: arrayList.has("二").
    */
-  it("testHas032", 0, function () {
+  it("testHas032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -601,7 +601,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, find the index of a specified element from front to back,
    * and return the index found for the first time. If not found, return -1. For example: arrayList.getIndexOf("A").
    */
-  it("testGetIndexOf033", 0, function () {
+  it("testGetIndexOf033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(1);
     arrayList.add("三");
@@ -616,7 +616,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testRemove034
    * @tc.desc: Delete the specified element.For example: arrayList.remove("A").
    */
-  it("testRemove034", 0, function () {
+  it("testRemove034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -631,7 +631,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Delete the specified element.
    * For example: arrayList.forEach((item, index) => {if (item == 1) {arrayList.remove(item);}}).
    */
-  it("testRemove035", 0, function () {
+  it("testRemove035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(0);
     arrayList.add(1);
@@ -659,7 +659,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, delete the element based on its index index. 
    * For example: arrayList.removeByIndex(5).
    */
-  it("testRemoveByIndex036", 0, function () {
+  it("testRemoveByIndex036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("a");
     arrayList.add("b");
@@ -680,7 +680,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testRemoveByRange037
    * @tc.desc: Add a string element to the end of the ArrayList instance. For example: arrayList.add("四").
    */
-  it("testRemoveByRange037", 0, function () {
+  it("testRemoveByRange037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -705,7 +705,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: removeByRange(6, 8).
    */
-  it("testRemoveByRange038", 0, function () {
+  it("testRemoveByRange038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -727,7 +727,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: removeByRange(0, 7).
    */
-  it("testRemoveByRange039", 0, function () {
+  it("testRemoveByRange039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -749,7 +749,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: arrayList.subArrayList(4, 2).
    */
-  it("testSubArrayList040", 0, function () {
+  it("testSubArrayList040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -771,7 +771,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: arrayList.subArrayList(0 ,6).
    */
-  it("testSubArrayList041", 0, function () {
+  it("testSubArrayList041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -794,7 +794,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: arrayList.subArrayList(6, 9).
    */
-  it("testSubArrayList042", 0, function () {
+  it("testSubArrayList042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -816,7 +816,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Expand the ArrayList instance capacity to the specified value. 
    * For example: arrayList.increaseCapacityTo(-1).
    */
-  it("testIncreaseCapacityTo043", 0, function () {
+  it("testIncreaseCapacityTo043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -833,7 +833,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Expand the ArrayList instance capacity to the specified value. 
    * For example: arrayList.increaseCapacityTo().
    */
-  it("testIncreaseCapacityTo044", 0, function () {
+  it("testIncreaseCapacityTo044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -855,7 +855,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a string element to the end of the ArrayList instance. 
    * For example: for (let i = 0; i < 100; i++) {arrayList.add(i);}.
    */
-  it("testAdd045", 0, function () {
+  it("testAdd045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     for (let i = 0; i < 100; i++) {
       arrayList.add(i);
@@ -871,7 +871,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a symbol type element to the end of the ArrayList instance. 
    * For example: let a = "*";arrayList.add(a).
    */
-  it("testAdd046", 0, function () {
+  it("testAdd046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = "*";
     arrayList.add(a);
@@ -883,7 +883,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testAdd047
    * @tc.desc: Add a decimal type to the end of the ArrayList instance. For example: let a = "3.14";arrayList.add(a).
    */
-  it("testAdd047", 0, function () {
+  it("testAdd047", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = "3.14";
     arrayList.add(a);
@@ -896,7 +896,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a null character element to the end of the ArrayList instance. 
    * For example: let a = "";arrayList.add(a).
    */
-  it("testAdd048", 0, function () {
+  it("testAdd048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     let a = "";
     arrayList.add(a);
@@ -909,7 +909,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Arrange the elements in the ArrayList instance in descending order. 
    * For example: arrayList.sort((a, b) => a - b).
    */
-  it("testSort049", 0, function () {
+  it("testSort049", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("刘");
     arrayList.add("张三");
@@ -932,7 +932,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Arrange the elements in the ArrayList instance in descending order. 
    * For example: arrayList.sort((a, b) => a - b).
    */
-  it("testSort050", 0, function () {
+  it("testSort050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("c");
     arrayList.add("a");
@@ -954,7 +954,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testIterator051
    * @tc.desc: Iterates over all elements in an ArrayList instance. For example: arrayList[Symbol.iterator]().
    */
-  it("testIterator051", 0, function () {
+  it("testIterator051", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("刘");
     arrayList.add("张三");
@@ -979,7 +979,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: removeByRange(0, 8).
    */
-  it("testRemoveByRange052", 0, function () {
+  it("testRemoveByRange052", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("四");
     arrayList.add("三");
@@ -1004,7 +1004,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Add a boolean type element to the end of the ArrayList instance. 
    * For example: arrayList.add.bind({})().
    */
-  it("testAdd053 ", 0, function () {
+  it("testAdd053 ", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.add.bind({}, "a")()
@@ -1021,7 +1021,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Inserting an element with an index greater than or equal to the length of
    * the ArrayList instance will throw an exception. For example: arrayList.insert("a", -2).
    */
-  it("testInsert054", 0, function () {
+  it("testInsert054", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(1);
     try {
@@ -1039,7 +1039,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, delete the element based on its index index. 
    * For example: arrayList.removeByIndex(-1).
    */
-  it("testRemoveByIndex055", 0, function () {
+  it("testRemoveByIndex055", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add("a");
     arrayList.add("b");
@@ -1061,7 +1061,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: arrayList.removeByRange(-3, 9).
    */
-  it("testRemoveByRange056", 0, function () {
+  it("testRemoveByRange056", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(1);
     arrayList.add("a");
@@ -1080,7 +1080,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Perform some operation on the elements in the ArrayList instance and return the ArrayList instance 
    * after the operation. For example: arrayList.replaceAllElements(123).
    */
-  it("testReplaceAllElements057", 0, function () {
+  it("testReplaceAllElements057", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -1099,7 +1099,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: arrayList.subArrayList("a", 2).
    */
-  it("testSubArrayList058", 0, function () {
+  it("testSubArrayList058", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     arrayList.add(4);
     arrayList.add(3);
@@ -1121,7 +1121,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Check whether the ArrayList contains a specified element.
    * For example: arrayList.has.bind({})().
    */
-  it('testHas059', 0, function () {
+  it('testHas059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.has.bind({}, "a")();
@@ -1138,7 +1138,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, delete the element based on its index. 
    * For example: arrayList.removeByIndex.bind({})().
    */
-  it('testRemoveByIndex060', 0, function () {
+  it('testRemoveByIndex060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.removeByIndex.bind({}, "a")();
@@ -1154,7 +1154,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testRemove061
    * @tc.desc: Delete the specified element . For example: arrayList.remove.bind({})().
    */
-  it('testRemove061', 0, function () {
+  it('testRemove061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.remove.bind({}, "a")();
@@ -1171,7 +1171,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Traversing elements in an ArrayList instance. 
    * For example: arrayList.forEach.bind({}, "a")(() => {}).
    */
-  it('testForEach062', 0, function () {
+  it('testForEach062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.forEach.bind({}, "a")();
@@ -1188,7 +1188,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: Traversing elements in an ArrayList instance. 
    * For example: arrayList.forEach(11).
    */
-  it('testForEach063', 0, function () {
+  it('testForEach063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.forEach(11);
@@ -1204,7 +1204,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testClear064
    * @tc.desc: Clear all elements in the ArrayList instance. For example: arrayList.clear.bind({}, "a")().
    */
-  it('testClear064', 0, function () {
+  it('testClear064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.clear.bind({}, "a")();
@@ -1220,7 +1220,7 @@ describe("ArraylistTest", function () {
    * @tc.name: testIsEmpty065
    * @tc.desc: Determine whether the ArrayList instance is empty. For example: arrayList.isEmpty.bind({}, "a")().
    */
-  it('testIsEmpty065', 0, function () {
+  it('testIsEmpty065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       arrayList.isEmpty.bind({}, "a")();
@@ -1241,7 +1241,7 @@ describe("ArraylistTest", function () {
    * @tc.desc: In the ArrayList instance, delete the element based on its subscript index. 
    * For example: linkedList.removeByIndex(0).
    */
-  it("testRemoveByIndex066", 0, function () {
+  it("testRemoveByIndex066", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayList = new ArrayList();
     try {
       let res = arrayList.removeByIndex(0);

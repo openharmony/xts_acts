@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import signal from 'libsignalndk.so'
 
@@ -33,7 +33,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSighold001', 0, async (done: Function) => {
+    it('testMuslSignalSighold001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sighold(0,0);
       expect(a).assertEqual(0);
       done();
@@ -47,7 +47,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSighold002', 0, async (done: Function) => {
+    it('testMuslSignalSighold002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sighold(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -61,7 +61,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSighold003', 0, async (done: Function) => {
+    it('testMuslSignalSighold003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sighold(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -75,7 +75,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigrelse001', 0, async (done: Function) => {
+    it('testMuslSignalSigrelse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigrelse(0,0);
       expect(a).assertEqual(0);
       done();
@@ -89,7 +89,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigrelse002', 0, async (done: Function) => {
+    it('testMuslSignalSigrelse002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigrelse(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -103,7 +103,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigrelse003', 0, async (done: Function) => {
+    it('testMuslSignalSigrelse003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigrelse(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -117,7 +117,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigdelset001', 0, async (done: Function) => {
+    it('testMuslSignalSigdelset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigdelset(0,0);
       expect(a).assertEqual(0);
       done();
@@ -131,7 +131,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigdelset002', 0, async (done: Function) => {
+    it('testMuslSignalSigdelset002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigdelset(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -145,7 +145,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigdelset003', 0, async (done: Function) => {
+    it('testMuslSignalSigdelset003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigdelset(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -159,7 +159,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigemptyset001', 0, async (done: Function) => {
+    it('testMuslSignalSigemptyset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigemptyset();
       expect(a).assertEqual(0);
       done();
@@ -173,7 +173,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigfillset001', 0, async (done: Function) => {
+    it('testMuslSignalSigfillset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigfillset();
       expect(a).assertEqual(0);
       done();
@@ -187,7 +187,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaddset001', 0, async (done: Function) => {
+    it('testMuslSignalSigaddset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaddset(0,0);
       expect(a).assertEqual(0);
       done();
@@ -201,7 +201,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaddset002', 0, async (done: Function) => {
+    it('testMuslSignalSigaddset002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaddset(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -215,7 +215,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaddset003', 0, async (done: Function) => {
+    it('testMuslSignalSigaddset003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaddset(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -229,7 +229,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaction001', 0, async (done: Function) => {
+    it('testMuslSignalSigaction001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaction(0,0);
       expect(a).assertEqual(0);
       done();
@@ -243,7 +243,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaction002', 0, async (done: Function) => {
+    it('testMuslSignalSigaction002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaction(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -257,7 +257,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaction003', 0, async (done: Function) => {
+    it('testMuslSignalSigaction003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaction(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -271,7 +271,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaltstack001', 0, async (done: Function) => {
+    it('testMuslSignalSigaltstack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaltstack(0);
       expect(a).assertEqual(0);
       done();
@@ -285,7 +285,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigaltstack002', 0, async (done: Function) => {
+    it('testMuslSignalSigaltstack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigaltstack(-1);
       expect(a).assertEqual(0);
       done();
@@ -299,7 +299,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigignore001', 0, async (done: Function) => {
+    it('testMuslSignalSigignore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigignore(0,0);
       expect(a).assertEqual(0);
       done();
@@ -313,7 +313,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigignore002', 0, async (done: Function) => {
+    it('testMuslSignalSigignore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigignore(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -327,7 +327,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigignore003', 0, async (done: Function) => {
+    it('testMuslSignalSigignore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigignore(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -341,7 +341,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigpause001', 0, async (done: Function) => {
+    it('testMuslSignalSigpause001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigpause();
       expect(a).assertEqual(0);
       done();
@@ -355,7 +355,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigpending001', 0, async (done: Function) => {
+    it('testMuslSignalSigpending001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigpending();
       expect(a).assertEqual(0);
       done();
@@ -369,7 +369,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigprocmask001', 0, async (done: Function) => {
+    it('testMuslSignalSigprocmask001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigprocmask(0,0);
       expect(a).assertEqual(0);
       done();
@@ -383,7 +383,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigprocmask002', 0, async (done: Function) => {
+    it('testMuslSignalSigprocmask002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigprocmask(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -397,7 +397,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigprocmask003', 0, async (done: Function) => {
+    it('testMuslSignalSigprocmask003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigprocmask(-1, -1);
       expect(a).assertEqual(0);
       done();
@@ -411,7 +411,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigismember001', 0, async (done: Function) => {
+    it('testMuslSignalSigismember001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigismember(0,0);
       expect(a).assertEqual(0);
       done();
@@ -425,7 +425,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigismember002', 0, async (done: Function) => {
+    it('testMuslSignalSigismember002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigismember(-1, 99999);
       expect(a).assertEqual(0);
       done();
@@ -439,7 +439,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigwait001', 0, async (done: Function) => {
+    it('testMuslSignalSigwait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigwait();
       expect(a).assertEqual(0);
       done();
@@ -453,7 +453,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigwaitinfo001', 0, async (done: Function) => {
+    it('testMuslSignalSigwaitinfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigwaitinfo();
       expect(a).assertEqual(0);
       done();
@@ -466,7 +466,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigismember003', 0, async (done: Function) => {
+    it('testMuslSignalSigismember003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigismember(-1, 0);
       expect(a).assertEqual(0);
       done();
@@ -480,7 +480,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigismember004', 0, async (done: Function) => {
+    it('testMuslSignalSigismember004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigismember(1,0);
       expect(a).assertEqual(0);
       done();
@@ -494,7 +494,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSignal001', 0, async (done: Function) => {
+    it('testMuslSignalSignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.signal();
       expect(a).assertEqual(0);
       done();
@@ -508,7 +508,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSignalfd001', 0, async (done: Function) => {
+    it('testMuslSignalSignalfd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.signalfd();
       expect(a).assertEqual(0);
       done();
@@ -522,7 +522,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSiginterrupt001', 0, async (done: Function) => {
+    it('testMuslSignalSiginterrupt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.siginterrupt();
       expect(a).assertEqual(0);
       done();
@@ -536,7 +536,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigset001', 0, async (done: Function) => {
+    it('testMuslSignalSigset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigset(0);
       expect(a).assertEqual(0);
       done();
@@ -550,7 +550,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSignalSigset002', 0, async (done: Function) => {
+    it('testMuslSignalSigset002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigset(1);
       expect(a).assertEqual(0);
       done();
@@ -564,7 +564,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigtimedwait001', 0, async (done: Function) => {
+    it('testMuslSignalSigtimedwait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.sigtimedwait();
       expect(a).assertEqual(0);
       done();
@@ -578,7 +578,7 @@ export default function signalNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSignalKill001', 0, async (done: Function) => {
+    it('testMuslSignalKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.kill();
       expect(a).assertEqual(0);
       done();
@@ -592,7 +592,7 @@ export default function signalNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSignalKillpg001', 0, async (done: Function) => {
+    it('testMuslSignalKillpg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.killpg();
       expect(a).assertEqual(0);
       done();
@@ -607,7 +607,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalPsignal001', 0, async (done: Function) => {
+    it('testMuslSignalPsignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 10, b = "SIGUSR1";
       let data: number = signal.psignal(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
@@ -623,7 +623,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalPsignal002', 0, async (done: Function) => {
+    it('testMuslSignalPsignal002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 10, b = " ";
       let data: number = signal.psignal(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
@@ -639,7 +639,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalPsignal003', 0, async (done: Function) => {
+    it('testMuslSignalPsignal003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = -1, b = " ";
       let data: number = signal.psignal(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
@@ -655,7 +655,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalPsiginfo001', 0, async (done: Function) => {
+    it('testMuslSignalPsiginfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = signal.pSigInfo();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -670,7 +670,7 @@ export default function signalNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSignalRaise001', 0, async (done: Function) => {
+    it('testMuslSignalRaise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.raise();
       expect(a).assertEqual(0);
       done();
@@ -684,7 +684,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalBsdSignal001', 0, async (done: Function) => {
+    it('testMuslSignalBsdSignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number= signal.bsdSignal();
       expect(a).assertEqual(0);
       done();
@@ -698,7 +698,7 @@ export default function signalNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigsuspend001', 0, async (done: Function) => {
+    it('testMuslSignalSigsuspend001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number= signal.sigsuspend();
       expect(a).assertEqual(0);
       done();

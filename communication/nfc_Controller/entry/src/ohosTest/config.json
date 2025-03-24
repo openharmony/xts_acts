@@ -31,7 +31,31 @@
         "label": "$string:TestAbility_label",
         "type": "page",
         "visible": true,
-        "launchType": "standard"
+        "launchType": "standard",
+        "skills":[
+            {
+                "entities":[
+                    "entity.system.home"
+                ],
+                "actions":[
+                    "action.system.home",
+                    "ohos.nfc.cardemulation.action.HOST_APDU_SERVICE"
+                ]
+            }
+        ],
+        "metaData":{
+            "customizeData":
+            [
+                {
+                    "name":"payment-aid",
+                    "value":"A0000000031010"
+                },
+                {
+                    "name":"other-aid",
+                    "value":"A0000000031011"
+                }
+            ]
+        }
       }
     ],
     "js": [

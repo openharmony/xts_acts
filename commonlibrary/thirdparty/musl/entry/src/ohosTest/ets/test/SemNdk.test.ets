@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import sem from 'libsemndk.so'
 
@@ -32,7 +32,7 @@ export default function semNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSemSemctl001', 0, async (done: Function) => {
+    it('testMuslSemSemctl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = sem.semctl(0);
       expect(a).assertEqual(13);
       done()
@@ -46,7 +46,7 @@ export default function semNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSemSemget001', 0, async (done: Function) => {
+    it('testMuslSemSemget001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = sem.semget();
       expect(a).assertEqual(-1);
       done()
@@ -60,7 +60,7 @@ export default function semNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSemSemop001', 0, async (done: Function) => {
+    it('testMuslSemSemop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = sem.semop();
       expect(a).assertEqual(0);
       done()
@@ -73,7 +73,7 @@ export default function semNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSemSemtimedop001', 0, async (done: Function) => {
+    it('testMuslSemSemtimedop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = sem.semtimedop();
       expect(a).assertEqual(0);
       done()

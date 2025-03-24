@@ -17,7 +17,7 @@ import fileio from '@ohos.fileio';
 import request from "@ohos.request";
 import common from '@ohos.app.ability.common';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestUploadNormalJSUnit() {
   describe('requestUploadNormalJSUnit', () => {
@@ -99,9 +99,9 @@ export default function requestUploadNormalJSUnit() {
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010', Level.LEVEL1, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 is starting-----------------------");
       let attachments: Array<request.agent.FormItem> = [{
         name: "uploadTest",
@@ -150,7 +150,7 @@ export default function requestUploadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 is starting-----------------------");
       let attachments: Array<request.agent.FormItem> = [{
         name: "uploadTest",
@@ -191,7 +191,7 @@ export default function requestUploadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_UploadManagement_0001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_UploadManagement_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
       try {
         await request.uploadFile(baseContext, uploadConfig);
@@ -213,7 +213,7 @@ export default function requestUploadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_UploadManagement_Callback_0001', Level.LEVEL2, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
       try {
         request.uploadFile(baseContext, uploadConfig, (err, uploadTask)=>{

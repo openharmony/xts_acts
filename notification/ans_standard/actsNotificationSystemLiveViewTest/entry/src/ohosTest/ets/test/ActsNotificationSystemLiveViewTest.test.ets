@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe , it, expect } from '@ohos/hypium'
+import { describe , it, expect, Level } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
 import image from '@ohos.multimedia.image';
 import {BusinessError} from '@ohos.base';
@@ -34,7 +34,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleTitleForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleTitleForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForNull'
       const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
       let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -108,7 +108,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleTitleForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleTitleForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
       const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
       let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -184,7 +184,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleIconForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleIconForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleIconForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -236,7 +236,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleIconForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleIconForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleIconForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -289,7 +289,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleBackgroundColorForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleBackgroundColorForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleBackgroundColorForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -342,7 +342,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testLiveNotificationCapsuleBackgroundColorForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleBackgroundColorForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleBackgroundColorForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -395,7 +395,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationButtonNamesForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationButtonNamesForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationButtonNamesForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -445,7 +445,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationCapsuleIconForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationCapsuleIconForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleIconForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -496,7 +496,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationButtonIconsForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationButtonIconsForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationButtonIconsForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -546,7 +546,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationButtonIconsForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationButtonIconsForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationButtonIconsForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -596,7 +596,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeinitialTimeForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeinitialTimeForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeinitialTimeForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -649,7 +649,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeinitialTimeForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeinitialTimeForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeinitialTimeForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -702,7 +702,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisCountdownForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisCountdownForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisCountdownForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -755,7 +755,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisCountdownForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisCountdownForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisCountdownForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -808,7 +808,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisPausedForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisPausedForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisPausedForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -862,7 +862,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisPausedForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisPausedForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisPausedForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -916,7 +916,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisInTitleForNull', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisInTitleForNull', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisInTitleForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -970,7 +970,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationTimeisInTitleForUndefined', 0, async  (done : Function) => {
+    it('testLiveNotificationTimeisInTitleForUndefined', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationTimeisInTitleForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1024,7 +1024,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationProgressMaxvalueForNull', 0, async (done : Function) => {
+    it('testLiveNotificationProgressMaxvalueForNull', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressMaxvalueForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1082,7 +1082,7 @@ export default function ActsNotificationSystemLiveViewTest() {
     * @tc.type: Function
     * @tc.level Level 3
     */
-    it('testLiveNotificationProgressMaxvalueForUndefined', 0, async (done : Function) => {
+    it('testLiveNotificationProgressMaxvalueForUndefined', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressMaxvalueForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1140,7 +1140,7 @@ export default function ActsNotificationSystemLiveViewTest() {
    * @tc.type: Function
    * @tc.level Level 3
    */
-    it('testLiveNotificationProgressCurrentValueForNull', 0, async (done : Function) => {
+    it('testLiveNotificationProgressCurrentValueForNull', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressCurrentValueForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1199,7 +1199,7 @@ export default function ActsNotificationSystemLiveViewTest() {
    * @tc.type: Function
    * @tc.level Level 3
    */
-    it('testLiveNotificationProgressCurrentValueForUndefined', 0, async (done : Function) => {
+    it('testLiveNotificationProgressCurrentValueForUndefined', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressCurrentValueForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1258,7 +1258,7 @@ export default function ActsNotificationSystemLiveViewTest() {
   * @tc.type: Function
   * @tc.level Level 3
   */
-    it('testLiveNotificationProgressisPercentageForNull', 0, async (done : Function) => {
+    it('testLiveNotificationProgressisPercentageForNull', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressisPercentageForNull'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1318,7 +1318,7 @@ export default function ActsNotificationSystemLiveViewTest() {
   * @tc.type: Function
   * @tc.level Level 3
   */
-    it('testLiveNotificationProgressisPercentageForUndefined', 0, async (done : Function) => {
+    it('testLiveNotificationProgressisPercentageForUndefined', Level.LEVEL2, async (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressisPercentageForUndefined'
       let notificationRequest : notificationManager.NotificationRequest = {
         id : 1,
@@ -1377,7 +1377,7 @@ export default function ActsNotificationSystemLiveViewTest() {
   * @tc.type: Function
   * @tc.level Level 3
   */
-    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+    it('testLiveNotificationPublishsuccess', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
       const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
       let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1490,7 +1490,7 @@ export default function ActsNotificationSystemLiveViewTest() {
   * @tc.type: Function
   * @tc.level Level 3
   */
-    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+    it('testLiveNotificationPublishsuccess', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
       const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
       let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1613,7 +1613,7 @@ export default function ActsNotificationSystemLiveViewTest() {
  * @tc.type: Function
  * @tc.level Level 3
  */
-    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+    it('testLiveNotificationPublishsuccess', Level.LEVEL2, async  (done : Function) => {
       const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
       const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
       let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }

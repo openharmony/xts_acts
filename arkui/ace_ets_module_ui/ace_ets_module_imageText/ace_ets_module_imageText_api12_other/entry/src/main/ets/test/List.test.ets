@@ -15,8 +15,28 @@
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextDecorationStyleTest from './TextTest/TextDecorationStyleTest.test'
+import textShadowTest from './RichEditorTest/textShadowTest.test'
+import ContentTypeTest from './TextInputTest/ContentType.test';
+import SearchTypeTest from "./SearchTest/SearchType.test";
+import ImageLoadResultTest from "./ImageSpanTest/ImageLoadResult.test";
+import SymbolSpanModifierTest from "./ModifierTest/SymbolSpanModifier.test";
+import TextInputModifierTest from "./ModifierTest/TextInputModifier.test";
+import ImageSpanModifierTest from "./ModifierTest/ImageSpanModifier.test";
+import MarqueeModifierTest from "./ModifierTest/MarqueeModifier.test";
+import RichEditorModifierTest from "./ModifierTest/RichEditorModifier.test";
+import RichTextModifierTest from "./ModifierTest/RichTextModifier.test";
 
 export default function testsuite() {
   textAreaInputTest();
   TextDecorationStyleTest();
+  textShadowTest();
+  ContentTypeTest();
+  SearchTypeTest();
+  ImageLoadResultTest();
+  SymbolSpanModifierTest();
+  TextInputModifierTest();
+  ImageSpanModifierTest();
+  MarqueeModifierTest();
+  RichEditorModifierTest();
+  RichTextModifierTest();
 }

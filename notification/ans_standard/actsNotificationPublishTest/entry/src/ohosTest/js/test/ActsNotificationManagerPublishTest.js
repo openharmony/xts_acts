@@ -15,7 +15,7 @@
 
 import notificationManager from '@ohos.notificationManager'
 import notification from '@ohos.notification'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.app.ability.wantAgent'
 import hilog from '@ohos.hilog';
@@ -46,7 +46,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, label: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3200', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3200', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3200 START`)
       let id = 1
       let label = "label"
@@ -75,7 +75,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, label: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3250', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3250', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3200 START`)
       let id = 1
       let label = "label"
@@ -96,7 +96,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified ID
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3300', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3300 START`)
       let id = 1
       try {
@@ -124,7 +124,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, undefined): Promise<void>
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400 START`)
       let id = 1
       await notificationManager.cancel(id, undefined).then(() => {
@@ -156,7 +156,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, num: number): Promise<void>
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0500', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0500', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0500 START`)
       let id = 1
       let num = 2
@@ -177,7 +177,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancel(id: number, label: string, undefined): Promise<void>
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0600', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0600', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0600 START`)
       let id = 1
       let label = "label"
@@ -198,7 +198,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelAll(callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels all notifications of the current application
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3350', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3350', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3350 START`)
       try {
         await notificationManager.cancelAll((err) => {
@@ -225,7 +225,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelAll(): Promise<void>
      * @tc.desc      : Cancels all notifications of the current application
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3400', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3400 START`)
       await notificationManager.cancelAll().then(() => {
         console.info(`${TAG} cancelAll Promise success`)
@@ -244,7 +244,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelAll(undefined): Promise<void>
      * @tc.desc      : Cancels all notifications of the current application
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_0300', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_0300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_0300 START`)
       await notificationManager.cancelAll(undefined).then(() => {
         console.info(`${TAG} cancelAll Promise success`)
@@ -263,7 +263,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3100', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3100', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3100 START`)
       let groupName = "groupName"
       try {
@@ -291,7 +291,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelGroup(groupName: string): Promise<void>
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('Sub_Notification_Ans_Publish_Cancel_3150', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Cancel_3150', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3150 START`)
       let groupName = "groupName"
       await notificationManager.cancelGroup(groupName).then(() => {
@@ -311,7 +311,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelGroup(num: number): Promise<void>
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0300', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0300 START`)
       let num = 1
       await notificationManager.cancelGroup(num).then(() => {
@@ -331,7 +331,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function cancelGroup(groupName: string, undefined): Promise<void>
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0400', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_0400 START`)
       let groupName = "groupName"
       await notificationManager.cancelGroup(groupName, undefined).then(() => {
@@ -351,7 +351,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function requestEnableNotification(callback: AsyncCallback<void>): void
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('Sub_Notification_Ans_Enable_Query_2500', 0, async function (done) {
+    it('Sub_Notification_Ans_Enable_Query_2500', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2500 START`)
       try {
         await notificationManager.requestEnableNotification((err) => {
@@ -378,7 +378,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function requestEnableNotification(): Promise<void>
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('Sub_Notification_Ans_Enable_Query_2600', 0, async function (done) {
+    it('Sub_Notification_Ans_Enable_Query_2600', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2600 START`)
       await notificationManager.requestEnableNotification().then(() => {
         console.info(`${TAG} requestEnableNotification Promise success`)
@@ -397,7 +397,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function requestEnableNotification(undefined): Promise<void>
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_0300', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_0300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_0300 START`)
       await notificationManager.requestEnableNotification(undefined).then(() => {
         console.info(`${TAG} requestEnableNotification Promise success`)
@@ -416,7 +416,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotificationCount(callback: AsyncCallback<number>): void
      * @tc.desc      : Obtains the number of all active notifications
      */
-    it('Sub_Notification_Ans_Distributed_Search_1300', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_1300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_ACTIVE_COUNT_TEST_0100 START`)
       try {
         await notificationManager.getActiveNotificationCount((err, data) => {
@@ -443,7 +443,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotificationCount(): Promise<number>
      * @tc.desc      : Obtains the number of all active notifications
      */
-    it('Sub_Notification_Ans_Distributed_Search_1400', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_1400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_ACTIVE_COUNT_TEST_0200 START`)
       await notificationManager.getActiveNotificationCount().then((data) => {
         console.info(`${TAG} getActiveNotificationCount Promise success :${JSON.stringify(data)}`)
@@ -462,7 +462,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void
      * @tc.desc      : Obtains an array of active notifications
      */
-    it('Sub_Notification_Ans_Distributed_Search_1500', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_1500', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_ACTIVE_COUNT_TEST_0300 START`)
       try {
         await notificationManager.getActiveNotifications((err, data) => {
@@ -489,7 +489,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotifications(): Promise<Array<NotificationRequest>>
      * @tc.desc      : Obtains an array of active notifications
      */
-    it('Sub_Notification_Ans_Distributed_Search_1600', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_1600', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_1600 START`)
       await notificationManager.getActiveNotifications().then((data) => {
         console.info(`${TAG} getActiveNotifications Promise success :${JSON.stringify(data)}`)
@@ -508,7 +508,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotificationCount(undefined): Promise<number>
      * @tc.desc      : Obtains the number of all active notifications
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0500', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0500', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0500 START`)
       await notificationManager.getActiveNotificationCount(undefined).then((data) => {
         console.info(`${TAG} getActiveNotificationCount Promise success :${JSON.stringify(data)}`)
@@ -527,7 +527,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function getActiveNotifications(undefined): Promise<Array<NotificationRequest>>
      * @tc.desc      : Obtains an array of active notifications
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0600', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0600', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_0600 START`)
       await notificationManager.getActiveNotifications(undefined).then((data) => {
         console.info(`${TAG} getActiveNotifications Promise success :${JSON.stringify(data)}`)
@@ -546,7 +546,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void
      * @tc.desc      : Obtains whether the template is supported by the system
      */
-    it('Sub_Notification_Ans_Distributed_template_0300', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_template_0300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_template_0300 START`)
       let templateName = 'test_templateName'
       try {
@@ -574,7 +574,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function isSupportTemplate(templateName: string): Promise<boolean>
      * @tc.desc      : Obtains whether the template is supported by the system
      */
-    it('Sub_Notification_Ans_Distributed_template_0400', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_template_0400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_template_0400 START`)
       let templateName = 'test_templateName'
       await notificationManager.isSupportTemplate(templateName).then((data) => {
@@ -594,7 +594,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function isSupportTemplate(num: number): Promise<boolean>
      * @tc.desc      : Obtains whether the template is supported by the system
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0300', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0300', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0300 START`)
       let num = 1
       await notificationManager.isSupportTemplate(num).then((data) => {
@@ -614,7 +614,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name      : function isSupportTemplate(templateName: string, undefined): Promise<boolean>
      * @tc.desc      : Obtains whether the template is supported by the system
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0400', 0, async function (done) {
+    it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0400', Level.LEVEL2, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0400 START`)
       let templateName = 'test_templateName'
       await notificationManager.isSupportTemplate(templateName, undefined).then((data) => {
@@ -634,7 +634,7 @@ export default function ActsNotificationManagerPublishTest() {
       * @tc.name: testPublishTitleForNull
       * @tc.desc: test publish fail
    */
-    it('testPublishTitleForNull', 0, async function (done) {
+    it('testPublishTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishTitleNull';
       let notificationRequest = {
         id: 1,
@@ -693,7 +693,7 @@ export default function ActsNotificationManagerPublishTest() {
       * @tc.name: testPublishTextForNull
       * @tc.desc: test publish fail
    */
-    it('testPublishTextForNull', 0, async function (done) {
+    it('testPublishTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishTextForNull';
       let notificationRequest = {
         id: 1,
@@ -727,7 +727,7 @@ export default function ActsNotificationManagerPublishTest() {
       * @tc.name: testPublishadditionalTextForNull
       * @tc.desc: test publish success
    */
-    it('testPublishadditionalTextForNull', 0, async function (done) {
+    it('testPublishadditionalTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishadditionalTextForNull';
       function requestEnableNotificationCallback(err) {
         if (err) {
@@ -771,7 +771,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishLongtextTitleForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishLongtextTitleForNull', 0, async function (done) {
+    it('testPublishLongtextTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
       let notificationRequest = {
         id: 111,
@@ -809,7 +809,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishLongtextTextForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishLongtextTextForNull', 0, async function (done) {
+    it('testPublishLongtextTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextTextForNull';
       let notificationRequest = {
         id: 1,
@@ -846,7 +846,7 @@ export default function ActsNotificationManagerPublishTest() {
     * @tc.name: testPublishLongtextadditionalTextForNull
     * @tc.desc: test publish success
  */
-    it("testPublishLongtextadditionalTextForNull", 0, async function (done) {
+    it("testPublishLongtextadditionalTextForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextadditionalTextForNull';
 
       function requestEnableNotificationCallback(err) {
@@ -894,7 +894,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishLongtextLongTextForNull
      * @tc.desc: test publish fail
   */
-    it(" testPublishLongtextLongTextForNull", 0, async function (done) {
+    it(" testPublishLongtextLongTextForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextLongTextForNull';
       let notificationRequest = {
         id: 1,
@@ -931,7 +931,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishLongtextBriefTextForNull
      * @tc.desc: test publish fail
   */
-    it("testPublishLongtextBriefTextForNull", 0, async function (done) {
+    it("testPublishLongtextBriefTextForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextBriefTextForNull';
       let notificationRequest = {
         id: 1,
@@ -968,7 +968,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishLongtextExpandedTitleForNull
      * @tc.desc: test publish fail
   */
-    it("testPublishLongtextExpandedTitleForNull", 0, async function (done) {
+    it("testPublishLongtextExpandedTitleForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextExpandedTitleForNull';
       let notificationRequest = {
         id: 1,
@@ -1005,7 +1005,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLineTitleForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishmultiLineTitleForNull', 0, async function (done) {
+    it('testPublishmultiLineTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishmultiLineTitleForNull';
       let notificationRequest = {
         id: 1,
@@ -1042,7 +1042,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLineTextForNull
      * @tc.desc: test publish fail
   */
-    it(" testPublishmultiLineTextForNull", 0, async function (done) {
+    it(" testPublishmultiLineTextForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishmultiLineTextForNull';
       let notificationRequest = {
         id: 1,
@@ -1079,7 +1079,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLineadditionalTextForNull
      * @tc.desc: test publish success
   */
-    it(" testPublishmultiLineadditionalTextForNull", 0, async function (done) {
+    it(" testPublishmultiLineadditionalTextForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
       function requestEnableNotificationCallback(err) {
         if (err) {
@@ -1126,7 +1126,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLinebriefTextForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishmultiLinebriefTextForNull', 0, async function (done) {
+    it('testPublishmultiLinebriefTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishmultiLinebriefTextForNull';
       let notificationRequest = {
         id: 1,
@@ -1163,7 +1163,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLinelongTitleForNull
      * @tc.desc: test publish fail
   */
-    it(" testPublishmultiLinelongTitleForNull", 0, async function (done) {
+    it(" testPublishmultiLinelongTitleForNull", Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishmultiLinelongTitleForNull';
       let notificationRequest = {
         id: 1,
@@ -1200,7 +1200,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishmultiLineLinesForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishmultiLineLinesForNull', 0, async function (done) {
+    it('testPublishmultiLineLinesForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishmultiLineLinesForNull';
       let notificationRequest = {
         id: 1,
@@ -1237,7 +1237,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishPictureTitleForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishPictureTitleForNull', 0, async function (done) {
+    it('testPublishPictureTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPictureTitleForNull';
 
       const color = new ArrayBuffer(60000);
@@ -1298,7 +1298,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.name: testPublishPictureTextForNull
      * @tc.desc: test publish fail
   */
-    it('testPublishPictureTextForNull', 0, async function (done) {
+    it('testPublishPictureTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPictureTextForNull';
 
       const color = new ArrayBuffer(60000);
@@ -1359,7 +1359,7 @@ export default function ActsNotificationManagerPublishTest() {
        * @tc.name: testPublishPictureadditionalTextForNull
        * @tc.desc: test publish success
     */
-    it('testPublishPictureadditionalTextForNull', 0, async function (done) {
+    it('testPublishPictureadditionalTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPictureadditionalTextForNull';
       function requestEnableNotificationCallback(err) {
         if (err) {
@@ -1429,7 +1429,7 @@ export default function ActsNotificationManagerPublishTest() {
     * @tc.name: testPublishPicturebriefTextForNull
     * @tc.desc: test publish fail
  */
-    it('testPublishPicturebriefTextForNull', 0, async function (done) {
+    it('testPublishPicturebriefTextForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPicturebriefTextForNull';
 
       const color = new ArrayBuffer(60000);
@@ -1489,7 +1489,7 @@ export default function ActsNotificationManagerPublishTest() {
   * @tc.name: testPublishPictureExpandedTitleForNull
   * @tc.desc: test publish fail
 */
-    it('testPublishPictureExpandedTitleForNull', 0, async function (done) {
+    it('testPublishPictureExpandedTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPictureExpandedTitleForNull';
 
       const color = new ArrayBuffer(60000);
@@ -1551,7 +1551,7 @@ export default function ActsNotificationManagerPublishTest() {
          * @tc.name: testPublishPicturepictureForNull
          * @tc.desc: test publish fail
      */
-    it('testPublishPictureExpandedTitleForNull', 0, async function (done) {
+    it('testPublishPictureExpandedTitleForNull', Level.LEVEL2, async function (done) {
       const TEST_CASE_NAME = 'testPublishPicturepictureForNull';
 
       const color = new ArrayBuffer(60000);

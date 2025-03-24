@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 import webMessageExt from './WebMessageExt.test';
+import webMessageExtErrorCode from './WebMessageExtErrorCode.test';
 import webMessagePortIsExtentionTypeTest from './WebMessagePortIsExtentionTypeTest.test';
 import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test';
 import webViewControllerPart3Test from './WebViewControllerPart3.test';
 
 export default function testsuite() {
   webMessageExt();
+  webMessageExtErrorCode();
   webMessagePortIsExtentionTypeTest();
   WebViewEnumAndFontLibrary();
   webViewControllerPart3Test();

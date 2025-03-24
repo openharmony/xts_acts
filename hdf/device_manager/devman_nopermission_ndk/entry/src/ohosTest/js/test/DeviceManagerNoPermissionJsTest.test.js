@@ -15,7 +15,7 @@
 
 import usbManager from '@ohos.usbManager'
 import deviceManager from '@ohos.driver.deviceManager'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function DeviceManagerNoPermissionJsTest() {
     describe("NoPermissionJsTest", function () {
@@ -75,7 +75,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionQueryDevices001', 0, done => {
+        it('testNoPermissionQueryDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionQueryDevices001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -99,7 +99,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionBindDevice001', 0, done => {
+        it('testNoPermissionBindDevice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionBindDevice001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -122,7 +122,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionBindDevice002', 0, async done => {
+        it('testNoPermissionBindDevice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async done => {
             console.info('----------------------testNoPermissionBindDevice002---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -145,7 +145,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionBindDeviceDriver001', 0, done => {
+        it('testNoPermissionBindDeviceDriver001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionBindDeviceDriver001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -169,7 +169,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionBindDeviceDriver002', 0, async done => {
+        it('testNoPermissionBindDeviceDriver002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async done => {
             console.info('----------------------testNoPermissionBindDeviceDriver002---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -193,7 +193,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionUnbindDevice001', 0, done => {
+        it('testNoPermissionUnbindDevice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionUnbindDevice001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -217,7 +217,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionUnbindDevice002', 0, async done => {
+        it('testNoPermissionUnbindDevice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async done => {
             console.info('----------------------testNoPermissionUnbindDevice002---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -243,7 +243,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionQueryDeviceInfo001', 0, done => {
+        it('testNoPermissionQueryDeviceInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionQueryDeviceInfo001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;
@@ -268,7 +268,7 @@ export default function DeviceManagerNoPermissionJsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('testNoPermissionQueryDriverInfo001', 0, done => {
+        it('testNoPermissionQueryDriverInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
             console.info('----------------------testNoPermissionQueryDriverInfo001---------------------------');
             if (!isDeviceConnected(done)) {
                 return;

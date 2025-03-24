@@ -15,7 +15,7 @@
 
 
 import secureElement from '@ohos.secureElement';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -96,9 +96,9 @@ export default function openSessionTest() {
          * @tc.name Test getReader
          * @tc.desc Obtains the reader that provides the session.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1100', 0, function () {
+        it('SUB_Communication_NFC_secureElement_js_1100', Level.LEVEL0, function () {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]11 This function is not supported because the phone NFC chip is ST chip.");
@@ -118,9 +118,9 @@ export default function openSessionTest() {
          * @tc.name Test getATR
          * @tc.desc Obtain the ATR of the SE.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1200', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_1200', Level.LEVEL0, function ()  {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]12 This function is not supported because the phone NFC chip is ST chip.");
@@ -141,9 +141,9 @@ export default function openSessionTest() {
          * @tc.name Test close Session
          * @tc.desc Close a single session.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_secureElement_js_1300', 0, async function (done) {
+        it('SUB_Communication_NFC_secureElement_js_1300', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]13 This function is not supported because the phone NFC chip is ST chip.");

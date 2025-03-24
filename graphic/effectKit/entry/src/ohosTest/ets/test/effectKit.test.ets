@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import image from '@ohos.multimedia.image';
 import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
@@ -30,7 +30,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createEffect1
      * @tc.desc Create a FilterChain to add multiple effects to an image.
      */
-    it('createEffect1', 0, (done: Function) => {
+    it('createEffect1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createEffect1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -58,7 +58,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createEffect2
      * @tc.desc Create a FilterChain to add multiple effects to an image.
      */
-    it('createEffect2', 0, (done: Function) => {
+    it('createEffect2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createEffect2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -73,7 +73,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test blur1
      * @tc.desc A blur effect is added to the image.
      */
-    it('blur1', 0, (done: Function) => {
+    it('blur1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'blur1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -107,7 +107,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test blur2
      * @tc.desc A blur effect is added to the image.
      */
-    it('blur2', 0, (done: Function) => {
+    it('blur2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'blur2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -141,7 +141,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test blur3
      * @tc.desc A blur effect is added to the image.
      */
-    it('blur3', 0, (done: Function) => {
+    it('blur3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'blur3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -175,7 +175,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test brightness1
      * @tc.desc A Brightness effect is added to the image.
      */
-    it('brightness1', 0, (done: Function) => {
+    it('brightness1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'brightness1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -209,7 +209,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test brightness2
      * @tc.desc A Brightness effect is added to the image.
      */
-    it('brightness2', 0, (done: Function) => {
+    it('brightness2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'brightness2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -243,7 +243,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test brightness3
      * @tc.desc A Brightness effect is added to the image.
      */
-    it('brightness3', 0, (done: Function) => {
+    it('brightness3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'brightness3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -277,7 +277,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test grayscale1
      * @tc.desc A Grayscale effect is added to the image.
      */
-    it('grayscale1', 0, (done: Function) => {
+    it('grayscale1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'grayscale1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -311,7 +311,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getPixelMap1
      * @tc.desc Gets the PixelMap where all filter effects have been added to the image.
      */
-    it('getPixelMap1', 0, (done: Function) => {
+    it('getPixelMap1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getPixelMap1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -345,7 +345,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getPixelMap2
      * @tc.desc Gets the PixelMap where all filter effects have been added to the image.
      */
-    it('getPixelMap2', 0, (done: Function) => {
+    it('getPixelMap2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getPixelMap2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -379,7 +379,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getPixelMap3
      * @tc.desc Gets the PixelMap where all filter effects have been added to the image.
      */
-    it('getPixelMap3', 0, (done: Function) => {
+    it('getPixelMap3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getPixelMap3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log("effectKitTest" + msgStr + 'begin');
@@ -413,7 +413,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker1', 0, (done: Function) => {
+    it('createColorPicker1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker1';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -445,7 +445,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker2', 0, (done: Function) => {
+    it('createColorPicker2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker2';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -478,7 +478,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker3', 0, (done: Function) => {
+    it('createColorPicker3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker3';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -511,7 +511,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker4', 0, (done: Function) => {
+    it('createColorPicker4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker4';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -544,7 +544,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker5', 0, (done: Function) => {
+    it('createColorPicker5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker5';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' '
       console.log(msgStr + 'begin');
@@ -578,7 +578,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker6', 0, (done: Function) => {
+    it('createColorPicker6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker6';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -613,7 +613,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPicker
      * @tc.desc Create a color picker to get the main color.
      */
-    it('createColorPicker7', 0, (done: Function) => {
+    it('createColorPicker7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPicker7';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -645,7 +645,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getMainColor
      * @tc.desc Create a color picker to get the main color.
      */
-    it('getMainColor1', 0, (done: Function) => {
+    it('getMainColor1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getMainColor1';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -684,7 +684,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getMainColor
      * @tc.desc Create a color picker to get the main color.
      */
-    it('getMainColor2', 0, (done: Function) => {
+    it('getMainColor2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getMainColor2';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -723,7 +723,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getMainColorSync
      * @tc.desc Create a color picker to get the main color.
      */
-    it('getMainColorSync1', 0, (done: Function) => {
+    it('getMainColorSync1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getMainColorSync1';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -757,7 +757,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getMainColorSync
      * @tc.desc Create a color picker to get the main color.
      */
-    it('getMainColorSync2', 0, (done: Function) => {
+    it('getMainColorSync2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getMainColorSync2';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -790,7 +790,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getLargestProportionColor
      * @tc.desc .
      */
-    it('getLargestProportionColor', 0, (done: Function) => {
+    it('getLargestProportionColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getLargestProportionColor';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -840,7 +840,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getHighestSaturationColor
      * @tc.desc .
      */
-    it('getHighestSaturationColor', 0, (done: Function) => {
+    it('getHighestSaturationColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getHighestSaturationColor';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -890,7 +890,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test getAverageColor
      * @tc.desc .
      */
-    it('getAverageColor', 0, (done: Function) => {
+    it('getAverageColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'getAverageColor';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -940,7 +940,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test isBlackOrWhiteOrGrayColor
      * @tc.desc .
      */
-    it('isBlackOrWhiteOrGrayColor', 0, (done: Function) => {
+    it('isBlackOrWhiteOrGrayColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'isBlackOrWhiteOrGrayColor';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -994,7 +994,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPickerTest001
      * @tc.desc Create a ColorPicker instance from the passed PixelMap
      */
-    it('createColorPickerTest001', 0, (done: Function) => {
+    it('createColorPickerTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPickerTest001';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1044,7 +1044,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPickerTest002
      * @tc.desc Create a ColorPicker instance from the passed PixelMap
      */
-    it('createColorPickerTest002', 0, (done: Function) => {
+    it('createColorPickerTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPickerTest002';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1094,7 +1094,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPickerTest003
      * @tc.desc Create a ColorPicker instance from the passed PixelMap
      */
-    it('createColorPickerTest003', 0, (done: Function) => {
+    it('createColorPickerTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPickerTest003';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1144,7 +1144,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPickerTest004
      * @tc.desc Create a ColorPicker instance from the passed PixelMap
      */
-    it('createColorPickerTest004', 0, (done: Function) => {
+    it('createColorPickerTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPickerTest004';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1186,7 +1186,7 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.name Test createColorPickerTest005
      * @tc.desc Create a ColorPicker instance from the passed PixelMap
      */
-    it('createColorPickerTest005', 0, (done: Function) => {
+    it('createColorPickerTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'createColorPickerTest005';
       let msgStr = 'jsunittest effectKitTest' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1231,7 +1231,8 @@ export default function effectKitTest(context: common.UIAbilityContext, windowSt
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetEffectPixelMap_Functin_Promise', 0, async (done: Function) => {
+    it('testGetEffectPixelMap_Functin_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let msgStr = 'testGetEffectPixelMap';
       console.log(msgStr + 'begin');
       const color = new ArrayBuffer(96);

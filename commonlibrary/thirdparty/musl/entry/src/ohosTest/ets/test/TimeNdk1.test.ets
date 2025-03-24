@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import time1 from 'libtimendk1.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -35,7 +35,7 @@ export default function timeNdk1Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMuslTimeFutimes001', 0, async (done: Function) => {
+    it('testMuslTimeFutimes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Futimes_One()).assertEqual(1);
       done()
     });
@@ -48,7 +48,7 @@ export default function timeNdk1Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMuslTimeFutimes002', 0, async (done: Function) => {
+    it('testMuslTimeFutimes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Futimes_Two()).assertEqual(1);
       done()
     });
@@ -61,7 +61,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTimeFutimesat001', 0, async (done: Function) => {
+    it('testMuslTimeFutimesat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Futimesat_One()).assertEqual(1);
       done()
     });
@@ -74,7 +74,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTimeFutimesat002', 0, async (done: Function) => {
+    it('testMuslTimeFutimesat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Futimesat_Two()).assertEqual(1);
       done()
     });
@@ -87,7 +87,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTimeTzName001', 0, async (done: Function) => {
+    it('testMuslTimeTzName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.TzName_One()).assertEqual(1);
       done()
     });
@@ -100,7 +100,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTimeTzName002', 0, async (done: Function) => {
+    it('testMuslTimeTzName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.TzName_Two()).assertEqual(1);
       done()
     });
@@ -113,7 +113,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeUtimes001', 0, async (done: Function) => {
+    it('testMuslTimeUtimes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Utimes_One()).assertEqual(1);
       done()
     });
@@ -126,7 +126,7 @@ export default function timeNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeUtimes002', 0, async (done: Function) => {
+    it('testMuslTimeUtimes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(time1.Utimes_Two()).assertEqual(1);
       done()
     });

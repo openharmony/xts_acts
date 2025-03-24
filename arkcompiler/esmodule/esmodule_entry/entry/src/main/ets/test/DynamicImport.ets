@@ -12,28 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from "@ohos/hypium"
+import {describe, it, expect, Level, Size, TestType} from "@ohos/hypium"
 
 export default function dynamicImport() {
   describe("DynamicImportTest", async () => {
-    it('importHar', 0, async () => {
+    it('importHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('har')
       expect(lib.add(2, 3)).assertEqual(5)
     })
-    it('importRelative', 0, async () => {
+    it('importRelative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('./test')
       expect(lib.add(2, 3)).assertEqual(5)
       expect(lib.default).assertEqual('test')
     })
-    it('importSystemInternal', 0, async () => {
+    it('importSystemInternal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('@ohos.hilog')
       lib.default.info(0x0000, "testTag", 'dexter log: call ohos.hilog')
     })
-    it('importSystemBuiltin', 0, async () => {
+    it('importSystemBuiltin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('@system.app')
       lib.default.getInfo()
     })
-    it('importAppNapi', 0, async () => {
+    it('importAppNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('libentry.so')
       expect(lib.default.add(2,3)).assertEqual(5)
     })

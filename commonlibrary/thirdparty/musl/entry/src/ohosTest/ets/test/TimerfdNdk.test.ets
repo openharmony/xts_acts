@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import timerfd from 'libtimerfdndk.so'
 
@@ -32,7 +32,7 @@ export default function timerfdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimerfdTimerfdCreate001', 0, async (done: Function) => {
+    it('testMuslTimerfdTimerfdCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let c: number = timerfd.timerfd_create(a);
       expect(c).assertEqual(-1);
@@ -47,7 +47,7 @@ export default function timerfdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimerfdTimerfdGettime001', 0, async (done: Function) => {
+    it('testMuslTimerfdTimerfdGettime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let c: number = timerfd.timerfd_gettime(a);
       expect(c).assertEqual(-1);
@@ -61,7 +61,7 @@ export default function timerfdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimerfdTimerfdSettime001', 0, async (done: Function) => {
+    it('testMuslTimerfdTimerfdSettime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let c: number = timerfd.timerfd_settime(a);
       expect(c).assertEqual(0);

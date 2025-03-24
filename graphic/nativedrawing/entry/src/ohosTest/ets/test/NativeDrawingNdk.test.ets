@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import nativeDrawing from 'libnativeDrawingndk.so'
 
 export default function nativeDrawingNdkTest() {
@@ -27,7 +27,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapCreate001', 0, async (done: Function) => {
+    it('testOHDrawingBitmapCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapCreate();
       expect(result).assertEqual(0);
       done();
@@ -41,7 +41,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapBuild001', 0, async (done: Function) => {
+    it('testOHDrawingBitmapBuild001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapBuild();
       expect(result).assertEqual(0);
       done();
@@ -55,7 +55,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetWidth001', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetWidth();
       expect(result).assertEqual(0);
       done();
@@ -69,7 +70,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetHeight001', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetHeight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetHeight();
       expect(result).assertEqual(0);
       done();
@@ -83,7 +85,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetPixels001', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetPixels();
       expect(result).assertEqual(0);
       done();
@@ -97,7 +100,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushCreate001', 0, async (done: Function) => {
+    it('testOHDrawingBrushCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushCreate();
       expect(result).assertEqual(0);
       done();
@@ -111,7 +114,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushIsAntiAlias001', 0, async (done: Function) => {
+    it('testOHDrawingBrushIsAntiAlias001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushIsAntiAlias();
       expect(result).assertEqual(0);
       done();
@@ -125,7 +129,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushSetAntiAlias001', 0, async (done: Function) => {
+    it('testOHDrawingBrushSetAntiAlias001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushSetAntiAlias();
       expect(result).assertEqual(0);
       done();
@@ -139,7 +144,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushGetColor001', 0, async (done: Function) => {
+    it('testOHDrawingBrushGetColor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushGetColor();
       expect(result).assertEqual(0);
       done();
@@ -153,7 +158,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushSetColor001', 0, async (done: Function) => {
+    it('testOHDrawingBrushSetColor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushSetColor();
       expect(result).assertEqual(0);
       done();
@@ -167,7 +172,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate001', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreate();
       expect(result).assertEqual(0);
       done();
@@ -181,7 +186,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate001', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPathCreate();
       expect(result).assertEqual(0);
       done();
@@ -195,7 +200,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenCreate001', 0, async (done: Function) => {
+    it('testOHDrawingPenCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenCreate();
       expect(result).assertEqual(0);
       done();
@@ -209,7 +214,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenIsAntiAlias001', 0, async (done: Function) => {
+    it('testOHDrawingPenIsAntiAlias001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenIsAntiAlias();
       expect(result).assertEqual(0);
       done();
@@ -223,7 +229,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetAntiAlias001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetAntiAlias001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetAntiAlias();
       expect(result).assertEqual(0);
       done();
@@ -237,7 +244,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetColor001', 0, async (done: Function) => {
+    it('testOHDrawingPenGetColor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetColor();
       expect(result).assertEqual(0);
       done();
@@ -251,7 +258,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetColor001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetColor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetColor();
       expect(result).assertEqual(0);
       done();
@@ -265,7 +272,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetWidth001', 0, async (done: Function) => {
+    it('testOHDrawingPenGetWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetWidth();
       expect(result).assertEqual(0);
       done();
@@ -279,7 +286,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetWidth001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetWidth();
       expect(result).assertEqual(0);
       done();
@@ -293,7 +300,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetMiterLimit001', 0, async (done: Function) => {
+    it('testOHDrawingPenGetMiterLimit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetMiterLimit();
       expect(result).assertEqual(0);
       done();
@@ -307,7 +315,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetMiterLimit001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetMiterLimit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetMiterLimit();
       expect(result).assertEqual(0);
       done();
@@ -321,7 +330,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetCap001', 0, async (done: Function) => {
+    it('testOHDrawingPenGetCap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetCap();
       expect(result).assertEqual(0);
       done();
@@ -335,7 +344,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetCap001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetCap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetCap();
       expect(result).assertEqual(0);
       done();
@@ -349,7 +358,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetJoin001', 0, async (done: Function) => {
+    it('testOHDrawingPenGetJoin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetJoin();
       expect(result).assertEqual(0);
       done();
@@ -363,7 +372,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetJoin001', 0, async (done: Function) => {
+    it('testOHDrawingPenSetJoin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetJoin();
       expect(result).assertEqual(0);
       done();
@@ -377,7 +386,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingColorSetArgb001', 0, async (done: Function) => {
+    it('testOHDrawingColorSetArgb001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingColorSetArgb();
       expect(result).assertEqual(0);
       done();
@@ -391,7 +400,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateFontCollection001', 0, async (done: Function) => {
+    it('testOHDrawingCreateFontCollection001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateFontCollection();
       expect(result).assertEqual(0);
       done();
@@ -405,7 +415,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle001', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyle();
       expect(result).assertEqual(0);
       done();
@@ -419,7 +430,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle001', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyle();
       expect(result).assertEqual(0);
       done();
@@ -433,7 +445,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyHandler001', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyHandler001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyHandler();
       expect(result).assertEqual(0);
       done();
@@ -447,7 +460,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypography001', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypography001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypography();
       expect(result).assertEqual(0);
       done();
@@ -461,7 +475,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyLayout001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyLayout001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyLayout();
       expect(result).assertEqual(0);
       done();
@@ -475,7 +490,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMaxWidth001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMaxWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMaxWidth();
       expect(result).assertEqual(0);
       done();
@@ -489,7 +505,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMinIntrinsicWidth001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMinIntrinsicWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMinIntrinsicWidth();
       expect(result).assertEqual(0);
       done();
@@ -503,7 +520,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMaxIntrinsicWidth001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMaxIntrinsicWidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL00,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMaxIntrinsicWidth();
       expect(result).assertEqual(0);
       done();
@@ -517,7 +535,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetLongestLine001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetLongestLine001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetLongestLine();
       expect(result).assertEqual(0);
       done();
@@ -531,7 +550,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetLongestLine002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetLongestLine002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetLongestLineAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -545,7 +565,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetLongestLineWithIndent', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetLongestLineWithIndent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetLongestLineWithIndent();
       expect(result).assertEqual(0);
       done();
@@ -559,7 +580,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetAlphabeticBaseline001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetAlphabeticBaseline001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetAlphabeticBaseline();
       expect(result).assertEqual(0);
       done();
@@ -573,7 +595,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetIdeographicBaseline002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetIdeographicBaseline002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetIdeographicBaselineNormal();
       expect(result).assertEqual(0);
       done();
@@ -587,7 +610,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetIdeographicBaseline001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetIdeographicBaseline001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetIdeographicBaseline();
       expect(result).assertEqual(0);
       done();
@@ -601,7 +625,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetAlphabeticBaseline002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetAlphabeticBaseline002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetAlphabeticBaselineNormal();
       expect(result).assertEqual(0);
       done();
@@ -615,7 +640,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetHeight001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetHeight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetHeight();
       expect(result).assertEqual(0);
       done();
@@ -629,7 +655,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetHeight002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetHeight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetHeightAbnormal();
       expect(result).assertEqual(-1);
       done();
@@ -643,7 +670,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetCap002', 0, async (done: Function) => {
+    it('testOHDrawingPenGetCap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetCapNormal();
       expect(result).assertEqual(0);
       done();
@@ -657,7 +684,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetCap002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetCap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetCapNormal();
       expect(result).assertEqual(0);
       done();
@@ -671,7 +698,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetJoin002', 0, async (done: Function) => {
+    it('testOHDrawingPenGetJoin002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetJoinNormal();
       expect(result).assertEqual(0);
       done();
@@ -685,7 +712,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetJoin002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetJoin002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetJoinNormal();
       expect(result).assertEqual(0);
       done();
@@ -699,7 +726,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenIsAntiAlias002', 0, async (done: Function) => {
+    it('testOHDrawingPenIsAntiAlias002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenIsAntiAliasNormal();
       expect(result).assertEqual(0);
       done();
@@ -713,7 +741,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetAntiAlias002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetAntiAlias002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetAntiAliasNormal();
       expect(result).assertEqual(0);
       done();
@@ -727,7 +756,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapBuild002', 0, async (done: Function) => {
+    it('testOHDrawingBitmapBuild002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapBuildNormal();
       expect(result).assertEqual(0);
       done();
@@ -741,7 +770,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetWidth002', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -755,7 +785,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetHeight002', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetHeight002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetHeightNormal();
       expect(result).assertEqual(0);
       done();
@@ -769,7 +800,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBitmapGetPixels002', 0, async (done: Function) => {
+    it('testOHDrawingBitmapGetPixels002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBitmapGetPixelsNormal();
       expect(result).assertEqual(0);
       done();
@@ -783,7 +815,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushIsAntiAlias002', 0, async (done: Function) => {
+    it('testOHDrawingBrushIsAntiAlias002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushIsAntiAliasNormal();
       expect(result).assertEqual(0);
       done();
@@ -797,7 +830,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushSetAntiAlias002', 0, async (done: Function) => {
+    it('testOHDrawingBrushSetAntiAlias002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushSetAntiAliasNormal();
       expect(result).assertEqual(0);
       done();
@@ -811,7 +845,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushGetColor002', 0, async (done: Function) => {
+    it('testOHDrawingBrushGetColor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushGetColorNormal();
       expect(result).assertEqual(0);
       done();
@@ -825,7 +859,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingBrushSetColor002', 0, async (done: Function) => {
+    it('testOHDrawingBrushSetColor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingBrushSetColorNormal();
       expect(result).assertEqual(0);
       done();
@@ -839,7 +873,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetColor002', 0, async (done: Function) => {
+    it('testOHDrawingPenGetColor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetColorNormal();
       expect(result).assertEqual(0);
       done();
@@ -853,7 +887,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetColor002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetColor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetColorNormal();
       expect(result).assertEqual(0);
       done();
@@ -867,7 +901,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetWidth002', 0, async (done: Function) => {
+    it('testOHDrawingPenGetWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -881,7 +915,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetWidth002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -895,7 +929,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenGetMiterLimit002', 0, async (done: Function) => {
+    it('testOHDrawingPenGetMiterLimit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenGetMiterLimitNormal();
       expect(result).assertEqual(0);
       done();
@@ -909,7 +944,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPenSetMiterLimit002', 0, async (done: Function) => {
+    it('testOHDrawingPenSetMiterLimit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingPenSetMiterLimitNormal();
       expect(result).assertEqual(0);
       done();
@@ -923,7 +959,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingColorSetArgb002', 0, async (done: Function) => {
+    it('testOHDrawingColorSetArgb002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingColorSetArgbNormal();
       expect(result).assertEqual(0);
       done();
@@ -937,7 +973,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyLayout002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyLayout002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyLayoutNormal();
       expect(result).assertEqual(0);
       done();
@@ -951,7 +988,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMaxWidth002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMaxWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMaxWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -965,7 +1003,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMinIntrinsicWidth002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMinIntrinsicWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMinIntrinsicWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -979,7 +1018,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingTypographyGetMaxIntrinsicWidth002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyGetMaxIntrinsicWidth002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyGetMaxIntrinsicWidthNormal();
       expect(result).assertEqual(0);
       done();
@@ -995,7 +1035,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle002', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleAnormal();
       expect(result).assertEqual(0);
       done();
@@ -1009,7 +1050,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle003', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleBnormal();
       expect(result).assertEqual(0);
       done();
@@ -1023,7 +1065,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle004', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1037,7 +1080,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle005', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleDnormal();
       expect(result).assertEqual(0);
       done();
@@ -1051,7 +1095,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle006', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleEnormal();
       expect(result).assertEqual(0);
       done();
@@ -1065,7 +1110,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypographyStyle007', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypographyStyle007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyStyleFnormal();
       expect(result).assertEqual(0);
       done();
@@ -1079,7 +1125,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle002', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleAnormal();
       expect(result).assertEqual(0);
       done();
@@ -1093,7 +1140,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle003', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleBnormal();
       expect(result).assertEqual(0);
       done();
@@ -1107,7 +1155,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle004', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1121,7 +1170,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle005', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleDnormal();
       expect(result).assertEqual(0);
       done();
@@ -1135,7 +1185,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle006', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleEnormal();
       expect(result).assertEqual(0);
       done();
@@ -1149,7 +1200,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle007', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleFnormal();
       expect(result).assertEqual(0);
       done();
@@ -1163,7 +1215,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle008', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleGnormal();
       expect(result).assertEqual(0);
       done();
@@ -1177,7 +1230,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle009', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleHnormal();
       expect(result).assertEqual(0);
       done();
@@ -1191,7 +1245,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle010', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleInormal();
       expect(result).assertEqual(0);
       done();
@@ -1205,7 +1260,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle011', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleJnormal();
       expect(result).assertEqual(0);
       done();
@@ -1219,7 +1275,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle012', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleKnormal();
       expect(result).assertEqual(0);
       done();
@@ -1233,7 +1290,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle013', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleLnormal();
       expect(result).assertEqual(0);
       done();
@@ -1247,7 +1305,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle014', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleMnormal();
       expect(result).assertEqual(0);
       done();
@@ -1261,7 +1320,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle015', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleNnormal();
       expect(result).assertEqual(0);
       done();
@@ -1275,7 +1335,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle016', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleOnormal();
       expect(result).assertEqual(0);
       done();
@@ -1289,7 +1350,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle017', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStylePnormal();
       expect(result).assertEqual(0);
       done();
@@ -1303,7 +1365,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle018', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleQnormal();
       expect(result).assertEqual(0);
       done();
@@ -1317,7 +1380,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle019', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleRnormal();
       expect(result).assertEqual(0);
       done();
@@ -1331,7 +1395,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle020', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleSnormal();
       expect(result).assertEqual(0);
       done();
@@ -1345,7 +1410,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTextStyle021', 0, async (done: Function) => {
+    it('testOHDrawingCreateTextStyle021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleTnormal();
       expect(result).assertEqual(0);
       done();
@@ -1360,7 +1426,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
 
-    it('testOHDrawingTypographyHandlerAddText001', 0, async (done: Function) => {
+    it('testOHDrawingTypographyHandlerAddText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyHandlerAddText();
       expect(result).assertEqual(0);
       done();
@@ -1375,7 +1442,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
 
-    it('testOHDrawingTypographyHandlerAddText002', 0, async (done: Function) => {
+    it('testOHDrawingTypographyHandlerAddText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingTypographyHandlerAddTextAanormal();
       expect(result).assertEqual(0);
       done();
@@ -1389,7 +1457,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate002', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateBitmap();
       expect(result).assertEqual(0);
       done();
@@ -1403,7 +1471,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate003', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreatePen();
       expect(result).assertEqual(0);
       done();
@@ -1417,7 +1485,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate004', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateBrush();
       expect(result).assertEqual(0);
       done();
@@ -1431,7 +1499,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate005', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateSave();
       expect(result).assertEqual(0);
       done();
@@ -1445,7 +1513,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate006', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateDrawLine();
       expect(result).assertEqual(0);
       done();
@@ -1459,7 +1527,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate007', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateDrawPath();
       expect(result).assertEqual(0);
       done();
@@ -1473,7 +1541,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate008', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateClear();
       expect(result).assertEqual(0);
       done();
@@ -1487,7 +1555,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate009', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateDetachPen();
       expect(result).assertEqual(0);
       done();
@@ -1501,7 +1569,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCanvasCreate010', 0, async (done: Function) => {
+    it('testOHDrawingCanvasCreate010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCanvasCreateDetachBrush();
       expect(result).assertEqual(0);
       done();
@@ -1515,7 +1583,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate002', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateMoveTo();
       expect(result).assertEqual(0);
       done();
@@ -1529,7 +1597,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate003', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateLineTo();
       expect(result).assertEqual(0);
       done();
@@ -1543,7 +1611,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate004', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateArcTo();
       expect(result).assertEqual(0);
       done();
@@ -1557,7 +1625,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate005', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateQuadTo();
       expect(result).assertEqual(0);
       done();
@@ -1571,7 +1639,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate006', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateCubicTo();
       expect(result).assertEqual(0);
       done();
@@ -1585,7 +1653,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate007', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateClose();
       expect(result).assertEqual(0);
       done();
@@ -1599,7 +1667,7 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingPathCreate008', 0, async (done: Function) => {
+    it('testOHDrawingPathCreate008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeDrawing.ohDrawingPathCreateReset();
       expect(result).assertEqual(0);
       done();
@@ -1613,7 +1681,8 @@ export default function nativeDrawingNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingCreateTypography002', 0, async (done: Function) => {
+    it('testOHDrawingCreateTypography002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTypographyPaint();
       expect(result).assertEqual(0);
       done();

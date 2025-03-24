@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import stat from 'libstatndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -41,7 +41,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatChmod001', 0, async (done: Function) => {
+    it('testMuslStatChmod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = stat.chmod();
       expect(result).assertEqual(resultTrue);
@@ -56,7 +56,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFstat64001', 0, async (done: Function) => {
+    it('testMuslStatFstat64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -76,7 +76,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFstatat001', 0, async (done: Function) => {
+    it('testMuslStatFstatat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -97,7 +97,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFstatat64001', 0, async (done: Function) => {
+    it('testMuslStatFstatat64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -117,7 +117,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFutimens001', 0, async (done: Function) => {
+    it('testMuslStatFutimens001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = stat.futimens();
       expect(result).assertEqual(resultTrue);
@@ -132,7 +132,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkFifoAt002', 0, async (done: Function) => {
+    it('testMuslStatMkFifoAt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.mkFifoAt(-1, 'fifoAt002');
       expect(result).assertEqual(-1)
       done()
@@ -146,7 +146,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkFifoAt003', 0, async (done: Function) => {
+    it('testMuslStatMkFifoAt003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.mkFifoAt(-100, 'fifoAt003');
       expect(result).assertEqual(0)
       done()
@@ -159,7 +159,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt001', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -182,7 +182,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt002', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -205,7 +205,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt003', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -228,7 +228,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt004', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -251,7 +251,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt005', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -274,7 +274,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt006', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -297,7 +297,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt007', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -320,7 +320,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt008', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -343,7 +343,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt009', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -366,7 +366,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt010', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -389,7 +389,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslStatMkNodAt011', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -412,7 +412,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt012', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -435,7 +435,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt013', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -458,7 +458,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt014', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -481,7 +481,7 @@ export default function statNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslStatMkNodAt015', 0, async (done: Function) => {
+    it('testMuslStatMkNodAt015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -504,7 +504,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatMkDir001', 0, async (done: Function) => {
+    it('testMuslStatMkDir001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.mkDir();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -518,7 +518,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatMkDirat001', 0, async (done: Function) => {
+    it('testMuslStatMkDirat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.mkDirAt();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -533,7 +533,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatLstat001', 0, async (done: Function) => {
+    it('testMuslStatLstat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.lstat();
       expect(data).assertEqual(0);
       done()
@@ -547,7 +547,7 @@ export default function statNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatLstat64001', 0, async (done: Function) => {
+    it('testMuslStatLstat64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.lstat64();
       expect(data).assertEqual(0);
       done()

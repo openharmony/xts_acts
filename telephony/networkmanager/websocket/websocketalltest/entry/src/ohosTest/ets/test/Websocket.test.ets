@@ -13,9 +13,18 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
+let activeUrl: string = 'wss://ws.welive.hu'+'awei.com/';
+
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+  try {
+    expect(n).assertTrue();
+  } catch (err) {
+    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
+  }
+};
 
 function expectTrue(exp: boolean, info: string = ''): void {
   try {
@@ -799,5 +808,97 @@ export default function WebSocketTest() {
         console.info(`${caseName} test end`);
       }
     });
+
+    /**
+     * @tc.number : SUB_NetworkMgr_WebSocket_CloseResult_0100
+     * @tc.name   : testNetworkMgrWebSocketCloseResult0100
+     * @tc.desc   : Closure result obtained by subscribing to the close event when the WebSocket connection is closed.
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testNetworkMgrWebSocketCloseResult0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketCloseResult0100';
+      console.info(`${caseName} test start`);
+      try {
+        const ws : webSocket.WebSocket = webSocket.createWebSocket();
+        ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+          console.info(`${caseName} onclose err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          ExpectTrue(value.reason != undefined)
+          done();
+        })
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          ws.close((err: BusinessError,value: boolean) => {
+            if (err) {
+              console.info(`${caseName} close fail ${JSON.stringify(err)}`);
+              ExpectTrue(false)
+              done();
+            } else {
+              console.info(`${caseName} close success and value is ${value}`);
+            }
+          })
+        });
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catch err is ${JSON.stringify(err)}`);
+        ExpectTrue(false)
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /*
+      * @tc.number: SUB_NetworkMgr_WebSocket_Connect_0100
+      * @tc.name  : testNetworkMgrWebSocketConnect0100
+      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(connect twice)
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 3
+      */
+    it('testNetworkMgrWebSocketConnect0100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketConnect0100';
+      console.info(`${caseName} test start`);
+      try {
+        const ws : webSocket.WebSocket = webSocket.createWebSocket();
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect1 fail ${JSON.stringify(err)}`);
+            ExpectTrue(false)
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect1 success and value is ${value}`);
+            ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+              if (err) {
+                console.info(`${caseName} test connect2 fail ${JSON.stringify(err)}`);
+                ExpectTrue(err.code == 2302003);
+                done();
+                console.info(`${caseName} test end`);
+              } else {
+                console.info(`${caseName} test connect2 success and value is ${value}`);
+                ExpectTrue(false)
+                done();
+                console.info(`${caseName} test end`);
+              }
+            })
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        ExpectTrue(false)
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
   });
 }

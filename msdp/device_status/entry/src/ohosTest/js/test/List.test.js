@@ -14,8 +14,10 @@
  */
 import DeviceStatusUnitTest from './device_status_unittest.test'
 import DeviceStatusMotionTest from './device_status_motion.test'
+import DeviceStatusMetadataBindingTest from './device_status_metadatabinding.test'
 
 export default function testsuite() {
     DeviceStatusUnitTest()
     DeviceStatusMotionTest()
+    DeviceStatusMetadataBindingTest()
 }

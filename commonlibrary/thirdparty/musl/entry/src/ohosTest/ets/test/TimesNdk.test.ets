@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import times from 'libtimesndk.so'
 
@@ -33,7 +33,7 @@ export default function timesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimesTimes001', 0, async (done: Function) => {
+    it('testMuslTimesTimes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = times.times();
       expect(c).assertEqual(0);
       done()

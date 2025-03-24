@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
+import { AVVolumePanel, AVVolumePanelParameter } from '@kit.AudioKit';
 
 @Entry
 @Component
@@ -20,29 +21,36 @@ struct Index {
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
   }
- @State message: string = 'Hello World'
-   build() {
-         Row() {
-           Column() {
-             Text(this.message)
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-             Button() {
-               Text('next page')
-                 .fontSize(20)
-                 .fontWeight(FontWeight.Bold)
-             }.type(ButtonType.Capsule)
-             .margin({
-               top: 20
-             })
-             .backgroundColor('#0D9FFB')
-             .width('35%')
-             .height('5%')
-             .onClick(()=>{
-             })
-           }
-             .width('100%')
-         }
-             .height('100%')
-   }
+  @State volumeLevel: number = 0;
+  @State volumeParameter: AVVolumePanelParameter = {
+    position: {
+      x: 100,
+      y: 200
+    }
+  };
+
+  build() {
+    Row() {
+      Column() {
+        AVVolumePanelTest();
+      }
+    }.width('50%').height('50%')
+  }
  }
+
+@Component
+export default struct AVVolumePanelTest {
+  @Prop volumeLevel: number;
+  @Prop volumeParameter: AVVolumePanelParameter;
+
+  build() {
+    Row() {
+      Column() {
+        AVVolumePanel({
+          volumeLevel: this.volumeLevel,
+          volumeParameter: this.volumeParameter
+        })
+      }
+    }.width('50%').height('50%')
+  }
+}

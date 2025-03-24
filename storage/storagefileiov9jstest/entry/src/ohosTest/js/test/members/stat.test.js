@@ -2411,6 +2411,7 @@ describe('fileIO_fs_stat', function () {
     try {
       let stat = await fileIO.stat(fpath);
       expect(stat.location == 1).assertTrue();
+      expect(fileIO.LocationType.LOCAl == 1).assertTrue();
 
       let file = fileIO.openSync(fpath);
       let stat2 = await fileIO.stat(file.fd);
@@ -2483,6 +2484,7 @@ describe('fileIO_fs_stat', function () {
       let stat = await fileIO.stat(file.fd);
       let filelocation = LocationType.CLOUD;
       expect(filelocation == 2).assertTrue();
+      expect(fileIO.LocationType.CLOUD == 2).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();

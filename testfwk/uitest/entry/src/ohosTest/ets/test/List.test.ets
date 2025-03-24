@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import UiTest from './uitest.test'
-
+import uitestEnumTest from './UitestEnum.test';
 export default function testsuite() {
-  UiTest()
+  UiTest();
+  uitestEnumTest(); 
 }

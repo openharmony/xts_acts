@@ -18,11 +18,13 @@ import networkManagerWithoutPermissionsTest from './NetworkManagerWithoutPremiss
 import netfirewallNoPTest from './netfirewallNop.test';
 import networkSecurityNoPTest from './networkSecurityNoP.test';
 import ethernetNoPTest from './ethernetNoP.test';
+import dataNoPTest from './datatestNoP.test';
 
 export default function testsuite() {
   networkManagerWithoutPermissionsTest();
   networkSecurityNoPTest();
   ethernetNoPTest();
+  dataNoPTest();
   if (canIUse('SystemCapability.Communication.NetManager.NetFirewall')){
     netfirewallNoPTest();
   }

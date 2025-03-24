@@ -63,7 +63,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
@@ -96,7 +96,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -107,7 +107,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count3.count = 0
@@ -154,7 +154,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -166,7 +166,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
@@ -194,7 +194,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -205,7 +205,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count3.count = 0
@@ -246,7 +246,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -258,7 +258,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let name1: String = ''
@@ -292,7 +292,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect("Task2").assertEqual(name2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -303,7 +303,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
@@ -336,7 +336,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
     /**
@@ -347,7 +347,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TestSequenceRunner0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TestSequenceRunner0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -408,7 +408,7 @@ export default function TaskPoolSequenceRunnerTest() {
         expect(0).assertEqual(finalViews1.byteLength);
       }
 
-      Done();
+      done();
     })
 
 
@@ -420,7 +420,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let res1: number = 0
@@ -458,7 +458,7 @@ export default function TaskPoolSequenceRunnerTest() {
       }
       expect(55).assertEqual(res1)
       expect(55).assertEqual(res2)
-      Done()
+      done()
     })
 
 
@@ -470,7 +470,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
@@ -508,7 +508,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -520,7 +520,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count3.count = 0
@@ -564,7 +564,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(Count2.count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -576,7 +576,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -612,7 +612,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(10).assertEqual(count2)
       expect(0).assertEqual(Count1.count)
       expect(0).assertEqual(Count2.count)
-      Done()
+      done()
     })
 
 
@@ -624,7 +624,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -676,7 +676,7 @@ export default function TaskPoolSequenceRunnerTest() {
       expect(0).assertEqual(Count4.count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -688,7 +688,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -722,7 +722,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -734,7 +734,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -778,7 +778,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -790,7 +790,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -825,7 +825,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -837,7 +837,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -880,7 +880,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -892,7 +892,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -927,7 +927,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -939,7 +939,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
@@ -980,7 +980,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -992,7 +992,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1013,7 +1013,7 @@ export default function TaskPoolSequenceRunnerTest() {
         }
         expect(task2.isDone()).assertTrue()
       }
-      Done()
+      done()
 
     })
 
@@ -1026,7 +1026,7 @@ export default function TaskPoolSequenceRunnerTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('sequenceRunner2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('sequenceRunner2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1038,7 +1038,7 @@ export default function TaskPoolSequenceRunnerTest() {
         expect(task1.isDone()).assertFalse()
         expect(task2.isDone()).assertFalse()
       }
-      Done()
+      done()
     })
 
   })

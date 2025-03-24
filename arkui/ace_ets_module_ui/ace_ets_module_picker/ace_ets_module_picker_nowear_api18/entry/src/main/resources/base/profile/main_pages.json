@@ -5,12 +5,15 @@
     "MainAbility/pages/calendarPicker/calendarPickerStartEndTest",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday",
-    "MainAbility/pages/CalendarPicker/dialogDisableDateRangeAndMarkToday",
+    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
+    "MainAbility/pages/calendarPickerDialog/dialogDisableDateRangeAndMarkToday",
     "MainAbility/pages/timePickerDialog/timePickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",
     "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest"
+    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest",
+    "MainAbility/pages/textPickerDialog/textPickerDialogDefaultTextStyle",
+    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation",
+    "MainAbility/pages/calendarPickerDialog/calendarPickerDialogBackgroundStyle"
   ]
 }

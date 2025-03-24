@@ -13,6 +13,7 @@
         "MainAbility/pages/WebFontTest",
         "MainAbility/pages/WebViewEnumAndFontLibrary",
         "MainAbility/pages/WebViewJavaScriptProxyAndOnPageVisible",
-		"MainAbility/pages/enableFollowSystemFontWeight"
+		"MainAbility/pages/enableFollowSystemFontWeight",
+		"MainAbility/pages/webFantasyFont"
     ]
 }

@@ -32,7 +32,7 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.name: GetTargetOverlayModuleInfosModuleNameIsNull
      * @tc.desc: The query fails when the incoming moduleName is empty
      */
-    it('GetTargetOverlayModuleInfosModuleNameIsNull', 0, async () => {
+    it('GetTargetOverlayModuleInfosModuleNameIsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       try {
         await overlay.getTargetOverlayModuleInfos("").then(data => {
           console.info("GetTargetOverlayModuleInfosModuleNameIsNull result" + JSON.stringify(data));
@@ -60,7 +60,7 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.name: GetTargetOverlayModuleInfosModuleNameNotInstall
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */
-    it('GetTargetOverlayModuleInfosModuleNameNotInstall', 0, async () => {
+    it('GetTargetOverlayModuleInfosModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       try {
         await overlay.getTargetOverlayModuleInfos(MODULE_NAME1).then(data => {
           console.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));

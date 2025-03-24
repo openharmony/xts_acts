@@ -52,7 +52,7 @@ class DrawingNativeImageTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -69,7 +69,7 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageDestroy with a NULL parameter
     OH_Drawing_ImageDestroy(nullptr);
     // add assert
@@ -84,7 +84,7 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ImageCreate and OH_Drawing_ImageDestroy 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
@@ -113,7 +113,7 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -142,7 +142,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -171,7 +171,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
         // add assert
@@ -197,7 +197,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
         // add assert
@@ -223,7 +223,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -255,7 +255,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, Function | SmallTest | Level3) {
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
     EXPECT_NE(image, nullptr);
@@ -284,7 +284,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
         // add assert
@@ -314,7 +314,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCallsBoundary, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCallsBoundary, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
         // add assert
@@ -346,7 +346,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCallsBoundary, T
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, Function | SmallTest | Level0) {
     OH_Drawing_ColorFormat cfs[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
         COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
@@ -388,7 +388,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNULL, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -419,7 +419,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNULL, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, Function | SmallTest | Level3) {
     OH_Drawing_ColorFormat cf[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
         COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
@@ -457,7 +457,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -485,7 +485,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert
@@ -513,7 +513,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoBoundary, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoBoundary, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     // add assert

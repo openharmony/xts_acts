@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import notification from '@system.notification'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function ActsNotificationShowTest() {
   describe('SUB_NOTIFICATION_ANS_SHOW_TEST', function () {
@@ -25,7 +25,7 @@ export default function ActsNotificationShowTest() {
     * @tc.name: show()
     * @tc.desc: verify the function of show
     */
-    it('Sub_Notification_Ans_Distributed_Enable_5300', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5300', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5300 START ')
       let ShowNotificationOptions = {
         contentTitle: 'Title1',
@@ -59,7 +59,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5400', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5400', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5400 START ')
       let ShowNotificationOptions = {
         contentTitle: 123,
@@ -87,7 +87,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5500', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5500', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5500 START ')
       let ShowNotificationOptions = {}
       try {
@@ -107,7 +107,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5600', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5600', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5600 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',
@@ -144,7 +144,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5700', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5700', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5700 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',
@@ -182,7 +182,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5800', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5800', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5800 START ')
       let ActionResult = {
         bundleName: '',
@@ -219,7 +219,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_5900', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_5900', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5900 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',
@@ -256,7 +256,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_6000', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_6000', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_6000 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',
@@ -293,7 +293,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_6100', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_6100', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_6100 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',
@@ -328,7 +328,7 @@ export default function ActsNotificationShowTest() {
      * @tc.name: show()
      * @tc.desc: verify the function of show
      */
-    it('Sub_Notification_Ans_Distributed_Enable_6200', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Enable_6200', Level.LEVEL2, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_6200 START ')
       let ActionResult = {
         bundleName: 'com.example.actsnotificationshow',

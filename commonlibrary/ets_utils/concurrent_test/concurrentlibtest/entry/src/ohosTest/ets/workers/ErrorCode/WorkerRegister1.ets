@@ -25,5 +25,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
       res) //worker: this is a message from TestObj with input: hello there!
   } catch (e) {
     console.log(`testThreadWorkerErrorCode0019 main onexit code: ` + JSON.stringify(e));
+    workerPort.postMessage(e.code)
   }
 }

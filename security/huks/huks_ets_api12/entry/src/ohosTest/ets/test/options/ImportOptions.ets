@@ -159,3 +159,34 @@ export function GetDesImportData(size: number): Uint8Array {
       return new Uint8Array
   }
 }
+
+export function GetAesImportData(size: number): Uint8Array {
+  switch (size) {
+    case 64:
+      return new Uint8Array([
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBE
+      ])
+    case 128:
+      return new Uint8Array([
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBE, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA
+      ])
+    case 192:
+      return new Uint8Array([
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBE, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA,
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBF
+      ])
+    case 256:
+      return new Uint8Array([
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBE, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA,
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBF, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA,
+      ])
+    case 320:
+      return new Uint8Array([
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBE, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA,
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBF, 0X6A, 0X6F, 0X63, 0X2A, 0X7C, 0X86, 0XBA, 0XCA,
+        0XFB, 0X8B, 0X9F, 0X12, 0XA0, 0X83, 0X19, 0XBF,
+      ])
+    default:
+      return new Uint8Array
+  }
+}

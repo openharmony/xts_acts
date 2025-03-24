@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function DataViewTest() {
   describe('dataViewTest', () => {
@@ -24,7 +24,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint320001', 0, () => {
+    it('testDataViewSetuint320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint320001";
       try {
         const buffer = new ArrayBuffer(16);
@@ -45,7 +45,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint320002', 0, () => {
+    it('testDataViewSetuint320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint320002";
       try {
         const buffer = new ArrayBuffer(16);
@@ -66,7 +66,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint320003', 0, () => {
+    it('testDataViewSetuint320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint320003";
       try {
         const buffer = new ArrayBuffer(16);
@@ -87,7 +87,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint320004', 0, () => {
+    it('testDataViewSetuint320004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint320004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -108,7 +108,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint320005', 0, () => {
+    it('testDataViewSetuint320005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint320005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -129,7 +129,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint160001', 0, () => {
+    it('testDataViewSetuint160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint160001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -150,7 +150,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint160002', 0, () => {
+    it('testDataViewSetuint160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint160002";
       try {
         const buffer = new ArrayBuffer(8);
@@ -171,7 +171,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint160003', 0, () => {
+    it('testDataViewSetuint160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint160003";
       try {
         const buffer = new ArrayBuffer(8);
@@ -191,7 +191,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetuint160004', 0, () => {
+    it('testDataViewSetuint160004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetuint160004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -212,7 +212,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint160005', 0, () => {
+    it('testDataViewSetUint160005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint160005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -233,7 +233,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint80001', 0, () => {
+    it('testDataViewSetUint80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint80001";
       try {
         const buffer = new ArrayBuffer(64);
@@ -254,7 +254,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint80002', 0, () => {
+    it('testDataViewSetUint80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint80002";
       try {
         const buffer = new ArrayBuffer(64);
@@ -275,7 +275,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint80003', 0, () => {
+    it('testDataViewSetUint80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint80003";
       try {
         const buffer = new ArrayBuffer(64);
@@ -296,7 +296,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint80004', 0, () => {
+    it('testDataViewSetUint80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint80004";
       try {
         const buffer = new ArrayBuffer(64);
@@ -317,7 +317,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetUint80005', 0, () => {
+    it('testDataViewSetUint80005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetUint80005";
       try {
         const buffer = new ArrayBuffer(64);
@@ -338,7 +338,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt320001', 0, () => {
+    it('testDataViewSetInt320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320001";
       try {
         const buffer = new ArrayBuffer(64);
@@ -359,7 +359,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt320002', 0, () => {
+    it('testDataViewSetInt320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320002";
       try {
         const buffer = new ArrayBuffer(64);
@@ -380,7 +380,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt320003', 0, () => {
+    it('testDataViewSetInt320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320003";
       try {
         const buffer = new ArrayBuffer(64);
@@ -401,7 +401,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt320004', 0, () => {
+    it('testDataViewSetInt320004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320004";
       try {
         const buffer = new ArrayBuffer(10);
@@ -422,7 +422,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt320005', 0, () => {
+    it('testDataViewSetInt320005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320005";
       try {
         const buffer = new ArrayBuffer(10);
@@ -443,7 +443,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt160001', 0, () => {
+    it('testDataViewSetInt160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt160001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -464,7 +464,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt160002', 0, () => {
+    it('testDataViewSetInt160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt160002";
       try {
         const buffer = new ArrayBuffer(10);
@@ -485,7 +485,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt160003', 0, () => {
+    it('testDataViewSetInt160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt320003";
       try {
         const buffer = new ArrayBuffer(10);
@@ -506,7 +506,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt160004', 0, () => {
+    it('testDataViewSetInt160004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt160004";
       try {
         const buffer = new ArrayBuffer(10);
@@ -527,7 +527,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt160005', 0, () => {
+    it('testDataViewSetInt160005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt160005";
       try {
         const buffer = new ArrayBuffer(10);
@@ -548,7 +548,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt80001', 0, () => {
+    it('testDataViewSetInt80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt80001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -569,7 +569,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt80002', 0, () => {
+    it('testDataViewSetInt80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt80002";
       try {
         const buffer = new ArrayBuffer(8);
@@ -590,7 +590,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt80003', 0, () => {
+    it('testDataViewSetInt80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt80003";
       try {
         let buffer = new ArrayBuffer(8);
@@ -611,7 +611,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt80004', 0, () => {
+    it('testDataViewSetInt80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt80004";
       try {
         let value = new ArrayBuffer(8);
@@ -631,7 +631,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetInt80005', 0, () => {
+    it('testDataViewSetInt80005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetInt80005";
       try {
         let value = new ArrayBuffer(8);
@@ -652,7 +652,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetFloat640001', 0, () => {
+    it('testDataViewSetFloat640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat640001";
       try {
         let value = new ArrayBuffer(16);
@@ -673,7 +673,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetFloat640002', 0, () => {
+    it('testDataViewSetFloat640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat640002";
       try {
         let value = new ArrayBuffer(8);
@@ -694,7 +694,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetFloat640003', 0, () => {
+    it('testDataViewSetFloat640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat640003";
       try {
         let value = new ArrayBuffer(8);
@@ -715,7 +715,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetFloat640004', 0, () => {
+    it('testDataViewSetFloat640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat640004";
       try {
         let value = new ArrayBuffer(8);
@@ -736,7 +736,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetFloat640005', 0, () => {
+    it('testDataViewSetFloat640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat640005";
       try {
         let value = new ArrayBuffer(8);
@@ -757,7 +757,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetFloat320001", 0, () => {
+    it("testDataViewSetFloat320001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat320001";
       try {
         const buffer = new ArrayBuffer(10);
@@ -778,7 +778,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetFloat320002", 0, () => {
+    it("testDataViewSetFloat320002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat320002";
       try {
         const buffer = new ArrayBuffer(10);
@@ -799,7 +799,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetFloat320003", 0, () => {
+    it("testDataViewSetFloat320003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat320003";
       try {
         const buffer = new ArrayBuffer(10);
@@ -820,7 +820,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetFloat320004", 0, () => {
+    it("testDataViewSetFloat320004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat320004";
       try {
         const buffer = new ArrayBuffer(10);
@@ -841,7 +841,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetFloat320005", 0, () => {
+    it("testDataViewSetFloat320005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetFloat320005";
       try {
         const buffer = new ArrayBuffer(10);
@@ -862,7 +862,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetBigUint640001", 0, () => {
+    it("testDataViewSetBigUint640001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetBigUint640001"
       try {
         const buffer = new ArrayBuffer(10);
@@ -883,7 +883,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetBigUint640002", 0, () => {
+    it("testDataViewSetBigUint640002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetBigUint640002";
       try {
         const buffer = new ArrayBuffer(10);
@@ -904,7 +904,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetBigUint640003", 0, () => {
+    it("testDataViewSetBigUint640003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetBigUint640003";
       try {
         const buffer = new ArrayBuffer(10);
@@ -925,7 +925,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetBigUint640004", 0, () => {
+    it("testDataViewSetBigUint640004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetBigUint640004";
       try {
         const buffer = new ArrayBuffer(10);
@@ -946,7 +946,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testDataViewSetBigUint640005", 0, () => {
+    it("testDataViewSetBigUint640005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewSetBigUint640005";
       try {
         const buffer = new ArrayBuffer(10);
@@ -967,7 +967,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetBigint640001', 0, () => {
+    it('testDataViewSetBigint640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewSetBigint640001'
       try {
         let buffer = new ArrayBuffer(16);
@@ -988,7 +988,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetBigint640002', 0, () => {
+    it('testDataViewSetBigint640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewSetBigint640002'
       try {
         let buffer = new ArrayBuffer(8);
@@ -1009,7 +1009,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetBigint640003', 0, () => {
+    it('testDataViewSetBigint640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewSetBigint640003'
       try {
         let buffer = new ArrayBuffer(8);
@@ -1030,7 +1030,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetBigint640004', 0, () => {
+    it('testDataViewSetBigint640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewSetBigint640004'
       try {
         let buffer = new ArrayBuffer(8);
@@ -1051,7 +1051,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewSetBigint640005', 0, () => {
+    it('testDataViewSetBigint640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewSetBigint640005'
       try {
         let buffer = new ArrayBuffer(8);
@@ -1072,7 +1072,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewByteOffset0001', 0, () => {
+    it('testDataViewByteOffset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewByteOffset0001'
       try {
         const buffer = new ArrayBuffer(8);
@@ -1092,7 +1092,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewByteOffset0002', 0, () => {
+    it('testDataViewByteOffset0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewByteOffset0002'
       try {
         const buffer = new ArrayBuffer(5.5);
@@ -1112,7 +1112,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewByteOffset0003', 0, () => {
+    it('testDataViewByteOffset0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewByteOffset0003'
       try {
         const buffer = new ArrayBuffer(65536);
@@ -1132,7 +1132,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewByteOffset0004', 0, () => {
+    it('testDataViewByteOffset0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewByteOffset0004'
       try {
         const buffer = new ArrayBuffer(-1);
@@ -1152,7 +1152,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigInt640001', 0, () => {
+    it('testDataViewGetBigInt640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetBigInt640001";
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1171,7 +1171,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigInt640002', 0, () => {
+    it('testDataViewGetBigInt640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigInt640002';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1190,7 +1190,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigInt640003', 0, () => {
+    it('testDataViewGetBigInt640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigInt640003';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1209,7 +1209,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigInt640004', 0, () => {
+    it('testDataViewGetBigInt640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigInt640004';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1228,7 +1228,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigInt640005', 0, () => {
+    it('testDataViewGetBigInt640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigInt640005';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1247,7 +1247,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigUint640001', 0, () => {
+    it('testDataViewGetBigUint640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigUint640001';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1266,7 +1266,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigUint640002', 0, () => {
+    it('testDataViewGetBigUint640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigUint640002';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1285,7 +1285,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigUint640003', 0, () => {
+    it('testDataViewGetBigUint640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigUint640003';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1304,7 +1304,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigUint640004', 0, () => {
+    it('testDataViewGetBigUint640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigUint640004';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1323,7 +1323,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetBigUint640005', 0, () => {
+    it('testDataViewGetBigUint640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetBigUint640005';
       try {
         const dataView = new DataView(new ArrayBuffer(8));
@@ -1342,7 +1342,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat320001', 0, () => {
+    it('testDataViewGetFloat320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat320001';
       try {
         const dataView = new DataView(new ArrayBuffer(4));
@@ -1361,7 +1361,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat320002', 0, () => {
+    it('testDataViewGetFloat320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat320002';
       try {
         const dataView = new DataView(new ArrayBuffer(4));
@@ -1380,7 +1380,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat320003', 0, () => {
+    it('testDataViewGetFloat320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat320003';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1400,7 +1400,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat320004', 0, () => {
+    it('testDataViewGetFloat320004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat320004';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1420,7 +1420,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataView0069', 0, () => {
+    it('testDataView0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataView0069';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1440,7 +1440,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat320006', 0, () => {
+    it('testDataViewGetFloat320006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat320006';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1460,7 +1460,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640001', 0, () => {
+    it('testDataViewGetFloat640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640001';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1480,7 +1480,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640002', 0, () => {
+    it('testDataViewGetFloat640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640002';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1500,7 +1500,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640003', 0, () => {
+    it('testDataViewGetFloat640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640003';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1520,7 +1520,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640004', 0, () => {
+    it('testDataViewGetFloat640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640004';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1539,7 +1539,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640005', 0, () => {
+    it('testDataViewGetFloat640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640005';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1559,7 +1559,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetFloat640006', 0, () => {
+    it('testDataViewGetFloat640006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetFloat640006';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1579,7 +1579,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt80001', 0, () => {
+    it('testDataViewGetInt80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt80001';
       try {
         const buffer = new ArrayBuffer(16);
@@ -1600,7 +1600,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt80002', 0, () => {
+    it('testDataViewGetInt80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt80002';
       try {
         const buffer = new ArrayBuffer(16);
@@ -1620,7 +1620,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt80003', 0, () => {
+    it('testDataViewGetInt80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt80003';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1639,7 +1639,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt80004', 0, () => {
+    it('testDataViewGetInt80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt80004';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1659,7 +1659,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt80005', 0, () => {
+    it('testDataViewGetInt80005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt80005';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1679,7 +1679,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt160001', 0, () => {
+    it('testDataViewGetInt160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt160001';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1698,7 +1698,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt160002', 0, () => {
+    it('testDataViewGetInt160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt160002';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1717,7 +1717,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt160003', 0, () => {
+    it('testDataViewGetInt160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt160003';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1736,7 +1736,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt160004', 0, () => {
+    it('testDataViewGetInt160004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt160004';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1756,7 +1756,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt160005', 0, () => {
+    it('testDataViewGetInt160005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt160005';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1776,7 +1776,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320001', 0, () => {
+    it('testDataViewGetInt320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt320001';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1795,7 +1795,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320002', 0, () => {
+    it('testDataViewGetInt320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDataViewGetInt320002';
       try {
         const buffer = new ArrayBuffer(8);
@@ -1814,7 +1814,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320003', 0, () => {
+    it('testDataViewGetInt320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetInt320003";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1834,7 +1834,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320004', 0, () => {
+    it('testDataViewGetInt320004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetInt320004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1854,7 +1854,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320005', 0, () => {
+    it('testDataViewGetInt320005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetInt320005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1874,7 +1874,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetInt320006', 0, () => {
+    it('testDataViewGetInt320006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetInt320006";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1894,7 +1894,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint80001', 0, () => {
+    it('testDataViewGetUint80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint80001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1914,7 +1914,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint80002', 0, () => {
+    it('testDataViewGetUint80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint80002";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1934,7 +1934,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint80003', 0, () => {
+    it('testDataViewGetUint80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint80003";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1954,7 +1954,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint80004', 0, () => {
+    it('testDataViewGetUint80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint80004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1974,7 +1974,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint80005', 0, () => {
+    it('testDataViewGetUint80005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint80005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -1994,7 +1994,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160001', 0, () => {
+    it('testDataViewGetUint160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2014,7 +2014,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160002', 0, () => {
+    it('testDataViewGetUint160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160002";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2034,7 +2034,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160003', 0, () => {
+    it('testDataViewGetUint160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160003";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2054,7 +2054,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160004', 0, () => {
+    it('testDataViewGetUint160004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2075,7 +2075,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160005', 0, () => {
+    it('testDataViewGetUint160005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2095,7 +2095,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint160006', 0, () => {
+    it('testDataViewGetUint160006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint160006";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2115,7 +2115,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320001', 0, () => {
+    it('testDataViewGetUint320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2136,7 +2136,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320002', 0, () => {
+    it('testDataViewGetUint320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320002";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2157,7 +2157,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320003', 0, () => {
+    it('testDataViewGetUint320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320003";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2177,7 +2177,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320004', 0, () => {
+    it('testDataViewGetUint320004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320004";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2197,7 +2197,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320005', 0, () => {
+    it('testDataViewGetUint320005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320005";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2217,7 +2217,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewGetUint320006', 0, () => {
+    it('testDataViewGetUint320006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewGetUint320006";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2237,7 +2237,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewDataViewPrototypeByteLength0001', 0, () => {
+    it('testDataViewDataViewPrototypeByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewDataViewPrototypeByteLength0001";
       try {
         const buffer = new ArrayBuffer(8);
@@ -2257,7 +2257,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewDataViewPrototypeByteLength0002', 0, () => {
+    it('testDataViewDataViewPrototypeByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewDataViewPrototypeByteLength0002";
       try {
         const buffer = new ArrayBuffer(65536);
@@ -2277,7 +2277,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewDataViewPrototypeByteLength0003', 0, () => {
+    it('testDataViewDataViewPrototypeByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewDataViewPrototypeByteLength0003";
       try {
         const buffer = new ArrayBuffer(-1);
@@ -2297,7 +2297,7 @@ export default function DataViewTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDataViewDataViewPrototypeByteLength0004', 0, () => {
+    it('testDataViewDataViewPrototypeByteLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDataViewDataViewPrototypeByteLength0004";
       try {
         const buffer = new ArrayBuffer(5.5);

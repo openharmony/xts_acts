@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { withinHspTest } from 'Sharelibraryhsp/src/main/ets/pages/Index';
 import { withinHarTest } from 'Staticlibraryhar/src/main/ets/components/mainpage/MainPage';
 
@@ -28,7 +28,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testImportHspName', 0, async () => {
+    it('testImportHspName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('Sharelibraryhsp')
       expect(lib.add(2, 3)).assertEqual(5)
     })
@@ -41,7 +41,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testImportHspPath', 0, async () => {
+    it('testImportHspPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('Sharelibraryhsp/src/main/ets/utils/Calc')
       expect(lib.add(3, 4)).assertEqual(7)
     })
@@ -54,7 +54,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testImportHarName', 0, async () => {
+    it('testImportHarName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('Staticlibraryhar')
       expect(lib.add(2, 3)).assertEqual(5)
     })
@@ -67,7 +67,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testImportHarPath', 0, async () => {
+    it('testImportHarPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
        let lib = await import('Staticlibraryhar/src/main/ets/Calc')
        expect(lib.add(3, 5)).assertEqual(8)
     })
@@ -80,7 +80,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testWithinhapImportPath', 0, async () => {
+    it('testWithinhapImportPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let lib = await import('../../../main/ets/Calc')
       expect(lib.add(3, 5)).assertEqual(8)
     })
@@ -93,7 +93,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testWithinimportHspPath', 0, async () => {
+    it('testWithinimportHspPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await withinHspTest()
       expect(res).assertTrue()
     })
@@ -106,7 +106,7 @@ export default function constDynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testWithinimportHarPath', 0, async () => {
+    it('testWithinimportHarPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await withinHarTest()
       expect(res).assertTrue()
     })

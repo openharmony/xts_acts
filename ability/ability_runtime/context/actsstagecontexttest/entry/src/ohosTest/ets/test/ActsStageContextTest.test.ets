@@ -352,7 +352,6 @@ export default function actsStageContextTest() {
       done();
     })
 
-
     /*
     * @tc.number    : ACTS_StageContext_1500
     * @tc.name      : test CreateModuleContext

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,15 +13,31 @@
  * limitations under the License.
  */
 
-import { SelectDialog } from '@ohos.arkui.advanced.Dialog'
+import { SelectDialog } from '@ohos.arkui.advanced.Dialog';
+import { CustomColors, CustomTheme } from '@ohos.arkui.theme';
+
+class CustomThemeImpl implements CustomTheme {
+  public colors?: CustomColors;
+
+  constructor(colors: CustomColors) {
+    this.colors = colors;
+  }
+}
+
+class CustomThemeColors implements CustomColors {
+  public fontPrimary = '#ffd0a300';
+  public iconSecondary = '#ffd000cd';
+}
 
 @Entry
 @Component
 struct SelectDialogTest {
+  @State customTheme: CustomTheme = new CustomThemeImpl(new CustomThemeColors());
   radioIndex = 0;
   dialogControllerList: CustomDialogController = new CustomDialogController({
     builder: SelectDialog({
       title: '文本标题',
+      content: '内容内容',
       selectedIndex: this.radioIndex,
       confirm: {
         value: '取消',
@@ -40,7 +56,9 @@ struct SelectDialogTest {
             this.radioIndex = 1
           }
         }
-      ]
+      ],
+      theme: this.customTheme,
+      themeColorMode: ThemeColorMode.LIGHT,
     }),
   })
 

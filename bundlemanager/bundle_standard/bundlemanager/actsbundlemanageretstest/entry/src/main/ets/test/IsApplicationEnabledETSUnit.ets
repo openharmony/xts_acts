@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -29,7 +29,7 @@ export default function IsApplicationEnabledETSUnit() {
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('Sub_Bms_Framework_Status_AppEnable_3000', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
@@ -53,7 +53,7 @@ export default function IsApplicationEnabledETSUnit() {
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('Sub_Bms_Framework_Status_AppEnable_2900', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_2900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
@@ -89,7 +89,7 @@ export default function IsApplicationEnabledETSUnit() {
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('Sub_Bms_Framework_Status_AppEnable_3100', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME_OTHER).then((data) => {
                 expect(data).assertTrue();

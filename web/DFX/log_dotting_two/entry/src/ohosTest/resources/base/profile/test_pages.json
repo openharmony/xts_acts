@@ -9,6 +9,9 @@
     "testability/pages/webViewControllerErrorCode",
     "testability/pages/webErrorCode",
     "testability/pages/WebViewControllerPostUrlErrorCode",
-    "testability/pages/webDownloadErrorCode"
+    "testability/pages/webDownloadErrorCode",
+    "testability/pages/webViewControllerErrorCodeSecond",
+    "testability/pages/webResourceHandlerTest",
+    "testability/pages/webHttpBodyStreamTest"
   ]
 }

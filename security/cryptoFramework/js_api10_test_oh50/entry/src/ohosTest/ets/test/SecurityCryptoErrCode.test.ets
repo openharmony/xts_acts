@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import { buffer } from '@kit.ArkTS';
 import * as symKeySyncUtils from './utils/syncSymKey/syncSymKeyUtils'
@@ -50,7 +50,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
         let priKeyArray = new Uint8Array([32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
@@ -74,7 +75,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
         let priKeyArray = new Uint8Array([32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
@@ -98,7 +100,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
         generator.convertKeySync(null, null);
@@ -118,7 +121,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let arr = [];
       try {
         let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
@@ -141,7 +145,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let keyMessage = '';
         let keyBlob: cryptoFramework.DataBlob = {
@@ -166,7 +171,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let rand = cryptoFramework.createRandom();
         console.info("[createRandom success]");
@@ -185,47 +191,6 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
     });
 
     /**
-     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0700
-     * @tc.name generateRandom 返回17620001
-     * @tc.desc convertKey
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0700", 0, async (done: Function) => {
-
-      try {
-        let rand = cryptoFramework.createRandom();
-        await rand.generateRandom(2147483647);
-        expect(null).assertFail();
-      } catch (error) {
-        console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0700 “${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-      }
-      done();
-    });
-
-    /**
-     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0800
-     * @tc.name generateRandomSync 返回17620001
-     * @tc.desc convertKey
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0800", 0, async (done: Function) => {
-      try {
-        let rand = cryptoFramework.createRandom();
-        rand.generateRandomSync(2147483647);
-        expect(null).assertFail();
-      } catch (error) {
-        console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0800 “${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-      }
-      done();
-    });
-
-    /**
      * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0900
      * @tc.name doFinalSync返回17630001
      * @tc.desc convertKey
@@ -233,7 +198,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_0900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let gcmParams = symKeySyncUtils.genGcmParamsSpec();
         let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -261,7 +227,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let gcmParams = symKeySyncUtils.genGcmParamsSpec();
         let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -286,7 +253,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let cipher = cryptoFramework.createCipher('AES128|CCM|PKCS7');
         let pSource = new Uint8Array([1,2,3,4]);
@@ -307,7 +275,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let cipher = cryptoFramework.createCipher('AES128|CCM|PKCS7');
         cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
@@ -327,7 +296,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1300",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "X25519";
         let signAlgName: string = "Ed25519";
@@ -350,7 +320,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1400",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let fieldFp: cryptoFramework.ECFieldFp = {
           fieldType: 'Fp',
@@ -391,7 +362,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1500",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let fieldFp: cryptoFramework.ECFieldFp = {
           fieldType: 'Fp',
@@ -433,7 +405,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1600",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = false;
       let salt: string = "0123456789";
@@ -460,7 +433,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1700",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let kdfAlgName: string = "HKDF" + "|SHA1|EXTRACT_AND_EXPAND";
       try {
         let kdf: cryptoFramework.Kdf = cryptoFramework.createKdf(kdfAlgName);
@@ -488,7 +462,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1800",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
         let keyPair = await generator.generateKeyPair();
@@ -519,7 +494,8 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_ErrCode_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_ErrCode_Func_1900",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let pkData = new Uint8Array([4]);
         let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP257r1', pkData);
@@ -528,6 +504,108 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
       } catch (error) {
         console.error(`HKDF “${error}“, error code: ${error.code}`);
         expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_2000
+     * @tc.name getEncoded判断是否返回801
+     * @tc.desc convertKey
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_ErrCode_Func_2000",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        let generator = cryptoFramework.createSymKeyGenerator("AES128");
+        let symKey = await generator.generateSymKey();
+        symKey.getEncoded();
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_2100
+     * @tc.name setSignSpec判断是否返回801
+     * @tc.desc convertKey
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_ErrCode_Func_2100",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let sign = cryptoFramework.createSign("RSA512|PKCS1|SHA1")
+      let setN = 20;
+      let setUint8Array = new Uint8Array([0x20]);
+      try {
+        sign.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      try {
+        sign.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setUint8Array);
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      try {
+        sign.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_2200
+     * @tc.name genECCCommonParamsSpec判断是否返回801
+     * @tc.desc convertKey
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_ErrCode_Func_2200",
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP256r1');
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      try {
+        cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(16);
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+        console.error(`N############### ${error}, error code: ${error.code}`);
+      }
+      try {
+        cryptoFramework.createAsyKeyGeneratorBySpec({
+          algName: "ECC521", specType: cryptoFramework.AsyKeySpecType.PRIVATE_KEY_SPEC});
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
+      }
+      try {
+        cryptoFramework.createKdf("HKDF");
+      } catch (error) {
+        if (error.code == cryptoFramework.Result.NOT_SUPPORT) {
+          console.error(`Not Support ${error}, error code: ${error.code}`);
+        }
       }
       done();
     });

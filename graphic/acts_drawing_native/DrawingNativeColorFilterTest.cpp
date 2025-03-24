@@ -71,7 +71,7 @@ class DrawingNativeColorFilterTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNormal, Function | SmallTest | Level0) {
     // 1. Enumerate OH_Drawing_BlendMode values in OH_Drawing_ColorFilterCreateBlendMode interface
     OH_Drawing_BlendMode blendMode[] = {
         BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
@@ -99,7 +99,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNULL, Function | SmallTest | Level3) {
     // 1. Pass an empty value as the first parameter to OH_Drawing_ColorFilterCreateBlendMode
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateBlendMode(0, BLEND_MODE_CLEAR);
     // add assert
@@ -116,7 +116,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeNULL, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ColorFilterCreateBlendMode, random value between 0x00000000 and 0xFFFFFFFF
     for (int i = 0; i < 10; i++) {
         std::random_device rd;
@@ -159,7 +159,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMultipleCal
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeAbnormal, Function | SmallTest | Level3) {
     // 1. Pass a negative value as the first parameter to OH_Drawing_ColorFilterCreateBlendMode
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateBlendMode(-0x01, BLEND_MODE_CLEAR);
     // add assert
@@ -176,7 +176,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeAbnormal, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMaximum, Function | SmallTest | Level3) {
     // 1. Pass 0xFFFFFFFF as the first parameter to OH_Drawing_ColorFilterCreateBlendMode
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateBlendMode(0xFFFFFFFF, BLEND_MODE_CLEAR);
     // add assert
@@ -193,7 +193,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMaximum, Te
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_ColorFilterCreateBlendMode to create colorFilter1 and colorFilter2
     OH_Drawing_ColorFilter *colorFilter1 = OH_Drawing_ColorFilterCreateBlendMode(0x00FFFFFF, BLEND_MODE_CLEAR);
     // add assert
@@ -242,7 +242,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNormal, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNULL, Function | SmallTest | Level3) {
     // 1. Pass an empty value as the first parameter to OH_Drawing_ColorFilterCreateBlendMode
     OH_Drawing_ColorFilter *colorFilter1 = OH_Drawing_ColorFilterCreateBlendMode(0, BLEND_MODE_CLEAR);
     // add assert
@@ -259,7 +259,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNULL, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ColorFilterCreateBlendMode with a random value between 0x00000000 and 0xFFFFFFFF
     for (int i = 0; i < 10; i++) {
         std::random_device rd;
@@ -314,7 +314,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeMultipleCalls
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNormal, Function | SmallTest | Level0) {
     const float matrix[20] = {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.5f, 0};
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
     // add assert
@@ -332,7 +332,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNULL, Function | SmallTest | Level3) {
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_ErrorCodeReset();
@@ -352,7 +352,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNULL, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixAbnormal, Function | SmallTest | Level3) {
     const float matrix[19] = {
         1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.5f,
     };
@@ -381,7 +381,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixAbnormal, Test
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         const float matrix[20] = {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.5f, 0};
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
@@ -398,7 +398,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixMultipleCalls,
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_ColorFilterCreateLinearToSrgbGamma
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
     // add assert
@@ -416,7 +416,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaNor
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaMultipleCalls, Function | SmallTest | Level3) {
     // 1、OH_Drawing_ColorFilterCreateLinearToSrgbGamma 调用10次
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
@@ -433,7 +433,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaMul
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_ColorFilterCreateSrgbGammaToLinear
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
     // add assert
@@ -450,7 +450,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNor
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ColorFilterCreateSrgbGammaToLinear 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
@@ -467,7 +467,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMul
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ColorFilterCreateLuma
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLuma();
     EXPECT_NE(colorFilter, nullptr);
@@ -483,7 +483,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ColorFilterCreateLuma 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLuma();
@@ -500,7 +500,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, T
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ColorFilterCreateLuma
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLuma();
     EXPECT_NE(colorFilter, nullptr);
@@ -516,7 +516,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNULL, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ColorFilterDestroy with empty parameter
     OH_Drawing_ColorFilterDestroy(nullptr);
     // add assert

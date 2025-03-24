@@ -60,7 +60,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolExecuteDelayedMultipleTest0100'
@@ -111,7 +111,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -122,7 +122,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolExecuteDelayedMultipleTest0200'
@@ -173,7 +173,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -184,7 +184,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolExecuteDelayedMultipleTest0300'
@@ -235,7 +235,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -246,7 +246,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolExecuteDelayedMultipleTest0400'
@@ -297,7 +297,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
     /**
@@ -308,7 +308,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolExecuteDelayedMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolExecuteDelayedMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolExecuteDelayedMultipleTest0500'
@@ -359,7 +359,7 @@ export default function taskPoolExecuteDelayedMultipleTest() {
 
       expect(10).assertEqual(count)
       console.info(`${caseName} test end`)
-      Done()
+      done()
     })
 
   })

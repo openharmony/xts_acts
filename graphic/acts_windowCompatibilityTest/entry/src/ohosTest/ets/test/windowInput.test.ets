@@ -190,7 +190,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5680
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5740
      * @tc.name      : testWindow_on_off_keyboardDidShow_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -283,7 +283,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5690
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5750
      * @tc.name      : testWindowOffKeyboardDidShow_UnregisteredOff
      * @tc.desc      : Disable listening for the height change of the soft keyboard in the fixed state input method window
      * @tc.size      : MediumTest
@@ -316,7 +316,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5760
      * @tc.name      : testWindowOffKeyboardDidShow_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidShow_RepeatOff
      * @tc.size      : MediumTest
@@ -377,7 +377,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5710
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5770
      * @tc.name      : testWindow_on_off_keyboardDidHide_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -463,7 +463,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5720
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5780
      * @tc.name      : testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.size      : MediumTest
@@ -496,7 +496,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5730
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5790
      * @tc.name      : testWindowOffKeyboardDidHide_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_RepeatOff
      * @tc.size      : MediumTest

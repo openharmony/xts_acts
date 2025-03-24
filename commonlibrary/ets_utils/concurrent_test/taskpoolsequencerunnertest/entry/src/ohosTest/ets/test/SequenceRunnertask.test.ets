@@ -90,7 +90,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3000'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -144,7 +144,7 @@ export default function sequenceRunnerTaskTest() {
       expect(20).assertEqual(count)
       expect(10).assertEqual(count2)
       expect(10).assertEqual(count1)
-      Done()
+      done()
     })
 
     /**
@@ -155,7 +155,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3100'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -198,7 +198,7 @@ export default function sequenceRunnerTaskTest() {
       expect(20).assertEqual(count)
       expect(10).assertEqual(count2)
       expect(10).assertEqual(count1)
-      Done()
+      done()
     })
 
 
@@ -210,7 +210,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1000'
       
@@ -247,7 +247,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
 
     })
 
@@ -259,7 +259,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1100'
       
@@ -294,7 +294,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -305,7 +305,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1200'
       
@@ -356,7 +356,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -367,7 +367,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1300'
       
@@ -422,7 +422,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -433,7 +433,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1400'
       
@@ -484,7 +484,7 @@ export default function sequenceRunnerTaskTest() {
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
 
-      Done()
+      done()
     })
 
     /**
@@ -495,7 +495,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1500'
       
@@ -545,7 +545,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -556,7 +556,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1600'
       
@@ -597,7 +597,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -608,7 +608,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
 
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -649,7 +649,7 @@ export default function sequenceRunnerTaskTest() {
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
 
-      Done()
+      done()
     })
 
     /**
@@ -660,7 +660,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const Tag: string = 'Sequence_Runner_TaskTest_1800'
       
@@ -696,7 +696,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -707,7 +707,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
 
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -750,7 +750,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(count1).assertEqual(10)
       expect(count2).assertEqual(10)
-      Done()
+      done()
     })
 
     /**
@@ -761,7 +761,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2000'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -790,7 +790,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -801,7 +801,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2100'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -833,7 +833,7 @@ export default function sequenceRunnerTaskTest() {
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
       console.info( `${Tag}`, '%{public}s', 'it Over');
-      Done()
+      done()
     })
 
     /**
@@ -844,7 +844,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2200'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -874,7 +874,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -885,7 +885,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2300'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -915,7 +915,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -926,7 +926,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2400'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -957,7 +957,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -968,7 +968,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2500'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -997,7 +997,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1008,7 +1008,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2600'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1038,7 +1038,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1049,7 +1049,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2700'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1079,7 +1079,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -1091,7 +1091,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2800'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1122,7 +1122,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1133,7 +1133,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_2900'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1164,7 +1164,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
 
@@ -1176,7 +1176,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3200'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1208,7 +1208,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1219,7 +1219,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3300'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1251,7 +1251,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1262,7 +1262,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3400'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1294,7 +1294,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1305,7 +1305,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3500'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1337,7 +1337,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1348,7 +1348,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3600'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1380,7 +1380,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1391,7 +1391,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3700'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1423,7 +1423,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1434,7 +1434,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3800'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1466,7 +1466,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
     /**
@@ -1477,7 +1477,7 @@ export default function sequenceRunnerTaskTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Sequence_Runner_TaskTest_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('Sequence_Runner_TaskTest_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const Tag: string = 'Sequence_Runner_TaskTest_3900'
       
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1509,7 +1509,7 @@ export default function sequenceRunnerTaskTest() {
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
-      Done()
+      done()
     })
 
   })
