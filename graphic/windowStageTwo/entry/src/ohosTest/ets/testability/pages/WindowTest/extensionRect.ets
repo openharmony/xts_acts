@@ -23,9 +23,14 @@ let storage = LocalStorage.getShared()
 struct Extension {
 
   @State testNum: number = 0
+  @State message: string = ''
 
   build() {
     Column() {
+      Text(this.message + '')
+        .id('errorMessage')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
       Text(this.testNum + '')
         .id('testNum')
         .fontSize(20)
@@ -39,6 +44,19 @@ struct Extension {
             console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
             this.testNum++
           })
+        })
+      Button('监听组件变化401')
+        .id('button401')
+        .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
+          let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
+          try {
+            extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, null)
+            this.message = 'success'
+          } catch (err) {
+            console.log('testUIExtensionHostRectChangeErrorCode401: err in page, err : ' + JSON.stringify(err))
+            this.message = err.code + ''
+          }
         })
     }.width('100%').height('100%')
   }

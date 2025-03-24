@@ -26,4 +26,9 @@ export default class MyController extends webview.WebviewController {
     throw new Error
   }
 
+
+  deleteJavaScriptRegister(): void {
+    throw new Error
+  }
+
 }

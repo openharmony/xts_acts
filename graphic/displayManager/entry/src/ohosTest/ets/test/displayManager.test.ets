@@ -18,6 +18,8 @@ import display from '@ohos.display';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import { Driver, ON } from '@ohos.UiTest';
+import { image } from '@kit.ImageKit';
+import { screenshot } from '@kit.ArkUI';
 
 function checkIsCaptured() {
   let status = false;
@@ -1525,7 +1527,7 @@ export default function displayTest() {
     /**
      * @tc.number     : SUB_BASIC_WMS_ScreenShape_0100
      * @tc.name       : test_ScreenShape_0100
-     * @tc.desc       : 显示设备的屏幕形状枚举
+     * @tc.desc       : test_ScreenShape_0100
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -1584,5 +1586,163 @@ export default function displayTest() {
       console.info(msgStr + 'getDefaultDisplaySync y: ' + JSON.stringify(displayClass.y));
       done();
     });
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_add_401_0100
+     * @tc.name       : testOnaddErrCode401_0100
+     * @tc.desc       : testOnaddErrCode401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnaddErrCode401_0100', 0, async (done: Function) => {
+      let caseName = "testOnaddErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<number> = (data: number) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      };
+
+      try {
+        display.on(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr  + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_add_401_0200
+     * @tc.name       : testoffaddErrCode401_0100
+     * @tc.desc       : testoffaddErrCode401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffaddErrCode401_0100', 0, async (done: Function) => {
+      let caseName = "testoffaddErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<number> = (data: number) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      };
+
+      try {
+        display.off(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr +  'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_foldStatusChange_401_0100
+     * @tc.name       : testonfoldStatusChange401_0100
+     * @tc.desc       : testonfoldStatusChange401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testonfoldStatusChange401_0100', 0, async (done: Function) => {
+      let caseName = "testonfoldStatusChange401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      };
+
+      try {
+        display.on(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_foldStatusChange_401_0200
+     * @tc.name       : testofffoldStatusChange401_0100
+     * @tc.desc       : testofffoldStatusChange401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testofffoldStatusChange401_0100', 0, async (done: Function) => {
+      let caseName = "testofffoldStatusChange401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      };
+
+      try {
+        display.off(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_displayModeChange_401_0100
+     * @tc.name       : testondisplayModeChange401
+     * @tc.desc       : testondisplayModeChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testondisplayModeChange401', 0, async (done: Function) => {
+      let caseName = "testondisplayModeChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      }
+      try {
+        display.on(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_displayModeChange_401_0200
+     * @tc.name       : testoffdisplayModeChange401
+     * @tc.desc       : testoffdisplayModeChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffdisplayModeChange401', 0, async (done: Function) => {
+      let caseName = "testoffdisplayModeChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+        console.info('Listening enabled. Data: ' + JSON.stringify(data));
+      }
+
+      try {
+        display.off(null, callback);
+        expect().assertFail();
+        done();
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+
   })
 }

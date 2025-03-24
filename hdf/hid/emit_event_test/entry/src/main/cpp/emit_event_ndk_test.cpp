@@ -1459,7 +1459,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"hidDestroyDeviceOne", nullptr, HidDestroyDeviceOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidDestroyDeviceTwo", nullptr, HidDestroyDeviceTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidDestroyDeviceThree", nullptr, HidDestroyDeviceThree, nullptr, nullptr, nullptr, napi_default, nullptr},
-        
+        {"isHidDevice", nullptr, IsHidDevice, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidInitOne", nullptr, HidInitOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidReleaseOne", nullptr, HidReleaseOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidReleaseTwo", nullptr, HidReleaseTwo, nullptr, nullptr, nullptr, napi_default, nullptr},

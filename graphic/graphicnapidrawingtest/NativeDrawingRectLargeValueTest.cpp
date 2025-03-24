@@ -47,7 +47,7 @@ void NativeDrawingRectLargeValueTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetHeight003, TestSize.Level1)
+HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetHeight003, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 2160, 4096);
     float height = OH_Drawing_RectGetHeight(rect);
@@ -62,7 +62,7 @@ HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetHei
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetWidth004, TestSize.Level1)
+HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetWidth004, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 2160, 4096);
     float width = OH_Drawing_RectGetWidth(rect);
@@ -77,7 +77,8 @@ HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_GetWid
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_SetAndGetBoundary005, TestSize.Level1)
+HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_SetAndGetBoundary005,
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 400, 800);
     OH_Drawing_RectSetLeft(rect, 10);
@@ -102,7 +103,7 @@ HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_SetAnd
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_Copy006, TestSize.Level1)
+HWTEST_F(NativeDrawingRectLargeValueTest, NativeDrawingRectLargeValueTest_Copy006, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rectSrc = OH_Drawing_RectCreate(0, 0, 400, 800);
     OH_Drawing_Rect* rectDst = OH_Drawing_RectCreate(11, 22, 2160, 4096);

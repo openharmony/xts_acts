@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import pcsNetworkTest from 'libpcsNetworkTest.so'
 import pcsAudioTest from 'libpcsAudioTest.so'
 import softwareNdk from 'libsoftwareNdk.so'
@@ -32,7 +32,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSocketApi0100', 0, async (done: Function) => {
+    it('testSocketApi0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let recvParam = 0
       expect(pcsNetworkTest.Socket()).assertLarger(SuccessResult1);
       expect(pcsNetworkTest.Connect()).assertEqual(SuccessResult1);
@@ -51,7 +51,7 @@ export default function pcsNdkTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testC99Standard0100', 0, async (done: Function) => {
+    it('testC99Standard0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let index0 = 0
       let index1 = 1
       let initArray0Result = 1
@@ -76,7 +76,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioDecoding0100', 0, async (done: Function) => {
+    it('testAudioDecoding0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioCodec_Flush_First()).assertEqual(SuccessResult1);
       expect(pcsAudioTest.OH_AudioCodec_Flush_Second()).assertEqual(SuccessResult1);
       done();
@@ -91,7 +91,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioEncoderFlac', 0, async (done: Function) => {
+    it('testAudioEncoderFlac', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioEncoderFlac()).assertEqual(SuccessResult1);
       done();
     });
@@ -105,7 +105,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioEncoderAAc', 0, async (done: Function) => {
+    it('testAudioEncoderAAc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioEncoderAAc()).assertEqual(SuccessResult1);
       done();
     });
@@ -119,7 +119,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioDecoderAAc', 0, async (done: Function) => {
+    it('testAudioDecoderAAc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioDecoderAAc()).assertEqual(SuccessResult1);
       done();
     });
@@ -133,7 +133,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioEncoderH264', 0, async (done: Function) => {
+    it('testAudioEncoderH264', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioEncoderH264()).assertEqual(SuccessResult1);
       done();
     });
@@ -147,7 +147,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioDecoderH264', 0, async (done: Function) => {
+    it('testAudioDecoderH264', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(pcsAudioTest.OH_AudioDecoderH264()).assertEqual(SuccessResult1);
       done();
     });
@@ -161,7 +161,7 @@ export default function pcsNdkTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testHardwareAcceleration0100', 0, async (done: Function) => {
+    it('testHardwareAcceleration0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let openglExist = openglNdk.OpenglExist()
         if(openglExist == 0) {

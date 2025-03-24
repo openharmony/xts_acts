@@ -55,7 +55,7 @@ static Filter* CastToFilter(OH_Drawing_Filter* cFilter)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushCreate001, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushCreate001, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
     EXPECT_EQ(brush == nullptr, false);
@@ -69,7 +69,7 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushCreate001, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetColor002, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetColor002, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush1 = OH_Drawing_BrushCreate();
     OH_Drawing_BrushSetAntiAlias(brush1, false);
@@ -88,7 +88,7 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetColor002, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetBlendMode003, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetBlendMode003, Function | MediumTest | Level1)
 {
     OH_Drawing_BrushSetBlendMode(nullptr, OH_Drawing_BlendMode::BLEND_MODE_CLEAR);
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
@@ -103,7 +103,7 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetBlendMode003, Te
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushReset004, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushReset004, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush1 = OH_Drawing_BrushCreate();
     OH_Drawing_BrushSetAntiAlias(brush1, true);
@@ -126,7 +126,7 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushReset004, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushGetFilter005, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushGetFilter005, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
     EXPECT_NE(brush, nullptr);
@@ -162,7 +162,7 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushGetFilter005, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetShadowLayer006, TestSize.Level1)
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushSetShadowLayer006, Function | MediumTest | Level1)
 {
     // blurRadius:-3.f, offset:(-3.f, 3.f), shadowColor:green
     OH_Drawing_ShadowLayer* shadow = OH_Drawing_ShadowLayerCreate(-3.f, -3.f, 3.f, 0xFF00FF00);

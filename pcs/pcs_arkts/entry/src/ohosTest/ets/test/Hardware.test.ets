@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import wifiManager from '@ohos.wifiManager';
 import camera from '@ohos.multimedia.camera';
 import List from '@ohos.util.List';
@@ -75,7 +75,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testNetworkSupportAtLeastOneType0100', 0, async (done: Function) => {
+    it('testNetworkSupportAtLeastOneType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(isWlanSupported || isCellularSupported || isEthernetSupported || isBluetoothSupported).assertTrue()
       done()
     })
@@ -88,7 +88,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testNetworkCompleteImplementation0100', 0, async (done: Function) => {
+    it('testNetworkCompleteImplementation0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let networkSupportedCount = 0
       if (isWlanSupported) {
         networkSupportedCount++
@@ -119,7 +119,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWlanSupport2.4G0100', 0, async (done: Function) => {
+    it('testWlanSupport2.4G0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isWlanSupported) {
         expect(wifiManager.isFeatureSupported(infrastructureFeature)).assertTrue()
       }
@@ -134,7 +134,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWlanSupport5G0100', 0, async (done: Function) => {
+    it('testWlanSupport5G0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isWlanSupported) {
         expect(wifiManager.isFeatureSupported(bandwidth5GFeature)).assertTrue()
       }
@@ -149,7 +149,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWlanSupportSTAAndAP0100', 0, async (done: Function) => {
+    it('testWlanSupportSTAAndAP0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isWlanSupported) {
         let isSTASupported = canIUse("SystemCapability.Communication.WiFi.STA")
         let isAPSupported = canIUse("SystemCapability.Communication.WiFi.AP.Core")
@@ -166,7 +166,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWlanSupportP2P0100', 0, async (done: Function) => {
+    it('testWlanSupportP2P0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isWlanSupported) {
         let isP2PSupported = canIUse("SystemCapability.Communication.WiFi.P2P")
         expect(isP2PSupported).assertTrue()
@@ -182,7 +182,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCameraSupportAutoExposure0100', 0, async (done: Function) => {
+    it('testCameraSupportAutoExposure0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isCameraSupported) {
         let getResult: [boolean, camera.PhotoSession] = await getPhotoSession(abilityContext, applicationContext)
         if(!getResult[0]) {
@@ -224,7 +224,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCameraSupportAutoFocus0100', 0, async (done: Function) => {
+    it('testCameraSupportAutoFocus0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isCameraSupported) {
         let getResult: [boolean, camera.PhotoSession] = await getPhotoSession(abilityContext, applicationContext)
         if(!getResult[0]) {
@@ -269,7 +269,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCameraInformationQuery0100', 0, async (done: Function) => {
+    it('testCameraInformationQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isCameraSupported) {
         let cameraManager = camera.getCameraManager(applicationContext)
         // query camera number
@@ -318,7 +318,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCameraDataStreamCollect0100', 0, async (done: Function) => {
+    it('testCameraDataStreamCollect0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isCameraSupported) {
         let cameraManager = camera.getCameraManager(applicationContext)
         let supportedCameras = cameraManager.getSupportedCameras()
@@ -365,7 +365,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioSupportCapturer0100', 0, async (done: Function) => {
+    it('testAudioSupportCapturer0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isMicrophoneSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -408,7 +408,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioCapturerSupport16bit0100', 0, async (done: Function) => {
+    it('testAudioCapturerSupport16bit0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isMicrophoneSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -450,7 +450,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioRendererSupportSamplingRates0100', 0, async (done: Function) => {
+    it('testAudioRendererSupportSamplingRates0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -493,7 +493,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioRendererSupportSamplingRates0200', 0, async (done: Function) => {
+    it('testAudioRendererSupportSamplingRates0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -536,7 +536,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioRendererSupportSamplingRates0300', 0, async (done: Function) => {
+    it('testAudioRendererSupportSamplingRates0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -579,7 +579,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioRendererSupportChannels0100', 0, async (done: Function) => {
+    it('testAudioRendererSupportChannels0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -622,7 +622,7 @@ export default function hardwareTest() {
  * @tc.type: Function
  * @tc.level: Level 0
  */
-    it('testAudioRendererSupportChannels0200', 0, async (done: Function) => {
+    it('testAudioRendererSupportChannels0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -665,7 +665,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioRendererSupportEncodings0100', 0, async (done: Function) => {
+    it('testAudioRendererSupportEncodings0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isAoutSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -707,7 +707,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioCapturerSupportRule0100', 0, async (done: Function) => {
+    it('testAudioCapturerSupportRule0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isMicrophoneSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
@@ -748,7 +748,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAudioCapturerSupportRule0200', 0, async (done: Function) => {
+    it('testAudioCapturerSupportRule0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isMicrophoneSupported) {
         let audioStreamInfo: audio.AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -789,7 +789,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testUsbSupportConnect0100', 0, async (done: Function) => {
+    it('testUsbSupportConnect0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isUsbSupported) {
         let usbDevices = usbManager.getDevices()
         console.log(`devicesList = ${usbDevices}`)
@@ -806,7 +806,7 @@ export default function hardwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testUsbSupportHost0100', 0, async (done: Function) => {
+    it('testUsbSupportHost0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if (isUsbSupported) {
         let usbDevices = usbManager.getDevices()
         console.log(`devicesList = ${usbDevices}`)

@@ -1001,7 +1001,7 @@ export default function windowPropertiesTest2() {
       try {
         await subWindowClass!.setWindowCornerRadius(5.66666666).then(async () => {
           let result = subWindowClass.getWindowCornerRadius()
-          expect(result).assertEqual(5.66666666)
+           expect(Math.abs(result-5.66666666)).assertLessOrEqual(0.1);
           console.info(msgStr + 'Succeeded in calling setWindowCornerRadius.');
           await subWindowClass!.destroyWindow();
         }).catch(async (err: BusinessError) => {

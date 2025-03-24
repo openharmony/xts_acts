@@ -79,6 +79,73 @@ public:
     }
 };
 
+class RoundWindowBuffer {
+private:
+    OH_NativeImage* _image = nullptr;
+    OHNativeWindow* _nativeWindow = nullptr;
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    int fenceFd = -1;
+    
+public:
+    RoundWindowBuffer(OH_NativeImage* image, OHNativeWindow* nativeWindow)
+    {
+        _image = image;
+        _nativeWindow = nativeWindow;
+    }
+    ~RoundWindowBuffer()
+    {
+        _image = nullptr;
+        _nativeWindow = nullptr;
+    }
+    int32_t ProduceBuffer()
+    {
+        // 1. RequestBuffer
+        int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &nativeWindowBuffer, &fenceFd);
+        if (ret != 0) {
+            return ret;
+        }
+        
+        // 2. FlushBuffer
+        Region::Rect rect{
+            .x = 0x50,
+            .y = 0x50,
+            .w = 0x50,
+            .h = 0x50,
+        };
+        Region region{.rects = &rect};
+        ret = OH_NativeWindow_NativeWindowFlushBuffer(_nativeWindow, nativeWindowBuffer, fenceFd, region);
+        if (ret != 0) {
+            return ret;
+        }
+        
+        return ret;
+    }
+    int32_t ConsumerBuffer()
+    {
+        // 1. AcquireBuffer
+        int32_t ret = OH_NativeImage_AcquireNativeWindowBuffer(_image, &nativeWindowBuffer, &fenceFd);
+        if (ret != 0) {
+            return ret;
+        }
+        
+        // 2. release buffer
+        ret = OH_NativeImage_ReleaseNativeWindowBuffer(_image, nativeWindowBuffer, fenceFd);
+        if (ret != 0) {
+            return ret;
+        }
+        
+        return ret;
+    }
+    int32_t AcquireBuffer()
+    {
+        return OH_NativeImage_AcquireNativeWindowBuffer(_image, &nativeWindowBuffer, &fenceFd);
+    }
+    int32_t ReleaseBuffer()
+    {
+        return OH_NativeImage_ReleaseNativeWindowBuffer(_image, nativeWindowBuffer, fenceFd);
+    }
+};
+
 napi_value testNativeWindowCreateNativeWindowNullptr(napi_env env, napi_callback_info info);
 napi_value testNativeWindowDestroyNativeWindowNullptr(napi_env env, napi_callback_info info);
 napi_value testNativeWindowGetSurfaceIdNullptr(napi_env env, napi_callback_info info);
@@ -194,4 +261,11 @@ napi_value testNativeWindowNativeWindowSetSetScalingMode(napi_env env, napi_call
 napi_value testNativeWindowNativeWindowSetMetaData(napi_env env, napi_callback_info info);
 napi_value testNativeWindowNativeWindowSetMetaDataSet(napi_env env, napi_callback_info info);
 napi_value testNativeWindowNativeWindowSetTunnelHandle(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheBeforeBufferRequested(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheWhenBufferRequested(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheWhenBufferFlushed(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheWhenBufferAcquired(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheWhenBufferReleased(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheLoopWhenBufferRequested(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCleanCacheLoopWhenBufferFlushed(napi_env env, napi_callback_info);
 #endif // NATIVEWINDOW_USELESS_H
