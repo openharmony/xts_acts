@@ -285,7 +285,7 @@ export default function CameraErrorCodeUsecaseTest() {
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
-        expect(ret == Camera_ErrorCode.CAMERA_OPERATION_NOT_ALLOWED).assertTrue();
+        expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
