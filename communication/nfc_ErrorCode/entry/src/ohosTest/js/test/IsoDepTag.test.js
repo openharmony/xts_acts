@@ -92,7 +92,7 @@ export default function nfcIsoDepErrorTest() {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcIsoDep_js_0100', , Level.LEVEL1, async function (done) {
+        it('SUB_Communication_NFC_nfcIsoDep_js_0100', Level.LEVEL1, async function (done) {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 (async () => {
                     try {
