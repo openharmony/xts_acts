@@ -21,7 +21,7 @@ import {
   driveFn,
   getPermission,
   fetchOption,
-  createResource
+  pushCreateAsset
 } from '../util/common'
 import { dataSharePredicates } from '@kit.ArkData'
 
