@@ -22,7 +22,7 @@ import {
   getPermission,
   fetchOption,
   pushCreateAsset
-} from '../util/common'
+} from '../common'
 import { dataSharePredicates } from '@kit.ArkData'
 
 export default function positionTypeTest () {
