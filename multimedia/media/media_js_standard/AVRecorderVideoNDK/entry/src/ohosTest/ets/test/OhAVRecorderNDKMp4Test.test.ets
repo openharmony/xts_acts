@@ -166,6 +166,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
         //resume recorder
@@ -224,6 +225,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -284,6 +286,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //resume err recorder
         avRecorderNdkTestBase.RESUME_RECORDER_ERR_EVENT,
         //release recorder
@@ -338,6 +341,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -395,6 +399,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -455,6 +460,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
         //resuem err recorder
@@ -511,6 +517,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -573,6 +580,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
         //resuem recorder
@@ -631,6 +639,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -691,6 +700,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //resuem err recorder
         avRecorderNdkTestBase.RESUME_RECORDER_ERR_EVENT,
@@ -748,6 +758,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
         //release recorder
@@ -802,6 +813,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -860,6 +872,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //resume err recorder
         avRecorderNdkTestBase.RESUME_RECORDER_ERR_EVENT,
         // reset recorder
@@ -917,6 +930,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
         // reset recorder
@@ -973,6 +987,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -1033,6 +1048,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
         //reset recorder
@@ -1089,6 +1105,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
@@ -1150,6 +1167,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -1264,9 +1282,11 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
         // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // resume recorder
         avRecorderNdkTestBase.RESUME_RECORDER_EVENT,
@@ -1325,6 +1345,7 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
         //prepare recorder
@@ -1335,7 +1356,9 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -1395,18 +1418,22 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //start err recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        //start err recorder
-        avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
-        // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //start err recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        //start err recorder
+        avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
+        // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //stop recorder
@@ -1462,6 +1489,8 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
@@ -1522,11 +1551,15 @@ export default function OhAVRecorderNDKMp4Test() { // L2
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
         //start err  recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
+        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
