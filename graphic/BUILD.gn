@@ -63,6 +63,7 @@ group("graphic") {
       deps += [
         "vkgl:cpvkgl",
         "vktest:cpVulkan",
+        "gltest:cpOpenGL",
       ]
     }
   } else {
