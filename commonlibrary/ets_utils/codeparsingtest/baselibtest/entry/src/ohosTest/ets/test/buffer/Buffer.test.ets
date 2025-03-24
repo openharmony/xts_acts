@@ -22067,5 +22067,269 @@ export default function BufferTest() {
 
       }
     })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_22600
+     * @tc.name       : testWriteUInt32LE0007
+     * @tc.desc       : Test the function of the interface writeUInt32LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteUInt32LE0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteUInt32LE0007';
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(2, 0);
+        expect(buf.writeUInt32LE(2, 0)).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_22700
+     * @tc.name       : testWriteUInt32LE0008
+     * @tc.desc       : Test the function of the interface writeUInt32LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteUInt32LE0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteUInt32LE0008';
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(0xcafebabe, 0);
+        expect(buf.writeUInt32LE(0xcafebabe, 0)).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_22800
+     * @tc.name       : testWriteUInt32LE0009
+     * @tc.desc       : Test the function of the interface writeUInt32LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteUInt32LE0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteUInt32LE0009';
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(123.456, 0);
+        expect(buf.writeUInt32LE(123.456, 0)).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_22900
+     * @tc.name       : testWriteUInt32LE0010
+     * @tc.desc       : Test the function of the interface writeUInt32LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteUInt32LE0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteUInt32LE0010';
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(0xdecafafecacefade, 0);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "value" is out of range. It must be >= 0 and <= 4294967295. Received value is: 16053919793946753000');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_23000
+     * @tc.name       : testWriteUInt32LE0011
+     * @tc.desc       : Test the function of the interface writeUInt32LE.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferWriteUInt32LE0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testWriteUInt32LE0011';
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(Number(0x0102030405060708n), 0);
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect(e.message)
+          .assertEqual('The value of "value" is out of range. It must be >= 0 and <= 4294967295. Received value is: 72623859790382850');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0100
+     * @tc.name       : testSlice0001
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0001';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c']);
+        let newBlob = blob.slice();
+        expect(newBlob instanceof buffer.Blob).assertTrue();
+        expect(newBlob.size).assertEqual(3);
+        expect(newBlob.type).assertEqual('');
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('abc');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0200
+     * @tc.name       : testSlice0002
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0002';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c']);
+        let newBlob = blob.slice(undefined);
+        expect(newBlob instanceof buffer.Blob).assertTrue();
+        expect(newBlob.size).assertEqual(3);
+        expect(newBlob.type).assertEqual('');
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('abc');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0300
+     * @tc.name       : testSlice0003
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0003';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', 'd']);
+        const newBlob = blob.slice(undefined, undefined);
+        expect(newBlob.size).assertEqual(4);
+        expect(newBlob.type).assertEqual('');
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('abcd');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0400
+     * @tc.name       : testSlice0004
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0004';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', 'd', 'e']);
+        const newBlob = blob.slice(0, 2, 'MIME');
+        const res1 = newBlob.size
+        console.log(`${TAG} res1: ${res1}`)
+        const res2 = newBlob.type
+        console.log(`${TAG} res2: ${res2}`);
+        expect(newBlob.size).assertEqual(5);
+        expect(newBlob.type).assertEqual('MIME');
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('ab');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0500
+     * @tc.name       : testSlice0005
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0005';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', 'd', 'e']);
+        const newBlob = blob.slice(1, 4);
+        console.log(`${TAG} newBlob: ${newBlob}`)
+        const res1 = newBlob.size
+        console.log(`${TAG} res1: ${res1}`)
+        const res2 = newBlob.type
+        console.log(`${TAG} res2: ${res2}`);
+        expect(newBlob.size).assertEqual(5);
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('bcd');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0600
+     * @tc.name       : testSlice0006
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0006';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', 'd', 'e']);
+        const newBlob = blob.slice(1, 4, 'MIME');
+        expect(newBlob.size).assertEqual(5);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0700
+     * @tc.name       : testSlice0007
+     * @tc.desc       : Test the function of the interface slice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferSlice0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testSlice0007';
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', 'd', 'e']);
+        const newBlob = blob.slice(undefined, undefined, 'MIME');
+        expect(newBlob.size).assertEqual(5);
+        expect(newBlob.type).assertEqual('MIME');
+        const content = await newBlob.text();
+        console.log(`${TAG} content: ${content}`);
+        expect(content).assertEqual('abcde');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
   })
 }
