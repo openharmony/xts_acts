@@ -11777,5 +11777,1748 @@ export default function BufferTest() {
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0300
+     * @tc.name       : testCopy0003
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0003';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, 0);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        expect().assertFail();
+        console.error(`${TAG} failed,error:${err.message}`);
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0400
+     * @tc.name       : testCopy0004
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0004';
+      try {
+        let buf1 = buffer.alloc(6);
+        let buf2 = buffer.alloc(6).fill('!');
+        buf1.copy(buf2, -1);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "targetStart" is out of range. It must be >= 0. Received value is: -1');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0500
+     * @tc.name       : testCopy0005
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0005';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, Infinity);
+        expect(buf2.toString()).assertEqual('!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0600
+     * @tc.name       : testCopy0006
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0006';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, -Infinity);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "targetStart" is out of range. It must be >= 0. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0700
+     * @tc.name       : testCopy0007
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0007';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, 1);
+        expect(buf2.toString()).assertEqual('!abcdefghijklmnopqrstuvwxy');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0800
+     * @tc.name       : testCopy0008
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0008';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_0900
+     * @tc.name       : testCopy0009
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0009';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, 0);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1000
+     * @tc.name       : testCopy0010
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0010';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, -1);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "sourceStart" is out of range. It must be >= 0. Received value is: -1');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1100
+     * @tc.name       : testCopy0011
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0011';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, Infinity);
+        expect(buf2.toString()).assertEqual('!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1200
+     * @tc.name       : testCopy0012
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0012';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, -Infinity);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "sourceStart" is out of range. It must be >= 0. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1300
+     * @tc.name       : testCopy0013
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0013';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, 1);
+        expect(buf2.toString()).assertEqual('bcdefghijklmnopqrstuvwxyz!');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1400
+     * @tc.name       : testCopy0014
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0014';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1500
+     * @tc.name       : testCopy0015
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0015';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, 0);
+        expect(buf2.toString()).assertEqual('!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1600
+     * @tc.name       : testCopy0016
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0016';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, -1);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "sourceEnd" is out of range. It must be >= 0. Received value is: -1');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1700
+     * @tc.name       : testCopy0017
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0017';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, Infinity);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1800
+     * @tc.name       : testCopy0018
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0018';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, -Infinity);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} error:${err.message}`);
+        expect(err.message)
+          .assertEqual('The value of "sourceEnd" is out of range. It must be >= 0. Received value is: -Infinity');
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_1900
+     * @tc.name       : testCopy0019
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0019';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, 1);
+        expect(buf2.toString()).assertEqual('a!!!!!!!!!!!!!!!!!!!!!!!!!');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COPY_2000
+     * @tc.name       : testCopy0020
+     * @tc.desc       : Test the function of the interface Copy.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferCopy0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testCopy0020';
+      try {
+        let buf1 = buffer.allocUninitializedFromPool(26);
+        let buf2 = buffer.allocUninitializedFromPool(26).fill('!');
+        for (let i = 0; i < 26; i++) {
+          buf1.writeInt8(i + 97, i);
+        }
+        buf1.copy(buf2, undefined, undefined, undefined);
+        expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_EQUALS_0100
+     * @tc.name       : testEquals0001
+     * @tc.desc       : Test the function of the interface Equals.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferEquals0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEquals001';
+      try {
+        const buf1 = buffer.from('ABC');
+        const buf2 = buffer.from('414243', 'hex');
+        const result = buf1.equals(buf2);
+        expect(result).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_EQUALS_0200
+     * @tc.name       : testEquals0002
+     * @tc.desc       : Test the function of the interface Equals.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferEquals0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEquals0002';
+      try {
+        const buf1 = buffer.from('ABC');
+        const buf2 = new Uint8Array([1, 2, 3]);
+        const result = buf1.equals(buf2);
+        expect(result).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_EQUALS_0300
+     * @tc.name       : testEquals0003
+     * @tc.desc       : Test the function of the interface Equals.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferEquals0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEquals0003';
+      try {
+        const buf1 = buffer.from([1, 2, 3]);
+        const u8 = new Uint8Array([1, 2, 3]);
+        const result = buf1.equals(u8);
+        expect(result).assertEqual(true);
+        expect([...u8].indexOf(2)).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed,error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_EQUALS_0400
+     * @tc.name       : testEquals0004
+     * @tc.desc       : Test the function of the interface Equals.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferEquals0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testEquals0004';
+      try {
+        const target = buffer.from([1, 2, 3, 4]);
+        const source = buffer.from([3, 4, 5]);
+        expect(target.equals(source)).assertEqual(
+          target[3] === source[0]
+        );
+      } catch (err) {
+        console.error(`${TAG} error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0100
+     * @tc.name       : testIncludes0001
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0001';
+      try {
+        let buf = buffer.from('hello world');
+        expect(buf.includes('hello')).assertTrue();
+        expect(buf.includes('be')).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0200
+     * @tc.name       : testIncludes0002
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0002';
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        expect(buf.includes(1)).assertTrue();
+        expect(buf.includes(5)).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} error:${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0300
+     * @tc.name       : testIncludes0003
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0003';
+      try {
+        let buf = buffer.from('hello world');
+        let searchBuf = buffer.from('world');
+        expect(buf.includes(searchBuf)).assertTrue();
+        expect(buf.includes(buffer.from('test'))).assertFalse();
+      } catch (e) {
+        console.error(`${TAG} error:${e.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0400
+     * @tc.name       : testIncludes0004
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0004';
+      try {
+        let buf = buffer.from('hello world');
+        let arr = new Uint8Array([0x68, 0x65]);
+        expect(buf.includes(arr)).assertTrue();
+        expect(buf.includes(new Uint8Array([0x7a]))).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0500
+     * @tc.name       : testIncludes0005
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0005';
+      try {
+        let buf = buffer.from('hello');
+        const result = buf.includes('hello', 0);
+        expect(result).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0600
+     * @tc.name       : testIncludes0006
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0006';
+      try {
+        let buf = buffer.from('abcdefg');
+        buf.includes('def', -1);
+        expect(buf.includes('def', -1)).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0700
+     * @tc.name       : testIncludes0007
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0007';
+      try {
+        let buf = buffer.from('abc');
+        expect(buf.includes('a', Infinity)).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0800
+     * @tc.name       : testIncludes0008
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0008';
+      try {
+        let buf = buffer.from('abc');
+        expect(buf.includes('c', -Infinity)).assertTrue();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_0900
+     * @tc.name       : testIncludes0009
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testBufferIncludes0009';
+      try {
+        let buf = buffer.from('abc');
+        expect(buf.includes('a', 1)).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1000
+     * @tc.name       : testIncludes0010
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0010';
+      try {
+        let buf = buffer.from('abc');
+        expect(buf.includes('a', undefined)).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1100
+     * @tc.name       : testIncludes0011
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0011';
+      try {
+
+        let buf = buffer.from('test');
+        expect(buf.includes('dGVzdA==', undefined, 'base64')).assertTrue();
+        expect(buf.includes('abcd', undefined, 'base64')).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1200
+     * @tc.name       : testIncludes0012
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0012';
+      try {
+        let buf = buffer.from('你好');
+        expect(buf.includes('你好', undefined, 'utf-8')).assertTrue();
+        expect(buf.includes('hello', undefined, 'utf-8')).assertFalse();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1300
+     * @tc.name       : testIncludes0013
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0013';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = buffer.from([102, 103]);
+        const includesTrue = buf.includes(subBuf, Infinity);
+        expect(includesTrue).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1400
+     * @tc.name       : testIncludes0014
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0014';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = buffer.from([102, 103]);
+        const includesTrue = buf.includes(subBuf, Infinity, 'utf-8');
+        expect(includesTrue).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1500
+     * @tc.name       : testIncludes0015
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0015';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = buffer.from([102, 103]);
+        const includesTrue = buf.includes(subBuf, 1, 'utf-8');
+        expect(includesTrue).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1600
+     * @tc.name       : testIncludes0016
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0016';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = buffer.from([102, 103]);
+        const includesTrue = buf.includes(subBuf, 1, 'base64');
+        expect(includesTrue).assertEqual(true)
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1700
+     * @tc.name       : testIncludes0017
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0017';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = 103;
+        const includes = buf.includes(subBuf);
+        expect(includes).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1800
+     * @tc.name       : testIncludes0018
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0018';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = 103;
+        const includes = buf.includes(subBuf, Infinity, 'utf-8');
+        expect(includes).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1900
+     * @tc.name       : testIncludes0019
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0019'
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_2000
+     * @tc.name       : testIncludes0020
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0020';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = 103;
+        const includes = buf.includes(subBuf, Infinity, 'base64');
+        expect(includes).assertEqual(false)
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_2100
+     * @tc.name       : testIncludes0021
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0021';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = 103;
+        const includes = buf.includes(subBuf, 1, 'utf-8');
+        expect(includes).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_2200
+     * @tc.name       : testIncludes0022
+     * @tc.desc       : Test the function of the interface Includes.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIncludes0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIncludes0022';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const subBuf = 103;
+        const includes = buf.includes(subBuf, 1);
+        expect(includes).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0100
+     * @tc.name       : testIndexOf0001
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0001';
+      try {
+        let buf = buffer.from('this is a buffer');
+        let result = buf.indexOf('this');
+        expect(result).assertEqual(0);
+        expect(buf.indexOf('is')).assertEqual(2);
+        expect(buf.indexOf('a')).assertEqual(8);
+        expect(buf.indexOf('buffer')).assertEqual(10);
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0200
+     * @tc.name       : testIndexOf0002
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0002';
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        let result = buf.indexOf(3);
+        expect(result).assertEqual(2);
+        expect(buf.indexOf(4)).assertEqual(3);
+        expect(buf.indexOf(1)).assertEqual(0);
+        expect(buf.indexOf(5)).assertEqual(-1);
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0300
+     * @tc.name       : testIndexOf0003
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0003';
+      try {
+        let buf = buffer.from([1, 2, 3, 4, 5, 6]);
+        let buf1 = buffer.from([1, 2, 3]);
+        let result = buf.indexOf(buf1);
+        expect(result).assertEqual(0);
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}` + e);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0400
+     * @tc.name       : testIndexOf0004
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0004';
+      try {
+        let buf = buffer.from('this');
+        let uint8Arr = new Uint8Array([0x74]);
+        let result = buf.indexOf(uint8Arr);
+        expect(result).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0500
+     * @tc.name       : testIndexOf0005
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0005';
+      try {
+        let buf = buffer.from('this is a buffer');
+        expect(buf.indexOf('this', 0).toString()).assertEqual('0');
+        expect(buf.indexOf('is', 0).toString()).assertEqual('2');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0600
+     * @tc.name       : testIndexOf0006
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0006';
+      try {
+        let buf = buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf1 = buffer.from([0, 1, 2, 3, 4, 5]);
+        expect(buf.indexOf(buf1, -1)).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0700
+     * @tc.name       : testIndexOf0007
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0007';
+      try {
+        let buf = buffer.from('this is a buffer');
+        buf.indexOf('this', Infinity);
+        buf.indexOf('is', Infinity);
+        expect(buf.indexOf('this', Infinity)).assertEqual(-1);
+        expect(buf.indexOf('is', Infinity)).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0800
+     * @tc.name       : testIndexOf0008
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0008';
+      try {
+        let buf = buffer.from('this is a buffer');
+        buf.indexOf('this', -Infinity);
+        buf.indexOf('is', -Infinity);
+        expect(buf.indexOf('this', -Infinity)).assertEqual(0);
+        expect(buf.indexOf('is', -Infinity)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_0900
+     * @tc.name       : testIndexOf0009
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0009';
+      try {
+        let buf = buffer.from('this is a buffer');
+        buf.indexOf('this', 1);
+        buf.indexOf('is', 1);
+        expect(buf.indexOf('this', 1)).assertEqual(-1);
+        expect(buf.indexOf('is', 1)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1000
+     * @tc.name       : testIndexOf0010
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0010';
+      try {
+        let buf = buffer.from('this is a buffer');
+        let result = buf.indexOf('this', undefined);
+        expect(result).assertEqual(0);
+        expect(buf.indexOf('is', undefined)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1100
+     * @tc.name       : testIndexOf0011
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0011';
+      try {
+        let buf = buffer.from('hello this is a buffer');
+        let base64Value = 'aGVsbG8=';
+        let result = buf.indexOf(base64Value, undefined, 'base64');
+        expect(result).assertEqual(0);
+        expect(buf.indexOf('this', undefined, 'base64')).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1200
+     * @tc.name       : testIndexOf0012
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0012';
+      try {
+        let buf = buffer.from('this is a buffer');
+        expect(buf.indexOf('this', undefined, 'utf-8')).assertEqual(0);
+        expect(buf.indexOf('is', undefined, 'utf-8')).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1300
+     * @tc.name       : testIndexOf0013
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0013';
+      try {
+        let buf = buffer.from('test');
+        let emptyBuf = buffer.alloc(0);
+        let result = buf.indexOf(emptyBuf);
+        expect(result).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1400
+     * @tc.name       : testIndexOf0014
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0014';
+      try {
+        const buf = buffer.from('Hello World');
+        const index = buf.indexOf('World', 1, 'utf-8');
+        expect(index).assertEqual(6);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1500
+     * @tc.name       : testIndexOf0015
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0015';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, 0);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1600
+     * @tc.name       : testIndexOf0016
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0016';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, 0, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1700
+     * @tc.name       : testIndexOf0017
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0017';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, 0, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1800
+     * @tc.name       : testIndexOf0018
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0018';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, -1);
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_1900
+     * @tc.name       : testIndexOf0019
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0019';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, -1, 'base64');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2000
+     * @tc.name       : testIndexOf0020
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0020';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, -1, 'utf-8');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2100
+     * @tc.name       : testIndexOf0021
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0021';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, Infinity, 'base64');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2200
+     * @tc.name       : testIndexOf0022
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0022';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, Infinity, 'utf-8');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2300
+     * @tc.name       : testIndexOf0023
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0023';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, -Infinity, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2400
+     * @tc.name       : testIndexOf0024
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0024';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, -Infinity, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2500
+     * @tc.name       : testIndexOf0025
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0025';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, 1, 'base64');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2600
+     * @tc.name       : testIndexOf0026
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level
+     */
+    it('testBufferIndexOf0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0026';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = 101;
+        const index = buf.indexOf(value, 1, 'utf-8');
+        expect(index).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2700
+     * @tc.name       : testIndexOf0027
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0027';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, 0, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2800
+     * @tc.name       : testIndexOf0028
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0028';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, 0, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_2900
+     * @tc.name       : testIndexOf0029
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0029';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, Infinity, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3000
+     * @tc.name       : testIndexOf0030
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0030';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, Infinity);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3100
+     * @tc.name       : testIndexOf0031
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0031';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, Infinity, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3200
+     * @tc.name       : testIndexOf0032
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0032';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = buffer.from([101, 102])
+        const index = buf.indexOf(value, -Infinity);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3300
+     * @tc.name       : testIndexOf0033
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0033';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, 0);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3400
+     * @tc.name       : testIndexOf0034
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0034';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, 0, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3500
+     * @tc.name       : testIndexOf0035
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0035';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, -1);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3600
+     * @tc.name       : testIndexOf0036
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0036';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, Infinity);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3700
+     * @tc.name       : testIndexOf0037
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level
+     */
+    it('testBufferIndexOf0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0037';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, Infinity, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3800
+     * @tc.name       : testIndexOf0038
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0038';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, Infinity, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_3900
+     * @tc.name       : testIndexOf0039
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0039';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, -Infinity);
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_4000
+     * @tc.name       : testIndexOf0040
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0040';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, -Infinity, 'base64');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INDEX_OF_4100
+     * @tc.name       : testIndexOf0041
+     * @tc.desc       : Test the function of the interface IndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBufferIndexOf0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testIndexOf0041';
+      try {
+        const buf = buffer.from([101, 102, 103, 104]);
+        const value = new Uint8Array([101, 102]);
+        const index = buf.indexOf(value, -Infinity, 'utf-8');
+        expect(index).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
   })
 }
