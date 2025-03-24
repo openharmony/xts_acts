@@ -1092,7 +1092,7 @@ export default function CameraErrorCodeUsecaseTest() {
        } catch (error) {
          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
          console.info(TAG + "ERRORCODE: " + error.code);
-         expect(error.code == 7400102).assertTrue();
+         expect(error.code == 7400103).assertTrue();
          expect(true).assertTrue();
        }
        done();
