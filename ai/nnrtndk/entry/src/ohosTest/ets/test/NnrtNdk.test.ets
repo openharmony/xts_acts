@@ -26,7 +26,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelConstruct001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelConstruct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelConstructOne();
       expect(result).assertEqual(0);
       done()
@@ -39,7 +39,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelConstruct002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelConstruct002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelConstructTwo();
       expect(result).assertEqual(0);
       done()
@@ -52,7 +52,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelAddTensor001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelAddTensor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelAddTensorOne();
       expect(result).assertEqual(0);
       done()
@@ -65,7 +65,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelAddTensor002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelAddTensor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelAddTensorTwo();
       expect(result).assertEqual(0);
       done()
@@ -78,7 +78,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelSetTensorData001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelSetTensorData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelSetTensorDataOne();
       expect(result).assertEqual(0);
       done()
@@ -91,7 +91,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelSetTensorData002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelSetTensorData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelSetTensorDataTwo();
       expect(result).assertEqual(0);
       done()
@@ -104,7 +104,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelAddOperation001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelAddOperation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelAddOperationOne();
       expect(result).assertEqual(0);
       done()
@@ -117,7 +117,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelAddOperation002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelAddOperation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelAddOperationTwo();
       expect(result).assertEqual(0);
       done()
@@ -130,7 +130,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelSpecifyInputsAndOutputs001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelSpecifyInputsAndOutputs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelSpecifyInputsAndOutputsOne();
       expect(result).assertEqual(0);
       done()
@@ -143,7 +143,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelSpecifyInputsAndOutputs002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelSpecifyInputsAndOutputs002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelSpecifyInputsAndOutputsTwo();
       expect(result).assertEqual(0);
       done()
@@ -156,7 +156,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelFinish001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelFinish001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelFinishOne();
       expect(result).assertEqual(0);
       done()
@@ -169,7 +169,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelFinish002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelFinish002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelFinishTwo();
       expect(result).assertEqual(0);
       done()
@@ -182,7 +182,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelDestroy001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelDestroy();
       expect(result).assertEqual(0);
       done()
@@ -195,7 +195,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelGetAvailableOpertions001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelGetAvailableOpertions001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelGetAvailableoperationsOne();
       expect(result).assertEqual(0);
       done()
@@ -208,7 +208,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnModelGetAvailableOpertions002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnModelGetAvailableOpertions002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNModelGetAvailableoperationsTwo();
       expect(result).assertEqual(0);
       done()
@@ -221,7 +221,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationConstruct001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationConstruct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationConstructOne();
       expect(result).assertEqual(0);
       done()
@@ -234,7 +234,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationConstruct002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationConstruct002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationConstructTwo();
       expect(result).assertEqual(0);
       done()
@@ -247,7 +247,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetDevice001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetDevice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetDeviceOne();
       expect(result).assertEqual(0);
       done()
@@ -260,7 +260,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetDevice002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetDevice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetDeviceTwo();
       expect(result).assertEqual(0);
       done()
@@ -273,7 +273,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetCache001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetCacheOne();
       expect(result).assertEqual(0);
       done()
@@ -286,7 +286,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetCache002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetCache002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetCacheTwo();
       expect(result).assertEqual(0);
       done()
@@ -299,7 +299,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPerformanceMode001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPerformanceMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPerformanceModeOne();
       expect(result).assertEqual(0);
       done()
@@ -312,7 +312,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPerformanceMode002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPerformanceMode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPerformanceModeTwo();
       expect(result).assertEqual(0);
       done()
@@ -325,7 +325,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPerformanceMode003', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPerformanceMode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPerformanceModeThree();
       expect(result).assertEqual(0);
       done()
@@ -338,7 +338,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPerformanceMode004', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPerformanceMode004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPerformanceModeFour();
       expect(result).assertEqual(0);
       done()
@@ -351,7 +351,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPriority001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPriorityOne();
       expect(result).assertEqual(0);
       done()
@@ -364,7 +364,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationSetPriority002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationSetPriority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationSetPriorityTwo();
       expect(result).assertEqual(0);
       done()
@@ -377,7 +377,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationEnableFloat16001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationEnableFloat16001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationEnableFloat16One();
       expect(result).assertEqual(0);
       done()
@@ -390,7 +390,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationEnableFloat16002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationEnableFloat16002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationEnableFloat16Two();
       expect(result).assertEqual(0);
       done()
@@ -404,7 +404,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationBuild002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationBuild002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationBuildTwo();
       expect(result).assertEqual(0);
       done()
@@ -417,7 +417,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnCompilationDestroy001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnCompilationDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNCompilationDestroy();
       expect(result).assertEqual(0);
       done()
@@ -430,7 +430,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorConstruct002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorConstruct002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorConstructTwo();
       expect(result).assertEqual(0);
       done()
@@ -443,7 +443,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorSetInput002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorSetInput002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorSetInputTwo();
       expect(result).assertEqual(0);
       done()
@@ -457,7 +457,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorSetOutput002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorSetOutput002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorSetOutputTwo();
       expect(result).assertEqual(0);
       done()
@@ -471,7 +471,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorGetOutput002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorGetOutput002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorGetOutputShapeTwo();
       expect(result).assertEqual(0);
       done()
@@ -485,7 +485,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorRun002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorRun002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorRunTwo();
       expect(result).assertEqual(0);
       done()
@@ -499,7 +499,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorAllocateInputMemory002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorAllocateInputMemory002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorAllocateInputMemoryTwo();
       expect(result).assertEqual(0);
       done()
@@ -513,7 +513,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorSetInputWithMemory002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorSetInputWithMemory002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorSetInputWithMemoryTwo();
       expect(result).assertEqual(0);
       done()
@@ -527,7 +527,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnExecutorSetOutputWithMemory002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnExecutorSetOutputWithMemory002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNExecutorSetOutputWithMemoryTwo();
       expect(result).assertEqual(0);
       done()
@@ -540,7 +540,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetAllDevicesID001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetAllDevicesID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetAllDevicesIDOne();
       expect(result).assertEqual(0);
       done()
@@ -553,7 +553,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetAllDevicesID002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetAllDevicesID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetAllDevicesIDTwo();
       expect(result).assertEqual(0);
       done()
@@ -566,7 +566,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetName001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetNameOne();
       expect(result).assertEqual(0);
       done()
@@ -579,7 +579,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetName002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetNameTwo();
       expect(result).assertEqual(0);
       done()
@@ -592,7 +592,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetType001', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetTypeOne();
       expect(result).assertEqual(0);
       done()
@@ -605,7 +605,7 @@ export default function nnrtNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAiNnrtOhNnDeviceGetType002', 0, async (done: Function) => {
+    it('testAiNnrtOhNnDeviceGetType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = nnrt.oHNNDeviceGetTypeTwo();
       expect(result).assertEqual(0);
       done()
