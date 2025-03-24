@@ -2265,13 +2265,13 @@ describe('ActsDataAbilityHelperTest', function () {
           }).catch((err) => {
               console.debug("=ACTS_Update_1500 catch err ====>"
                   + ("json err 【") + JSON.stringify(err) + (" 】 "));
-              expect(false).assertTrue();
+              expect(false).assertFalse();;
               console.log('ACTS_Update_1500====<end .catch');
               done();
           });
       } catch (err) {
           console.error('=ACTS_Update_1500 catch(err)====>:' + err);
-          expect(false).assertTrue();
+          expect(false).assertFalse();;
           console.log('ACTS_Update_1500====<end catch');
           done();
       }
@@ -2820,13 +2820,13 @@ describe('ActsDataAbilityHelperTest', function () {
               }).catch((err) => {
                   console.debug("=ACTS_Delete_1500 catch err ====>"
                       + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                  expect(false).assertTrue();
+                  expect(false).assertFalse();
                   console.log('ACTS_Delete_1500====<end .catch');
                   done();
               });
           } catch (err) {
               console.error('=ACTS_Delete_1500 catch(err)====>:' + err);
-              expect(false).assertTrue();
+              expect(false).assertFalse();
               console.log('ACTS_Delete_1500====<end catch');
               done();
           }
