@@ -786,8 +786,8 @@ export default function PasteboardProgressTest() {
         await systemPasteboard.getDataWithProgress(params).then((data) =>
         {
           console.info(TAG + 'getDataWithProgress start');
-          const exitCount = getExistFilesCount();
-          console.info(TAG + 'exitCount:' + exitCount);
+          const existCount = getExistFilesCount();
+          console.info(TAG + 'existCount:' + existCount);
           expect(existCount !== fileNames.length).assertEqual(true);
           console.info(TAG + 'getDataWithProgress success');
         }).catch((error: BusinessError) =>{
