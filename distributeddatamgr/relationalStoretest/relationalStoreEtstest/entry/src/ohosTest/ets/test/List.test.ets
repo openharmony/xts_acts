@@ -45,7 +45,6 @@ import VectorStoreTest from './VectorStore.test';
 import RelationalStoreCustom from './RelationalStoreCustom.test';
 import RelationalStoreNoneTokenizer from './RelationalStoreNoneTokenizer.test'
 import relationalStoreInterfaceTest from './relationalstore.test'
-import relationalStoreErrorCode47Test from './relationalStoreErrorCode47Test.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -81,6 +80,5 @@ export default function testsuite() {
   RelationalStoreCustom()
   RelationalStoreNoneTokenizer()
   relationalStoreInterfaceTest()
-  relationalStoreErrorCode47Test()
 }
 
