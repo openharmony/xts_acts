@@ -663,6 +663,9 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }
