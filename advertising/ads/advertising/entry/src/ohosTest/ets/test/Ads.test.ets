@@ -139,6 +139,9 @@ export default function adsTest() {
         let load = new advertising.AdLoader(context);
         load.loadAdWithMultiSlots(multiAdRequestError21800001, adOption, adLoaderListener);
       } catch (e) {
+        hilog.error(Domain, TAG, `testMultiLoadAdByCallback_21800001 failed, ERROR= ${e}`);
+        expect(e != null).assertEqual(true);
+        expect(e.code).assertEqual(21800001);
         done();
       }
     })
