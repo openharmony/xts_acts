@@ -56,7 +56,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -75,7 +75,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static asyncFuction-(new-promise & promise)
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -94,7 +94,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise-then-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -113,7 +113,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise--finally-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -132,7 +132,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise-catch-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1005', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -151,7 +151,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise-then-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -170,7 +170,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise-then-asyncFuction & promise
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1007', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -189,7 +189,7 @@ export default function taskPoolStaticThreadTest() {
      * @tc.desc test static new-promise & promise & fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticThreadTest1008', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {

@@ -12,143 +12,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { Calculator } from './Calculator';
+import lazy { Calculator } from './Calculator';
 import { Worker, Worker1, Worker2 } from '../pages/Calculator'
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 import { HashMap, taskpool } from '@kit.ArkTS';
 
-
-@Concurrent
-export function printArgs1(args: number): number {
-  console.info('printArgs: ' + args);
-  return args;
-}
-
-@Concurrent
-export async function promiseThen(index: number): Promise<number> {
-  return await new Promise<number>(async (mainResolve) => {
-    Promise.resolve(index).then(baseValue => {
-      const result = Calculator.computeSync(baseValue);
-      mainResolve(result);
-    });
-  });
-}
-
-@Concurrent
-export async function awaitCompute(index: number): Promise<number> {
-  return await Calculator.computeAsync2(index)
-}
-
-@Concurrent
-export async function awaitPromise(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(10), 50);
-  });
-  const res2 = await Promise.resolve(res1).then(baseValue => {
-    return Calculator.computeSync(index + baseValue)
-  });
-  return res2;
-}
-
-@Concurrent
-export async function awaitFinally(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(1), 50);
-  });
-  let res2 = 0;
-  await Promise.resolve(res1).finally(() => {
-    res2 = Calculator.computeSync(index + res1)
-  });
-  return res2;
-}
-
-@Concurrent
-export async function awaitCatch(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  })
-
-  let res2 = 0;
-  res2 = await Promise.resolve(res1)
-    .then(() => {
-      throw new Error(`Processing-${index}`);
-    })
-    .catch(() => {
-      return Calculator.computeSync(index + res1);
-    });
-  return res2;
-}
-
-@Concurrent
-export async function awaitAsync(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(Calculator.computeAsync1(index)), 50);
-  })
-
-  const res2 = await Promise.resolve(res1)
-    .then((res) => {
-      return res + 1
-    })
-  return res2;
-}
-
-@Concurrent
-export async function promiseCompute(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(1), 50);
-  })
-
-  const res2 = await Promise.resolve(res1)
-    .then((res) => {
-      return Calculator.computeSync(index + res)
-    })
-  return res2;
-}
-
-@Concurrent
-export async function promiseAll(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(1), 50);
-  })
-
-  const res2 = Calculator.computeSync(index + res1)
-
-  const res3 = await Promise.resolve(res2)
-    .then((res) => {
-      return index + res
-    })
-  return res3;
-}
-
-export async function callbackThen(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  }).then((res) => {
-    return Calculator.computeSync(res)
-  })
-
-  const res2 = await Promise.resolve(res1)
-    .then((res) => {
-      return Calculator.computeSync(res)
-    })
-  return res2;
-}
-
-export async function callbackThenFinally(index: number): Promise<number> {
-  let res1 = 0;
-  await new Promise<number>(resolve => {
-    setTimeout(() => resolve(0), 50);
-  }).finally(() => {
-    res1 = Calculator.computeSync(index)
-  })
-
-  let res2 = 0;
-  await Promise.resolve(1)
-    .finally(() => {
-      res2 = Calculator.computeSync(res1)
-    })
-  return res2;
-}
 
 @Concurrent
 export async function concurrentTask1(index: number): Promise<number> {
@@ -179,100 +47,52 @@ export async function concurrentTask3(index: number): Promise<number> {
   throw new Error(`Task ${index} execution failed.`);
 }
 
-export async function callbackAll(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(1), 50);
-  })
-
-  const res2 = Calculator.computeSync(index + res1);
-
-  const res3 = await Promise.resolve(res2)
-    .then((res) => {
-      return 1 + res;
-    })
-  return res3;
+@Concurrent
+export function printArgs1(args: number): number {
+  console.info('printArgs: ' + args);
+  return args;
 }
 
-export async function callbackAllAsync(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(1), 50);
-  })
-
-  const res2 = await Calculator.computeAsync1(index + res1);
-
-  const res3 = await Promise.resolve(res2)
-    .then((res) => {
-      return 1 + res;
-    })
-  return res3;
+@Concurrent
+export async function promiseThen(index: number) {
+  return await new Promise<number>(async (mainResolve) => {
+    Promise.resolve(index).then(baseValue => {
+      const result = Calculator.computeSync(baseValue);
+      mainResolve(result);
+    });
+  });
 }
 
-export async function callbackCompute(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  })
-    .then((res) => {
-      return Calculator.computeSync(res);
-    })
-
-  const res2 = Promise.resolve(res1)
-    .then((res) => {
-      return res + 1;
-    })
-  return res2;
+@Concurrent
+export async function awaitCompute(index: number) {
+  return await Calculator.computeAsync2(index);
 }
 
-export async function callbackAsync(index: number): Promise<number> {
+@Concurrent
+export async function awaitPromise(index: number) {
   const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  })
-    .then(async (res) => {
-      return await Calculator.computeAsync1(res);
-    })
-
-  const res2 = await Promise.resolve(res1)
-    .then((res) => {
-      return res + 1;
-    })
+    setTimeout(() => resolve(10), 50);
+  });
+  const res2 = await Promise.resolve(res1).then(baseValue => {
+    return Calculator.computeSync(index + baseValue);
+  });
   return res2;
 }
 
 @Concurrent
-export function failTask(args: number): HashMap<string, number> {
-  let t = Date.now();
-  while ((Date.now() - t) < 100) {
-    continue;
-  }
-  let hashMap1: HashMap<string, number> = new HashMap();
-  hashMap1.set('a', args);
-  return hashMap1;
-}
-
-export async function callbackPromiseSync(index: number): Promise<number> {
+export async function awaitFinally(index: number) {
   const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  })
-
-  const res2 = await Promise.resolve(res1)
-    .then((res) => {
-      return Calculator.computeSync(res);
-    })
+    setTimeout(() => resolve(1), 50);
+  });
+  let res2 = 0;
+  await Promise.resolve(res1).finally(() => {
+    res2 = Calculator.computeSync(index + res1);
+  });
   return res2;
 }
 
-export async function callbackPromiseAsync(index: number): Promise<number> {
-  const res1 = await new Promise<number>(resolve => {
-    setTimeout(() => resolve(index), 50);
-  })
-
-  const res2 = await Promise.resolve(res1)
-    .then(async (res) => {
-      return await Calculator.computeAsync1(res);
-    })
-  return res2;
-}
-
-export async function callbackCatchSync(index: number): Promise<number> {
+@Concurrent
+export async function awaitCatch(index: number) {
   const res1 = await new Promise<number>(resolve => {
     setTimeout(() => resolve(index), 50);
   })
@@ -288,7 +108,187 @@ export async function callbackCatchSync(index: number): Promise<number> {
   return res2;
 }
 
-export async function callbackCatchAsync(index: number): Promise<number> {
+@Concurrent
+export async function awaitAsync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(Calculator.computeAsync1(index)), 50);
+  })
+
+  const res2 = await Promise.resolve(res1)
+    .then((res) => {
+      return res + 1;
+    })
+  return res2;
+}
+
+@Concurrent
+export async function promiseCompute(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(1), 50);
+  })
+
+  const res2 = await Promise.resolve(res1)
+    .then((res) => {
+      return Calculator.computeSync(index + res);;
+    })
+  return res2;
+}
+
+@Concurrent
+export async function promiseAll(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(1), 50);
+  })
+
+  const res2 = Calculator.computeSync(index + res1)
+
+  const res3 = await Promise.resolve(res2)
+    .then((res) => {
+      return index + res
+    })
+  return res3;
+}
+
+export async function callbackThen(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  }).then((res) => {
+    return Calculator.computeSync(res);
+  })
+
+  const res2 = await Promise.resolve(res1)
+    .then((res) => {
+      return Calculator.computeSync(res);
+    })
+  return res2;
+}
+
+export async function callbackThenFinally(index: number) {
+  let res1 = 0;
+  await new Promise<number>(resolve => {
+    setTimeout(() => resolve(0), 50);
+  }).finally(() => {
+    res1 = Calculator.computeSync(index);
+  })
+
+  let res2 = 0;
+  await Promise.resolve(1)
+    .finally(() => {
+      res2 = Calculator.computeSync(res1);
+    })
+  return res2;
+}
+
+export async function callbackAll(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(1), 50);
+  })
+
+  const res2 = Calculator.computeSync(index + res1);
+
+  const res3 = await Promise.resolve(res2)
+    .then((res) => {
+      return 1 + res;
+    })
+  return res3;
+}
+
+export async function callbackAllAsync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(1), 50);
+  })
+
+  const res2 = await Calculator.computeAsync1(index + res1);
+
+  const res3 = await Promise.resolve(res2)
+    .then((res) => {
+      return 1 + res;
+    })
+  return res3;
+}
+
+export async function callbackCompute(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  })
+    .then((res) => {
+      return Calculator.computeSync(res);
+    })
+
+  const res2 = Promise.resolve(res1)
+    .then((res) => {
+      return res + 1;
+    })
+  return res2;
+}
+
+export async function callbackAsync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  })
+    .then(async (res) => {
+      return await Calculator.computeAsync1(res);
+    })
+
+  const res2 = await Promise.resolve(res1)
+    .then((res) => {
+      return res + 1;
+    })
+  return res2;
+}
+
+@Concurrent
+export function failTask(args: number) {
+  let t = Date.now();
+  while ((Date.now() - t) < 100) {
+    continue;
+  }
+  let hashMap1: HashMap<string, number> = new HashMap();
+  hashMap1.set('a', args);
+  return hashMap1;
+}
+
+export async function callbackPromiseSync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  })
+
+  const res2 = await Promise.resolve(res1)
+    .then((res) => {
+      return Calculator.computeSync(res);
+    })
+  return res2;
+}
+
+export async function callbackPromiseAsync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  })
+
+  const res2 = await Promise.resolve(res1)
+    .then(async (res) => {
+      return await Calculator.computeAsync1(res);
+    })
+  return res2;
+}
+
+export async function callbackCatchSync(index: number) {
+  const res1 = await new Promise<number>(resolve => {
+    setTimeout(() => resolve(index), 50);
+  })
+
+  let res2 = 0;
+  res2 = await Promise.resolve(res1)
+    .then(() => {
+      throw new Error(`Processing-${index}`); // 强制进入catch流程
+    })
+    .catch(() => {
+      return Calculator.computeSync(index + res1);
+    });
+  return res2;
+}
+
+export async function callbackCatchAsync(index: number) {
   const res1 = await new Promise<number>(resolve => {
     setTimeout(() => resolve(index), 50);
   })
@@ -311,7 +311,7 @@ export function sendTaskData(num: number): number {
   return num;
 }
 
-export async function callbackFinallyAsync(index: number): Promise<number> {
+export async function callbackFinallyAsync(index: number) {
   const res1 = await new Promise<number>(resolve => {
     setTimeout(() => resolve(index), 50);
   })
@@ -324,7 +324,7 @@ export async function callbackFinallyAsync(index: number): Promise<number> {
   return res2;
 }
 
-export async function callbackAsyncPromise(index: number): Promise<number> {
+export async function callbackAsyncPromise(index: number) {
   const res = await new Promise<number>(resolve => {
     setTimeout(() => resolve(Calculator.computePromise(index)), 50);
   })

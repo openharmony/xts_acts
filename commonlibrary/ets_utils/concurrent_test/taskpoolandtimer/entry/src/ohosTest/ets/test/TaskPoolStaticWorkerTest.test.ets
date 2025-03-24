@@ -16,7 +16,7 @@ import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from "@ohos/hypium";
 import { Calculator } from '../testability/pages/Calculator';
 import { callbackCatchSync, callbackFinallyAsync } from '../testability/pages/TaskMethodTest';
-import { sleep } from '../testability/pages/Utils';
+import { sleep, WorkThread1, WorkThread2 } from '../testability/pages/Utils';
 
 const TASK_COUNT = 10;
 
@@ -48,7 +48,7 @@ export default function taskPoolStaticWorkerTest() {
      * @tc.desc test static worker-all
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticWorkerTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -69,9 +69,8 @@ export default function taskPoolStaticWorkerTest() {
           work.onerror = (err: ErrorEvent) => {
             console.log("main error message " + err.message);
           }
-          while (result !== Calculator.computeSync(i)) {
-            await sleep(500);
-          }
+
+          await sleep(500);
           expect(result).assertEqual(Calculator.computeSync(i));
         }
         done();
@@ -83,7 +82,7 @@ export default function taskPoolStaticWorkerTest() {
      * @tc.desc test static worker-onmessage
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticWorkerTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -105,9 +104,7 @@ export default function taskPoolStaticWorkerTest() {
             console.log("main error message " + err.message);
           }
 
-          while (result !== Calculator.computeSync(2 * i)) {
-            await sleep(500);
-          }
+          await sleep(500);
           expect(result).assertEqual(Calculator.computeSync(2 * i));
         }
         done();
@@ -119,7 +116,7 @@ export default function taskPoolStaticWorkerTest() {
      * @tc.desc test static worker-onExit
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticWorkerTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -141,9 +138,7 @@ export default function taskPoolStaticWorkerTest() {
             console.log("main error message " + err.message);
           }
 
-          while (result !== (Calculator.computeSync(i) + i)) {
-            await sleep(500);
-          }
+          await sleep(500);
           expect(result).assertEqual(Calculator.computeSync(i) + i);
         }
         done();

@@ -64,7 +64,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onEnqueued all
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -91,7 +91,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onEnqueued all asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -118,7 +118,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onStartExecution new-promise-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -145,7 +145,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onStartExecution new-promise-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -172,7 +172,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onExecutionFailed promise-then-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1005', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -203,7 +203,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onExecutionFailed promise-then-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -234,7 +234,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onExecutionSucceeded promise-catch-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1007', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -265,7 +265,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onExecutionSucceeded promise-catch-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1008', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -296,7 +296,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static onReceiveData promise-finally-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1009', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -327,7 +327,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static then promise-then-fuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1010', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -353,7 +353,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static then promise-finally-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1011', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -379,7 +379,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static catch new-promise-then-asyncPromise
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1012', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -408,7 +408,7 @@ export default function taskPoolStaticCallbackTest() {
      * @tc.desc test static finally all-asyncFuction
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('taskPoolStaticCallbackTest1013', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
