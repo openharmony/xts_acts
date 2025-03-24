@@ -317,8 +317,8 @@ export default function cameraPreconfigTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100
-     * @tc.name      : test video session canpreconfig api with error code 7400102
-     * @tc.desc      : test video session canpreconfig api with error code 7400102
+     * @tc.name      : test video session canpreconfig api with error code 7400201
+     * @tc.desc      : test video session canpreconfig api with error code 7400201
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -332,11 +332,7 @@ export default function cameraPreconfigTest() {
         } catch (error) {
           let err = error as BusinessError;
           console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CANPRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
-          if (err.code == 7400102 || err.code == 7400201) {
-            expect().assertTrue();
-          } else {
-            expect().assertFail();
-          }
+          expect(err.code == 7400201).assertTrue();
           done();
         }
         done();
@@ -361,11 +357,7 @@ export default function cameraPreconfigTest() {
       } catch (error) {
         let err = error as BusinessError;
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_ERROR_CODE_0100 ERRORCODE: " + err.code);
-        if (err.code == 7400102 || err.code == 7400201) {
-          expect(true).assertTrue();
-        } else {
-          expect().assertFail();
-        }
+        expect(err.code == 7400102).assertTrue();
         
         done();
       }
@@ -420,8 +412,8 @@ export default function cameraPreconfigTest() {
 
      /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_SSESION_ERROR_CODE_0100
-     * @tc.name      : test create ssesion api with error code 401 or 7400101
-     * @tc.desc      : test create ssesion api with error code 401 or 7400101
+     * @tc.name      : test create ssesion api with error code 7400101
+     * @tc.desc      : test create ssesion api with error code 7400101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -435,7 +427,7 @@ export default function cameraPreconfigTest() {
       } catch (error) {
         let err = error as BusinessError;
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_SSESION_ERROR_CODE_0100 ERRORCODE: " + err.code);
-        expect(err.code == 401 || err.code == 7400101).assertTrue();
+        expect(err.code == 7400101).assertTrue();
         done();
       }
       done();
@@ -443,8 +435,8 @@ export default function cameraPreconfigTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENABLE_MOVING_PHOTO_0100
-     * @tc.name      : test enable moving photo api with error code 201 or 7400201
-     * @tc.desc      : test enable moving photo api with error code 201 or 7400201
+     * @tc.name      : test enable moving photo api with error code 7400201
+     * @tc.desc      : test enable moving photo api with error code 7400201
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -460,7 +452,7 @@ export default function cameraPreconfigTest() {
       } catch (error) {
         let err = error as BusinessError;
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ENABLE_MOVING_PHOTO_0100 ERRORCODE: " + err.code);
-        expect(err.code == 201 || err.code == 7400201).assertTrue();
+        expect(err.code == 7400201).assertTrue();
         done();
       }
       done();
