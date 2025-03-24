@@ -790,13 +790,13 @@ export default function SerialTest() {
     it('testRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         console.info(TAG, 'testRead001 start');
-        await sleep(1000);
-        serial.open(openPortId);
-        await sleep(1000);
         if (await checkDevice() === false) {
           done();
           return;
         }
+        await sleep(1000);
+        serial.open(openPortId);
+        await sleep(1000);
         let readBuffer: Uint8Array = new Uint8Array(8192);
         await serial.read(openPortId, readBuffer, 300);
         expect().assertFail();
