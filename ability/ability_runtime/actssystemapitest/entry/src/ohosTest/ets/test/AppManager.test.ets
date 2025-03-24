@@ -630,14 +630,14 @@ export default function appManagerTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`System_API_Test_App_Manager_1700 killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(16000050);
           done();
         });
       } catch (paramError) {
         let code = (paramError as BusinessError).code;
         let message = (paramError as BusinessError).message;
         console.error(`System_API_Test_App_Manager_1700 [appManager] error: ${code}, ${message}`);
-        expect(paramError.code).assertEqual(401);
+        expect(paramError.code).assertEqual(16000050);
         done();
       }
     });
