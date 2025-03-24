@@ -489,5 +489,186 @@ describe("UsbAccessoryJsTest", function () {
         }
     })
 
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_0600
+     * @tc.name       : testHasAccessoryRight801Err003
+     * @tc.desc       : verify HasAccessoryRight result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testHasAccessoryRight801Err003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info(TAG, '----------------------testHasAccessoryRight801Err003---------------------------');
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
+        try {
+            let ret = usbMgr.hasAccessoryRight(accList[0]);
+            console.info(TAG, 'testHasAccessoryRight801Err003 ret : ', ret);
+            expect(ret).assertTrue();
+            usbMgr.cancelAccessoryRight(accList[0]);
+            ret = usbMgr.hasAccessoryRight(accList[0]);
+            expect(ret).assertFalse();
+        } catch (err) {
+            console.info(TAG, 'testHasAccessoryRight801Err003 err : ', err);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(801);
+            } else {
+                expect(err.code).assertEqual(14401001);
+            }
+        }
+    })
+
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_0200
+     * @tc.name       : testRequestAccessoryRight801Err001
+     * @tc.desc       : verify requestAccessoryRight no param result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testRequestAccessoryRight801Err001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info(TAG, '----------------------testRequestAccessoryRight001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        try {
+            let access = {"manufacturer": "accessoryTest"};
+            await usbMgr.requestAccessoryRight(access).then(data => {
+                console.info(TAG, 'testRequestAccessoryRight801Err001 ret : ', JSON.stringify(data));
+                expect(data !== null).assertFalse();
+            });
+        } catch (err) {
+            console.info(TAG, 'testRequestAccessoryRight801Err001 err : ', err);
+            if(err){
+            expect(err.code).assertEqual(14400005);
+            }else{
+            expect(err.code).assertEqual(801);            
+            }
+        }
+    })
+
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_0700
+     * @tc.name       : testCancelAccessoryRight801Err001
+     * @tc.desc       : verify cancelAccessoryRight no param result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testCancelAccessoryRight801Err001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+        console.info(TAG, '----------------------testCancelAccessoryRight801Err001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        try {
+            let access = {"manufacturer": "accessoryTest"};
+            usbMgr.cancelAccessoryRight(access);
+            let ret = usbMgr.hasAccessoryRight(access);
+            console.info(TAG, 'testCancelAccessoryRight801Err001 ret : ', ret);
+            expect(ret).assertFalse();
+        } catch (err) {
+            console.info(TAG, 'testCancelAccessoryRight801Err001 err : ', err);
+            if(err){
+                expect(err.code).assertEqual(14400005);
+            }else{
+                expect(err.code).assertEqual(801);  
+            }
+        }
+    })
+
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_0100
+     * @tc.name       : testGetAccessoryList801Err001
+     * @tc.desc       : verify getAccessoryList result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testGetAccessoryList801Err001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+        console.info(TAG, '----------------------testGetAccessoryList801Err001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        try {
+            accList = usbMgr.getAccessoryList();
+            console.info(TAG, 'testGetAccessoryList801Err001 ret : ', JSON.stringify(accList));
+            expect(accList != null).assertEqual(true);
+            expect(accList.length == 1).assertEqual(true);
+            expect(typeof(accList[0].manufacturer)).assertEqual('string');
+            expect(typeof(accList[0].product)).assertEqual('string');
+            expect(typeof(accList[0].description)).assertEqual('string');
+            expect(typeof(accList[0].version)).assertEqual('string');
+            expect(typeof(accList[0].serialNumber)).assertEqual('string');
+        } catch (err) {
+            console.info(TAG, 'testGetAccessoryList801Err001 err : ', err);
+            if(err){
+                expect(err.code).assertEqual(14400005);
+            }else{
+                expect(err.code).assertEqual(801);  
+            }
+        }
+    })
+
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_0900
+     * @tc.name       : testOpenAccessory001
+     * @tc.desc       : verify openAccessory no param result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testOpenAccessory801Err001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+        console.info(TAG, '----------------------testOpenAccessory801Err001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        try {
+            let access = {"manufacturer": "accessoryTest"};
+            let ret = usbMgr.openAccessory(access);
+            console.info(TAG, 'testOpenAccessory801Err001 ret : ', ret);
+            expect(ret !== null).assertFalse();
+        } catch (err) {
+            console.info(TAG, 'testOpenAccessory801Err001 err : ', err);
+            if(err){
+                expect(err.code).assertEqual(14400005);
+            }else{
+                expect(err.code).assertEqual(801);  
+            }
+        }
+    })
+
+    /**
+     * @tc.number     : SUB_USB_DeviceManager_JS_AccessoryErr_1400
+     * @tc.name       : testCloseAccessory801Err002
+     * @tc.desc       : verify openAccessory no param result
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it("testCloseAccessory801Err002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+        console.info(TAG, '----------------------testCloseAccessory801Err002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        let acchandle = {"accessFd": 0};
+        try {
+            usbMgr.closeAccessory(acchandle);
+        } catch (err) {
+            console.info(TAG, 'testCloseAccessory801Err002 err : ', err);
+            if(err){
+                expect(err.code).assertEqual(14400005);
+            }else{
+                expect(err.code).assertEqual(801);  
+            }
+        }
+    })
+
 })
 }

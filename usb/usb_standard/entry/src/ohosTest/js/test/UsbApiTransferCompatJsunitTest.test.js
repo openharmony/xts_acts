@@ -1033,5 +1033,40 @@ describe('UsbApiTransferCompatJsunitTest', function () {
         });
     })
 
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibilityErr_3200
+     * @tc.name     : testUsbControlTransferCompat801Err001
+     * @tc.desc     : Negative test: Enter four parameters
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbControlTransferCompat801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+        console.info(TAG, 'usb testUsbControlTransferCompat801Err001 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.inEndpoint == null).assertFalse();
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        let requestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+        let timeout = 5000;
+
+        await usbManager.usbControlTransfer(testParam.pip, requestparam, timeout, testParam.pip).then(data => {
+            console.info(TAG, 'usb [Enter four parameters] usbControlTransfer data: ' + data);
+            console.info(TAG, 'usb [Enter four parameters] usbControlTransfer buffer data: ' + requestparam.data);
+            expect(data >= 0).assertTrue();
+        }).catch (error => {
+            console.info(TAG, 'usb testUsbControlTransferCompat801Err001 send error : ' + JSON.stringify(error));
+            expect(err.code).assertEqual(801);
+        });
+    })
+
 })
 }
