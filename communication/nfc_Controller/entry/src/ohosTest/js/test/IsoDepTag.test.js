@@ -432,7 +432,7 @@ export default function nfcIsoDepTagTest() {
             }
             let aidList = ["A0000000031010", "A0000000031011"]
             try {
-                hceService.start(hceElementName, aidList);
+                hceService.start();
                 console.info('[NFC_test]12 hceServicestart success ')
                 expect().assertFail();
             } catch (error) {
@@ -450,7 +450,7 @@ export default function nfcIsoDepTagTest() {
                 console.info('[NFC_test]12 hceServicestop error' + error + "/" + error.code)
                 expect(401).assertEqual(error.code);
             }
-        })
+        })      
 
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
