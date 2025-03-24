@@ -23,6 +23,8 @@ import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseEtsTest';
 import singleKvStoreEnumTest from './SingleKvStoreEnumEtsTest';
 import queryTest from './QueryKvEtsTest';
 import schemaTest from './SchemaEts.test';
+import deviceKvStoreCallbackErrcodeTest from './DeviceKvStoreCallbackErrcode.test';
+import deviceKvStorePromiseErrcodeTest from './DeviceKvStorePromiseErrcode.test';
 
 export default function testsuite() {
   deviceKvStoreCallbackTest();
@@ -35,4 +37,6 @@ export default function testsuite() {
   singleKvStoreEnumTest();
   queryTest();
   schemaTest();
+  deviceKvStoreCallbackErrcodeTest();
+  deviceKvStorePromiseErrcodeTest();
 }
