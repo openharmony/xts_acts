@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -23,6 +23,8 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 
 const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const context = delegator.getAppContext().getApplicationContext();
+
+const CREATE_TABLE_TEST = "CERATE TABLE IF NOT EXISTS test(id INTEGER PRIMARY KEY,repr floatvector(8));";
 
 const RDB_DB_ICUNAME = "VectorStoreTest.db";
 
@@ -63,7 +65,7 @@ export default function VectorStoreTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('VectorStoreTest0100', 0, async (done:Function) => {
+        it('VectorStoreTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreIcuInsert0100 ";
             const res = data_Rdb.isVectorSupported();
             console.info(TAGTEST + "res=" + res);
@@ -73,25 +75,50 @@ export default function VectorStoreTest() {
                     rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
                     console.info(TAGTEST + "success getRdbStore. rdbStore=" + rdbStore);
                     expect().assertFail();
-
+                    done()
                 } catch(err){
                     console.info(TAGTEST + "fail getRdbStore, code=" + err.code + err.message);
                     expect(801).assertEqual(err.code);
+                    done()
                 }
 
             } else {
-                console.info(TAGTEST + "true res=" + res);
-                try {
-                    rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-                    console.info(TAGTEST + "success getRdbStore. rdbStore=" + rdbStore);
-                    expect(rdbStore != null).assertTrue();
+                  console.info(TAGTEST + "true res1111=" + res);
+              try {
+                  rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+                  console.info(TAGTEST + "success getRdbStore1111. rdbStore=" + rdbStore);
+                  expect(rdbStore != null).assertTrue();
+                  await rdbStore.execute(CREATE_TABLE_TEST, 0 ,undefined);
+                  console.info(TAGTEST + "success create table11111.");
+                  await rdbStore.execute("INSERT INTO test VALUES(0,'[5,8,9,7,1,3,1,3]')",0,undefined);
+                  const CREATE_IVFFLAT_INDEX = "CREATE INDEX test_idx ON test USING GSIVFFLAT(repr L2);"
+                  await rdbStore.execute(CREATE_IVFFLAT_INDEX,0,undefined);
+                  let resultSet: data_Rdb.ResultSet;
+                  const QUERY_VECTOR_TEST = "select id,repr <-> '[20,26,32,48,19,10,20,45]'" + "from test ORDER BY repr <-> '[20,26,32,48,19,10,20,45]';";
+                  let txId1 :number = 0;
+                  (rdbStore as data_Rdb.RdbStore).beginTrans().then((txId) => {
+                     txId1 = txId;
+                     (rdbStore as data_Rdb.RdbStore).execute("INSERT INTO test VALUES(1,'[21,28,34,58,21,15,14,51]');", txId1, undefined)
+                       .then(async() => {
+                            (rdbStore as data_Rdb.RdbStore).commit(txId1);
+                            resultSet = await (rdbStore as data_Rdb.RdbStore).querySql(QUERY_VECTOR_TEST);
+                            console.log(TAGTEST + "resultSet.rowCount:" +resultSet.rowCount)
+                            expect(resultSet.rowCount).assertEqual(2)
+                            done();
+                    }).catch((err: BusinessError) => {
+                          (rdbStore as data_Rdb.RdbStore as data_Rdb.RdbStore).rollback(txId1)
+                          console.log(`execute sql failed, code is ${err.code},message is ${err.message}`);
+                          expect().assertFail();
+                          done();
+                   });
+                 });
                 } catch(err){
                     console.info(TAGTEST + "fail getRdbStore, code=" + err.code + err.message);
                     expect().assertFail();
+                    done();
                 }
             }
             console.info(TAGTEST + " ************* End*************");
-            done();
         });
         console.info(TAG + " *************Unit Test End*************");
     })
