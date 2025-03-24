@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType, Size, Level} from '@ohos/hypium'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG = '[ttt]'
 
@@ -24,13 +25,13 @@ export default function UDMFApiPromise() {
 
     beforeEach(async () => {
       console.info(TAG + "beforeEach")
-      let options = {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       await unifiedDataChannel.deleteData(options).then((data) => {
         let size = data.length;
         console.info(TAG, ` [beforeEach] success to deleteData data.size = ${size}`);
-      }).catch((err) => {
+      }).catch((err:BusinessError) => {
         console.info(TAG, ` [beforeEach] Failed to deleteData. code is ${err.code},message is ${err.message} `);
       });
     })
@@ -45,8 +46,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', 0, (done: Function) => {
-      let Options = {}
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {}
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
@@ -55,7 +56,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${Options}`);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -75,8 +76,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options :unifiedDataChannel.Options= {
         intention: undefined
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -87,7 +88,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${Options}`);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -107,8 +108,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {
         intention: null
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -119,7 +120,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${Options}`);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -139,8 +140,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', 0, (done: Function) => {
-      let Options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {
         intention: undefined,
         key: undefined
       }
@@ -152,7 +153,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${Options}`);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -172,9 +173,9 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', 0, (done: Function) => {
-      let Options = {
-        key: null
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let Options:unifiedDataChannel.Options = {
+        key: String (null)
       }
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
@@ -184,7 +185,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${Options}`);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -204,8 +205,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -216,7 +217,7 @@ export default function UDMFApiPromise() {
           console.info(TAG + `data = ${data}, options = ${options}`);
           expect(data !== null).assertTrue();
           done()
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(TAG, `Failed to insertData0600 code is ${err.code},message is ${err.message} `);
           expect(err !== null).assertFail();
           done();
@@ -235,8 +236,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -255,7 +256,7 @@ export default function UDMFApiPromise() {
             console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
             expect(ret !== null).assertTrue();
             done();
-          }).catch((err) => {
+          }).catch((err:BusinessError) => {
             console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
             expect(err !== null).assertFail();
             done();
@@ -277,8 +278,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -298,7 +299,7 @@ export default function UDMFApiPromise() {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect().assertFail()
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`UpdateData1111 failed. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -324,8 +325,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
@@ -345,7 +346,7 @@ export default function UDMFApiPromise() {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect().assertFail()
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -373,8 +374,8 @@ export default function UDMFApiPromise() {
      * @tc.level     : Level 3
      */
 
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB,
         key: undefined
       }
@@ -393,7 +394,7 @@ export default function UDMFApiPromise() {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect(ret !== null).assertTrue();
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -420,8 +421,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -445,14 +446,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size - dataSize).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -474,8 +475,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -498,14 +499,14 @@ export default function UDMFApiPromise() {
               let size = records.length;
               for (let j = 0; j < size; j++) {
                 if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                  let text = <unifiedDataChannel.PlainText> (records[j]);
+                  let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                   console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                 }
               }
             }
             expect(size).assertEqual(1);
             done();
-          }).catch((err) => {
+          }).catch((err:BusinessError) => {
             console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
             expect(err !== null).assertFail();
             done();
@@ -526,8 +527,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -540,7 +541,7 @@ export default function UDMFApiPromise() {
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          let options2 = {
+          let options2:unifiedDataChannel.Options = {
             intention: unifiedDataChannel.Intention.DATA_HUB,
             key: data
           };
@@ -552,14 +553,14 @@ export default function UDMFApiPromise() {
               let size = records.length;
               for (let j = 0; j < size; j++) {
                 if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                  let text = <unifiedDataChannel.PlainText> (records[j]);
+                  let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                   console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                 }
               }
             }
             expect(size).assertEqual(1);
             done();
-          }).catch((err) => {
+          }).catch((err:BusinessError) => {
             console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
             expect(err !== null).assertFail();
             done();
@@ -580,8 +581,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -594,7 +595,7 @@ export default function UDMFApiPromise() {
             return;
           }
           console.info(TAG + `insertData0400 success; data = ${data}, options = ${options1}`);
-          let options2 = {
+          let options2:unifiedDataChannel.Options = {
             intention: unifiedDataChannel.Intention.DATA_HUB,
             key: 'data'
           };
@@ -607,14 +608,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect().assertFail();
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -640,8 +641,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -656,7 +657,7 @@ export default function UDMFApiPromise() {
               return;
             }
             console.info(TAG + `insertData0500 success; data = ${data}, options = ${options1}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: undefined
             };
@@ -668,14 +669,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size - dataSize).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -697,8 +698,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -725,14 +726,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -754,8 +755,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', 0, (done: Function) => {
-      let options = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -784,14 +785,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -813,8 +814,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -833,7 +834,7 @@ export default function UDMFApiPromise() {
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: data
             };
@@ -845,14 +846,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
@@ -874,8 +875,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -894,7 +895,7 @@ export default function UDMFApiPromise() {
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: 'data'
             };
@@ -907,14 +908,14 @@ export default function UDMFApiPromise() {
                   let size = records.length;
                   for (let j = 0; j < size; j++) {
                     if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                       console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                     }
                   }
                 }
                 expect().assertFail();
                 done();
-              }).catch((err) => {
+              }).catch((err:BusinessError) => {
                 console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
                 expect(err !== null).assertFail();
                 done();
@@ -941,8 +942,8 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', 0, (done: Function) => {
-      let options1 = {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options1:unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
       let plainText = new unifiedDataChannel.PlainText();
@@ -961,7 +962,7 @@ export default function UDMFApiPromise() {
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
+            let options2:unifiedDataChannel.Options = {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: undefined
             };
@@ -973,14 +974,14 @@ export default function UDMFApiPromise() {
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
                   if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
+                    let text:unifiedDataChannel.PlainText = (records[j]) as unifiedDataChannel.PlainText;
                     console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
               }
               expect(size).assertEqual(1);
               done();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
               console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
               expect(err !== null).assertFail();
               done();
