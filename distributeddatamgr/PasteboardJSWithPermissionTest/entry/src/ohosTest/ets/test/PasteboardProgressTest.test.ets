@@ -748,7 +748,7 @@ export default function PasteboardProgressTest() {
 
       let systemPasteboard = pasteboard.getSystemPasteboard();
       let firstFullName = '${filePath}/${fileNames[0]}';
-      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(firstFullName));
       fileNames.slice(1).forEach(name => {
         let fileFullName = '${filePath}/${name}';
         pasteData.addRecord(pasteboard.MIMETYPE_TEXT_URI, fileFullName);
@@ -790,7 +790,7 @@ export default function PasteboardProgressTest() {
           console.info(TAG + 'exitCount:' + exitCount);
           expect(existCount !== fileNames.length).assertEqual(true);
           console.info(TAG + 'getDataWithProgress success');
-        }).catch((error) =>{
+        }).catch((error: BusinessError) =>{
           console.info(TAG + 'getDataWithProgress failed,error:' + JSON.stringify(error));
           expect().assertFail();
         })
