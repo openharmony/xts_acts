@@ -21,6 +21,7 @@ import UsbApiIsochronousTransferTest from './UsbApiIsochronousTransferTest.test'
 import SerialTest from './SerialTest.test';
 import UsbAccessoryEtsTest from './UsbAccessoryEtsTest.test';
 import UsbApiTransferCompatEtsTest from './UsbApiTransferCompatEtsTest.test';
+import SerialAddTest from './SerialAddTest.test';
 
 export default function testsuite() {
   UsbSystemApiNormalJsTest()
@@ -31,4 +32,5 @@ export default function testsuite() {
   SerialTest()
   UsbAccessoryEtsTest()
   UsbApiTransferCompatEtsTest()
+  SerialAddTest()
 }
