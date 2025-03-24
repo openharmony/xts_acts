@@ -16,20 +16,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-
 export default function windowErrCode1300010() {
   describe('windowErrCode1300010', () => {
     console.log('describe windowErrCode1300010 start!!!')
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
-
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
     })
-
     /**
      * @tc.number    : testMoveWindowToGlobalPromiseErrCode1300010_0100
      * @tc.name      : testMoveWindowToGlobalPromiseErrCode1300010_0100
@@ -38,7 +35,7 @@ export default function windowErrCode1300010() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowToGlobalPromiseErrCode1300010_0100', 0, async (done: Function) => {
+    it('testMoveWindowToGlobalPromiseErrCode1300010_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowToGlobalPromiseErrCode1300010_0100';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');

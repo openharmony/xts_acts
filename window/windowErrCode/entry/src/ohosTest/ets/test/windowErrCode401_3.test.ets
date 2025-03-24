@@ -16,21 +16,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-
 export default function windowErrCode401_3() {
   describe('windowErrCode401_3', () => {
     console.log('describe windowErrCode401_3 start!!!')
-
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
-
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
     })
-
     /**
      * @tc.number     : testSetWindowTouchablePromiseErrCode401_0100
      * @tc.name       : testSetWindowTouchablePromiseErrCode401_0100
@@ -39,11 +35,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTouchablePromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowTouchablePromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTouchablePromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTouchablePromiseErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -58,7 +53,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.setWindowTouchable(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setWindowTouchable.');
@@ -76,7 +70,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowTouchableCallbackErrCode401_0100
      * @tc.name       : testSetWindowTouchableCallbackErrCode401_0100
@@ -85,11 +78,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTouchableCallbackErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowTouchableCallbackErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTouchableCallbackErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTouchableCallbackErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -104,7 +96,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.setWindowTouchable(null, async (err: BusinessError) => {
           await win!.destroyWindow()
@@ -126,7 +117,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetRaiseByClickEnabledPromiseErrCode401_0100
      * @tc.name       : testSetRaiseByClickEnabledPromiseErrCode401_0100
@@ -135,11 +125,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetRaiseByClickEnabledPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetRaiseByClickEnabledPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetRaiseByClickEnabledPromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetRaiseByClickEnabledPromiseErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -154,7 +143,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.setRaiseByClickEnabled(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
@@ -172,7 +160,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetResizeByDragEnabledCallbackErrCode401_0100
      * @tc.name       : testSetResizeByDragEnabledCallbackErrCode401_0100
@@ -181,11 +168,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetResizeByDragEnabledCallbackErrCode401_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledCallbackErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetResizeByDragEnabledCallbackErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -195,7 +181,6 @@ export default function windowErrCode401_3() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       try {
         mainWindow!.setResizeByDragEnabled(null, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -215,7 +200,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetResizeByDragEnabledPromiseErrCode401_0100
      * @tc.name       : testSetResizeByDragEnabledPromiseErrCode401_0100
@@ -224,11 +208,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetResizeByDragEnabledPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetResizeByDragEnabledPromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -238,7 +221,6 @@ export default function windowErrCode401_3() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       try {
         await mainWindow!.setResizeByDragEnabled(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
@@ -254,7 +236,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowLimitsPromiseErrCode401_0100
      * @tc.name       : testSetWindowLimitsPromiseErrCode401_0100
@@ -263,11 +244,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowLimitsPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowLimitsPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowLimitsPromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowLimitsPromiseErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -282,7 +262,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.setWindowLimits(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setWindowLimits.');
@@ -300,7 +279,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testKeepKeyboardOnFocusErrCode401_0100
      * @tc.name       : testKeepKeyboardOnFocusErrCode401_0100
@@ -309,11 +287,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testKeepKeyboardOnFocusErrCode401_0100', 0, async (done: Function) => {
+    it('testKeepKeyboardOnFocusErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testKeepKeyboardOnFocusErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testKeepKeyboardOnFocusErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -328,7 +305,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.keepKeyboardOnFocus(null);
         console.error(msgStr + 'Succeeded in calling keepKeyboardOnFocus.');
@@ -344,7 +320,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowDecorVisibleErrCode401_0100
      * @tc.name       : testSetWindowDecorVisibleErrCode401_0100
@@ -353,11 +328,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowDecorVisibleErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowDecorVisibleErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowDecorVisibleErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowDecorVisibleErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -372,7 +346,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.setWindowDecorVisible(null);
         console.error(msgStr + 'Succeeded in calling setWindowDecorVisible.');
@@ -388,7 +361,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowTitleMoveEnabledErrCode401_0100
      * @tc.name       : testSetWindowTitleMoveEnabledErrCode401_0100
@@ -397,11 +369,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTitleMoveEnabledErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabledErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTitleMoveEnabledErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTitleMoveEnabledErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -416,7 +387,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.setWindowTitleMoveEnabled(null);
         console.error(msgStr + 'Succeeded in calling setWindowTitleMoveEnabled.');
@@ -432,7 +402,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowTitlePromiseErrCode401_0100
      * @tc.name       : testSetWindowTitlePromiseErrCode401_0100
@@ -441,11 +410,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTitlePromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowTitlePromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTitlePromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTitlePromiseErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -460,7 +428,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.setWindowTitle(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setWindowTitle.');
@@ -478,7 +445,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowDecorHeightErrCode401_0100
      * @tc.name       : testSetWindowDecorHeightErrCode401_0100
@@ -487,11 +453,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowDecorHeightErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowDecorHeightErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowDecorHeightErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowDecorHeightErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -506,7 +471,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.setWindowDecorHeight(null);
         console.error(msgStr + 'Succeeded in calling setWindowDecorHeight.');
@@ -522,7 +486,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowTitleButtonVisibleErrCode401_0100
      * @tc.name       : testSetWindowTitleButtonVisibleErrCode401_0100
@@ -531,11 +494,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTitleButtonVisibleErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleButtonVisibleErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTitleButtonVisibleErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTitleButtonVisibleErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -550,7 +512,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.setWindowTitleButtonVisible(null, null, null);
         console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
@@ -566,7 +527,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnWindowTitleButtonRectChangeErrCode401_0100
      * @tc.name       : testOnWindowTitleButtonRectChangeErrCode401_0100
@@ -575,11 +535,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnWindowTitleButtonRectChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOnWindowTitleButtonRectChangeErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnWindowTitleButtonRectChangeErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testOnWindowTitleButtonRectChangeErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -594,7 +553,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.on(null, (res: ohosWindow.TitleButtonRect) => {
         });
@@ -611,7 +569,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffWindowTitleButtonRectChangeErrCode401_0100
      * @tc.name       : testOffWindowTitleButtonRectChangeErrCode401_0100
@@ -620,11 +577,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffWindowTitleButtonRectChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOffWindowTitleButtonRectChangeErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffWindowTitleButtonRectChangeErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testOffWindowTitleButtonRectChangeErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -639,7 +595,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.off(null, (res: ohosWindow.TitleButtonRect) => {
         });
@@ -656,7 +611,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowMaskPromiseErrCode401_0100
      * @tc.name       : testSetWindowMaskPromiseErrCode401_0100
@@ -665,11 +619,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowMaskPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowMaskPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowMaskPromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowMaskPromiseErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -684,7 +637,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.setWindowMask(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setWindowMask.');
@@ -702,7 +654,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnWindowRectChangeErrCode401_0100
      * @tc.name       : testOnWindowRectChangeErrCode401_0100
@@ -711,11 +662,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnWindowRectChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOnWindowRectChangeErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnWindowRectChangeErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testOnWindowRectChangeErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -730,7 +680,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.on(null, (res: ohosWindow.RectChangeOptions) => {
         });
@@ -747,7 +696,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffWindowRectChangeErrCode401_0100
      * @tc.name       : testOffWindowRectChangeErrCode401_0100
@@ -756,11 +704,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffWindowRectChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOffWindowRectChangeErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffWindowRectChangeErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testOffWindowRectChangeErrCode401_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -775,7 +722,6 @@ export default function windowErrCode401_3() {
         expect().assertFail();
         done()
       }
-
       try {
         win!.off(null, (res: ohosWindow.RectChangeOptions) => {
         });
@@ -792,7 +738,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testCreateSubWindowWithOptionsPromiseErrCode401_0100
      * @tc.name       : testCreateSubWindowWithOptionsPromiseErrCode401_0100
@@ -801,11 +746,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testCreateSubWindowWithOptionsPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testCreateSubWindowWithOptionsPromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -815,13 +759,11 @@ export default function windowErrCode401_3() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       let options: ohosWindow.SubWindowOptions = {
         title: 'title',
         decorEnabled: true,
         isModal: true
       };
-
       try {
         await mainWindow!.createSubWindowWithOptions(null, options).then(async () => {
           console.info(msgStr + 'Succeeded in calling createSubWindowWithOptions.');
@@ -842,7 +784,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testLoadContentByNameCallbackErrCode401_0300
      * @tc.name       : testLoadContentByNameCallbackErrCode401_0300
@@ -851,11 +792,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testLoadContentByNameCallbackErrCode401_0300', 0, async (done: Function) => {
+    it('testLoadContentByNameCallbackErrCode401_0300', Level.LEVEL3, async (done: Function) => {
       let caseName = "testLoadContentByNameCallbackErrCode401_0300";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage!.loadContentByName(null, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -875,7 +815,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testLoadContentByNameCallbackErrCode401_0400
      * @tc.name       : testLoadContentByNameCallbackErrCode401_0400
@@ -884,11 +823,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testLoadContentByNameCallbackErrCode401_0400', 0, async (done: Function) => {
+    it('testLoadContentByNameCallbackErrCode401_0400', Level.LEVEL3, async (done: Function) => {
       let caseName = "testLoadContentByNameCallbackErrCode401_0400";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage!.loadContentByName(null, null, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -908,7 +846,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testLoadContentByNamePromiseErrCode401_0200
      * @tc.name       : testLoadContentByNamePromiseErrCode401_0200
@@ -917,11 +854,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testLoadContentByNamePromiseErrCode401_0200', 0, async (done: Function) => {
+    it('testLoadContentByNamePromiseErrCode401_0200', Level.LEVEL3, async (done: Function) => {
       let caseName = "testLoadContentByNamePromiseErrCode401_0200";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         await windowStage.loadContentByName(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling loadContentByName.');
@@ -937,7 +873,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnWindowStageEventErrCode401_0100
      * @tc.name       : testOnWindowStageEventErrCode401_0100
@@ -946,11 +881,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnWindowStageEventErrCode401_0100', 0, async (done: Function) => {
+    it('testOnWindowStageEventErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnWindowStageEventErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.on(null, (res: ohosWindow.WindowStageEventType) => {
         });
@@ -965,7 +899,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffWindowStageEventErrCode401_0100
      * @tc.name       : testOffWindowStageEventErrCode401_0100
@@ -974,11 +907,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffWindowStageEventErrCode401_0100', 0, async (done: Function) => {
+    it('testOffWindowStageEventErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffWindowStageEventErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.off(null, (res: ohosWindow.WindowStageEventType) => {
         });
@@ -993,7 +925,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnWindowStageCloseErrCode401_0100
      * @tc.name       : testOnWindowStageCloseErrCode401_0100
@@ -1002,11 +933,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnWindowStageCloseErrCode401_0100', 0, async (done: Function) => {
+    it('testOnWindowStageCloseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnWindowStageCloseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.on(null, () => {
         });
@@ -1021,7 +951,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffWindowStageCloseErrCode401_0100
      * @tc.name       : testOffWindowStageCloseErrCode401_0100
@@ -1030,11 +959,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffWindowStageCloseErrCode401_0100', 0, async (done: Function) => {
+    it('testOffWindowStageCloseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffWindowStageCloseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.off(null, () => {
         });
@@ -1049,7 +977,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetDefaultDensityEnabledErrCode401_0100
      * @tc.name       : testSetDefaultDensityEnabledErrCode401_0100
@@ -1058,11 +985,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetDefaultDensityEnabledErrCode401_0100', 0, async (done: Function) => {
+    it('testSetDefaultDensityEnabledErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetDefaultDensityEnabledErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.setDefaultDensityEnabled(null);
         console.error(msgStr + 'Succeeded in calling setDefaultDensityEnabled.');
@@ -1076,7 +1002,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetCustomDensityErrCode401_0100
      * @tc.name       : testSetCustomDensityErrCode401_0100
@@ -1085,11 +1010,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetCustomDensityErrCode401_0100', 0, async (done: Function) => {
+    it('testSetCustomDensityErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetCustomDensityErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         windowStage.setCustomDensity(null)
         console.error(msgStr + 'Succeeded in calling setCustomDensity.');
@@ -1103,7 +1027,6 @@ export default function windowErrCode401_3() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowModalPromiseErrCode401_0100
      * @tc.name       : testSetWindowModalPromiseErrCode401_0100
@@ -1112,12 +1035,11 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowModalPromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowModalPromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       {
         let caseName = "testSetWindowModalPromiseErrCode401_0100";
         let msgStr = 'jsunittest ' + caseName + ' ';
         console.log(msgStr + 'begin.');
-
         try {
           await windowStage.setWindowModal(null).then(async () => {
             console.info(msgStr + 'Succeeded in calling setWindowModal.');
@@ -1143,7 +1065,6 @@ export default function windowErrCode401_3() {
         }
       }
     })
-
     /**
      * @tc.number     : testSetWindowRectAutoSavePromiseErrCode401_0100
      * @tc.name       : testSetWindowRectAutoSavePromiseErrCode401_0100
@@ -1152,11 +1073,10 @@ export default function windowErrCode401_3() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowRectAutoSavePromiseErrCode401_0100', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSavePromiseErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowRectAutoSavePromiseErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       try {
         await windowStage.setWindowRectAutoSave(null).then(async () => {
           console.info(msgStr + 'Succeeded in calling setWindowRectAutoSave.');

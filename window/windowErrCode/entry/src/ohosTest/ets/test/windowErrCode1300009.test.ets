@@ -16,21 +16,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-
 export default function windowErrCode1300009() {
   describe('windowErrCode1300009', () => {
     console.log('describe windowErrCode1300009 start!!!')
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
     })
-
-
     /**
      * @tc.number     : testSetRaiseByClickEnabledPromiseErrCode1300009_0100
      * @tc.name       : testSetRaiseByClickEnabledPromiseErrCode1300009_0100
@@ -39,11 +35,10 @@ export default function windowErrCode1300009() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetRaiseByClickEnabledPromiseErrCode1300009_0100', 0, async (done: Function) => {
+    it('testSetRaiseByClickEnabledPromiseErrCode1300009_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetRaiseByClickEnabledPromiseErrCode1300009_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -53,10 +48,8 @@ export default function windowErrCode1300009() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       await (mainWindow as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (mainWindow as ohosWindow.Window).showWindow();
-
       try {
         await (mainWindow as ohosWindow.Window)!.setRaiseByClickEnabled(true).then(async () => {
           console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
@@ -81,7 +74,6 @@ export default function windowErrCode1300009() {
         done()
       }
     })
-
     /**
      * @tc.number     : testRaiseToAppTopPromiseErrCode1300009_0100
      * @tc.name       : testRaiseToAppTopPromiseErrCode1300009_0100
@@ -90,11 +82,10 @@ export default function windowErrCode1300009() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testRaiseToAppTopPromiseErrCode1300009_0100', 0, async (done: Function) => {
+    it('testRaiseToAppTopPromiseErrCode1300009_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testRaiseToAppTopPromiseErrCode1300009_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -104,10 +95,8 @@ export default function windowErrCode1300009() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       await (mainWindow as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (mainWindow as ohosWindow.Window).showWindow();
-
       try {
         await (mainWindow as ohosWindow.Window).raiseToAppTop().then(async () => {
           console.info(msgStr + 'Succeeded in calling raiseToAppTop.');
