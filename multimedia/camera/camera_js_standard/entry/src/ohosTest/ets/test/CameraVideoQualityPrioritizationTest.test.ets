@@ -657,7 +657,7 @@ export default function CameraVideoQualityPrioritizationTest() {
           } catch (err) {
             console.info(TAG +
               `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0300 error: ${err}, ${err.code}, ${err.message}`);
-            expect(err.code == 401 || err.code == 7400101).assertTrue();
+            expect(err.code == 401).assertTrue();
             done();
           }
         }
