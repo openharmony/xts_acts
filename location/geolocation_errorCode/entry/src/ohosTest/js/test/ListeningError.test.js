@@ -88,7 +88,7 @@ export default function geolocationTest_6(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_CountryCodeErr_0200', 0, function () {
+        it('SUB_HSS_LocationSystem_CountryCodeErr_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 console.info("[lbs_js] SUB_HSS_LocationSystem_CountryCodeErr_0200");
                 geolocationm.on('countryCodeChange', 1);
@@ -105,7 +105,7 @@ export default function geolocationTest_6(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_HSS_LocationSystem_CountryCodeErr_0300', 0, function () {
+        it('SUB_HSS_LocationSystem_CountryCodeErr_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 console.info("[lbs_js] SUB_HSS_LocationSystem_CountryCodeErr_0300");
                 geolocationm.off('countryCodeChange',1);
