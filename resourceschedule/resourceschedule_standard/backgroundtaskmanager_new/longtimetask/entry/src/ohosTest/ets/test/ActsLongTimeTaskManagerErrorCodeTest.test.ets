@@ -24,8 +24,8 @@ import { describe, it, TestType, Size, Level, beforeAll, afterAll, beforeEach, a
 const TAG = "testTag";
 const DOMAIN: number = 0x0000;
 
-export default function LongTimeTaskManagerTest() {
-  describe('ActsLongTimeTaskManagerTest', () => {
+export default function LongTimeTaskManagerErrorCodeTest() {
+  describe('ActsLongTimeTaskManagerErrorCodeTest', () => {
 
     let wantAgentInfo: wantAgent.WantAgentInfo;
     let wantAgentInfos: wantAgent.WantAgentInfo;
