@@ -336,21 +336,21 @@ export default function windowErrCode401_1() {
       }
 
       try {
-        win!.moveWindowTo(null, null, async (err: BusinessError) => {
+        win!.setWindowLayoutFullScreen (null, async (err: BusinessError) => {
           await win!.destroyWindow()
           const errCode: number = err.code;
           if (errCode) {
-            console.error(msgStr + 'Failed to call moveWindowTo. Cause:' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to call setWindowLayoutFullScreen. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done()
             return;
           }
-          console.info(msgStr + 'Succeeded in calling moveWindowTo.');
+          console.info(msgStr + 'Succeeded in calling setWindowLayoutFullScreen.');
           expect().assertFail();
           done();
         });
       } catch (exception) {
-        console.error(msgStr + 'Failed to call moveWindowTo. Cause:' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to call setWindowLayoutFullScreen. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
         expect(exception.code).assertEqual(401);
         done()
@@ -386,11 +386,11 @@ export default function windowErrCode401_1() {
       }
 
       try {
-        await win!.moveWindowToGlobal(null, null).then(async () => {
-          console.info(msgStr + 'Succeeded in calling moveWindowToGlobal.');
+        await win!.setWindowLayoutFullScreen(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowLayoutFullScreen.');
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
-          console.error(msgStr + 'Failed to call moveWindowToGlobal. Cause: ' + JSON.stringify(err));
+          console.error(msgStr + 'Failed to call setWindowLayoutFullScreen. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
         await win!.destroyWindow()
