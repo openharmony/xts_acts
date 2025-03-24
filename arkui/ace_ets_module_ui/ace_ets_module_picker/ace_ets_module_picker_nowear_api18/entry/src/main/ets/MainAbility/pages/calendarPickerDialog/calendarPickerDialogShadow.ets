@@ -18,13 +18,6 @@ struct CalendarPickerDialogShadow {
   showDialog(shadow: ShadowOptions | ShadowStyle) {
     CalendarPickerDialog.show({
       shadow: shadow,
-      onDidAppear: () => {
-        let tree: ESObject = getInspectorTree();
-        let dialog: ESObject = tree.$children[1];
-        let column: ESObject = dialog.$children[0];
-        let shadow: string = column.$attrs.shadow;
-        console.info("calendar onDidAppear: " + shadow)
-      },
     })
   }
   build() {
