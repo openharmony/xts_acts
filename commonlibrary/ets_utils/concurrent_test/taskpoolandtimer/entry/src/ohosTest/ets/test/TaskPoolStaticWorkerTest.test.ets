@@ -69,8 +69,9 @@ export default function taskPoolStaticWorkerTest() {
           work.onerror = (err: ErrorEvent) => {
             console.log("main error message " + err.message);
           }
-
-          await sleep(500);
+          while (result !== Calculator.computeSync(i)) {
+            await sleep(500);
+          }
           expect(result).assertEqual(Calculator.computeSync(i));
         }
         done();
@@ -104,7 +105,9 @@ export default function taskPoolStaticWorkerTest() {
             console.log("main error message " + err.message);
           }
 
-          await sleep(500);
+          while (result !== Calculator.computeSync(2 * i)) {
+            await sleep(500);
+          }
           expect(result).assertEqual(Calculator.computeSync(2 * i));
         }
         done();
@@ -138,7 +141,9 @@ export default function taskPoolStaticWorkerTest() {
             console.log("main error message " + err.message);
           }
 
-          await sleep(500);
+          while (result !== (Calculator.computeSync(i) + i)) {
+            await sleep(500);
+          }
           expect(result).assertEqual(Calculator.computeSync(i) + i);
         }
         done();

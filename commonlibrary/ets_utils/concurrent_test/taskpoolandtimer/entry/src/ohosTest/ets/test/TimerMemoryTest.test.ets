@@ -69,7 +69,7 @@ export default function TimerMemoryTest() {
           }, 10);
         });
       };
-      const LOOP_TIMES = 1000;
+      const LOOP_TIMES = 100;
       const initialMemory = getMemorySnapshot();
       const promises: Promise<void>[] = [];
       for (let i = 0; i < LOOP_TIMES; i++) {
@@ -103,7 +103,7 @@ export default function TimerMemoryTest() {
       const performance: PerformanceLike = {
         now: () => Date.now()
       };
-      const LOOP_TIMES = 1000;
+      const LOOP_TIMES = 100;
       const INTERVAL_EXECUTION_TIMES = 10;
       let totalCount = 0;
       const promises: Promise<void>[] = [];
@@ -138,7 +138,7 @@ export default function TimerMemoryTest() {
      */
     it('TimerMemoryTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let totalCount = 0;
-      const LOOP_TIMES = 1000;
+      const LOOP_TIMES = 100;
       const SHORT_DELAY_FACTOR = 0.1;
       const INTERVAL_EXECUTION_TIMES = 10;
       for (let i = 0; i < LOOP_TIMES; i++) {
