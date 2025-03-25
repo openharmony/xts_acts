@@ -15,6 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <cstdlib>
+#include "syscap_ndk.h"
 #include "ActsOpenGL_gles_kmn_325xTest.h"
 
 namespace OHOS {
@@ -41,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskmn325xTest, TestOpenGLglTestCase01, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskmn325xTest01------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass_noctx/3.2.5.x/src/"
                 "gles2-khr-master.txt "
@@ -54,7 +55,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskmn325xTest, TestOpenGLglTestCase02, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskmn325xTest02------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass_noctx/3.2.5.x/src/"
                 "gles32-khr-master.txt "
@@ -67,7 +68,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskmn325xTest, TestOpenGLglTestCase03, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskmn325xTest03------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass_noctx/3.2.5.x/"
                 "gles2-khr-noctx-master.txt "
@@ -80,7 +81,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskmn325xTest, TestOpenGLglTestCase04, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskmn325xTest04------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass_noctx/3.2.5.x/"
                 "gles32-khr-noctx-master.txt "

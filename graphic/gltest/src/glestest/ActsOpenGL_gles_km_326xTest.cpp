@@ -15,6 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <cstdlib>
+#include "syscap_ndk.h"
 #include "ActsOpenGL_gles_km_326xTest.h"
 
 namespace OHOS {
@@ -41,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase01, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest01------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/src/"
                 "gles2-khr-master.txt "
@@ -54,7 +55,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase02, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest02------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/src/"
                 "gles3-khr-master.txt "
@@ -67,7 +68,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase03, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest03------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/src/"
                 "gles31-khr-master.txt "
@@ -80,7 +81,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase04, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest04------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/src/"
                 "gles32-khr-master.txt "
@@ -93,7 +94,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase05, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest05------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/src/"
                 "gles32-khr-test-issues.txt "
@@ -106,7 +107,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase06, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest06------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/"
                 "gles2-khr-master.txt "
@@ -119,7 +120,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase07, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest07------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/"
                 "gles3-khr-master.txt "
@@ -132,7 +133,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase08, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest08------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/"
                 "gles31-khr-master.txt "
@@ -145,7 +146,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLgleskm326xTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLgleskm326xTest09------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.GLES2")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/khronos_mustpass/3.2.6.x/"
                 "gles32-khr-master.txt "

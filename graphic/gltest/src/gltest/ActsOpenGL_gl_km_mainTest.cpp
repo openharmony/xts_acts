@@ -15,6 +15,8 @@
 
 #include <gtest/gtest.h>
 #include <cstdlib>
+#include "syscap_ndk.h"
+#include "syscap_ndk.h"
 #include "ActsOpenGL_gl_km_mainTest.h"
 
 namespace OHOS {
@@ -41,7 +43,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase01, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest01------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl30-gtf-master.txt "
@@ -54,7 +56,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase02, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest02------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl30-master.txt "
@@ -67,7 +69,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase03, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest03------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl30-test-issues.txt "
@@ -80,7 +82,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase04, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest04------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl31-gtf-master.txt "
@@ -93,7 +95,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase05, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest05------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl31-master.txt "
@@ -106,7 +108,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase06, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest06------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl31-test-issues.txt "
@@ -119,7 +121,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase07, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest07------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl32-gtf-master.txt "
@@ -132,7 +134,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase08, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest08------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl32-master.txt "
@@ -145,7 +147,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest09------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl32-test-issues.txt "
@@ -158,7 +160,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase10, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest10------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl33-gtf-master.txt "
@@ -171,7 +173,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase11, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest11------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl33-master.txt "
@@ -184,7 +186,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase12, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest12------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl33-test-issues.txt "
@@ -197,7 +199,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase13, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest13------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl40-gtf-master.txt "
@@ -210,7 +212,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase14, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest14------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl40-master.txt "
@@ -223,7 +225,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase15, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest15------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl40-test-issues.txt "
@@ -236,7 +238,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase16, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest16------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl41-gtf-master.txt "
@@ -249,7 +251,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase17, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest17------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl41-master.txt "
@@ -262,7 +264,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase18, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest18------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl41-test-issues.txt "
@@ -275,7 +277,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase19, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest19------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl42-compat-master.txt "
@@ -288,7 +290,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase20, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest20------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl42-gtf-master.txt "
@@ -301,7 +303,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase21, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest21------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl42-master.txt "
@@ -314,7 +316,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase22, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest22------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl42-test-issues.txt "
@@ -327,7 +329,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase23, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest23------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl43-gtf-master.txt "
@@ -340,7 +342,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase24, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest24------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl43-master.txt "
@@ -353,7 +355,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase25, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest25------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl43-test-issues.txt "
@@ -366,7 +368,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase26, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest26------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl44-gtf-master.txt "
@@ -379,7 +381,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase27, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest27------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl44-master.txt "
@@ -392,7 +394,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase28, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest28------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl44-test-issues.txt "
@@ -405,7 +407,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase29, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest29------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl45-gtf-master.txt "
@@ -418,7 +420,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase30, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest30------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl45-master.txt "
@@ -431,7 +433,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase31, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest31------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl45-test-issues.txt "
@@ -444,7 +446,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase32, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest32------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl46-gtf-master.txt "
@@ -457,7 +459,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase33, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest33------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl46-master.txt "
@@ -470,7 +472,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase34, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest34------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/src/"
                 "gl46-test-issues.txt "
@@ -483,7 +485,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase35, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest35------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl30-gtf-master.txt "
@@ -496,7 +498,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase36, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest36------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl30-master.txt "
@@ -509,7 +511,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase37, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest37------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl31-gtf-master.txt "
@@ -522,7 +524,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase38, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest38------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl31-master.txt "
@@ -535,7 +537,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase39, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest39------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl32-gtf-master.txt "
@@ -548,7 +550,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase40, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest40------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl32-master.txt "
@@ -561,7 +563,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase41, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest41------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl33-gtf-master.txt "
@@ -574,7 +576,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase42, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest42------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl33-master.txt "
@@ -587,7 +589,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase43, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest43------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl40-gtf-master.txt "
@@ -600,7 +602,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase44, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest44------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl40-master.txt "
@@ -613,7 +615,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase45, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest45------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl41-gtf-master.txt "
@@ -626,7 +628,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase46, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest46------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl41-master.txt "
@@ -639,7 +641,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase47, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest47------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl42-compat-master.txt "
@@ -652,7 +654,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase48, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest48------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl42-gtf-master.txt "
@@ -665,7 +667,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase49, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest49------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl42-master.txt "
@@ -678,7 +680,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase50, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest50------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl43-gtf-master.txt "
@@ -691,7 +693,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase51, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest51------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl43-master.txt "
@@ -704,7 +706,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase52, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest52------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl44-gtf-master.txt "
@@ -717,7 +719,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase53, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest53------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl44-master.txt "
@@ -730,7 +732,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase54, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest54------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl45-gtf-master.txt "
@@ -743,7 +745,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase55, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest55------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl45-master.txt "
@@ -756,7 +758,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase56, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest56------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl46-gtf-master.txt "
@@ -769,7 +771,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLglkmmainTest, TestOpenGLglTestCase57, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLglkmmainTest57------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
                 "gl46-master.txt "

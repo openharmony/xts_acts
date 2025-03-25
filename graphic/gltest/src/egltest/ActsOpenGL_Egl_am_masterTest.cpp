@@ -15,6 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <cstdlib>
+#include "syscap_ndk.h"
 #include "ActsOpenGL_Egl_am_masterTest.h"
 
 namespace OHOS {
@@ -41,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLEglammasterTest, TestOpenGLEglTestCase01, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLEglammasterTest01------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.EGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-internal-api-tests.txt "
@@ -54,7 +55,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLEglammasterTest, TestOpenGLEglTestCase02, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLEglammasterTest02------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.EGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-master.txt "
@@ -67,7 +68,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLEglammasterTest, TestOpenGLEglTestCase03, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLEglammasterTest03------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.EGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-test-issues.txt "
@@ -80,7 +81,7 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLEglammasterTest, TestOpenGLEglTestCase04, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLEglammasterTest04------\n");
-        if (canIUse("SystemCapability.Graphic.OpenGL")) {
+        if (canIUse("SystemCapability.Graphic.Graphic2D.EGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/"
                 "egl-master.txt "
