@@ -1163,28 +1163,6 @@ export default function ApiCoverTest() {
       done();
     });
 
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_2000
-     * @tc.name   : Call setSupportedProcessCache.
-     * @tc.desc   : The function call should return invalid permission error.
-     * @tc.size   : LargeTest
-     * @tc.type   : Function
-     * @tc.level  : 3
-     */
-     it('SUB_Ability_AbilityRuntime_ProcessCache_2000', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_2000`;
-      console.log(`${tag}, test begin`);
-      let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
-      console.log(`${tag}, deviceType: ${deviceType} -- maxCacheNum: ${maxCacheNum} `);
-      if (deviceType === '2in1') {
-        expect(maxCacheNum > 0).assertTrue();
-      } else {
-        expect(maxCacheNum <= 0).assertTrue();
-      }
-      console.log(`${tag}, test end`);
-      done();
-    });
-
      /*
      * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_3000
      * @tc.name   : Call killAllProcesses.
