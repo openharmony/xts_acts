@@ -1413,7 +1413,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_4300, Function |
     ASSERT_EQ(OH_HiAppEvent_SetConfigId(processor0, 123), -200);
     const char* userList[] = {"testprocessor", "processor2", "processor3"};
     ASSERT_EQ(OH_HiAppEvent_SetReportUserId(processor0, userList, 1), -200);
-    ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, g_userList, 1), -200);
+    ASSERT_EQ(OH_HiAppEvent_SetReportUserProperty(processor0, userList, 1), -200);
     ASSERT_EQ(OH_HiAppEvent_AddProcessor(processor0), -200);
     ASSERT_EQ(OH_HiAppEvent_RemoveProcessor(123), -200);
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_4300 end" << endl;
