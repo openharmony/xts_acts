@@ -3469,5 +3469,31 @@ export default function SingleKvStoreErrCodeTest(){
         expect().assertFail();
       }
     });
+
+    /**
+     * @tc.name test_SUB_DDM_DKV_SINGLEKVSTORE_ERRCODE_1240
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_ERRCODE_1240
+     * @tc.desc distributedKVStore off errcode 15100005 promise
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ERRCODE_1240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + 'SUB_DDM_DKV_SINGLEKVSTORE_ERRCODE_1240 start');
+      try {
+        kvStore?.on('dataChange', distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL, () => {
+          console.info(TAG + 'dataChange');
+        })
+        await kvManager?.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID);
+        console.info(TAG + 'Succeeded in closeKVStore');
+        kvStore?.off('dataChange');
+        console.info(TAG + `Succeeded in off `);
+        expect().assertFail();
+      } catch (err) {
+        console.error(TAG + `Failed to off.code is ${err.code},message is ${err.message}`);
+        expect(err.code).assertEqual(15100005);
+      };
+      done();
+    });
   })
 }
