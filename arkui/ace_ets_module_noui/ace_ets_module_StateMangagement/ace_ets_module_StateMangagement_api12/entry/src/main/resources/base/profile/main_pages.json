@@ -181,6 +181,11 @@
     "MainAbility/pages/watch/WatchLink0050",
     "MainAbility/pages/provide_consume/ProvideConsume0010",
     "MainAbility/pages/Provider/Provider0270",
-    "MainAbility/pages/state/StateUndefined0010"
+    "MainAbility/pages/state/StateUndefined0010",
+    "MainAbility/pages/Storage/AbstractPropertyRef",
+    "MainAbility/pages/Storage/SubAbstractPropertyLink",
+    "MainAbility/pages/Storage/Environment0040",
+    "MainAbility/pages/Storage/LocalStorageDelete0120",
+    "MainAbility/pages/LazyForEach/LazyForEach0120"
   ]
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,33 +13,23 @@
  * limitations under the License.
  */
 
-{
-  "app": {
-    "signingConfigs": [
+let para0120: Record<string, number> = { 'prop0120': 10 }
+let storage0120: LocalStorage = new LocalStorage(para0120)
 
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 18,
-        "compatibleSdkVersion": 11,
-        "runtimeOS": "OpenHarmony"
-      }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+@Entry(storage0120)
+@Component
+struct LocalStorageDelete0120 {
+  @State isDel: boolean = false
+
+  build() {
+    Column() {
+      Text(this.isDel.toString()).id('tvIsDel').height('5%')
+      Button('Click')
+        .id('btnDel')
+        .height('5%')
+        .onClick(() => {
+          this.isDel = storage0120.delete('prop0120')
+        })
     }
-  ]
+  }
 }
