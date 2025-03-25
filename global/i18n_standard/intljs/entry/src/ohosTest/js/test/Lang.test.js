@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function LangTest() {
 describe('LangTest', function () {
@@ -85,7 +85,7 @@ describe('LangTest', function () {
     * @tc.name    test the is24HourClock interface
     * @tc.desc    check the value of is24HourClock method
     */
-    it('i18n_test_clock_0100', 0, function () {
+    it('i18n_test_clock_0100', Level.LEVEL0, function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);
@@ -104,7 +104,7 @@ describe('LangTest', function () {
     * @tc.name    test the set24HourClock interface
     * @tc.desc    check the value of set24HourClock method
     */
-    it('i18n_test_clock_0120', 0, function () {
+    it('i18n_test_clock_0120', Level.LEVEL2, function () {
         console.log('i18n_test_clock_0120 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0120 ' + value);
@@ -131,7 +131,7 @@ describe('LangTest', function () {
     * @tc.name    test the getPreferredLanguageList interface with default value
     * @tc.desc    check the value of getPreferredLanguageList method
     */
-    it('i18n_test_preferredlanguage_0100', 0, function () {
+    it('i18n_test_preferredlanguage_0100', Level.LEVEL0, function () {
         console.log('i18n_test_preferredlanguage_0100 ' + 'start');
         let value = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0100 ' + value);
@@ -143,7 +143,7 @@ describe('LangTest', function () {
     * @tc.name test the addPreferredLanguage interface
     * @tc.desc check the value of addPreferredLanguage method
     */
-    it('i18n_test_preferredlanguage_0120', 0, function () {
+    it('i18n_test_preferredlanguage_0120', Level.LEVEL2, function () {
         console.log('i18n_test_preferredlanguage_0120 ' + 'start');
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0120 ' + list);
@@ -166,7 +166,7 @@ describe('LangTest', function () {
     * @tc.name test the removePreferredLanguage interface
     * @tc.desc check the value of removePreferredLanguage method
     */
-    it('i18n_test_preferredlanguage_0140', 0, function () {
+    it('i18n_test_preferredlanguage_0140', Level.LEVEL2, function () {
         console.log('i18n_test_preferredlanguage_0140 ' + 'start');
         let list = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0140 ' + list);
@@ -184,7 +184,7 @@ describe('LangTest', function () {
     * @tc.name    test the getFirstPreferredLanguage interface
     * @tc.desc    check the value of getFirstPreferredLanguage method
     */
-    it('i18n_test_preferredlanguage_1000', 0, function () {
+    it('i18n_test_preferredlanguage_1000', Level.LEVEL2, function () {
         console.log('i18n_test_preferredlanguage_1000 ' + 'start');
         let value = I18n.getFirstPreferredLanguage();
         console.log('i18n_test_preferredlanguage_1000 ' + value);
@@ -204,7 +204,7 @@ describe('LangTest', function () {
     * @tc.name    transfer from lower to upper
     * @tc.desc    check the transfer result
     */
-    it('transfer_test_0100', 0, function () {
+    it('transfer_test_0100', Level.LEVEL0, function () {
         let date = 'hello';
         let value = date.toLocaleUpperCase('zh-CN');
         console.log('transfer_test_0100 ' + value);
@@ -216,7 +216,7 @@ describe('LangTest', function () {
     * @tc.name    transfer from upper to lower
     * @tc.desc    check the transfer result
     */
-    it('transfer_test_0200', 0, function () {
+    it('transfer_test_0200', Level.LEVEL0, function () {
         let date = 'WORLD';
         let value = date.toLocaleLowerCase('zh-CN');
         console.log('transfer_test_0200 ' + value);
@@ -228,7 +228,7 @@ describe('LangTest', function () {
     * @tc.name    transfer to upper
     * @tc.desc    check the transfer result
     */
-    it('transfer_test_0300', 0, function () {
+    it('transfer_test_0300', Level.LEVEL2, function () {
         let date = 'My name is Jack.';
         let value = date.toLocaleUpperCase('en-US');
         console.log('transfer_test_0300 ' + value);
@@ -240,7 +240,7 @@ describe('LangTest', function () {
     * @tc.name    transfer to lower
     * @tc.desc    check the transfer result
     */
-    it('transfer_test_0400', 0, function () {
+    it('transfer_test_0400', Level.LEVEL2, function () {
         let date = 'The sky is in BLUE-STYLE!';
         let value = date.toLocaleLowerCase('en-US');
         console.log('transfer_test_0400 ' + value);
