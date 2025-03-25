@@ -32,11 +32,23 @@ export default function accountManagerTest() {
       done();
     })
 
-    afterAll((done: Function) => {
+    afterAll(async (done: Function) => {
       let osAccountManager = osAccount.getAccountManager();
       localIds.forEach((localId) => {
         osAccountManager.removeOsAccount(localId);
       })
+
+      console.info(' --- resetDomainAccountPolicy  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      let policy: accountManager.DomainAccountPolicy = {};
+      try {
+        accountManager.setDomainAccountPolicy(SELFWANT, DOMAIN_ACCOUNT_INFO1, policy);
+      } catch (error) {
+        console.info(' --- resetDomainAccountPolicy error 801 is expected, actually catch: ' + error.code);
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      console.info(' --- resetDomainAccountPolicy  -------- END --------');
       done();
     })
 
@@ -993,6 +1005,81 @@ export default function accountManagerTest() {
       }
       done();
       console.info(' --- setDomainAccountPolicy_test_009  -------- END --------');
+    })
+
+    /**
+     * @tc.number getDomainAccountPolicy_test_001
+     * @tc.name test getDomainAccountPolicy method
+     * @tc.desc getDomainAccountPolicy with inactive admin
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("getDomainAccountPolicy_test_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        console.info(' --- getDomainAccountPolicy_test_001  -------- START --------');
+        await accountManager.getDomainAccountPolicy(SELFWANT, DOMAIN_ACCOUNT_INFO1);
+        console.info(' --- getDomainAccountPolicy_test_001 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- getDomainAccountPolicy_test_001 error 9200001 and 801 is expected, actually catch: '
+          + error.code);
+        expect((error.code == 9200001) || (error.code == 801)).assertTrue();
+      }
+      done();
+      console.info(' --- getDomainAccountPolicy_test_001  -------- END --------');
+    })
+
+    /**
+     * @tc.number getDomainAccountPolicy_test_002
+     * @tc.name test getDomainAccountPolicy method
+     * @tc.desc getDomainAccountPolicy with normal admin
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("getDomainAccountPolicy_test_002", Level.LEVEL2, async (done: Function) => {
+      try {
+        console.info(' --- getDomainAccountPolicy_test_002  -------- START --------');
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        await accountManager.getDomainAccountPolicy(SELFWANT, DOMAIN_ACCOUNT_INFO1);
+        console.info(' --- getDomainAccountPolicy_test_002 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- getDomainAccountPolicy_test_002 error 9200002 and 801 is expected, actually catch: '
+          + error.code);
+        expect((error.code == 9200002) || (error.code == 801)).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+      console.info(' --- getDomainAccountPolicy_test_002  -------- END --------');
+    })
+
+    /**
+     * @tc.number getDomainAccountPolicy_test_003
+     * @tc.name test getDomainAccountPolicy method
+     * @tc.desc getDomainAccountPolicy without admin
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("getDomainAccountPolicy_test_003", Level.LEVEL2, async (done: Function) => {
+      console.info(' --- getDomainAccountPolicy_test_003  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        await accountManager.getDomainAccountPolicy(null, DOMAIN_ACCOUNT_INFO1);
+        console.info(' --- getDomainAccountPolicy_test_003 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- getDomainAccountPolicy_test_003 error 401 and 801 is expected, actually catch: '
+          + error.code);
+        expect((error.code == 401) || (error.code == 801)).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+      console.info(' --- getDomainAccountPolicy_test_003  -------- END --------');
     })
   })
 }
