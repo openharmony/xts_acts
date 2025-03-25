@@ -68,7 +68,9 @@ let connOpt: socket.TLSConnectOptions = {
     type: 0,
     address: {
       address: '127.0.0.1',
-      port: 10000
+      port: 10000,
+      username: 'name1',
+      password: 'password1'
     }
   }
 };
@@ -90,7 +92,9 @@ let connOptErr: socket.TLSConnectOptions = {
     type: 0,
     address: {
       address: '127.0.0.1',
-      port: 10000
+      port: 10000,
+      username: 'name2',
+      password: 'password2'
     }
   }
 }
