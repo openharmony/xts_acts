@@ -19,28 +19,30 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function CalendarPickerDialogBGBlurStyleTest() {
-  describe('CalendarPickerDialogBGBlurStyleTest', async () => {
-    beforeEach(async (done: Function) => {
-      console.info('CalendarPickerDialogBGBlurStyleTest beforeEach start');
+    describe('CalendarPickerDialogBGBlurStyleTest', () => {
+
+    beforeAll(async () => {
+      console.info("CalendarPickerDialogBGBlurStyleTest beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/calendarPickerDialog/calendarPickerDialogBGBlurStyle',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get CalendarPickerDialogBGBlurStyleTest state pages:' + JSON.stringify(pages));
-        if (!('calendarPickerDialogBGBlurStyle' == pages.name)) {
-          console.info('get CalendarPickerDialogBGBlurStyleTest pages.name:' + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
-          await Utils.sleep(2500);
-          console.info('push CalendarPickerDialogBGBlurStyleTest page result:' + JSON.stringify(result));
+        if (!("calendarPickerDialogBGBlurStyle" == pages.name)) {
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error('push CalendarPickerDialogBGBlurStyleTest page error:' + err);
+        console.error("push CalendarPickerDialogBGBlurStyleTest page error: " + err);
       }
-      console.info('CalendarPickerDialogBGBlurStyleTest beforeEach end');
-      done();
     });
+
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
+      console.info("CalendarPickerDialogBGBlurStyleTest after each called");
+    });
+  
 
     /* *
     * @tc.number: CalendarPickerDialogBGBlurStyleTest_001
