@@ -43,7 +43,7 @@ namespace OHOS {
         printf("------start ActsOpenGLEglammasterTest01------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-internal-api-tests.txt "
                 "--deqp-log-filename=ActsOpenGLEglammasterTest01.qpa");
         }
@@ -56,7 +56,7 @@ namespace OHOS {
         printf("------start ActsOpenGLEglammasterTest02------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-master.txt "
                 "--deqp-log-filename=ActsOpenGLEglammasterTest02.qpa");
         }
@@ -69,7 +69,7 @@ namespace OHOS {
         printf("------start ActsOpenGLEglammasterTest03------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/src/"
                 "egl-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLEglammasterTest03.qpa");
         }
@@ -82,7 +82,7 @@ namespace OHOS {
         printf("------start ActsOpenGLEglammasterTest04------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/egl/a_mustpass/master/"
                 "egl-master.txt "
                 "--deqp-log-filename=ActsOpenGLEglammasterTest04.qpa");
         }

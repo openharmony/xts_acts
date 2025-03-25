@@ -43,7 +43,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest01------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles2-driver-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest01.qpa");
         }
@@ -56,7 +56,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest02------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles2-hw-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest02.qpa");
         }
@@ -69,7 +69,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest03------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles2-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest03.qpa");
         }
@@ -82,7 +82,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest04------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles2-spec-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest04.qpa");
         }
@@ -95,7 +95,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest05------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles2-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest05.qpa");
         }
@@ -108,7 +108,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest06------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-driver-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest06.qpa");
         }
@@ -121,7 +121,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest07------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-hw-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest07.qpa");
         }
@@ -134,7 +134,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest08------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest08.qpa");
         }
@@ -147,7 +147,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest09------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-multisample-hw-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest09.qpa");
         }
@@ -160,7 +160,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest10------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-multisample.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest10.qpa");
         }
@@ -173,7 +173,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest11------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-pixelformat.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest11.qpa");
         }
@@ -186,7 +186,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest12------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-rotation.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest12.qpa");
         }
@@ -199,7 +199,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest13------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-spec-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest13.qpa");
         }
@@ -212,7 +212,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest14------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles3-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest14.qpa");
         }
@@ -225,7 +225,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest15------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-driver-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest15.qpa");
         }
@@ -238,7 +238,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest16------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-hw-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest16.qpa");
         }
@@ -251,7 +251,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest17------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest17.qpa");
         }
@@ -264,7 +264,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest18------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-multisample-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest18.qpa");
         }
@@ -277,7 +277,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest19------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-multisample.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest19.qpa");
         }
@@ -290,7 +290,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest20------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-pixelformat.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest20.qpa");
         }
@@ -303,7 +303,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest21------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-rotation.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest21.qpa");
         }
@@ -316,7 +316,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest22------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-spec-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest22.qpa");
         }
@@ -329,7 +329,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest23------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/src/"
                 "gles31-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest23.qpa");
         }
@@ -342,7 +342,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest24------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles2-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest24.qpa");
         }
@@ -355,7 +355,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest25------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-565-no-depth-no-stencil.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest25.qpa");
         }
@@ -368,7 +368,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest26------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest26.qpa");
         }
@@ -381,7 +381,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest27------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-multisample.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest27.qpa");
         }
@@ -394,7 +394,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest28------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-rotate-landscape.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest28.qpa");
         }
@@ -407,7 +407,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest29------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-rotate-portrait.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest29.qpa");
         }
@@ -420,7 +420,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest30------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-rotate-reverse-landscape.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest30.qpa");
         }
@@ -433,7 +433,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest31------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles3-rotate-reverse-portrait.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest31.qpa");
         }
@@ -446,7 +446,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest32------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-565-no-depth-no-stencil.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest32.qpa");
         }
@@ -459,7 +459,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest33------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-master.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest33.qpa");
         }
@@ -472,7 +472,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest34------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-multisample.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest34.qpa");
         }
@@ -485,7 +485,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest35------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-rotate-landscape.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest35.qpa");
         }
@@ -498,7 +498,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest36------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-rotate-portrait.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest36.qpa");
         }
@@ -511,7 +511,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest37------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-rotate-reverse-landscape.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest37.qpa");
         }
@@ -524,7 +524,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglesammasterTest38------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/aosp_mustpass/master/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gles/a_mustpass/master/"
                 "gles31-rotate-reverse-portrait.txt "
                 "--deqp-log-filename=ActsOpenGLglesammasterTest38.qpa");
         }

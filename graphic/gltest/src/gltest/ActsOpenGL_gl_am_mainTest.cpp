@@ -43,7 +43,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest01------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/src/"
                 "gl45es3-master.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest01.qpa");
         }
@@ -56,7 +56,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest02------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/src/"
                 "gl45es31-master.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest02.qpa");
         }
@@ -69,7 +69,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest03------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/src/"
                 "gl45es31-spec-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest03.qpa");
         }
@@ -82,7 +82,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest04------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/src/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/src/"
                 "gl45es31-test-issues.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest04.qpa");
         }
@@ -95,7 +95,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest05------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
                 "gl45-es3-master.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest05.qpa");
         }
@@ -108,7 +108,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest06------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
                 "gl45-es31-master.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest06.qpa");
         }
@@ -121,7 +121,7 @@ namespace OHOS {
         printf("------start ActsOpenGLglammainTest07------\n");
         if (canIUse("SystemCapability.Graphic.OpenGL")) {
             system("/data/local/tmp/opengl/mustpass/glcts "
-                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/aosp_mustpass/main/"
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
                 "gl45-master.txt "
                 "--deqp-log-filename=ActsOpenGLglammainTest07.qpa");
         }
