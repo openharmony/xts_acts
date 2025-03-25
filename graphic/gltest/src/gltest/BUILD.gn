@@ -17,7 +17,7 @@ import("//test/xts/acts/graphic/gltest/comm.gni")
 
 ohos_moduletest_suite("ActsOpenGLglTest") {
   part_name = "graphic_2d"
-  sources = [ 
+  sources = [
     "ActsOpenGL_gl_am_461xTest.cpp",
     "ActsOpenGL_gl_am_mainTest.cpp",
     "ActsOpenGL_gl_km_460xTest.cpp",
@@ -28,7 +28,7 @@ ohos_moduletest_suite("ActsOpenGLglTest") {
     "ActsOpenGL_gl_kmn_461xTest.cpp",
     "ActsOpenGL_gl_kmn_mainTest.cpp",
     "ActsOpenGL_gl_kms_461xTest.cpp",
-    "ActsOpenGL_gl_kms_mainTest.cpp"
+    "ActsOpenGL_gl_kms_mainTest.cpp",
   ]
 
   include_dirs = [
@@ -37,7 +37,7 @@ ohos_moduletest_suite("ActsOpenGLglTest") {
   ]
   deps = [
     "../../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
-    "//third_party/vk-gl-cts/framework/platform:glcts"
+    "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
   cflags = [ "-Wno-error" ]
 }
