@@ -367,7 +367,7 @@ export default function windowPropertiesTest() {
         let windowClass2 = await windowStage2.getMainWindow();
         try {
             let densityInfo0: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
-            let newDen = densityInfo0.customDensity + 1
+            let newDen = Math.round(densityInfo0.customDensity) + 1
             windowStage2.setCustomDensity(newDen);
             console.info(msgStr + `setCustomDensity 3.0 success`);
             let densityInfo1: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
