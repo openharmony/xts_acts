@@ -65,12 +65,12 @@ let connOpt: socket.TLSConnectOptions = {
   },
   ALPNProtocols: ["spdy/1", "http/1.1"],
   proxy: {
-    type: 0,
+    type: socket.ProxyTypes.NONE,
+    username: 'name1',
+    password: 'password1',
     address: {
       address: '127.0.0.1',
-      port: 10000,
-      username: 'name1',
-      password: 'password1'
+      port: 10000
     }
   }
 };
@@ -90,20 +90,20 @@ let connOptErr: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"],
   proxy: {
     type: 0,
+    username: 'name2',
+    password: 'password2',
     address: {
       address: '127.0.0.1',
-      port: 10000,
-      username: 'name2',
-      password: 'password2'
+      port: 10000
     }
   }
 }
 
-export default function SocketErrorCodeTest() {
-  describe('SocketErrorCodeTest', () => {
+export default function SocketErrorCodeTest01() {
+  describe('SocketErrorCodeTest01', () => {
 
     /*
-    * @tc.number:  USB_NetworkMgr_Socket_UDPSocket_GetLocalAddress_0100
+    * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_GetLocalAddress_0100
     * @tc.name  :  testNetworkMgrSocketUDPSocketGetLocalAddress0100
     * @tc.desc  :  UDP GetLocalAddress Bad file descriptor.
     * @tc.size  :  MediumTest
@@ -133,7 +133,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /**
-     * @tc.number : USB_NetworkMgr_Socket_UDPSocket_Send_Err_0100
+     * @tc.number : SUB_NetworkMgr_Socket_UDPSocket_Send_Err_0100
      * @tc.name   : testNetworkMgrSocketUDPSocketSendErr0100
      * @tc.desc   : UDPSocket send bad file descriptor.
      * @tc.level  : Level 3
@@ -183,7 +183,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /**
-     * @tc.number : USB_NetworkMgr_Socket_UDPSocket_Send_Err_0200
+     * @tc.number : SUB_NetworkMgr_Socket_UDPSocket_Send_Err_0200
      * @tc.name   : testNetworkMgrSocketUDPSocketSendErr0200
      * @tc.desc   : UDPSocket send Bad file descriptor.
      * @tc.level  : Level 3
@@ -234,7 +234,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-     * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_Listen_Error_0100
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_Listen_Error_0100
      * @tc.name  :  testNetworkMgrSocketTLSSocketServerListenError0100
      * @tc.desc  :  TLSSocketServer listen(callback) cannot assign requested address.
      * @tc.size  :  MediumTest
@@ -268,7 +268,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-     * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_Listen_Error_0200
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_Listen_Error_0200
      * @tc.name  :  testNetworkMgrSocketTLSSocketServerListenError0200
      * @tc.desc  :  TLSSocketServer listen(promise) cannot assign requested address.
      * @tc.size  :  MediumTest
@@ -299,7 +299,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-     * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_SetExtraOptions_Error_0100
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_SetExtraOptions_Error_0100
      * @tc.name  :  testNetworkMgrSocketTLSSocketServerSetExtraOptionsError0100
      * @tc.desc  :  TLSSocketServer SetExtraOptions(callback) parameter error.
      * @tc.size  :  MediumTest
@@ -339,7 +339,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-     * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_SetExtraOptions_Error_0200
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_SetExtraOptions_Error_0200
      * @tc.name  :  testNetworkMgrSocketTLSSocketServerSetExtraOptionsError0200
      * @tc.desc  :  TLSSocketServer SetExtraOptions(promise) parameter error.
      * @tc.size  :  MediumTest
@@ -376,7 +376,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-    * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_OffConnect_Error_0100
+    * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_OffConnect_Error_0100
     * @tc.name  :  testNetworkMgrSocketTLSSocketServerOffConnectError0100
     * @tc.desc  :  TLSSocketServer off(connect) parameter error.
     * @tc.size  :  MediumTest
@@ -398,7 +398,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-    * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_OnConnect_Error_0100
+    * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_OnConnect_Error_0100
     * @tc.name  :  testNetworkMgrSocketTLSSocketServerOnConnectError0100
     * @tc.desc  :  TLSSocketServer on(error) parameter error.
     * @tc.size  :  MediumTest
@@ -420,7 +420,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-    * @tc.number:  USB_NetworkMgr_Socket_TLSSocketServer_OffConnect_Error_0200
+    * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketServer_OffConnect_Error_0200
     * @tc.name  :  testNetworkMgrSocketTLSSocketServerOffConnectError0200
     * @tc.desc  :  TLSSocketServer off(error) parameter error.
     * @tc.size  :  MediumTest
@@ -529,7 +529,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /*
-     * @tc.number:  USB_NetworkMgr_Socket_TLSSocket_GetSocketFd_0100
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocket_GetSocketFd_0100
      * @tc.name  :  testNetworkMgrSocketTLSSocketGetSocketFd0100
      * @tc.desc  :  TLSSocket GetSocketFd success.
      * @tc.size  :  MediumTest
@@ -559,7 +559,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_SetExtraOptions_0100
+     * @tc.number:  SUB_LocalSocketServer_SetExtraOptions_0100
      * @tc.name  :  testLocalSocketServerSetExtraOptions0100
      * @tc.desc  :  test LocalSocketServer SetExtraOptions(promise) 401 function.
      * @tc.size  :  MediumTest
@@ -590,7 +590,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_On_0100
+     * @tc.number:  SUB_LocalSocketServer_On_0100
      * @tc.name  :  testLocalSocketServerOn0100
      * @tc.desc  :  test LocalSocketServer On(connect) 401 function.
      * @tc.size  :  MediumTest
@@ -612,7 +612,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_On_0200
+     * @tc.number:  SUB_LocalSocketServer_On_0200
      * @tc.name  :  testLocalSocketServerOn0200
      * @tc.desc  :  test LocalSocketServer On(error) 401 function.
      * @tc.size  :  MediumTest
@@ -634,7 +634,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_Off_0100
+     * @tc.number:  SUB_LocalSocketServer_Off_0100
      * @tc.name  :  testLocalSocketServerOff0100
      * @tc.desc  :  test LocalSocketServer Off(connect) 401 function.
      * @tc.size  :  MediumTest
@@ -656,7 +656,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_Off_0200
+     * @tc.number:  SUB_LocalSocketServer_Off_0200
      * @tc.name  :  testLocalSocketServerOff0200
      * @tc.desc  :  test LocalSocketServer Off(connect) 401 function.
      * @tc.size  :  MediumTest
@@ -678,7 +678,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_Connect_0100
+     * @tc.number:  SUB_LocalSocket_Connect_0100
      * @tc.name  :  testLocalSocketConnect0100
      * @tc.desc  :  test LocalSocket Connect 401 function.
      * @tc.size  :  MediumTest
@@ -707,7 +707,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_Send_0100
+     * @tc.number:  SUB_LocalSocket_Send_0100
      * @tc.name  :  testLocalSocketSend0100
      * @tc.desc  :  test LocalSocket Send 401 function.
      * @tc.size  :  MediumTest
@@ -736,7 +736,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_On_0100
+     * @tc.number:  SUB_LocalSocket_On_0100
      * @tc.name  :  testLocalSocketOn0100
      * @tc.desc  :  test LocalSocket On 401 function.
      * @tc.size  :  MediumTest
@@ -757,8 +757,9 @@ export default function SocketErrorCodeTest() {
       console.info(`${caseName} test end`);
     });
 
+
     /* *
-     * @tc.number:  USB_LocalSocket_Off_0100
+     * @tc.number:  SUB_LocalSocket_Off_0100
      * @tc.name  :  testLocalSocketOff0100
      * @tc.desc  :  test LocalSocket On 401 function.
      * @tc.size  :  MediumTest
@@ -780,7 +781,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_Off_0200
+     * @tc.number:  SUB_LocalSocket_Off_0200
      * @tc.name  :  testLocalSocketOff0200
      * @tc.desc  :  test LocalSocket On 401 function.
      * @tc.size  :  MediumTest
@@ -802,7 +803,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_Off_0300
+     * @tc.number:  SUB_LocalSocket_Off_0300
      * @tc.name  :  testLocalSocketOff0300
      * @tc.desc  :  test LocalSocket Off 401 function.
      * @tc.size  :  MediumTest
@@ -824,7 +825,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocket_Off_0400
+     * @tc.number:  SUB_LocalSocket_Off_0400
      * @tc.name  :  testLocalSocketOff0400
      * @tc.desc  :  test LocalSocket Off 401 function.
      * @tc.size  :  MediumTest
@@ -846,7 +847,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_Listen_0100
+     * @tc.number:  SUB_LocalSocketServer_Listen_0100
      * @tc.name  :  testLocalSocketServerListen0100
      * @tc.desc  :  test LocalSocketServer listen 401 function.
      * @tc.size  :  MediumTest
@@ -876,7 +877,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number:  USB_LocalSocketServer_GetState_0100
+     * @tc.number:  SUB_LocalSocketServer_GetState_0100
      * @tc.name  :  testLocalSocketServerGetState0100
      * @tc.desc  :  test LocalSocketServer getState function.
      * @tc.size  :  MediumTest
@@ -917,7 +918,7 @@ export default function SocketErrorCodeTest() {
     });
 
     /* *
-     * @tc.number: USB_Socket_ErrorCode_TCPSocketServer_0100
+     * @tc.number: SUB_Socket_ErrorCode_TCPSocketServer_0100
      * @tc.name  : testSocketErrorCodeTCPSocketServer0100
      * @tc.desc  : Cancel multiple subscriptions to the TCP Socket Connection shutdown event
      * @tc.size  : MediumTest
@@ -939,7 +940,7 @@ export default function SocketErrorCodeTest() {
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           proxy: {
-            type: 0,
+            type: socket.ProxyTypes.SOCKS5,
             address: {
               address: '127.0.0.1',
               port: 12346
@@ -963,11 +964,10 @@ export default function SocketErrorCodeTest() {
         await tcp.connect(tcpConnectOptions);
       } catch (err) {
         console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
-        expectEqual(err.code, 2303199)
+        expectTrue(err.code == 2303199)
         console.info(`${caseName} test end`);
         done();
       }
     });
   })
 }
-
