@@ -1401,7 +1401,7 @@ export default function rdbDecryptTest() {
         console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet1.rowCount);
         expect(resultSet1.rowCount==1).assertTrue()
         resultSet1.close()
-        let number1 = await rdbStore.detach("attachDB")
+        let number1 = await rdbStore.detach("attachDB",2)
         expect(0).assertEqual(number1);
         await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
         await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
