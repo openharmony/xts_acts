@@ -136,15 +136,6 @@ struct WebViewEnumAndSetWebController {
         })
       }
 
-      Row() {
-        Image("media/icon.png")
-          .width(110)
-          .height(110)
-          .border({ width: 1 })
-          .overlay('jpg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          .key("images")
-      }
-
       Web({ src: $rawfile("fullScreenEnter.html"), controller: this.controller })
         .key("WebViewEnumAndSetWebControllerWebView")
         .blockNetwork(Boolean(this.block))
@@ -181,6 +172,16 @@ struct WebViewEnumAndSetWebController {
           return true
         })
         .javaScriptAccess(this.javaScriptAccess)
+        .height('20%')
+
+      Row() {
+        Image("media/icon.png")
+          .width(110)
+          .height(110)
+          .border({ width: 1 })
+          .overlay('jpg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+          .key("images")
+      }
     }
   }
 }
