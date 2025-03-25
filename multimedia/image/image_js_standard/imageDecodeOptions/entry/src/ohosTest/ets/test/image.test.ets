@@ -3169,5 +3169,174 @@ export default function imageDecodeOptions() {
                 });
             }
         });
+
+        /**
+         * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100
+         * @tc.name     : CreatePixelMap(decodingOptions)
+         * @tc.desc     : 1.create imagesource
+                          2.set desiredSize and desiredRegion DecodeOptions
+                          3.create PixelMap
+                          4.callback return undefined
+         * @tc.size     : MEDIUM
+         * @tc.type     : Functional
+         * @tc.level    : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 createPixelMap error  " +
+                                                                                                                 JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+               console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 error: " + error);
+               expect(false).assertTrue();
+               done(); 
+            }
+        });
+
+        /**
+        * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200
+        * @tc.name     : CreatePixelMap(decodingOptions)
+        * @tc.desc     : 1.create imagesource
+                        2.set desiredSize and desiredRegion DecodeOptions
+                        3.create PixelMap
+                        4.callback return undefined
+        * @tc.size     : MEDIUM
+        * @tc.type     : Functional
+        * @tc.level    : Level 1
+        */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                        cropAndScaleStrategy : image.CropAndScaleStrategy.SCALE_FIRST
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 createPixelMap error" +
+                                    JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 error: " + error);
+                expect(false).assertTrue();
+                done(); 
+            }
+        });
+
+        /**
+        * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300
+        * @tc.name     : CreatePixelMap(decodingOptions)
+        * @tc.desc     : 1.create imagesource
+                        2.set desiredSize and desiredRegion DecodeOptions
+                        3.create PixelMap
+                        4.callback return undefined
+        * @tc.size     : MEDIUM
+        * @tc.type     : Functional
+        * @tc.level    : Level 1
+        */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                        cropAndScaleStrategy : image.CropAndScaleStrategy.CROP_FIRST
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 createPixelMap error  " +
+                                    JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 error: " + error);
+                expect(false).assertTrue();
+                done(); 
+            }
+        });
     });
 }
+
+

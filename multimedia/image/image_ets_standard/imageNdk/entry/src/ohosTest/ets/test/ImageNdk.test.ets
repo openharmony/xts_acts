@@ -1019,6 +1019,39 @@ export default function imageNdkTest() {
       }
     }
 
+    const NATIVE_RegionDecode = async (TAG: string, RegionX: number, RegionY: number,
+                                          RegionWidth: number, RegionHeight: number, desiredWidth: number, desiredHeight: number,
+                                          filename: string, done: Function, cropStrategy?: number) => {
+      await getFd(filename);
+      const imageSourceApi: image.ImageSource = ndkTest.CreateFromFd(fileFd);
+      if (typeof imageSourceApi === "object") {
+        hilog.info(0x0000, 'Native_RegionDecodeTest', '%{public}s', TAG + `create image source success:${imageSourceApi}`)
+        let options: image.DecodingOptions = ndkTest.CreateDecodingOptions();
+        ndkTest.DecodingOptionsSetDesiredSize(options, desiredWidth, desiredHeight);
+        ndkTest.DecodingOptionsSetDesiredRegion(options, RegionX, RegionY, RegionWidth, RegionHeight);
+        if (cropStrategy != undefined) {
+          ndkTest.DecodingOptionsGetIndex(options);
+          ndkTest.DecodingOptionsSetCropAndScaleStrategy(options, cropStrategy);
+          const targetCropStrategy: number = ndkTest.DecodingOptionsGetCropAndScaleStrategy(options);
+          expect(targetCropStrategy == cropStrategy).assertTrue();
+        }
+      const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
+      if (typeof pixelMap === "object") {
+        expect(true).assertTrue();
+        ndkTest.SourceRelease(imageSourceApi)
+        ndkTest.PixelMapRelease(pixelMap);
+        done()
+      } else {
+        ndkTest.SourceRelease(imageSourceApi);
+        expect(false).assertTrue();
+        done()
+      }
+    } else {
+        expect(false).assertTrue();
+        done()
+    }
+  }
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100
      * @tc.name      : testInitializationOptions
@@ -4380,5 +4413,78 @@ export default function imageNdkTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done, image.CropAndScaleStrategy.SCALE_FIRST);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done, image.CropAndScaleStrategy.CROP_FIRST);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
