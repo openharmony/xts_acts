@@ -73,7 +73,7 @@ export default function EnableSwipeBackPage() {
       console.info('[EnableSwipeBackPage_0100] right is ', right);
       console.info('[EnableSwipeBackPage_0100] bottom is ', bottom);
       await driver.fling({x: Math.round(vp2px(11)), y: Math.round(bottom/2)}, {x: Math.round(right/3), y: Math.round(bottom/2)}, 2, 40000);
-      await driver.delayMs(500)
+      await driver.delayMs(1000)
 
       await driver.assertComponentExist(ON.id('pushId'));
       console.log('[EnableSwipeBackPage_0100] END');
