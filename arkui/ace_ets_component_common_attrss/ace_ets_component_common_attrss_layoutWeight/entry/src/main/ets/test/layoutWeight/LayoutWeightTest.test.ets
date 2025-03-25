@@ -123,7 +123,7 @@ export default function layoutWeightTest() {
       layoutWeight: 2.5
     },
     expectValue: {
-      layoutWeight: 2,
+      layoutWeight: 2.5,
       height: vp2px(400)
     }
   }, {
