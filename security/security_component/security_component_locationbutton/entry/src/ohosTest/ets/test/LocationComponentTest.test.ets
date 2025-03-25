@@ -100,27 +100,6 @@ export default function locationComponentTest() {
               console.info("====>[Test_Security_Button_Location_0100] 设置权限成功");
               expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
               await Utils.sleep(500);
-              let driver = Driver.create();
-              console.info("====>[Test_Security_Button_Location_0100] driver is:" + JSON.stringify(driver));
-              let flag = false;
-              console.info("====>[Test_Security_Button_Location_0100] flag is:" + flag);
-              for (let i = 0; i < 5; i++) {
-                console.info("====>[Test_Security_Button_Location_0100] loop START====" + i);
-                if (flag) {
-                  break;
-                }
-                let textComponent = await driver.findComponent(ON.type('Button'));
-                console.info("====>[Test_Security_Button_Location_0100] textComponent is:" + JSON.stringify(textComponent));
-                await Utils.sleep(200)
-                if (textComponent != undefined && textComponent != null) {
-                  try{
-                    await textComponent.click();
-                    console.info("====>[Test_Security_Button_Location_0100] textComponentClick finishfinishfinish");
-                  } catch (err) {
-                    console.info("====>[Test_Security_Button_Location_0100] textComponentClick err : " + JSON.stringify(err));
-                  };
-                }
-              }
               console.info("====>[Test_Security_Button_Location_0100] END====");
               done()
             } else {
