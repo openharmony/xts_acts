@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene } from '@ohos.graphics.scene'
+import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene, SceneResourceType } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
@@ -248,9 +248,11 @@ export default function sceneTest() {
         sphereGeom.segmentCount = Math.floor(26);
         expect(sphereGeom.segmentCount).assertEqual(26);
         console.info(msg + " Succeed in sphereGeom.segmentCount ");
-        let meshRes3 = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
+        let meshRes3: scene3d.MeshResource = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
         expect(meshRes3 != null).assertTrue();
         console.info(msg + " Succeed in createMesh ");
+        expect(meshRes3.resourceType).assertEqual(SceneResourceType.MESH_RESOURCE)
+        console.info(msg + " meshRes3.resourceType is SceneResourceType.MESH_RESOURCE ");
         let geometry3 = await rf.createGeometry({name: "balluro"}, meshRes3);
         expect(geometry3 != null).assertTrue();
         console.info(msg + " Succeed in createGeometry ");
@@ -347,6 +349,9 @@ export default function sceneTest() {
         customGeom.normals = [{x: -1, y: 1, z: 0}, {x: 1, y: -1, z: 0}, {x: 1, y: 1, z: 0}, {x: 1, y: 1, z: 1}];
         expect(customGeom.normals[0].x).assertEqual(-1);
         console.info(msg + " Succeed in customGeom.normals ");
+        customGeom.colors = [{r: 1, g: 0, b: 0, a:1}, {r: 0, g: 1, b: 0, a:1}, {r: 0, g: 0, b: 1, a:1}, {r: 1, g: 0, b: 1, a:1}];
+        expect(customGeom.colors[0].r).assertEqual(1);
+        console.info(msg + " Succeed in customGeom.colors ");
         done();
       } catch (err) {
         console.info(msg + " Failed in testCustomGeometry " + JSON.stringify(err));
