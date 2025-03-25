@@ -73,7 +73,7 @@ export default function EnableSwipeBackRouter() {
       console.info('[EnableSwipeBackRouter_0100] right is ', right);
       console.info('[EnableSwipeBackRouter_0100] bottom is ', bottom);
       await driver.fling({x: Math.round(vp2px(11)), y: Math.round(bottom/2)}, {x: Math.round(right/3), y: Math.round(bottom/2)}, 2, 40000);
-      await driver.delayMs(500)
+      await driver.delayMs(1000)
 
       await driver.assertComponentExist(ON.id('pushId'));
       console.log('[EnableSwipeBackRouter_0100] END');
@@ -109,7 +109,7 @@ export default function EnableSwipeBackRouter() {
       console.info('[EnableSwipeBackRouter_0200] right is ', right);
       console.info('[EnableSwipeBackRouter_0200] bottom is ', bottom);
       await driver.fling({x: Math.round(vp2px(11)), y: Math.round(bottom/2)}, {x: Math.round(right/3), y: Math.round(bottom/2)}, 2, 40000);
-      await driver.delayMs(500)
+      await driver.delayMs(1000)
 
       await driver.assertComponentExist(ON.id('enableId'));
       console.log('[EnableSwipeBackRouter_0200] END');
