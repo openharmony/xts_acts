@@ -120,11 +120,11 @@ export default function layoutWeightTest() {
   }, {
     describe: 'SetNumberDecimal',
     setValue: {
-      layoutWeight: 2.5
+      layoutWeight: 1.5
     },
     expectValue: {
-      layoutWeight: 2.5,
-      height: vp2px(400)
+      layoutWeight: 1.5,
+      height: vp2px(360)
     }
   }, {
     describe: 'SetString',
