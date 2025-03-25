@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -53,9 +53,9 @@ export default function HttpResponseCodeTest() {
      * @tc.desc   : Test ResponseCode property.
      * @tc.level  : Level 2
      * @tc.type   : Function
-	 * @tc.size   : SmallTest
+     * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode0100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0100';
       console.info(`${caseName} test Start`);
       try {
@@ -78,7 +78,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0200';
       console.info(`${caseName} test Start`);
       try {
@@ -101,7 +101,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0300';
       console.info(`${caseName} test Start`);
       try {
@@ -124,7 +124,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0400';
       console.info(`${caseName} test Start`);
       try {
@@ -147,7 +147,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0500';
       console.info(`${caseName} test Start`);
       try {
@@ -170,7 +170,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0600',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0600';
       console.info(`${caseName} test Start`);
       try {
@@ -193,7 +193,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0700';
       console.info(`${caseName} test Start`);
       try {
@@ -216,7 +216,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0800';
       console.info(`${caseName} test Start`);
       try {
@@ -239,7 +239,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode0900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode0900';
       console.info(`${caseName} test Start`);
       try {
@@ -262,7 +262,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1000';
       console.info(`${caseName} test Start`);
       try {
@@ -285,7 +285,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1100';
       console.info(`${caseName} test Start`);
       try {
@@ -308,7 +308,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1200';
       console.info(`${caseName} test Start`);
       try {
@@ -331,7 +331,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1300';
       console.info(`${caseName} test Start`);
       try {
@@ -354,7 +354,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1400';
       console.info(`${caseName} test Start`);
       try {
@@ -377,7 +377,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1500';
       console.info(`${caseName} test Start`);
       try {
@@ -400,7 +400,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1600';
       console.info(`${caseName} test Start`);
       try {
@@ -423,7 +423,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1700';
       console.info(`${caseName} test Start`);
       try {
@@ -446,7 +446,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1800';
       console.info(`${caseName} test Start`);
       try {
@@ -469,7 +469,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode1900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode1900';
       console.info(`${caseName} test Start`);
       try {
@@ -492,7 +492,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2000';
       console.info(`${caseName} test Start`);
       try {
@@ -515,7 +515,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2100';
       console.info(`${caseName} test Start`);
       try {
@@ -538,7 +538,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2200';
       console.info(`${caseName} test Start`);
       try {
@@ -561,7 +561,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2300';
       console.info(`${caseName} test Start`);
       try {
@@ -584,7 +584,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2400';
       console.info(`${caseName} test Start`);
       try {
@@ -608,7 +608,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2500';
       console.info(`${caseName} test Start`);
       try {
@@ -631,7 +631,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2600';
       console.info(`${caseName} test Start`);
       try {
@@ -654,7 +654,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2700';
       console.info(`${caseName} test Start`);
       try {
@@ -677,7 +677,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2800';
       console.info(`${caseName} test Start`);
       try {
@@ -700,7 +700,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode2900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode2900';
       console.info(`${caseName} test Start`);
       try {
@@ -723,7 +723,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3000';
       console.info(`${caseName} test Start`);
       try {
@@ -746,7 +746,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3100';
       console.info(`${caseName} test Start`);
       try {
@@ -769,7 +769,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3200';
       console.info(`${caseName} test Start`);
       try {
@@ -792,7 +792,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3300';
       console.info(`${caseName} test Start`);
       try {
@@ -815,7 +815,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3400';
       console.info(`${caseName} test Start`);
       try {
@@ -838,7 +838,7 @@ export default function HttpResponseCodeTest() {
      * @tc.size   : SmallTest
      */
 
-    it('testNetworkMgrHttpResponseCode3500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3500';
       console.info(`${caseName} test Start`);
       try {
@@ -860,7 +860,7 @@ export default function HttpResponseCodeTest() {
      * @tc.type   : Function
      * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3600';
       console.info(`${caseName} test Start`);
       try {
@@ -907,9 +907,9 @@ export default function HttpResponseCodeTest() {
      * @tc.desc   : Test ResponseCode property.
      * @tc.level  : Level 2
      * @tc.type   : Function
-	 * @tc.size   : SmallTest
+     * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3700';
       console.info(`${caseName} test Start`);
       try {
@@ -954,9 +954,9 @@ export default function HttpResponseCodeTest() {
      * @tc.desc   : Test ResponseCode property.
      * @tc.level  : Level 2
      * @tc.type   : Function
-	 * @tc.size   : SmallTest
+     * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3800';
       console.info(`${caseName} test Start`);
       try {
@@ -1005,7 +1005,7 @@ export default function HttpResponseCodeTest() {
      * @tc.type   : Function
      * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3900';
       console.info(`${caseName} test Start`);
       try {

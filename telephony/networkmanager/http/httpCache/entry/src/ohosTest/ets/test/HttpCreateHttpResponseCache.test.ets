@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType  } from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 const ExpectFail = () => {
@@ -42,7 +42,7 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0100';
       console.info(`${caseName}---Start`);
       try {
@@ -65,7 +65,7 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0200';
       console.info(`${caseName}---Start`);
       try {
@@ -89,7 +89,7 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0300';
       console.info(`${caseName}---Start`);
       try {
