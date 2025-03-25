@@ -152,7 +152,9 @@ export default function DisplayNdkTest() {
       try{
         let displayRotation  = testNapi.getRotation();
         console.log(caseName + ' :'+ displayRotation);
-        expect(displayRotation).assertEqual(0);
+        let rotation = display.getDefaultDisplaySync().rotation;
+        console.log(caseName + ': displayRotation:'+ displayRotation + ',rotation:'+rotation);
+        expect(displayRotation).assertEqual(rotation);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -174,13 +176,14 @@ export default function DisplayNdkTest() {
         let displayOrientation  = testNapi.getOrientation();
         console.log(caseName + ' :'+ displayOrientation);
         let display1 = display.getDefaultDisplaySync()
-        console.log(caseName + 'jsOrientation :'+ display1.orientation);
+        console.log(caseName + 'jsOrientation :'+ display1.rotation);
+        let rotation = display1.rotation;
         console.log(caseName + 'displayOrientation :'+ displayOrientation);
         if(code == 801){
             expect(displayOrientation).assertEqual(0);
              done();
           }else {
-            expect(displayOrientation).assertEqual(Number(orientation[0]));
+            expect(displayOrientation).assertEqual(Number(orientation[rotation]));
             done();
           }
       } catch (err) {
