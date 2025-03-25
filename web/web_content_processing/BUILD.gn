@@ -11,14 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("WebContentProcessing") {
+group("ActsWebPageDownloadTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "password_padding:ActsWebPasswordPaddingTest",
-      "upload_and_download:uploadAndDownload",
-      "web_page_download:ActsWebPageDownloadTest",
-      "web_page_saving:ActsWebPageSavingTest",
+      "ace_web_page_download_cloudservice_controller_group_eight:ActsAceWebPageDownloadCloudServiceControllerGroupEightTest",
+      "ace_web_page_download_cloudservice_controller_group_eleven:ActsAceWebPageDownloadCloudServiceControllerGroupElevenTest",
+      "ace_web_page_download_cloudservice_controller_group_twelve:ActsAceWebPageDownloadCloudServiceControllerGroupTwelveTest",
+      "ace_web_page_download_enhanced_one:ActsAceWebPageDownloadEnhancedTest",
+      "ace_web_page_download_enhanced_three:ActsAceWebPageDownloadTestThreeTest",
+      "ace_web_page_download_enhanced_two:ActsAceWebPageDownloadTestTwoTest",
     ]
   }
 }
