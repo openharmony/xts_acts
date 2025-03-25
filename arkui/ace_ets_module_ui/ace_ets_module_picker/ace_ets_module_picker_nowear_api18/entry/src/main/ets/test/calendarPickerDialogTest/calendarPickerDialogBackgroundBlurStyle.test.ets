@@ -39,7 +39,7 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
     });
 
     afterEach(async () => {
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
       console.info("CalendarPickerDialogBGBlurStyleTest after each called");
     });
   
