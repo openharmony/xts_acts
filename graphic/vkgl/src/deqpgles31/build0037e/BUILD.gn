@@ -25,36 +25,40 @@ config("deqp_platform_ohos_config") {
   defines = deqp_common_defines
 }
 
-ohos_static_library("libdeqpgles3func0029") {
+ohos_static_library("libdeqpgles31func0037e") {
   subsystem_name = "graphic"
   part_name = "graphic_2d"
   sources = common_src
-  sources += [ "../Deqpgles3BaseFunc.cpp" ]
+  sources += [ "../Deqpgles31BaseFunc.cpp" ]
 
   include_dirs = common_include
-  deps = common_depends_gles3
+  deps = common_depends_gles31
   external_deps = [
     "hilog:libhilog",
     "image_framework:image_native",
     "zlib:libz",
   ]
   configs = [ ":deqp_platform_ohos_config" ]
+  testonly = true
 }
 
-ohos_moduletest_suite("ActsDeqpgles3Suite0029Test") {
+ohos_moduletest_suite("ActsDeqpgles31Suite0037eTest") {
   subsystem_name = "graphic"
   part_name = "graphic_2d"
   sources = [
-    "../ActsDeqpgles30029TestSuite.cpp",
-    "../functional/Deqpgles3default_framebuffer_equation_src_func_dst_funcTestCase.cpp",
-    "../functional/Deqpgles3depth_stencil_randomTestCase.cpp",
-    "../functional/Deqpgles3depth_stencil_write_maskTestCase.cpp",
-    "../functional/Deqpgles3rgb_func_alpha_func_srcTestCase.cpp",
+    "../ActsDeqpgles310037TestSuite.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_10x8_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_12x10_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_12x12_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_4x4_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_5x4_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_5x5_khr_rgba32iTestCase.cpp",
+    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_6x5_khr_rgba32iTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]
 
-  deps = [ ":libdeqpgles3func0029" ]
+  deps = [ ":libdeqpgles31func0037e" ]
 
   cflags = [ "-Wno-error" ]
 }
