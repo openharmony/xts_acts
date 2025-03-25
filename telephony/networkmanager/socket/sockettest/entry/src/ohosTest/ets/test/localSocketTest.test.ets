@@ -527,7 +527,7 @@ export default function LocalSocketTest() {
           }
           console.log('total: ' + JSON.stringify(data));
           console.log('message infomation: ' + messageView);
-          expectTrue(data.message != undefined && data.size != undefined && data.size != undefined);
+          expectTrue(data.message != undefined && data.address != undefined && data.size != undefined);
           server.off('connect');
           client.close();
           console.info(`${caseName} test end`);
