@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, UiDirection, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter'
@@ -53,9 +53,9 @@ export default function EnableSwipeBackRouter() {
      * @tc.number    EnableSwipeBackRouter_0100
      * @tc.name      EnableSwipeBackRouter_0100
      * @tc.desc      Test enableSwipeBack test true
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('EnableSwipeBackRouter_0100', 0, async (done: Function) => {
+    it('EnableSwipeBackRouter_0100', Level.LEVEL0, async (done: Function) => {
       console.info('EnableSwipeBackRouter_0100 START');
       let driver = Driver.create();
       await driver.delayMs(500);
@@ -84,9 +84,9 @@ export default function EnableSwipeBackRouter() {
      * @tc.number    EnableSwipeBackRouter_0200
      * @tc.name      EnableSwipeBackRouter_0200
      * @tc.desc      Test enableSwipeBack test false
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('EnableSwipeBackRouter_0200', 0, async (done: Function) => {
+    it('EnableSwipeBackRouter_0200', Level.LEVEL0, async (done: Function) => {
       console.info('EnableSwipeBackRouter_0200 START');
       let driver = Driver.create();
       await driver.delayMs(500);
