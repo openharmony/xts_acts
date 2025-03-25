@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, it } from '@ohos/hypium';
+import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 
@@ -37,7 +37,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebServiceWorker_SetSchemeHandler', 0, async (done: Function) => {
+    it('testWebServiceWorker_SetSchemeHandler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebServiceWorker_SetSchemeHandler PASS');
         

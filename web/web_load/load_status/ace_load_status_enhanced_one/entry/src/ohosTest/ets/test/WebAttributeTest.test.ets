@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnPageEnd001', 0, async (done: Function) => {
+    it('testOnPageEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPageEnd001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageEnd001", "resource://rawfile/second.html", 70007, done);
@@ -76,7 +76,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnPageEnd002', 0, async (done: Function) => {
+    it('testOnPageEnd002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPageEnd002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageEnd002", "resource://rawfile/iframe.html", 70008, done);
@@ -91,7 +91,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnPageBegin001', 0, async (done: Function) => {
+    it('testOnPageBegin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPageBegin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageBegin001", "resource://rawfile/second.html", 70009, done);
@@ -106,7 +106,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnPageBegin002', 0, async (done: Function) => {
+    it('testOnPageBegin002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPageBegin002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageBegin002", "resource://rawfile/iframe.html", 70010, done);
@@ -121,7 +121,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnProgressChange001', 0, async (done: Function) => {
+    it('testOnProgressChange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnProgressChange001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnProgressChange001", "100", 700012, done);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function runJavaScript() {
      *tc.name RunJsCallback
      *tc.desic test RunJavascrit interface when choose callback mode.
      */
-    it('RunJsCallback',0,async (done: Function) =>{
+    it('RunJsCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitRunJsPromise";
       Utils.registerEvent("testRunJsCallback",'testRunJavaScript',126,done);
       sendEventByKey('webcomponent01',10,'');
@@ -81,7 +81,7 @@ export default function runJavaScript() {
      *tc.name RunJsPromise
      *tc.desic test RunJavascrit interface when choose promise mode.
      */
-    it('RunJsPromise',0,async  (done: Function) =>{
+    it('RunJsPromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       Utils.registerEvent("testRunJsPromise",'\"testRunJavaScript\"',128,done);
       sendEventByKey('webcomponent01',10,'');
     })

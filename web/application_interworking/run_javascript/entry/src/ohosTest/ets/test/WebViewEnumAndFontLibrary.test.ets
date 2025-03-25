@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScript001', 0, async (done: Function) => {
+    it('testRunJavaScript001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitRunJavaScript", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScript001", true, 1241, done);
@@ -77,7 +77,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScript002', 0, async (done: Function) => {
+    it('testRunJavaScript002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScript002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScript002", 'null', 10001, done);
@@ -92,7 +92,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScript003', 0, async (done: Function) => {
+    it('testRunJavaScript003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScript003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScript003", '"This value is from indexJru.html"', 10002, done);
@@ -107,7 +107,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScript004', 0, async (done: Function) => {
+    it('testRunJavaScript004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScript004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScript004", 'null', 10003, done);
@@ -121,7 +121,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScriptExt001', 0, async (done: Function) => {
+    it('testRunJavaScriptExt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExt001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExt001", '"This value is from indexJru.html"', 10004, done);
@@ -136,7 +136,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScriptExt002', 0, async (done: Function) => {
+    it('testRunJavaScriptExt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExt002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExt002", true, 10005, done);
@@ -151,7 +151,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScriptExt003', 0, async (done: Function) => {
+    it('testRunJavaScriptExt003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExt003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExt003", '"This value is from indexJru.html"', 10006, done);
@@ -166,7 +166,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRunJavaScriptExt004', 0, async (done: Function) => {
+    it('testRunJavaScriptExt004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExt004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExt004", true, 10007, done);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -34,7 +34,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0100', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0100", "UTF-8", 7701, done);
@@ -53,7 +53,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0200', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0200", "gb18030", 7702, done);
@@ -72,7 +72,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0300', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0300", "GBK", 7703, done);
@@ -91,7 +91,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0400', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0400", "Big5", 7704, done);
@@ -110,7 +110,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0500', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0500", "windows-1252", 7705, done);
@@ -129,7 +129,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0600', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0200", "macintosh", 7706, done);
@@ -148,7 +148,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0700', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0700", "EUC-KR", 7707, done);
@@ -167,7 +167,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0800', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0800", "ISO-2022-JP", 7708, done);
@@ -186,7 +186,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat0900', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat0900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat0900", "EUC-JP", 7709, done);
@@ -205,7 +205,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1000', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1000", "Shift_JIS", 7710, done);
@@ -224,7 +224,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1100', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1100", "UTF-8", 7711, done);
@@ -243,7 +243,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1200', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1200", "UTF-8", 7712, done);
@@ -262,7 +262,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1300', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1300", "UTF-8", 7713, done);
@@ -281,7 +281,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1400', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1400", "UTF-8", 7714, done);
@@ -300,7 +300,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1500', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1500", "UTF-8", 7715, done);
@@ -319,7 +319,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1600', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1600", "UTF-8", 7716, done);
@@ -338,7 +338,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1700', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1700", "UTF-8", 7717, done);
@@ -357,7 +357,7 @@ export default function webDefaultTextEncodingFormat() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('defaultTextEncodingFormat1800', 0, async (done: Function) => {
+    it('defaultTextEncodingFormat1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("defaultTextEncodingFormat1800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("defaultTextEncodingFormat1800", "UTF-8", 7718, done);

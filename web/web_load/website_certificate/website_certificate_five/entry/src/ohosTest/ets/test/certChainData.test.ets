@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -71,7 +71,7 @@ export default function certChainDataTest() {
      *tc.name certChainData01
      *tc.desic test certChainData01 interface when choose callback mode.
      */
-    it('certChainData01',0,async  (done: Function) =>{
+    it('certChainData01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="certChainData01";
       Utils.registerEvent("certChainData01",true,202412099,done);
       sendEventByKey('certChainDataWeb',10,'');

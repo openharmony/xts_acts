@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode002', 0, async (done: Function) => {
+    it('testCacheMode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeOnly", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode002", "cacheError", 1401, done);
@@ -76,7 +76,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode001', 0, async (done: Function) => {
+    it('testCacheMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeDefault", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode001", '"index"', 1402, done);
@@ -91,7 +91,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode003', 0, async (done: Function) => {
+    it('testCacheMode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeOnline", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode003", true, 1405, done);
@@ -106,7 +106,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode004', 0, async (done: Function) => {
+    it('testCacheMode004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeNone", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode004", "华为 - 构建万物互联的智能世界", 1406, done);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -33,7 +33,7 @@ export default function screenCapture() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScreenCaptureConfigGetOrigin001', 0, async (done: Function) => {
+    it('testScreenCaptureConfigGetOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitScreenCaptureConfigGetOrigin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScreenCaptureConfigGetOrigin001", true, 4202, done);
@@ -48,7 +48,7 @@ export default function screenCapture() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScreenCaptureConfigGrant001', 0, async (done: Function) => {
+    it('testScreenCaptureConfigGrant001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitScreenCaptureConfigGrant001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScreenCaptureConfigGrant001", true, 4203, done);
@@ -63,7 +63,7 @@ export default function screenCapture() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScreenCaptureConfigDeny001', 0, async (done: Function) => {
+    it('testScreenCaptureConfigDeny001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitScreenCaptureConfigDeny001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScreenCaptureConfigDeny001", true, 4201, done);

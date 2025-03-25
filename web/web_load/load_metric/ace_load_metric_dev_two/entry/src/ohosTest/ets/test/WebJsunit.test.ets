@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -51,7 +51,7 @@ export default function webJsunit() {
      *tc.name isCookieAllowed                                                                                                                                                                                                                
      *tc.desic return whether the cookie is allowed
      */
-    it('isCookieAllowed', 0, async (done: Function) => {
+    it('isCookieAllowed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSaveCookieAsync";
       Utils.registerEvent("isCookieAllowed", false, 408, done);
       sendEventByKey('webcomponent', 10, '');
@@ -61,7 +61,7 @@ export default function webJsunit() {
      *tc.name saveCookieAsync                                                                                                                                                                                                                
      *tc.desic return whether the cookie is allowed
      */
-    it('saveCookieAsync', 0, async (done: Function) => {
+    it('saveCookieAsync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsThirdPartyCookieAllowed";
       Utils.registerEvent("saveCookieAsync", "result", 410, done);
       sendEventByKey('webcomponent', 10, '');
@@ -71,7 +71,7 @@ export default function webJsunit() {
      *tc.name isThirdPartyCookieAllowed                                                                                                                                                                                                                
      *tc.desic return whether the third party cookie is allowed
      */
-    it('isThirdPartyCookieAllowed', 0, async (done: Function) => {
+    it('isThirdPartyCookieAllowed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsThirdPartyCookieAllowed";
       Utils.registerEvent("isThirdPartyCookieAllowed", false, 412, done);
       sendEventByKey('webcomponent', 10, '');

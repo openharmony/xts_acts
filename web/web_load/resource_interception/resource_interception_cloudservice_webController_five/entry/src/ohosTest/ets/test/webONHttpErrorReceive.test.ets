@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -70,7 +70,7 @@ export default function webONHttpErrorReceive() {
      *tc.name testOnHttpErrorReceiveFixedUserAgentWebc
      *tc.desc test interface of onHttpErrorReceive with parameter fixed userAgent
      */
-    it('testOnHttpErrorReceiveFixedUserAgentWebc', 0, async (done: Function) => {
+    it('testOnHttpErrorReceiveFixedUserAgentWebc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnHttpErrorReceiveFixedUserAgentWebc";
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc", "http://1.1.1.123/index.html", 362, done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUstestOnHttpErrorReceiveFixedUserAgentWebcerAgent", true, 364, done);

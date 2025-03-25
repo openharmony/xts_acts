@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testBlockNetWork001', 0, async (done: Function) => {
+    it('testBlockNetWork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork001", 'https://openharmony.cn/', 60418, done);
@@ -77,7 +77,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testBlockNetWork002', 0, async (done: Function) => {
+    it('testBlockNetWork002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork002", 'OpenAtom OpenHarmony', 60420, done);
@@ -92,7 +92,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testBlockNetWork003', 0, async (done: Function) => {
+    it('testBlockNetWork003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork003", '', 60800, done);
@@ -107,7 +107,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testBlockNetWork004', 0, async (done: Function) => {
+    it('testBlockNetWork004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork004", '', 60802, done);
@@ -122,7 +122,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testBlockNetWork005', 0, async (done: Function) => {
+    it('testBlockNetWork005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork005", '', 60805, done);

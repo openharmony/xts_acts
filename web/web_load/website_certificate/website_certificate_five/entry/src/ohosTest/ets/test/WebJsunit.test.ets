@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webJsunit() {
      *tc.name saveHttpAuthCredentials                                                                                                                                                                                                              
      *tc.desic save credentials
      */
-    it('saveHttpAuthCredentials', 0, async (done: Function) => {
+    it('saveHttpAuthCredentials', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetHttpAuthCredentials";
       Utils.registerEvent("saveHttpAuthCredentials", true, 442, done);
       sendEventByKey('webcomponent', 10, '');
@@ -62,7 +62,7 @@ export default function webJsunit() {
      *tc.name getHttpAuthCredentials                                                                                                                                                                                                              
      *tc.desic delete credentials
      */
-    it('getHttpAuthCredentials', 0, async (done: Function) => {
+    it('getHttpAuthCredentials', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteHttpAuthCredentials";
       Utils.registerEvent("getHttpAuthCredentials", "Stromgol", 444, done);
       sendEventByKey('webcomponent', 10, '');
@@ -72,7 +72,7 @@ export default function webJsunit() {
      *tc.name deleteHttpAuthCredentials                                                                                                                                                                                                              
      *tc.desic delete credentials
      */
-    it('deleteHttpAuthCredentials', 0, async (done: Function) => {
+    it('deleteHttpAuthCredentials', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteHttpAuthCredentials";
       Utils.registerEvent("deleteHttpAuthCredentials", false, 446, done);
       sendEventByKey('webcomponent', 10, '');

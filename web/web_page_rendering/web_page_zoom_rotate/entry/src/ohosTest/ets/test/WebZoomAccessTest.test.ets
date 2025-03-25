@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function webZoomAccessTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebZoomAccess001', 0, async (done: Function) => {
+    it('testWebZoomAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebZoomAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebZoomAccess001", true, 6500, done);
@@ -74,7 +74,7 @@ export default function webZoomAccessTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebZoomAccess002', 0, async (done: Function) => {
+    it('testWebZoomAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebZoomAccess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebZoomAccess002", true, 6502, done);
@@ -89,7 +89,7 @@ export default function webZoomAccessTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebZoomAccess003', 0, async (done: Function) => {
+    it('testWebZoomAccess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebZoomAccess003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebZoomAccess003", true, 6504, done);
@@ -104,7 +104,7 @@ export default function webZoomAccessTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebZoomAccess004', 0, async (done: Function) => {
+    it('testWebZoomAccess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebZoomAccess004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebZoomAccess004", true, 6506, done);
