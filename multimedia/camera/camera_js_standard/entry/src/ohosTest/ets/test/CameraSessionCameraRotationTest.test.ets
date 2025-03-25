@@ -270,13 +270,27 @@ export default function CameraSessionCameraRotationTest() {
     return true;
   }
 
+  let isSupportSixteenWithNineScale = (cameraOutputCap: cameraObj.CameraOutputCapability) => {
+    let ratio = 16 / 9;
+    for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+      let currentRatio = cameraOutputCap.previewProfiles[i].size.width / cameraOutputCap.previewProfiles[i].size.height;
+      if (Math.abs(currentRatio - ratio) > 0.01) {
+          continue;
+      }
+      return true;
+    }
+    return false;
+  }
+
   let createOutput = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info('Enter createOutput');
 
     let cameraOutputCap =
       mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx], mode);
     let ratio = 4 / 3;
-
+    if (mode == cameraObj.SceneMode.NORMAL_VIDEO && isSupportSixteenWithNineScale(cameraOutputCap)) {
+        ratio = 16 / 9;
+    }
     if (!isEmpty(cameraOutputCap)) {
       if (!isEmpty(cameraOutputCap.previewProfiles)) {
         console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);
@@ -610,13 +624,7 @@ export default function CameraSessionCameraRotationTest() {
         } else {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 start for camera");
-          try {
-            await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
-          } catch (err) {
-            console.info("Skipping As The Device is Not Supported");
-            expect(true).assertTrue()
-            done()
-          }
+          await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
           let cameraVideoRotation = mVideoOutput.getVideoRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 finish");
           if (cameraVideoRotation == cameraObj.ImageRotation.ROTATION_90 ||
@@ -668,14 +676,7 @@ export default function CameraSessionCameraRotationTest() {
       } else {
         console.info(TAG +
           "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 start for camera");
-        try {
-          await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
-        } catch (err) {
-          console.info("Skipping As The Device is Not Supported");
-          expect(true).assertTrue()
-          done()
-        }
-
+        await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
         try {
           let cameraVideoRotation = mVideoOutput.getVideoRotation(null);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 finish");
