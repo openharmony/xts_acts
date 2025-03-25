@@ -16,6 +16,7 @@
     "MainAbility/pages/SymbolGlyph/SymbolGlyphNode",
     "MainAbility/pages/ImageOrientation/ImageOrientation",
     "MainAbility/pages/RichEditor/onWillChange",
-    "MainAbility/pages/RichEditor/onDoubleClickOnHover"
+    "MainAbility/pages/RichEditor/onDoubleClickOnHover",
+    "MainAbility/pages/Marquee/MarqueeDynamicSyncSceneType"
   ]
 }
