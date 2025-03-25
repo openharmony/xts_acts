@@ -13,7 +13,7 @@
  *  limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -49,7 +49,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0100", 0, async (done: Function) => {
+    it("testHttpClientCert0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0100";
       console.info(`${caseName} test Start`);
       try {
@@ -116,7 +116,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0200", 0, async (done: Function) => {
+    it("testHttpClientCert0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0200";
       console.info(`${caseName} test Start`);
       try {
@@ -171,7 +171,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0300", 0, async (done: Function) => {
+    it("testHttpClientCert0300",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0300";
       console.info(`${caseName} test Start`);
       try {
@@ -232,7 +232,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0400", 0, async (done: Function) => {
+    it("testHttpClientCert0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0400";
       console.info(`${caseName} test Start`);
       try {
@@ -286,7 +286,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0500", 0, async (done: Function) => {
+    it("testHttpClientCert0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0500";
       console.info(`${caseName} test Start`);
       try {
@@ -347,7 +347,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0600", 0, async (done: Function) => {
+    it("testHttpClientCert0600",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0600";
       console.info(`${caseName} test Start`);
       try {
@@ -402,7 +402,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0700", 0, async (done: Function) => {
+    it("testHttpClientCert0700",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0700";
       console.info(`${caseName} test Start`);
       try {
@@ -463,7 +463,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0800", 0, async (done: Function) => {
+    it("testHttpClientCert0800",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0800";
       console.info(`${caseName} test Start`);
       try {
@@ -518,7 +518,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert0900", 0, async (done: Function) => {
+    it("testHttpClientCert0900",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert0900";
       console.info(`${caseName} test Start`);
       try {
@@ -579,7 +579,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1000", 0, async (done: Function) => {
+    it("testHttpClientCert1000",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1000";
       console.info(`${caseName} test Start`);
       try {
@@ -634,7 +634,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1100", 0, async (done: Function) => {
+    it("testHttpClientCert1100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1100";
       console.info(`${caseName} test Start`);
       try {
@@ -696,7 +696,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1200", 0, async (done: Function) => {
+    it("testHttpClientCert1200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1200";
       console.info(`${caseName} test Start`);
       try {
@@ -751,7 +751,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1300", 0, async (done: Function) => {
+    it("testHttpClientCert1300",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1300";
       console.info(`${caseName} test Start`);
       try {
@@ -813,7 +813,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1400", 0, async (done: Function) => {
+    it("testHttpClientCert1400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1400";
       console.info(`${caseName} test Start`);
       try {
@@ -868,7 +868,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1500", 0, async (done: Function) => {
+    it("testHttpClientCert1500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1500";
       console.info(`${caseName} test Start`);
       try {
@@ -930,7 +930,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1600", 0, async (done: Function) => {
+    it("testHttpClientCert1600",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1600";
       console.info(`${caseName} test Start`);
       try {
@@ -985,7 +985,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1700", 0, async (done: Function) => {
+    it("testHttpClientCert1700",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1700";
       console.info(`${caseName} test Start`);
       try {
@@ -1047,7 +1047,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1800", 0, async (done: Function) => {
+    it("testHttpClientCert1800",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1800";
       console.info(`${caseName} test Start`);
       try {
@@ -1102,7 +1102,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert1900", 0, async (done: Function) => {
+    it("testHttpClientCert1900",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert1900";
       console.info(`${caseName} test Start`);
       try {
@@ -1164,7 +1164,7 @@ export default function HttpClientCertTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpClientCert2000", 0, async (done: Function) => {
+    it("testHttpClientCert2000",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       let caseName: string = "testHttpClientCert2000";
       console.info(`${caseName} test Start`);
       try {
