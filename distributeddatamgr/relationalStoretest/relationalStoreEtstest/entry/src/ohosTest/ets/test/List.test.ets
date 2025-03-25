@@ -44,7 +44,12 @@ import rdbrootDirTest from './RelationalStoreRootDir.test';
 import VectorStoreTest from './VectorStore.test';
 import RelationalStoreCustom from './RelationalStoreCustom.test';
 import RelationalStoreNoneTokenizer from './RelationalStoreNoneTokenizer.test'
-import relationalStoreInterfaceTest from './relationalstore.test'
+import relationalStoreInterfaceTest from './relationalstore.test';
+import relationalStoreErrorCode33Test from './relationalStoreErrorCode33Test.test';
+import relationalStoreErrorCode02Test from './relationalStoreErrorCode02Test.test';
+import relationalStoreErrorCode51Test from './relationalStoreErrorCode51Test.test';
+import relationalStoreErrorCode01Test from './relationalStoreErrorCode01Test.test';
+import relationalStoreErrorCode32Test from './relationalStoreErrorCode32Test.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -80,5 +85,10 @@ export default function testsuite() {
   RelationalStoreCustom()
   RelationalStoreNoneTokenizer()
   relationalStoreInterfaceTest()
+  relationalStoreErrorCode32Test()
+  relationalStoreErrorCode33Test()
+  relationalStoreErrorCode02Test()
+  relationalStoreErrorCode51Test()
+  relationalStoreErrorCode01Test()
 }
 
