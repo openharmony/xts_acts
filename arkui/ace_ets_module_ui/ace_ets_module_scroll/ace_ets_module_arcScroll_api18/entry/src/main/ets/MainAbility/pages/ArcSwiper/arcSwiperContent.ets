@@ -110,7 +110,8 @@ struct arcSwiperContentTest {
             'position: ' + proxy.position + ','+ 'mainAxisLength: ' + proxy.mainAxisLength)
           this.selectedIndex1 = proxy.selectedIndex
           this.index1 = proxy.index
-          if (proxy.position <= proxy.index % this.DISPLAY_COUNT || proxy.position >= this.DISPLAY_COUNT + proxy.index % this.DISPLAY_COUNT) {
+          if (proxy.position <= proxy.index % this.DISPLAY_COUNT ||
+            proxy.position >= this.DISPLAY_COUNT + proxy.index % this.DISPLAY_COUNT) {
             this.opacityList[proxy.index] = 1.0
             this.scaleList[proxy.index] = 1.0
             this.translateList[proxy.index] = 0.0
@@ -119,12 +120,16 @@ struct arcSwiperContentTest {
           } else {
             if (proxy.index % this.DISPLAY_COUNT === 0) {
               this.opacityList[proxy.index] = 1 - proxy.position / this.DISPLAY_COUNT
-              this.scaleList[proxy.index] = this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - proxy.position / this.DISPLAY_COUNT)
-              this.translateList[proxy.index] = - proxy.position * proxy.mainAxisLength + (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
+              this.scaleList[proxy.index] =
+                this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - proxy.position / this.DISPLAY_COUNT)
+              this.translateList[proxy.index] =
+                -proxy.position * proxy.mainAxisLength + (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
             } else {
               this.opacityList[proxy.index] = 1 - (proxy.position - 1) / this.DISPLAY_COUNT
-              this.scaleList[proxy.index] = this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - (proxy.position - 1) / this.DISPLAY_COUNT)
-              this.translateList[proxy.index] = - (proxy.position - 1) * proxy.mainAxisLength - (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
+              this.scaleList[proxy.index] =
+                this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - (proxy.position - 1) / this.DISPLAY_COUNT)
+              this.translateList[proxy.index] = -(proxy.position - 1) * proxy.mainAxisLength -
+                (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
             }
             this.zIndexList[proxy.index] = -1
             proxy.finishTransition()
