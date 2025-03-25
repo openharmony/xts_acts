@@ -871,8 +871,6 @@ export default function SocketErrorCodeTest() {
       console.info(`${caseName} test end`);
     });
 
-
-
     /* *
      * @tc.number:  USB_LocalSocketServer_GetState_0100
      * @tc.name  :  testLocalSocketServerGetState0100
@@ -912,6 +910,59 @@ export default function SocketErrorCodeTest() {
         done();
       }
       console.info(`${caseName} test end`);
+    });
+
+    /* *
+     * @tc.number: USB_Socket_ErrorCode_TCPSocketServer_0100
+     * @tc.name  : testSocketErrorCodeTCPSocketServer0100
+     * @tc.desc  : Cancel multiple subscriptions to the TCP Socket Connection shutdown event
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testSocketErrorCodeTCPSocketServer0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testSocketErrorCodeTCPSocketServer0100';
+      try {
+        console.info(`${caseName} test start`);
+        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        let listenAddress: socket.NetAddress = {
+          address: '12345',
+          port: 12345,
+          family: 1
+        };
+        await tcpServer.listen(listenAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: listenAddress,
+          proxy: {
+            type: 0,
+            address: {
+              address: '127.0.0.1',
+              port: 12346
+            }
+          }
+        };
+        tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
+          const callback: Callback<void> = () => {
+            ExpectFail();
+            tcpServer.off('connect');
+            console.info(`${caseName} test end`);
+            done();
+          };
+          client.on('close', callback);
+          client.off('close');
+          await client.close();
+          expectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        });
+        await tcp.connect(tcpConnectOptions);
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectEqual(err.code, 2303199)
+        console.info(`${caseName} test end`);
+        done();
+      }
     });
   })
 }
