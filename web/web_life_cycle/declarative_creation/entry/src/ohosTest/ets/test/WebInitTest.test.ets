@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 export default function webInitTest() {
@@ -35,7 +35,7 @@ export default function webInitTest() {
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_0020
      *tc.name OnControllerAttached                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
-    it('OnControllerAttached', 0, async (done: Function) => {
+    it('OnControllerAttached', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnControllerAttached", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnControllerAttached", 1, 7, done);
@@ -50,7 +50,7 @@ export default function webInitTest() {
     //* @tc.type       : Function
     //* @tc.level      : Level 1
     //*/
-    //it('testSetWebController001', 0, async (done: Function) => {
+    //it('testSetWebController001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //  Utils.emitEvent("emitSetWebController", 10)
     //  await Utils.sleep(2000);
     //  Utils.registerEvent("testSetWebController001", true, 1311, done);

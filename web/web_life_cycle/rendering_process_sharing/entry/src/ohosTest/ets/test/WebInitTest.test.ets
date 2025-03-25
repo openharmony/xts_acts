@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function webInitTest() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewGetRenderProcessModeMultiple', 0, async (done: Function) => {
+    it('testWebViewGetRenderProcessModeMultiple', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode03", 10);
       Utils.registerEvent("testWebViewGetRenderProcessModeMultiple", 'success', 62904, done);
       sendEventByKey('WebInitTestButton', 10, '');
@@ -57,7 +57,7 @@ export default function webInitTest() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewSetRenderProcessNull', 0, async (done: Function) => {
+    it('testWebViewSetRenderProcessNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent('emitWebViewGetAndSetRenderProcessMode04', 10);
       Utils.registerEvent('testWebViewSetRenderProcessNull', 'success', 62905, done);
       sendEventByKey('WebInitTestButton', 10, '');
@@ -70,7 +70,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebViewOnRenderProcessRespondingGroup', 0, async (done: Function) => {
+    it('testWebViewOnRenderProcessRespondingGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebViewOnRenderProcessResponding", 10);
       Utils.registerBaseEvent("testWebViewOnRenderProcessResponding", true, 1336,
         done, (backData: emitter.EventData, expected: Object) => {
@@ -86,7 +86,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebViewNotRespondingReasonGroup_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
+    it('testWebViewNotRespondingReasonGroup_NAVIGATION_COMMIT_TIMEOUT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", 10);
       Utils.registerBaseEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338,
         done, (backData: emitter.EventData, expected: Object) => {

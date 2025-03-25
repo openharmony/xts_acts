@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
@@ -54,7 +54,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-      it('resumeAllTimers0100', 0, async (done: Function) => {
+      it('resumeAllTimers0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0100", true, 501, done);
@@ -73,7 +73,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('resumeAllTimers0200', 0, async (done: Function) => {
+    it('resumeAllTimers0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0200", true, 502, done);
@@ -92,7 +92,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('resumeAllTimers0300', 0, async (done: Function) => {
+    it('resumeAllTimers0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0300", true, 503, done);
@@ -111,7 +111,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('resumeAllTimers0400', 0, async (done: Function) => {
+    it('resumeAllTimers0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0400", true, 504, done);
@@ -130,7 +130,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('resumeAllTimers0500', 0, async (done: Function) => {
+    it('resumeAllTimers0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0500", true, 505, done);
@@ -149,7 +149,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('resumeAllTimers0600', 0, async (done: Function) => {
+    it('resumeAllTimers0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0600", true, 506, done);
@@ -168,7 +168,7 @@ export default function webViewControllerResumeAllTimers() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('resumeAllTimers0700', 0, async (done: Function) => {
+    it('resumeAllTimers0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("resumeAllTimers0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("resumeAllTimers0700", true, 507, done);

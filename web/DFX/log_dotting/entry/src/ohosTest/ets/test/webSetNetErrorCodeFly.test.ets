@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME", true, 1301, done);
@@ -93,7 +93,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INVALID_REDIRECT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INVALID_REDIRECT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_REDIRECT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INVALID_REDIRECT", true, 1302, done);
@@ -108,7 +108,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS", true, 1303, done);
@@ -123,7 +123,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNSAFE_REDIRECT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT", true, 1304, done);
@@ -138,7 +138,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UNSAFE_PORT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UNSAFE_PORT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNSAFE_PORT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UNSAFE_PORT", true, 1305, done);
@@ -153,7 +153,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INVALID_RESPONSE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INVALID_RESPONSE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_RESPONSE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INVALID_RESPONSE", true, 1306, done);
@@ -168,7 +168,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING", true, 1307, done);
@@ -183,7 +183,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED", true, 1308, done);
@@ -198,7 +198,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH", true, 1309, done);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function webOnAudioStateChanged() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testOnAudioStateChanged001', 0, async (done: Function) => {
+    it('testOnAudioStateChanged001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitAudioStatePlay", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnAudioStateChanged001", "true_true_", 60501, done);
@@ -74,7 +74,7 @@ export default function webOnAudioStateChanged() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testOnAudioStateChanged002', 0, async (done: Function) => {
+    it('testOnAudioStateChanged002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitAudioStatePause", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnAudioStateChanged002", "true_false_false_", 60503, done);

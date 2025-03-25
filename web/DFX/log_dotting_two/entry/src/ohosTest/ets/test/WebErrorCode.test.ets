@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -59,7 +59,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSearchAllAsyncError001', 0, async (done: Function) => {
+    it('testSearchAllAsyncError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitSearchAllAsync", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchAllAsyncError001", '17100001', 1000, done);
@@ -74,7 +74,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetUserAgentError001', 0, async (done: Function) => {
+    it('testGetUserAgentError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetUserAgent", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetUserAgentError001", '17100001', 1006, done);
@@ -89,7 +89,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testClearMatchesError001', 0, async (done: Function) => {
+    it('testClearMatchesError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitClearMatches", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearMatchesError001", '17100001', 1007, done);
@@ -104,7 +104,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSearchNextError001', 0, async (done: Function) => {
+    it('testSearchNextError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitSearchNext", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchNextError001", '17100001', 1009, done);
@@ -119,7 +119,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testClearSslCacheError001', 0, async (done: Function) => {
+    it('testClearSslCacheError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitClearSslCache", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearSslCacheError001", '17100001', 1010, done);
@@ -134,7 +134,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testClearClientAuthenticationCacheError001', 0, async (done: Function) => {
+    it('testClearClientAuthenticationCacheError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitClearClientAuthenticationCache", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearClientAuthenticationCacheError001", '17100001', 1011, done);
@@ -150,7 +150,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomInError001', 0, async (done: Function) => {
+    it('testZoomInError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoomIn", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomInError001", '17100001', 1012, done);
@@ -165,7 +165,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomInError002', 0, async (done: Function) => {
+    it('testZoomInError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoomIn2", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomInError002", '17100004', 1013, done);
@@ -181,7 +181,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessagePortError001', 0, async (done: Function) => {
+    it('testWebMessagePortError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebMessagePort", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessagePortError001", '17100010', 1014, done);
@@ -196,7 +196,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testCreateWebMessagePortsError001', 0, async (done: Function) => {
+    it('testCreateWebMessagePortsError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitCreateWebMessagePort", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCreateWebMessagePortsError001", '17100001', 1021, done);
@@ -211,7 +211,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPostMessageError001', 0, async (done: Function) => {
+    it('testPostMessageError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitPostMessage", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPostMessageError001", '17100001', 1022, done);
@@ -226,7 +226,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRequestFocusError001', 0, async (done: Function) => {
+    it('testRequestFocusError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitRequestFocus", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRequestFocusError001", '17100001', 1023, done);
@@ -241,7 +241,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRefreshError001', 0, async (done: Function) => {
+    it('testRefreshError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitRefresh", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefreshError001", '17100001', 1024, done);
@@ -256,7 +256,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testLoadDataError001', 0, async (done: Function) => {
+    it('testLoadDataError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitLoadData", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadDataError001", '17100001', 1025, done);
@@ -271,7 +271,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testLoadUrlError001', 0, async (done: Function) => {
+    it('testLoadUrlError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitLoadUrl", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrlError001", '17100001', 1027, done);
@@ -286,7 +286,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomOutError001', 0, async (done: Function) => {
+    it('testZoomOutError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoomOut", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomOutError001", '17100001', 1028, done);
@@ -301,7 +301,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSlideScrollError001', 0, async (done: Function) => {
+    it('testSlideScrollError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitSlideScroll", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSlideScrollError001", '17100001', 1033, done);
@@ -316,7 +316,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testScrollByError001', 0, async (done: Function) => {
+    it('testScrollByError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitScrollBy", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollByError001", '17100001', 1034, done);
@@ -331,7 +331,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSerializeWebStateError001', 0, async (done: Function) => {
+    it('testSerializeWebStateError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitSerializeWebState", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSerializeWebStateError001", '17100001', 1035, done);
@@ -346,7 +346,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRestoreWebStateError001', 0, async (done: Function) => {
+    it('testRestoreWebStateError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitRestoreWebState", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRestoreWebStateError001", '17100001', 1036, done);
@@ -361,7 +361,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStopError001', 0, async (done: Function) => {
+    it('testStopError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitStop", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStopError001", '17100001', 1037, done);
@@ -376,7 +376,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRegisterJavaScriptProxyError001', 0, async (done: Function) => {
+    it('testRegisterJavaScriptProxyError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitRegisterJavaScriptProxy", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRegisterJavaScriptProxyError001", '17100001', 1038, done);
@@ -391,7 +391,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteJavaScriptRegisterError001', 0, async (done: Function) => {
+    it('testDeleteJavaScriptRegisterError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitDeleteJavaScriptRegister", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteJavaScriptRegisterError001", '17100001', 1039, done);
@@ -406,7 +406,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteJavaScriptRegisterError002', 0, async (done: Function) => {
+    it('testDeleteJavaScriptRegisterError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitDeleteJavaScriptRegister2", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteJavaScriptRegisterError002", '17100008', 1040, done);
@@ -421,7 +421,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetHitTestError001', 0, async (done: Function) => {
+    it('testGetHitTestError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestError001", '17100001', 1041, done);
@@ -437,7 +437,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetTitleError001', 0, async (done: Function) => {
+    it('testGetTitleError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetTitle", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetTitleError001", '17100001', 1044, done);
@@ -452,7 +452,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetPageHeightError001', 0, async (done: Function) => {
+    it('testGetPageHeightError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetPageHeight", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetPageHeightError001", '17100001', 1045, done);
@@ -467,7 +467,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetHitTestValueError001', 0, async (done: Function) => {
+    it('testGetHitTestValueError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValueError001", '17100001', 1046, done);
@@ -482,7 +482,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetWebIdError001', 0, async (done: Function) => {
+    it('testGetWebIdError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitGetWebId", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetWebIdError001", '17100001', 1047, done);
@@ -497,7 +497,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testBackOrForwardError001', 0, async (done: Function) => {
+    it('testBackOrForwardError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitBackOrForward", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForwardError001", '17100001', 1048, done);
@@ -512,7 +512,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomError001', 0, async (done: Function) => {
+    it('testZoomError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoom", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomError001", '17100001', 1049, done);
@@ -527,7 +527,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomError002', 0, async (done: Function) => {
+    it('testZoomError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoom2", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomError002", '17100004', 1050, done);
@@ -542,7 +542,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    // it('testLoadUrlError002', 0, async (done: Function) => {
+    // it('testLoadUrlError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
     //   Utils.emitEvent("emitLoadUrl2", 10)
     //   await Utils.sleep(2000);
     //   Utils.registerEvent("testLoadUrlError002", '17100002', 1058, done);
@@ -557,7 +557,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testLoadUrlError003', 0, async (done: Function) => {
+    it('testLoadUrlError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitLoadUrl3", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrlError003", '17100003', 1059, done);
@@ -572,7 +572,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessagePortError002', 0, async (done: Function) => {
+    it('testWebMessagePortError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebMessagePort2", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessagePortError002", '17100010', 1064, done);
@@ -587,7 +587,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testZoomOutError002', 0, async (done: Function) => {
+    it('testZoomOutError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitZoomOut2", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testZoomOutError002", '17100004', 1065, done);
@@ -602,7 +602,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAccessForwardError001', 0, async (done: Function) => {
+    it('testAccessForwardError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAccessForwardError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessForwardError001", '17100001', 50002, done);
@@ -617,7 +617,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAccessBackwardError001', 0, async (done: Function) => {
+    it('testAccessBackwardError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAccessBackwardError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessBackwardError001", '17100001', 50005, done);
@@ -632,7 +632,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAccessStepError001', 0, async (done: Function) => {
+    it('testAccessStepError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAccessStepError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStepError001", '17100001', 50008, done);
@@ -647,7 +647,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testForwardError001', 0, async (done: Function) => {
+    it('testForwardError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testForwardError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testForwardError001", '17100001', 50009, done);
@@ -662,7 +662,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testBackwardError001', 0, async (done: Function) => {
+    it('testBackwardError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testBackwardError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackwardError001", '17100001', 50010, done);
@@ -677,7 +677,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testClearHistoryError001', 0, async (done: Function) => {
+    it('testClearHistoryError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testClearHistoryError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearHistoryError001", '17100001', 50011, done);
@@ -692,7 +692,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testOnActiveError001', 0, async (done: Function) => {
+    it('testOnActiveError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testOnActiveError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnActiveError001", '17100001', 50012, done);
@@ -707,7 +707,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testOnInactiveError001', 0, async (done: Function) => {
+    it('testOnInactiveError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testOnInactiveError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInactiveError001", '17100001', 50013, done);
@@ -722,7 +722,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetCertificateError001', 0, async (done: Function) => {
+    it('testGetCertificateError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCertificateError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCertificateError001", '17100001', 50015, done);
@@ -737,7 +737,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetAudioMutedError001', 0, async (done: Function) => {
+    it('testSetAudioMutedError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetAudioMutedError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetAudioMutedError001", '17100001', 50016, done);
@@ -752,7 +752,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPerFetchPageError001', 0, async (done: Function) => {
+    it('testPerFetchPageError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPerFetchPageError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPerFetchPageError001", '17100001', 50018, done);
@@ -767,7 +767,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPerFetchPageError002', 0, async (done: Function) => {
+    it('testPerFetchPageError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPerFetchPageError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPerFetchPageError002", '17100002', 50019, done);
@@ -782,7 +782,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCustomUserAgentError001', 0, async (done: Function) => {
+    it('testSetCustomUserAgentError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCustomUserAgentError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCustomUserAgentError001", '17100001', 50023, done);
@@ -797,7 +797,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetCustomUserAgentError001', 0, async (done: Function) => {
+    it('testGetCustomUserAgentError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCustomUserAgentError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCustomUserAgentError001", '17100001', 50024, done);
@@ -812,7 +812,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPrepareForPageLoadError001', 0, async (done: Function) => {
+    it('testPrepareForPageLoadError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPrepareForPageLoadError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPrepareForPageLoadError001", "17100013", 50025, done);
@@ -826,7 +826,7 @@ export default function webErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPrepareForPageLoadError002', 0, async (done: Function) => {
+    it('testPrepareForPageLoadError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPrepareForPageLoadError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPrepareForPageLoadError002", "17100002", 50026, done);

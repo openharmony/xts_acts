@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -71,7 +71,7 @@ export default function webViewContPageAndprepareForPageLoadErrorOne() {
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
-    it('PrefetchPageErr', 0, async (done: Function) => {
+    it('PrefetchPageErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPrepareForPageLoadErr";
       Utils.registerEvent("PrefetchPageErr", "17100001", 900, done);
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorOne', 10, '');
