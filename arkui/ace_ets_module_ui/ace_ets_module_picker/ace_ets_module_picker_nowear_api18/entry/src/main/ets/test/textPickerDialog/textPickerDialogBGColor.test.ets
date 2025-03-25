@@ -23,12 +23,12 @@ export default function TextPickerDialogBGColorTest() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url:'MainAbility/pages/textPickerDialog/textPickerDialogBGColor',
+        url:'MainAbility/pages/textPickerDialog/textPickerDialogBgColor',
       }
       try {
         router.clear();
         let pages = router.getState();
-        if (!("textPickerDialogBGColor" == pages.name)) {
+        if (!("textPickerDialogBgColor" == pages.name)) {
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
         }
