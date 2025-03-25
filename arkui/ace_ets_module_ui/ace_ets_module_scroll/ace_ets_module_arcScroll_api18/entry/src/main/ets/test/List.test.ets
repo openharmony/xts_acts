@@ -14,7 +14,13 @@
  */
  
 import arcDotIndicator from './ArcSwiperTest/arcDotIndicator.test';
+import arcSwiperEvent from './ArcSwiperTest/arcSwiperEvent.test';
+import arcSwiperShow from './ArcSwiperTest/arcSwiperShow.test';
+import arcSwiperContent from './ArcSwiperTest/arcSwiperContent.test';
 
 export default function testsuite() {
   arcDotIndicator()
+  arcSwiperEvent()
+  arcSwiperShow()
+  arcSwiperContent()
 }
