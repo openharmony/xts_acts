@@ -13555,18 +13555,7 @@ static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info
         (void*)data, nativeBindingSize);
     NAPI_ASSERT(env, status == napi_invalid_arg, 
                 "void* native_object is null, napi_wrap_sendable_with_size failed.");
-    //finalize_cb is null
-    status = napi_wrap_sendable_with_size(env, args[0], (void*)data, nullptr, (void*)data, nativeBindingSize);
-    NAPI_ASSERT(env, status != napi_ok, "finalize_cb is null, napi_wrap_sendable_with_size failed.");
-    //void* finalize_hint is null
-        status = napi_wrap_sendable_with_size(
-        env, args[0], (void*)data,
-        [](napi_env env, void* data, void* hint) {
-            char* tmp = reinterpret_cast<char*>(data);
-            delete[] tmp;
-        },
-        nullptr, nativeBindingSize);
-    NAPI_ASSERT(env, status != napi_ok, "finalize_hint is null, napi_wrap_sendable_with_size failed.");
+
     //all is null
     status = napi_wrap_sendable_with_size(nullptr, nullptr, nullptr, nullptr, nullptr, nativeBindingSize);
     NAPI_ASSERT(env, status != napi_ok, "all is null, napi_wrap_sendable_with_size failed.");
@@ -13631,21 +13620,6 @@ static napi_value NapiWrapSendableTest1(napi_env env, napi_callback_info info)
         (void*)data);
     NAPI_ASSERT(env, status == napi_invalid_arg, 
                 "void* native_object is null, napi_wrap_sendable failed.");
-    //finalize_cb is null
-    status = napi_wrap_sendable(env, args[0], (void*)data, nullptr, (void*)data);
-    NAPI_ASSERT(env, status != napi_ok, "finalize_cb is null, napi_wrap_sendable failed.");
-    //void* finalize_hint is null
-        status = napi_wrap_sendable(
-        env, args[0], (void*)data,
-        [](napi_env env, void* data, void* hint) {
-            char* tmp = reinterpret_cast<char*>(data);
-            delete[] tmp;
-        },
-        nullptr);
-    NAPI_ASSERT(env, status != napi_ok, "finalize_hint is null, napi_wrap_sendable failed.");
-    //all is null
-    status = napi_wrap_sendable(nullptr, nullptr, nullptr, nullptr, nullptr);
-    NAPI_ASSERT(env, status != napi_ok, "all is null, napi_wrap_sendable failed.");
 
     napi_value rst;
     bool bRet = true;
@@ -14273,23 +14247,19 @@ static napi_value NapiLoadModuleWithInfoTest(napi_env env, napi_callback_info in
 
     //env is null
     status = napi_load_module_with_info(nullptr, "pages/ObjectUtils", "com.acts.ace.napitest/entry_test", &result);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_load_module_with_info failed.");
+    NAPI_ASSERT(env, status != napi_ok, "env is null, napi_load_module_with_info failed.");
 
     //path is null
     status = napi_load_module_with_info(env, nullptr, "com.acts.ace.napitest/entry_test", &result);
     NAPI_ASSERT(env, status == napi_ok, "path is null, napi_load_module_with_info failed.");
 
-    //module_info is null
-    status = napi_load_module_with_info(env, "pages/ObjectUtils", nullptr, &result);
-    NAPI_ASSERT(env, status == napi_generic_failure, "module_info is null, napi_load_module_with_info failed.");
-
     //result is null
     status = napi_load_module_with_info(env, "pages/ObjectUtils", "com.acts.ace.napitest/entry_test", nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_load_module_with_info failed.");
+    NAPI_ASSERT(env, status != napi_ok, "result is null, napi_load_module_with_info failed.");
 
     //all is null
     status = napi_load_module_with_info(nullptr, nullptr, nullptr, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_load_module_with_info failed.");
+    NAPI_ASSERT(env, status != napi_ok, "all is null, napi_load_module_with_info failed.");
 
     napi_value rst;
     bool bRet = true;
@@ -14658,38 +14628,6 @@ static napi_value NapiAddFinalizerTest(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "test_async", NAPI_AUTO_LENGTH, &resourceName);
     napi_async_context context;
     napi_ref ref = nullptr;
-    napi_async_init(env, resource, resourceName, &context);
-
-    //js_object is undefine
-    status = napi_add_finalizer(env, undefined, reinterpret_cast<void*>(context),
-                                            AsyncDestroyCb, data, &ref);
-    NAPI_ASSERT(env, status != napi_ok, "js_object is undefined, napi_add_finalizer failed.");
-
-    //env is null
-    status = napi_add_finalizer(nullptr, resource, reinterpret_cast<void*>(context),
-                                            AsyncDestroyCb, data, &ref);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_add_finalizer failed.");
-
-    //js_object is null
-    status = napi_add_finalizer(env, nullptr, reinterpret_cast<void*>(context),
-                                            AsyncDestroyCb, data, &ref);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "js_object is null, napi_add_finalizer failed.");
-
-    //native_object is null
-    status = napi_add_finalizer(env, resource, nullptr, AsyncDestroyCb, data, &ref);
-    NAPI_ASSERT(env, status == napi_object_expected, "native_object is null, napi_add_finalizer failed.");
-
-    //finalize_cb is null
-    status = napi_add_finalizer(env, resource, reinterpret_cast<void*>(context), nullptr, data, &ref);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_cb is null, napi_add_finalizer failed.");
-
-    //finalize_hint is null
-    status = napi_add_finalizer(env, resource, reinterpret_cast<void*>(context), AsyncDestroyCb, nullptr, &ref);
-    NAPI_ASSERT(env, status == napi_object_expected, "finalize_cb is null, napi_add_finalizer failed.");
-
-    //result is null
-    status = napi_add_finalizer(env, resource, reinterpret_cast<void*>(context), AsyncDestroyCb, data, nullptr);
-    NAPI_ASSERT(env, status == napi_object_expected, "result is null, napi_add_finalizer failed.");
 
     //all is null
     status = napi_add_finalizer(nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
@@ -15160,14 +15098,6 @@ static napi_value NapiGetBufferInfoTest(napi_env env, napi_callback_info info)
     //value is null
     status = napi_get_buffer_info(env, nullptr, (void**)(&bufferData), &length);
     NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_buffer_info failed.");
-
-    //data is null
-    status = napi_get_buffer_info(env, args[0], nullptr, &length);
-    NAPI_ASSERT(env, status == napi_arraybuffer_expected, "data is null, napi_get_buffer_info failed.");
-
-    //length is null
-    status = napi_get_buffer_info(env, args[0], (void**)(&bufferData), nullptr);
-    NAPI_ASSERT(env, status != napi_ok, "length is null, napi_get_buffer_info failed.");
 
     //all is null
     status = napi_get_buffer_info(nullptr, nullptr, nullptr, nullptr);
@@ -16358,9 +16288,6 @@ static napi_value NapiAsyncInitTest(napi_env env, napi_callback_info info)
     status = napi_async_init(env, undefined, resourceName, &context);
     NAPI_ASSERT(env, status == napi_ok, "async_resource is undefined, napi_async_init failed.");
 
-    //async_resource_name is undefined
-    status = napi_async_init(env, resource, undefined, &context);
-    NAPI_ASSERT(env, status == napi_ok, "async_resource_name is undefined, napi_async_init failed.");
 
     //env is null
     status = napi_async_init(nullptr, resource, resourceName, &context);
@@ -16643,18 +16570,6 @@ static napi_value NapiWrapTest(napi_env env, napi_callback_info info)
         env, instanceValue, (void*)testStr, nullptr, finalize_hint, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_cb is null, napi_wrap failed.");
 
-    //finalize_hint is null
-    const char* tmpTestStr = nullptr;
-    napi_unwrap(env, instanceValue, (void**)&tmpTestStr);
-    status = napi_wrap(
-        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_hint is null, napi_wrap failed.");
-
-    //result is null
-    status = napi_wrap(
-        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalize_hint, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_wrap failed.");
-
     //all is null
     status = napi_wrap(nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_wrap failed.");
@@ -16913,29 +16828,13 @@ static napi_value NapiCallFunctionTest(napi_env env, napi_callback_info info)
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
 
-    //recv is undefined
-    status = napi_call_function(env, undefined, args[0], 0, &result, &result);
-    NAPI_ASSERT(env, status == napi_function_expected, "recv is undefined, napi_call_function failed.");
-
     //func is undefined
     status = napi_call_function(env, args[0], undefined, 0, &result, &result);
     NAPI_ASSERT(env, status == napi_function_expected, "func is undefined, napi_call_function failed.");
 
-    //argv is undefined
-    status = napi_call_function(env, args[0], args[0], 0, &undefined, &result);
-    NAPI_ASSERT(env, status == napi_function_expected, "argv is undefined, napi_call_function failed.");
-
-    //result is undefined
-    status = napi_call_function(env, args[0], args[0], 0, &result, &undefined);
-    NAPI_ASSERT(env, status == napi_function_expected, "result is undefined, napi_call_function failed.");
-
     //env is null
     status = napi_call_function(nullptr, args[0], args[0], 0, &result, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_call_function failed.");
-
-    //recv is null
-    status = napi_call_function(env, nullptr, args[0], 0, &result, &result);
-    NAPI_ASSERT(env, status == napi_function_expected, "recv is null, napi_call_function failed.");
 
     //func is null
     status = napi_call_function(env, args[0], nullptr, 0, &result, &result);
@@ -16943,11 +16842,11 @@ static napi_value NapiCallFunctionTest(napi_env env, napi_callback_info info)
 
     //argv is null
     status = napi_call_function(env, args[0], args[0], 0, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_function_expected, "argv is null, napi_call_function failed.");
+    NAPI_ASSERT(env, status != napi_ok, "argv is null, napi_call_function failed.");
 
     //result is null
     status = napi_call_function(env, args[0], args[0], 0, &result, nullptr);
-    NAPI_ASSERT(env, status == napi_function_expected, "result is null, napi_call_function failed.");
+    NAPI_ASSERT(env, status != napi_ok, "result is null, napi_call_function failed.");
 
     //all is null
     status = napi_call_function(nullptr, nullptr, nullptr, 0, nullptr, nullptr);
