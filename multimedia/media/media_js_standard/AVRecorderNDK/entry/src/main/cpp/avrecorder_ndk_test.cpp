@@ -89,16 +89,6 @@ void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
 {
     (void)recorder;
     (void)userDate;
-    if (asset != nullptr) {
-        auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
-        if (changeRequest == nullptr) {
-            return;
-        }
-        MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG;
-        uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-        OH_MediaAsset_Release(asset);
-        OH_MediaAssetChangeRequest_Release(changeRequest);
-    }
 }
 static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 {
