@@ -17,11 +17,11 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestTy
 import data_relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
-
-let context: common.UIAbilityContext;
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TAG = "[tttttt]";
-
+const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+const context = delegator.getAppContext().getApplicationContext();
 let rdbStore: data_relationalStore.RdbStore | undefined = undefined;
 const dbName = "LockRowTest.db";
 const TABLE = 'lockrowtest';
@@ -34,26 +34,6 @@ let STORE_CONFIG:data_relationalStore.StoreConfig = {
     name: dbName,
     securityLevel: data_relationalStore.SecurityLevel.S1,
 }
-
-const asset1:data_relationalStore.Asset = {
-    name: "name2",
-    uri: "uri2",
-    createTime: "createTime2",
-    modifyTime: "modifyTime2",
-    size: "size2",
-    path: "path2",
-    status: data_relationalStore.AssetStatus.ASSET_NORMAL,
-}
-const asset2:data_relationalStore.Asset = {
-    name: "name3",
-    uri: "uri3",
-    createTime: "createTime3",
-    modifyTime: "modifyTime3",
-    size: "size3",
-    path: "path3",
-    status: data_relationalStore.AssetStatus.ASSET_NORMAL,
-}
-
 export default function relationalStoreSetDistributedTables() {
     describe('RelationalStoreSetDistributedTables', () => {
         let currentDeviceIsWatch: boolean= false;
@@ -65,18 +45,10 @@ export default function relationalStoreSetDistributedTables() {
             console.info('window_layout_test beforeAll end');
             done();
         });
-        beforeEach(async (done:Function) => {
-            console.log(TAG + 'beforeEach');
-        });
-        afterEach(async (done:Function) => {
-            console.log(TAG + 'afterEach');
-            rdbStore.close();
-            rdbStore = null;
-            await data_relationalStore.deleteRdbStore(context, "LockRowTest.db");
-            done();
-        });
         afterAll(async (done:Function) => {
             console.log(TAG + 'afterAll');
+            await data_relationalStore.deleteRdbStore(context, "LockRowTest.db");
+            done();
         });
         /**
          * @tc.number SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100
@@ -89,7 +61,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -100,12 +71,13 @@ export default function relationalStoreSetDistributedTables() {
                 await rdbStore.setDistributedTables(tableArray, data_relationalStore.DistributedType.DISTRIBUTED_CLOUD,
                     setConfig);
                 console.log(TAG + "set test to be distributed table success");
-                done();
             } catch (err) {
                 console.log(TAG + "set test to be distributed table failed");
                 expect().assertFail();
-                done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0100 end   *************");
         });
@@ -120,7 +92,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -138,6 +109,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0200 end   *************");
         });
@@ -152,7 +126,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -171,6 +144,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0300 end   *************");
         });
@@ -185,7 +161,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -204,6 +179,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0400 end   *************");
         });
@@ -218,7 +196,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -236,6 +213,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0500 end   *************");
         });
@@ -250,7 +230,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -269,6 +248,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0600 end   *************");
         });
@@ -283,7 +265,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -302,6 +283,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0700 end   *************");
         });
@@ -316,7 +300,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -333,6 +316,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0800 end   *************");
         });
@@ -347,7 +333,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -365,6 +350,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_0900 end   *************");
         });
@@ -379,7 +367,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -398,6 +385,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1000 end   *************");
         });
@@ -412,7 +402,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -431,6 +420,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1100 end   *************");
         });
@@ -445,7 +437,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -463,6 +454,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1200 end   *************");
         });
@@ -477,7 +471,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -496,6 +489,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1300 end   *************");
         });
@@ -510,7 +506,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -529,6 +524,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1400 end   *************");
         });
@@ -544,7 +542,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -561,6 +558,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect(err.code).assertEqual(14800000);
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1500 end   *************");
         });
@@ -577,7 +577,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             rdbStore.close();
@@ -595,10 +594,12 @@ export default function relationalStoreSetDistributedTables() {
             } catch (err) {
                 console.log(TAG + "err code:" + err.code + "err message:" + err.message);
                 expect(err.code).assertEqual("14800014");
-                rdbStore = null;
                 await data_relationalStore.deleteRdbStore(context, "LockRowTest.db");
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1600 end   *************");
         });
@@ -613,7 +614,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -637,6 +637,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1700 end   *************");
         });
@@ -651,7 +654,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -673,7 +675,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
-
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1800 end   *************");
         });
@@ -688,7 +692,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -710,6 +713,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_1900 end   *************");
         });
@@ -724,7 +730,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -746,6 +751,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2000 end   *************");
         });
@@ -760,7 +768,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -782,6 +789,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2100 end   *************");
         });
@@ -796,7 +806,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -819,6 +828,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2200 end   *************");
         });
@@ -833,7 +845,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -856,6 +867,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2300 end   *************");
         });
@@ -870,7 +884,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -893,6 +906,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2400 end   *************");
         });
@@ -907,7 +923,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -930,6 +945,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2500 end   *************");
         });
@@ -944,7 +962,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -967,6 +984,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2600 end   *************");
         });
@@ -981,7 +1001,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -1004,6 +1023,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2700 end   *************");
         });
@@ -1018,7 +1040,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -1041,6 +1062,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2800 end   *************");
         });
@@ -1055,7 +1079,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -1078,6 +1101,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_2900 end   *************");
         });
@@ -1091,7 +1117,6 @@ export default function relationalStoreSetDistributedTables() {
          */
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG + "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             try {
@@ -1157,6 +1182,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect().assertFail();
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3000 end   *************");
         });
@@ -1172,7 +1200,6 @@ export default function relationalStoreSetDistributedTables() {
         it('SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100 start *************");
-            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             let num: data_relationalStore.DistributedType = 3;
@@ -1191,6 +1218,9 @@ export default function relationalStoreSetDistributedTables() {
                 expect(err.code).assertEqual("401");
                 done();
             }
+            await rdbStore.close();
+            rdbStore = undefined
+            done();
             console.log(TAG +
                 "************* SUB_DistributedData_RelationalStore_SDK_SetDistributedTables_3100 end   *************");
         });
