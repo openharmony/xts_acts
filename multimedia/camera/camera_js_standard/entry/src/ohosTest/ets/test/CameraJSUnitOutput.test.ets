@@ -138,8 +138,8 @@ let createInput = async (index: number) => {
 // 创建Output参数为cameraDevice的下标、相机模式
 let createOutput = (index: number, mode: number) => {
   let cameraOutputCap = cameraManager.getSupportedOutputCapability(cameraDevicesArray[index], mode);
+  previewOutput = cameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[0], surfaceIds);
   if (mode == cameraObj.SceneMode.NORMAL_VIDEO) {
-    previewOutput = cameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[0], surfaceIds);
     videoProfilesArray = cameraOutputCap.videoProfiles;
     console.log(`videoProfilesArray:  + ${JSON.stringify(videoProfilesArray)}`)
   } else {
@@ -3010,7 +3010,7 @@ export default function cameraJSUnitOutput() {
 
 
 
-    /**
+   /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_ACTIVE_FRAME_RATE_0100
      * @tc.name      : video output get active frame rate
      * @tc.desc      : video output get active frame rate
@@ -3029,7 +3029,7 @@ export default function cameraJSUnitOutput() {
 
       // 设置帧率范围
       try {
-        videoOutput.setFrameRate(1, 1);
+        videoOutput.setFrameRate(supportedFrameRates[0]['min'], supportedFrameRates[0]['max']);
         console.info(`videoOutput set FrameRate success`)
       } catch (err) {
         console.info(`videoOutput set FrameRate failed + + ${JSON.stringify(err)}`)
@@ -3037,7 +3037,7 @@ export default function cameraJSUnitOutput() {
       // 获取激活的帧率范围
       let activeFrameRate = videoOutput.getActiveFrameRate();
       console.info(`videoOutput get FrameRate success:  + ${JSON.stringify(activeFrameRate)}`) 
-      expect(activeFrameRate["min"] == 1).assertTrue()
+      expect(activeFrameRate["min"] == supportedFrameRates[0]['min']).assertTrue()
       done()
     })
 
