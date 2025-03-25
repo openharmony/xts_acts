@@ -12,43 +12,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
-import { ON, BY, Driver, UiDriver } from '@kit.TestKit';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
+import { Driver, ON, Component } from '@kit.TestKit';
 import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
 
-export default function CalendarPickerDialogShadowTest() {
-  describe('CalendarPickerDialogShadowTest', () => {
+export default function TextPickerDialogShadowTest() {
+  describe('TextPickerDialogShadowTest', () => {
+
     beforeAll(async () => {
-      console.info('CalendarPickerDialogShadowTest beforeEach start');
+      console.info("TextPickerDialogShadowTest beforeEach start");
       let options: router.RouterOptions = {
-        url:'MainAbility/pages/calendarPickerDialog/calendarPickerDialogShadow',
+        url:'MainAbility/pages/textPickerDialog/textPickerDialogShadow',
       }
       try {
         router.clear();
         let pages = router.getState();
-        if (!('calendarPickerDialogShadow' == pages.name)) {
+        if (!("textPickerDialogShadow" == pages.name)) {
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error('push CalendarPickerDialogShadowTest page error: ' + err);
+        console.error("push TextPickerDialogShadow page error: " + err);
       }
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info('CalendarPickerDialogShadowTest after each called');
+      console.info("TextPickerDialogShadow after each called");
     });
-
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_001
-    * @tc.name  : CalendarPickerDialogShadowTest_001
-    * @tc.desc  : To test the CalendarPickerDialog shadow color: Color.Red
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_001',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_001
+     * @tc.name  : TextPickerDialogShadowTest_001
+     * @tc.desc  : To test the TextPickerDialog shadow color: Color.Red
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_001',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('shadowOptionID'));
       await button.click();
@@ -63,12 +63,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_002
-    * @tc.name  : CalendarPickerDialogShadowTest_002
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_DEFAULT_XS
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_002',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_002
+     * @tc.name  : TextPickerDialogShadowTest_002
+     * @tc.desc  : To test the TextPickerDialog shadow OuterDefaultXS
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_002',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_DEFAULT_XS_ID'));
       await button.click();
@@ -83,12 +83,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_003
-    * @tc.name  : CalendarPickerDialogShadowTest_003
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_DEFAULT_SM
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_003',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_003
+     * @tc.name  : TextPickerDialogShadowTest_003
+     * @tc.desc  : To test the TextPickerDialog shadow OuterDefaultSM
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_003',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_DEFAULT_SM_ID'));
       await button.click();
@@ -103,12 +103,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_004
-    * @tc.name  : CalendarPickerDialogShadowTest_004
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_DEFAULT_MD
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_004',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_004
+     * @tc.name  : TextPickerDialogShadowTest_004
+     * @tc.desc  : To test the TextPickerDialog shadow OuterDefaultMD
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_004',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_DEFAULT_MD_ID'));
       await button.click();
@@ -123,12 +123,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_005
-    * @tc.name  : CalendarPickerDialogShadowTest_005
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_DEFAULT_LG
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_005',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_005
+     * @tc.name  : TextPickerDialogShadowTest_005
+     * @tc.desc  : To test the TextPickerDialog shadow OuterDefaultLG
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_005',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_DEFAULT_LG_ID'));
       await button.click();
@@ -143,12 +143,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_006
-    * @tc.name  : CalendarPickerDialogShadowTest_006
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_FLOATING_SM
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_006',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_006
+     * @tc.name  : TextPickerDialogShadowTest_006
+     * @tc.desc  : To test the TextPickerDialog shadow OuterFloatingSM
+     * @tc.level : Level 0
+     */
+    it('TextPickerDialogShadowTest_006',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_FLOATING_SM_ID'));
       await button.click();
@@ -163,12 +163,12 @@ export default function CalendarPickerDialogShadowTest() {
       done();
     })
     /* *
-    * @tc.number: CalendarPickerDialogShadowTest_007
-    * @tc.name  : CalendarPickerDialogShadowTest_007
-    * @tc.desc  : To test the CalendarPickerDialog shadow ShadowStyle.OUTER_FLOATING_MD
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogShadowTest_007',Level.LEVEL0, async (done: Function) => {
+     * @tc.number: TextPickerDialogShadowTest_007
+     * @tc.name  : TextPickerDialogShadowTest_007
+     * @tc.desc  : To test the TextPickerDialog shadow OuterFloatingMD
+     * @tc.level : Level 0
+      */
+    it('TextPickerDialogShadowTest_007',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('OUTER_FLOATING_MD_ID'));
       await button.click();
@@ -182,5 +182,6 @@ export default function CalendarPickerDialogShadowTest() {
       await btn1?.click();
       done();
     })
+
   })
 }

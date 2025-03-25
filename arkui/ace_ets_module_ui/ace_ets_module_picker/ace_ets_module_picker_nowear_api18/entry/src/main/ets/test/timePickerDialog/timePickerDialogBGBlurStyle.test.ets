@@ -12,45 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
-import { ON, BY, Driver, UiDriver } from '@kit.TestKit';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
+import { Driver, ON, Component } from '@kit.TestKit';
 import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
 
-export default function CalendarPickerDialogBGBlurStyleTest() {
-    describe('CalendarPickerDialogBGBlurStyleTest', () => {
-
+export default function TimePickerDialogBGBlurStyleTest() {
+  describe('TimePickerDialogBGBlurStyleTest', () => {
     beforeAll(async () => {
-      console.info("CalendarPickerDialogBGBlurStyleTest beforeEach start");
+      console.info("TimePickerDialogBGBlurStyleTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/calendarPickerDialog/calendarPickerDialogBGBlurStyle',
+        url:'MainAbility/pages/timePickerDialog/timePickerDialogBGBlurStyle',
       }
       try {
         router.clear();
         let pages = router.getState();
-        if (!("calendarPickerDialogBGBlurStyle" == pages.name)) {
+        if (!("TimePickerDialogBGBlurStyle" == pages.name)) {
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error("push CalendarPickerDialogBGBlurStyleTest page error: " + err);
+        console.error("push TimePickerDialogBGBlurStyle page error: " + err);
       }
     });
 
     afterEach(async () => {
-      await CommonFunc.sleep(2000);
-      console.info("CalendarPickerDialogBGBlurStyleTest after each called");
+      await CommonFunc.sleep(1000);
+      console.info("TimePickerDialogBGBlurStyle after each called");
     });
-  
-
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_001
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_001
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.Thin
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_001', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_001
+     * @tc.name      TimePickerDialogBGBlurStyleTest_001
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_001',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('ThinID'));
       await button.click();
@@ -64,13 +61,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_002
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_002
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.Regular
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_002', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_002
+     * @tc.name      TimePickerDialogBGBlurStyleTest_002
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle BlurStyle.Thin
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_002',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('RegularID'));
       await button.click();
@@ -84,13 +81,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_003
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_003
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.Thick
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_003', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_003
+     * @tc.name      TimePickerDialogBGBlurStyleTest_003
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_003',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('ThickID'));
       await button.click();
@@ -104,13 +101,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_004
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_004
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.BACKGROUND_THIN
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_004', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_004
+     * @tc.name      TimePickerDialogBGBlurStyleTest_004
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_004',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('BACKGROUND_THIN_ID'));
       await button.click();
@@ -124,13 +121,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_005
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_005
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.BACKGROUND_REGULAR
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_005', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_005
+     * @tc.name      TimePickerDialogBGBlurStyleTest_005
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_005',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('BACKGROUND_REGULAR_ID'));
       await button.click();
@@ -144,13 +141,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_006
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_006
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.BACKGROUND_THICK
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_006', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_006
+     * @tc.name      TimePickerDialogBGBlurStyleTest_006
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_006',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('BACKGROUND_THICK_ID'));
       await button.click();
@@ -164,13 +161,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_007
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_007
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.BACKGROUND_ULTRA_THICK
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_007', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_007
+     * @tc.name      TimePickerDialogBGBlurStyleTest_007
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_007',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('BACKGROUND_ULTRA_THICK_ID'));
       await button.click();
@@ -184,13 +181,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_008
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_008
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.NONE
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_008', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_008
+     * @tc.name      TimePickerDialogBGBlurStyleTest_008
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_008',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('NONE_ID'));
       await button.click();
@@ -204,13 +201,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_009
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_009
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.COMPONENT_ULTRA_THIN
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_009', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_009
+     * @tc.name      TimePickerDialogBGBlurStyleTest_009
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_009',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('COMPONENT_ULTRA_THIN_ID'));
       await button.click();
@@ -224,13 +221,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_010
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_010
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.COMPONENT_THIN
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0010', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0010
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0010
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0010',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('COMPONENT_THIN_ID'));
       await button.click();
@@ -244,13 +241,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_011
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_011
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.COMPONENT_REGULAR
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0011', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0011
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0011
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0011',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('COMPONENT_REGULAR_ID'));
       await button.click();
@@ -264,13 +261,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_012
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_012
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.COMPONENT_THICK
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0012', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0012
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0012
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0012',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('COMPONENT_THICK_ID'));
       await button.click();
@@ -284,13 +281,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_013
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_013
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle BlurStyle.COMPONENT_ULTRA_THICK
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0013', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0013
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0013
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0013',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('COMPONENT_ULTRA_THICK_ID'));
       await button.click();
@@ -304,13 +301,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_014
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_014
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle null
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0014', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0014
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0014
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0014',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('nullID'));
       await button.click();
@@ -324,13 +321,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_015
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_015
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle undefined
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0015', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0015
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0015
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0015',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('undefinedID'));
       await button.click();
@@ -344,13 +341,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_016
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_016
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle -1
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0016', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0016
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0016
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0016',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('100ID'));
       await button.click();
@@ -364,13 +361,13 @@ export default function CalendarPickerDialogBGBlurStyleTest() {
       await btn1?.click();
       done();
     })
-    /* *
-    * @tc.number: CalendarPickerDialogBGBlurStyleTest_017
-    * @tc.name  : CalendarPickerDialogBGBlurStyleTest_017
-    * @tc.desc  : To test the CalendarPickerDialog backgroundBlurStyle 100
-    * @tc.level : Level 0
-    */
-    it('CalendarPickerDialogBGBlurStyleTest_0017', Level.LEVEL0, async (done: Function) => {
+    /**
+     * @tc.number    TimePickerDialogBGBlurStyleTest_0017
+     * @tc.name      TimePickerDialogBGBlurStyleTest_0017
+     * @tc.desc      To test the TimePickerDialog backgroundBlurStyle
+     * @tc.level:    Level 0
+     */
+    it('TimePickerDialogBGBlurStyleTest_0017',Level.LEVEL0, async (done: Function) => {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('-100ID'));
       await button.click();
